@@ -2159,6 +2159,7 @@
     var d = document.createElement('div');
     d.innerHTML = String(html || '');
     Array.prototype.forEach.call(d.querySelectorAll('script,style,iframe,object,embed,link'), function (n) { n.remove(); });
+    Array.prototype.forEach.call(d.querySelectorAll('hr[id]'), function (n) { n.removeAttribute('id'); });
     Array.prototype.forEach.call(d.querySelectorAll('*'), function (n) {
       Array.prototype.slice.call(n.attributes).forEach(function (a) {
         if (/^on/i.test(a.name) || (a.name === 'href' && /^\s*javascript:/i.test(a.value))) n.removeAttribute(a.name);
@@ -2258,8 +2259,27 @@
       if (!cmd) return;
       e.preventDefault();
       pre.deleteContents();
-      if (cmd === 'hr') document.execCommand('insertHorizontalRule', false, null);
-      else document.execCommand(cmd, false, arg);
+      if (cmd === 'hr') {
+        document.execCommand('insertHorizontalRule', false, null);
+        var hr = el.querySelector('hr[id]');
+        if (hr) hr.removeAttribute('id');
+      } else if (cmd === 'formatBlock') {
+        // formatBlock does nothing when the line it is given is empty, which is exactly the
+        // case after the marker has been deleted. So try it, then build the block by hand.
+        document.execCommand('formatBlock', false, '<' + arg + '>');
+        var at = sel.anchorNode;
+        at = at && (at.nodeType === 3 ? at.parentElement : at);
+        if (!at || !at.closest || !at.closest(arg)) {
+          var node = document.createElement(arg);
+          node.appendChild(document.createElement('br'));
+          sel.getRangeAt(0).insertNode(node);
+          var nr = document.createRange();
+          nr.setStart(node, 0); nr.collapse(true);
+          sel.removeAllRanges(); sel.addRange(nr);
+        }
+      } else {
+        document.execCommand(cmd, false, null);
+      }
       if (onChange) onChange();
     });
   }
