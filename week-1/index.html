@@ -2168,6 +2168,72 @@
       }
     });
     place_notes();
+    listMarks();
+  }
+  // The highlights list, grouped by the text each mark sits in, so it behaves like the
+  // bookmark list in a reader: click one and go there.
+  function listMarks() {
+    var box = document.getElementById('bmlist');
+    if (!box) return;
+    var groups = [], seen = {}, byName = {};
+    Array.prototype.forEach.call(root.querySelectorAll('mark.hl'), function (m) {
+      var id = m.getAttribute('data-id');
+      if (seen[id]) return;
+      var it = items.filter(function (x) { return x.id === id; })[0];
+      if (!it) return;
+      seen[id] = 1;
+      var art = m.closest('article.rd');
+      var name = 'The argument', ch = '';
+      if (art) {
+        var h = art.querySelector('h3'), chip = h && h.querySelector('.ch'), who = art.querySelector('.who');
+        ch = chip ? chip.textContent.trim().toLowerCase() : '';
+        name = who ? who.textContent.split(',')[0].trim() : (h ? h.textContent : name);
+      }
+      var g = byName[name];
+      if (!g) { g = { name: name, ch: ch, rows: [] }; byName[name] = g; groups.push(g); }
+      g.rows.push(it);
+    });
+    box.innerHTML = '';
+    if (!groups.length) {
+      var e = document.createElement('p');
+      e.className = 'bmempty';
+      e.textContent = 'Nothing marked yet. Select any text in the guide and pick a colour.';
+      box.appendChild(e);
+      return;
+    }
+    groups.forEach(function (g) {
+      var wrap = document.createElement('div'); wrap.className = 'bmg';
+      var h3 = document.createElement('h3');
+      h3.textContent = g.name;
+      if (g.ch) { var sp = document.createElement('span'); sp.textContent = g.ch; h3.appendChild(sp); }
+      wrap.appendChild(h3);
+      g.rows.forEach(function (it) {
+        var b = document.createElement('button');
+        b.type = 'button'; b.className = 'bmi';
+        var dot = document.createElement('span');
+        dot.className = 'dot ' + (it.kind === 'note' ? 'n' : it.color);
+        var txt = document.createElement('span');
+        var q = document.createElement('q');
+        q.textContent = it.text.length > 110 ? it.text.slice(0, 110) + '\u2026' : it.text;
+        txt.appendChild(q);
+        if (it.kind === 'note' && it.body) {
+          var cm = document.createElement('span');
+          cm.className = 'cm';
+          cm.textContent = it.body.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 140);
+          txt.appendChild(cm);
+        }
+        b.appendChild(dot); b.appendChild(txt);
+        b.addEventListener('click', function () {
+          var live = root.querySelector('mark[data-id="' + it.id + '"]');
+          if (!live) return;
+          live.scrollIntoView({ block: 'center', behavior: 'smooth' });
+          live.classList.add('flash');
+          setTimeout(function () { live.classList.remove('flash'); }, 1500);
+        });
+        wrap.appendChild(b);
+      });
+      box.appendChild(wrap);
+    });
   }
   var pill = null, pillT = null;
   function flag(txt, bad) {
