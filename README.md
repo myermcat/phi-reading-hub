@@ -41,6 +41,15 @@ anything, the page says so in the corner, so you find out while you can still co
 highlight is anchored to the words around it, so it survives edits elsewhere on the page. If the
 exact paragraph you marked gets rewritten, that highlight goes.
 
+## Written with Claude
+
+These guides were written with Claude, from the readings. They are reliable on the shape of an
+argument, on who said what, and on how the texts collide, which is what they are for. They are
+less reliable where a long passage has been compressed into a short one, because compression is
+where detail goes missing and a claim can come out stronger or flatter than the author put it.
+Anything worth quoting is worth checking against the reading, and the page numbers are there so
+that check takes a minute.
+
 ## What is not here
 
 **The readings themselves.** They are copyright material posted to a course site, so only the
