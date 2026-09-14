@@ -2544,6 +2544,32 @@
       if (el === document.activeElement) caretEnd(el.firstElementChild);
     }
   }
+  // Chrome carries inline formatting across a paragraph break, so a line started at the end of
+  // a coloured run comes out coloured. Bold and italic have a key that turns them off; colour has
+  // no plain white, so the empty clone gets removed and the new line starts normal.
+  function unpaint(el) {
+    var sel = window.getSelection();
+    if (!sel || !sel.rangeCount || !sel.isCollapsed) return false;
+    var n = sel.getRangeAt(0).startContainer;
+    if (n.nodeType === 3) n = n.parentElement;
+    // Only the empty colour spans the caret is actually sitting inside, so nothing already
+    // written elsewhere in the note is touched.
+    var home = null;
+    while (n && n !== el && el.contains(n)) {
+      var up = n.parentNode;
+      if (n.tagName === 'SPAN' && /^c-[ypm]$/.test(n.className) && !n.textContent) {
+        while (n.firstChild) up.insertBefore(n.firstChild, n);
+        up.removeChild(n); home = up;
+      }
+      n = up;
+    }
+    if (!home) return false;
+    if (!home.firstChild) home.appendChild(document.createElement('br'));
+    var r = document.createRange();
+    r.setStart(home, 0); r.collapse(true);
+    sel.removeAllRanges(); sel.addRange(r);
+    return true;
+  }
   function markEmpty(el) { el.classList.toggle('is-empty', !el.textContent.trim() && !el.querySelector('hr,img')); }
   function blockOf(el, node) {
     var b = node && (node.nodeType === 3 ? node.parentElement : node);
@@ -2555,6 +2581,9 @@
     markEmpty(el);
     el.addEventListener('focus', function () { prime(el); markEmpty(el); });
     el.addEventListener('input', function () { markEmpty(el); });
+    el.addEventListener('keyup', function (e) {
+      if (e.key === 'Enter' && unpaint(el) && onChange) onChange();
+    });
     el.addEventListener('paste', function (e) {
       e.preventDefault();
       var t = (e.clipboardData || window.clipboardData).getData('text/plain');
