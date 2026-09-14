@@ -32,8 +32,14 @@ reload, a closed tab and a restart of the machine.
 
 They never leave the device. They are not sent to a server, they do not appear on your phone
 after you wrote them on a laptop, and nobody else can read them. Clearing site data removes
-them, and a private window keeps them only until it closes. If your browser refuses to store
+them, and a private window keeps them only until it closes. Each guide has an **export** button
+that writes everything to a JSON file and an import button that reads it back, which is how you
+move your work between machines or keep a backup. If your browser refuses to store
 anything, the page says so in the corner, so you find out while you can still copy the text out.
+
+**These guides get rewritten often**, whenever a better way to answer a question turns up. A
+highlight is anchored to the words around it, so it survives edits elsewhere on the page. If the
+exact paragraph you marked gets rewritten, that highlight goes.
 
 ## What is not here
 
