@@ -2226,9 +2226,19 @@
         b.addEventListener('click', function () {
           var live = root.querySelector('mark[data-id="' + it.id + '"]');
           if (!live) return;
-          live.scrollIntoView({ block: 'center', behavior: 'smooth' });
+          var se = document.scrollingElement || document.documentElement;
+          var was = se.scrollTop;
+          try { live.scrollIntoView({ block: 'center', behavior: 'smooth' }); }
+          catch (e) { live.scrollIntoView(true); }
+          // Smooth scrolling is refused in some contexts and silently does nothing, so
+          // check that it actually moved and jump outright when it did not.
+          setTimeout(function () {
+            if (Math.abs((document.scrollingElement || document.documentElement).scrollTop - was) < 4) {
+              live.scrollIntoView({ block: 'center' });
+            }
+          }, 380);
           live.classList.add('flash');
-          setTimeout(function () { live.classList.remove('flash'); }, 1500);
+          setTimeout(function () { live.classList.remove('flash'); }, 1600);
         });
         wrap.appendChild(b);
       });
