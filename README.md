@@ -43,9 +43,9 @@ exact paragraph you marked gets rewritten, that highlight goes.
 
 ## Written with Claude
 
-These guides were written with Claude, from the readings. They are reliable on the shape of an
-argument, on who said what, and on how the texts collide, which is what they are for. They are
-less reliable where a long passage has been compressed into a short one, because compression is
+These guides were written with Claude, from the readings. Treat them as good AI writing: mostly
+right, and capable of being wrong. They are dependable on the shape of an argument, on who said
+what, and on how the texts collide, which is what they are for. They get weaker where a long passage has been compressed into a short one, because compression is
 where detail goes missing and a claim can come out stronger or flatter than the author put it.
 Anything worth quoting is worth checking against the reading, and the page numbers are there so
 that check takes a minute.
