@@ -1,3 +1,7 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>PHI2394 Week 1 Reading Guide</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%232E8E74'/%3E%3Cellipse%20cx='32'%20cy='33'%20rx='12.5'%20ry='15'%20fill='none'%20stroke='%23fff'%20stroke-width='7'/%3E%3Crect%20x='28.5'%20y='7'%20width='7'%20height='50'%20rx='3.5'%20fill='%23fff'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,500;0,600;1,6..72,400;1,600&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -199,9 +203,31 @@
   .curious > .label { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
   .curious > .label b { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--curious); font-weight: 500; }
   .curious > .label span { font-family: var(--mono); font-size: 10.5px; color: var(--muted); }
-  .bit { display: flex; flex-direction: column; gap: 6px; }
-  .bit h5 {
-    margin: 0; font-family: var(--display); font-weight: 600; font-size: 20.5px;
+  /* Every curious item and every side note is a toggle, closed until it is asked for,
+     and its summary says what is inside, so the line alone is enough to decide on. */
+  details.bit > summary, details.ctx > summary {
+    display: flex; align-items: baseline; gap: 10px; cursor: pointer; list-style: none;
+    padding: 4px 0; margin: 0; border-radius: 3px;
+  }
+  details.bit > summary::-webkit-details-marker,
+  details.ctx > summary::-webkit-details-marker { display: none; }
+  details.bit > summary::after, details.ctx > summary::after {
+    content: ''; width: 6px; height: 6px; flex: none; margin-left: auto; align-self: center;
+    border-right: 1.6px solid currentColor; border-bottom: 1.6px solid currentColor;
+    transform: translateY(-2px) rotate(45deg); opacity: .45; transition: transform .18s ease, opacity .18s ease;
+  }
+  details[open].bit > summary::after, details[open].ctx > summary::after {
+    transform: translateY(1px) rotate(225deg); opacity: .75;
+  }
+  details.bit > summary:hover::after, details.ctx > summary:hover::after { opacity: .9; }
+  details.bit > summary:focus-visible, details.ctx > summary:focus-visible {
+    outline: 2px solid var(--accent); outline-offset: 3px;
+  }
+  .bq { display: flex; flex-direction: column; gap: 9px; padding-top: 9px; }
+
+  .bit { display: block; }
+  .bit > summary {
+    font-family: var(--display); font-weight: 600; font-size: 20.5px;
     line-height: 1.2; color: var(--curious); letter-spacing: -0.005em; text-wrap: balance;
   }
   .bit p { font-size: 16.5px; color: var(--ink-soft); }
@@ -224,8 +250,11 @@
 
 
 
-  .ctx { border-left: 2px solid var(--rule); padding: 4px 0 4px 18px; display: flex; flex-direction: column; gap: 9px; margin: 26px 0; }
-  .ctx > b { font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+  .ctx { border-left: 2px solid var(--rule); padding: 2px 0 2px 18px; display: block; margin: 26px 0; }
+  .ctx > summary { font-family: var(--display); font-size: 17.5px; font-weight: 600; color: var(--ink-soft); line-height: 1.25; }
+  .ctx > summary i { font-family: var(--mono); font-style: normal; font-size: 10.5px; letter-spacing: .1em;
+                     text-transform: uppercase; color: var(--muted); font-weight: 500; flex: none; padding-top: 3px; }
+  .ctx[open] > summary { color: var(--ink); }
   .ctx p { font-size: 16.5px; color: var(--ink-soft); }
   .exm { background: var(--skim-wash); border-left: 3px solid var(--skim); padding: 16px 20px; display: flex; flex-direction: column; gap: 10px; margin: 28px 0; }
   .exm > b { font-family: var(--mono); font-size: 10.5px; letter-spacing: .11em; text-transform: uppercase; color: var(--skim); font-weight: 500; }
@@ -266,6 +295,26 @@
                 border-bottom: 1px solid transparent; }
   .site .disc:hover { opacity: 1; border-bottom-color: var(--rule); }
   .site .disc i { font-style: normal; opacity: .5; padding: 0 6px; }
+  /* The header is sticky, so a jump target has to reserve its height or it lands underneath it. */
+  [id] { scroll-margin-top: 74px; }
+  @media (max-width: 560px) { [id] { scroll-margin-top: 66px; } }
+
+  /* the bookmark: one per guide, the place reading stopped */
+  .site .bm-go { display: flex; align-items: center; gap: 7px; background: none; border: 0; padding: 4px 6px;
+                 margin-right: -6px; cursor: pointer; color: var(--muted); font-family: var(--mono);
+                 font-size: 11px; letter-spacing: .08em; text-transform: uppercase; border-radius: 4px; }
+  .site .bm-go:hover { color: var(--ink); background: var(--surface); }
+  .site .bm-go:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .site .bm-go svg { width: 13px; height: 15px; flex: none; }
+  .site .bm-go[data-set="1"] { color: var(--accent); }
+  .site .bm-go[data-set="1"] svg { fill: currentColor; }
+  @media (max-width: 700px) { .site .bm-go span { display: none; } }
+
+  mark.hl.hl-b { background: none; padding: 0; box-shadow: inset 0 -2px 0 var(--accent); border-radius: 0; }
+  /* an inline ribbon after the words, so it cannot land on the line above it */
+  mark.hl.hl-b::after { content: ''; display: inline-block; width: 7px; height: 9px; margin-left: 4px;
+                        vertical-align: 0; background: var(--accent);
+                        clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 72%, 0 100%); }
   @media (max-width: 820px) { .site .disc { display: none; } }
   @media (max-width: 560px) { .site .in { padding: 0 16px; height: 48px; } .site nav .cur { display: none; } }
 
@@ -392,12 +441,29 @@
          background: none; border-left: 0; border-right: 0; border-bottom: 0; cursor: pointer; width: 100%; font: inherit; color: inherit; }
   .bmi:hover { background: var(--surface); }
   .bmi:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
-  .bmi .dot { width: 9px; height: 9px; border-radius: 2px; margin-top: 7px; }
+  .bmi .dots { display: flex; flex-direction: column; gap: 4px; padding-top: 7px; }
+  .bmi .dot { width: 9px; height: 9px; border-radius: 2px; flex: none; }
   .bmi .dot.y { background: rgba(255,206,0,.85); }
   .bmi .dot.p { background: rgba(255,92,168,.7); }
   .bmi .dot.n { background: none; border: 1px dashed var(--accent); }
-  .bmi q { font-size: 15px; color: var(--ink); quotes: none; }
-  .bmi .cm { display: block; font-size: 13.5px; color: var(--muted); margin-top: 3px; }
+  .bmi .dot.b { background: var(--accent); clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 70%, 0 100%); border-radius: 0; height: 11px; width: 8px; }
+  .bmi .bt { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+  .bmi .where { font-family: var(--mono); font-size: 10px; letter-spacing: .07em; text-transform: uppercase;
+                color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .bmi .q { font-size: 15px; line-height: 1.5; color: var(--ink); }
+  .bmi .q .dim { color: var(--muted); }
+  /* the list reuses the page's own highlight colours, so a row looks like what it points at */
+  .bmi .q mark.hl { cursor: inherit; }
+  .bmi .cm { display: block; font-size: 13.5px; color: var(--muted); margin-top: 2px;
+             border-left: 2px solid var(--rule); padding-left: 9px; }
+  .bmg-b { padding: 14px 16px 12px; background: var(--surface); border-left: 2px solid var(--accent); margin-bottom: 10px; }
+  .bmg-b > h3 { color: var(--accent); }
+  .bmg-b .bmi { border-top: 0; padding-top: 0; }
+  .bmg-b .bmi:hover { background: none; text-decoration: underline; text-decoration-color: var(--rule); }
+  .bmclear { align-self: flex-start; margin-top: 6px; background: none; border: 0; padding: 2px 0; cursor: pointer;
+             font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase;
+             color: var(--muted); border-bottom: 1px solid var(--rule); }
+  .bmclear:hover { color: var(--ink); }
   .bmempty { font-size: 16px; color: var(--muted); }
   mark.hl.flash { animation: fl 1.4s ease-out; }
   @keyframes fl { 0%,55% { box-shadow: 0 0 0 4px var(--close-wash); } 100% { box-shadow: 0 0 0 0 transparent; } }
@@ -437,6 +503,8 @@
   #hl-bar button[data-c="p"] { background: rgba(255,92,168,.45); }
   #hl-bar button[data-c="n"] { background: var(--paper); display: flex; align-items: center; justify-content: center; color: var(--ink-soft); }
   #hl-bar button[data-c="n"] svg { width: 11px; height: 11px; display: block; }
+  #hl-bar button[data-c="b"] { background: var(--paper); display: flex; align-items: center; justify-content: center; color: var(--accent); }
+  #hl-bar button[data-c="b"] svg { width: 11px; height: 11px; display: block; }
   #hl-bar button:hover { border-color: var(--muted); }
   #hl-bar button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
   .hl-hint { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: .03em; margin-top: 12px; }
@@ -460,7 +528,7 @@
   @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
 </style>
 
-<header class="site"><div class="in"><a class="home" href="../"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 8H2M7 3 2 8l5 5"/></svg>PHI2394 Reading Hub</a><a class="disc" href="../#about" title="How these guides were written">Written with Claude<i>|</i>AI can make mistakes</a><nav aria-label="This week"><span class="cur">Week 1</span><a href="cheat-sheet.html">Cheat sheet</a></nav></div></header>
+<header class="site"><div class="in"><a class="home" href="../"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 8H2M7 3 2 8l5 5"/></svg>PHI2394 Reading Hub</a><a class="disc" href="../#about" title="How these guides were written">Written with Claude<i>|</i>AI can make mistakes</a><nav aria-label="This week"><button type="button" class="bm-go" id="bmgo" data-set="0" title="Go to your bookmark"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 2.2h8.8v12.1L8 11.1l-4.4 3.2z"/></svg><span>Bookmark</span></button><span class="cur">Week 1</span><a href="cheat-sheet.html">Cheat sheet</a></nav></div></header>
 
 <nav id="nav" aria-label="Contents">
   <a class="grp" href="#s-notes">My notes</a>
@@ -575,8 +643,8 @@
 
   <section id="s-marks">
     <h2>My highlights</h2>
-    <p class="lede">Everything you have marked, grouped by the text it sits in. Click one to jump to it.</p>
-    <div class="bm" id="bmlist"><p class="bmempty">Nothing marked yet. Select any text in the guide and pick a colour.</p></div>
+    <p class="lede">Everything you have marked, with the words around it, grouped by the text it sits in. Click one to jump to it.</p>
+    <div class="bm" id="bmlist"><p class="bmempty">Nothing marked yet. Select any text in the guide, then pick yellow, pink, a comment or the ribbon that sets your bookmark.</p></div>
   </section>
 
   <section>
@@ -609,28 +677,25 @@
     <div class="curious">
       <div class="label"><b>The lobotomy in full</b><span>because "how did that happen" is the whole question</span></div>
 
-      <div class="bit">
-        <h5>What was available before 1935, and why anyone tried it</h5>
+      <details class="bit"><summary>What was available before 1935, and why anyone tried it</summary><div class="bq">
         <p>There were no antipsychotic drugs until chlorpromazine in 1952. Asylums held enormous numbers of people with schizophrenia, severe depression and chronic agitation, and nothing touched any of it. The two treatments of the moment were both attempts to shock the brain out of its pattern.</p>
         <p><b>Insulin coma therapy</b>, from 1927. Manfred Sakel had been giving small doses of insulin to morphine addicts to settle withdrawal and improve appetite, and accidentally overdosed a patient into a hypoglycaemic coma. On waking, the patient seemed better. Sakel generalised it to schizophrenia: overdose the patient, hold them in coma for hours, revive them with glucose, and repeat the whole thing twenty to sixty times over weeks. <b>Nobody had a mechanism.</b> The explanations offered were vague talk of resting overactive nerve cells, or of weakening the diseased cells while sparing healthy ones.</p>
         <p><b>Why it looked like it worked</b> is the interesting part, and it took until the 1950s to establish. Early enthusiasts reported recovery rates as high as 80 per cent. Three things produced that number:</p><ol><li>Schizophrenia sometimes remits on its own.</li><li>The units selected patients with better prospects to begin with.</li><li>Insulin coma wards were specialised and heavily staffed, so patients got weeks of constant attention, close observation and careful feeding, which was nothing like an ordinary asylum ward.</li></ol><p> In 1953 Harold Bourne published "The Insulin Myth" in <em>The Lancet</em> making exactly that case. A controlled trial in 1957 compared insulin coma with simply rendering patients unconscious using barbiturates and found no difference between them. It was abandoned. Around one patient in a hundred died.</p>
         <p><b>Convulsive therapy</b>, from 1934, rested on a false observation: that epilepsy and schizophrenia rarely occurred in the same person, and might therefore be biologically opposed. Ladislas Meduna reasoned that inducing seizures might drive out the schizophrenia, and used camphor and then the drug metrazol. Patients dreaded it, because the drug produced overwhelming terror before the seizure, and the convulsions were violent enough to break bones. Electricity replaced the drugs in 1938 because it was faster and easier to control. That version, ECT, is the one treatment of the three that genuinely works, for severe depression and catatonia, and it is still used today with anaesthetic and muscle relaxants.</p>
-      </div>
+      </div></details>
 
-      <div class="bit">
-        <h5>Moniz's actual reasoning</h5>
+      <details class="bit"><summary>Moniz's actual reasoning</summary><div class="bq">
         <p>António Egas Moniz was a Portuguese neurologist with a serious record: he invented cerebral angiography, the technique for imaging blood vessels in a living brain, in 1927.</p>
         <p>The usual account of the trigger is a neurology congress in London in 1935, where two researchers presented work on chimpanzees whose frontal lobes had been removed. One of them, a chimp named Becky, had previously thrown tantrums of frustration whenever she got a task wrong. After the operation she went on failing the task and stopped minding. Moniz asked from the floor whether the same procedure might relieve anxiety in humans.</p>
         <p><b>His theory was about stuck circuits.</b> He thought mental illness consisted of fixed, morbid patterns of thought that had become physically stabilised in the connections running between the frontal lobes and the rest of the brain. On that picture, the ideas were locked into a circuit, and severing the circuit would break the pattern and let the patient's mind reorganise itself. He named the operation leucotomy, from the Greek for white, because white matter is the connecting fibre. He did not perform it himself, because of gout in his hands; a surgeon named Almeida Lima operated. Of the first twenty patients Moniz reported seven cured, seven improved and six unchanged, with some follow-up periods of only a few days.</p>
-      </div>
+      </div></details>
 
-      <div class="bit">
-        <h5>What Freeman changed, and did it ever help anyone</h5>
+      <details class="bit"><summary>What Freeman changed, and did it ever help anyone</summary><div class="bq">
         <p>Walter Freeman, an American neurologist, brought Moniz's operation to the United States with a neurosurgeon, James Watts. Around 1945 Freeman developed a faster version, going in through the eye socket above the eyeball with a thin instrument, which needed no drilling, no operating theatre and no surgeon. He was not licensed to give anaesthetic, so he knocked patients unconscious with an electric shock first. That version took about ten minutes and could be done in a clinic. He performed roughly 3,500. Tens of thousands were done across the country.</p>
         <p><b>Did it help anyone?</b> Some people, in a narrow sense. Follow-ups of the period reported roughly a third improved, a third unchanged and a third worse, with no control groups, no blinding and no agreed measure of improvement. Some patients with severe chronic agitation or crippling obsessive states did become calmer, and some went home from institutions they would otherwise never have left. That was real for those people.</p>
         <p><b>The costs were frequently not counted as costs:</b> apathy, loss of initiative and planning, flattened emotion, disinhibition, sometimes seizures or incontinence. A few per cent died. Improvement was scored by whether the patient became manageable on the ward, and the patient was generally not asked.</p>
         <p><b>The underlying idea survived.</b> Careful descendants are still performed, rarely, under ethics review and with informed consent: stereotactic cingulotomy and capsulotomy for severe treatment-resistant obsessive-compulsive disorder and depression, targeted to the millimetre with imaging. Deep brain stimulation is the modern relative. What was abandoned was doing it blind, at volume, on people who could not refuse.</p>
-      </div>
+      </div></details>
     </div>
 
     <h3 class="sub">Same question, nine answers</h3>
@@ -863,68 +928,57 @@
           <div class="curious">
             <div class="label"><b>For the curious</b><span>none of this is on the exam</span></div>
 
-            <div class="bit">
-              <h5>There was no such place as Ancient Greece</h5>
+            <details class="bit"><summary>There was no such place as Ancient Greece</summary><div class="bq">
               <p>There was no Greek country, government, army or capital. There were a few hundred independent city-states, <em>poleis</em>, each with its own laws, calendar, coins, dialect and gods, frequently at war with one another. Athens and Sparta spent twenty-seven years destroying each other in the Peloponnesian War, from 431 to 404 BCE, which Athens lost about five years before Plato was born into the losing side. A country called Greece appears in the 1830s. "Ancient Greek philosophy" is a label we invented for a shelf.</p>
-            </div>
+            </div></details>
 
-            <div class="bit">
-              <h5>Plato never once tells you what he thinks</h5>
+            <details class="bit"><summary>Plato never once tells you what he thinks</summary><div class="bq">
               <p>Everything he wrote is a <b>dialogue</b>: a script, with characters, jokes, interruptions and people losing their tempers. He never appears. In most of them the person doing the arguing is Socrates, and the <em>Republic</em> is narrated by Socrates in the first person. So the cave is not Plato explaining a theory. It is a character telling a story to a man called Glaucon, who happens to be Plato's own brother.</p>
-            </div>
+            </div></details>
 
-            <div class="bit">
-              <h5>Socrates wrote nothing. Not a word.</h5>
+            <details class="bit"><summary>Socrates wrote nothing. Not a word.</summary><div class="bq">
               <p>Everything anyone knows about him comes from three other people:</p><ul><li><b>Plato</b>, who idolised him.</li><li><b>Xenophon</b>, a soldier, who found him sensible and a little dull.</li><li><b>Aristophanes</b>, who put him in a comedy called <em>The Clouds</em> in 423 BCE, dangling in a basket and teaching young men to argue their way out of paying debts.</li></ul><p>The three portraits do not match. Scholars call the resulting mess "the Socratic problem", and argue about how much of "Socrates" in the later dialogues is Plato using a beloved dead man as a puppet.</p>
-            </div>
+            </div></details>
 
-            <div class="bit">
-              <h5>What "corrupting the young" actually meant</h5>
+            <details class="bit"><summary>What "corrupting the young" actually meant</summary><div class="bq">
               <p>In 399 BCE, aged about seventy, Socrates was tried before a jury of 500 Athenian citizens on two formal charges. <b>Impiety</b>, meaning failing to recognise the gods the city recognised and introducing new divinities. And <b>corrupting the young</b>. Both were real offences, and both could carry death.</p>
               <p>Corrupting the young meant teaching young men to cross-examine their elders and treat received wisdom as an open question. Socrates ran no school, charged no fees and taught no doctrine. What he did was stop people in public, ask them to define something they claimed to understand, and show that they could not. Most of his audience were young aristocrats, and he did this to their fathers in front of them.</p>
-            </div>
+            </div></details>
 
-            <div class="bit">
-              <h5>Was the trial reasonable? Half of it was.</h5>
+            <details class="bit"><summary>Was the trial reasonable? Half of it was.</summary><div class="bq">
               <p><b>The case against him was real.</b> Athens had just lost a twenty-seven-year war. In 404 the victorious Spartans installed an oligarchy, the Thirty, which killed something like 1,500 citizens in eight months before democracy was restored. Its leader was Critias, who had been in Socrates' circle. So had Charmides, another of the Thirty. So had Alcibiades, the brilliant general who changed sides to Sparta mid-war and then to Persia. Socrates was also openly contemptuous of the Athenian practice of choosing officials by lottery, and said you would never pick a ship's pilot or a doctor that way. To an Athenian juror in 399, this was a man who had taught a generation of rich young men to despise the city's institutions, and whose most famous students had betrayed the city and murdered its citizens.</p>
               <p><b>The case for him is also real.</b> He did not choose his students' politics, and holding a teacher responsible for what grown men do decades later is a stretch. He stayed in Athens under the Thirty and defied them: ordered to help arrest a man named Leon of Salamis, he simply went home, which could easily have killed him. He had earlier defied the democracy too, refusing to put an illegal mass trial of generals to a vote when he happened to be presiding. He obeyed neither regime.</p>
               <p><b>And the charge was a substitute.</b> When democracy came back in 403 an amnesty made it illegal to prosecute anyone for acts committed under the Thirty. Athens could not put Socrates on trial for his friends, so it put him on trial for impiety. Most historians read the trial as a political settling of accounts conducted through a religious charge, in a city traumatised by defeat and civil war.</p>
               <p><b>The death sentence was partly his own doing.</b> He was convicted by a modest margin, roughly 280 to 220. Athenian trials then had a second stage where each side proposed a penalty and the jury picked one. Exile was available and would probably have been accepted. Socrates proposed that the city give him free dinners for life, then offered a token fine which his friends raised to a serious one. The jury voted for death by a wider margin than it had voted to convict.</p>
-            </div>
+            </div></details>
 
-            <div class="bit">
-              <h5>The prizes in the cave are real</h5>
+            <details class="bit"><summary>The prizes in the cave are real</summary><div class="bq">
               <p>They are in the text at 516c: honours, praises and prizes for the prisoner who was sharpest at identifying the shadows, best remembered the order they came in, and could therefore best divine the future. Plato invented the shadow-forecasting status contest, complete with power going to the best forecaster, and then said the man who has seen daylight would not want the prize.</p>
-            </div>
+            </div></details>
 
-            <div class="bit">
-              <h5>Does Plato think people are born greedy? No, and he says so three lines earlier</h5>
+            <details class="bit"><summary>Does Plato think people are born greedy? No, and he says so three lines earlier</summary><div class="bq">
               <p>The famous passage about leaden weights dragging the soul downward is at 519a, and the objection to it is answered just above it, on the same page of the PDF (p. 4). Three moves.</p>
               <p>First, the other so-called virtues of the soul <b>are not there beforehand but are added later by habit and practice</b>. Character is installed. Second, the capacity for reason itself <b>never loses its power</b>, and is useful or harmful depending on the way it is turned. Third, and this is the striking one: look, he says, at people who are <em>vicious but clever</em>. Their sight is not inferior. It is keen, and it distinguishes sharply. It has been forced to serve bad ends, so the sharper it sees, the more harm it does.</p>
               <p>That is one good instrument pointed in a bad direction, which matches the view that there is no inherent badness and that values get taught. Notice the grammar of the leaden weights too. They are things that <b>have been fastened to</b> the soul by feasting and greed. Attached.</p>
               <p>The word behind "greed" in the <em>Republic</em> is usually <em>pleonexia</em>, wanting more than your share. Read it as a <b>direction of attention</b>. Appetite fixes you on things that can be consumed, things that can be consumed are things that change and perish, and attention spent on what perishes is attention unavailable for what does not. It is closer to mechanics than to scolding. Plato goes further elsewhere: nobody does wrong willingly, because wrongdoing is ignorance, and people chase what they take to be good while being mistaken about what is good.</p>
               <p><b>The crack worth pointing at in class</b>, because he is not consistent. The same book sorts citizens into classes by nature, with a founding myth about souls made of gold, silver and bronze. Later books divide the soul into parts, reason and spirit and appetite, that genuinely fight each other, which makes appetite something inside you and not a weight hung on you. So "installed or native?" is a live fault line running through the <em>Republic</em>, and naming it is worth more than agreeing with him. It is the same fault line the rest of the course prises open: how much of what looks like a person's nature is their situation.</p>
-            </div>
+            </div></details>
 
-            <div class="bit">
-              <h5>"Plato" is a nickname, and possibly a joke about his shoulders</h5>
+            <details class="bit"><summary>"Plato" is a nickname, and possibly a joke about his shoulders</summary><div class="bq">
               <p>It means "broad". Ancient biographers, writing centuries later and not reliable, say a wrestling coach gave it to him for his build, or that it referred to his forehead or his prose style, and that his real name was Aristocles. Treat it as gossip, of the kind that survives 2,400 years.</p>
-            </div>
+            </div></details>
 
-            <div class="bit">
-              <h5>He tried the philosopher-king thing for real, and it went badly</h5>
+            <details class="bit"><summary>He tried the philosopher-king thing for real, and it went badly</summary><div class="bq">
               <p>Plato made three trips to Syracuse in Sicily to turn its rulers into philosophers. The first ended, according to ancient sources, with him sold into slavery and ransomed by a friend who recognised him at a slave market. He went back twice more to tutor the young tyrant Dionysius II, was placed under house arrest, and eventually left having achieved the political education of a man who remained a tyrant.</p>
-            </div>
+            </div></details>
 
-            <div class="bit">
-              <h5>Your university is named after a park</h5>
+            <details class="bit"><summary>Your university is named after a park</summary><div class="bq">
               <p>Around 387 BCE Plato founded a school in an olive grove outside Athens, sacred to a local hero named Akademos. The place was called the Academy, the school took the name of the place, and every academy, academic and academia since is named after a patch of trees belonging to a mythical Athenian. The school kept running under a long line of later heads until the emperor Justinian closed the philosophical schools in 529 CE, roughly nine hundred years.</p>
-            </div>
+            </div></details>
 
-            <div class="bit">
-              <h5>The chapter the scan skips</h5>
+            <details class="bit"><summary>The chapter the scan skips</summary><div class="bq">
               <p>The PDF jumps from anthology page 18 to page 25. Missing in between is chapter 2, Aristotle, who was Plato's student for twenty years and disagreed with him about almost everything. In particular he thought studying changeable, material, made things was perfectly respectable. His absence is why the packet seems to leap straight from Athens to the seventeenth century.</p>
-            </div>
+            </div></details>
           </div>
         </div>
       </article>
@@ -1067,14 +1121,12 @@
           <h4>The ending: the Greeks already knew technique was dangerous</h4>
           <div class="body">
             <p>The essay closes on two Greek plays, and the closing is the point of the whole chapter. The essay assumes you know both stories, so here they are.</p>
-            <div class="ctx">
-              <b>Context: the Prometheus story</b>
+            <details class="ctx"><summary><i>Context</i>The Prometheus story</summary><div class="bq">
               <p>In the play by Aeschylus, Prometheus is a Titan, one of the older generation of gods. He steals fire from the gods' hearth and gives it to human beings, and in Greek writing fire of this kind stands for technical skill in general. What it does for people is enormous: it takes them out of a cave existence and, in the play's words, makes them free. What it costs is that it had to be stolen, and Prometheus is chained to a rock for the rest of time as the price. The founding story of human technique in Greek literature is a story about a crime that was worth committing.</p>
-            </div>
-            <div class="ctx">
-              <b>Context: the Antigone chorus</b>
+            </div></details>
+            <details class="ctx"><summary><i>Context</i>The Antigone chorus</summary><div class="bq">
               <p>Sophocles' play <em>Antigone</em> is about a woman who buries her brother against the king's orders. Partway through, the chorus, a group of townspeople who comment on the action, stops the story and sings a famous song about human beings in general. The song turns on one word, <em>deinos</em>. Its noun form, <em>deinótēs</em>, literally means <b>"terribleness"</b>, and Greek keeps two senses inside it at once: <b>ability</b>, and <b>monstrous or uncanny power</b>. The language gives you no way to take one without the other, so calling a person <em>deinos</em> praises and warns in the same breath.</p>
-            </div>
+            </div></details>
             <p>The chorus lists what this terrible ability has done. It made human beings master of land and sea. It let them set up states and cultures. It even let them take up arms against death, meaning medicine. And then the line the whole essay is built toward: because man holds in his hand, through the inventiveness of technique, something clever beyond expectation, <b>he stands where the path forks toward good and evil</b>.</p>
             <p><b>Schadewaldt thinks Sophocles got it exactly right, 2,400 years early.</b> The problem he means is this. The better human tools get, the more good a person can do with them and the more harm a person can do with them, and the tools themselves say nothing about which of the two anybody will choose. A sharper knife cuts bread better and cuts people better. That is still our situation, which is why a play about a burial dispute ends up in a course about scientific method.</p>
             <p><b>Why that is the point of the chapter.</b> Tying technique to understanding, and to a nature that has its own way of going, is what lets you see technique's limits as well as its powers. The essay's last words are that technique becomes a great human power through its <em>correctly conceived use</em>, and the Greek concept is offered as what makes a correct conception available.</p>
@@ -1106,45 +1158,37 @@
           <div class="curious">
             <div class="label"><b>For the curious</b><span>none of this is on the exam</span></div>
 
-            <div class="bit">
-              <h5>You already speak most of this essay</h5>
+            <details class="bit"><summary>You already speak most of this essay</summary><div class="bq">
               <p><em>Technē</em> gave English technology, technique, technical, technician. <em>Physis</em> gave physics, physiology, physician, physique. <em>Mēchanē</em> gave machine, mechanism, mechanical, and machination when a contrivance is sinister. <em>Órganon</em> originally meant nothing but "tool". From Plato onward the Greeks applied it to the parts of the body. That is why the things inside you are called organs, why living systems are "organic", and why a working whole is an "organism". Your liver is, etymologically, a device.</p>
-            </div>
+            </div></details>
 
-            <div class="bit">
-              <h5>"Merely mechanical" is an insult with a history</h5>
+            <details class="bit"><summary>"Merely mechanical" is an insult with a history</summary><div class="bq">
               <p>The essay traces it. <em>Mēchanē</em> meant a contrivance. After Newton, "mechanical" became the word for how the universe works and carried enormous prestige. Then "merely mechanical" turned into a term of abuse, meaning unconscious, indifferent, routine, and it settled as the opposite of "organic". The same root gave us the highest compliment a seventeenth-century natural philosopher could pay and the thing you call a job you hate.</p>
-            </div>
+            </div></details>
 
-            <div class="bit">
-              <h5>The Greeks admired their engineers in writing</h5>
+            <details class="bit"><summary>The Greeks admired their engineers in writing</summary><div class="bq">
               <p>Homer spends dozens of lines on Hephaestus forging a shield for Achilles, describing the metalwork as closely as the battle it is made for, and has Odysseus build his own boat plank by plank on camera. Herodotus, writing history, keeps stopping to marvel at engineering: a canal cut through the Athos peninsula, a bridge of boats across the Hellespont, an aqueduct tunnel on Samos. Making things was a thing a serious writer wrote about.</p>
-            </div>
+            </div></details>
 
-            <div class="bit">
-              <h5>The Greeks built a computer and then nobody built another for 1,400 years</h5>
+            <details class="bit"><summary>The Greeks built a computer and then nobody built another for 1,400 years</summary><div class="bq">
               <p>In 1901 sponge divers found a wrecked ship off the island of Antikythera. Among the cargo was a corroded lump of bronze containing at least thirty interlocking gears. The <b>Antikythera mechanism</b>, built around 100 BCE, modelled the movements of the sun and moon, tracked the lunar calendar and predicted eclipses, using a differential gear train. Nothing of comparable mechanical complexity is known in Europe again until the astronomical clocks of the fourteenth century, which is the period Lynn White writes about eight chapters later in this reading.</p>
-            </div>
+            </div></details>
 
-            <div class="bit">
-              <h5>The tunnel Herodotus brags about is still there</h5>
+            <details class="bit"><summary>The tunnel Herodotus brags about is still there</summary><div class="bq">
               <p>An engineer named Eupalinos cut the aqueduct tunnel on Samos around 550 BCE, straight through a mountain, <b>starting from both ends at once</b>. The two crews met in the middle with an error of a few metres, using geometry and sightlines. It carried water for a thousand years and you can walk part of it today. Hero of Alexandria later built a spinning steam-powered ball, the <em>aeolipile</em>, which was a working steam engine and was treated as a curiosity.</p>
-            </div>
+            </div></details>
 
-            <div class="bit">
-              <h5>So why no Greek industrial revolution?</h5>
+            <details class="bit"><summary>So why no Greek industrial revolution?</summary><div class="bq">
               <p>A genuinely open question and a good essay topic. The most-repeated answer is slavery: with abundant forced labour, nobody needed labour-saving machines. That has been heavily criticised as too tidy. Schadewaldt's answer is the one this course cares about. The Greeks were perfectly capable, and in their picture of the world technique existed to complete nature, so scaling it up against nature was not an idea anybody was reaching for.</p>
-            </div>
+            </div></details>
 
-            <div class="bit">
-              <h5>Why an obscure classicist is in a philosophy anthology</h5>
+            <details class="bit"><summary>Why an obscure classicist is in a philosophy anthology</summary><div class="bq">
               <p>Because Martin Heidegger's "The Question Concerning Technology" (1954) is the most-cited essay in the field, and this is the philological work standing behind it. Schadewaldt was Heidegger's colleague at Freiburg. The awkward footnote: as a faculty dean, Schadewaldt was involved in Heidegger's election as rector in 1933, the year Heidegger joined the Nazi party and gave the speech that has hung over his reputation ever since. They fell out later. The founding text of philosophy of technology has a compromised address, and people in the field argue about what that does and does not mean.</p>
-            </div>
+            </div></details>
 
-            <div class="bit">
-              <h5>It was radio</h5>
+            <details class="bit"><summary>It was radio</summary><div class="bq">
               <p>The two halves of this essay were broadcast as lectures on North German Radio, on 25 June and 10 July 1959. That is why it opens by saying these concepts press on public consciousness with particular urgency at the present time. He was talking to listeners at home, fourteen years after the war and two years after Sputnik.</p>
-            </div>
+            </div></details>
           </div>
         </div>
       </article>
@@ -1176,12 +1220,11 @@
           <div class="body">
             <p>He is not saying knowledge turns out to be useful. He is saying that <b>knowing the cause of a thing just is knowing what would have to be arranged for it to happen</b>. The understanding and the recipe are the same item.</p>
             <p>Turn that round and you get a <b>test</b>: arrange the conditions, and if the effect does not follow, you had not identified the cause. Which is why he says the failures of technology come from ignorance of causes, and why he says nature is commanded only by being obeyed. You get your way with the world by finding out how it already works and then setting up those conditions on purpose.</p>
-            <div class="ctx">
-              <b>Objection worth raising: knowing how is not the same as being able</b>
+            <details class="ctx"><summary><i>Objection worth raising</i>Knowing how is not the same as being able</summary><div class="bq">
               <p>Physicists understood nuclear fission years before anybody could split an atom at scale. Understanding it did not hand them uranium, centrifuges or a reactor. So knowledge and capability clearly do come apart, and Bacon's claim looks too strong.</p>
               <p><b>What he can answer.</b> His claim is about what understanding consists in, and not about whether you happen to own the equipment. Knowing the cause tells you what would have to be arranged. Whether you can afford to arrange it is a separate question about money and materials. And the fission case cuts his way in the end. The argument about whether the physics was right was settled in December 1942, when the conditions were finally arranged under a Chicago squash court and the pile went critical exactly as predicted.</p>
               <p><b>Where the objection really bites.</b> Some things are understood and can never be produced. Nobody will build a star, or rerun the evolution of a species, or arrange a second Ice Age. Bacon's test, taken literally, would throw astronomy out of knowledge, and he was in fact suspicious of astronomy for close to this reason. Modern science kept his idea that intervention is the sharpest test, and added prediction as the test for everything we can only watch. Saying that in a seminar is worth more than agreeing with him.</p>
-            </div>
+            </div></details>
           </div>
 
           <h4>But the instrument is bent before you start</h4>
@@ -1230,30 +1273,25 @@
           <div class="curious">
             <div class="label"><b>For the curious</b><span>none of this is on the exam</span></div>
 
-            <div class="bit">
-              <h5>The man who invented modern science was fired for bribery</h5>
+            <details class="bit"><summary>The man who invented modern science was fired for bribery</summary><div class="bq">
               <p>Bacon was Lord Chancellor of England, the most senior legal office in the country. In 1621, one year after publishing the book you are reading, he was impeached on twenty-three counts of taking bribes from litigants. He confessed, was fined £40,000, briefly imprisoned in the Tower, banned from office and from coming near the court. He spent his remaining five years writing. A good deal of the modern scientific programme was drafted by a disgraced politician with nothing else to do.</p>
-            </div>
+            </div></details>
 
-            <div class="bit">
-              <h5>He may have been killed by a chicken</h5>
+            <details class="bit"><summary>He may have been killed by a chicken</summary><div class="bq">
               <p>The story comes from the gossip-collector John Aubrey. In March 1626 Bacon was travelling in snow, wondered whether cold would preserve meat, stopped the coach, bought a hen and stuffed it with snow by the roadside. He caught a chill, was taken to a nearby house, put in a damp bed and died of pneumonia a few days later. It is third-hand and may be nonsense. If true, it is the first recorded death by scientific experiment, suffered by a man who insisted that knowledge means putting nature to the test.</p>
-            </div>
+            </div></details>
 
-            <div class="bit">
-              <h5>"Idol" is the Greek word for a shadow</h5>
+            <details class="bit"><summary>"Idol" is the Greek word for a shadow</summary><div class="bq">
               <p><em>Eidōlon</em>: phantom, image, apparition, from the same family of words Plato uses for the shadows on the cave wall. Bacon takes Plato's shadows off the wall and puts them <b>inside your head</b>, where you cannot leave the cave because you are the cave. Whether he intended the joke is unclear. It is a very good line to have ready.</p>
-            </div>
+            </div></details>
 
-            <div class="bit">
-              <h5>He wrote the first science-fiction research lab, and people built it</h5>
+            <details class="bit"><summary>He wrote the first science-fiction research lab, and people built it</summary><div class="bq">
               <p><em>New Atlantis</em> (1626) describes a utopian island with a state institution called Salomon's House: teams of specialists, some collecting experiments from abroad, some performing new ones, some compiling results, some drawing conclusions. A research pipeline with a division of labour. In 1660 a group of Englishmen founded the Royal Society and named Bacon as their inspiration. Their motto is <em>Nullius in verba</em>, take nobody's word for it. Peer-reviewed, institutional, collaborative science had to be invented, and this is where it was first written down.</p>
-            </div>
+            </div></details>
 
-            <div class="bit">
-              <h5>No, he did not write Shakespeare</h5>
+            <details class="bit"><summary>No, he did not write Shakespeare</summary><div class="bq">
               <p>From the mid-1800s a movement of otherwise respectable people believed Bacon secretly authored the plays, and hunted for ciphers in the First Folio. Mark Twain was sympathetic. It is a wonderful example of Bacon's own Idols of the Cave in action: clever people finding the pattern they went looking for.</p>
-            </div>
+            </div></details>
           </div>
         </div>
       </article>
@@ -1347,31 +1385,26 @@
           <div class="curious">
             <div class="label"><b>For the curious</b><span>none of this is on the exam</span></div>
 
-            <div class="bit">
-              <h5>He founded an actual religion, with priests</h5>
+            <details class="bit"><summary>He founded an actual religion, with priests</summary><div class="bq">
               <p>Having explained that humanity had outgrown theology, Comte spent his later years building the <b>Religion of Humanity</b>. It had a priesthood, sacraments and prescribed daily prayers to dead great men. Its calendar had thirteen months, named after Moses, Homer, Aristotle, Archimedes, Gutenberg and Descartes among others. Temples were built, and his former followers were appalled. T. H. Huxley called it Catholicism minus Christianity. Comte was entirely serious about all of it.</p>
-            </div>
+            </div></details>
 
-            <div class="bit">
-              <h5>A national flag carries his slogan</h5>
+            <details class="bit"><summary>A national flag carries his slogan</summary><div class="bq">
               <p>Brazil's flag reads <b>ORDEM E PROGRESSO</b>, order and progress, lifted from Comte's motto: love as the principle, order as the basis, progress as the goal. Brazil's republic was declared in 1889 by officers steeped in positivism, and the country still has functioning Positivist temples, including one in Rio. A French philosopher's homemade religion is stitched into a flag flown at every World Cup.</p>
-            </div>
+            </div></details>
 
-            <div class="bit">
-              <h5>Two words you use are his</h5>
+            <details class="bit"><summary>Two words you use are his</summary><div class="bq">
               <p>He coined <b>sociology</b>, after first calling it "social physics" and then discovering a Belgian statistician had taken the term. He also coined <b>altruism</b>, from the Italian <em>altrui</em>, "of others", because he thought the language lacked a word for the opposite of egoism.</p>
-            </div>
+            </div></details>
 
-            <div class="bit">
-              <h5>The breakdown, and Clotilde</h5>
+            <details class="bit"><summary>The breakdown, and Clotilde</summary><div class="bq">
               <p>In 1826 Comte suffered a severe mental collapse partway through a lecture series, was institutionalised, discharged uncured, and attempted suicide by throwing himself into the Seine. Twenty years later he met Clotilde de Vaux, who died of tuberculosis about a year afterwards. He kept her chair as a shrine, prayed to her memory three times daily for the rest of his life, and rebuilt his philosophy around feeling and altruism. The coldest system in nineteenth-century philosophy was rewritten by grief.</p>
-            </div>
+            </div></details>
 
-            <div class="bit">
-              <h5>He left psychology out on purpose, and put phrenology in</h5>
+            <details class="bit"><summary>He left psychology out on purpose, and put phrenology in</summary><div class="bq">
               <p>His hierarchy of sciences has no psychology, and his reason is clever: you cannot observe your own mind in the act of observing, because the observing is the thing you would have to interrupt. So introspection is worthless as a method. What he put in its place was <b>phrenology</b>, reading character and mental faculties off the bumps of the skull, because at least that was external and measurable.</p>
               <p>Which brings us back to the problem at the top of this guide. Phrenology was rigorous by the standards of its day: instruments, measurements, numbers, journals, learned societies. It was also the intellectual soil for the skull-measuring racial science of the same decades. The founder of "positive" method chose it because it looked like real observation. That is the course thesis, arriving early.</p>
-            </div>
+            </div></details>
           </div>
         </div>
       </article>
@@ -1422,25 +1455,21 @@
           <div class="curious">
             <div class="label"><b>For the curious</b><span>none of this is on the exam</span></div>
 
-            <div class="bit">
-              <h5>The whole thing started as a magazine competition</h5>
+            <details class="bit"><summary>The whole thing started as a magazine competition</summary><div class="bq">
               <p>In 1749 the Academy of Dijon advertised an essay prize on whether the restoration of the sciences and arts had helped purify morals. Rousseau was thirty-seven, unknown, and scraping a living copying music. He read the advertisement in a newspaper while walking to Vincennes to visit Diderot in prison. He said afterwards that the effect was physical: he was overwhelmed, sat down under a tree, and soaked the front of his shirt with tears without noticing he was crying. He argued the answer was no, won the prize, and became famous overnight. The piece you are reading is the last of his replies to two years of furious rebuttals, one of them from the former King of Poland.</p>
-            </div>
+            </div></details>
 
-            <div class="bit">
-              <h5>He gave away all five of his children</h5>
+            <details class="bit"><summary>He gave away all five of his children</summary><div class="bq">
               <p>Rousseau handed each of his five children, as they were born, to the Paris foundling hospital, where infant mortality was catastrophic and the records made tracing them impossible. He later wrote <em>Émile</em>, the most influential book on the education of children in the eighteenth century. Voltaire found out and published the fact anonymously to destroy him. Rousseau spent years trying to explain it and never managed. Whether it should change how you read him is a real question and a fair thing to raise in a seminar.</p>
-            </div>
+            </div></details>
 
-            <div class="bit">
-              <h5>The most famous falling-out in philosophy</h5>
+            <details class="bit"><summary>The most famous falling-out in philosophy</summary><div class="bq">
               <p>In 1766, with Rousseau's books banned and burned and Rousseau fleeing, David Hume arranged asylum for him in England and found him a house and a pension. Within months Rousseau had convinced himself that Hume was the ringleader of a Europe-wide conspiracy against him. The two men's letters were published and all of literate Europe took sides. Rousseau fled back to France in disguise. Hume was badly shaken and never got over it.</p>
-            </div>
+            </div></details>
 
-            <div class="bit">
-              <h5>He also wrote a hit opera</h5>
+            <details class="bit"><summary>He also wrote a hit opera</summary><div class="bq">
               <p><em>Le Devin du village</em> (1752) was performed before Louis XV, who liked it enough to offer a royal pension. Rousseau refused, partly on principle and partly, by his own account, because he was terrified of having to make conversation with the king. He also devised a numerical system of musical notation, wrote most of the music entries for Diderot's <em>Encyclopédie</em>, and earned his living copying scores by hand even at the height of his fame.</p>
-            </div>
+            </div></details>
           </div>
         </div>
       </article>
@@ -1508,19 +1537,17 @@
 
           <h4>Two objections worth having ready</h4>
           <div class="body">
-            <div class="ctx">
-              <b>Objection: Stephen Hawking calculated from an armchair</b>
+            <details class="ctx"><summary><i>Objection</i>Stephen Hawking calculated from an armchair</summary><div class="bq">
               <p>Hawking radiation was worked out on paper. No experiment, no observation, and it is a claim about black holes. That looks like exactly the road the Circle says does not exist.</p>
               <p><b>The reply is about where the premises came from.</b> Hawking started from general relativity and quantum field theory, and both are empirical theories, built and tested on observation. The calculation reveals what those theories were already committed to. That is what "tautological transformation" means: the content was in the premises and the work made it visible. The word is badly chosen, because it suggests trivial. A chess endgame is fully determined by the rules and still takes a grandmaster to see.</p>
               <p><b>And the case finishes in the Circle's favour.</b> Hawking radiation has never been observed. It is a prediction, and what it does is tell you where to look. If observation came back against it, the theory would be the thing that gave way. The line they draw is between working out what your premises already imply, which is what physics does all day, and getting facts about the world out of premises that came from no experience at all.</p>
-            </div>
-            <div class="ctx">
-              <b>Objection: what about astrophysics, where you cannot run an experiment?</b>
+            </div></details>
+            <details class="ctx"><summary><i>Objection</i>What about astrophysics, where you cannot run an experiment?</summary><div class="bq">
               <p>Nobody will build a star, collide two galaxies or rerun the Big Bang. If the test of meaning is experience, does astrophysics fail it?</p>
               <p><b>No, and the confusion is between experience and experiment.</b> The Circle asks whether a statement can be checked against <em>observation</em>. An astronomer at a telescope is having experience, and a prediction about a spectrum, an orbit, a transit or a gravitational-wave signal is exactly what their rule was built for. Watching counts.</p>
               <p><b>The one it does trouble is Bacon</b>, whose test is whether you can make the effect happen, which is the objection set out in his chapter. Two different tests: Bacon wants intervention, the Circle wants observability. Astrophysics fails the first and passes the second.</p>
               <p><b>Where it genuinely bites</b> is claims nobody can observe even in principle: what lies inside a black hole past the horizon, the universe beyond the cosmological horizon, other universes in a multiverse. Whether those count as science is a live argument among physicists right now, conducted in almost exactly this vocabulary, ninety years on.</p>
-            </div>
+            </div></details>
             <p>They are not hostile to feeling or to intuition. A mystic may have an experience beyond all concepts, and the Circle does not deny it, and points out that he cannot then talk about it, because talking means capturing it in concepts. Expressing a mood is a real thing worth doing, and the medium for it is art: lyric poetry, or music.</p>
           </div>
 
@@ -1543,35 +1570,29 @@
           <div class="curious">
             <div class="label"><b>For the curious</b><span>none of this is on the exam</span></div>
 
-            <div class="bit">
-              <h5>The man this manifesto is dedicated to was shot on the university steps</h5>
+            <details class="bit"><summary>The man this manifesto is dedicated to was shot on the university steps</summary><div class="bq">
               <p>Moritz Schlick, the physicist-philosopher around whom the Circle formed, was murdered on 22 June 1936 on the main staircase of the University of Vienna, on his way to lecture, by a former doctoral student named Johann Nelböck. Sections of the Austrian press treated the killing as understandable, on the grounds that Schlick's philosophy was corrosive and "Jewish". He was not Jewish. Nelböck was convicted and released on parole after the Nazi annexation of Austria in 1938. The Circle was already dispersing, and that finished it.</p>
-            </div>
+            </div></details>
 
-            <div class="bit">
-              <h5>One of the three authors invented the infographic</h5>
+            <details class="bit"><summary>One of the three authors invented the infographic</summary><div class="bq">
               <p>Otto Neurath created <b>Isotype</b>, the Vienna Method of pictorial statistics, on the principle that a quantity is shown by <em>repeating a small icon</em> at a fixed size. Every pictogram chart you have ever seen descends from it, and so, fairly directly, do the figures on toilet doors and the running man on fire exits. He built it because he thought a democracy needs citizens who can read social statistics, which is the same manifesto in a different medium.</p>
-            </div>
+            </div></details>
 
-            <div class="bit">
-              <h5>And he had the most eventful life in the history of logic</h5>
+            <details class="bit"><summary>And he had the most eventful life in the history of logic</summary><div class="bq">
               <p>Neurath ran economic planning for the Bavarian Soviet Republic during its few weeks of existence in 1919, was tried and imprisoned for it, and was extracted by diplomatic intervention. In 1934 he fled Austria for the Netherlands. In May 1940, with the German army arriving, he escaped across the North Sea to England in an open boat. He was then interned as an enemy alien on the Isle of Man, where he organised lectures for the other internees.</p>
-            </div>
+            </div></details>
 
-            <div class="bit">
-              <h5>Neurath's boat, the image that sinks the whole project</h5>
+            <details class="bit"><summary>Neurath's boat, the image that sinks the whole project</summary><div class="bq">
               <p>He wrote that we are like sailors who must rebuild their ship on the open sea, plank by plank, with no chance of putting it in dry dock and starting from the keel. There is no firm ground to build knowledge up from, and you can only replace parts while staying afloat. It is the most beautiful thing anyone in the Circle wrote, and it concedes what the movement was founded to deny, that there are no foundations. Philosophers have been arguing about that boat ever since.</p>
-            </div>
+            </div></details>
 
-            <div class="bit">
-              <h5>The rule fails its own test</h5>
+            <details class="bit"><summary>The rule fails its own test</summary><div class="bq">
               <p>"Only statements verifiable in experience are meaningful." Is that statement verifiable in experience? No. Is it a truth of logic, empty and analytic? Also no. So by its own rule it is meaningless. This is the classic first-year objection, it is a good one, and the movement never fully answered it. Quine's "Two Dogmas of Empiricism" (1951) then attacked the analytic and synthetic distinction from the inside, and logical positivism was over, killed largely by its own people.</p>
-            </div>
+            </div></details>
 
-            <div class="bit">
-              <h5>Wittgenstein came, and would not join</h5>
+            <details class="bit"><summary>Wittgenstein came, and would not join</summary><div class="bq">
               <p>The Circle revered his <em>Tractatus</em> and read it aloud line by line. He met some of them, then refused to be associated with the group, and by several accounts would at times turn his back on the room and read poetry aloud to them. He thought they had comprehensively misunderstood him. He was probably right.</p>
-            </div>
+            </div></details>
           </div>
         </div>
       </article>
@@ -1616,8 +1637,7 @@
               <li>A Dominican preaching in Florence on 23 February 1306, in praise of eyeglasses. Not all the arts have been found, he says, and we shall never see an end of finding them. He adds that he had personally met and talked with the man who invented spectacles.</li>
             </ul>
             <p>That last one is the whole thesis in one sermon. Inventing had become a thing a preacher could hold up as a sign of the times.</p>
-            <div class="ctx">
-              <b>Compare: Harari's empty maps, and why it is a different argument</b>
+            <details class="ctx"><summary><i>Compare</i>Harari's empty maps, and why it is a different argument</summary><div class="bq">
               <p>In <em>Sapiens</em>, Yuval Noah Harari explains the Scientific Revolution as a <b>discovery of ignorance</b>. Earlier traditions assumed the important answers were already known, in scripture or in the ancients. His image is cartography: medieval maps filled unknown regions with imaginary monsters and continents, and from the fifteenth century European maps began leaving the unknown parts <b>blank</b>. A blank is an admission, and it is also an invitation to go and fill it.</p>
               <p><b>It is a near relative of White's argument and it is not the same one.</b> They cover different centuries and different activities.</p>
               <ul>
@@ -1625,9 +1645,9 @@
                 <li><b>Harari</b> is explaining 1500 onward, and he is explaining <em>inquiry</em>: expeditions, instruments, the alliance of science with empire and money. His cause is an admitted gap in knowledge.</li>
               </ul>
               <p>They fit together more than they compete, and White says so himself when he claims the Middle Ages set up the imperial age. What the two share is the shape of the explanation: a change of <b>attitude</b>, and not of wealth or intelligence, is doing the work. Which means they also share the same weakness, the one already flagged in the note above.</p>
-              <p><b>Your objection to Harari is the standard one, and it is good.</b> If admitting ignorance is what produces discovery, what were earlier civilisations doing? Discovering a great deal, is the answer. Chinese paper, printing, gunpowder, the compass and cast iron. Indian decimal place-value and zero. Babylonian eclipse prediction. Greek gearing, in the Antikythera mechanism. And around 1021 Ibn al-Haytham was running controlled experiments on light in Cairo and writing that the seeker after truth should be suspicious of what he reads and attack it from every side, which is institutionalised doubt five centuries before Harari's blank maps.</p>
+              <p><b>The obvious objection, and it is a good one.</b> If admitting ignorance is what produces discovery, what were earlier civilisations doing? Discovering a great deal, is the answer. Chinese paper, printing, gunpowder, the compass and cast iron. Indian decimal place-value and zero. Babylonian eclipse prediction. Greek gearing, in the Antikythera mechanism. And around 1021 Ibn al-Haytham was running controlled experiments on light in Cairo and writing that the seeker after truth should be suspicious of what he reads and attack it from every side, which is institutionalised doubt five centuries before Harari's blank maps.</p>
               <p><b>What Harari can still defend</b> is narrower: the difference is whether ignorance is <em>built into the institutions</em>, with standing machinery for funding, publishing and revising, on the assumption that today's answers are provisional. Earlier discovery was real and mostly was not organised as a permanent programme of admitting error. Saying that, and naming al-Haytham as the case that makes "first to admit ignorance" look Eurocentric, is a strong seminar remark.</p>
-            </div>
+            </div></details>
           </div>
 
           <h4>Where the appetite came from: three religious habits</h4>
@@ -1652,26 +1672,22 @@
           <div class="curious">
             <div class="label"><b>For the curious</b><span>none of this is on the exam</span></div>
 
-            <div class="bit">
-              <h5>His other paper is one of the most-cited things ever written by a historian</h5>
+            <details class="bit"><summary>His other paper is one of the most-cited things ever written by a historian</summary><div class="bq">
               <p>"The Historical Roots of Our Ecologic Crisis" was published in <em>Science</em> in 1967. It argued that Western Christianity, by making humans distinct from and set over nature, licensed the exploitation of the natural world, and that the ecological crisis was therefore religious at root. It detonated. Decades of theological response followed, an entire field of eco-theology grew out of the argument, and the line of thought runs to Pope Francis's 2015 encyclical on the environment. The essay in your packet is the same causal claim told as a success story.</p>
-            </div>
+            </div></details>
 
-            <div class="bit">
-              <h5>His most famous claim is probably wrong</h5>
+            <details class="bit"><summary>His most famous claim is probably wrong</summary><div class="bq">
               <p>White also argued that the stirrup, arriving in Europe in the eighth century, made shock cavalry possible, which made armoured knights necessary, which required the land grants that produced feudalism. One piece of riding equipment generating a social system. It is a thrilling argument and medievalists have been dismantling it since the 1960s. Useful for calibration: he is a brilliant, bold historian whose boldness sometimes runs past the evidence, and the essay you are reading has the same quality.</p>
-            </div>
+            </div></details>
 
-            <div class="bit">
-              <h5>The mechanical clock changed what an hour is</h5>
+            <details class="bit"><summary>The mechanical clock changed what an hour is</summary><div class="bq">
               <p>Before it, an hour was one-twelfth of the time between sunrise and sunset. A summer hour in Paris was genuinely longer than a winter hour, and water clocks and sundials had to be adjusted through the year.</p>
               <p><b>Equal hours exist because a machine could only be built to count them that way.</b> A gear train ticks at one rate. It has no way to know that the days are getting shorter. So the machine imposed its own regularity, and the regularity spread outward: monasteries rang bells by it, then towns hung clocks in their squares, then work was paid by it.</p>
               <p><b>Nothing here was a loss, and something did change.</b> Before clocks, work was measured by the task: plough the field, finish the batch, and the day ended when the thing was done. Equal hours made time countable, and a countable thing can be bought and sold. Wages by the hour, the shift, the timetable, and the idea of being late all follow from a machine that had no way of doing it differently.</p>
               <p>Which turns White's argument round and points it at you. His whole essay is about culture producing technology. This is the same relationship running the other way: a constraint in some thirteenth-century gearing became the shape of the working day, and it still is.</p>
-            </div>
+            </div></details>
 
-            <div class="bit">
-              <h5>Things that are more medieval than you would think</h5>
+            <details class="bit"><summary>Things that are more medieval than you would think</summary><div class="bq">
               <p>All of these arrive in medieval Europe:</p>
               <ul>
                 <li>Eyeglasses, from the 1280s, and the mechanical clock.</li>
@@ -1680,7 +1696,7 @@
                 <li>The crank, which sounds trivial and is the device that converts rotation into back-and-forth motion, so it underlies almost every machine since.</li>
                 <li>Distilled spirits, and at the far end, printing with movable type in the 1450s.</li>
               </ul>
-            </div>
+            </div></details>
           </div>
         </div>
       </article>
@@ -1744,30 +1760,25 @@
           <div class="curious">
             <div class="label"><b>For the curious</b><span>none of this is on the exam</span></div>
 
-            <div class="bit">
-              <h5>Cog is in a museum now</h5>
+            <details class="bit"><summary>Cog is in a museum now</summary><div class="bq">
               <p>It never became conscious. It learned to track faces, reach for objects and respond to sound. The project wound down in the early 2000s, and Cog is now in the MIT Museum: a torso with a head and two arms, looking exactly like an optimistic decade. Worth knowing while you read Dennett being confident about it.</p>
-            </div>
+            </div></details>
 
-            <div class="bit">
-              <h5>The robot's designer invented the Roomba</h5>
+            <details class="bit"><summary>The robot's designer invented the Roomba</summary><div class="bq">
               <p>Cog was Rodney Brooks's project. Brooks argued that intelligence needs a body, cheap reflexes and constant contact with reality, and does not need a model of the world. He co-founded iRobot, and that principle went commercial as a disc that bumps into your furniture until it has learned the room. The philosophical line from "can a machine be conscious" reaches, so far, your floor.</p>
-            </div>
+            </div></details>
 
-            <div class="bit">
-              <h5>Origin chauvinism went to court, and the forger had to prove he was a forger</h5>
+            <details class="bit"><summary>Origin chauvinism went to court, and the forger had to prove he was a forger</summary><div class="bq">
               <p>Han van Meegeren spent years painting fake Vermeers so convincing that the greatest Dutch art experts authenticated them. In 1945 he was arrested for selling a Dutch national treasure to Hermann Göring, which carried a possible death sentence for collaboration. His only defence was that the painting was worthless because he had painted it himself. Nobody believed him, so he was given canvas and pigments and painted another "Vermeer" under guard. The same object was admired as a masterpiece one year and filed as a curiosity the next, with the paint unchanged and only the story of its origin different. That is Dennett's point, with a prison cell attached.</p>
-            </div>
+            </div></details>
 
-            <div class="bit">
-              <h5>The objection you will meet next</h5>
+            <details class="bit"><summary>The objection you will meet next</summary><div class="bq">
               <p>John Searle's <b>Chinese Room</b> (1980). Imagine yourself locked in a room with a rulebook, receiving Chinese characters through a slot and passing back other characters exactly as the book instructs. To everyone outside you appear to understand Chinese. You understand nothing. Searle says that is all a computer ever does, syntax with no semantics. Dennett has spent decades arguing the thought experiment cheats. It is the standard counterweight to everything in this chapter.</p>
-            </div>
+            </div></details>
 
-            <div class="bit">
-              <h5>He died in 2024</h5>
+            <details class="bit"><summary>He died in 2024</summary><div class="bq">
               <p>Daniel Dennett, one of the four writers the press called the New Atheists, spent fifty years insisting that consciousness is not magic and that the feeling of an inner theatre is something the brain does. He died in April 2024. This chapter is now a historical document from the middle of his career, written while the robot in it was still being built.</p>
-            </div>
+            </div></details>
           </div>
         </div>
       </article>
@@ -1795,13 +1806,12 @@
             <p>A seventeenth-century town under plague. It is closed and cut into quarters and streets, each under an official who may not leave for the duration. Everyone is shut in their house on pain of death.</p>
             <p>Every inhabitant is registered by name, age and sex regardless of station. Copies of the register go to three places: the quarter's intendant, the town hall, and the official who calls the roll daily at each window. Each person has to appear and answer to their name. Everything observed on the rounds is written down and passed up the chain: deaths, illnesses, complaints, irregularities. Magistrates control all medical treatment, and no other practitioner may treat, no apothecary prepare medicine and no confessor visit a sick person without written permission.</p>
             <p>Five or six days in, the houses are purified one at a time. Everyone leaves. Furniture is raised off the floor, windows, doors and even keyholes are sealed with wax, and perfume is burned inside. The men who did the work are searched on the way out, to prove they carry nothing they did not bring in.</p>
-            <div class="ctx">
-              <b>Context: what "purified" meant, and why it took that form</b>
+            <details class="ctx"><summary><i>Context</i>What "purified" meant, and why it took that form</summary><div class="bq">
               <p>Nobody in the seventeenth century knew about bacteria. The plague was understood as <b>corrupted air</b>, the same miasma theory that turns up in the Comte chapter two hundred years later. On that account the poison hangs about in a sick house and soaks into anything porous: bedding, clothing, wall hangings.</p>
               <p>Every step follows from that belief. <b>Burning perfume</b>, usually sulphur, juniper or vinegar, was meant to correct the bad air with strong good air. <b>Sealing the keyholes</b> kept the fumigation smoke inside long enough to reach everything. <b>Raising the furniture</b> let the smoke underneath. And <b>searching the workers</b> did two jobs at once: it stopped looting, and it stopped infected goods leaving the house.</p>
               <p>The theory was wrong and some of the practice worked anyway, because emptying and fumigating a house also kills fleas and rats. Which is the same accident as Bazalgette's sewers in the Comte chapter: a false account pointing at a useful action.</p>
               <p><b>Foucault's interest is elsewhere.</b> He is not asking whether the medicine worked. He is pointing at the paperwork: the register, the roll call, the daily written report. Those are the parts that outlived the plague and became how schools and clinics run.</p>
-            </div>
+            </div></details>
           </div>
 
           <h4>What he extracts from it: the definition of discipline</h4>
@@ -1850,35 +1860,29 @@
           <div class="curious">
             <div class="label"><b>For the curious</b><span>none of this is on the exam</span></div>
 
-            <div class="bit">
-              <h5>Bentham never got one built, and it nearly ruined him</h5>
+            <details class="bit"><summary>Bentham never got one built, and it nearly ruined him</summary><div class="bq">
               <p>Jeremy Bentham spent roughly two decades and a great deal of his own money trying to persuade the British Parliament to let him build and personally run a Panopticon prison. Land was bought and committees met for years without producing a building. In 1813 Parliament voted him £23,000 in compensation and the scheme died. The most famous building in modern political theory was never constructed by the man who designed it.</p>
-            </div>
+            </div></details>
 
-            <div class="bit">
-              <h5>Bentham himself is on display in a cabinet in London</h5>
+            <details class="bit"><summary>Bentham himself is on display in a cabinet in London</summary><div class="bq">
               <p>His will instructed that his body be dissected in front of friends, then preserved, dressed in his own clothes and kept as an <b>Auto-Icon</b>. It is at University College London to this day: his actual skeleton, padded out, in his coat and hat. The preservation of the head went badly, so a wax one was made, and the real mummified head was kept separately and has an undignified history involving students. A man who believed a body should be useful after death is in a box, being looked at forever. Foucault would have enjoyed it.</p>
-            </div>
+            </div></details>
 
-            <div class="bit">
-              <h5>One was built in Cuba, and Castro was locked in it</h5>
+            <details class="bit"><summary>One was built in Cuba, and Castro was locked in it</summary><div class="bq">
               <p>The Presidio Modelo on the Isla de la Juventud was constructed between 1926 and 1928: five enormous circular blocks, each with a watchtower at the centre, exactly to Bentham's plan. Fidel Castro was imprisoned there from 1953 to 1955 after the Moncada attack. It closed in 1967 after riots and hunger strikes over conditions, and stands empty as a museum. Photographs of the interior are the single most useful thing you can look at before reading this chapter.</p>
-            </div>
+            </div></details>
 
-            <div class="bit">
-              <h5>A warning about the first chapter of the book</h5>
+            <details class="bit"><summary>A warning about the first chapter of the book</summary><div class="bq">
               <p><em>Discipline and Punish</em> opens with several pages on the public torture and execution of Robert-François Damiens in Paris in 1757, in clinical and unbearable detail. It then prints a dull timetable from a young offenders' prison eighty years later, with no comment between them. Hour by hour: rise, prayer, work, meal, work, school. That juxtaposition is the book's whole argument and is why people find it unforgettable. It is not in your extract. It is extremely graphic, so approach it knowing what it is.</p>
-            </div>
+            </div></details>
 
-            <div class="bit">
-              <h5>Foucault was a celebrity, and he looked like one</h5>
+            <details class="bit"><summary>Foucault was a celebrity, and he looked like one</summary><div class="bq">
               <p>Bald, white polo necks, a public intellectual in a country that still produces them. He held a chair at the Collège de France, where by tradition lectures are free and open to anyone, and his were so oversubscribed that people arrived hours early with tape recorders. He was tear-gassed at demonstrations, campaigned for prisoners' rights and founded a prisons information group, and helped shelter Vietnamese refugees. He died in 1984 of an AIDS-related illness, among the first prominent French public figures to do so, at a moment when the illness was barely speakable. A life spent writing about who gets classified, confined and spoken about ended with an unbearable symmetry.</p>
-            </div>
+            </div></details>
 
-            <div class="bit">
-              <h5>This chapter is why you can argue about your phone</h5>
+            <details class="bit"><summary>This chapter is why you can argue about your phone</summary><div class="bq">
               <p>Almost every current argument about surveillance runs on machinery built here. Workplace productivity monitoring. Exam proctoring software that watches students through their webcams. Social media as a place where people perform for an audience they cannot see. Shoshana Zuboff's <em>The Age of Surveillance Capitalism</em> (2019). Foucault's point was never that someone is spying on you. It is that when you cannot tell whether you are being watched, you start managing yourself, and at that moment nobody has to do anything at all.</p>
-            </div>
+            </div></details>
           </div>
         </div>
       </article>
@@ -2129,6 +2133,8 @@
       var c = root.querySelector('.cmt[data-id="' + it.id + '"]');
       var m = root.querySelector('mark[data-id="' + it.id + '"]');
       if (!c || !m) return;
+      if (!m.getClientRects().length) { c.style.display = 'none'; return; }
+      c.style.display = '';
 
       if (wide) {
         if (c.parentNode !== rail) rail.appendChild(c);
@@ -2162,7 +2168,8 @@
         else if (j < 2 && typeof it.at === 'number' && t.substr(it.at, it.text.length) === it.text) { st = it.at; }
         else if (j < 2) { k = t.indexOf(it.text); if (k < 0) continue; st = k; }
         else { continue; }
-        paint(el, st, st + it.text.length, it.kind === 'note' ? 'hl-n' : 'hl-' + it.color, it.id);
+        paint(el, st, st + it.text.length,
+          it.kind === 'note' ? 'hl-n' : it.kind === 'bm' ? 'hl-b' : 'hl-' + it.color, it.id);
         if (it.kind === 'note') rail.appendChild(card(it));
         return;
       }
@@ -2170,34 +2177,175 @@
     place_notes();
     listMarks();
   }
-  // The highlights list, grouped by the text each mark sits in, so it behaves like the
-  // bookmark list in a reader: click one and go there.
+  // Opening a mark that sits inside a closed toggle has to open the toggle first,
+  // or the scroll lands on a collapsed summary and the mark is nowhere on screen.
+  function goTo(el) {
+    if (!el) return;
+    var d = el.closest('details');
+    while (d) { d.open = true; d = d.parentElement && d.parentElement.closest('details'); }
+    var se = document.scrollingElement || document.documentElement, was = se.scrollTop;
+    try { el.scrollIntoView({ block: 'center', behavior: 'smooth' }); }
+    catch (e) { el.scrollIntoView(true); }
+    // Smooth scrolling is refused in some contexts and silently does nothing, so check
+    // that it actually moved and jump outright when it did not.
+    setTimeout(function () {
+      if (Math.abs((document.scrollingElement || document.documentElement).scrollTop - was) < 4) {
+        el.scrollIntoView({ block: 'center' });
+      }
+    }, 380);
+    el.classList.add('flash');
+    setTimeout(function () { el.classList.remove('flash'); }, 1600);
+  }
+  function bookmark() { return items.filter(function (x) { return x.kind === 'bm'; })[0] || null; }
+  function bmState() {
+    var b = document.getElementById('bmgo');
+    if (!b) return;
+    var it = bookmark();
+    b.setAttribute('data-set', it ? '1' : '0');
+    b.title = it ? 'Go to your bookmark: “' + it.text.slice(0, 60) + '”'
+                 : 'No bookmark yet. Select a word and pick the ribbon.';
+  }
+  // The excerpt shown in the list: the marked words in their own colour with the words
+  // around them left in, because a bare quotation out of context says nothing.
+  function excerpt(el, ids) {
+    var w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null), n, pos = 0, full = '', runs = [];
+    while ((n = w.nextNode())) {
+      var mk = n.parentElement && n.parentElement.closest('mark.hl');
+      var len = n.nodeValue.length;
+      if (mk && ids.indexOf(mk.getAttribute('data-id')) >= 0) {
+        var last = runs[runs.length - 1];
+        if (last && last.e === pos && last.k === mk.className) last.e = pos + len;
+        else runs.push({ s: pos, e: pos + len, k: mk.className });
+      }
+      full += n.nodeValue; pos += len;
+    }
+    var out = document.createElement('span');
+    out.className = 'q';
+    if (!runs.length) { out.textContent = full.slice(0, 160); return out; }
+    var a = Math.max(0, runs[0].s - 75), b = Math.min(full.length, runs[runs.length - 1].e + 75);
+    if (a > 0) { var sp = full.indexOf(' ', a); if (sp > 0 && sp < runs[0].s) a = sp + 1; }
+    if (b < full.length) { var sp2 = full.lastIndexOf(' ', b); if (sp2 > runs[runs.length - 1].e) b = sp2; }
+    function txt(str, dim) {
+      if (!str) return;
+      var e = document.createElement('span');
+      if (dim) e.className = 'dim';
+      e.textContent = str; out.appendChild(e);
+    }
+    if (a > 0) txt('… ', 1);
+    var cur = a;
+    runs.forEach(function (r) {
+      txt(full.slice(cur, r.s), 1);
+      var m = document.createElement('mark');
+      m.className = r.k;
+      m.textContent = full.slice(r.s, r.e);
+      out.appendChild(m); cur = r.e;
+    });
+    txt(full.slice(cur, b), 1);
+    if (b < full.length) txt(' …', 1);
+    return out;
+  }
+  // The highlights list. One row per paragraph, so two marks in the same paragraph read as
+  // one entry, grouped by the text each paragraph sits in. Click a row and go there.
   function listMarks() {
     var box = document.getElementById('bmlist');
+    bmState();
     if (!box) return;
-    var groups = [], seen = {}, byName = {};
-    Array.prototype.forEach.call(root.querySelectorAll('mark.hl'), function (m) {
-      var id = m.getAttribute('data-id');
-      if (seen[id]) return;
-      var it = items.filter(function (x) { return x.id === id; })[0];
-      if (!it) return;
-      seen[id] = 1;
-      var art = m.closest('article.rd');
-      var name = 'The argument', ch = '';
+    box.innerHTML = '';
+
+    function where(el) {
+      var art = el.closest('article.rd'), name = 'The argument', ch = '';
       if (art) {
         var h = art.querySelector('h3'), chip = h && h.querySelector('.ch'), who = art.querySelector('.who');
         ch = chip ? chip.textContent.trim().toLowerCase() : '';
         name = who ? who.textContent.split(',')[0].trim() : (h ? h.textContent : name);
+      } else {
+        var sec = el.closest('section'), sh = sec && sec.querySelector('h2');
+        if (sh) name = sh.textContent.trim();
       }
-      var g = byName[name];
-      if (!g) { g = { name: name, ch: ch, rows: [] }; byName[name] = g; groups.push(g); }
-      g.rows.push(it);
+      var node = el, sub = '';
+      while (node && node !== root && !sub) {
+        var sib = node.previousElementSibling;
+        while (sib && !sub) {
+          if (/^H[2-6]$/.test(sib.tagName)) sub = sib.textContent.trim();
+          else if (sib.tagName === 'SUMMARY') sub = sib.textContent.trim();
+          sib = sib.previousElementSibling;
+        }
+        if (!sub && node.parentElement && node.parentElement.tagName === 'DETAILS') {
+          var sm = node.parentElement.querySelector('summary');
+          if (sm) sub = sm.textContent.trim();
+        }
+        node = node.parentElement;
+      }
+      return { name: name, ch: ch, sub: sub };
+    }
+    function row(el, list, cls) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'bmi' + (cls ? ' ' + cls : '');
+      var dots = document.createElement('span'); dots.className = 'dots';
+      var seenC = {};
+      list.forEach(function (it) {
+        var k = it.kind === 'note' ? 'n' : (it.kind === 'bm' ? 'b' : it.color);
+        if (seenC[k]) return; seenC[k] = 1;
+        var d = document.createElement('span'); d.className = 'dot ' + k; dots.appendChild(d);
+      });
+      var txt = document.createElement('span'); txt.className = 'bt';
+      var w = where(el);
+      if (w.sub) {
+        var cap = document.createElement('span'); cap.className = 'where'; cap.textContent = w.sub;
+        txt.appendChild(cap);
+      }
+      txt.appendChild(excerpt(el, list.map(function (x) { return x.id; })));
+      list.forEach(function (it) {
+        if (it.kind !== 'note' || !it.body) return;
+        var cm = document.createElement('span'); cm.className = 'cm';
+        cm.textContent = it.body.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 180);
+        txt.appendChild(cm);
+      });
+      b.appendChild(dots); b.appendChild(txt);
+      b.addEventListener('click', function () {
+        goTo(root.querySelector('mark[data-id="' + list[0].id + '"]'));
+      });
+      return b;
+    }
+
+    // the bookmark first, on its own, because there is only ever one
+    var bm = bookmark(), bmMark = bm && root.querySelector('mark[data-id="' + bm.id + '"]');
+    if (bm && bmMark) {
+      var wrapB = document.createElement('div'); wrapB.className = 'bmg bmg-b';
+      var h3b = document.createElement('h3');
+      h3b.textContent = 'Bookmark';
+      var spb = document.createElement('span'); spb.textContent = 'where you stopped';
+      h3b.appendChild(spb); wrapB.appendChild(h3b);
+      wrapB.appendChild(row(bmMark.closest(SEL) || bmMark.parentElement, [bm], 'isbm'));
+      var clr = document.createElement('button');
+      clr.type = 'button'; clr.className = 'bmclear'; clr.textContent = 'Clear bookmark';
+      clr.addEventListener('click', function () { remove(bm.id); });
+      wrapB.appendChild(clr);
+      box.appendChild(wrapB);
+    }
+
+    // then the highlights and comments, one row per paragraph
+    var groups = [], byName = {}, seen = {}, order = [], perBlock = {};
+    Array.prototype.forEach.call(root.querySelectorAll('mark.hl'), function (m) {
+      var id = m.getAttribute('data-id');
+      if (seen[id]) return;
+      var it = items.filter(function (x) { return x.id === id; })[0];
+      if (!it || it.kind === 'bm') return;
+      seen[id] = 1;
+      var host = m.closest(SEL) || m.parentElement;
+      var k = order.indexOf(host);
+      if (k < 0) { k = order.length; order.push(host); perBlock[k] = []; }
+      perBlock[k].push(it);
     });
-    box.innerHTML = '';
-    if (!groups.length) {
+    order.forEach(function (host, k) {
+      var w = where(host), g = byName[w.name];
+      if (!g) { g = { name: w.name, ch: w.ch, rows: [] }; byName[w.name] = g; groups.push(g); }
+      g.rows.push([host, perBlock[k]]);
+    });
+    if (!groups.length && !bm) {
       var e = document.createElement('p');
       e.className = 'bmempty';
-      e.textContent = 'Nothing marked yet. Select any text in the guide and pick a colour.';
+      e.textContent = 'Nothing marked yet. Select any text in the guide, then pick yellow, pink, a comment or the ribbon that sets your bookmark.';
       box.appendChild(e);
       return;
     }
@@ -2207,41 +2355,7 @@
       h3.textContent = g.name;
       if (g.ch) { var sp = document.createElement('span'); sp.textContent = g.ch; h3.appendChild(sp); }
       wrap.appendChild(h3);
-      g.rows.forEach(function (it) {
-        var b = document.createElement('button');
-        b.type = 'button'; b.className = 'bmi';
-        var dot = document.createElement('span');
-        dot.className = 'dot ' + (it.kind === 'note' ? 'n' : it.color);
-        var txt = document.createElement('span');
-        var q = document.createElement('q');
-        q.textContent = it.text.length > 110 ? it.text.slice(0, 110) + '\u2026' : it.text;
-        txt.appendChild(q);
-        if (it.kind === 'note' && it.body) {
-          var cm = document.createElement('span');
-          cm.className = 'cm';
-          cm.textContent = it.body.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 140);
-          txt.appendChild(cm);
-        }
-        b.appendChild(dot); b.appendChild(txt);
-        b.addEventListener('click', function () {
-          var live = root.querySelector('mark[data-id="' + it.id + '"]');
-          if (!live) return;
-          var se = document.scrollingElement || document.documentElement;
-          var was = se.scrollTop;
-          try { live.scrollIntoView({ block: 'center', behavior: 'smooth' }); }
-          catch (e) { live.scrollIntoView(true); }
-          // Smooth scrolling is refused in some contexts and silently does nothing, so
-          // check that it actually moved and jump outright when it did not.
-          setTimeout(function () {
-            if (Math.abs((document.scrollingElement || document.documentElement).scrollTop - was) < 4) {
-              live.scrollIntoView({ block: 'center' });
-            }
-          }, 380);
-          live.classList.add('flash');
-          setTimeout(function () { live.classList.remove('flash'); }, 1600);
-        });
-        wrap.appendChild(b);
-      });
+      g.rows.forEach(function (r) { wrap.appendChild(row(r[0], r[1])); });
       box.appendChild(wrap);
     });
   }
@@ -2515,6 +2629,8 @@
     var sel = window.getSelection();
     if (!sel || sel.isCollapsed || sel.rangeCount === 0) return null;
     var r = sel.getRangeAt(0), made = null, bs = blocks();
+    // There is only ever one bookmark, because there is only ever one place reading stopped.
+    if (kind === 'bm') items = items.filter(function (x) { return x.kind !== 'bm'; });
     bs.forEach(function (el) {
       if (!r.intersectsNode(el)) return;
       var t = el.textContent;
@@ -2523,7 +2639,7 @@
       if (e <= s) return;
       var text = t.slice(s, e);
       if (!text.trim()) return;
-      if (kind === 'note' && made) return;
+      if ((kind === 'note' || kind === 'bm') && made) return;
       var it = {
         id: String(Date.now()) + '-' + Math.random().toString(36).slice(2, 7),
         text: text, before: t.slice(Math.max(0, s - 40), s), after: t.slice(e, e + 40),
@@ -2559,7 +2675,8 @@
     bar.id = 'hl-bar'; bar.hidden = true;
     bar.innerHTML = '<button type="button" data-c="y" title="Highlight yellow" aria-label="Highlight yellow"></button>' +
       '<button type="button" data-c="p" title="Highlight pink" aria-label="Highlight pink"></button>' +
-      '<button type="button" data-c="n" title="Add a comment" aria-label="Add a comment"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 9.5A1.5 1.5 0 0 1 12.5 11H6l-3 3V4.5A1.5 1.5 0 0 1 4.5 3h8A1.5 1.5 0 0 1 14 4.5z"/></svg></button>';
+      '<button type="button" data-c="n" title="Add a comment" aria-label="Add a comment"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 9.5A1.5 1.5 0 0 1 12.5 11H6l-3 3V4.5A1.5 1.5 0 0 1 4.5 3h8A1.5 1.5 0 0 1 14 4.5z"/></svg></button>' +
+      '<button type="button" data-c="b" title="Set your bookmark here" aria-label="Set your bookmark here"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M4 2.6h8v11.2L8 10.9l-4 2.9z"/></svg></button>';
     document.body.appendChild(bar);
     bar.addEventListener('mousedown', function (e) { e.preventDefault(); });
     bar.addEventListener('click', function (e) {
@@ -2573,7 +2690,8 @@
           var ta = root.querySelector('.cmt[data-id="' + it.id + '"] .cbody');
           if (ta) { ta.focus(); }
         }
-      } else { capture('hl', c); }
+      } else if (c === 'b') { capture('bm'); }
+      else { capture('hl', c); }
     });
     // A click on empty space does not clear the selection, so a bare mouseup must never
     // re-show the bar: only a gesture that actually dragged, or actually changed the
@@ -2627,8 +2745,32 @@
         Array.prototype.forEach.call(root.querySelectorAll('.cmt.act'), function (x) { x.classList.remove('act'); });
         Array.prototype.forEach.call(root.querySelectorAll('mark.hl-n.act'), function (x) { x.classList.remove('act'); });
         if (c) { c.classList.add('act'); m.classList.add('act'); c.scrollIntoView({ block: 'nearest' }); c.querySelector('.cbody').focus(); }
+      } else if (it.kind === 'bm') {
+        goTo(m);
       } else { remove(id); }
     });
+    var go = document.getElementById('bmgo');
+    if (go) go.addEventListener('click', function () {
+      var it = bookmark();
+      var m = it && root.querySelector('mark[data-id="' + it.id + '"]');
+      if (m) { goTo(m); return; }
+      flag('No bookmark yet. Select a word, then pick the ribbon.', true);
+      setTimeout(function () { flag(''); }, 3200);
+    });
+    // A closed toggle prints as a heading with nothing under it, so open everything to print
+    // and put it back afterwards.
+    var reopen = [];
+    window.addEventListener('beforeprint', function () {
+      reopen = [];
+      Array.prototype.forEach.call(document.querySelectorAll('details:not([open])'), function (d) {
+        reopen.push(d); d.open = true;
+      });
+    });
+    window.addEventListener('afterprint', function () {
+      reopen.forEach(function (d) { d.open = false; });
+      reopen = [];
+    });
+    document.addEventListener('toggle', function () { place_notes(); }, true);
     wireIO();
     try {
       var v = JSON.parse(localStorage.getItem(LS) || 'null');
@@ -2683,3 +2825,4 @@
   mark();
 })();
 </script>
+</html>
