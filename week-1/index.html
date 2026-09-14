@@ -68,6 +68,7 @@
   body {
     background: var(--paper); color: var(--ink); font-family: var(--body);
     font-size: 17.5px; line-height: 1.6; -webkit-font-smoothing: antialiased;
+    padding-bottom: 47px;
   }
   .wrap { max-width: 900px; margin: 0 auto; padding: 40px 26px 90px; display: flex; flex-direction: column; gap: 48px; }
   .eyebrow { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted); }
@@ -268,6 +269,27 @@
   @media (max-width: 700px) { .sitefoot .in { grid-template-columns: 1fr; gap: 26px; padding: 30px 16px 22px; }
                               .sitefoot .colophon { padding: 14px 16px 26px; flex-direction: column; } }
 
+  /* the dock: pinned to the bottom, carrying the things used while reading */
+  .dock { position: fixed; left: 0; right: 0; bottom: 0; z-index: 75; background: var(--paper);
+          border-top: 1px solid var(--rule); }
+  .dock .prog { height: 2px; width: 0; background: var(--accent); transition: width .1s linear; }
+  .dock .in { max-width: 900px; margin: 0 auto; padding: 0 20px; height: 45px;
+              display: flex; align-items: center; gap: 2px; }
+  .dock button, .dock a { display: flex; align-items: center; gap: 7px; background: none; border: 0;
+              padding: 8px 10px; border-radius: 5px; cursor: pointer; text-decoration: none;
+              font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+              color: var(--muted); }
+  .dock button:hover, .dock a:hover { color: var(--ink); background: var(--surface); }
+  .dock button:focus-visible, .dock a:focus-visible { outline: 2px solid var(--accent); outline-offset: -1px; }
+  .dock svg { width: 13px; height: 14px; flex: none; }
+  .dock .end { margin-left: auto; }
+  .dock .n { font-family: var(--mono); font-size: 10px; line-height: 1.6; background: var(--sunk);
+             color: var(--ink-soft); border-radius: 9px; padding: 0 6px; min-width: 18px; text-align: center; }
+  .dock .n:empty { display: none; }
+  .dock #bmgo[data-set="1"] { color: var(--accent); }
+  .dock #bmgo[data-set="1"] svg { fill: currentColor; }
+  @media (max-width: 620px) { .dock .in { padding: 0 8px; } .dock .lab { display: none; } }
+
   /* the highlights drawer, kept out of the reading */
   .drawer[hidden] { display: none !important; }
   .drawer { position: fixed; inset: 0; z-index: 90; }
@@ -334,16 +356,6 @@
   @media (max-width: 560px) { [id] { scroll-margin-top: 66px; } }
 
   /* the bookmark: one per guide, the place reading stopped */
-  .site .bm-go { display: flex; align-items: center; gap: 7px; background: none; border: 0; padding: 4px 6px;
-                 margin-right: -6px; cursor: pointer; color: var(--muted); font-family: var(--mono);
-                 font-size: 11px; letter-spacing: .08em; text-transform: uppercase; border-radius: 4px; }
-  .site .bm-go:hover { color: var(--ink); background: var(--surface); }
-  .site .bm-go:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
-  .site .bm-go svg { width: 13px; height: 15px; flex: none; }
-  .site .bm-go[data-set="1"] { color: var(--accent); }
-  .site .bm-go[data-set="1"] svg { fill: currentColor; }
-  @media (max-width: 700px) { .site .bm-go span { display: none; } }
-
   mark.hl.hl-b { background: none; padding: 0; box-shadow: inset 0 -2px 0 var(--accent); border-radius: 0; }
   /* an inline ribbon after the words, so it cannot land on the line above it */
   mark.hl.hl-b::after { content: ''; display: inline-block; width: 7px; height: 9px; margin-left: 4px;
@@ -430,6 +442,9 @@
   .c-y { color: var(--c-y); }
   .c-p { color: var(--c-p); }
   .c-m { color: var(--muted); }
+  /* normal text, spelled out. Needed where a colour is inherited from an enclosing span
+     and stripping that span would recolour words the writer meant to keep. */
+  .c-n { color: var(--ink); }
   #nb-bar { position: absolute; z-index: 50; display: flex; gap: 2px; padding: 3px; background: var(--surface); border: 1px solid var(--rule); border-radius: 5px; box-shadow: 0 2px 8px rgba(0,0,0,.12); }
   #nb-bar[hidden] { display: none !important; }
   #nb-bar button { min-width: 24px; height: 22px; border: 0; border-radius: 3px; background: none; cursor: pointer; color: var(--ink-soft); font-family: var(--display); font-size: 14px; padding: 0 5px; }
@@ -553,7 +568,8 @@
     .nine { min-width: 620px; }
   }
   @media print {
-    .site, #nav, #hl-bar, #nb-bar, #save, #cmts, .drawer, .sitefoot { display: none !important; }
+    .site, #nav, #hl-bar, #nb-bar, #save, #cmts, .drawer, .sitefoot, .dock { display: none !important; }
+    body { padding-bottom: 0; }
     body { background: #fff; font-size: 11.5px; }
     .wrap { max-width: none; padding: 0; gap: 26px; }
     .rd, section, figure, .exm, .ctx, .quo { break-inside: avoid; }
@@ -562,7 +578,7 @@
   @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
 </style>
 
-<header class="site"><div class="in"><a class="home" href="../"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 8H2M7 3 2 8l5 5"/></svg>PHI2394 Reading Hub</a><a class="disc" href="../#about" title="How these guides were written">Written with Claude<i>|</i>AI can make mistakes</a><nav aria-label="This week"><button type="button" class="bm-go" id="bmgo" data-set="0" title="Go to your bookmark"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 2.2h8.8v12.1L8 11.1l-4.4 3.2z"/></svg><span>Bookmark</span></button><button type="button" class="bm-go" data-marks title="My highlights"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M2.5 3.5h11M2.5 8h11M2.5 12.5h7"/></svg><span>Highlights</span></button><span class="cur">Week 1</span><a href="cheat-sheet.html">Cheat sheet</a></nav></div></header>
+<header class="site"><div class="in"><a class="home" href="../"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 8H2M7 3 2 8l5 5"/></svg>PHI2394 Reading Hub</a><a class="disc" href="../#about" title="How these guides were written">Written with Claude<i>|</i>AI can make mistakes</a><nav aria-label="This week"><span class="cur">Week 1</span><a href="cheat-sheet.html">Cheat sheet</a></nav></div></header>
 
 <nav id="nav" aria-label="Contents">
   <a class="grp" href="#s-notes">My notes</a>
@@ -2081,6 +2097,24 @@
 
 </div>
 
+<div class="dock">
+  <div class="prog" id="prog"></div>
+  <div class="in">
+    <button type="button" id="bmgo" data-set="0" title="Go to your bookmark">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 2.2h8.8v12.1L8 11.1l-4.4 3.2z"/></svg>
+      <span class="lab">Bookmark</span></button>
+    <button type="button" data-marks title="Everything you have marked">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M2.5 3.5h11M2.5 8h11M2.5 12.5h7"/></svg>
+      <span class="lab">Highlights</span><span class="n" id="mcount"></span></button>
+    <a href="#s-notes" title="Your notes">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.2 2.3 13.7 4.8 5.6 12.9 2.4 13.6l.7-3.2z"/></svg>
+      <span class="lab">Notes</span></a>
+    <button type="button" id="totop" class="end" title="Back to the top">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 13V3M3.5 7.5 8 3l4.5 4.5"/></svg>
+      <span class="lab">Top</span></button>
+  </div>
+</div>
+
 <div id="marks" class="drawer" hidden>
   <div class="dback" data-close></div>
   <aside class="dpanel" role="dialog" aria-modal="true" aria-labelledby="marks-h">
@@ -2324,6 +2358,8 @@
   function listMarks() {
     var box = document.getElementById('bmlist');
     bmState();
+    var n = document.getElementById('mcount');
+    if (n) n.textContent = items.length ? String(items.length) : '';
     if (!box) return;
     box.innerHTML = '';
 
@@ -2468,7 +2504,7 @@
     Array.prototype.forEach.call(d.querySelectorAll('*'), function (n) {
       Array.prototype.slice.call(n.attributes).forEach(function (a) {
         if (/^on/i.test(a.name) || (a.name === 'href' && /^\s*javascript:/i.test(a.value))) n.removeAttribute(a.name);
-        if (a.name === 'class' && !/^(c-y|c-p|c-m)$/.test(a.value)) n.removeAttribute(a.name);
+        if (a.name === 'class' && !/^(c-y|c-p|c-m|c-n)$/.test(a.value)) n.removeAttribute(a.name);
         if (a.name === 'style') n.removeAttribute(a.name);
       });
     });
@@ -2547,6 +2583,48 @@
   // Chrome carries inline formatting across a paragraph break, so a line started at the end of
   // a coloured run comes out coloured. Bold and italic have a key that turns them off; colour has
   // no plain white, so the empty clone gets removed and the new line starts normal.
+  function esc(t) {
+    return String(t == null ? '' : t)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/\r?\n/g, '<br>');
+  }
+  function inColour(el) {
+    var sel = window.getSelection();
+    if (!sel || !sel.rangeCount) return false;
+    var n = sel.getRangeAt(0).startContainer;
+    if (n.nodeType === 3) n = n.parentElement;
+    while (n && n !== el && el.contains(n)) {
+      if (n.tagName === 'SPAN' && /^c-[ypm]$/.test(n.className)) return true;
+      n = n.parentNode;
+    }
+    return false;
+  }
+  // Keep the shape and the colours of what was copied, and throw the rest away. Pasting a
+  // whole web page's markup into a note is how a note stops looking like the others.
+  function pasteHtml(html) {
+    if (!html) return '';
+    var d = document.createElement('div');
+    d.innerHTML = String(html);
+    Array.prototype.forEach.call(d.querySelectorAll('script,style,meta,link,title,iframe,object,embed'),
+      function (n) { n.remove(); });
+    var OK = /^(B|STRONG|I|EM|U|S|BR|P|DIV|UL|OL|LI|H3|H4|H5|BLOCKQUOTE|SPAN)$/;
+    var all = Array.prototype.slice.call(d.querySelectorAll('*'));
+    for (var i = all.length - 1; i >= 0; i--) {
+      var n = all[i], keep = OK.test(n.tagName);
+      if (keep && n.tagName === 'SPAN') keep = /^c-[ypmn]$/.test(n.getAttribute('class') || '');
+      if (!keep) {
+        var par = n.parentNode;
+        if (!par) continue;
+        while (n.firstChild) par.insertBefore(n.firstChild, n);
+        par.removeChild(n);
+        continue;
+      }
+      Array.prototype.slice.call(n.attributes).forEach(function (a) {
+        if (a.name !== 'class') n.removeAttribute(a.name);
+      });
+    }
+    return d.textContent.trim() || d.querySelector('br,hr') ? d.innerHTML : '';
+  }
   function unpaint(el) {
     var sel = window.getSelection();
     if (!sel || !sel.rangeCount || !sel.isCollapsed) return false;
@@ -2586,8 +2664,20 @@
     });
     el.addEventListener('paste', function (e) {
       e.preventDefault();
-      var t = (e.clipboardData || window.clipboardData).getData('text/plain');
-      document.execCommand('insertText', false, t);
+      var cd = e.clipboardData || window.clipboardData;
+      var safe = pasteHtml(cd.getData('text/html'));
+      if (safe) {
+        // Pasting inside a coloured run took that run's colour, because the caret is inside
+        // its span. Say the colour out loud for anything that arrived without one.
+        if (inColour(el) && !/^<span class="c-[ypmn]"/.test(safe)) safe = '<span class="c-n">' + safe + '</span>';
+        document.execCommand('insertHTML', false, safe);
+      } else {
+        var t = cd.getData('text/plain');
+        if (inColour(el)) document.execCommand('insertHTML', false, '<span class="c-n">' + esc(t) + '</span>');
+        else document.execCommand('insertText', false, t);
+      }
+      markEmpty(el);
+      if (onChange) onChange();
     });
     el.addEventListener('keydown', function (e) {
       // Tab inside a list indents it. Without this it leaves the note for the next control,
@@ -2676,7 +2766,7 @@
       var nr = document.createRange(); nr.selectNode(up); r = nr; up = up.parentElement;
     }
     sel.removeAllRanges(); sel.addRange(r);
-    if (cls) lastPaint = cls;
+    if (cls && cls !== 'c-n') lastPaint = cls;
     var tmp = document.createElement('div');
     tmp.appendChild(r.cloneContents());
     Array.prototype.forEach.call(tmp.querySelectorAll('span.c-y, span.c-p, span.c-m'), function (sp) {
@@ -2685,7 +2775,10 @@
       p.removeChild(sp);
     });
     var html = tmp.innerHTML;
-    document.execCommand('insertHTML', false, cls ? '<span class="' + cls + '">' + html + '</span>' : html);
+    // Stripping the spans inside the selection leaves any colour it is nested in, so
+    // "back to normal" has to name the normal colour.
+    var wrap = cls || (inColour(host) ? 'c-n' : '');
+    document.execCommand('insertHTML', false, wrap ? '<span class="' + wrap + '">' + html + '</span>' : html);
     if (host.classList.contains('nb')) { notes[host.getAttribute('data-k')] = host.innerHTML; }
     else {
       var card = host.closest('.cmt');
@@ -2896,6 +2989,10 @@
       if (e.target.closest('[data-close]')) closeMarks();
     });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMarks(); });
+    var top = document.getElementById('totop');
+    if (top) top.addEventListener('click', function () {
+      try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch (e) { window.scrollTo(0, 0); }
+    });
     var go = document.getElementById('bmgo');
     if (go) go.addEventListener('click', function () {
       var it = bookmark();
@@ -2967,9 +3064,17 @@
     }
     links.forEach(function (a, i) { a.classList.toggle('on', i === best); });
   }
-  window.addEventListener('scroll', mark, { passive: true });
-  window.addEventListener('resize', mark);
-  mark();
+  // how far through the reading this is, drawn along the top edge of the dock
+  var prog = document.getElementById('prog');
+  function bar() {
+    if (!prog) return;
+    var se = document.scrollingElement || document.documentElement;
+    var run = se.scrollHeight - window.innerHeight;
+    prog.style.width = (run > 0 ? Math.min(100, Math.max(0, se.scrollTop / run * 100)) : 0) + '%';
+  }
+  window.addEventListener('scroll', function () { mark(); bar(); }, { passive: true });
+  window.addEventListener('resize', function () { mark(); bar(); });
+  mark(); bar();
 })();
 </script>
 </html>
