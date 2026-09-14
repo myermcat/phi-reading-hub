@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PHI2394 Reading Hub</title>
+<meta name="description" content="Reading guides for PHI2394, Scientific Thought and Social Values. Every argument in the week's reading, explained for someone who has not opened the source.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%232E8E74'/%3E%3Cellipse%20cx='32'%20cy='33'%20rx='12.5'%20ry='15'%20fill='none'%20stroke='%23fff'%20stroke-width='7'/%3E%3Crect%20x='28.5'%20y='7'%20width='7'%20height='50'%20rx='3.5'%20fill='%23fff'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,600;1,6..72,400&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --paper:#EDEFEC; --surface:#F6F7F4; --sunk:#E3E6E1;
+    --ink:#191D1A; --ink-soft:#414944; --muted:#6E766F;
+    --rule:#D2D8D1; --rule-soft:#E1E5DF;
+    --accent:#1F6B57; --lead:#2E574A; --hot:#8E6318;
+    --display:"Newsreader",Georgia,serif;
+    --body:"Source Sans 3",-apple-system,"Segoe UI",sans-serif;
+    --mono:"IBM Plex Mono","SF Mono",Menlo,monospace;
+  }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+    --paper:#141815; --surface:#1B201D; --sunk:#10130F;
+    --ink:#E4E8E3; --ink-soft:#B4BCB6; --muted:#8B948D;
+    --rule:#2C332E; --rule-soft:#232925;
+    --accent:#64BFA1; --lead:#93C2B2; --hot:#D9A957;
+  } }
+  :root[data-theme="dark"] {
+    --paper:#141815; --surface:#1B201D; --sunk:#10130F;
+    --ink:#E4E8E3; --ink-soft:#B4BCB6; --muted:#8B948D;
+    --rule:#2C332E; --rule-soft:#232925;
+    --accent:#64BFA1; --lead:#93C2B2; --hot:#D9A957;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:820px;margin:0 auto;padding:clamp(48px,9vh,110px) 26px 90px;display:flex;flex-direction:column;gap:52px}
+  .eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+  h1{font-family:var(--display);font-weight:600;font-size:clamp(38px,7vw,62px);line-height:1.02;letter-spacing:-.02em;margin:14px 0 0;text-wrap:balance}
+  .standfirst{font-family:var(--display);font-size:clamp(18px,2.5vw,22px);line-height:1.5;color:var(--ink-soft);max-width:56ch;margin:20px 0 0}
+  p{margin:0;max-width:70ch}
+  h2{font-family:var(--display);font-weight:600;font-size:24px;margin:0 0 -6px;letter-spacing:-.01em}
+  section{display:flex;flex-direction:column;gap:18px}
+
+  .weeks{display:flex;flex-direction:column}
+  .wk{display:grid;grid-template-columns:78px 1fr auto;gap:0 22px;align-items:start;padding:26px 0;border-top:1px solid var(--rule);text-decoration:none;color:inherit}
+  .wk:hover{background:var(--surface)}
+  .wk .n{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding-top:5px}
+  .wk .t{display:flex;flex-direction:column;gap:5px;min-width:0}
+  .wk h3{margin:0;font-family:var(--display);font-size:24px;font-weight:600;line-height:1.2;letter-spacing:-.01em}
+  .wk p{font-size:16px;color:var(--ink-soft)}
+  .wk .go{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--accent);padding-top:9px;white-space:nowrap}
+  .also{padding:0 0 26px 100px;margin-top:-14px;border-top:0}
+  .also a{font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--rule)}
+  .also a:hover{color:var(--ink);border-bottom-color:var(--muted)}
+  .soon{padding:26px 0;border-top:1px solid var(--rule);display:grid;grid-template-columns:78px 1fr;gap:0 22px;color:var(--muted)}
+  .soon .n{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding-top:4px}
+  .soon .t{font-size:16px}
+
+  .note{background:var(--sunk);padding:20px 24px;display:flex;flex-direction:column;gap:9px;font-size:16px;color:var(--ink-soft)}
+  .note b{color:var(--ink)}
+  ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:9px;color:var(--ink-soft);max-width:70ch}
+  ul b{color:var(--ink)}
+  footer{border-top:1px solid var(--rule);padding-top:24px;font-size:14.5px;color:var(--muted);display:flex;flex-direction:column;gap:9px}
+  footer a{color:var(--ink-soft)}
+  @media (max-width:620px){
+    .wk{grid-template-columns:1fr;gap:8px}
+    .wk .n{padding-top:0}
+    .wk .go{padding-top:2px}
+    .also{padding-left:0}
+    .soon{grid-template-columns:1fr;gap:6px}
+  }
+  @media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">PHI 2394 · Scientific Thought and Social Values · uOttawa</div>
+    <h1>Reading hub</h1>
+    <p class="standfirst">Every argument in the week's reading, written out for someone who has not opened the source. Plus a cheat sheet for the week before an exam.</p>
+  </header>
+
+  <section>
+    <h2>Weeks</h2>
+    <div class="weeks">
+      <a class="wk" href="week-1/">
+        <div class="n">Week 1</div>
+        <div class="t">
+          <h3>What is the scientific method?</h3>
+          <p>Nine texts across 2,400 years, all disagreeing about what counts as knowledge. Plato, Schadewaldt, Bacon, Comte, Rousseau, the Vienna Circle, Lynn White, Dennett and Foucault.</p>
+        </div>
+        <div class="go">Read &rarr;</div>
+      </a>
+      <div class="also"><a href="week-1/cheat-sheet.html">Week 1 cheat sheet</a></div>
+      <div class="soon"><div class="n">Week 2</div><div class="t">Kuhn and scientific revolutions. Posted once the reading is up.</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>What a guide contains</h2>
+    <ul>
+      <li><b>A page map</b> drawn to scale, so you can see how much of the file is endnotes before you start.</li>
+      <li><b>Every argument narrated</b>, in stages, with the terms defined where they appear.</li>
+      <li><b>Real examples</b> for the abstract claims, with names, dates and what they cost.</li>
+      <li><b>A glossary</b> at the end, grouped by text.</li>
+      <li><b>Notes, highlights and comments</b> you write yourself, saved in your browser.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>About what you write</h2>
+    <div class="note">
+      <p><b>Your notes, highlights and comments stay in your own browser.</b> They are saved on the device you are using and they survive a reload, a closed tab and a restart.</p>
+      <p>They do not travel to another computer or another browser, they are never sent anywhere, and nobody else can see them. Clearing your browsing data for this site removes them. A private window keeps them only until you close it.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div>Guides for a course at the University of Ottawa. The readings themselves are copyright and are not hosted here.</div>
+    <div><a href="https://github.com/myermcat/phi-reading-hub">Source on GitHub</a></div>
+  </footer>
+
+</div>
+</body>
+</html>

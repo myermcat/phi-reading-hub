@@ -1,0 +1,270 @@
+<title>PHI2394 Week 1 Cheat Sheet</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%23C4882A'/%3E%3Crect%20x='15'%20y='17'%20width='34'%20height='6.5'%20rx='3.25'%20fill='%23fff'/%3E%3Crect%20x='15'%20y='28.75'%20width='24'%20height='6.5'%20rx='3.25'%20fill='%23fff'/%3E%3Crect%20x='15'%20y='40.5'%20width='30'%20height='6.5'%20rx='3.25'%20fill='%23fff'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;0,600;1,6..72,400&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --paper: #EDEFEC; --surface: #F6F7F4; --sunk: #E3E6E1;
+    --ink: #191D1A; --ink-soft: #414944; --muted: #6E766F;
+    --rule: #D2D8D1; --rule-soft: #E1E5DF;
+    --accent: #1F6B57; --accent-wash: #CFE3DA;
+    --hot: #8E6318; --hot-wash: #ECDDC2;
+    --display: "Newsreader", Georgia, serif;
+    --body: "Source Sans 3", -apple-system, "Segoe UI", sans-serif;
+    --mono: "IBM Plex Mono", "SF Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #141815; --surface: #1B201D; --sunk: #10130F;
+      --ink: #E4E8E3; --ink-soft: #B4BCB6; --muted: #8B948D;
+      --rule: #2C332E; --rule-soft: #232925;
+      --accent: #64BFA1; --accent-wash: #214136;
+      --hot: #D9A957; --hot-wash: #3C3220;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #141815; --surface: #1B201D; --sunk: #10130F;
+    --ink: #E4E8E3; --ink-soft: #B4BCB6; --muted: #8B948D;
+    --rule: #2C332E; --rule-soft: #232925;
+    --accent: #64BFA1; --accent-wash: #214136;
+    --hot: #D9A957; --hot-wash: #3C3220;
+  }
+  * { box-sizing: border-box; }
+  body { background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 1000px; margin: 0 auto; padding: 40px 24px 70px; display: flex; flex-direction: column; gap: 34px; }
+  .eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: .13em; text-transform: uppercase; color: var(--muted); }
+  h1 { font-family: var(--display); font-weight: 600; font-size: clamp(30px,5vw,42px); line-height: 1.06; letter-spacing: -.015em; margin: 8px 0 0; }
+  .standfirst { font-family: var(--display); font-size: 17.5px; line-height: 1.45; color: var(--ink-soft); max-width: 62ch; margin: 12px 0 0; }
+  p { margin: 0; max-width: 72ch; }
+  section { display: flex; flex-direction: column; gap: 16px; }
+  h2 { font-family: var(--display); font-weight: 600; font-size: 25px; margin: 0; letter-spacing: -.01em; }
+  h2 + p { margin-top: -6px; color: var(--ink-soft); }
+
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th { text-align: left; font-family: var(--mono); font-size: 10px; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); font-weight: 500; padding: 0 14px 8px 0; border-bottom: 1px solid var(--rule); vertical-align: bottom; }
+  td { padding: 11px 14px 11px 0; border-bottom: 1px solid var(--rule-soft); vertical-align: top; color: var(--ink-soft); }
+  td:first-child { color: var(--ink); font-weight: 600; padding-right: 18px; }
+  td b, li b { color: var(--ink); }
+  .who { white-space: nowrap; }
+  .who span { display: block; font-family: var(--mono); font-size: 10px; font-weight: 400; color: var(--muted); letter-spacing: .04em; }
+  .scroller { overflow-x: auto; margin: 4px 0; }
+  @media (max-width: 700px) { table { min-width: 640px; } }
+
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+  .card { background: var(--surface); padding: 16px 18px; display: flex; flex-direction: column; gap: 7px; }
+  .card .k { font-family: var(--mono); font-size: 10px; letter-spacing: .09em; text-transform: uppercase; color: var(--accent); font-weight: 500; }
+  .card h3 { margin: 0; font-family: var(--display); font-size: 19px; font-weight: 600; line-height: 1.2; }
+  .card p { font-size: 14px; color: var(--ink-soft); }
+
+  ol.num, ul.pl { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 7px; max-width: 72ch; color: var(--ink-soft); }
+
+  .hot { background: var(--hot-wash); color: var(--hot); font-family: var(--mono); font-size: 10px; letter-spacing: .09em; text-transform: uppercase; padding: 2px 7px; }
+  .likely { border-left: 3px solid var(--hot); background: var(--surface); padding: 16px 20px; display: flex; flex-direction: column; gap: 10px; }
+  .likely h3 { margin: 0; font-family: var(--body); font-size: 15px; font-weight: 600; }
+
+  .terms { display: grid; grid-template-columns: 170px 1fr; gap: 9px 18px; font-size: 14.5px; }
+  .terms dt { font-family: var(--display); font-style: italic; font-size: 16px; color: var(--ink); }
+  .terms dd { margin: 0; color: var(--ink-soft); }
+
+  .dates { display: grid; grid-template-columns: 118px 1fr; gap: 7px 16px; font-size: 14.5px; }
+  .dates dt { font-family: var(--mono); font-size: 11.5px; color: var(--muted); font-variant-numeric: tabular-nums; padding-top: 3px; }
+  .dates dd { margin: 0; color: var(--ink-soft); }
+
+  footer { border-top: 1px solid var(--rule); padding-top: 20px; font-size: 13.5px; color: var(--muted); display: flex; flex-direction: column; gap: 8px; }
+  @media print {
+    body { background: #fff; font-size: 11px; }
+    .wrap { max-width: none; padding: 0; gap: 18px; }
+    h1 { font-size: 22px; } h2 { font-size: 16px; }
+    section { break-inside: avoid; }
+  }
+  @media (max-width: 680px) { .terms, .dates { grid-template-columns: 1fr; gap: 3px 0; } .terms dt, .dates dt { padding-top: 8px; } }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">PHI 2394 B00 · Week 1 · candidates for a cheat sheet</div>
+    <h1>Nine Thinkers, One Page</h1>
+    <p class="standfirst">Everything from this reading that could be asked for by name on 7 October. Built to be revised from, and to print.</p>
+  </header>
+
+  <section>
+    <h2>The one-line positions</h2>
+    <p>If an exam question names one of them, this is the sentence to start the answer with.</p>
+    <div class="scroller">
+      <table>
+        <thead><tr><th>Who</th><th>The position, in one line</th><th>The term to name</th></tr></thead>
+        <tbody>
+          <tr><td class="who">Plato<span>c. 375 BCE</span></td><td>Real knowing is argument that can justify its own starting points, so making and doing rank below philosophy</td><td><em>technē</em>, dialectic, the divided line, the Form of the Good</td></tr>
+          <tr><td class="who">Schadewaldt<span>1959</span></td><td>Greek technique completed nature and stayed answerable to knowledge, so it could never treat nature as raw material</td><td><em>physis</em>, <em>technē</em>, <em>empeiría</em>, <em>epistēmē</em>, <em>atechnía</em>, <em>deinótēs</em></td></tr>
+          <tr><td class="who">Bacon<span>1620</span></td><td>Knowledge and power are the same thing, and the mind must be purged of four built-in distortions before method can work</td><td>the four Idols, true induction, <em>Novum Organum</em>, Salomon's House</td></tr>
+          <tr><td class="who">Comte<span>1830s</span></td><td>Every field passes through theological, then metaphysical, then positive, and the positive stage gives up on causes and asks only for laws</td><td>law of three states, positive philosophy, hierarchy of the sciences, sociology</td></tr>
+          <tr><td class="who">Rousseau<span>1752</span></td><td>The sciences are real achievements and they corrupt a nation's morals, because standing out by talk is cheaper than standing out by conduct</td><td>Discourse on the Sciences and Arts, the Dijon prize</td></tr>
+          <tr><td class="who">Vienna Circle<span>1929</span></td><td>A statement that cannot be checked against experience is meaningless, so only empirical statements and the empty truths of logic survive</td><td>verification, logical analysis, unified science, synthetic a priori, Isotype</td></tr>
+          <tr><td class="who">Lynn White<span>1971</span></td><td>Medieval Europe out-invented richer neighbours because of religious attitudes to God, work and action, and invention became a project</td><td>the invention of invention, <em>machina mundi</em>, Mary and Martha</td></tr>
+          <tr><td class="who">Dennett<span>1994</span></td><td>No principled reason rules out a conscious machine, and objections based on where a thing came from are a prejudice</td><td>origin essentialism, origin chauvinism, Cog</td></tr>
+          <tr><td class="who">Foucault<span>1975</span></td><td>Modern power works by making people visible and uncertain whether they are watched, so they police themselves</td><td>panopticism, discipline, the plague town, the diagram of power</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Lists you may be asked to produce</h2>
+    <p>Numbered, in order, because the order is part of the answer.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="k">Bacon · most likely of all</div>
+        <h3>The four Idols</h3>
+        <p><b>1. Tribe</b>, built into the species: we see more order than there is and treat human senses as the measure.<br>
+        <b>2. Cave</b>, personal: temperament, upbringing, what you read, whom you admire.<br>
+        <b>3. Market-place</b>, from language, and he thinks the worst: bad words force bad thinking and definitions cannot escape it.<br>
+        <b>4. Theatre</b>, inherited philosophical systems, which he calls stage-plays.</p>
+      </div>
+      <div class="card">
+        <div class="k">Comte</div>
+        <h3>The three states</h3>
+        <p><b>1. Theological.</b> A will causes it. Peaks in monotheism.<br>
+        <b>2. Metaphysical.</b> An abstract force causes it. Peaks in one entity, Nature. Transitional only.<br>
+        <b>3. Positive.</b> Abandon causes, state laws, meaning invariable relations of succession and resemblance.</p>
+      </div>
+      <div class="card">
+        <div class="k">Plato</div>
+        <h3>The divided line, low to high</h3>
+        <p><b>1. Imaging</b> and <b>2. Belief</b> together are <b>opinion</b>, about <b>becoming</b>, what changes.<br>
+        <b>3. Thought</b> and <b>4. Knowledge (dialectic)</b> together are <b>intellect</b>, about <b>being</b>, what does not change.<br>
+        Crafts sit on rung 2.</p>
+      </div>
+      <div class="card">
+        <div class="k">Comte</div>
+        <h3>Hierarchy of the sciences</h3>
+        <p>Mathematics, astronomy, physics, chemistry, biology, sociology. Ordered by rising complexity and falling generality, each depending on the ones before. Sociology is last because it is hardest.</p>
+      </div>
+      <div class="card">
+        <div class="k">Schadewaldt</div>
+        <h3>Three states of a knower</h3>
+        <p><b><em>empeiría</em></b>, skill with no account: knows only <em>that</em>.<br>
+        <b><em>technē</em></b>, skill with a correct account: knows <em>why</em>.<br>
+        <b><em>atechnía</em></b>, skill with a <b>false</b> account.<br>
+        Above all three, <b><em>epistēmē</em></b>, knowledge of what never changes.</p>
+      </div>
+      <div class="card">
+        <div class="k">Vienna Circle</div>
+        <h3>The two legitimate statements</h3>
+        <p><b>1. Empirical.</b> About the world, checkable against experience, always capable of being wrong.<br>
+        <b>2. Analytic.</b> Logic and mathematics. True by meaning, carrying no information about the world.<br>
+        Rejected: Kant's third category, the <b>synthetic a priori</b>.</p>
+      </div>
+      <div class="card">
+        <div class="k">Lynn White</div>
+        <h3>Three religious causes</h3>
+        <p><b>1. God as engineer.</b> The Creator with compasses, <em>machina mundi</em>, Oresme's clockwork heavens.<br>
+        <b>2. The Mary and Martha switch.</b> The West ranked action with contemplation, and the Greek East did not.<br>
+        <b>3. Dignity of manual labour.</b> Monasteries put learning and handwork in one building.</p>
+      </div>
+      <div class="card">
+        <div class="k">Dennett</div>
+        <h3>Three objections he answers</h3>
+        <p><b>1. Dualism.</b> Nothing coherent can be said about where mind meets matter.<br>
+        <b>2. Only organic brains.</b> Vitalism is dead, so what is left is an engineering worry about speed.<br>
+        <b>3. Robots are artefacts.</b> This is origin chauvinism.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Terms, with the definition an examiner wants</h2>
+    <dl class="terms">
+      <dt>physis</dt><dd>Greek for nature, meaning a <b>process</b> of coming-to-be. Aristotle: whatever has the source of its own motion inside itself.</dd>
+      <dt>technē</dt><dd>Craft knowledge. Skill made automatic by habit, aimed at producing something, <b>with a correct account of the thing itself</b>.</dd>
+      <dt>empeiría</dt><dd>Experience. Knows <em>that</em> something works and cannot say why.</dd>
+      <dt>epistēmē</dt><dd>Theoretical knowledge of what never changes. Produces nothing. Ranked highest.</dd>
+      <dt>atechnía</dt><dd>Productive skill resting on a <b>false</b> idea of the thing. Translated as blunder.</dd>
+      <dt>deinótēs</dt><dd>From Sophocles: "terribleness", holding <b>ability</b> and <b>monstrousness</b> in one word.</dd>
+      <dt>dialectic</dt><dd>For Plato, argument that dismantles its own assumptions and climbs to a first principle needing no support.</dd>
+      <dt>being and becoming</dt><dd>Becoming is what changes and perishes. Being is what stays fixed, the Forms. Knowledge is of being; opinion is of becoming.</dd>
+      <dt>the Form of the Good</dt><dd>The sun outside the cave. Last and hardest to see, and the cause of everything correct and beautiful.</dd>
+      <dt>idols (Bacon)</dt><dd>False images lodged in the understanding. From Greek <em>eidōlon</em>, phantom, the same family as Plato's shadows.</dd>
+      <dt>true induction</dt><dd>Tables of presence, absence and degree; eliminate by negative cases; climb in small steps. Not a leap from a few instances.</dd>
+      <dt>positive</dt><dd>In Comte, the final stage: laws only, with causes and purposes abandoned as unanswerable.</dd>
+      <dt>synthetic a priori</dt><dd>Kant's category of claims both informative about the world and knowable before experience. The Vienna Circle denies it exists.</dd>
+      <dt>verification</dt><dd>A sentence means something only if you can say what observations would make it true or false.</dd>
+      <dt>discipline</dt><dd>In Foucault, power that works by sorting a crowd into individuals, each with a place, a timetable and a record.</dd>
+      <dt>panopticism</dt><dd>Being visible and unable to check whether you are watched, so you supervise yourself. A diagram, and not a building.</dd>
+      <dt>origin chauvinism</dt><dd>Dennett: treating a difference in where a thing came from as an intrinsic difference between things nobody can tell apart.</dd>
+    </dl>
+  </section>
+
+  <section>
+    <h2>Names, dates and objects</h2>
+    <dl class="dates">
+      <dt>399 BCE</dt><dd>Socrates tried by 500 Athenian jurors on impiety and corrupting the young, convicted about 280 to 220, executed by hemlock.</dd>
+      <dt>c. 387 BCE</dt><dd>Plato founds the Academy in a grove outside Athens. Closed by Justinian in 529 CE.</dd>
+      <dt>c. 375 BCE</dt><dd>The <em>Republic</em>. The cave is Book VII, and the honours for shadow-forecasting are at 516c.</dd>
+      <dt>1620</dt><dd>Bacon's <em>Novum Organum</em>. He is impeached for bribery in 1621 and dies in 1626.</dd>
+      <dt>1660</dt><dd>The Royal Society founded, naming Bacon as its inspiration. Motto <em>Nullius in verba</em>.</dd>
+      <dt>1750 to 1752</dt><dd>Rousseau wins the Dijon prize, then spends two years replying. The packet has the Final Reply.</dd>
+      <dt>1787</dt><dd>Bentham designs the Panopticon. Never built in Britain; compensated £23,000 in 1813.</dd>
+      <dt>1830 to 1842</dt><dd>Comte's <em>Cours de philosophie positive</em>. He coins sociology and altruism.</dd>
+      <dt>1854</dt><dd>John Snow and the Broad Street pump, the worked example of Comte's positive stage.</dd>
+      <dt>1929</dt><dd>The Vienna Circle manifesto, dedicated to Moritz Schlick, who is murdered in 1936.</dd>
+      <dt>1949</dt><dd>Egas Moniz wins the Nobel Prize in Medicine for the lobotomy.</dd>
+      <dt>1959</dt><dd>Schadewaldt's two radio lectures. Heidegger's essay on technology is 1954.</dd>
+      <dt>1967 and 1971</dt><dd>Lynn White's ecology paper, then the essay in this reading.</dd>
+      <dt>1975</dt><dd>Foucault's <em>Surveiller et punir</em>, in English <em>Discipline and Punish</em>.</dd>
+      <dt>1994</dt><dd>Dennett on Cog, the MIT humanoid robot built by Rodney Brooks's group.</dd>
+    </dl>
+  </section>
+
+  <section>
+    <h2>Pairings an exam question is likely to ask for</h2>
+    <div class="likely">
+      <h3>Compare two of them, and these are the pairs that have something to compare</h3>
+      <ul class="pl">
+        <li><b>Plato and Bacon.</b> Both ask what real knowledge is; they give opposite answers about making. Plato: craft cannot justify itself, so it ranks low. Bacon: if you cannot make it happen you never understood it, so making is the test.</li>
+        <li><b>Bacon and Rousseau.</b> Rousseau grants everything Bacon claims and denies that it makes anybody better. He changes the measure from true to good.</li>
+        <li><b>Comte and the Vienna Circle.</b> The same position, ninety years apart, hardened from a historical claim into a rule about meaning. The Circle names Comte as an ancestor.</li>
+        <li><b>Bacon and the Vienna Circle.</b> Idols of the Market-place and the attack on grammar are the same complaint: language shapes thought and deceives it.</li>
+        <li><b>White and Comte.</b> Comte says the method is the endpoint of a universal sequence. White says it grew from one culture's religious attitudes and could have failed to appear.</li>
+        <li><b>Bacon and Foucault.</b> Both say knowledge is power. Bacon means it as a promise, and Foucault means it as a diagnosis.</li>
+        <li><b>Plato and Foucault.</b> Plato wants the person who sees clearly to govern. Foucault says the apparatus for seeing people clearly is the apparatus for governing them.</li>
+        <li><b>Schadewaldt and White.</b> Both explain a culture's technology by what that culture believed, one about Greece and one about medieval Europe.</li>
+        <li><b>Dennett and the course.</b> Who counts as a knower, and what grounds justify excluding them. The same question returns in Weeks 10 to 12 on animal minds.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Quotable lines</h2>
+    <ul class="pl">
+      <li><b>Bacon:</b> human knowledge and human power come to the same thing, and nature is commanded only by obeying her.</li>
+      <li><b>Bacon:</b> the human understanding is like an uneven mirror that distorts what it reflects by mingling its own nature with it.</li>
+      <li><b>Plato, 518c:</b> the power to learn is present in everyone's soul, and education is turning the whole soul around.</li>
+      <li><b>Plato, 519a:</b> people who are vicious but clever have keen sight that has been forced to serve evil ends, so the sharper they see, the more harm they do.</li>
+      <li><b>Rousseau:</b> the more the interior is corrupted, the more the exterior is composed.</li>
+      <li><b>Bentham, quoted by Foucault:</b> morals reformed, health preserved, industry invigorated, instruction diffused, public burdens lightened, all by a simple idea in architecture.</li>
+      <li><b>Bentham, quoted by Foucault:</b> power of mind over mind.</li>
+      <li><b>Sophocles, via Schadewaldt:</b> holding something clever beyond expectation, man stands where the path forks toward good and evil.</li>
+      <li><b>Neurath:</b> we are sailors who must rebuild the ship on the open sea, and never in dry dock.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Objections worth having ready</h2>
+    <p>A seminar remark or an essay paragraph is worth more when it names a weakness.</p>
+    <ul class="pl">
+      <li><b>Against the Vienna Circle:</b> the verification rule fails its own test. It is neither checkable against experience nor a truth of logic, so by its own standard it is meaningless.</li>
+      <li><b>Against Lynn White:</b> explaining a difference in outcomes by a difference in cultural attitude is flattering to the West and very hard to falsify. His stirrup thesis has been dismantled by medievalists.</li>
+      <li><b>Against Plato:</b> he is inconsistent about whether character is installed or native. The same book says virtues are added by habit and practice, and also sorts citizens by nature with a myth about gold, silver and bronze souls.</li>
+      <li><b>Against Comte:</b> his own hierarchy excludes psychology on the grounds that introspection is impossible, and he puts phrenology in its place, which is the course's thesis arriving at his expense.</li>
+      <li><b>Against Rousseau:</b> he abandoned five children to a foundling hospital while writing the century's most influential book on raising them.</li>
+      <li><b>Against Bacon:</b> he described the method and performed very little science, and the Idols are easier to name than to escape.</li>
+    </ul>
+  </section>
+
+  <footer>
+    <div>Exam 1 is <b>Wednesday 7 October, 30%</b>, in class, covering every reading and lecture to that date. Exam 2 is <b>Wednesday 11 November, 30%</b>. The final is 40% and the Registrar sets the date.</div>
+    <div>Drawn from <em>Week 1, reading guide.html</em> in this folder, which has the full argument behind every line here.</div>
+  </footer>
+
+</div>
