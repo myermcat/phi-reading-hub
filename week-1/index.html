@@ -332,6 +332,11 @@
           border: 1px solid var(--rule); color: var(--muted); opacity: 0; transition: opacity .25s; pointer-events: none; }
   #save.on { opacity: 1; }
   #save.bad { color: #9B2C2C; border-color: #9B2C2C; opacity: 1; pointer-events: auto; }
+  #save.act { opacity: 1; pointer-events: auto; display: flex; align-items: center; gap: 10px; }
+  #save button { font-family: var(--mono); font-size: 10.5px; letter-spacing: .07em; text-transform: uppercase;
+                 color: var(--accent); background: none; border: 0; border-bottom: 1px solid var(--accent);
+                 padding: 0 0 1px; cursor: pointer; }
+  #save button:hover { color: var(--ink); border-bottom-color: var(--ink); }
   :root[data-theme="dark"] #save.bad, :root:not([data-theme="light"]) #save.bad { color: #F09B9B; border-color: #F09B9B; }
   .storenote { background: var(--sunk); padding: 14px 18px; font-size: 15px; color: var(--ink-soft); }
   .storenote b { color: var(--ink); }
@@ -418,7 +423,7 @@
     <p class="standfirst">Nine texts written across 2,400 years, all disagreeing about the same thing. Written so that someone who never opens the PDF still understands every argument in it.</p>
     <p class="lede" style="margin-top:10px;font-size:14.5px">Throughout, <b>"the packet"</b> means the 98-page PDF the professor posted, and <b>"pdf p. N"</b> means the Nth page of that file. The number printed on the page itself is the book's own, and the captions give both.</p>
     <div class="storenote"><b>Everything you write here stays in this browser.</b> Highlights, comments and notes are saved on the device you are using, and they survive a reload and a closed tab. They do not travel to another computer, they are not sent anywhere, and clearing your browsing data removes them. Nobody else can see them.</div>
-    <p class="hl-hint">Select any text for yellow, pink, or a comment. Comments appear in the margin and the text goes pale green. Click a highlight to remove it, or a commented phrase to edit it. Everything saves.</p>
+    <p class="hl-hint">Select any text for yellow, pink, or a comment. Comments appear in the margin and the text goes pale green. Click a highlight to remove it, or a commented phrase to edit it. Removing something offers an undo. Everything saves.</p>
   </header>
 
   <div class="strip-block">
@@ -723,7 +728,7 @@
           <div class="body">
             <p>Plato imagines the man going back down, and describes two different reactions to two different acts. They are easy to run together and they are not the same.</p>
             <p><b>If he comes back and talks, they laugh at him.</b> His eyes are used to daylight, so in the dark he is worse at the shadow game than men who never left, and he loses to them. Plato says the prisoners would conclude that going up ruined his eyesight, and that the journey is not worth attempting. Plato also pictures him forced to argue in the law courts about what he calls the shadows of justice, against people who have never seen justice itself, where he performs badly and looks ridiculous.</p>
-            <p><b>If he tries to unchain them, they kill him.</b> Plato's sentence is specifically about anyone who tried to free them and lead them upward, which is a different act from talking. Three things make it lethal. The cave's honours, and the power that comes with them, exist because the shadow game is treated as the real thing, so a man unchaining people is dismantling the basis of everyone's standing, and above all the standing of whoever is currently winning. He is simultaneously, by their own measure, incompetent, since he cannot see. And he is taking away the one thing the prisoners have. Plato did not invent the reaction. Athens had executed his teacher Socrates about twenty years before he wrote this.</p>
+            <p><b>If he tries to unchain them, they kill him.</b> Plato's sentence is specifically about anyone who tried to free them and lead them upward, which is a different act from talking. Three things make it lethal. The cave's honours, and the power that comes with them, exist because the shadow game is treated as the real thing. A man unchaining people is dismantling the basis of everyone's standing, and above all the standing of whoever is currently winning. He is simultaneously, by their own measure, incompetent, since he cannot see. And he is taking away the one thing the prisoners have. Plato did not invent the reaction. Athens had executed his teacher Socrates about twenty years before he wrote this.</p>
           </div>
 
           <h4>Why the city forces him to go back down</h4>
@@ -734,7 +739,7 @@
               <li><b>The city made him, so the city may use him.</b> In an ordinary city a philosopher appears by accident. The constitution did not plan him, pay for him or want him, so he owes it nothing and may keep out of public life with a clear conscience. In the city they are designing he was picked out as a child, educated at public expense and put through the entire ascent deliberately, for this purpose. What grows by itself owes nothing for its upbringing. What was cultivated does. Plato adds that the law was never trying to make any one group outstandingly happy: its job is to hold the city together, and that sometimes means using people.</li>
               <li><b>He is the only person who can safely be given power.</b> Anyone who wants to rule wants it for what it gives him, and a city where rivals all want it tears itself apart in the fighting. The safe ruler is the one who would rather be doing something else. The man who has seen daylight is exactly that person, and he is also the only one who can tell a real image from a fake, which is the skill governing actually needs. So the city must have him, and since he does not want the job, it must compel him.</li>
             </ol>
-            <p><b>Which means the man who goes back into the cave is the philosopher-king.</b> The return is not an epilogue to the story about enlightenment. It is a description of what governing feels like from the inside: coming back down to people who are better than you at a contest you now think is meaningless, being laughed at, losing that contest, and being in some danger from the people you are trying to help. Plato's answer is that he has to do it anyway, and that a city run by anyone else is worse.</p>
+            <p><b>Which means the man who goes back into the cave is the philosopher-king.</b> The return is not an epilogue to the story about enlightenment. It is a description of what governing feels like from the inside. You come back down to people who are better than you at a contest you now think is meaningless. You are laughed at, you lose that contest, and you are in some danger from the people you are trying to help. Plato's answer is that he has to do it anyway, and that a city run by anyone else is worse.</p>
           </div>
 
           <dl class="links">
@@ -746,7 +751,7 @@
           <h4>Who attacks the placement, and how</h4>
           <div class="body">
             <ul>
-              <li><b>Bacon</b> turns it upside down. For him, being able to build the ship is the only proof that anybody understood anything, so the craftsman moves from the bottom of the ladder to the top of it, and the contemplative philosopher becomes the person who produced nothing in two thousand years.</li>
+              <li><b>Bacon</b> turns it upside down. For him, being able to build the ship is the only proof that anybody understood anything. So the craftsman moves from the bottom of the ladder to the top, and the contemplative philosopher becomes the man who produced nothing in two thousand years.</li>
               <li><b>Comte</b> keeps Plato's appetite for certainty and gives up on his subject matter. Asking what a thing really is, which is Plato's whole project, belongs for Comte to an earlier and outgrown stage of the human mind. What survives is the reliable statement of what follows what.</li>
               <li><b>The Vienna Circle</b> go further and rule the question out. A sentence about what justice itself is, with no observation that could settle it, is not a hard question on their account. It is a sentence with no content, and Plato is the named example.</li>
               <li><b>Rousseau</b> leaves the ladder alone entirely and asks a different question: whether any rung of it makes a person better. His answer is that a nation which gets good at the top rungs gets worse at being decent, so the ranking sorts the wrong thing.</li>
@@ -922,7 +927,7 @@
             <div class="exm">
               <b>Example · the lobotomy</b>
               <p>Walter Freeman's skill was genuine. He could complete the operation in about ten minutes, he did roughly 3,500 of them, and he trained others. Rich and varied, by any measure. His idea of what he was doing was that mental illness consists of thought patterns physically stuck in the fibres connecting the frontal lobes, so cutting the fibres would break the pattern. That idea was wrong.</p>
-              <p>Watch where the wrongness surfaces. The skill kept working, in the sense that the operation kept being performed successfully and patients kept becoming calm. What the false idea destroyed was the ability to tell a good outcome from a bad one, because if you believe you are releasing a stuck pattern, then a patient who has stopped objecting to anything looks like a success. <em>Atechnía</em> exactly: the hands were right and the account was wrong, so nothing could correct the hands.</p>
+              <p>Watch where the wrongness surfaces. The skill kept working, in the sense that the operation kept being performed successfully and patients kept becoming calm. What the false idea destroyed was the ability to tell a good outcome from a bad one. If you believe you are releasing a stuck pattern, a patient who has stopped objecting to anything looks like a success. <em>Atechnía</em> exactly: the hands were right and the account was wrong, so nothing could correct the hands.</p>
             </div>
             <div class="exm">
               <b>Example · bloodletting</b>
@@ -948,7 +953,7 @@
             <p><b>Can it now? That is exactly Schadewaldt's charge, and his answer is yes.</b> Once technique is cut loose from the requirement to understand, the only test left is whether it works. And "does it work" is a question technique can put to itself, with nobody else in the room. He means independence in that sense: an activity that grades its own homework.</p>
             <div class="exm">
               <b>Example · an activity that grades its own homework</b>
-              <p>A recommendation system is judged on whether people keep watching. That measure sits entirely inside the system. It needs no theory of what a person is, what attention is for, or what a good week looks like. So the technique can be improved for a decade straight without anyone ever having to answer a question that comes from outside it, and the engineers can say with a straight face that they did excellent work the whole time.</p>
+              <p>A recommendation system is judged on whether people keep watching. That measure sits entirely inside the system. It needs no theory of what a person is, what attention is for, or what a good week looks like. So the technique can be improved for a decade straight without anyone ever having to answer a question that comes from outside it. The engineers can say with a straight face that they did excellent work the whole time.</p>
               <p>Compare the Greek shape. A lever is judged by whether it moves the load, and also by what a load is, what a person can safely carry and what the job was for. Those last three come from outside the lever.</p>
             </div>
             <h5>Two: nature could never become a warehouse</h5>
@@ -1007,7 +1012,7 @@
 
             <div class="bit">
               <h5>You already speak most of this essay</h5>
-              <p><em>Technē</em> gave English technology, technique, technical, technician. <em>Physis</em> gave physics, physiology, physician, physique. <em>Mēchanē</em> gave machine, mechanism, mechanical, and machination when a contrivance is sinister. <em>Órganon</em> originally meant nothing but "tool", and from Plato onward the Greeks applied it to the parts of the body, which is why the things inside you are called organs, why living systems are "organic", and why a working whole is an "organism". Your liver is, etymologically, a device.</p>
+              <p><em>Technē</em> gave English technology, technique, technical, technician. <em>Physis</em> gave physics, physiology, physician, physique. <em>Mēchanē</em> gave machine, mechanism, mechanical, and machination when a contrivance is sinister. <em>Órganon</em> originally meant nothing but "tool". From Plato onward the Greeks applied it to the parts of the body. That is why the things inside you are called organs, why living systems are "organic", and why a working whole is an "organism". Your liver is, etymologically, a device.</p>
             </div>
 
             <div class="bit">
@@ -1027,7 +1032,7 @@
 
             <div class="bit">
               <h5>The tunnel Herodotus brags about is still there</h5>
-              <p>An engineer named Eupalinos cut the aqueduct tunnel on Samos around 550 BCE, straight through a mountain, <b>starting from both ends at once</b>, and the two crews met in the middle with an error of a few metres, using geometry and sightlines. It carried water for a thousand years and you can walk part of it today. Hero of Alexandria later built a spinning steam-powered ball, the <em>aeolipile</em>, which was a working steam engine and was treated as a curiosity.</p>
+              <p>An engineer named Eupalinos cut the aqueduct tunnel on Samos around 550 BCE, straight through a mountain, <b>starting from both ends at once</b>. The two crews met in the middle with an error of a few metres, using geometry and sightlines. It carried water for a thousand years and you can walk part of it today. Hero of Alexandria later built a spinning steam-powered ball, the <em>aeolipile</em>, which was a working steam engine and was treated as a curiosity.</p>
             </div>
 
             <div class="bit">
@@ -1042,7 +1047,7 @@
 
             <div class="bit">
               <h5>It was radio</h5>
-              <p>The two halves of this essay were broadcast as lectures on North German Radio on 25 June and 10 July 1959, which is why it opens by saying these concepts press on public consciousness with particular urgency at the present time. He was talking to listeners at home, fourteen years after the war and two years after Sputnik.</p>
+              <p>The two halves of this essay were broadcast as lectures on North German Radio, on 25 June and 10 July 1959. That is why it opens by saying these concepts press on public consciousness with particular urgency at the present time. He was talking to listeners at home, fourteen years after the war and two years after Sputnik.</p>
             </div>
           </div>
         </div>
@@ -1078,7 +1083,7 @@
             <div class="ctx">
               <b>Objection worth raising: knowing how is not the same as being able</b>
               <p>Physicists understood nuclear fission years before anybody could split an atom at scale. Understanding it did not hand them uranium, centrifuges or a reactor. So knowledge and capability clearly do come apart, and Bacon's claim looks too strong.</p>
-              <p><b>What he can answer.</b> His claim is about what understanding consists in, and not about whether you happen to own the equipment. Knowing the cause tells you what would have to be arranged. Whether you can afford to arrange it is a separate question about money and materials. And the fission case cuts his way in the end: the argument about whether the physics was right was settled in December 1942, when the conditions were finally arranged under a Chicago squash court and the pile went critical exactly as predicted.</p>
+              <p><b>What he can answer.</b> His claim is about what understanding consists in, and not about whether you happen to own the equipment. Knowing the cause tells you what would have to be arranged. Whether you can afford to arrange it is a separate question about money and materials. And the fission case cuts his way in the end. The argument about whether the physics was right was settled in December 1942, when the conditions were finally arranged under a Chicago squash court and the pile went critical exactly as predicted.</p>
               <p><b>Where the objection really bites.</b> Some things are understood and can never be produced. Nobody will build a star, or rerun the evolution of a species, or arrange a second Ice Age. Bacon's test, taken literally, would throw astronomy out of knowledge, and he was in fact suspicious of astronomy for close to this reason. Modern science kept his idea that intervention is the sharpest test, and added prediction as the test for everything we can only watch. Saying that in a seminar is worth more than agreeing with him.</p>
             </div>
           </div>
@@ -1098,8 +1103,8 @@
               <b>Example · all four Idols, working today</b>
               <p><b>Tribe.</b> A drug trial with disappointing results is far less likely to be written up and published than a trial that worked. So the published record on a drug gets built out of its successes, and a doctor reading that record is looking at Bacon's temple offerings: the survivors are on the wall and the drowned are not. It is called publication bias, and two cases show what it costs.</p>
               <p><b>Reboxetine</b>, an antidepressant. German researchers went after the unpublished trial data in 2010 and found that roughly three quarters of the patient data had never been published. On the published trials the drug worked. On all the trials together it did not beat a dummy pill, and it caused more people to drop out from side effects. Doctors had been prescribing it for years on a record made of the trials that came out well.</p>
-              <p><b>Oseltamivir</b>, sold as Tamiflu. Governments spent billions stockpiling it against pandemic flu. Cochrane reviewers spent four years forcing the full study reports out of the manufacturer, and when they finally got them the 2014 review found it shortened symptoms by about half a day, with no good evidence that it reduced hospital admissions or complications, which was the reason for buying it.</p>
-              <p><b>Cave.</b> A specialist who has spent twenty years in one hospital treating one population ends up taking that population's normal for everyone's. Most reference values in medicine were established on young white men, which is why heart attacks in women were described for decades as presenting "atypically", and why women were sent home from emergency rooms with symptoms that were typical of women and unfamiliar to the doctor.</p>
+              <p><b>Oseltamivir</b>, sold as Tamiflu. Governments spent billions stockpiling it against pandemic flu. Cochrane reviewers spent four years forcing the full study reports out of the manufacturer. The 2014 review found it shortened symptoms by about half a day, with no good evidence that it reduced hospital admissions or complications. Reducing those was the reason for buying it.</p>
+              <p><b>Cave.</b> A specialist who has spent twenty years in one hospital treating one population ends up taking that population's normal for everyone's. Most reference values in medicine were established on young white men. So heart attacks in women were described for decades as presenting "atypically", and women were sent home from emergency rooms with symptoms that were typical of women and unfamiliar to the doctor.</p>
               <p><b>Market-place.</b> In ordinary speech a theory is a hunch. In science a theory is a tested framework that has survived attempts to break it. Entire public arguments about evolution and about climate run on the gap between those two meanings, with neither side lying. The word does the damage, which is exactly Bacon's claim.</p>
               <p><b>Theatre.</b> The models used to price mortgage-backed securities before 2008 assumed that house prices in different American regions would not all fall at once, because they never had. The model was coherent, elegant, taught in universities and performed with confidence. It was a stage-play, and millions of people arranged their lives around the performance.</p>
             </div>
@@ -1248,7 +1253,7 @@
 
             <div class="bit">
               <h5>He founded an actual religion, with priests</h5>
-              <p>Having explained that humanity had outgrown theology, Comte spent his later years building the <b>Religion of Humanity</b>: a church with a priesthood, sacraments, prescribed daily prayers to dead great men, and a thirteen-month calendar whose months were named after Moses, Homer, Aristotle, Archimedes, Gutenberg and Descartes among others. Temples were built, and his former followers were appalled. T. H. Huxley called it Catholicism minus Christianity. Comte was entirely serious about all of it.</p>
+              <p>Having explained that humanity had outgrown theology, Comte spent his later years building the <b>Religion of Humanity</b>. It had a priesthood, sacraments and prescribed daily prayers to dead great men. Its calendar had thirteen months, named after Moses, Homer, Aristotle, Archimedes, Gutenberg and Descartes among others. Temples were built, and his former followers were appalled. T. H. Huxley called it Catholicism minus Christianity. Comte was entirely serious about all of it.</p>
             </div>
 
             <div class="bit">
@@ -1429,7 +1434,7 @@
 
             <div class="bit">
               <h5>And he had the most eventful life in the history of logic</h5>
-              <p>Neurath ran economic planning for the Bavarian Soviet Republic during its few weeks of existence in 1919, was tried and imprisoned for it, and was extracted by diplomatic intervention. In 1934 he fled Austria for the Netherlands. In May 1940, with the German army arriving, he escaped across the North Sea to England in an open boat, and was then interned as an enemy alien on the Isle of Man, where he organised lectures for the other internees.</p>
+              <p>Neurath ran economic planning for the Bavarian Soviet Republic during its few weeks of existence in 1919, was tried and imprisoned for it, and was extracted by diplomatic intervention. In 1934 he fled Austria for the Netherlands. In May 1940, with the German army arriving, he escaped across the North Sea to England in an open boat. He was then interned as an enemy alien on the Isle of Man, where he organised lectures for the other internees.</p>
             </div>
 
             <div class="bit">
@@ -1476,7 +1481,7 @@
           <h4>The fact to be explained</h4>
           <div class="body">
             <p>He opens by admitting that his own earlier book failed. It described the unprecedented technological activity of the medieval West and could not explain it, and he says he was surer of the <em>what</em> than the <em>why</em>. This essay is the second attempt.</p>
-            <p>The <em>what</em> is large. From the sixth century northern peasants built probably the most productive agricultural system in the world for the human labour spent. The Franks reorganised warfare in the eighth. From about 1000 the West produced labour-saving machinery and new applications of power, and from 1200 it led in ship design. By 1492 Europe had the agriculture, the industry, the weapons and the seamanship to go and take the rest of the planet, and White says flatly that the imperial age of 1500 to 1950 was set up by the Middle Ages.</p>
+            <p>The <em>what</em> is large. From the sixth century northern peasants built probably the most productive agricultural system in the world for the human labour spent. The Franks reorganised warfare in the eighth. From about 1000 the West produced labour-saving machinery and new applications of power, and from 1200 it led in ship design. By 1492 Europe had the agriculture, the industry, the weapons and the seamanship to go and take the rest of the planet. White says flatly that the imperial age of 1500 to 1950 was set up by the Middle Ages.</p>
             <p>Meanwhile Byzantium, Islam and the Latin West were closely related societies, all built from the same Greek inheritance. Thirteenth-century theologians in Cairo, Constantinople and Paris were all commenting on the same Aristotle. In the time of Thomas Aquinas, labour-saving machinery was little developed in the Near East and concern for invention was slight, while in the West a new kind of engineering was being pursued with something close to passion. So wealth and learning do not explain it, because the others had more of both.</p>
           </div>
 
@@ -1487,7 +1492,7 @@
               <li>Roger Bacon, around 1260, confidently predicting powered vehicles, submarines and flying machines.</li>
               <li>A bishop writing on surgery in 1267 that physicians devise some new instrument and some new method every day.</li>
               <li>The mechanical clock treated as a publicly known unsolved problem, worked at by named technicians from the 1260s to the 1330s, with each of them publishing partial solutions and admitting what remained unsolved.</li>
-              <li>A Dominican preaching in Florence on 23 February 1306 in praise of eyeglasses, saying that not all the arts have been found and we shall never see an end of finding them, and adding that he had personally met and talked with the man who invented spectacles.</li>
+              <li>A Dominican preaching in Florence on 23 February 1306, in praise of eyeglasses. Not all the arts have been found, he says, and we shall never see an end of finding them. He adds that he had personally met and talked with the man who invented spectacles.</li>
             </ul>
             <p>That last one is the whole thesis in one sermon. Inventing had become a thing a preacher could hold up as a sign of the times.</p>
           </div>
@@ -1516,7 +1521,7 @@
 
             <div class="bit">
               <h5>His other paper is one of the most-cited things ever written by a historian</h5>
-              <p>"The Historical Roots of Our Ecologic Crisis", published in <em>Science</em> in 1967, argued that Western Christianity, by making humans distinct from and set over nature, licensed the exploitation of the natural world, and that the ecological crisis was therefore religious at root. It detonated. Decades of theological response followed, an entire field of eco-theology grew out of the argument, and the line of thought runs to Pope Francis's 2015 encyclical on the environment. The essay in your packet is the same causal claim told as a success story.</p>
+              <p>"The Historical Roots of Our Ecologic Crisis" was published in <em>Science</em> in 1967. It argued that Western Christianity, by making humans distinct from and set over nature, licensed the exploitation of the natural world, and that the ecological crisis was therefore religious at root. It detonated. Decades of theological response followed, an entire field of eco-theology grew out of the argument, and the line of thought runs to Pope Francis's 2015 encyclical on the environment. The essay in your packet is the same causal claim told as a success story.</p>
             </div>
 
             <div class="bit">
@@ -1580,7 +1585,7 @@
 
           <h4>Objection three, the interesting one: robots are artefacts</h4>
           <div class="body">
-            <p>The claim is that consciousness abhors an artefact, and only something born could really be conscious. Dennett gives the underlying creed a name, <b>origin essentialism</b>: only wine made under the direction of the actual proprietors counts as that estate's wine; only a canvas every blotch of which was caused by Cezanne's hand is a genuine Cezanne; only someone with the right blood counts as really belonging to a people.</p>
+            <p>The claim is that consciousness abhors an artefact, and only something born could really be conscious. Dennett gives the underlying creed a name, <b>origin essentialism</b>. Only wine made under the direction of the actual proprietors counts as that estate's wine. Only a canvas every blotch of which was caused by Cezanne's hand is a genuine Cezanne. Only someone with the right blood counts as really belonging to a people.</p>
             <p>He concedes that such distinctions can be perfectly respectable, and defensible in court, <b>so long as they are understood as protections of rights growing out of historical processes</b>. A wine appellation protects a region's producers. An attribution protects an artist's estate.</p>
             <p>Taken instead as claims about <b>intrinsic properties</b>, marking a real difference between two things nobody can tell apart, they are pernicious nonsense, and that version he names <b>origin chauvinism</b>. A perfect imitation is exactly as good a wine as the original, counterfeit though it is.</p>
           </div>
@@ -1605,7 +1610,7 @@
 
             <div class="bit">
               <h5>Cog is in a museum now</h5>
-              <p>It never became conscious. It learned to track faces, reach for objects and respond to sound, the project wound down in the early 2000s, and Cog is in the MIT Museum: a torso with a head and two arms, looking exactly like an optimistic decade. Worth knowing while you read Dennett being confident about it.</p>
+              <p>It never became conscious. It learned to track faces, reach for objects and respond to sound. The project wound down in the early 2000s, and Cog is now in the MIT Museum: a torso with a head and two arms, looking exactly like an optimistic decade. Worth knowing while you read Dennett being confident about it.</p>
             </div>
 
             <div class="bit">
@@ -1652,8 +1657,8 @@
           <h4>He begins with a plague town, and the detail is the argument</h4>
           <div class="body">
             <p>A seventeenth-century town under plague. It is closed and cut into quarters and streets, each under an official who may not leave for the duration. Everyone is shut in their house on pain of death.</p>
-            <p>Every inhabitant is registered by name, age and sex regardless of station, and copies of the register go to three places: the quarter's intendant, the town hall, and the official who calls the roll daily at each window, so each person has to appear and answer to their name. Everything observed on the rounds is written down and passed up the chain: deaths, illnesses, complaints, irregularities. Magistrates control all medical treatment, and no other practitioner may treat, no apothecary prepare medicine and no confessor visit a sick person without written permission.</p>
-            <p>Five or six days in, the houses are purified one at a time. Everyone leaves, furniture is raised off the floor, windows, doors and even keyholes are sealed with wax, perfume is burned inside, and the men who did the work are searched on the way out to prove they carry nothing they did not bring in.</p>
+            <p>Every inhabitant is registered by name, age and sex regardless of station. Copies of the register go to three places: the quarter's intendant, the town hall, and the official who calls the roll daily at each window. Each person has to appear and answer to their name. Everything observed on the rounds is written down and passed up the chain: deaths, illnesses, complaints, irregularities. Magistrates control all medical treatment, and no other practitioner may treat, no apothecary prepare medicine and no confessor visit a sick person without written permission.</p>
+            <p>Five or six days in, the houses are purified one at a time. Everyone leaves. Furniture is raised off the floor, windows, doors and even keyholes are sealed with wax, and perfume is burned inside. The men who did the work are searched on the way out, to prove they carry nothing they did not bring in.</p>
           </div>
 
           <h4>What he extracts from it: the definition of discipline</h4>
@@ -1686,7 +1691,7 @@
           <h4>Why this belongs in a course about scientific method</h4>
           <div class="body">
             <p>Look at what the plague town and the Panopticon are both made of: registers, roll calls, case notes, timetables, examinations, files. Every one of those is simultaneously an <b>instrument of knowledge</b> and an <b>instrument of control</b>. You find out what a person is like by the same act that fixes them in place.</p>
-            <p>Foucault's historical claim is that the human sciences, psychiatry, criminology, the study of childhood and education, were born inside exactly these institutions, because prisons, clinics, asylums and schools were the first places with captive populations that could be measured over time. So knowledge about people did not arrive from outside and get applied to institutions. It was produced by them. Once that is on the table, "whose knowledge counts" stops being a philosophical curiosity and becomes a political question, which is where Weeks 4 through 9 of the course begin.</p>
+            <p>Foucault's historical claim is that the human sciences were born inside exactly these institutions: psychiatry, criminology, the study of childhood and education. Prisons, clinics, asylums and schools were the first places with captive populations that could be measured over time. So knowledge about people did not arrive from outside and get applied to institutions. It was produced by them. Once that is on the table, "whose knowledge counts" stops being a philosophical curiosity and becomes a political question, which is where Weeks 4 through 9 of the course begin.</p>
           </div>
 
           <dl class="links">
@@ -1719,7 +1724,7 @@
 
             <div class="bit">
               <h5>A warning about the first chapter of the book</h5>
-              <p><em>Discipline and Punish</em> opens with several pages describing the public torture and execution of Robert-François Damiens in Paris in 1757, in clinical and unbearable detail, and then prints a dull timetable from a young offenders' prison eighty years later with no comment between them. Hour by hour: rise, prayer, work, meal, work, school. That juxtaposition is the book's whole argument and is why people find it unforgettable. It is not in your extract. It is extremely graphic, so approach it knowing what it is.</p>
+              <p><em>Discipline and Punish</em> opens with several pages on the public torture and execution of Robert-François Damiens in Paris in 1757, in clinical and unbearable detail. It then prints a dull timetable from a young offenders' prison eighty years later, with no comment between them. Hour by hour: rise, prayer, work, meal, work, school. That juxtaposition is the book's whole argument and is why people find it unforgettable. It is not in your extract. It is extremely graphic, so approach it knowing what it is.</p>
             </div>
 
             <div class="bit">
@@ -1729,7 +1734,7 @@
 
             <div class="bit">
               <h5>This chapter is why you can argue about your phone</h5>
-              <p>Almost every current argument about surveillance runs on machinery built here: workplace productivity monitoring, exam proctoring software that watches students through their webcams, social media as a place where people perform for an audience they cannot see, and Shoshana Zuboff's <em>The Age of Surveillance Capitalism</em> (2019). Foucault's point was never that someone is spying on you. It is that when you cannot tell whether you are being watched, you start managing yourself, and at that moment nobody has to do anything at all.</p>
+              <p>Almost every current argument about surveillance runs on machinery built here. Workplace productivity monitoring. Exam proctoring software that watches students through their webcams. Social media as a place where people perform for an audience they cannot see. Shoshana Zuboff's <em>The Age of Surveillance Capitalism</em> (2019). Foucault's point was never that someone is spying on you. It is that when you cannot tell whether you are being watched, you start managing yourself, and at that moment nobody has to do anything at all.</p>
             </div>
           </div>
         </div>
@@ -2031,7 +2036,7 @@
       pill.setAttribute('role', 'status'); document.body.appendChild(pill);
     }
     pill.textContent = txt;
-    pill.className = bad ? 'bad' : 'on';
+    pill.className = bad ? 'bad' : (txt ? 'on' : '');
     if (pillT) clearTimeout(pillT);
     if (!bad) pillT = setTimeout(function () { pill.className = ''; }, 1400);
   }
@@ -2170,8 +2175,26 @@
     });
   }
   function remove(id) {
+    var gone = items.filter(function (x) { return x.id === id; })[0];
     items = items.filter(function (x) { return x.id !== id; });
     save(); render();
+    if (gone) offerUndo(gone);
+  }
+  // One click removes a mark, so one click has to put it back. Without this, a misplaced
+  // click destroys a highlight with no way out of it.
+  function offerUndo(gone) {
+    if (!pill) flag('', false);
+    if (pillT) clearTimeout(pillT);
+    pill.textContent = gone.kind === 'note' ? 'Comment removed' : 'Highlight removed';
+    var b = document.createElement('button');
+    b.type = 'button'; b.textContent = 'Undo';
+    b.addEventListener('click', function () {
+      items.push(gone); save(); render();
+      pill.className = ''; pill.textContent = '';
+    });
+    pill.appendChild(b);
+    pill.className = 'act';
+    pillT = setTimeout(function () { pill.className = ''; pill.textContent = ''; }, 9000);
   }
   function capture(kind, color) {
     var sel = window.getSelection();
@@ -2219,9 +2242,9 @@
     root.appendChild(rail);
     bar = document.createElement('div');
     bar.id = 'hl-bar'; bar.hidden = true;
-    bar.innerHTML = '<button type="button" data-c="y" aria-label="Highlight yellow"></button>' +
-      '<button type="button" data-c="p" aria-label="Highlight pink"></button>' +
-      '<button type="button" data-c="n" aria-label="Add a comment"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 9.5A1.5 1.5 0 0 1 12.5 11H6l-3 3V4.5A1.5 1.5 0 0 1 4.5 3h8A1.5 1.5 0 0 1 14 4.5z"/></svg></button>';
+    bar.innerHTML = '<button type="button" data-c="y" title="Highlight yellow" aria-label="Highlight yellow"></button>' +
+      '<button type="button" data-c="p" title="Highlight pink" aria-label="Highlight pink"></button>' +
+      '<button type="button" data-c="n" title="Add a comment" aria-label="Add a comment"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 9.5A1.5 1.5 0 0 1 12.5 11H6l-3 3V4.5A1.5 1.5 0 0 1 4.5 3h8A1.5 1.5 0 0 1 14 4.5z"/></svg></button>';
     document.body.appendChild(bar);
     bar.addEventListener('mousedown', function (e) { e.preventDefault(); });
     bar.addEventListener('click', function (e) {
