@@ -21,6 +21,8 @@
     --curious:    #6B4372;
     --curious-bg: #F2EEF3;
     --lead:       #2E574A;
+    --c-y:        #8A6A0B;
+    --c-p:        #AE2F73;
     --ghost:      #DADFD9;
 
     --display: "Newsreader", Georgia, "Times New Roman", serif;
@@ -38,6 +40,8 @@
       --accent: #64BFA1;
       --curious: #C4A0CB; --curious-bg: #221B25;
       --lead: #93C2B2;
+      --c-y: #E3BE57;
+      --c-p: #FF97C6;
       --ghost: #262C28;
     }
   }
@@ -51,6 +55,8 @@
     --accent: #64BFA1;
     --curious: #C4A0CB; --curious-bg: #221B25;
     --lead: #93C2B2;
+    --c-y: #E3BE57;
+    --c-p: #FF97C6;
     --ghost: #262C28;
   }
 
@@ -331,12 +337,27 @@
   .nb ul, .nb ol { margin: 5px 0 8px; padding-left: 20px; }
   .nb li { margin-bottom: 4px; }
   .nb b, .nb strong { font-weight: 600; }
+  .nb h3, .nb h4, .nb h5 { margin: 12px 0 5px; font-family: var(--display); font-weight: 600; line-height: 1.25; color: var(--ink); }
+  .nb h3 { font-size: 19px; } .nb h4 { font-size: 17px; } .nb h5 { font-size: 15.5px; }
+  .nb > :first-child { margin-top: 0; }
+  .nb hr { border: 0; border-top: 1px solid var(--rule); margin: 12px 0; }
+  .nb blockquote { margin: 8px 0; padding-left: 12px; border-left: 2px solid var(--rule); color: var(--ink-soft); }
+  .c-y { color: var(--c-y); }
+  .c-p { color: var(--c-p); }
+  .c-m { color: var(--muted); }
   #nb-bar { position: absolute; z-index: 50; display: flex; gap: 2px; padding: 3px; background: var(--surface); border: 1px solid var(--rule); border-radius: 5px; box-shadow: 0 2px 8px rgba(0,0,0,.12); }
   #nb-bar[hidden] { display: none !important; }
   #nb-bar button { min-width: 24px; height: 22px; border: 0; border-radius: 3px; background: none; cursor: pointer; color: var(--ink-soft); font-family: var(--display); font-size: 14px; padding: 0 5px; }
   #nb-bar button:hover { background: var(--sunk); color: var(--ink); }
   #nb-bar button.i { font-style: italic; }
   #nb-bar button.l { font-family: var(--mono); font-size: 11px; }
+  #nb-bar .sep { width: 1px; background: var(--rule); margin: 3px 2px; }
+  #nb-bar button.sw { width: 18px; min-width: 18px; height: 18px; border-radius: 3px; align-self: center;
+                      border: 1px solid var(--rule); font-size: 0; }
+  #nb-bar button.sw.y { background: var(--c-y); }
+  #nb-bar button.sw.p { background: var(--c-p); }
+  #nb-bar button.sw.m { background: var(--muted); }
+  #nb-bar button.sw.x { background: none; font-size: 12px; color: var(--muted); border-color: transparent; }
   .nbhint { font-family: var(--mono); font-size: 10.5px; color: var(--muted); letter-spacing: .03em; }
   .io { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; padding-top: 4px; }
   .io button { font-family: var(--mono); font-size: 10.5px; letter-spacing: .07em; text-transform: uppercase;
@@ -365,8 +386,13 @@
   .cmt { position: absolute; width: 202px; background: transparent; border-left: 2px solid var(--rule); padding: 2px 0 2px 9px; display: flex; flex-direction: column; gap: 3px; }
   .cmt.inline { position: static; width: auto; max-width: 420px; margin: 10px 0 10px 16px; }
   .cmt .q { font-family: var(--mono); font-size: 9px; letter-spacing: .02em; color: var(--muted); line-height: 1.4; opacity: .8; overflow: hidden; }
-  .cmt textarea { font-family: var(--body); font-size: 12.5px; line-height: 1.42; color: var(--ink-soft); background: transparent; border: 0; resize: none; min-height: 0; height: auto; padding: 0; width: 100%; outline: none; overflow: hidden; display: block; }
-  .cmt textarea::placeholder { color: var(--muted); font-style: italic; }
+  .cmt .cbody { font-family: var(--body); font-size: 12.5px; line-height: 1.45; color: var(--ink-soft); outline: none; min-height: 17px; }
+  .cmt .cbody:empty::before { content: attr(data-ph); color: var(--muted); font-style: italic; }
+  .cmt .cbody p { margin: 0 0 5px; max-width: none; }
+  .cmt .cbody p:last-child { margin-bottom: 0; }
+  .cmt .cbody ul, .cmt .cbody ol { margin: 4px 0 5px; padding-left: 17px; }
+  .cmt .cbody li { margin-bottom: 2px; }
+  .cmt .cbody hr { border: 0; border-top: 1px solid var(--rule); margin: 7px 0; }
   .cmt .row { display: none; justify-content: flex-end; }
   .cmt:hover .row, .cmt:focus-within .row { display: flex; }
   .cmt button { font-family: var(--mono); font-size: 9px; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); background: none; border: 0; cursor: pointer; padding: 1px 0; }
@@ -1442,6 +1468,31 @@
               <li><b>Ordinary grammar traps us.</b> Language uses the same part of speech, the noun, for a thing ("apple"), a quality ("hardness"), a relation ("friendship") and a process ("sleep"). That tempts us into assuming every noun names a thing, which manufactures entities out of nothing. Compare Bacon's Idols of the Market-place, three centuries earlier, and the same complaint.</li>
               <li><b>People believe thought can produce knowledge unaided.</b> Which the tautology argument above rules out.</li>
             </ol>
+            <h5>What "thought unaided" actually looks like</h5>
+            <p>That phrase is abstract, so here are the moves it rules out. In each one somebody starts from no observation whatever and ends with a claim about how the world is.</p>
+            <ul>
+              <li><b>The ontological argument.</b> God is by definition the greatest conceivable being. Existing is greater than not existing. Therefore God exists. A claim about what there is, produced out of a definition.</li>
+              <li><b>Descartes.</b> From "I think, therefore I am" he goes on to prove the existence of God, and from God's goodness the existence of an external world. No observation appears anywhere in the chain.</li>
+              <li><b>Kant.</b> Every event has a cause, and space is Euclidean, both knowable before you look at anything.</li>
+              <li><b>Praxeology in economics.</b> Ludwig von Mises held that the laws of human action follow from the axiom that people act purposefully, and are therefore not testable against evidence. People still argue that today.</li>
+            </ul>
+          </div>
+
+          <h4>Two objections worth having ready</h4>
+          <div class="body">
+            <div class="ctx">
+              <b>Objection: Stephen Hawking calculated from an armchair</b>
+              <p>Hawking radiation was worked out on paper. No experiment, no observation, and it is a claim about black holes. That looks like exactly the road the Circle says does not exist.</p>
+              <p><b>The reply is about where the premises came from.</b> Hawking started from general relativity and quantum field theory, and both are empirical theories, built and tested on observation. The calculation reveals what those theories were already committed to. That is what "tautological transformation" means: the content was in the premises and the work made it visible. The word is badly chosen, because it suggests trivial. A chess endgame is fully determined by the rules and still takes a grandmaster to see.</p>
+              <p><b>And the case finishes in the Circle's favour.</b> Hawking radiation has never been observed. It is a prediction, and what it does is tell you where to look. If observation came back against it, the theory would be the thing that gave way. The line they draw is between working out what your premises already imply, which is what physics does all day, and getting facts about the world out of premises that came from no experience at all.</p>
+            </div>
+            <div class="ctx">
+              <b>Objection: what about astrophysics, where you cannot run an experiment?</b>
+              <p>Nobody will build a star, collide two galaxies or rerun the Big Bang. If the test of meaning is experience, does astrophysics fail it?</p>
+              <p><b>No, and the confusion is between experience and experiment.</b> The Circle asks whether a statement can be checked against <em>observation</em>. An astronomer at a telescope is having experience, and a prediction about a spectrum, an orbit, a transit or a gravitational-wave signal is exactly what their rule was built for. Watching counts.</p>
+              <p><b>The one it does trouble is Bacon</b>, whose test is whether you can make the effect happen, which is the objection set out in his chapter. Two different tests: Bacon wants intervention, the Circle wants observability. Astrophysics fails the first and passes the second.</p>
+              <p><b>Where it genuinely bites</b> is claims nobody can observe even in principle: what lies inside a black hole past the horizon, the universe beyond the cosmological horizon, other universes in a multiverse. Whether those count as science is a live argument among physicists right now, conducted in almost exactly this vocabulary, ninety years on.</p>
+            </div>
             <p>They are not hostile to feeling or to intuition. A mystic may have an experience beyond all concepts, and the Circle does not deny it, and points out that he cannot then talk about it, because talking means capturing it in concepts. Expressing a mood is a real thing worth doing, and the medium for it is art: lyric poetry, or music.</p>
           </div>
 
@@ -1457,7 +1508,7 @@
             <dt>Why it matters</dt><dd>This is the picture of science the course is written against. Everything from Week 4 on is a reply to it.</dd>
           </dl>
 
-          <p class="keep"><b>If you keep one thing</b>The hardest possible line on method: experience plus logic, and everything else is mood dressed up as knowledge.</p>
+          <p class="keep"><b>If you keep one thing</b>The hardest possible line on method: a sentence means something only if you can say what observation would settle it. Observation is enough, so watching the sky counts and nobody has to build a star. Anything that passes neither that test nor the empty truths of logic is mood dressed up as knowledge.</p>
 
           <div class="mynote"><b>My note</b><span>Skim §3 entirely. It runs through the foundations of arithmetic, physics, geometry, biology and the social sciences, one subsection each, and none of it is examinable. Read §2 and §4.</span></div>
 
@@ -1537,6 +1588,18 @@
               <li>A Dominican preaching in Florence on 23 February 1306, in praise of eyeglasses. Not all the arts have been found, he says, and we shall never see an end of finding them. He adds that he had personally met and talked with the man who invented spectacles.</li>
             </ul>
             <p>That last one is the whole thesis in one sermon. Inventing had become a thing a preacher could hold up as a sign of the times.</p>
+            <div class="ctx">
+              <b>Compare: Harari's empty maps, and why it is a different argument</b>
+              <p>In <em>Sapiens</em>, Yuval Noah Harari explains the Scientific Revolution as a <b>discovery of ignorance</b>. Earlier traditions assumed the important answers were already known, in scripture or in the ancients. His image is cartography: medieval maps filled unknown regions with imaginary monsters and continents, and from the fifteenth century European maps began leaving the unknown parts <b>blank</b>. A blank is an admission, and it is also an invitation to go and fill it.</p>
+              <p><b>It is a near relative of White's argument and it is not the same one.</b> They cover different centuries and different activities.</p>
+              <ul>
+                <li><b>White</b> is explaining roughly 500 to 1400, and he is explaining <em>making things</em>: mills, clocks, ploughs, spectacles. His causes are religious attitudes to work, action and a God who builds.</li>
+                <li><b>Harari</b> is explaining 1500 onward, and he is explaining <em>inquiry</em>: expeditions, instruments, the alliance of science with empire and money. His cause is an admitted gap in knowledge.</li>
+              </ul>
+              <p>They fit together more than they compete, and White says so himself when he claims the Middle Ages set up the imperial age. What the two share is the shape of the explanation: a change of <b>attitude</b>, and not of wealth or intelligence, is doing the work. Which means they also share the same weakness, the one already flagged in the note above.</p>
+              <p><b>Your objection to Harari is the standard one, and it is good.</b> If admitting ignorance is what produces discovery, what were earlier civilisations doing? Discovering a great deal, is the answer. Chinese paper, printing, gunpowder, the compass and cast iron. Indian decimal place-value and zero. Babylonian eclipse prediction. Greek gearing, in the Antikythera mechanism. And around 1021 Ibn al-Haytham was running controlled experiments on light in Cairo and writing that the seeker after truth should be suspicious of what he reads and attack it from every side, which is institutionalised doubt five centuries before Harari's blank maps.</p>
+              <p><b>What Harari can still defend</b> is narrower: the difference is whether ignorance is <em>built into the institutions</em>, with standing machinery for funding, publishing and revising, on the assumption that today's answers are provisional. Earlier discovery was real and mostly was not organised as a permanent programme of admitting error. Saying that, and naming al-Haytham as the case that makes "first to admit ignorance" look Eurocentric, is a strong seminar remark.</p>
+            </div>
           </div>
 
           <h4>Where the appetite came from: three religious habits</h4>
@@ -2001,17 +2064,14 @@
     c.className = 'cmt'; c.setAttribute('data-id', it.id);
     var q = document.createElement('div'); q.className = 'q';
     q.textContent = '“' + (it.text.length > 70 ? it.text.slice(0, 70) + '…' : it.text) + '”';
-    var ta = document.createElement('textarea');
-    ta.value = it.body || ''; ta.placeholder = 'Comment…'; ta.rows = 1;
-    ta.addEventListener('input', fit);
-    ta.addEventListener('focus', fit);
-    function fit() { ta.style.height = 'auto'; ta.style.height = Math.max(ta.scrollHeight, 16) + 'px'; }
-    ta._fit = fit;
+    var ta = document.createElement('div');
+    ta.className = 'cbody'; ta.contentEditable = 'true';
+    ta.setAttribute('data-ph', 'Comment…');
+    ta.innerHTML = clean(it.body || '');
+    rich(ta, function () { it.body = ta.innerHTML; save(); });
     ta.addEventListener('blur', function () {
-      var v = ta.value.trim();
-      if (!v) { remove(it.id); return; }
-      if (v !== it.body) { it.body = v; save(); }
-      place_notes();
+      if (!ta.textContent.trim()) { remove(it.id); return; }
+      it.body = ta.innerHTML; save(); place_notes();
     });
     ta.addEventListener('keydown', function (e) { if (e.key === 'Escape') ta.blur(); });
     var row = document.createElement('div'); row.className = 'row';
@@ -2030,8 +2090,7 @@
       var c = root.querySelector('.cmt[data-id="' + it.id + '"]');
       var m = root.querySelector('mark[data-id="' + it.id + '"]');
       if (!c || !m) return;
-      var ta0 = c.querySelector('textarea');
-      if (ta0 && ta0._fit) ta0._fit();
+
       if (wide) {
         if (c.parentNode !== rail) rail.appendChild(c);
         c.classList.remove('inline');
@@ -2103,6 +2162,8 @@
     Array.prototype.forEach.call(d.querySelectorAll('*'), function (n) {
       Array.prototype.slice.call(n.attributes).forEach(function (a) {
         if (/^on/i.test(a.name) || (a.name === 'href' && /^\s*javascript:/i.test(a.value))) n.removeAttribute(a.name);
+        if (a.name === 'class' && !/^(c-y|c-p|c-m)$/.test(a.value)) n.removeAttribute(a.name);
+        if (a.name === 'style') n.removeAttribute(a.name);
       });
     });
     return d.innerHTML;
@@ -2162,23 +2223,109 @@
       rd.readAsText(f);
     });
   }
+  // Markdown-ish shortcuts, the ones every note app has. Shared by the note cards and the
+  // comment bodies, so the two behave the same way.
+  function rich(el, onChange) {
+    el.addEventListener('paste', function (e) {
+      e.preventDefault();
+      var t = (e.clipboardData || window.clipboardData).getData('text/plain');
+      document.execCommand('insertText', false, t);
+    });
+    el.addEventListener('keydown', function (e) {
+      if (e.key !== ' ' && e.key !== 'Enter') return;
+      var sel = window.getSelection();
+      if (!sel || !sel.rangeCount || !sel.isCollapsed) return;
+      var r = sel.getRangeAt(0), n = r.startContainer;
+      var inList = n.parentNode && n.parentNode.closest && n.parentNode.closest('li');
+      var block = n.nodeType === 3 ? n.parentNode : n;
+      while (block && block !== el && !/^(P|DIV|H[1-6]|BLOCKQUOTE)$/.test(block.tagName)) block = block.parentNode;
+      if (!block) block = el;
+      var pre = document.createRange();
+      pre.selectNodeContents(block);
+      try { pre.setEnd(r.startContainer, r.startOffset); } catch (err) { return; }
+      var head = pre.toString();
+      var cmd = null, arg = null, m;
+      if (e.key === ' ') {
+        if (inList) return;
+        if ((m = head.match(/^\s*([-*+])$/))) cmd = 'insertUnorderedList';
+        else if ((m = head.match(/^\s*\d+[.)]$/))) cmd = 'insertOrderedList';
+        else if ((m = head.match(/^\s*(#{1,3})$/))) { cmd = 'formatBlock'; arg = 'h' + (m[1].length + 2); }
+        else if ((m = head.match(/^\s*>$/))) { cmd = 'formatBlock'; arg = 'blockquote'; }
+        else if ((m = head.match(/^\s*(-{2,3})$/))) cmd = 'hr';
+      } else if (e.key === 'Enter' && (m = head.match(/^\s*(-{2,3})$/))) {
+        cmd = 'hr';
+      }
+      if (!cmd) return;
+      e.preventDefault();
+      pre.deleteContents();
+      if (cmd === 'hr') document.execCommand('insertHorizontalRule', false, null);
+      else document.execCommand(cmd, false, arg);
+      if (onChange) onChange();
+    });
+  }
+  // Colour a selection by wrapping it, so the class carries the colour and both themes work.
+  function paintSel(cls) {
+    var sel = window.getSelection();
+    if (!sel || !sel.rangeCount || sel.isCollapsed) return;
+    var host = sel.anchorNode && sel.anchorNode.parentElement &&
+               sel.anchorNode.parentElement.closest('.nb, .cbody');
+    if (!host) return;
+    var r = sel.getRangeAt(0);
+    if (!cls) {
+      var frag = r.extractContents();
+      var tmp = document.createElement('div');
+      tmp.appendChild(frag);
+      Array.prototype.forEach.call(tmp.querySelectorAll('span.c-y, span.c-p, span.c-m'), function (sp) {
+        var p = sp.parentNode;
+        while (sp.firstChild) p.insertBefore(sp.firstChild, sp);
+        p.removeChild(sp);
+      });
+      while (tmp.firstChild) r.insertNode(tmp.lastChild);
+    } else {
+      var sp2 = document.createElement('span');
+      sp2.className = cls;
+      try { r.surroundContents(sp2); }
+      catch (err) { sp2.appendChild(r.extractContents()); r.insertNode(sp2); }
+    }
+    sel.removeAllRanges();
+    host.normalize();
+    if (host.classList.contains('nb')) { notes[host.getAttribute('data-k')] = host.innerHTML; }
+    else {
+      var card = host.closest('.cmt');
+      var it = card && items.filter(function (x) { return x.id === card.getAttribute('data-id'); })[0];
+      if (it) it.body = host.innerHTML;
+    }
+    save();
+  }
   function wireNotes() {
     nbbar = document.createElement('div');
     nbbar.id = 'nb-bar'; nbbar.hidden = true;
     nbbar.innerHTML = '<button type="button" data-a="bold" title="Bold"><b>B</b></button>' +
       '<button type="button" class="i" data-a="italic" title="Italic">I</button>' +
-      '<button type="button" class="l" data-a="insertUnorderedList" title="Bullet list">&bull; list</button>';
+      '<button type="button" class="l" data-a="insertUnorderedList" title="Bullet list">&bull; list</button>' +
+      '<div class="sep"></div>' +
+      '<button type="button" class="sw y" data-p="c-y" title="Yellow text"></button>' +
+      '<button type="button" class="sw p" data-p="c-p" title="Pink text"></button>' +
+      '<button type="button" class="sw m" data-p="c-m" title="Grey it out, for an aside"></button>' +
+      '<button type="button" class="sw x" data-p="" title="Back to normal">&times;</button>';
     document.body.appendChild(nbbar);
     nbbar.addEventListener('mousedown', function (e) { e.preventDefault(); });
     nbbar.addEventListener('click', function (e) {
       var b = e.target.closest('button'); if (!b) return;
+      if (b.hasAttribute('data-p')) { paintSel(b.getAttribute('data-p')); nbbar.hidden = true; return; }
       document.execCommand(b.getAttribute('data-a'), false, null);
       var el = document.activeElement;
       if (el && el.classList && el.classList.contains('nb')) { notes[el.getAttribute('data-k')] = el.innerHTML; save(); }
+      else if (el && el.classList && el.classList.contains('cbody')) {
+        var card = el.closest('.cmt');
+        var it = card && items.filter(function (x) { return x.id === card.getAttribute('data-id'); })[0];
+        if (it) { it.body = el.innerHTML; save(); }
+      }
     });
     function nbplace() {
       var a = document.activeElement, sel = window.getSelection();
-      if (!a || !a.classList || !a.classList.contains('nb') || !sel || sel.isCollapsed || !String(sel).trim()) { nbbar.hidden = true; return; }
+      var editing = a && a.classList && (a.classList.contains('nb') || a.classList.contains('cbody'));
+      if (!editing || !sel || sel.isCollapsed || !String(sel).trim()) { nbbar.hidden = true; return; }
       var r = sel.getRangeAt(0).getBoundingClientRect();
       if (!r.width && !r.height) { nbbar.hidden = true; return; }
       nbbar.hidden = false;
@@ -2195,33 +2342,7 @@
         save();
       });
       el.addEventListener('blur', function () { nbbar.hidden = true; notes[el.getAttribute('data-k')] = el.innerHTML; save(); });
-      el.addEventListener('keydown', function (e) {
-        // "- " or "* " or "1. " at the start of a line becomes a list, the usual way
-        if (e.key !== ' ') return;
-        var sel = window.getSelection();
-        if (!sel || !sel.rangeCount || !sel.isCollapsed) return;
-        var r = sel.getRangeAt(0);
-        var n = r.startContainer;
-        if (n.nodeType === 3 && n.parentNode && n.parentNode.closest && n.parentNode.closest('li')) return;
-        var block = n.nodeType === 3 ? n.parentNode : n;
-        while (block && block !== el && !/^(P|DIV|H[1-6])$/.test(block.tagName)) block = block.parentNode;
-        if (!block) block = el;
-        var pre = document.createRange();
-        pre.selectNodeContents(block);
-        try { pre.setEnd(r.startContainer, r.startOffset); } catch (err) { return; }
-        var m = pre.toString().match(/^\s*([-*+]|\d+[.)])$/);
-        if (!m) return;
-        e.preventDefault();
-        pre.deleteContents();
-        document.execCommand(/\d/.test(m[1]) ? 'insertOrderedList' : 'insertUnorderedList', false, null);
-        notes[el.getAttribute('data-k')] = el.innerHTML;
-        save();
-      });
-      el.addEventListener('paste', function (e) {
-        e.preventDefault();
-        var t = (e.clipboardData || window.clipboardData).getData('text/plain');
-        document.execCommand('insertText', false, t);
-      });
+      rich(el, function () { notes[el.getAttribute('data-k')] = el.innerHTML; save(); });
     });
   }
   function remove(id) {
@@ -2305,7 +2426,7 @@
       if (c === 'n') {
         var it = capture('note');
         if (it) {
-          var ta = root.querySelector('.cmt[data-id="' + it.id + '"] textarea');
+          var ta = root.querySelector('.cmt[data-id="' + it.id + '"] .cbody');
           if (ta) { ta.focus(); }
         }
       } else { capture('hl', c); }
@@ -2361,7 +2482,7 @@
         var c = root.querySelector('.cmt[data-id="' + id + '"]');
         Array.prototype.forEach.call(root.querySelectorAll('.cmt.act'), function (x) { x.classList.remove('act'); });
         Array.prototype.forEach.call(root.querySelectorAll('mark.hl-n.act'), function (x) { x.classList.remove('act'); });
-        if (c) { c.classList.add('act'); m.classList.add('act'); c.scrollIntoView({ block: 'nearest' }); c.querySelector('textarea').focus(); }
+        if (c) { c.classList.add('act'); m.classList.add('act'); c.scrollIntoView({ block: 'nearest' }); c.querySelector('.cbody').focus(); }
       } else { remove(id); }
     });
     wireIO();
@@ -2381,7 +2502,7 @@
         ref.onSnapshot(function (snap) {
           var d = snap.exists ? snap.data() : null;
           if (!d) return;
-          if (root.querySelector('.cmt textarea:focus')) return;
+          if (root.querySelector('.cmt .cbody:focus')) return;
           if (d.notes && typeof d.notes === 'object') { notes = d.notes; paintNotes(); }
           if (Array.isArray(d.items)) {
             items = d.items.slice();
