@@ -647,7 +647,7 @@
 
   <section id="s-notes">
     <h2>My notes</h2>
-    <div class="mynote"><b>How this works</b><span>Yours to write in. Type straight into any block below and it saves on its own. <b>Cmd or Ctrl + B</b> for bold, <b>+ I</b> for italic, <b>+ H</b> for the last colour you used. Selecting text brings up a small bar with bold, italic, a bullet list and the colours. Typing <b>- </b> or <b>1. </b> starts a list, <b>### </b> starts a heading, and <b>Tab</b> inside a list indents.</span></div>
+    <div class="mynote"><b>How this works</b><span>Yours to write in. Type straight into any block below and it saves on its own. <b>Cmd or Ctrl + B</b> for bold, <b>+ I</b> for italic, <b>+ H</b> for the last colour you used, and again to take it off. Selecting text brings up a small bar with bold, italic, a bullet list and the colours. Typing <b>- </b> or <b>1. </b> starts a list, <b>### </b> starts a heading, and <b>Tab</b> inside a list indents.</span></div>
     <div class="nbgrid">
       <div class="nbwrap wide">
         <div class="nbhead"><b>The argument overall</b><span>all nine</span></div>
@@ -2632,6 +2632,17 @@
     }
     return d.textContent.trim() || d.querySelector('br,hr') ? d.innerHTML : '';
   }
+  // Is there already a colour on this selection, whether it sits inside one or covers one
+  function selColoured(el) {
+    var sel = window.getSelection();
+    if (!sel || !sel.rangeCount) return false;
+    if (inColour(el)) return true;
+    var r = sel.getRangeAt(0), found = false;
+    Array.prototype.forEach.call(el.querySelectorAll('.c-y, .c-p, .c-g, .c-m'), function (e) {
+      if (!found && r.intersectsNode(e)) found = true;
+    });
+    return found;
+  }
   // Some apps put nothing but plain text on the clipboard, and a list copied from one of those
   // arrives as lines that begin with a dash. Read them back as a list.
   function plainList(t) {
@@ -2714,8 +2725,9 @@
         return;
       }
       if ((e.metaKey || e.ctrlKey) && (e.key === 'h' || e.key === 'H')) {
+        // One key both ways: colour plain text, and take the colour back off coloured text.
         e.preventDefault();
-        paintSel(lastPaint);
+        paintSel(selColoured(el) ? null : lastPaint);
         if (onChange) onChange();
         return;
       }
@@ -2787,9 +2799,20 @@
   var CBACK = { 'rgb(1,2,1)': 'c-y', 'rgb(1,2,2)': 'c-p', 'rgb(1,2,3)': 'c-m', 'rgb(1,2,4)': 'c-n',
                 'rgb(1,2,5)': 'c-g',
                 '#010201': 'c-y', '#010202': 'c-p', '#010203': 'c-m', '#010204': 'c-n', '#010205': 'c-g' };
-  function wholly(r, el) {
-    try { return r.comparePoint(el, 0) >= 0 && r.comparePoint(el, el.childNodes.length) <= 0; }
-    catch (e) { return false; }
+  // Where a boundary falls, counted in characters from the start of the editor. Comparing
+  // DOM boundary points directly says a span starts before its own first character, which
+  // makes a selection of exactly that span's text look like it falls short of covering it.
+  function charPos(host, node, off) {
+    var r = document.createRange();
+    try { r.setStart(host, 0); r.setEnd(node, off); } catch (e) { return -1; }
+    return r.toString().length;
+  }
+  function wholly(r, el, host) {
+    var rs = charPos(host, r.startContainer, r.startOffset);
+    var re = charPos(host, r.endContainer, r.endOffset);
+    var es = charPos(host, el, 0), ee = es + el.textContent.length;
+    if (rs < 0 || re < 0 || es < 0 || ee <= es) return false;
+    return es >= rs && ee <= re;
   }
   function paintSel(cls) {
     var sel = window.getSelection();
@@ -2808,7 +2831,7 @@
     // A colour already inside the selection sits deeper than the new one and would win, so
     // clear the ones the selection covers whole. One it only overlaps keeps its colour outside.
     Array.prototype.forEach.call(host.querySelectorAll('.c-y, .c-p, .c-g, .c-m, .c-n'), function (e) {
-      if (r.intersectsNode(e) && wholly(r, e)) e.removeAttribute('class');
+      if (r.intersectsNode(e) && wholly(r, e, host)) e.removeAttribute('class');
     });
     var want = cls || (inColour(host) ? 'c-n' : null);
     if (want) {
