@@ -330,8 +330,10 @@
   .nbpad { position: relative; padding: 14px 16px 16px 30px; }
   .nbpad::before { content: ""; position: absolute; left: 16px; top: 12px; bottom: 12px; width: 1px;
                    background: var(--rule); }
-  .nb { font-size: 15.5px; line-height: 1.6; color: var(--ink); min-height: 46px; outline: none; }
-  .nb:empty::before { content: attr(data-ph); color: var(--muted); font-style: italic; }
+  .nb { position: relative; font-size: 15.5px; line-height: 1.6; color: var(--ink); min-height: 46px; outline: none; }
+  .nb.is-empty::before, .cbody.is-empty::before {
+    content: attr(data-ph); position: absolute; left: 0; top: 0; color: var(--muted);
+    font-style: italic; pointer-events: none; }
   .nb p { margin: 0 0 8px; max-width: none; }
   .nb p:last-child { margin-bottom: 0; }
   .nb ul, .nb ol { margin: 5px 0 8px; padding-left: 20px; }
@@ -380,14 +382,33 @@
   .storenote { background: var(--sunk); padding: 14px 18px; font-size: 15px; color: var(--ink-soft); }
   .storenote b { color: var(--ink); }
 
+  /* highlights list */
+  .bm { display: flex; flex-direction: column; gap: 22px; }
+  .bmg { display: flex; flex-direction: column; gap: 2px; }
+  .bmg > h3 { margin: 0 0 6px; font-family: var(--display); font-size: 18px; font-weight: 600; }
+  .bmg > h3 span { font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-left: 9px; }
+  .bmi { display: grid; grid-template-columns: 12px 1fr; gap: 0 11px; align-items: start;
+         padding: 8px 10px 8px 0; border-top: 1px solid var(--rule-soft); text-align: left;
+         background: none; border-left: 0; border-right: 0; border-bottom: 0; cursor: pointer; width: 100%; font: inherit; color: inherit; }
+  .bmi:hover { background: var(--surface); }
+  .bmi:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+  .bmi .dot { width: 9px; height: 9px; border-radius: 2px; margin-top: 7px; }
+  .bmi .dot.y { background: rgba(255,206,0,.85); }
+  .bmi .dot.p { background: rgba(255,92,168,.7); }
+  .bmi .dot.n { background: none; border: 1px dashed var(--accent); }
+  .bmi q { font-size: 15px; color: var(--ink); quotes: none; }
+  .bmi .cm { display: block; font-size: 13.5px; color: var(--muted); margin-top: 3px; }
+  .bmempty { font-size: 16px; color: var(--muted); }
+  mark.hl.flash { animation: fl 1.4s ease-out; }
+  @keyframes fl { 0%,55% { box-shadow: 0 0 0 4px var(--close-wash); } 100% { box-shadow: 0 0 0 0 transparent; } }
+
   /* comment rail */
   #cmts { position: absolute; top: 0; left: 100%; margin-left: 18px; width: 202px; display: none; }
   #cmts.on { display: block; }
   .cmt { position: absolute; width: 202px; background: transparent; border-left: 2px solid var(--rule); padding: 2px 0 2px 9px; display: flex; flex-direction: column; gap: 3px; }
   .cmt.inline { position: static; width: auto; max-width: 420px; margin: 10px 0 10px 16px; }
   .cmt .q { font-family: var(--mono); font-size: 9px; letter-spacing: .02em; color: var(--muted); line-height: 1.4; opacity: .8; overflow: hidden; }
-  .cmt .cbody { font-family: var(--body); font-size: 12.5px; line-height: 1.45; color: var(--ink-soft); outline: none; min-height: 17px; }
-  .cmt .cbody:empty::before { content: attr(data-ph); color: var(--muted); font-style: italic; }
+  .cmt .cbody { position: relative; font-family: var(--body); font-size: 12.5px; line-height: 1.45; color: var(--ink-soft); outline: none; min-height: 17px; }
   .cmt .cbody p { margin: 0 0 5px; max-width: none; }
   .cmt .cbody p:last-child { margin-bottom: 0; }
   .cmt .cbody ul, .cmt .cbody ol { margin: 4px 0 5px; padding-left: 17px; }
@@ -443,6 +464,7 @@
 
 <nav id="nav" aria-label="Contents">
   <a class="grp" href="#s-notes">My notes</a>
+  <a class="grp" href="#s-marks">My highlights</a>
   <a class="grp" href="#s-arg">The argument</a>
   <a class="grp" href="#s-texts">The nine texts</a>
   <a class="core" href="#r1" title="Chapter 1 · read properly">Plato</a>
@@ -549,6 +571,12 @@
       </div>
     </div>
     <p class="nbhint">Saved automatically in this browser.</p>
+  </section>
+
+  <section id="s-marks">
+    <h2>My highlights</h2>
+    <p class="lede">Everything you have marked, grouped by the text it sits in. Click one to jump to it.</p>
+    <div class="bm" id="bmlist"><p class="bmempty">Nothing marked yet. Select any text in the guide and pick a colour.</p></div>
   </section>
 
   <section>
@@ -1636,7 +1664,10 @@
 
             <div class="bit">
               <h5>The mechanical clock changed what an hour is</h5>
-              <p>Before it, an hour was one-twelfth of the time between sunrise and sunset. A summer hour in Paris was genuinely longer than a winter hour, and water clocks and sundials had to be adjusted through the year. Equal, fixed, year-round hours exist because a machine could only be built to count them that way. Then monasteries rang bells by them, then towns, then work was paid by them. The uniform hour you live inside is a thirteenth-century engineering constraint that became the shape of the day.</p>
+              <p>Before it, an hour was one-twelfth of the time between sunrise and sunset. A summer hour in Paris was genuinely longer than a winter hour, and water clocks and sundials had to be adjusted through the year.</p>
+              <p><b>Equal hours exist because a machine could only be built to count them that way.</b> A gear train ticks at one rate. It has no way to know that the days are getting shorter. So the machine imposed its own regularity, and the regularity spread outward: monasteries rang bells by it, then towns hung clocks in their squares, then work was paid by it.</p>
+              <p><b>Nothing here was a loss, and something did change.</b> Before clocks, work was measured by the task: plough the field, finish the batch, and the day ended when the thing was done. Equal hours made time countable, and a countable thing can be bought and sold. Wages by the hour, the shift, the timetable, and the idea of being late all follow from a machine that had no way of doing it differently.</p>
+              <p>Which turns White's argument round and points it at you. His whole essay is about culture producing technology. This is the same relationship running the other way: a constraint in some thirteenth-century gearing became the shape of the working day, and it still is.</p>
             </div>
 
             <div class="bit">
@@ -1764,6 +1795,13 @@
             <p>A seventeenth-century town under plague. It is closed and cut into quarters and streets, each under an official who may not leave for the duration. Everyone is shut in their house on pain of death.</p>
             <p>Every inhabitant is registered by name, age and sex regardless of station. Copies of the register go to three places: the quarter's intendant, the town hall, and the official who calls the roll daily at each window. Each person has to appear and answer to their name. Everything observed on the rounds is written down and passed up the chain: deaths, illnesses, complaints, irregularities. Magistrates control all medical treatment, and no other practitioner may treat, no apothecary prepare medicine and no confessor visit a sick person without written permission.</p>
             <p>Five or six days in, the houses are purified one at a time. Everyone leaves. Furniture is raised off the floor, windows, doors and even keyholes are sealed with wax, and perfume is burned inside. The men who did the work are searched on the way out, to prove they carry nothing they did not bring in.</p>
+            <div class="ctx">
+              <b>Context: what "purified" meant, and why it took that form</b>
+              <p>Nobody in the seventeenth century knew about bacteria. The plague was understood as <b>corrupted air</b>, the same miasma theory that turns up in the Comte chapter two hundred years later. On that account the poison hangs about in a sick house and soaks into anything porous: bedding, clothing, wall hangings.</p>
+              <p>Every step follows from that belief. <b>Burning perfume</b>, usually sulphur, juniper or vinegar, was meant to correct the bad air with strong good air. <b>Sealing the keyholes</b> kept the fumigation smoke inside long enough to reach everything. <b>Raising the furniture</b> let the smoke underneath. And <b>searching the workers</b> did two jobs at once: it stopped looting, and it stopped infected goods leaving the house.</p>
+              <p>The theory was wrong and some of the practice worked anyway, because emptying and fumigating a house also kills fleas and rats. Which is the same accident as Bazalgette's sewers in the Comte chapter: a false account pointing at a useful action.</p>
+              <p><b>Foucault's interest is elsewhere.</b> He is not asking whether the medicine worked. He is pointing at the paperwork: the register, the roll call, the daily written report. Those are the parts that outlived the plague and became how schools and clinics run.</p>
+            </div>
           </div>
 
           <h4>What he extracts from it: the definition of discipline</h4>
@@ -2069,6 +2107,7 @@
     ta.setAttribute('data-ph', 'Comment…');
     ta.innerHTML = clean(it.body || '');
     rich(ta, function () { it.body = ta.innerHTML; save(); });
+    ta.addEventListener('input', function () { it.body = ta.innerHTML; save(); });
     ta.addEventListener('blur', function () {
       if (!ta.textContent.trim()) { remove(it.id); return; }
       it.body = ta.innerHTML; save(); place_notes();
@@ -2225,8 +2264,30 @@
     });
   }
   // Markdown-ish shortcuts, the ones every note app has. Shared by the note cards and the
-  // comment bodies, so the two behave the same way.
+  // comment bodies. Every change goes through execCommand, because the browser's undo stack
+  // only records those: a raw Range mutation leaves Cmd+Z with nothing to undo.
+  function caretEnd(node) {
+    var r = document.createRange();
+    r.selectNodeContents(node); r.collapse(false);
+    var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+  }
+  function prime(el) {
+    if (!el.querySelector('p,div,h3,h4,h5,ul,ol,blockquote,hr')) {
+      el.innerHTML = '<p><br></p>';
+      if (el === document.activeElement) caretEnd(el.firstElementChild);
+    }
+  }
+  function markEmpty(el) { el.classList.toggle('is-empty', !el.textContent.trim() && !el.querySelector('hr,img')); }
+  function blockOf(el, node) {
+    var b = node && (node.nodeType === 3 ? node.parentElement : node);
+    while (b && b !== el && !/^(P|DIV|H[1-6]|BLOCKQUOTE|LI)$/.test(b.tagName)) b = b.parentElement;
+    return b;
+  }
   function rich(el, onChange) {
+    try { document.execCommand('defaultParagraphSeparator', false, 'p'); } catch (e) {}
+    markEmpty(el);
+    el.addEventListener('focus', function () { prime(el); markEmpty(el); });
+    el.addEventListener('input', function () { markEmpty(el); });
     el.addEventListener('paste', function (e) {
       e.preventDefault();
       var t = (e.clipboardData || window.clipboardData).getData('text/plain');
@@ -2236,79 +2297,66 @@
       if (e.key !== ' ' && e.key !== 'Enter') return;
       var sel = window.getSelection();
       if (!sel || !sel.rangeCount || !sel.isCollapsed) return;
-      var r = sel.getRangeAt(0), n = r.startContainer;
-      var inList = n.parentNode && n.parentNode.closest && n.parentNode.closest('li');
-      var block = n.nodeType === 3 ? n.parentNode : n;
-      while (block && block !== el && !/^(P|DIV|H[1-6]|BLOCKQUOTE)$/.test(block.tagName)) block = block.parentNode;
-      if (!block) block = el;
+      var r = sel.getRangeAt(0);
+      var blk = blockOf(el, r.startContainer) || el;
       var pre = document.createRange();
-      pre.selectNodeContents(block);
+      pre.selectNodeContents(blk);
       try { pre.setEnd(r.startContainer, r.startOffset); } catch (err) { return; }
-      var head = pre.toString();
-      var cmd = null, arg = null, m;
+      var head = pre.toString(), cmd = null, arg = null, m;
+      var inLi = blk && blk.tagName === 'LI';
       if (e.key === ' ') {
-        if (inList) return;
-        if ((m = head.match(/^\s*([-*+])$/))) cmd = 'insertUnorderedList';
-        else if ((m = head.match(/^\s*\d+[.)]$/))) cmd = 'insertOrderedList';
-        else if ((m = head.match(/^\s*(#{1,3})$/))) { cmd = 'formatBlock'; arg = 'h' + (m[1].length + 2); }
-        else if ((m = head.match(/^\s*>$/))) { cmd = 'formatBlock'; arg = 'blockquote'; }
-        else if ((m = head.match(/^\s*(-{2,3})$/))) cmd = 'hr';
-      } else if (e.key === 'Enter' && (m = head.match(/^\s*(-{2,3})$/))) {
-        cmd = 'hr';
-      }
+        if (inLi) return;
+        if (head.match(/^\s*[-*+]$/)) cmd = 'ul';
+        else if (head.match(/^\s*\d+[.)]$/)) cmd = 'ol';
+        else if ((m = head.match(/^\s*(#{1,3})$/))) { cmd = 'block'; arg = 'h' + (m[1].length + 2); }
+        else if (head.match(/^\s*>$/)) { cmd = 'block'; arg = 'blockquote'; }
+        else if (head.match(/^\s*-{2,3}$/)) cmd = 'hr';
+      } else if (head.match(/^\s*-{2,3}$/)) { cmd = 'hr'; }
       if (!cmd) return;
       e.preventDefault();
-      pre.deleteContents();
-      if (cmd === 'hr') {
-        document.execCommand('insertHorizontalRule', false, null);
-        var hr = el.querySelector('hr[id]');
-        if (hr) hr.removeAttribute('id');
-      } else if (cmd === 'formatBlock') {
-        // formatBlock does nothing when the line it is given is empty, which is exactly the
-        // case after the marker has been deleted. So try it, then build the block by hand.
-        document.execCommand('formatBlock', false, '<' + arg + '>');
-        var at = sel.anchorNode;
-        at = at && (at.nodeType === 3 ? at.parentElement : at);
-        if (!at || !at.closest || !at.closest(arg)) {
-          var node = document.createElement(arg);
-          node.appendChild(document.createElement('br'));
-          sel.getRangeAt(0).insertNode(node);
-          var nr = document.createRange();
-          nr.setStart(node, 0); nr.collapse(true);
-          sel.removeAllRanges(); sel.addRange(nr);
-        }
+      if (cmd === 'block' && blk !== el) {
+        // Replace the whole line with the new block, in one undoable step.
+        var inner = blk.innerHTML.replace(/^(?:\s|&nbsp;|<br\s*\/?>)*(?:#{1,3}|&gt;|>)/, '') || '<br>';
+        var rr = document.createRange();
+        rr.selectNode(blk);
+        sel.removeAllRanges(); sel.addRange(rr);
+        document.execCommand('insertHTML', false, '<' + arg + '>' + inner + '</' + arg + '>');
+        var all = el.getElementsByTagName(arg);
+        if (all.length) caretEnd(all[all.length - 1]);
       } else {
-        document.execCommand(cmd, false, null);
+        sel.removeAllRanges(); sel.addRange(pre);
+        document.execCommand('delete', false, null);
+        if (cmd === 'ul') document.execCommand('insertUnorderedList', false, null);
+        else if (cmd === 'ol') document.execCommand('insertOrderedList', false, null);
+        else if (cmd === 'hr') document.execCommand('insertHorizontalRule', false, null);
+        else {
+          document.execCommand('insertHTML', false, '<' + arg + '><br></' + arg + '>');
+          var a2 = el.getElementsByTagName(arg);
+          if (a2.length) caretEnd(a2[a2.length - 1]);
+        }
       }
+      Array.prototype.forEach.call(el.querySelectorAll('hr[id]'), function (n) { n.removeAttribute('id'); });
+      markEmpty(el);
       if (onChange) onChange();
     });
   }
-  // Colour a selection by wrapping it, so the class carries the colour and both themes work.
+  // Colour a selection. insertHTML keeps it on the browser's undo stack, and a class
+  // carries the colour so both themes stay readable.
   function paintSel(cls) {
     var sel = window.getSelection();
     if (!sel || !sel.rangeCount || sel.isCollapsed) return;
     var host = sel.anchorNode && sel.anchorNode.parentElement &&
                sel.anchorNode.parentElement.closest('.nb, .cbody');
     if (!host) return;
-    var r = sel.getRangeAt(0);
-    if (!cls) {
-      var frag = r.extractContents();
-      var tmp = document.createElement('div');
-      tmp.appendChild(frag);
-      Array.prototype.forEach.call(tmp.querySelectorAll('span.c-y, span.c-p, span.c-m'), function (sp) {
-        var p = sp.parentNode;
-        while (sp.firstChild) p.insertBefore(sp.firstChild, sp);
-        p.removeChild(sp);
-      });
-      while (tmp.firstChild) r.insertNode(tmp.lastChild);
-    } else {
-      var sp2 = document.createElement('span');
-      sp2.className = cls;
-      try { r.surroundContents(sp2); }
-      catch (err) { sp2.appendChild(r.extractContents()); r.insertNode(sp2); }
-    }
-    sel.removeAllRanges();
-    host.normalize();
+    var tmp = document.createElement('div');
+    tmp.appendChild(sel.getRangeAt(0).cloneContents());
+    Array.prototype.forEach.call(tmp.querySelectorAll('span.c-y, span.c-p, span.c-m'), function (sp) {
+      var p = sp.parentNode;
+      while (sp.firstChild) p.insertBefore(sp.firstChild, sp);
+      p.removeChild(sp);
+    });
+    var html = tmp.innerHTML;
+    document.execCommand('insertHTML', false, cls ? '<span class="' + cls + '">' + html + '</span>' : html);
     if (host.classList.contains('nb')) { notes[host.getAttribute('data-k')] = host.innerHTML; }
     else {
       var card = host.closest('.cmt');
