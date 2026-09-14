@@ -242,11 +242,45 @@
   .ses h3 { margin: 0; font-family: var(--display); font-size: 21px; font-weight: 600; line-height: 1.2; }
   .ses p { font-size: 16.5px; color: var(--ink-soft); }
 
-  footer { border-top: 1px solid var(--rule); padding-top: 24px; font-size: 14.5px; color: var(--muted); display: flex; flex-direction: column; gap: 12px; }
-  footer b { color: var(--ink-soft); font-weight: 600; }
-  footer .weeks { display: grid; grid-template-columns: 96px 1fr; gap: 6px 16px; }
-  footer .weeks dt { font-family: var(--mono); font-size: 11px; color: var(--muted); padding-top: 3px; }
-  footer .weeks dd { margin: 0; color: var(--ink-soft); }
+  .endmatter { border-top: 1px solid var(--rule); padding-top: 24px; font-size: 14.5px; color: var(--muted); display: flex; flex-direction: column; gap: 12px; }
+  .endmatter b { color: var(--ink-soft); font-weight: 600; }
+  .endmatter .weeks { display: grid; grid-template-columns: 96px 1fr; gap: 6px 16px; }
+  .endmatter .weeks dt { font-family: var(--mono); font-size: 11px; color: var(--muted); padding-top: 3px; }
+  .endmatter .weeks dd { margin: 0; color: var(--ink-soft); }
+
+  /* site footer */
+  .sitefoot { border-top: 1px solid var(--rule); background: var(--surface); margin-top: 20px; }
+  .sitefoot .in { max-width: 900px; margin: 0 auto; padding: 40px 26px 30px;
+                  display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 32px; }
+  .sitefoot .col { display: flex; flex-direction: column; gap: 9px; align-items: flex-start; }
+  .sitefoot h2 { margin: 0 0 2px; font-family: var(--mono); font-size: 10.5px; letter-spacing: .13em;
+                 text-transform: uppercase; color: var(--muted); font-weight: 500; }
+  .sitefoot a, .sitefoot button { font-family: var(--body); font-size: 14.5px; color: var(--ink-soft);
+                                  text-decoration: none; background: none; border: 0; padding: 0;
+                                  cursor: pointer; text-align: left; border-bottom: 1px solid transparent; }
+  .sitefoot a:hover, .sitefoot button:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .sitefoot .brand a { font-family: var(--mono); font-size: 11.5px; letter-spacing: .08em;
+                       text-transform: uppercase; color: var(--ink); }
+  .sitefoot .brand p { margin: 0; font-size: 14px; color: var(--muted); max-width: 30ch; }
+  .sitefoot .colophon { max-width: 900px; margin: 0 auto; padding: 16px 26px 34px;
+                        border-top: 1px solid var(--rule); display: flex; flex-wrap: wrap; gap: 6px 28px;
+                        font-size: 12.5px; color: var(--muted); }
+  @media (max-width: 700px) { .sitefoot .in { grid-template-columns: 1fr; gap: 26px; padding: 30px 16px 22px; }
+                              .sitefoot .colophon { padding: 14px 16px 26px; flex-direction: column; } }
+
+  /* the highlights drawer, kept out of the reading */
+  .drawer[hidden] { display: none !important; }
+  .drawer { position: fixed; inset: 0; z-index: 90; }
+  .drawer .dback { position: absolute; inset: 0; background: rgba(0,0,0,.34); }
+  .dpanel { position: absolute; top: 0; right: 0; bottom: 0; width: min(460px, 100%);
+            background: var(--paper); border-left: 1px solid var(--rule); box-shadow: -8px 0 28px rgba(0,0,0,.16);
+            display: flex; flex-direction: column; gap: 4px; padding: 22px 26px 30px; overflow-y: auto; }
+  .dhead { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .dhead h2 { margin: 0; font-family: var(--display); font-size: 25px; font-weight: 600; }
+  .dclose { background: none; border: 0; font-size: 26px; line-height: 1; color: var(--muted);
+            cursor: pointer; padding: 0 4px; }
+  .dclose:hover { color: var(--ink); }
+  .dsub { margin: 0 0 14px; font-size: 14px; color: var(--muted); }
 
 
 
@@ -320,8 +354,8 @@
 
   /* vertical nav */
   .wrap { position: relative; }
-  #nav { position: fixed; top: calc(50% + 26px); transform: translateY(-50%); left: max(14px, calc(50vw - 590px));
-         width: 172px; display: none; flex-direction: column; gap: 2px; z-index: 40; }
+  #nav { position: fixed; top: calc(50% + 26px); transform: translateY(-50%); left: max(10px, calc(50vw - 598px));
+         width: 132px; display: none; flex-direction: column; gap: 2px; z-index: 40; }
   #nav a { display: block; font-family: var(--mono); font-size: 10.5px; letter-spacing: .03em;
            color: var(--muted); text-decoration: none; padding: 4px 0 4px 11px; border-left: 2px solid var(--rule-soft);
            white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -519,7 +553,7 @@
     .nine { min-width: 620px; }
   }
   @media print {
-    .site, #nav, #hl-bar, #nb-bar, #save, #cmts { display: none !important; }
+    .site, #nav, #hl-bar, #nb-bar, #save, #cmts, .drawer, .sitefoot { display: none !important; }
     body { background: #fff; font-size: 11.5px; }
     .wrap { max-width: none; padding: 0; gap: 26px; }
     .rd, section, figure, .exm, .ctx, .quo { break-inside: avoid; }
@@ -528,11 +562,10 @@
   @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
 </style>
 
-<header class="site"><div class="in"><a class="home" href="../"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 8H2M7 3 2 8l5 5"/></svg>PHI2394 Reading Hub</a><a class="disc" href="../#about" title="How these guides were written">Written with Claude<i>|</i>AI can make mistakes</a><nav aria-label="This week"><button type="button" class="bm-go" id="bmgo" data-set="0" title="Go to your bookmark"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 2.2h8.8v12.1L8 11.1l-4.4 3.2z"/></svg><span>Bookmark</span></button><span class="cur">Week 1</span><a href="cheat-sheet.html">Cheat sheet</a></nav></div></header>
+<header class="site"><div class="in"><a class="home" href="../"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 8H2M7 3 2 8l5 5"/></svg>PHI2394 Reading Hub</a><a class="disc" href="../#about" title="How these guides were written">Written with Claude<i>|</i>AI can make mistakes</a><nav aria-label="This week"><button type="button" class="bm-go" id="bmgo" data-set="0" title="Go to your bookmark"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 2.2h8.8v12.1L8 11.1l-4.4 3.2z"/></svg><span>Bookmark</span></button><button type="button" class="bm-go" data-marks title="My highlights"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M2.5 3.5h11M2.5 8h11M2.5 12.5h7"/></svg><span>Highlights</span></button><span class="cur">Week 1</span><a href="cheat-sheet.html">Cheat sheet</a></nav></div></header>
 
 <nav id="nav" aria-label="Contents">
   <a class="grp" href="#s-notes">My notes</a>
-  <a class="grp" href="#s-marks">My highlights</a>
   <a class="grp" href="#s-arg">The argument</a>
   <a class="grp" href="#s-texts">The nine texts</a>
   <a class="core" href="#r1" title="Chapter 1 · read properly">Plato</a>
@@ -595,7 +628,7 @@
 
   <section id="s-notes">
     <h2>My notes</h2>
-    <p class="lede">Yours to write in. Type straight into any block below and it saves on its own. <b>Cmd or Ctrl + B</b> for bold, <b>+ I</b> for italic, and selecting text brings up a small bar with bold, italic and a bullet list. Typing <b>- </b> or <b>1. </b> at the start of a line starts a list.</p>
+    <div class="mynote"><b>How this works</b><span>Yours to write in. Type straight into any block below and it saves on its own. <b>Cmd or Ctrl + B</b> for bold, <b>+ I</b> for italic, <b>+ H</b> for the last colour you used. Selecting text brings up a small bar with bold, italic, a bullet list and the colours. Typing <b>- </b> or <b>1. </b> starts a list, <b>### </b> starts a heading, and <b>Tab</b> inside a list indents.</span></div>
     <div class="nbgrid">
       <div class="nbwrap wide">
         <div class="nbhead"><b>The argument overall</b><span>all nine</span></div>
@@ -639,12 +672,6 @@
       </div>
     </div>
     <p class="nbhint">Saved automatically in this browser.</p>
-  </section>
-
-  <section id="s-marks">
-    <h2>My highlights</h2>
-    <p class="lede">Everything you have marked, with the words around it, grouped by the text it sits in. Click one to jump to it.</p>
-    <div class="bm" id="bmlist"><p class="bmempty">Nothing marked yet. Select any text in the guide, then pick yellow, pink, a comment or the ribbon that sets your bookmark.</p></div>
   </section>
 
   <section>
@@ -2039,7 +2066,7 @@
     </div>
   </section>
 
-  <footer>
+  <div class="endmatter">
     <div><b>Where this goes.</b> These nine texts are one week of thirteen. The rest of the term is the argument they set up:</div>
     <dl class="weeks">
       <dt>Week 3</dt><dd>Kuhn and scientific revolutions: paradigms, and science that does not accumulate smoothly</dd>
@@ -2050,15 +2077,63 @@
       <dt>Week 13</dt><dd>Review and exam prep · <b>Final, 40%, date set by the Registrar</b></dd>
     </dl>
     <div><b>Source.</b> <em>Week 1, Intro to History of PHILOSOPHY OF TECHNOLOGY.pdf</em>, 98 pages, scanned from Robert C. Scharff and Val Dusek (eds.), <em>Philosophy of Technology: The Technological Condition, An Anthology</em>, 2nd ed., Wiley-Blackwell 2014, chapters 1, 3, 4, 6, 7, 9, 44, 49 and 54. Lecture contents, dates and course thesis from the PHI2394-B00 course outline and first-class slides on Brightspace.</div>
-  </footer>
+  </div>
 
 </div>
+
+<div id="marks" class="drawer" hidden>
+  <div class="dback" data-close></div>
+  <aside class="dpanel" role="dialog" aria-modal="true" aria-labelledby="marks-h">
+    <div class="dhead">
+      <h2 id="marks-h">My highlights</h2>
+      <button type="button" class="dclose" data-close aria-label="Close">&times;</button>
+    </div>
+    <p class="dsub">Grouped by the text it sits in. Click one to jump to it.</p>
+    <div class="bm" id="bmlist"><p class="bmempty">Nothing marked yet. Select any text in the guide, then pick yellow, pink, a comment or the ribbon that sets your bookmark.</p></div>
+  </aside>
+</div>
+
+<footer class="sitefoot">
+  <div class="in">
+    <div class="col brand">
+      <a href="../">PHI2394 Reading Hub</a>
+      <p>Reading guides for Scientific Thought and Social Values, University of Ottawa.</p>
+    </div>
+    <nav class="col" aria-label="This week">
+      <h2>Week 1</h2>
+      <a href="./">Reading guide</a>
+      <a href="cheat-sheet.html">Cheat sheet</a>
+      <a href="#s-notes">My notes</a>
+      <button type="button" data-marks>My highlights</button>
+    </nav>
+    <nav class="col" aria-label="The hub">
+      <h2>The hub</h2>
+      <a href="../">All weeks</a>
+      <a href="../#about">How these were written</a>
+      <a href="https://github.com/myermcat/phi-reading-hub">Source on GitHub</a>
+    </nav>
+  </div>
+  <div class="colophon">
+    <span>Written with Claude. AI can make mistakes, and compression is where it makes them.</span>
+    <span>Your notes, highlights and bookmark are kept in this browser only.</span>
+  </div>
+</footer>
 
 <script>
 (function () {
   var SEL = 'p,li,h4,h5,blockquote,td,dd,figcaption';
   var LS = 'phi2394-week1-guide-v1', WIDE = 1400;
   var root, bar, rail, items = [], notes = {}, ref = null, nbbar = null, saveT = null;
+  var drawer = null, lastPaint = 'c-y';
+  function openMarks() {
+    if (!drawer) return;
+    drawer.hidden = false; document.body.style.overflow = 'hidden';
+    var c = drawer.querySelector('.dclose'); if (c) c.focus();
+  }
+  function closeMarks() {
+    if (!drawer || drawer.hidden) return;
+    drawer.hidden = true; document.body.style.overflow = '';
+  }
 
   function blocks() {
     return Array.prototype.filter.call(root.querySelectorAll(SEL), function (el) {
@@ -2303,6 +2378,7 @@
       });
       b.appendChild(dots); b.appendChild(txt);
       b.addEventListener('click', function () {
+        closeMarks();
         goTo(root.querySelector('mark[data-id="' + list[0].id + '"]'));
       });
       return b;
@@ -2404,6 +2480,7 @@
         var v = notes[el.getAttribute('data-k')] || '';
         if (el.innerHTML !== v) el.innerHTML = clean(v);
       }
+      markEmpty(el);
       var card = el.closest('.nbwrap');
       if (card) card.classList.toggle('has', !!el.textContent.trim());
     });
@@ -2484,6 +2561,24 @@
       document.execCommand('insertText', false, t);
     });
     el.addEventListener('keydown', function (e) {
+      // Tab inside a list indents it. Without this it leaves the note for the next control,
+      // which is right everywhere else on a page and wrong inside a list.
+      if (e.key === 'Tab') {
+        var a = window.getSelection() && window.getSelection().anchorNode;
+        var b = a && (a.nodeType === 3 ? a.parentElement : a);
+        if (b && b.closest && b.closest('li')) {
+          e.preventDefault();
+          document.execCommand(e.shiftKey ? 'outdent' : 'indent', false, null);
+          if (onChange) onChange();
+        }
+        return;
+      }
+      if ((e.metaKey || e.ctrlKey) && (e.key === 'h' || e.key === 'H')) {
+        e.preventDefault();
+        paintSel(lastPaint);
+        if (onChange) onChange();
+        return;
+      }
       if (e.key !== ' ' && e.key !== 'Enter') return;
       var sel = window.getSelection();
       if (!sel || !sel.rangeCount || !sel.isCollapsed) return;
@@ -2535,11 +2630,26 @@
   function paintSel(cls) {
     var sel = window.getSelection();
     if (!sel || !sel.rangeCount || sel.isCollapsed) return;
-    var host = sel.anchorNode && sel.anchorNode.parentElement &&
-               sel.anchorNode.parentElement.closest('.nb, .cbody');
+    var r = sel.getRangeAt(0), n = r.commonAncestorContainer;
+    if (n.nodeType === 3) n = n.parentElement;
+    // Selecting a whole block puts the anchor on the block itself, where the old lookup
+    // found nothing and the colour silently did not apply.
+    var host = n && n.closest ? n.closest('.nb, .cbody') : null;
+    if (!host) {
+      var act = document.activeElement;
+      if (act && act.classList && (act.classList.contains('nb') || act.classList.contains('cbody'))) host = act;
+    }
     if (!host) return;
+    // Grow over any inline wrapper the selection covers completely. Italic or bold put on just
+    // before picking a colour lives in that wrapper, and cloning the range alone loses it.
+    var INL = /^(B|STRONG|I|EM|U|S|CODE|SUB|SUP|A|SPAN)$/, up = n, txt = r.toString();
+    while (txt && up && up !== host && INL.test(up.tagName) && up.textContent === txt) {
+      var nr = document.createRange(); nr.selectNode(up); r = nr; up = up.parentElement;
+    }
+    sel.removeAllRanges(); sel.addRange(r);
+    if (cls) lastPaint = cls;
     var tmp = document.createElement('div');
-    tmp.appendChild(sel.getRangeAt(0).cloneContents());
+    tmp.appendChild(r.cloneContents());
     Array.prototype.forEach.call(tmp.querySelectorAll('span.c-y, span.c-p, span.c-m'), function (sp) {
       var p = sp.parentNode;
       while (sp.firstChild) p.insertBefore(sp.firstChild, sp);
@@ -2749,6 +2859,14 @@
         goTo(m);
       } else { remove(id); }
     });
+    drawer = document.getElementById('marks');
+    Array.prototype.forEach.call(document.querySelectorAll('[data-marks]'), function (b) {
+      b.addEventListener('click', function (e) { e.preventDefault(); openMarks(); });
+    });
+    if (drawer) drawer.addEventListener('click', function (e) {
+      if (e.target.closest('[data-close]')) closeMarks();
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMarks(); });
     var go = document.getElementById('bmgo');
     if (go) go.addEventListener('click', function () {
       var it = bookmark();
