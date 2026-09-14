@@ -2607,6 +2607,10 @@
     d.innerHTML = String(html);
     Array.prototype.forEach.call(d.querySelectorAll('script,style,meta,link,title,iframe,object,embed'),
       function (n) { n.remove(); });
+    // Chrome brackets a copied fragment with comment markers, which arrive as empty nodes.
+    var cw = document.createTreeWalker(d, NodeFilter.SHOW_COMMENT, null), cs = [], cn;
+    while ((cn = cw.nextNode())) cs.push(cn);
+    cs.forEach(function (c) { c.parentNode.removeChild(c); });
     var OK = /^(B|STRONG|I|EM|U|S|BR|P|DIV|UL|OL|LI|H3|H4|H5|BLOCKQUOTE|SPAN)$/;
     var all = Array.prototype.slice.call(d.querySelectorAll('*'));
     for (var i = all.length - 1; i >= 0; i--) {
@@ -2624,6 +2628,19 @@
       });
     }
     return d.textContent.trim() || d.querySelector('br,hr') ? d.innerHTML : '';
+  }
+  // Some apps put nothing but plain text on the clipboard, and a list copied from one of those
+  // arrives as lines that begin with a dash. Read them back as a list.
+  function plainList(t) {
+    var lines = String(t || '').split(/\r?\n/).filter(function (l) { return l.trim(); });
+    if (lines.length < 2) return '';
+    var ol = lines.every(function (l) { return /^\s*\d+[.)]\s+\S/.test(l); });
+    var ul = lines.every(function (l) { return /^\s*[-*\u2022\u2013]\s+\S/.test(l); });
+    if (!ol && !ul) return '';
+    var tag = ol ? 'ol' : 'ul';
+    return '<' + tag + '>' + lines.map(function (l) {
+      return '<li>' + esc(l.replace(/^\s*(?:\d+[.)]|[-*\u2022\u2013])\s+/, '')) + '</li>';
+    }).join('') + '</' + tag + '>';
   }
   function unpaint(el) {
     var sel = window.getSelection();
@@ -2672,8 +2689,9 @@
         if (inColour(el) && !/^<span class="c-[ypmn]"/.test(safe)) safe = '<span class="c-n">' + safe + '</span>';
         document.execCommand('insertHTML', false, safe);
       } else {
-        var t = cd.getData('text/plain');
-        if (inColour(el)) document.execCommand('insertHTML', false, '<span class="c-n">' + esc(t) + '</span>');
+        var t = cd.getData('text/plain'), asList = plainList(t);
+        if (asList) document.execCommand('insertHTML', false, asList);
+        else if (inColour(el)) document.execCommand('insertHTML', false, '<span class="c-n">' + esc(t) + '</span>');
         else document.execCommand('insertText', false, t);
       }
       markEmpty(el);
@@ -2698,7 +2716,7 @@
         if (onChange) onChange();
         return;
       }
-      if (e.key !== ' ' && e.key !== 'Enter') return;
+      if (e.key !== ' ' && e.key !== 'Enter' && e.key !== '-') return;
       var sel = window.getSelection();
       if (!sel || !sel.rangeCount || !sel.isCollapsed) return;
       var r = sel.getRangeAt(0);
@@ -2715,6 +2733,9 @@
         else if ((m = head.match(/^\s*(#{1,3})$/))) { cmd = 'block'; arg = 'h' + (m[1].length + 2); }
         else if (head.match(/^\s*>$/)) { cmd = 'block'; arg = 'blockquote'; }
         else if (head.match(/^\s*-{2,3}$/)) cmd = 'hr';
+      } else if (e.key === '-') {
+        if (inLi || !head.match(/^\s*--$/)) return;
+        cmd = 'hr';
       } else if (head.match(/^\s*-{2,3}$/)) { cmd = 'hr'; }
       if (!cmd) return;
       e.preventDefault();
@@ -2732,7 +2753,18 @@
         document.execCommand('delete', false, null);
         if (cmd === 'ul') document.execCommand('insertUnorderedList', false, null);
         else if (cmd === 'ol') document.execCommand('insertOrderedList', false, null);
-        else if (cmd === 'hr') document.execCommand('insertHorizontalRule', false, null);
+        else if (cmd === 'hr') {
+          document.execCommand('insertHorizontalRule', false, null);
+          // The caret is left loose after the rule, where typing makes a bare text node that
+          // no later heading or list command can act on. Give it a paragraph to land in.
+          document.execCommand('insertHTML', false, '<p><br></p>');
+          var ps = el.getElementsByTagName('p');
+          if (ps.length) {
+            var last = ps[ps.length - 1], rr = document.createRange();
+            rr.setStart(last, 0); rr.collapse(true);
+            var ss = window.getSelection(); ss.removeAllRanges(); ss.addRange(rr);
+          }
+        }
         else {
           document.execCommand('insertHTML', false, '<' + arg + '><br></' + arg + '>');
           var a2 = el.getElementsByTagName(arg);
@@ -2744,41 +2776,56 @@
       if (onChange) onChange();
     });
   }
-  // Colour a selection. insertHTML keeps it on the browser's undo stack, and a class
-  // carries the colour so both themes stay readable.
+  // Colour a selection. `foreColor` is the browser's own command, so it leaves headings, list
+  // items and paragraphs standing where replacing the selection's HTML flattened them. It marks
+  // the text with a colour nobody would type, which is then swapped for a class so both themes
+  // stay readable.
+  var CDOT = { 'c-y': '#010201', 'c-p': '#010202', 'c-m': '#010203', 'c-n': '#010204' };
+  var CBACK = { 'rgb(1,2,1)': 'c-y', 'rgb(1,2,2)': 'c-p', 'rgb(1,2,3)': 'c-m', 'rgb(1,2,4)': 'c-n',
+                '#010201': 'c-y', '#010202': 'c-p', '#010203': 'c-m', '#010204': 'c-n' };
+  function wholly(r, el) {
+    try { return r.comparePoint(el, 0) >= 0 && r.comparePoint(el, el.childNodes.length) <= 0; }
+    catch (e) { return false; }
+  }
   function paintSel(cls) {
     var sel = window.getSelection();
     if (!sel || !sel.rangeCount || sel.isCollapsed) return;
     var r = sel.getRangeAt(0), n = r.commonAncestorContainer;
     if (n.nodeType === 3) n = n.parentElement;
-    // Selecting a whole block puts the anchor on the block itself, where the old lookup
-    // found nothing and the colour silently did not apply.
+    // Selecting a whole block puts the anchor on the block itself, where a lookup from the
+    // anchor finds nothing and the colour silently does not apply.
     var host = n && n.closest ? n.closest('.nb, .cbody') : null;
     if (!host) {
       var act = document.activeElement;
       if (act && act.classList && (act.classList.contains('nb') || act.classList.contains('cbody'))) host = act;
     }
     if (!host) return;
-    // Grow over any inline wrapper the selection covers completely. Italic or bold put on just
-    // before picking a colour lives in that wrapper, and cloning the range alone loses it.
-    var INL = /^(B|STRONG|I|EM|U|S|CODE|SUB|SUP|A|SPAN)$/, up = n, txt = r.toString();
-    while (txt && up && up !== host && INL.test(up.tagName) && up.textContent === txt) {
-      var nr = document.createRange(); nr.selectNode(up); r = nr; up = up.parentElement;
-    }
-    sel.removeAllRanges(); sel.addRange(r);
     if (cls && cls !== 'c-n') lastPaint = cls;
-    var tmp = document.createElement('div');
-    tmp.appendChild(r.cloneContents());
-    Array.prototype.forEach.call(tmp.querySelectorAll('span.c-y, span.c-p, span.c-m'), function (sp) {
-      var p = sp.parentNode;
-      while (sp.firstChild) p.insertBefore(sp.firstChild, sp);
-      p.removeChild(sp);
+    // A colour already inside the selection sits deeper than the new one and would win, so
+    // clear the ones the selection covers whole. One it only overlaps keeps its colour outside.
+    Array.prototype.forEach.call(host.querySelectorAll('.c-y, .c-p, .c-m, .c-n'), function (e) {
+      if (r.intersectsNode(e) && wholly(r, e)) e.removeAttribute('class');
     });
-    var html = tmp.innerHTML;
-    // Stripping the spans inside the selection leaves any colour it is nested in, so
-    // "back to normal" has to name the normal colour.
-    var wrap = cls || (inColour(host) ? 'c-n' : '');
-    document.execCommand('insertHTML', false, wrap ? '<span class="' + wrap + '">' + html + '</span>' : html);
+    var want = cls || (inColour(host) ? 'c-n' : null);
+    if (want) {
+      try { document.execCommand('styleWithCSS', false, true); } catch (e) {}
+      document.execCommand('foreColor', false, CDOT[want]);
+      Array.prototype.forEach.call(host.querySelectorAll('[style], font[color]'), function (e) {
+        var c = ((e.style && e.style.color) || e.getAttribute('color') || '').replace(/\s+/g, '').toLowerCase();
+        var k = CBACK[c];
+        if (!k) return;
+        if (e.style) e.style.color = '';
+        e.removeAttribute('color');
+        if (!e.getAttribute('style')) e.removeAttribute('style');
+        if (e.tagName === 'FONT') {
+          var sp = document.createElement('span');
+          while (e.firstChild) sp.appendChild(e.firstChild);
+          e.parentNode.replaceChild(sp, e);
+          e = sp;
+        }
+        e.className = k;
+      });
+    }
     if (host.classList.contains('nb')) { notes[host.getAttribute('data-k')] = host.innerHTML; }
     else {
       var card = host.closest('.cmt');
