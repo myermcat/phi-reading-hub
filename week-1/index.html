@@ -273,7 +273,10 @@
   #nav a.skim { opacity: .68; }
   #nav a.last { opacity: .48; }
   #nav a.on { opacity: 1; }
-  #nav .key { font-family: var(--mono); font-size: 9px; letter-spacing: .06em; color: var(--muted); margin-top: 12px; line-height: 1.7; }
+  #nav .key { font-family: var(--mono); font-size: 9px; letter-spacing: .06em; color: var(--muted);
+              margin-top: 22px; padding-top: 14px; border-top: 1px solid var(--rule); line-height: 1.8; }
+  #nav .key em { font-style: normal; display: block; letter-spacing: .12em; text-transform: uppercase;
+                 color: var(--muted); opacity: .75; margin-bottom: 5px; }
   #nav .key i { font-style: normal; display: block; }
   #nav .key i.a { color: var(--ink-soft); }
   #nav .key i.b { opacity: .68; }
@@ -302,15 +305,24 @@
   .notes li .src { display: block; font-family: var(--mono); font-size: 10.5px; color: var(--muted); letter-spacing: .04em; margin-top: 3px; }
 
   /* notes you write */
-  .nbwrap { display: flex; flex-direction: column; gap: 4px; }
-  .nbwrap > h3 { margin: 0; font-family: var(--display); font-size: 19px; font-weight: 600; }
-  .nbwrap > h3 span { font-family: var(--mono); font-size: 10.5px; color: var(--muted); font-weight: 400; letter-spacing: .05em; margin-left: 9px; }
-  .nb { font-size: 16px; line-height: 1.55; color: var(--ink); border-left: 2px solid var(--rule); padding: 6px 0 6px 14px; min-height: 30px; outline: none; }
-  .nb:focus { border-left-color: var(--accent); }
+  .nbgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(298px, 1fr)); gap: 14px; }
+  .nbwrap { display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--rule);
+            border-radius: 10px; overflow: hidden; transition: border-color .15s, box-shadow .15s; }
+  .nbwrap.wide { grid-column: 1 / -1; }
+  .nbwrap:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px var(--close-wash); }
+  .nbwrap.has { border-color: var(--rule); background: var(--paper); }
+  .nbhead { display: flex; align-items: baseline; justify-content: space-between; gap: 10px;
+            padding: 10px 16px 9px; border-bottom: 1px solid var(--rule-soft); }
+  .nbhead b { font-family: var(--display); font-size: 16.5px; font-weight: 600; color: var(--ink); }
+  .nbhead span { font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .nbpad { position: relative; padding: 14px 16px 16px 30px; }
+  .nbpad::before { content: ""; position: absolute; left: 16px; top: 12px; bottom: 12px; width: 1px;
+                   background: var(--rule); }
+  .nb { font-size: 15.5px; line-height: 1.6; color: var(--ink); min-height: 46px; outline: none; }
   .nb:empty::before { content: attr(data-ph); color: var(--muted); font-style: italic; }
-  .nb p { margin: 0 0 7px; max-width: none; }
+  .nb p { margin: 0 0 8px; max-width: none; }
   .nb p:last-child { margin-bottom: 0; }
-  .nb ul, .nb ol { margin: 4px 0 7px; padding-left: 22px; }
+  .nb ul, .nb ol { margin: 5px 0 8px; padding-left: 20px; }
   .nb li { margin-bottom: 4px; }
   .nb b, .nb strong { font-weight: 600; }
   #nb-bar { position: absolute; z-index: 50; display: flex; gap: 2px; padding: 3px; background: var(--surface); border: 1px solid var(--rule); border-radius: 5px; box-shadow: 0 2px 8px rgba(0,0,0,.12); }
@@ -412,7 +424,7 @@
   <a class="core" href="#r54" title="Chapter 54 · read properly">Foucault</a>
   <a class="grp" href="#s-gloss">Glossary</a>
   <a class="grp" href="#s-plan">Reading plan</a>
-  <div class="key"><i class="a">solid = read properly</i><i class="b">faded = skim</i><i class="c">faintest = if time</i></div>
+  <div class="key"><em>Key</em><i class="a">solid = read properly</i><i class="b">faded = skim</i><i class="c">faintest = if time</i></div>
 </nav>
 
 <div class="wrap">
@@ -462,24 +474,48 @@
   <section id="s-notes">
     <h2>My notes</h2>
     <p class="lede">Yours to write in. Type straight into any block below and it saves on its own. <b>Cmd or Ctrl + B</b> for bold, <b>+ I</b> for italic, and selecting text brings up a small bar with bold, italic and a bullet list. Typing <b>- </b> or <b>1. </b> at the start of a line starts a list.</p>
-    <div class="nbwrap"><h3>The argument overall<span>all nine</span></h3><div class="nb" contenteditable="true" data-k="gen" data-ph="What the whole reading is about…"></div></div>
-    <div class="nbwrap"><h3>Plato<span>ch. 1</span></h3><div class="nb" contenteditable="true" data-k="r1" data-ph="…"></div></div>
-    <div class="nbwrap"><h3>Schadewaldt<span>ch. 3</span></h3><div class="nb" contenteditable="true" data-k="r3" data-ph="…"></div></div>
-    <div class="nbwrap"><h3>Bacon<span>ch. 4</span></h3><div class="nb" contenteditable="true" data-k="r4" data-ph="…"></div></div>
-    <div class="nbwrap"><h3>Comte<span>ch. 6</span></h3><div class="nb" contenteditable="true" data-k="r6" data-ph="…"></div></div>
-    <div class="nbwrap"><h3>Rousseau<span>ch. 7</span></h3><div class="nb" contenteditable="true" data-k="r7" data-ph="…"></div></div>
-    <div class="nbwrap"><h3>The Vienna Circle<span>ch. 9</span></h3><div class="nb" contenteditable="true" data-k="r9" data-ph="…"></div></div>
-    <div class="nbwrap"><h3>Lynn White<span>ch. 44</span></h3><div class="nb" contenteditable="true" data-k="r44" data-ph="…"></div></div>
-    <div class="nbwrap"><h3>Dennett<span>ch. 49</span></h3><div class="nb" contenteditable="true" data-k="r49" data-ph="…"></div></div>
-    <div class="nbwrap"><h3>Foucault<span>ch. 54</span></h3><div class="nb" contenteditable="true" data-k="r54" data-ph="…"></div></div>
-    <!-- Export and import, parked for now.
-    <div class="io">
-      <button type="button" id="io-out">Export a backup</button>
-      <button type="button" id="io-in">Import a backup</button>
-      <input type="file" id="io-file" accept="application/json,.json" hidden>
-      <span id="io-msg">Saved automatically in this browser.</span>
+    <div class="nbgrid">
+      <div class="nbwrap wide">
+        <div class="nbhead"><b>The argument overall</b><span>all nine</span></div>
+        <div class="nbpad"><div class="nb" contenteditable="true" data-k="gen" data-ph="What the whole reading is about…"></div></div>
+      </div>
+      <div class="nbwrap">
+        <div class="nbhead"><b>Plato</b><span>ch. 1</span></div>
+        <div class="nbpad"><div class="nb" contenteditable="true" data-k="r1" data-ph="Your note…"></div></div>
+      </div>
+      <div class="nbwrap">
+        <div class="nbhead"><b>Schadewaldt</b><span>ch. 3</span></div>
+        <div class="nbpad"><div class="nb" contenteditable="true" data-k="r3" data-ph="Your note…"></div></div>
+      </div>
+      <div class="nbwrap">
+        <div class="nbhead"><b>Bacon</b><span>ch. 4</span></div>
+        <div class="nbpad"><div class="nb" contenteditable="true" data-k="r4" data-ph="Your note…"></div></div>
+      </div>
+      <div class="nbwrap">
+        <div class="nbhead"><b>Comte</b><span>ch. 6</span></div>
+        <div class="nbpad"><div class="nb" contenteditable="true" data-k="r6" data-ph="Your note…"></div></div>
+      </div>
+      <div class="nbwrap">
+        <div class="nbhead"><b>Rousseau</b><span>ch. 7</span></div>
+        <div class="nbpad"><div class="nb" contenteditable="true" data-k="r7" data-ph="Your note…"></div></div>
+      </div>
+      <div class="nbwrap">
+        <div class="nbhead"><b>The Vienna Circle</b><span>ch. 9</span></div>
+        <div class="nbpad"><div class="nb" contenteditable="true" data-k="r9" data-ph="Your note…"></div></div>
+      </div>
+      <div class="nbwrap">
+        <div class="nbhead"><b>Lynn White</b><span>ch. 44</span></div>
+        <div class="nbpad"><div class="nb" contenteditable="true" data-k="r44" data-ph="Your note…"></div></div>
+      </div>
+      <div class="nbwrap">
+        <div class="nbhead"><b>Dennett</b><span>ch. 49</span></div>
+        <div class="nbpad"><div class="nb" contenteditable="true" data-k="r49" data-ph="Your note…"></div></div>
+      </div>
+      <div class="nbwrap">
+        <div class="nbhead"><b>Foucault</b><span>ch. 54</span></div>
+        <div class="nbpad"><div class="nb" contenteditable="true" data-k="r54" data-ph="Your note…"></div></div>
+      </div>
     </div>
-    -->
     <p class="nbhint">Saved automatically in this browser.</p>
   </section>
 
@@ -2067,9 +2103,12 @@
   }
   function paintNotes() {
     Array.prototype.forEach.call(document.querySelectorAll('.nb'), function (el) {
-      if (el === document.activeElement) return;
-      var v = notes[el.getAttribute('data-k')] || '';
-      if (el.innerHTML !== v) el.innerHTML = clean(v);
+      if (el !== document.activeElement) {
+        var v = notes[el.getAttribute('data-k')] || '';
+        if (el.innerHTML !== v) el.innerHTML = clean(v);
+      }
+      var card = el.closest('.nbwrap');
+      if (card) card.classList.toggle('has', !!el.textContent.trim());
     });
   }
   function say(msg) { var el = document.getElementById('io-msg'); if (el) el.textContent = msg; }
@@ -2143,7 +2182,12 @@
     document.addEventListener('selectionchange', nbplace);
     window.addEventListener('scroll', function () { nbbar.hidden = true; }, { passive: true });
     Array.prototype.forEach.call(document.querySelectorAll('.nb'), function (el) {
-      el.addEventListener('input', function () { notes[el.getAttribute('data-k')] = el.innerHTML; save(); });
+      el.addEventListener('input', function () {
+        notes[el.getAttribute('data-k')] = el.innerHTML;
+        var card = el.closest('.nbwrap');
+        if (card) card.classList.toggle('has', !!el.textContent.trim());
+        save();
+      });
       el.addEventListener('blur', function () { nbbar.hidden = true; notes[el.getAttribute('data-k')] = el.innerHTML; save(); });
       el.addEventListener('keydown', function (e) {
         // "- " or "* " or "1. " at the start of a line becomes a list, the usual way
