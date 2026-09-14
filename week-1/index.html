@@ -255,6 +255,12 @@
   .site nav a { font-family: var(--mono); font-size: 11px; letter-spacing: .08em;
                 text-transform: uppercase; color: var(--accent); border-bottom: 1px solid transparent; }
   .site nav a:hover { border-bottom-color: var(--accent); }
+  .site .disc { font-family: var(--body); font-size: 12px; font-weight: 400; color: var(--muted);
+                opacity: .8; letter-spacing: 0; text-decoration: none; white-space: nowrap;
+                border-bottom: 1px solid transparent; }
+  .site .disc:hover { opacity: 1; border-bottom-color: var(--rule); }
+  .site .disc i { font-style: normal; opacity: .5; padding: 0 6px; }
+  @media (max-width: 820px) { .site .disc { display: none; } }
   @media (max-width: 560px) { .site .in { padding: 0 16px; height: 48px; } .site nav .cur { display: none; } }
 
   /* vertical nav */
@@ -407,7 +413,7 @@
   @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
 </style>
 
-<header class="site"><div class="in"><a class="home" href="../"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 8H2M7 3 2 8l5 5"/></svg>PHI2394 Reading Hub</a><nav aria-label="This week"><span class="cur">Week 1</span><a href="cheat-sheet.html">Cheat sheet</a></nav></div></header>
+<header class="site"><div class="in"><a class="home" href="../"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 8H2M7 3 2 8l5 5"/></svg>PHI2394 Reading Hub</a><a class="disc" href="../#about" title="How these guides were written">Written with Claude<i>|</i>AI can make mistakes</a><nav aria-label="This week"><span class="cur">Week 1</span><a href="cheat-sheet.html">Cheat sheet</a></nav></div></header>
 
 <nav id="nav" aria-label="Contents">
   <a class="grp" href="#s-notes">My notes</a>
