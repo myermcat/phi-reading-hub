@@ -101,13 +101,14 @@
      its contents were penned into the 900px column, which left the mark floating in from the
      edge with empty bar beside it. Everything else stays aligned with the body text.
      Below the width where the column meets the edges there is no room, so it rejoins the row. */
-  .site { position: relative; }
   .site .hubmark { margin-right: 13px; }
   .site .hubmark svg { width: 28px; height: 28px; border-radius: 7px; }
   @media (min-width: 1020px) {
     .site .hubmark { position: absolute; left: 22px; top: 50%; transform: translateY(-50%);
                      margin-right: 0; }
   }
+  .site .hubmark:hover { opacity: .78; }
+  .site .hubmark:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px;
                                  border-radius: 6px; }
 
   .site .home { display: flex; align-items: center; gap: 9px; font-family: var(--mono);
