@@ -327,9 +327,13 @@
   /* photographs, plates and maps */
   figure.pic { margin: 24px 0; gap: 11px; max-width: 82ch; }
   figure.pic img {
-    display: block; width: 100%; max-width: 100%; height: auto;
+    /* A tall picture used to run past the bottom of the window, so the whole of it was never
+       visible at once. Capping the height at most of the window and letting the width follow
+       means every picture fits on one screen, caption included. */
+    display: block; width: auto; max-width: 100%; height: auto; max-height: 68vh;
     border: 1px solid var(--rule); border-radius: 6px; background: var(--surface);
   }
+  @media (max-width: 700px) { figure.pic img { max-height: 60vh; } }
   figure.pic figcaption {
     font-family: var(--body); font-size: 15px; line-height: 1.5;
     letter-spacing: 0; color: var(--ink-soft); max-width: 74ch;
@@ -357,11 +361,17 @@
   .site .in { max-width: 900px; margin: 0 auto; padding: 0 26px; height: 52px;
               display: flex; align-items: center; justify-content: space-between; gap: 18px; }
   .site a { text-decoration: none; }
-  /* the way back to the course hub: the mark alone, leftmost, the conventional spot */
-  .site .hubmark { display: flex; align-items: center; flex: none; margin-right: 13px; }
-  .site .hubmark svg { display: block; width: 19px; height: 19px; border-radius: 5px; }
-  .site .hubmark:hover { opacity: .78; }
-  .site .hubmark:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px;
+  /* The mark goes to the true left edge of the window. The bar already spans the window; only
+     its contents were penned into the 900px column, which left the mark floating in from the
+     edge with empty bar beside it. Everything else stays aligned with the body text.
+     Below the width where the column meets the edges there is no room, so it rejoins the row. */
+  .site { position: relative; }
+  .site .hubmark { margin-right: 13px; }
+  .site .hubmark svg { width: 28px; height: 28px; border-radius: 7px; }
+  @media (min-width: 1020px) {
+    .site .hubmark { position: absolute; left: 22px; top: 50%; transform: translateY(-50%);
+                     margin-right: 0; }
+  }
                                  border-radius: 6px; }
 
   .site .home { display: flex; align-items: center; gap: 9px; font-family: var(--mono);
