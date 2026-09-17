@@ -331,6 +331,10 @@
        visible at once. Capping the height at most of the window and letting the width follow
        means every picture fits on one screen, caption included. */
     display: block; width: auto; max-width: 100%; height: auto; max-height: 68vh;
+    /* figure.pic is a column flexbox, whose align-items defaults to stretch. That stretched the
+       image to the full width of the measure and max-height then squashed it, so every portrait
+       picture came out distorted. align-self keeps the image at its own width. */
+    align-self: flex-start;
     border: 1px solid var(--rule); border-radius: 6px; background: var(--surface);
   }
   @media (max-width: 700px) { figure.pic img { max-height: 60vh; } }
