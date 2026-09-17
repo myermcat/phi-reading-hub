@@ -136,14 +136,20 @@
                    border: 1px solid var(--rule); border-radius: 4px; padding: 4px 7px; }
   .lecdate input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 
-  /* notes you write, the same card and the same editor as the reading guide */
-  .nbwrap { display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--rule);
-            border-radius: 10px; overflow: hidden; transition: border-color .15s, box-shadow .15s; }
-  .nbwrap:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px var(--close-wash); }
-  .nbwrap.has { background: var(--paper); }
-  .nbpad { position: relative; padding: 16px 18px 18px 32px; }
-  .nbpad::before { content: ""; position: absolute; left: 18px; top: 14px; bottom: 14px; width: 1px;
-                   background: var(--rule); }
+  /* notes you write, the same well and the same editor as the reading guide.
+     .nbpad is recessed so the writing area reads as somewhere to write. Its left edge holds
+     --rule while the tab is empty and --accent once it holds something, from the `has` class
+     the editor sets on .nbwrap. The lecture heading above is the block's label.
+     Nothing in here touches .nb: the note text keeps the face, size, colour, line height and
+     spacing it has always had. */
+  .nbwrap { display: flex; flex-direction: column; }
+  .nbpad { position: relative; padding: 16px 18px 18px; background: var(--sunk);
+           border: 1px solid var(--rule); border-left: 3px solid var(--rule); border-radius: 8px;
+           box-shadow: inset 0 1px 0 rgba(0,0,0,.06);
+           transition: border-color .15s, box-shadow .15s; }
+  .nbwrap.has .nbpad { border-left-color: var(--accent); }
+  .nbwrap:focus-within .nbpad { border-color: var(--accent);
+           box-shadow: inset 0 1px 0 rgba(0,0,0,.06), 0 0 0 3px var(--close-wash); }
   .nb { position: relative; font-size: 16px; line-height: 1.62; color: var(--ink); min-height: 300px; outline: none; }
   .nb.is-empty::before {
     content: attr(data-ph); position: absolute; left: 0; top: 0; color: var(--muted);
