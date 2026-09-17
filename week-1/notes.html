@@ -75,7 +75,10 @@
      its contents were penned into the 900px column, which left the mark floating in from the
      edge with empty bar beside it. Everything else stays aligned with the body text.
      Below the width where the column meets the edges there is no room, so it rejoins the row. */
-  .site .hubmark { margin-right: 13px; }
+  /* display:block with no leading makes the anchor box exactly the size of the mark.
+     As an inline anchor its box carries line-height leading, so centring the anchor
+     left the mark itself 4.25px high. */
+  .site .hubmark { margin-right: 13px; display: block; line-height: 0; }
   .site .hubmark svg { width: 28px; height: 28px; border-radius: 7px; }
   @media (min-width: 1020px) {
     .site .hubmark { position: absolute; left: 22px; top: 50%; transform: translateY(-50%);
@@ -619,7 +622,31 @@
       } else if (head.match(/^\s*-{2,3}$/)) { cmd = 'hr'; }
       if (!cmd) return;
       e.preventDefault();
-      if (cmd === 'block' && blk !== el) {
+      if ((cmd === 'ul' || cmd === 'ol') && blk !== el && blk.tagName === 'P') {
+        // `insertUnorderedList` builds the list inside the block the caret is in, which leaves a
+        // <ul> sitting in a <p>. That one nesting the parser will not have: on the next load it
+        // pulls the list out and leaves an empty paragraph above and below, one more pair every
+        // time. Replace the whole line instead, the way the heading branch below does, so the
+        // list stands beside the blocks around it rather than inside one. Only a paragraph is
+        // taken this way. A list nested in a div, a heading, a blockquote or another list item
+        // survives the parser untouched, and those lines are left to the plain command below,
+        // which does not disturb whatever block follows them.
+        var tag = cmd === 'ul' ? 'ul' : 'ol';
+        var lead = cmd === 'ul' ? /^(?:\s|&nbsp;|<br\s*\/?>)*[-*+]/ : /^(?:\s|&nbsp;|<br\s*\/?>)*\d+[.)]/;
+        var item = blk.innerHTML.replace(lead, '') || '<br>';
+        var lr = document.createRange();
+        lr.selectNode(blk);
+        sel.removeAllRanges(); sel.addRange(lr);
+        // Marked so the caret goes into the list just made and not into whichever list happens
+        // to be last in the note. The mark comes straight back off, before anything is saved.
+        document.execCommand('insertHTML', false,
+          '<' + tag + ' data-new="1"><li>' + item + '</li></' + tag + '>');
+        var made = el.querySelector('[data-new]');
+        if (made) made.removeAttribute('data-new');
+        var cell = made && made.querySelector('li');
+        if (!cell) { var lis = el.getElementsByTagName('li'); cell = lis.length ? lis[lis.length - 1] : null; }
+        if (cell) caretEnd(cell);
+      } else if (cmd === 'block' && blk !== el) {
         // Replace the whole line with the new block, in one undoable step.
         var inner = blk.innerHTML.replace(/^(?:\s|&nbsp;|<br\s*\/?>)*(?:#{1,3}|&gt;|>)/, '') || '<br>';
         var rr = document.createRange();
