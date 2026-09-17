@@ -338,18 +338,36 @@
     border: 1px solid var(--rule); border-radius: 6px; background: var(--surface);
   }
   @media (max-width: 700px) { figure.pic img { max-height: 60vh; } }
-  figure.pic figcaption {
+  figure.pic figcaption, figure.dia figcaption {
     font-family: var(--body); font-size: 15px; line-height: 1.5;
     letter-spacing: 0; color: var(--ink-soft); max-width: 74ch;
   }
-  figure.pic figcaption b { color: var(--ink); font-weight: 600; }
-  figure.pic .cred {
+  figure.pic figcaption b, figure.dia figcaption b { color: var(--ink); font-weight: 600; }
+  figure.pic .cred, figure.dia .cred {
     display: block; margin-top: 6px;
     font-family: var(--mono); font-size: 10.5px; letter-spacing: .05em;
     line-height: 1.5; color: var(--muted);
   }
+
+  /* drawings made for this guide, framed the way the photographs are */
+  figure.dia { margin: 24px 0; gap: 11px; max-width: 82ch; }
+  figure.dia .draw { max-width: 100%; overflow-x: auto; }
+  figure.dia svg {
+    display: block; width: 100%; height: auto;
+    border: 1px solid var(--rule); border-radius: 6px; background: var(--surface);
+  }
+  @media (max-width: 700px) {
+    /* On a phone the wider drawings would shrink their labels to about 5px, so each one keeps a
+       floor and its frame scrolls sideways, the way the table of nine texts already does. The
+       caption stays outside the frame and wraps to the screen. */
+    figure.dia svg[aria-labelledby="cvg-ttl"] { min-width: 660px; }
+    figure.dia svg[aria-labelledby="dg-comte-3s"] { min-width: 560px; }
+    figure.dia svg#dia-spine { min-width: 380px; }
+  }
+
   /* inside the boxes, which already space their children */
-  .bq > figure.pic, .exm > figure.pic, .rd .body > figure.pic { margin: 6px 0; }
+  .bq > figure.pic, .exm > figure.pic, .rd .body > figure.pic,
+  .bq > figure.dia, .exm > figure.dia, .rd .body > figure.dia { margin: 6px 0; }
 
   .dg-box { fill: var(--surface); stroke: currentColor; stroke-opacity: .22; }
   .dg-hi { fill: var(--close-wash); stroke: var(--close); stroke-opacity: 1; }
@@ -830,6 +848,118 @@
       </table>
     </div>
 
+    <figure class="dia">
+      <div class="draw">
+        <svg id="dia-spine" viewBox="0 0 620 1132" width="100%" style="max-width:600px"
+             role="img" aria-labelledby="dia-spine-t">
+          <title id="dia-spine-t">A grid of the nine authors of week one against the three questions every one of them answers: what real knowledge is, where it comes from, and what it is for.</title>
+          <style>
+            #dia-spine .hd { font-family: var(--mono); font-size: 18px; letter-spacing: .02em; fill: var(--muted); }
+            #dia-spine .bd { font-family: var(--mono); font-size: 18px; letter-spacing: .09em; fill: var(--accent); }
+            #dia-spine .bq { font-family: var(--body); font-size: 18px; fill: var(--muted); }
+            #dia-spine .nm { font-family: var(--body); font-size: 20px; font-weight: 600; fill: var(--ink); }
+            #dia-spine .dt { font-family: var(--mono); font-size: 18px; letter-spacing: .03em; fill: var(--muted); }
+            #dia-spine .kd { font-family: var(--mono); font-size: 18px; letter-spacing: .03em; fill: var(--accent); }
+            #dia-spine .an { font-family: var(--body); font-size: 20px; fill: var(--ink-soft); }
+            #dia-spine .off { fill: var(--muted); font-style: italic; }
+            #dia-spine .rl { stroke: var(--rule); fill: none; stroke-width: 1.2; }
+            #dia-spine .rs { stroke: var(--rule); fill: none; stroke-width: 1; opacity: .6; }
+            #dia-spine .vr { stroke: var(--rule); fill: none; stroke-width: 1; opacity: .45; }
+            #dia-spine .mk { fill: var(--accent); }
+            #dia-spine .ln { stroke: var(--accent); fill: none; stroke-width: 2; }
+          </style>
+
+          <text class="hd" x="174" y="34">REAL</text>
+          <text class="hd" x="174" y="56">KNOWLEDGE IS</text>
+          <text class="hd" x="332" y="34">IT COMES</text>
+          <text class="hd" x="332" y="56">FROM</text>
+          <text class="hd" x="478" y="56">IT IS FOR</text>
+          <text class="hd" x="28" y="56">WHO</text>
+
+          <path class="rl" d="M0 72H620 M0 300H620 M0 622H620 M0 994H620 M0 1128H620"/>
+          <path class="rs" d="M18 206H620 M18 434H620 M18 528H620 M18 781H620 M18 875H620"/>
+          <path class="vr" d="M162 8V72 M162 112V300 M162 340V622 M162 662V994 M162 1034V1128"/>
+          <path class="vr" d="M320 8V72 M320 112V300 M320 340V622 M320 662V994 M320 1034V1128"/>
+          <path class="vr" d="M466 8V72 M466 112V300 M466 340V622 M466 662V994 M466 1034V1128"/>
+
+          <rect class="mk" x="6" y="346" width="5" height="270" rx="2.5"/>
+          <path class="ln" d="M8.5 899V636"/>
+          <path class="mk" d="M8.5 626 14 640 3 640Z"/>
+          <path class="ln" d="M8.5 686H15.5 M8.5 805H15.5 M8.5 899H15.5"/>
+
+          <text class="bd" x="18" y="99">THE GREEK SETTLEMENT</text>
+          <text class="bq" x="282" y="99">the ranking attacked after 1600</text>
+
+          <text class="nm" x="28" y="142">Plato</text>
+          <text class="dt" x="28" y="167">c. 375 BCE</text>
+          <text class="an" x="174" y="142">what never<tspan x="174" dy="25">changes</tspan></text>
+          <text class="an" x="332" y="142">argument that<tspan x="332" dy="25">digs out its</tspan><tspan x="332" dy="25">assumptions</tspan></text>
+          <text class="an" x="478" y="142">qualifying<tspan x="478" dy="25">to govern</tspan></text>
+
+          <text class="nm" x="28" y="236">the Greeks</text>
+          <text class="dt" x="28" y="261">Schadewaldt</text>
+          <text class="an" x="174" y="236">know-how that<tspan x="174" dy="25">says why</tspan></text>
+          <text class="an" x="332" y="236">many cases,<tspan x="332" dy="25">tied to theory</tspan></text>
+          <text class="an" x="478" y="236">finishing what<tspan x="478" dy="25">nature left</tspan></text>
+
+          <text class="bd" x="18" y="327">THE METHOD GETS BUILT</text>
+          <text class="bq" x="295" y="327">one position hardening</text>
+
+          <text class="nm" x="28" y="370">Bacon</text>
+          <text class="dt" x="28" y="395">1620</text>
+          <text class="an" x="174" y="370">a cause you<tspan x="174" dy="25">can reproduce</tspan></text>
+          <text class="an" x="332" y="370">organised<tspan x="332" dy="25">experiment</tspan></text>
+          <text class="an" x="478" y="370">works:<tspan x="478" dy="25">medicine,</tspan><tspan x="478" dy="25">machines, food</tspan></text>
+
+          <text class="nm" x="28" y="464">Comte</text>
+          <text class="dt" x="28" y="489">1830s</text>
+          <text class="an" x="174" y="464">laws of what<tspan x="174" dy="25">follows what</tspan></text>
+          <text class="an" x="332" y="464">observation<tspan x="332" dy="25">guided by</tspan><tspan x="332" dy="25">theory</tspan></text>
+          <text class="an" x="478" y="464">prediction,<tspan x="478" dy="25">then a science</tspan><tspan x="478" dy="25">of society</tspan></text>
+
+          <text class="nm" x="28" y="558">Vienna</text>
+          <text class="nm" x="28" y="583">Circle</text>
+          <text class="dt" x="28" y="608">1929</text>
+          <text class="an" x="174" y="558">statements you<tspan x="174" dy="25">can check</tspan></text>
+          <text class="an" x="332" y="558">the senses,<tspan x="332" dy="25">run through</tspan><tspan x="332" dy="25">logic</tspan></text>
+          <text class="an" x="478" y="558">one unified<tspan x="478" dy="25">science</tspan></text>
+
+          <text class="bd" x="18" y="649">THREE OBJECTIONS TO IT</text>
+          <text class="bq" x="307" y="649">none disputes the facts</text>
+
+          <text class="nm" x="28" y="692">Rousseau</text>
+          <text class="dt" x="28" y="717">1752</text>
+          <text class="kd" x="28" y="742">moral</text>
+          <text class="an off" x="174" y="692">granted with<tspan x="174" dy="25">no argument</tspan></text>
+          <text class="an off" x="332" y="692">not his<tspan x="332" dy="25">question</tspan></text>
+          <text class="an" x="478" y="692">nothing good,<tspan x="478" dy="25">if a nation</tspan><tspan x="478" dy="25">prizes talk</tspan><tspan x="478" dy="25">over conduct</tspan></text>
+
+          <text class="nm" x="28" y="811">Lynn White</text>
+          <text class="dt" x="28" y="836">1971</text>
+          <text class="kd" x="28" y="861">historical</text>
+          <text class="an off" x="174" y="811">where a method<tspan x="174" dy="25">came from</tspan></text>
+          <text class="an" x="332" y="811">attitudes: God<tspan x="332" dy="25">as an engineer</tspan></text>
+          <text class="an" x="478" y="811">showing it<tspan x="478" dy="25">might never</tspan><tspan x="478" dy="25">have happened</tspan></text>
+
+          <text class="nm" x="28" y="905">Foucault</text>
+          <text class="dt" x="28" y="930">1975</text>
+          <text class="kd" x="28" y="955">political</text>
+          <text class="an" x="174" y="905">what the file<tspan x="174" dy="25">records</tspan></text>
+          <text class="an" x="332" y="905">institutions<tspan x="332" dy="25">that record</tspan><tspan x="332" dy="25">people</tspan></text>
+          <text class="an" x="478" y="905">governing,<tspan x="478" dy="25">by making</tspan><tspan x="478" dy="25">people watch</tspan><tspan x="478" dy="25">themselves</tspan></text>
+
+          <text class="bd" x="18" y="1021">STILL OPEN</text>
+          <text class="bq" x="158" y="1021">in a laboratory, right now</text>
+
+          <text class="nm" x="28" y="1064">Dennett</text>
+          <text class="dt" x="28" y="1089">1994</text>
+          <text class="an" x="174" y="1064">whatever<tspan x="174" dy="25">passes the</tspan><tspan x="174" dy="25">tests</tspan></text>
+          <text class="an" x="332" y="1064">capacity<tspan x="332" dy="25">judged from</tspan><tspan x="332" dy="25">outside</tspan></text>
+          <text class="an" x="478" y="1064">deciding who<tspan x="478" dy="25">counts as</tspan><tspan x="478" dy="25">a mind</tspan></text>
+        </svg>
+      </div>
+      <figcaption>The spine of the week. All nine answer the same three questions and no two answer alike. Read down a column for how far apart they stand on one question, across a row for one author's whole position. The nine are grouped by the job each does in the quarrel, so the dates run out of sequence. A faint answer marks a cell where the author declines the question as asked, and the arrow carries the three objections back to the team they are aimed at.</figcaption>
+    </figure>
     <h3 class="sub">The argument as a conversation</h3>
     <p class="lede">In this order it reads as one continuous quarrel, each turn answering the last. The dates are the gaps between replies.</p>
     <div class="convo">
@@ -853,6 +983,111 @@
         <p>And the question is still open, right now, in a laboratory. Here is a robot. On what grounds exactly do you rule out that it knows anything, or is anyone? If your only reason is where it came from, that is chauvinism about origins.</p></div>
     </div>
     <p class="lede" style="margin-top:6px">The shape is worth noticing. Bacon, Comte and the Vienna Circle form one team, getting narrower and more confident across three centuries. Rousseau, White and Foucault raise three different kinds of objection to that team: moral, historical and political. None of the three disputes the team's facts. All three change what the question is about. Weeks 3 to 13 of the course live on that side.</p>
+    <figure class="dia">
+      <div class="draw">
+        <svg viewBox="0 0 460 852" width="100%" style="max-width:480px"
+             class="dia-tl" role="img" aria-labelledby="tl-nine-title">
+          <title id="tl-nine-title">The nine texts across 2,400 years, from Plato to Dennett</title>
+          <style>
+            .dia-tl .tl-ax   { stroke: var(--muted); fill: none; opacity: .42; }
+            .dia-tl .tl-rail { stroke: var(--accent); fill: none; }
+            .dia-tl .tl-obj  { stroke: var(--ink-soft); fill: none; }
+            .dia-tl .tl-lead { stroke: var(--muted); fill: none; opacity: .7; }
+            .dia-tl .tl-back { stroke: var(--muted); fill: none; opacity: .75; }
+            .dia-tl .tl-mk   { fill: var(--accent); }
+            .dia-tl .tl-mo   { fill: var(--paper); stroke: var(--ink-soft); stroke-width: 1.6; }
+            .dia-tl .tl-mn   { fill: var(--muted); }
+            .dia-tl .tl-n    { font-family: var(--body); font-weight: 600; font-size: 17px; fill: var(--ink); }
+            .dia-tl .tl-d    { font-family: var(--mono); font-weight: 500; font-size: 16px; fill: var(--muted); letter-spacing: .06em; }
+            .dia-tl .tl-s    { font-family: var(--body); font-size: 16px; fill: var(--ink-soft); }
+            .dia-tl .tl-k    { font-family: var(--mono); font-weight: 500; font-size: 16px; fill: var(--muted); letter-spacing: .09em; }
+          </style>
+          <defs>
+            <marker id="tl-arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+              <path d="M0 0 L10 5 L0 10 z" fill="var(--muted)"/>
+            </marker>
+          </defs>
+
+          <!-- the time axis, broken between the Greek end and 1600 -->
+          <path class="tl-ax" d="M228 56 V144" stroke-width="1.6"/>
+          <path class="tl-ax" d="M228 194 V772" stroke-width="1.6"/>
+          <path class="tl-ax" d="M212 164 L244 146" stroke-width="1.3"/>
+          <path class="tl-ax" d="M212 194 L244 176" stroke-width="1.3"/>
+
+          <!-- centuries, drawn to scale from 1600 to 2000 -->
+          <path class="tl-ax" d="M221 272 H235 M221 397 H235 M221 522 H235 M221 647 H235 M221 772 H235" stroke-width="1.3"/>
+          <text class="tl-d" x="252" y="277">1600</text>
+          <text class="tl-d" x="252" y="402">1700</text>
+          <text class="tl-d" x="252" y="527">1800</text>
+          <text class="tl-d" x="252" y="652">1900</text>
+
+          <!-- the Greek end -->
+          <circle class="tl-mn" cx="228" cy="92" r="4.5"/>
+          <path class="tl-lead" d="M204 88 H220" stroke-width="1"/>
+          <text class="tl-n" x="200" y="92" text-anchor="end">Plato<tspan class="tl-d"> c. 375 BCE</tspan></text>
+          <text class="tl-s" x="256" y="92">the Greek settlement</text>
+          <text class="tl-s" x="256" y="110">the rest argue with it</text>
+
+          <!-- the gap -->
+          <text class="tl-s" x="256" y="166">about 2,000 years</text>
+          <text class="tl-s" x="256" y="184">nothing in the packet</text>
+
+          <!-- Schadewaldt's lectures reaching back to the Greek words -->
+          <path class="tl-back" d="M48 747 H12 V120 H220" stroke-width="1.2" stroke-dasharray="4 5" marker-end="url(#tl-arw)"/>
+          <text class="tl-s" x="28" y="440">written in 1959,</text>
+          <text class="tl-s" x="28" y="458">about the Greek words</text>
+
+          <!-- the three who build the method -->
+          <path class="tl-rail" d="M214 297 V683" stroke-width="2"/>
+          <text class="tl-k" x="200" y="232" text-anchor="end">ONE TEAM</text>
+          <text class="tl-k" x="200" y="250" text-anchor="end">BUILDS THE</text>
+          <text class="tl-k" x="200" y="268" text-anchor="end">METHOD</text>
+
+          <rect class="tl-mk" x="209.5" y="292.5" width="9" height="9"/>
+          <text class="tl-n" x="200" y="302" text-anchor="end">Bacon<tspan class="tl-d"> 1620</tspan></text>
+          <text class="tl-s" x="200" y="320" text-anchor="end">knowledge is power</text>
+
+          <rect class="tl-mk" x="209.5" y="555" width="9" height="9"/>
+          <text class="tl-n" x="200" y="564" text-anchor="end">Comte<tspan class="tl-d"> 1830</tspan></text>
+          <text class="tl-s" x="200" y="582" text-anchor="end">laws that hold</text>
+
+          <rect class="tl-mk" x="209.5" y="678.5" width="9" height="9"/>
+          <text class="tl-n" x="200" y="688" text-anchor="end">Vienna Circle<tspan class="tl-d"> 1929</tspan></text>
+          <text class="tl-s" x="200" y="706" text-anchor="end">must be checkable</text>
+
+          <!-- the classicist, on neither side -->
+          <circle class="tl-mn" cx="228" cy="721" r="4.5"/>
+          <path class="tl-lead" d="M204 744 L222 724" stroke-width="1"/>
+          <text class="tl-n" x="200" y="738" text-anchor="end">Schadewaldt<tspan class="tl-d"> 1959</tspan></text>
+          <text class="tl-s" x="200" y="756" text-anchor="end">two radio lectures</text>
+
+          <!-- the three objections -->
+          <path class="tl-obj" d="M242 462 V743" stroke-width="1.7" stroke-dasharray="1.5 3.5" stroke-linecap="round"/>
+          <text class="tl-k" x="256" y="445">THREE OBJECTIONS</text>
+
+          <circle class="tl-mo" cx="242" cy="462" r="4.2"/>
+          <text class="tl-n" x="256" y="467">Rousseau<tspan class="tl-d"> 1752</tspan></text>
+          <text class="tl-s" x="256" y="485">the moral objection</text>
+
+          <circle class="tl-mo" cx="242" cy="733" r="4.2"/>
+          <path class="tl-lead" d="M247 730 L254 722" stroke-width="1"/>
+          <text class="tl-n" x="256" y="718">Lynn White<tspan class="tl-d"> 1971</tspan></text>
+          <text class="tl-s" x="256" y="736">the historical objection</text>
+
+          <circle class="tl-mo" cx="242" cy="743" r="4.2"/>
+          <path class="tl-lead" d="M247 746 L254 764" stroke-width="1"/>
+          <text class="tl-n" x="256" y="762">Foucault<tspan class="tl-d"> 1975</tspan></text>
+          <text class="tl-s" x="256" y="780">the political objection</text>
+
+          <!-- the question reopened -->
+          <circle class="tl-mn" cx="228" cy="764" r="4.5"/>
+          <path class="tl-lead" d="M234 767 L254 808" stroke-width="1"/>
+          <text class="tl-n" x="256" y="806">Dennett<tspan class="tl-d"> 1994</tspan></text>
+          <text class="tl-s" x="256" y="824">asks it again, of a robot</text>
+        </svg>
+      </div>
+      <figcaption>The nine texts on one scale, with everything after 1600 drawn century by century. Plato is alone at one end, and the other eight fall inside four centuries, five of them inside sixty-five years. The filled squares mark the three who build the method: Bacon in 1620, Comte in 1830, the Vienna Circle in 1929. The open circles mark the three objections to it: Rousseau on moral grounds in 1752, Lynn White on historical grounds in 1971, Foucault on political grounds four years after White. Schadewaldt and Dennett are marked on the axis itself, outside both groups. The dashed line follows Schadewaldt's 1959 lectures back to the Greek words they recover, a reach of about 2,300 years.</figcaption>
+    </figure>
   </section>
 
   <section>
@@ -888,6 +1123,169 @@
               <figcaption><b><em>Antrum Platonicum</em>, engraved by Jan Saenredam in 1604 after a design by Cornelis van Haarlem.</b> The flame on its chain is the fire, the long wall is the screen the bearers walk behind, the personifications along its top are the objects they carry, and the crowd below the wall sees only the shadows thrown on the rock at the right. <span class="cred">Rijksmuseum, CC0, via Wikimedia Commons.</span></figcaption>
             </figure>
             <p>The prisoners see the shadows those figures throw on the wall in front of them, and they hear the carriers' voices bounce back off the wall. They have never seen anything else. So they take the shadows for the things themselves, and when an echo arrives they assume the shadow is speaking.</p>
+            <figure class="dia">
+              <div class="draw">
+                <svg viewBox="0 0 800 470" width="100%" role="img" aria-labelledby="cvg-ttl">
+                  <title id="cvg-ttl">A cut through Plato's cave, showing the fire, the walkway and its screen, the carried figures, the shadow they throw on the wall, the chained prisoners facing it, and the passage climbing out to the sun.</title>
+                  <defs>
+                    <marker id="cvg-arw" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" style="fill:var(--accent)"/></marker>
+                    <g id="cvg-fig">
+                      <circle cx="12" cy="5" r="5"/>
+                      <rect x="6.5" y="11" width="11" height="15" rx="3"/>
+                      <rect x="2" y="12.5" width="4" height="10.5" rx="2" transform="rotate(14 4 17.75)"/>
+                      <rect x="18" y="12.5" width="4" height="10.5" rx="2" transform="rotate(-14 20 17.75)"/>
+                      <rect x="7.5" y="25" width="3.6" height="11" rx="1.6"/>
+                      <rect x="12.9" y="25" width="3.6" height="11" rx="1.6"/>
+                    </g>
+                    <g id="cvg-pri">
+                      <circle cx="0" cy="0" r="11"/>
+                      <path d="M-8 11 h14 a8 8 0 0 1 8 8 v30 a8 8 0 0 1 -8 8 h-14 z"/>
+                      <rect x="-26" y="55" width="38" height="14" rx="7"/>
+                      <rect x="-31" y="59" width="10" height="10" rx="3.5"/>
+                    </g>
+                    <path id="cvg-hill" d="M0 96 L130 84 L250 74 L370 80 L465 98 L548 130 L610 160 L648 186 L664 240 L672 300 L700 336 L760 360 L800 372 L800 470 L0 470 Z"/>
+                    <g id="cvg-stone">
+                      <path d="M342 384 h124 v16 h-124 z"/>
+                      <path d="M330 280 h12 v120 h-12 z"/>
+                      <path d="M468 400 L472 342 L486 332 L488 284 L496 252 L530 255 L534 300 L538 340 L538 400 Z"/>
+                    </g>
+                  </defs>
+
+                  <!-- the hillside, cut through -->
+                  <use href="#cvg-hill" style="fill:var(--surface)"/>
+                  <use href="#cvg-hill" fill="currentColor" opacity=".1"/>
+                  <!-- the hollow inside it, open to the air at the mouth -->
+                  <path d="M104 400 L104 190 L200 180 L320 184 L430 178 L520 180 L592 184 L620 184 L662 232 L664 240 L671 290 L600 330 L540 400 Z"
+                        style="fill:var(--paper)"/>
+                  <path class="dg-ln" d="M671 290 L600 330 L540 400 L104 400 L104 190 L200 180 L320 184 L430 178 L520 180 L592 184 L620 184 L662 232" stroke-width="1.6"/>
+                  <g class="dg-ln" stroke-width="1.2" opacity=".45">
+                    <path d="M0 96 L130 84 L250 74 L370 80 L465 98 L548 130 L610 160 L648 186 L662 232"/>
+                    <path d="M671 290 L672 300 L700 336 L760 360 L800 372"/>
+                  </g>
+
+                  <!-- daylight in through the mouth -->
+                  <g class="dg-ln" style="stroke:var(--accent)" stroke-width="1.5" stroke-opacity=".55" stroke-linecap="round">
+                    <path d="M760 186 L642 304"/>
+                    <path d="M742 160 L626 280"/>
+                  </g>
+
+                  <!-- the light the carried figure blocks, all the way to the wall -->
+                  <path d="M368 220 L104 227.4 L104 330.4 L368 256 Z" fill="currentColor" opacity=".07"/>
+
+                  <!-- the wall, and the shadow thrown on it -->
+                  <use href="#cvg-fig" transform="translate(104,227.4) scale(2.861)" fill="currentColor" opacity=".5"/>
+                  <line class="dg-ln" x1="104" y1="190" x2="104" y2="400" stroke-width="3.5"/>
+
+                  <!-- the prisoners, chained, facing the wall -->
+                  <g fill="currentColor" opacity=".9">
+                    <use href="#cvg-pri" x="214" y="331"/>
+                    <use href="#cvg-pri" x="254" y="331"/>
+                    <use href="#cvg-pri" x="294" y="331"/>
+                  </g>
+                  <g class="dg-ln" stroke-width="1.6" stroke-dasharray="1.5 3.2" stroke-linecap="round" opacity=".75">
+                    <path d="M223 343 Q 238 368 240 396"/>
+                    <path d="M263 343 Q 278 368 280 396"/>
+                    <path d="M303 343 Q 318 368 320 396"/>
+                  </g>
+                  <g fill="currentColor" opacity=".75">
+                    <circle cx="240" cy="397" r="2.6"/><circle cx="280" cy="397" r="2.6"/><circle cx="320" cy="397" r="2.6"/>
+                  </g>
+
+                  <!-- the walkway, its screen, and the rock the fire burns on -->
+                  <use href="#cvg-stone" fill="currentColor" stroke="none" opacity=".13"/>
+                  <use href="#cvg-stone" fill="none" class="dg-ln" stroke-opacity=".45" stroke-width="1.1"/>
+
+                  <!-- the person carrying a carved figure, hidden by the screen -->
+                  <g fill="currentColor" opacity=".62">
+                    <circle cx="352" cy="300" r="10"/>
+                    <rect x="343" y="311" width="18" height="50" rx="7"/>
+                    <rect x="345" y="357" width="6" height="27" rx="3"/>
+                    <rect x="354" y="357" width="6" height="27" rx="3"/>
+                    <rect x="358" y="316" width="12" height="5" rx="2.5"/>
+                  </g>
+                  <line class="dg-ln" x1="368" y1="256" x2="368" y2="340" stroke-width="2.4" stroke-linecap="round" opacity=".7"/>
+                  <use href="#cvg-fig" x="356" y="220" fill="currentColor" opacity=".9"/>
+
+                  <!-- firelight, grazing the top and the bottom of the carried figure -->
+                  <path class="dg-ln" d="M510 216 L307 221.7 L104 227.4" style="stroke:var(--accent)" stroke-width="1.3" stroke-opacity=".7" marker-mid="url(#cvg-arw)"/>
+                  <path class="dg-ln" d="M510 216 L307 273.2 L104 330.4" style="stroke:var(--accent)" stroke-width="1.3" stroke-opacity=".7" marker-mid="url(#cvg-arw)"/>
+
+                  <!-- the fire, above and behind them -->
+                  <path style="fill:var(--accent)" opacity=".9" d="M509 178 C 510 198, 528 210, 529 228 C 530 244, 518 253, 506 252 C 493 251, 484 241, 486 228 C 488 215, 501 212, 500 196 C 505 200, 507 190, 509 178 Z"/>
+                  <path style="fill:var(--paper)" opacity=".45" d="M511 214 C 513 224, 520 229, 518 237 C 516 245, 508 247, 504 243 C 499 238, 504 226, 511 214 Z"/>
+                  <g style="fill:var(--accent)" opacity=".65">
+                    <path d="M495 244 C 499 235, 504 234, 504 242 C 504 249, 500 253, 497 252 C 494 251, 493 248, 495 244 Z"/>
+                    <path d="M521 242 C 525 234, 530 233, 530 241 C 530 248, 526 252, 523 250 C 520 249, 519 245, 521 242 Z"/>
+                  </g>
+
+                  <!-- the one who is dragged up -->
+                  <g fill="currentColor" opacity=".85" transform="translate(600,330) rotate(20)">
+                    <circle cx="0" cy="-52" r="9"/>
+                    <rect x="-7" y="-42" width="14" height="26" rx="6"/>
+                    <rect x="-6.5" y="-18" width="6" height="19" rx="2.8"/>
+                    <rect x="1" y="-18" width="6" height="19" rx="2.8"/>
+                    <rect x="4" y="-42" width="4.5" height="19" rx="2.2" transform="rotate(-32 6.25 -42)"/>
+                  </g>
+
+                  <!-- the sun -->
+                  <circle cx="740" cy="70" r="22" style="fill:var(--accent)" opacity=".9"/>
+                  <g class="dg-ln" style="stroke:var(--accent)" stroke-width="2.2" stroke-linecap="round" opacity=".8">
+                    <path d="M740 40 v-11"/><path d="M740 100 v11"/><path d="M710 70 h-11"/><path d="M770 70 h11"/>
+                    <path d="M719 49 l-8 -8"/><path d="M761 91 l8 8"/><path d="M761 49 l8 -8"/><path d="M719 91 l-8 8"/>
+                  </g>
+
+                  <!-- leaders -->
+                  <g class="dg-ln" stroke-width="1" opacity=".38">
+                    <path d="M110 150 L136 222"/>
+                    <path d="M372 150 L368 216"/>
+                    <path d="M66 411 L100 401"/>
+                    <path d="M210 412 L218 401"/>
+                    <path d="M336 412 L336 402"/>
+                    <path d="M486 412 L458 389"/>
+                    <path d="M630 412 L534 396"/>
+                    <path d="M676 56 L714 64"/>
+                  </g>
+
+                  <text class="dg-m" x="60" y="124" font-size="11.5" font-weight="500">THE SHADOWS</text>
+                  <text class="dg-t dg-dim" x="60" y="142" font-size="13">thrown on the blank wall</text>
+
+                  <text class="dg-m" x="300" y="124" font-size="11.5" font-weight="500">THE CARRIED FIGURES</text>
+                  <text class="dg-t dg-dim" x="300" y="142" font-size="13">carved humans and animals</text>
+
+                  <text class="dg-m dg-dim" x="120" y="206" font-size="11.5" font-weight="500">INSIDE THE CAVE &#183; THE VISIBLE WORLD</text>
+
+                  <text class="dg-m" x="540" y="214" font-size="11.5" font-weight="500">THE WAY UP</text>
+                  <text class="dg-t dg-dim" x="540" y="232" font-size="13">rough and steep,</text>
+                  <text class="dg-t dg-dim" x="540" y="250" font-size="13">and he is dragged</text>
+
+                  <text class="dg-m" x="466" y="44" font-size="11.5" font-weight="500">OUTSIDE, THE SUN</text>
+                  <text class="dg-t dg-dim" x="466" y="62" font-size="13">what Plato calls the Form</text>
+                  <text class="dg-t dg-dim" x="466" y="80" font-size="13">of the Good, the cause of</text>
+                  <text class="dg-t dg-dim" x="466" y="98" font-size="13">everything correct and beautiful</text>
+
+                  <text class="dg-m" x="10" y="421" font-size="11.5" font-weight="500">THE WALL</text>
+                  <text class="dg-t dg-dim" x="10" y="438" font-size="13">blank, and all</text>
+                  <text class="dg-t dg-dim" x="10" y="455" font-size="13">they ever see</text>
+
+                  <text class="dg-m" x="120" y="421" font-size="11.5" font-weight="500">THE PRISONERS</text>
+                  <text class="dg-t dg-dim" x="120" y="438" font-size="13">chained since childhood,</text>
+                  <text class="dg-t dg-dim" x="120" y="455" font-size="13">unable to turn their heads</text>
+
+                  <text class="dg-m" x="302" y="421" font-size="11.5" font-weight="500">THE SCREEN</text>
+                  <text class="dg-t dg-dim" x="302" y="438" font-size="13">a low wall, like the one</text>
+                  <text class="dg-t dg-dim" x="302" y="455" font-size="13">a puppeteer works behind</text>
+
+                  <text class="dg-m" x="470" y="421" font-size="11.5" font-weight="500">THE WALKWAY</text>
+                  <text class="dg-t dg-dim" x="470" y="438" font-size="13">they walk along it</text>
+                  <text class="dg-t dg-dim" x="470" y="455" font-size="13">carrying the figures</text>
+
+                  <text class="dg-m" x="612" y="421" font-size="11.5" font-weight="500">THE FIRE</text>
+                  <text class="dg-t dg-dim" x="612" y="438" font-size="13">which stands</text>
+                  <text class="dg-t dg-dim" x="612" y="455" font-size="13">for the sun</text>
+                </svg>
+              </div>
+              <figcaption><b>The cave in section.</b> The fire burns above and behind the prisoners, the carved figures are held up above the screen, and the firelight passing them throws a shadow on the wall. Light below the top of the screen is blocked, so the people carrying the figures cast nothing and the prisoners have no way of knowing they are there. The shaded wedge holds everything a prisoner has ever been able to name.</figcaption>
+            </figure>
             <p><b>The cave has a society.</b> The prisoners give each other honours, praises and prizes for three skills: recognising a shadow fastest, remembering the order the shadows usually come in, and predicting which one comes next. They call that last one divining the future, and the best forecaster holds the most power.</p>
             <p><b>One prisoner is freed, and every stage of it hurts.</b></p>
             <ol>
@@ -1422,6 +1820,63 @@
               <li><b>Positive.</b> Stop asking who, and stop asking why. Ask what regularly follows what, measure it, and state a law. Air at a given temperature holds a given amount of water, and cooling it forces the surplus to condense. You still cannot say why the universe behaves that way, and Comte's point is that <b>giving up that question is the price of getting reliable answers</b>.</li>
             </ol>
             <p>His ideal endpoint is a small number of laws covering as much as possible, the way one statement about gravitation covers a falling apple and an orbiting moon together.</p>
+            <figure class="dia">
+              <div class="draw">
+                <svg viewBox="0 0 674 516" width="100%" role="img" aria-labelledby="dg-comte-3s" style="font-family:var(--body)">
+                  <title id="dg-comte-3s">Comte's law of three states drawn as three stacked rows, theological then metaphysical then positive, each row giving what that stage explains things by and how it answers the question why it rains.</title>
+                  <defs><marker id="cm-arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="currentColor"/></marker></defs>
+
+                  <text class="dg-m dg-dim" x="32" y="16" font-size="11.5" style="font-family:var(--mono)">THE STAGE</text>
+                  <text class="dg-m dg-dim" x="346" y="16" font-size="11.5" style="font-family:var(--mono)">WHY DOES IT RAIN?</text>
+                  <text class="dg-m dg-dim" x="565" y="16" font-size="11.5" style="font-family:var(--mono)">IN ONE LIFE</text>
+
+                  <rect class="dg-box" x="12" y="26" width="650" height="122" rx="2"/>
+                  <line class="dg-ln dg-dim" x1="326" y1="40" x2="326" y2="134" stroke-width="1"/>
+                  <line class="dg-ln dg-dim" x1="545" y1="40" x2="545" y2="134" stroke-width="1"/>
+                  <text class="dg-t" x="32" y="54" font-size="15.5" font-weight="600">1 · Theological</text>
+                  <text class="dg-t" x="32" y="76" font-size="13.5">Explains by naming a will. Some being</text>
+                  <text class="dg-t" x="32" y="95" font-size="13.5">decided it.</text>
+                  <text class="dg-t dg-dim" x="32" y="117" font-size="13">Highest form: one god in place of many.</text>
+                  <text class="dg-t" x="346" y="76" font-size="13">A god is angry, and the</text>
+                  <text class="dg-t" x="346" y="95" font-size="13">rain is that god's will.</text>
+                  <text class="dg-t" x="565" y="76" font-size="13.5" font-weight="600">childhood</text>
+
+                  <line class="dg-ln" x1="48" y1="154" x2="48" y2="194" stroke-width="1.4" marker-end="url(#cm-arw)"/>
+                  <text class="dg-t dg-dim" x="72" y="170" font-size="13">The same agents with their faces rubbed off,</text>
+                  <text class="dg-t dg-dim" x="72" y="188" font-size="13">which makes the stage a bridge and nothing more.</text>
+
+                  <rect class="dg-box" x="12" y="206" width="650" height="122" rx="2"/>
+                  <line class="dg-ln dg-dim" x1="326" y1="220" x2="326" y2="314" stroke-width="1"/>
+                  <line class="dg-ln dg-dim" x1="545" y1="220" x2="545" y2="314" stroke-width="1"/>
+                  <text class="dg-t" x="32" y="234" font-size="15.5" font-weight="600">2 · Metaphysical</text>
+                  <text class="dg-t" x="32" y="256" font-size="13.5">Explains by naming an abstract power</text>
+                  <text class="dg-t" x="32" y="275" font-size="13.5">with no personality: a force, an essence.</text>
+                  <text class="dg-t dg-dim" x="32" y="297" font-size="13">Highest form: one abstraction, Nature,</text>
+                  <text class="dg-t dg-dim" x="32" y="315" font-size="13">treated as the source of everything.</text>
+                  <text class="dg-t" x="346" y="256" font-size="13">Moisture seeks its</text>
+                  <text class="dg-t" x="346" y="275" font-size="13">proper place.</text>
+                  <text class="dg-t" x="565" y="256" font-size="13.5" font-weight="600">youth</text>
+
+                  <line class="dg-ln" x1="48" y1="334" x2="48" y2="374" stroke-width="1.4" marker-end="url(#cm-arw)"/>
+                  <text class="dg-t dg-dim" x="72" y="350" font-size="13">The who and the why are both given up,</text>
+                  <text class="dg-t dg-dim" x="72" y="368" font-size="13">and that is the price of a reliable answer.</text>
+
+                  <rect class="dg-box dg-hi" x="12" y="386" width="650" height="122" rx="2"/>
+                  <line class="dg-ln dg-dim" x1="326" y1="400" x2="326" y2="494" stroke-width="1"/>
+                  <line class="dg-ln dg-dim" x1="545" y1="400" x2="545" y2="494" stroke-width="1"/>
+                  <text class="dg-t" x="32" y="414" font-size="15.5" font-weight="600">3 · Positive</text>
+                  <text class="dg-t" x="32" y="436" font-size="13.5">Explains by stating what regularly</text>
+                  <text class="dg-t" x="32" y="455" font-size="13.5">follows what, and measuring it.</text>
+                  <text class="dg-t dg-dim" x="32" y="477" font-size="13">Ideal endpoint: the fewest laws covering</text>
+                  <text class="dg-t dg-dim" x="32" y="495" font-size="13">the most, one law for apple and moon.</text>
+                  <text class="dg-t" x="346" y="436" font-size="13">Cooling air past its limit</text>
+                  <text class="dg-t" x="346" y="455" font-size="13">forces the surplus to</text>
+                  <text class="dg-t" x="346" y="474" font-size="13">condense.</text>
+                  <text class="dg-t" x="565" y="436" font-size="13.5" font-weight="600">maturity</text>
+                </svg>
+              </div>
+              <figcaption>Comte's law of three states, with one question carried through it. Reading down the first column, the kind of answer changes twice. The first two stages both put something behind the event and call that the cause, a will in the first and a faceless power in the second, which is why Comte gives the metaphysical stage no standing of its own. At the third the question changes: what is left is the measured relation between cooling air and condensation, and the why goes unanswered. The last column is the argument people remember from this chapter, that every person repeats the same sequence between childhood and maturity.</figcaption>
+            </figure>
             <div class="exm">
               <b>Example · the same three stages, in the history of cholera</b>
               <p><b>Theological.</b> Epidemic disease is a punishment. In 1832, when cholera reached Britain and North America, governments called days of national fasting and prayer, and clergy on both sides of the Atlantic explained the pattern of deaths by the sinfulness of the districts that suffered most. The explanation names a will behind the event, and the response follows from it: repentance.</p>
@@ -1537,6 +1992,11 @@
             <p>Then he changes what is being measured: <em>now let us consider all this knowledge in relation to morals.</em></p>
           </div>
 
+          <figure class="pic">
+            <img src="img/rousseau-discours-frontispiece-1750.jpg" width="591" height="899" loading="lazy"
+                 alt="An engraving: a bearded man wrapped in drapery kneels on a bank of cloud at the upper left and reaches down with a flaming brand to the head of a slender nude youth standing on a low stone block, while at the right a horned satyr with shaggy goat legs recoils with one arm flung up, and a plume of smoke rises behind them.">
+            <figcaption><b>The frontispiece of Rousseau&rsquo;s <em>Discourse on the Sciences and Arts</em>, engraved by Jean-Charles Baquoy for the first edition of 1750, the essay the Final Reply defends.</b> Prometheus leans down from the cloud and touches his torch to the head of the figure on the plinth, and the satyr at the right throws up an arm and backs away from the fire. Rousseau explained the plate in print after a critic misread it: the torch is the sciences, made to animate great minds, the satyr is the ordinary man who sees fire for the first time and runs to embrace it, and the Prometheus shouting the warning is Rousseau himself. That is the first step of the argument below drawn as a picture, and the line cut along the foot puts it in six words: <em>Satyre, tu ne le connois pas</em>, satyr, you do not know what it is. <span class="cred">Engraved by Jean-Charles Baquoy, from the Biblioth&egrave;que nationale de France copy. Public domain, via Wikimedia Commons.</span></figcaption>
+          </figure>
           <h4>The argument, in three steps</h4>
           <div class="body">
             <ol>
@@ -1596,6 +2056,11 @@
 
           <p class="qline">If a statement cannot be checked against experience, does it mean anything at all?</p>
 
+          <figure class="pic">
+            <img src="img/moritz-schlick-1927.jpg" width="484" height="703" loading="lazy"
+                 alt="A sepia studio portrait of a middle-aged man in round rimless spectacles, shown from the chest up in a tweed jacket, white shirt and patterned dark tie, turned slightly away from the camera against a plain backdrop.">
+            <figcaption><b>Moritz Schlick, photographed in Vienna in March 1927, two years before the manifesto appeared.</b> Schlick held the University of Vienna chair in the philosophy of the inductive sciences, the post Ernst Mach had held before him, and the group that met around him on Thursday evenings in a seminar room on the Boltzmanngasse is what the text means by the Circle. Carnap, Hahn and Neurath wrote the manifesto and dedicated it to him, which puts a professor of philosophy on the first page of a document arguing that his subject holds no truths of its own and survives as the clarification of what the sciences say. <span class="cred">Photograph by Georg Fayer, March 1927, from the Austrian National Library picture archive. Public domain, via Wikimedia Commons.</span></figcaption>
+          </figure>
           <h4>The test, worked through</h4>
           <div class="body">
             <p>Take any sentence and ask what would have to be observed for it to come out true, and what would have to be observed for it to come out false. If you can answer, the sentence means something, and <b>its meaning is that set of observations</b>. If you cannot answer even in principle, the sentence is empty and only looks like a statement.</p>
