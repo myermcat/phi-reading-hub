@@ -337,6 +337,10 @@
     align-self: flex-start;
     border: 1px solid var(--rule); border-radius: 6px; background: var(--surface);
   }
+  /* A line drawing with a transparent background is black ink on nothing, which in the dark
+     theme is black ink on a dark page and reads as an empty box. Give that kind of picture the
+     paper it was printed on. */
+  figure.pic img.ink { background: #fff; padding: 14px; }
   @media (max-width: 700px) { figure.pic img { max-height: 60vh; } }
   figure.pic figcaption, figure.dia figcaption {
     font-family: var(--body); font-size: 15px; line-height: 1.5;
@@ -658,7 +662,6 @@
 
 <nav id="nav" aria-label="Contents">
   <a class="grp" href="#s-notes">Notes by text</a>
-  <a class="grp" href="#s-set">What is set</a>
   <a class="grp" href="#s-texts">The two texts</a>
   <a class="core" href="#kuhn" title="Sismondo ch. 2 &middot; read properly">Kuhn</a>
   <a class="core" href="#r54" title="Anthology ch. 54 &middot; read properly">Foucault</a>
@@ -671,18 +674,11 @@
   <header>
     <div class="eyebrow">PHI 2394 B00 &middot; reading for Monday 21 September</div>
     <h1>Kuhn&#8217;s Paradigms, and Foucault&#8217;s Tower</h1>
-    <p class="standfirst">Two short readings that answer the same question from opposite ends. Kuhn asks what makes a scientific community change its mind. Foucault asks what the machinery for knowing people is actually for.</p>
+    <p class="standfirst">Two short readings that answer the same question from opposite ends. Kuhn asks what makes a scientific community change its mind. Foucault asks what the machinery for knowing people is actually for. Sismondo chapter 2, pages 12 to 22 and no further, plus Panopticism from the packet.</p>
     <div class="storenote"><b>Everything you write here stays in this browser.</b> Highlights, comments and notes are saved on the device you are using, and they survive a reload and a closed tab. They do not travel to another computer, they are not sent anywhere, and clearing your browsing data removes them. Nobody else can see them.</div>
-    <p class="hl-hint">Select any text for yellow, pink, or a comment. Comments appear in the margin and the text goes pale green. Click a highlight to remove it, or a commented phrase to edit it. Removing something offers an undo. Everything saves.</p>
   </header>
 
   <div class="strip-block" id="s-set">
-    <dl class="facts">
-      <dt>Next class</dt><dd><b>Monday 21 September, 5:30 to 6:50 p.m.</b>, 70 Laurier (MHN) 033. The course runs Mondays and Wednesdays.</dd>
-      <dt>Set for this week</dt><dd>Two items, from the Brightspace module description. <b>Sismondo, <em>An Introduction to Science and Technology Studies</em>, Wiley-Blackwell 2010, chapter 2, "The Kuhnian Revolution", pages 12 to 22, and the word ONLY is hers.</b> Plus <b>Panopticism</b> by Foucault, which is chapter 54 of the packet from the week before.</dd>
-      <dt>Week theme</dt><dd>"Kuhn and Scientific revolutions."</dd>
-      <dt>Course thesis</dt><dd>Slide 3 of the first lecture states it: <b>the scientific method is not fixed, and is socially constructed.</b> Up to now the course has described the claim. This is the week it starts arguing for it.</dd>
-    </dl>
     <div class="tally">
       <div><b>11</b><span>pages of Sismondo, and no more</span></div>
       <div><b>11</b><span>pages of Foucault, already in the packet</span></div>
@@ -705,10 +701,6 @@
       <div class="nbwrap">
         <div class="nbhead"><b>Foucault</b><span>ch. 54</span></div>
         <div class="nbpad"><div class="nb" contenteditable="true" data-k="r54" data-ph="Your note&#8230;"></div></div>
-      </div>
-      <div class="nbwrap wide">
-        <div class="nbhead"><b>Questions to ask</b><span>seminar and office hours</span></div>
-        <div class="nbpad"><div class="nb" contenteditable="true" data-k="ask" data-ph="What you want answered&#8230;"></div></div>
       </div>
     </div>
   </section>
@@ -737,6 +729,11 @@
           <div class="body">
             <p><b>Thomas Kuhn</b> was an American physicist who moved into the history of science, and in 1962 he published <em>The Structure of Scientific Revolutions</em>. It is short, it is the most cited book of its century in the humanities and social sciences, and it put the word <b>paradigm</b> into ordinary English, where it is now used by people selling software.</p>
             <p><b>Where it came out is the joke.</b> It was published as a monograph inside the <em>International Encyclopedia of Unified Science</em>, which was the Vienna Circle's own publishing project. Chapter 9 of last week's packet is the Vienna Circle manifesto, arguing that science is one unified structure built up from verified observation statements. Kuhn's book, which says science does not build up and observation statements are not neutral, came out as a volume of their encyclopedia. The people who commissioned it published the thing that undid it.</p>
+            <figure class="pic">
+              <img src="img/thomas-kuhn-1977.jpg" width="820" height="556" loading="lazy"
+                   alt="A man in a suit and tie with heavy dark-framed glasses, standing at a blackboard in profile, one hand raised to a curve he has chalked on it.">
+              <figcaption><b>Thomas Kuhn in 1977, fifteen years after the book.</b> He trained as a physicist and moved into history, and by this date he had spent a decade arguing that the thing everyone took from his book was not what he had written. He accepted that science makes progress. What he denied was that it does so by piling one result on top of another. <span class="cred">Photograph by Bob Bielk, public domain, via Wikimedia Commons.</span></figcaption>
+            </figure>
           </div>
 
           <h4>Normal science: most scientists are not testing anything</h4>
@@ -765,6 +762,11 @@
             <p><b>Anomaly.</b> A result the framework cannot digest. Most anomalies get absorbed, adjusted for, or put on a shelf marked "not yet", and there is a good reason for it: a framework that collapsed at the first awkward result would never get any work done.</p>
             <p><b>Crisis.</b> Anomalies accumulate at a point the community cares about, the fixes start looking like patches, and confidence goes. Kuhn's claim is that this is a state of the <em>community</em>. The same anomalies could have been known for decades and the crisis arrives when confidence does.</p>
             <p><b>Revolution.</b> A new framework takes over. Not by being added to the old one, but by replacing it, and Kuhn's strongest claim is that the new one does not contain the old as a special case in the way textbooks pretend.</p>
+            <figure class="pic">
+              <img src="img/copernicus-heliocentric-1543.jpg" width="820" height="702" loading="lazy"
+                   alt="A page from a sixteenth-century printed book showing seven nested circles drawn around a small sun at the centre, each ring labelled in Latin with the name of a planet and the length of its orbit, and the moon drawn on a small circle beside the earth.">
+              <figcaption><b>The diagram from Copernicus, <em>De revolutionibus orbium coelestium</em>, 1543.</b> Kuhn wrote a whole book about this one case before he wrote the famous one. The detail that matters for the argument: this system was about as accurate as the one it replaced, about as complicated, and still needed circles inside circles to make the numbers come out. It did not win by predicting better, which is why Kuhn went looking for what else decides. <span class="cred">Public domain, via Wikimedia Commons.</span></figcaption>
+            </figure>
             <figure class="dgm">
               <svg viewBox="0 0 700 180" role="img" aria-labelledby="kuhn-cycle-t kuhn-cycle-d">
                 <title id="kuhn-cycle-t">Kuhn's cycle, drawn as a line that breaks</title>
@@ -796,6 +798,12 @@
               <li><b>The list of good questions changes.</b> Asking why a body keeps moving is a serious question before Newton and a confused one after him.</li>
               <li><b>The standards change.</b> What counts as a satisfying explanation is set by the paradigm, so each side scores itself well by its own rules.</li>
             </ul>
+            <p><b>Kuhn's own picture for it is the duck and the rabbit.</b> One set of lines, two ways of seeing, and no third way of seeing it that is neutral between them. You can flip between them and you cannot hold both at once, and nothing in the drawing itself settles which one is correct. A scientist who moves to a new paradigm does not get a better view of the same thing; the thing looks different.</p>
+            <figure class="pic">
+              <img class="ink" src="img/duck-rabbit-1892.png" width="820" height="720" loading="lazy"
+                   alt="A magazine page in blackletter type. The heading asks, in German, which animals most resemble one another. Below it an engraved animal head reads either as a duck facing left, the two long shapes being its bill, or as a rabbit facing right, the same two shapes being its ears. The line under it names both.">
+              <figcaption><b>The duck and the rabbit, from the German humour magazine <em>Fliegende Blätter</em> in 1892.</b> The heading asks which animals most resemble one another and the line below answers, rabbit and duck. Kuhn borrows the figure from psychology to say what a change of paradigm is like: the lines on the page never move, what changes is what they are a picture of, and there is no position outside the two from which to check. <span class="cred">Public domain, via Wikimedia Commons.</span></figcaption>
+            </figure>
             <p><b>What Kuhn did not say</b>, and spent thirty years insisting he had not said, is that theory choice is irrational or that anything goes. His position is that there are good reasons, that they are real, and that they do not add up to a proof, so two careful people can weigh them differently. He hated being called a relativist.</p>
             <div class="exm">
               <b>Example &middot; the people who never crossed over</b>
