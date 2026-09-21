@@ -540,7 +540,10 @@
   details.about summary:hover { color: var(--accent); }
   details.about summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
   details.about .aboutin { display: flex; flex-direction: column; gap: 11px; padding: 14px 0 4px; }
-  #save { position: fixed; right: 16px; bottom: 16px; z-index: 60; font-family: var(--mono); font-size: 10.5px;
+  /* The pinned bar is z-index 75 and its top edge reaches 635, so an undo offered at the
+     foot of the window sat under it and could not be clicked. The pill clears the bar and
+     stacks above it, because it holds a control with a few seconds to live. */
+  #save { position: fixed; right: 16px; bottom: 64px; z-index: 80; font-family: var(--mono); font-size: 10.5px;
           letter-spacing: .04em; padding: 6px 10px; border-radius: 4px; background: var(--surface);
           border: 1px solid var(--rule); color: var(--muted); opacity: 0; transition: opacity .25s; pointer-events: none; }
   #save.on { opacity: 1; }
@@ -2739,12 +2742,13 @@
   </div>
 </footer>
 
+<script src="../shared/editor.js"></script>
 <script>
 (function () {
   var SEL = 'p,li,h4,h5,blockquote,td,dd,figcaption';
   var LS = 'phi2394-week1-guide-v1', WIDE = 1400;
-  var root, bar, rail, items = [], notes = {}, ref = null, nbbar = null, saveT = null;
-  var drawer = null, lastPaint = 'c-y';
+  var root, bar, rail, items = [], notes = {}, ref = null, saveT = null;
+  var drawer = null;
   function openMarks() {
     if (!drawer) return;
     drawer.hidden = false; document.body.style.overflow = 'hidden';
@@ -2804,8 +2808,8 @@
     var ta = document.createElement('div');
     ta.className = 'cbody'; ta.contentEditable = 'true';
     ta.setAttribute('data-ph', 'Comment…');
-    ta.innerHTML = clean(it.body || '');
-    rich(ta, function () { it.body = ta.innerHTML; save(); });
+    ta.innerHTML = Notes.clean(it.body || '');
+    Notes.rich(ta, function () { it.body = ta.innerHTML; save(); });
     ta.addEventListener('input', function () { it.body = ta.innerHTML; save(); });
     ta.addEventListener('blur', function () {
       if (!ta.textContent.trim()) { remove(it.id); return; }
@@ -3117,466 +3121,48 @@
     }
     queueRef();
   }
-  function clean(html) {
-    var d = document.createElement('div');
-    d.innerHTML = String(html || '');
-    Array.prototype.forEach.call(d.querySelectorAll('script,style,iframe,object,embed,link'), function (n) { n.remove(); });
-    Array.prototype.forEach.call(d.querySelectorAll('hr[id]'), function (n) { n.removeAttribute('id'); });
-    Array.prototype.forEach.call(d.querySelectorAll('*'), function (n) {
-      Array.prototype.slice.call(n.attributes).forEach(function (a) {
-        if (/^on/i.test(a.name) || (a.name === 'href' && /^\s*javascript:/i.test(a.value))) n.removeAttribute(a.name);
-        if (a.name === 'class' && !/^(c-y|c-p|c-g|c-m|c-n)$/.test(a.value)) n.removeAttribute(a.name);
-        if (a.name === 'style') n.removeAttribute(a.name);
-      });
-    });
-    return d.innerHTML;
-  }
   function paintNotes() {
     Array.prototype.forEach.call(document.querySelectorAll('.nb'), function (el) {
       if (el !== document.activeElement) {
         var v = notes[el.getAttribute('data-k')] || '';
-        if (el.innerHTML !== v) el.innerHTML = clean(v);
+        if (el.innerHTML !== v) el.innerHTML = Notes.clean(v);
       }
-      markEmpty(el);
+      Notes.markEmpty(el);
       var card = el.closest('.nbwrap');
       if (card) card.classList.toggle('has', !!el.textContent.trim());
     });
   }
-  // Markdown-ish shortcuts, the ones every note app has. Shared by the note cards and the
-  // comment bodies. Every change goes through execCommand, because the browser's undo stack
-  // only records those: a raw Range mutation leaves Cmd+Z with nothing to undo.
-  function caretEnd(node) {
-    var r = document.createRange();
-    r.selectNodeContents(node); r.collapse(false);
-    var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
-  }
-  function prime(el) {
-    if (!el.querySelector('p,div,h3,h4,h5,ul,ol,blockquote,hr')) {
-      // A note saved as bare text, or as bare bold or coloured markup, holds no block element.
-      // Wrap what the box already has. Replacing the contents throws that note away the moment
-      // she clicks into it.
-      var had = el.innerHTML.trim();
-      el.innerHTML = '<p>' + (had || '<br>') + '</p>';
-      if (el === document.activeElement) caretEnd(el.firstElementChild);
-    }
-  }
-  // Chrome carries inline formatting across a paragraph break, so a line started at the end of
-  // a coloured run comes out coloured and one started at the end of a bold run comes out bold.
-  // Enter clears both on a line that is still empty: `plainCaret` turns off the character
-  // formats, `unpaint` removes the empty colour span, because colour has no plain white.
-  function esc(t) {
-    return String(t == null ? '' : t)
-      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-      .replace(/\r?\n/g, '<br>');
-  }
-  function inColour(el) {
-    var sel = window.getSelection();
-    if (!sel || !sel.rangeCount) return false;
-    var n = sel.getRangeAt(0).startContainer;
-    if (n.nodeType === 3) n = n.parentElement;
-    while (n && n !== el && el.contains(n)) {
-      if (n.tagName === 'SPAN' && /^c-[ypgm]$/.test(n.className)) return true;
-      n = n.parentNode;
-    }
-    return false;
-  }
-  // Keep the shape and the colours of what was copied, and throw the rest away. Pasting a
-  // whole web page's markup into a note is how a note stops looking like the others.
-  function pasteHtml(html) {
-    if (!html) return '';
-    var d = document.createElement('div');
-    d.innerHTML = String(html);
-    Array.prototype.forEach.call(d.querySelectorAll('script,style,meta,link,title,iframe,object,embed'),
-      function (n) { n.remove(); });
-    // Chrome brackets a copied fragment with comment markers, which arrive as empty nodes.
-    var cw = document.createTreeWalker(d, NodeFilter.SHOW_COMMENT, null), cs = [], cn;
-    while ((cn = cw.nextNode())) cs.push(cn);
-    cs.forEach(function (c) { c.parentNode.removeChild(c); });
-    var OK = /^(B|STRONG|I|EM|U|S|BR|P|DIV|UL|OL|LI|H3|H4|H5|BLOCKQUOTE|SPAN)$/;
-    var all = Array.prototype.slice.call(d.querySelectorAll('*'));
-    for (var i = all.length - 1; i >= 0; i--) {
-      var n = all[i], keep = OK.test(n.tagName);
-      if (keep && n.tagName === 'SPAN') keep = /^c-[ypgmn]$/.test(n.getAttribute('class') || '');
-      if (!keep) {
-        var par = n.parentNode;
-        if (!par) continue;
-        while (n.firstChild) par.insertBefore(n.firstChild, n);
-        par.removeChild(n);
-        continue;
-      }
-      Array.prototype.slice.call(n.attributes).forEach(function (a) {
-        if (a.name !== 'class') n.removeAttribute(a.name);
-      });
-    }
-    return d.textContent.trim() || d.querySelector('br,hr') ? d.innerHTML : '';
-  }
-  // Is there already a colour on this selection, whether it sits inside one or covers one
-  function selColoured(el) {
-    var sel = window.getSelection();
-    if (!sel || !sel.rangeCount) return false;
-    if (inColour(el)) return true;
-    var r = sel.getRangeAt(0), found = false;
-    Array.prototype.forEach.call(el.querySelectorAll('.c-y, .c-p, .c-g, .c-m'), function (e) {
-      if (!found && r.intersectsNode(e)) found = true;
-    });
-    return found;
-  }
-  // Some apps put nothing but plain text on the clipboard, and a list copied from one of those
-  // arrives as lines that begin with a dash. Read them back as a list.
-  function plainList(t) {
-    var lines = String(t || '').split(/\r?\n/).filter(function (l) { return l.trim(); });
-    if (lines.length < 2) return '';
-    var ol = lines.every(function (l) { return /^\s*\d+[.)]\s+\S/.test(l); });
-    var ul = lines.every(function (l) { return /^\s*[-*\u2022\u2013]\s+\S/.test(l); });
-    if (!ol && !ul) return '';
-    var tag = ol ? 'ol' : 'ul';
-    return '<' + tag + '>' + lines.map(function (l) {
-      return '<li>' + esc(l.replace(/^\s*(?:\d+[.)]|[-*\u2022\u2013])\s+/, '')) + '</li>';
-    }).join('') + '</' + tag + '>';
-  }
-  function unpaint(el) {
-    var sel = window.getSelection();
-    if (!sel || !sel.rangeCount || !sel.isCollapsed) return false;
-    var n = sel.getRangeAt(0).startContainer;
-    if (n.nodeType === 3) n = n.parentElement;
-    // Only the empty colour spans the caret is actually sitting inside, so nothing already
-    // written elsewhere in the note is touched. A colour put on bold text goes on the `b`
-    // element, so the tags that can carry one are all named here. Blocks stay out of it: an
-    // empty paragraph has to keep being a paragraph.
-    var home = null;
-    while (n && n !== el && el.contains(n)) {
-      var up = n.parentNode;
-      if (/^(SPAN|B|STRONG|I|EM|U|S|STRIKE|FONT)$/.test(n.tagName) && /^c-[ypgm]$/.test(n.className) && !n.textContent) {
-        while (n.firstChild) up.insertBefore(n.firstChild, n);
-        up.removeChild(n); home = up;
-      }
-      n = up;
-    }
-    if (!home) return false;
-    if (!home.firstChild) home.appendChild(document.createElement('br'));
-    var r = document.createRange();
-    r.setStart(home, 0); r.collapse(true);
-    sel.removeAllRanges(); sel.addRange(r);
-    return true;
-  }
-  function markEmpty(el) { el.classList.toggle('is-empty', !el.textContent.trim() && !el.querySelector('hr,img')); }
-  function blockOf(el, node) {
-    var b = node && (node.nodeType === 3 ? node.parentElement : node);
-    while (b && b !== el && !/^(P|DIV|H[1-6]|BLOCKQUOTE|LI)$/.test(b.tagName)) b = b.parentElement;
-    return b;
-  }
-  // Is the caret on a line with nothing written on it yet. Pressing Enter in the middle of a
-  // bold sentence splits it and leaves text on both sides of the break, so the answer there is
-  // no and both halves keep their bold.
-  function freshLine(el) {
-    var sel = window.getSelection();
-    if (!sel || !sel.rangeCount || !sel.isCollapsed) return false;
-    var n = sel.getRangeAt(0).startContainer;
-    var at = n.nodeType === 3 ? n.parentNode : n;
-    if (at !== el && !el.contains(at)) return false;
-    var blk = blockOf(el, n) || el;
-    return !blk.textContent.trim() && !blk.querySelector('hr,img');
-  }
-  // Turn off bold, italic, underline and strikethrough at the caret. Each one is tested with
-  // queryCommandState and toggled only when it is already on, because the same command that
-  // turns a format off turns it on again. A list item keeps its place: the toggle acts on the
-  // caret's typing state and leaves the li standing.
-  var CHARFMT = ['bold', 'italic', 'underline', 'strikeThrough'];
-  function plainCaret() {
-    var did = false;
-    // Plain B and I tags, the same markup the toolbar buttons write.
-    try { document.execCommand('styleWithCSS', false, false); } catch (e) {}
-    CHARFMT.forEach(function (c) {
-      var on = false;
-      try {
-        if (document.queryCommandSupported && !document.queryCommandSupported(c)) return;
-        on = document.queryCommandState(c);
-      } catch (e) { return; }
-      if (!on) return;
-      try { document.execCommand(c, false, null); did = true; } catch (e) {}
-    });
-    return did;
-  }
-  // THE TWO SUBSTITUTIONS SHE ASKED FOR WHILE TYPING, the same two the other editors make.
-  // "->" becomes an arrow and "--" becomes an em dash, the moment the second character lands.
-  // Only the text immediately before a collapsed caret is read, so nothing already written is
-  // rewritten behind her, and the caret is put back after the character it replaced.
-  var SWAPS = [[/->$/, '\u2192'], [/--$/, '\u2014']];
-  function swapAsTyped() {
-    var sel = window.getSelection();
-    if (!sel || !sel.rangeCount) return false;
-    var r = sel.getRangeAt(0);
-    if (!r.collapsed || r.startContainer.nodeType !== 3) return false;
-    var n = r.startContainer, off = r.startOffset, before = n.nodeValue.slice(0, off);
-    for (var i = 0; i < SWAPS.length; i++) {
-      var m = before.match(SWAPS[i][0]);
-      if (!m) continue;
-      var cut = m[0].length, to = SWAPS[i][1];
-      n.nodeValue = before.slice(0, off - cut) + to + n.nodeValue.slice(off);
-      var put = document.createRange();
-      put.setStart(n, off - cut + to.length);
-      put.collapse(true);
-      sel.removeAllRanges();
-      sel.addRange(put);
-      return true;
-    }
-    return false;
-  }
-  function rich(el, onChange) {
-    try { document.execCommand('defaultParagraphSeparator', false, 'p'); } catch (e) {}
-    markEmpty(el);
-    el.addEventListener('focus', function () { prime(el); markEmpty(el); });
-    el.addEventListener('input', function () { swapAsTyped(); markEmpty(el); });
-    el.addEventListener('keyup', function (e) {
-      if (e.key !== 'Enter') return;
-      // The new line exists by now and is still empty, which is the moment to clear it.
-      // `unpaint` goes first because it moves the caret, and moving the caret is what throws
-      // away the pending state `plainCaret` leaves behind for the next character typed.
-      var changed = unpaint(el);
-      if (freshLine(el) && plainCaret()) changed = true;
-      if (changed && onChange) onChange();
-    });
-    el.addEventListener('paste', function (e) {
-      e.preventDefault();
-      var cd = e.clipboardData || window.clipboardData;
-      var safe = pasteHtml(cd.getData('text/html'));
-      if (safe) {
-        // Pasting inside a coloured run took that run's colour, because the caret is inside
-        // its span. Say the colour out loud for anything that arrived without one.
-        if (inColour(el) && !/^<span class="c-[ypgmn]"/.test(safe)) safe = '<span class="c-n">' + safe + '</span>';
-        document.execCommand('insertHTML', false, safe);
-      } else {
-        var t = cd.getData('text/plain'), asList = plainList(t);
-        if (asList) document.execCommand('insertHTML', false, asList);
-        else if (inColour(el)) document.execCommand('insertHTML', false, '<span class="c-n">' + esc(t) + '</span>');
-        else document.execCommand('insertText', false, t);
-      }
-      markEmpty(el);
-      if (onChange) onChange();
-    });
-    el.addEventListener('keydown', function (e) {
-      // Tab inside a list indents it. Without this it leaves the note for the next control,
-      // which is right everywhere else on a page and wrong inside a list.
-      if (e.key === 'Tab') {
-        var a = window.getSelection() && window.getSelection().anchorNode;
-        var b = a && (a.nodeType === 3 ? a.parentElement : a);
-        if (b && b.closest && b.closest('li')) {
-          e.preventDefault();
-          document.execCommand(e.shiftKey ? 'outdent' : 'indent', false, null);
-          if (onChange) onChange();
-        }
-        return;
-      }
-      if ((e.metaKey || e.ctrlKey) && (e.key === 'h' || e.key === 'H')) {
-        // One key both ways: colour plain text, and take the colour back off coloured text.
-        e.preventDefault();
-        paintSel(selColoured(el) ? null : lastPaint);
-        if (onChange) onChange();
-        return;
-      }
-      if (e.key !== ' ' && e.key !== 'Enter' && e.key !== '-') return;
-      var sel = window.getSelection();
-      if (!sel || !sel.rangeCount || !sel.isCollapsed) return;
-      var r = sel.getRangeAt(0);
-      var blk = blockOf(el, r.startContainer) || el;
-      var pre = document.createRange();
-      pre.selectNodeContents(blk);
-      try { pre.setEnd(r.startContainer, r.startOffset); } catch (err) { return; }
-      var head = pre.toString(), cmd = null, arg = null, m;
-      var inLi = blk && blk.tagName === 'LI';
-      if (e.key === ' ') {
-        if (inLi) return;
-        if (head.match(/^\s*[-*+]$/)) cmd = 'ul';
-        else if (head.match(/^\s*\d+[.)]$/)) cmd = 'ol';
-        else if ((m = head.match(/^\s*(#{1,3})$/))) { cmd = 'block'; arg = 'h' + (m[1].length + 2); }
-        else if (head.match(/^\s*>$/)) { cmd = 'block'; arg = 'blockquote'; }
-        else if (head.match(/^\s*-{2,3}$/)) cmd = 'hr';
-      } else if (e.key === '-') {
-        if (inLi || !head.match(/^\s*--$/)) return;
-        cmd = 'hr';
-      } else if (head.match(/^\s*-{2,3}$/)) { cmd = 'hr'; }
-      if (!cmd) return;
-      e.preventDefault();
-      if ((cmd === 'ul' || cmd === 'ol') && blk !== el && blk.tagName === 'P') {
-        // `insertUnorderedList` builds the list inside the block the caret is in, which leaves a
-        // <ul> sitting in a <p>. That one nesting the parser will not have: on the next load it
-        // pulls the list out and leaves an empty paragraph above and below, one more pair every
-        // time. Replace the whole line instead, the way the heading branch below does, so the
-        // list stands beside the blocks around it, clear of any one of them. Only a paragraph is
-        // taken this way. A list nested in a div, a heading, a blockquote or another list item
-        // survives the parser untouched, and those lines are left to the plain command below,
-        // which does not disturb whatever block follows them.
-        var tag = cmd === 'ul' ? 'ul' : 'ol';
-        var lead = cmd === 'ul' ? /^(?:\s|&nbsp;|<br\s*\/?>)*[-*+]/ : /^(?:\s|&nbsp;|<br\s*\/?>)*\d+[.)]/;
-        var item = blk.innerHTML.replace(lead, '') || '<br>';
-        var lr = document.createRange();
-        lr.selectNode(blk);
-        sel.removeAllRanges(); sel.addRange(lr);
-        // Marked so the caret goes into the list just made and not into whichever list happens
-        // to be last in the note. The mark comes straight back off, before anything is saved.
-        document.execCommand('insertHTML', false,
-          '<' + tag + ' data-new="1"><li>' + item + '</li></' + tag + '>');
-        var made = el.querySelector('[data-new]');
-        if (made) made.removeAttribute('data-new');
-        var cell = made && made.querySelector('li');
-        if (!cell) { var lis = el.getElementsByTagName('li'); cell = lis.length ? lis[lis.length - 1] : null; }
-        if (cell) caretEnd(cell);
-      } else if (cmd === 'block' && blk !== el) {
-        // Replace the whole line with the new block, in one undoable step.
-        var inner = blk.innerHTML.replace(/^(?:\s|&nbsp;|<br\s*\/?>)*(?:#{1,3}|&gt;|>)/, '') || '<br>';
-        var rr = document.createRange();
-        rr.selectNode(blk);
-        sel.removeAllRanges(); sel.addRange(rr);
-        document.execCommand('insertHTML', false, '<' + arg + '>' + inner + '</' + arg + '>');
-        var all = el.getElementsByTagName(arg);
-        if (all.length) caretEnd(all[all.length - 1]);
-      } else {
-        sel.removeAllRanges(); sel.addRange(pre);
-        document.execCommand('delete', false, null);
-        if (cmd === 'ul') document.execCommand('insertUnorderedList', false, null);
-        else if (cmd === 'ol') document.execCommand('insertOrderedList', false, null);
-        else if (cmd === 'hr') {
-          document.execCommand('insertHorizontalRule', false, null);
-          // The caret is left loose after the rule, where typing makes a bare text node that
-          // no later heading or list command can act on. Give it a paragraph to land in.
-          document.execCommand('insertHTML', false, '<p><br></p>');
-          var ps = el.getElementsByTagName('p');
-          if (ps.length) {
-            var last = ps[ps.length - 1], rr = document.createRange();
-            rr.setStart(last, 0); rr.collapse(true);
-            var ss = window.getSelection(); ss.removeAllRanges(); ss.addRange(rr);
-          }
-        }
-        else {
-          document.execCommand('insertHTML', false, '<' + arg + '><br></' + arg + '>');
-          var a2 = el.getElementsByTagName(arg);
-          if (a2.length) caretEnd(a2[a2.length - 1]);
-        }
-      }
-      Array.prototype.forEach.call(el.querySelectorAll('hr[id]'), function (n) { n.removeAttribute('id'); });
-      markEmpty(el);
-      if (onChange) onChange();
-    });
-  }
-  // Colour a selection. `foreColor` is the browser's own command, so it leaves headings, list
-  // items and paragraphs standing where replacing the selection's HTML flattened them. It marks
-  // the text with a colour nobody would type, which is then swapped for a class so both themes
-  // stay readable.
-  var CDOT = { 'c-y': '#010201', 'c-p': '#010202', 'c-m': '#010203', 'c-n': '#010204', 'c-g': '#010205' };
-  var CBACK = { 'rgb(1,2,1)': 'c-y', 'rgb(1,2,2)': 'c-p', 'rgb(1,2,3)': 'c-m', 'rgb(1,2,4)': 'c-n',
-                'rgb(1,2,5)': 'c-g',
-                '#010201': 'c-y', '#010202': 'c-p', '#010203': 'c-m', '#010204': 'c-n', '#010205': 'c-g' };
-  // Where a boundary falls, counted in characters from the start of the editor. Comparing
-  // DOM boundary points directly says a span starts before its own first character, which
-  // makes a selection of exactly that span's text look like it falls short of covering it.
-  function charPos(host, node, off) {
-    var r = document.createRange();
-    try { r.setStart(host, 0); r.setEnd(node, off); } catch (e) { return -1; }
-    return r.toString().length;
-  }
-  function wholly(r, el, host) {
-    var rs = charPos(host, r.startContainer, r.startOffset);
-    var re = charPos(host, r.endContainer, r.endOffset);
-    var es = charPos(host, el, 0), ee = es + el.textContent.length;
-    if (rs < 0 || re < 0 || es < 0 || ee <= es) return false;
-    return es >= rs && ee <= re;
-  }
-  function paintSel(cls) {
-    var sel = window.getSelection();
-    if (!sel || !sel.rangeCount || sel.isCollapsed) return;
-    var r = sel.getRangeAt(0), n = r.commonAncestorContainer;
-    if (n.nodeType === 3) n = n.parentElement;
-    // Selecting a whole block puts the anchor on the block itself, where a lookup from the
-    // anchor finds nothing and the colour silently does not apply.
-    var host = n && n.closest ? n.closest('.nb, .cbody') : null;
-    if (!host) {
-      var act = document.activeElement;
-      if (act && act.classList && (act.classList.contains('nb') || act.classList.contains('cbody'))) host = act;
-    }
-    if (!host) return;
-    if (cls && cls !== 'c-n') lastPaint = cls;
-    // A colour already inside the selection sits deeper than the new one and would win, so
-    // clear the ones the selection covers whole. One it only overlaps keeps its colour outside.
-    Array.prototype.forEach.call(host.querySelectorAll('.c-y, .c-p, .c-g, .c-m, .c-n'), function (e) {
-      if (r.intersectsNode(e) && wholly(r, e, host)) e.removeAttribute('class');
-    });
-    var want = cls || (inColour(host) ? 'c-n' : null);
-    if (want) {
-      try { document.execCommand('styleWithCSS', false, true); } catch (e) {}
-      document.execCommand('foreColor', false, CDOT[want]);
-      Array.prototype.forEach.call(host.querySelectorAll('[style], font[color]'), function (e) {
-        var c = ((e.style && e.style.color) || e.getAttribute('color') || '').replace(/\s+/g, '').toLowerCase();
-        var k = CBACK[c];
-        if (!k) return;
-        if (e.style) e.style.color = '';
-        e.removeAttribute('color');
-        if (!e.getAttribute('style')) e.removeAttribute('style');
-        if (e.tagName === 'FONT') {
-          var sp = document.createElement('span');
-          while (e.firstChild) sp.appendChild(e.firstChild);
-          e.parentNode.replaceChild(sp, e);
-          e = sp;
-        }
-        e.className = k;
-      });
-    }
-    if (host.classList.contains('nb')) { notes[host.getAttribute('data-k')] = host.innerHTML; }
+
+  /* ---- the editor ---- */
+  /* The editor itself is shared/editor.js, one file for every note she writes in either
+     course. Two kinds of box on this page go through it: the note card under a reading, and
+     the body of a comment on a highlight. Both are named to Notes.bar(), which raises the
+     floating toolbar over a selection in either one. */
+
+  /* Where a change the toolbar or the colour key made belongs. A note card writes into
+     `notes` under its own key, and a comment body writes into the item its card stands for. */
+  function saveBox(el) {
+    if (el.classList.contains('nb')) notes[el.getAttribute('data-k')] = el.innerHTML;
     else {
-      var card = host.closest('.cmt');
-      var it = card && items.filter(function (x) { return x.id === card.getAttribute('data-id'); })[0];
-      if (it) it.body = host.innerHTML;
+      var c = el.closest('.cmt');
+      var it = c && items.filter(function (x) { return x.id === c.getAttribute('data-id'); })[0];
+      if (it) it.body = el.innerHTML;
     }
     save();
   }
   function wireNotes() {
-    nbbar = document.createElement('div');
-    nbbar.id = 'nb-bar'; nbbar.hidden = true;
-    nbbar.innerHTML = '<button type="button" data-a="bold" title="Bold"><b>B</b></button>' +
-      '<button type="button" class="i" data-a="italic" title="Italic">I</button>' +
-      '<button type="button" class="l" data-a="insertUnorderedList" title="Bullet list">&bull; list</button>' +
-      '<div class="sep"></div>' +
-      '<button type="button" class="sw y" data-p="c-y" title="Yellow text"></button>' +
-      '<button type="button" class="sw p" data-p="c-p" title="Pink text"></button>' +
-      '<button type="button" class="sw g" data-p="c-g" title="Green text"></button>' +
-      '<button type="button" class="sw m" data-p="c-m" title="Grey it out, for an aside"></button>' +
-      '<button type="button" class="sw x" data-p="" title="Back to normal">&times;</button>';
-    document.body.appendChild(nbbar);
-    nbbar.addEventListener('mousedown', function (e) { e.preventDefault(); });
-    nbbar.addEventListener('click', function (e) {
-      var b = e.target.closest('button'); if (!b) return;
-      if (b.hasAttribute('data-p')) { paintSel(b.getAttribute('data-p')); nbbar.hidden = true; return; }
-      document.execCommand(b.getAttribute('data-a'), false, null);
-      var el = document.activeElement;
-      if (el && el.classList && el.classList.contains('nb')) { notes[el.getAttribute('data-k')] = el.innerHTML; save(); }
-      else if (el && el.classList && el.classList.contains('cbody')) {
-        var card = el.closest('.cmt');
-        var it = card && items.filter(function (x) { return x.id === card.getAttribute('data-id'); })[0];
-        if (it) { it.body = el.innerHTML; save(); }
-      }
-    });
-    function nbplace() {
-      var a = document.activeElement, sel = window.getSelection();
-      var editing = a && a.classList && (a.classList.contains('nb') || a.classList.contains('cbody'));
-      if (!editing || !sel || sel.isCollapsed || !String(sel).trim()) { nbbar.hidden = true; return; }
-      var r = sel.getRangeAt(0).getBoundingClientRect();
-      if (!r.width && !r.height) { nbbar.hidden = true; return; }
-      nbbar.hidden = false;
-      nbbar.style.top = (window.scrollY + r.top - nbbar.offsetHeight - 8) + 'px';
-      nbbar.style.left = (window.scrollX + r.left) + 'px';
-    }
-    document.addEventListener('selectionchange', nbplace);
-    window.addEventListener('scroll', function () { nbbar.hidden = true; }, { passive: true });
+    Notes.bar({ sel: '.nb, .cbody', accent: 'Green text', save: saveBox });
     Array.prototype.forEach.call(document.querySelectorAll('.nb'), function (el) {
       el.addEventListener('input', function () {
         // ahead of rich()'s own listener, so the arrow is in the DOM before it is stored
-        swapAsTyped();
+        Notes.swapAsTyped();
         notes[el.getAttribute('data-k')] = el.innerHTML;
         var card = el.closest('.nbwrap');
         if (card) card.classList.toggle('has', !!el.textContent.trim());
         save();
       });
-      el.addEventListener('blur', function () { nbbar.hidden = true; notes[el.getAttribute('data-k')] = el.innerHTML; save(); });
-      rich(el, function () { notes[el.getAttribute('data-k')] = el.innerHTML; save(); });
+      el.addEventListener('blur', function () { Notes.hideBar(); notes[el.getAttribute('data-k')] = el.innerHTML; save(); });
+      Notes.rich(el, function () { notes[el.getAttribute('data-k')] = el.innerHTML; save(); });
     });
   }
   function remove(id) {
