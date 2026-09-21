@@ -1,0 +1,1780 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PHI2394 Week 3 Reading Guide</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%232E8E74'/%3E%3Cellipse%20cx='32'%20cy='33'%20rx='12.5'%20ry='15'%20fill='none'%20stroke='%23fff'%20stroke-width='7'/%3E%3Crect%20x='28.5'%20y='7'%20width='7'%20height='50'%20rx='3.5'%20fill='%23fff'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,600&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --paper:      #EDEFEC;
+    --surface:    #F6F7F4;
+    --sunk:       #E3E6E1;
+    --ink:        #191D1A;
+    --ink-soft:   #414944;
+    --muted:      #6E766F;
+    --rule:       #D2D8D1;
+    --rule-soft:  #E1E5DF;
+    --close:      #1F6B57;
+    --close-wash: #CFE3DA;
+    --skim:       #8E6318;
+    --skim-wash:  #ECDDC2;
+    --skip:       #7E867F;
+    --skip-wash:  #D9DDD8;
+    --accent:     #1F6B57;
+    --curious:    #6B4372;
+    --curious-bg: #F2EEF3;
+    --lead:       #2E574A;
+    --c-y:        #8A6A0B;
+    --c-p:        #AE2F73;
+    --ghost:      #DADFD9;
+
+    --display: "Newsreader", Georgia, "Times New Roman", serif;
+    --body:    "Source Sans 3", -apple-system, "Segoe UI", sans-serif;
+    --mono:    "IBM Plex Mono", "SF Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #141815; --surface: #1B201D; --sunk: #10130F;
+      --ink: #E4E8E3; --ink-soft: #B4BCB6; --muted: #8B948D;
+      --rule: #2C332E; --rule-soft: #232925;
+      --close: #64BFA1; --close-wash: #214136;
+      --skim: #D9A957; --skim-wash: #3C3220;
+      --skip: #79827B; --skip-wash: #272D29;
+      --accent: #64BFA1;
+      --curious: #C4A0CB; --curious-bg: #221B25;
+      --lead: #93C2B2;
+      --c-y: #E3BE57;
+      --c-p: #FF97C6;
+      --ghost: #262C28;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #141815; --surface: #1B201D; --sunk: #10130F;
+    --ink: #E4E8E3; --ink-soft: #B4BCB6; --muted: #8B948D;
+    --rule: #2C332E; --rule-soft: #232925;
+    --close: #64BFA1; --close-wash: #214136;
+    --skim: #D9A957; --skim-wash: #3C3220;
+    --skip: #79827B; --skip-wash: #272D29;
+    --accent: #64BFA1;
+    --curious: #C4A0CB; --curious-bg: #221B25;
+    --lead: #93C2B2;
+    --c-y: #E3BE57;
+    --c-p: #FF97C6;
+    --ghost: #262C28;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--paper); color: var(--ink); font-family: var(--body);
+    font-size: 17.5px; line-height: 1.6; -webkit-font-smoothing: antialiased;
+    padding-bottom: 47px;
+  }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 40px 26px 90px; display: flex; flex-direction: column; gap: 48px; }
+  .eyebrow { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted); }
+  h1 {
+    font-family: var(--display); font-weight: 600; font-size: clamp(34px, 5.6vw, 50px);
+    line-height: 1.06; letter-spacing: -0.015em; margin: 10px 0 0; text-wrap: balance;
+  }
+  .standfirst {
+    font-family: var(--display); font-size: clamp(18px, 2.4vw, 21.5px); line-height: 1.5;
+    color: var(--ink-soft); max-width: 62ch; margin: 14px 0 0;
+  }
+  p { margin: 0; max-width: 82ch; }
+  .lede { color: var(--ink-soft); }
+
+  .strip-block { display: flex; flex-direction: column; gap: 11px; }
+  .strip { display: flex; width: 100%; height: 52px; border: 1px solid var(--rule); overflow: hidden; }
+  .seg { display: flex; min-width: 0; }
+  .seg + .seg { border-left: 1px solid var(--paper); }
+  .seg .txt, .seg .nts {
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--mono); font-size: 11px; color: #fff; min-width: 0; overflow: hidden;
+  }
+  .seg .nts { background: var(--skip-wash); }
+  .p-close .txt { background: var(--close); }
+  .p-skim  .txt { background: var(--skim); }
+  .p-skip  .txt { background: var(--skip); }
+  .strip-key { display: flex; flex-wrap: wrap; gap: 6px 18px; font-family: var(--mono); font-size: 11px; color: var(--muted); }
+  .strip-key i { font-style: normal; display: inline-flex; align-items: center; gap: 7px; }
+  .strip-key i::before { content: ""; width: 13px; height: 13px; display: inline-block; border: 1px solid var(--rule); }
+  .k-close::before { background: var(--close); }
+  .k-skim::before  { background: var(--skim); }
+  .k-skip::before  { background: var(--skip); }
+  .k-notes::before { background: var(--skip-wash); }
+
+  .tally { display: flex; flex-wrap: wrap; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  .tally > div { flex: 1 1 140px; padding: 14px 18px 14px 0; display: flex; flex-direction: column; gap: 2px; }
+  .tally > div + div { padding-left: 18px; border-left: 1px solid var(--rule-soft); }
+  .tally b { font-family: var(--mono); font-weight: 500; font-size: 24px; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+  .tally span { font-size: 13px; color: var(--muted); line-height: 1.35; }
+  .t-a b { color: var(--close); }
+  .t-b b { color: var(--skim); }
+
+  section { display: flex; flex-direction: column; gap: 20px; }
+  h2 { font-family: var(--display); font-weight: 600; font-size: 28px; letter-spacing: -0.01em; margin: 0; text-wrap: balance; }
+  h2 + p { margin-top: -8px; }
+  section > .ctx, section > .exm, section > .scroller, section > figure { margin: 26px 0; }
+  h3.sub { font-family: var(--display); font-weight: 600; font-size: 21px; margin: 14px 0 -8px; letter-spacing: -0.005em; }
+  .minihead { margin: 10px 0 -10px; font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+
+  .facts {
+    background: var(--surface); border-left: 3px solid var(--close);
+    padding: 20px 24px; display: grid; grid-template-columns: 150px 1fr; gap: 10px 18px; font-size: 16px;
+  }
+  .facts dt { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); padding-top: 4px; }
+  .facts dd { margin: 0; color: var(--ink-soft); }
+  .facts dd b { color: var(--ink); font-weight: 600; }
+
+  ul.plain { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 10px; max-width: 82ch; color: var(--ink-soft); }
+  ul.plain b { color: var(--ink); }
+
+  .nine { width: 100%; border-collapse: collapse; font-size: 15.5px; }
+  .nine th {
+    text-align: left; font-family: var(--mono); font-size: 10px; letter-spacing: 0.09em;
+    text-transform: uppercase; color: var(--muted); font-weight: 500;
+    padding: 0 14px 9px 0; border-bottom: 1px solid var(--rule); vertical-align: bottom;
+  }
+  .nine td { padding: 12px 14px 12px 0; border-bottom: 1px solid var(--rule-soft); vertical-align: top; color: var(--ink-soft); }
+  .nine td:first-child { color: var(--ink); font-weight: 600; white-space: nowrap; padding-right: 18px; }
+  .nine td:first-child span { display: block; font-family: var(--mono); font-size: 10px; font-weight: 400; color: var(--muted); letter-spacing: 0.04em; }
+  .scroller { overflow-x: auto; margin: 30px 0; }
+
+  .convo { display: flex; flex-direction: column; }
+  .turn { display: grid; grid-template-columns: 128px 1fr; gap: 0 22px; padding: 16px 0; border-top: 1px solid var(--rule-soft); }
+  .turn:first-child { border-top: 1px solid var(--rule); }
+  .turn .who { display: flex; flex-direction: column; gap: 1px; padding-top: 2px; }
+  .turn .who b { font-family: var(--body); font-size: 15px; font-weight: 600; }
+  .turn .who span { font-family: var(--mono); font-size: 10.5px; color: var(--muted); }
+  .turn p { font-size: 16.5px; }
+
+  .readings { display: flex; flex-direction: column; }
+  .rd { display: grid; grid-template-columns: 4px 1fr; gap: 0 22px; padding: 36px 0; border-top: 1px solid var(--rule); }
+  .rd .stripe { background: var(--skip); }
+  .rd.p-close .stripe { background: var(--close); }
+  .rd.p-skim  .stripe { background: var(--skim); }
+  .rd .main { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
+
+  .rd .head { display: flex; flex-direction: column; gap: 7px; }
+  .rd h3 { margin: 0; font-family: var(--display); font-size: 25px; font-weight: 600; line-height: 1.16; text-wrap: balance; }
+  .rd h3 .ch { font-family: var(--mono); font-size: 14px; font-weight: 500; color: var(--muted); letter-spacing: 0.02em; margin-right: 10px; vertical-align: 3px; }
+  .rd .who { font-family: var(--display); font-style: italic; font-size: 18px; color: var(--ink-soft); }
+  .rd .meta { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.03em; }
+  .tag { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.09em; text-transform: uppercase; padding: 2.5px 8px; }
+  .p-close .tag { background: var(--close-wash); color: var(--close); }
+  .p-skim  .tag { background: var(--skim-wash);  color: var(--skim); }
+  .p-skip  .tag { background: var(--skip-wash);  color: var(--skip); }
+
+  .span { display: flex; flex-direction: column; gap: 5px; }
+  .span .bar { display: flex; height: 14px; width: 100%; border: 1px solid var(--rule); overflow: hidden; }
+  .span .bar i { display: block; background: var(--ghost); }
+  .span .bar i.here-txt { background: var(--close); }
+  .p-skim .span .bar i.here-txt { background: var(--skim); }
+  .p-skip .span .bar i.here-txt { background: var(--skip); }
+  .span .bar i.here-nts { background: var(--skip-wash); }
+  .span .cap { font-family: var(--mono); font-size: 10.5px; color: var(--muted); letter-spacing: 0.03em; }
+
+  .qline { font-family: var(--display); font-size: 19.5px; line-height: 1.42; padding: 12px 0 12px 16px; border-left: 2px solid var(--accent); color: var(--ink); }
+
+  .rd h4 { margin: 8px 0 -7px; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+  .rd ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 9px; max-width: 82ch; }
+  .rd li { padding-left: 2px; }
+  .rd .body { display: flex; flex-direction: column; gap: 14px; }
+  .rd .body > .scroller, .rd .body > figure, .rd .body > .quo,
+  .rd .body > .ctx, .rd .body > .exm { margin: 16px 0; }
+  .rd .body > ul, .rd .body > ol { margin: 4px 0 6px; }
+  .rd .body > p > b:first-child, .rd .body > ul > li > b:first-child,
+  .rd .body > ol > li > b:first-child { color: var(--lead); }
+  .rd .body h5 {
+    margin: 12px 0 -4px; font-family: var(--display); font-weight: 600;
+    font-size: 18.5px; line-height: 1.25; color: var(--ink); letter-spacing: -.005em;
+  }
+
+  .links { display: grid; grid-template-columns: 84px 1fr; gap: 8px 14px; font-size: 16px; border-top: 1px solid var(--rule-soft); border-bottom: 1px solid var(--rule-soft); padding: 13px 0; }
+  .links dt { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); padding-top: 4px; }
+  .links dd { margin: 0; color: var(--ink-soft); }
+
+  .mynote { background: var(--sunk); padding: 16px 20px; font-size: 16.5px; color: var(--ink-soft); display: flex; flex-direction: column; gap: 6px; }
+  .mynote b { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+
+  .keep { font-family: var(--display); font-size: 18.5px; line-height: 1.45; font-style: italic; color: var(--ink); border-left: 2px solid var(--rule); padding: 2px 0 2px 14px; }
+  .keep b { font-family: var(--mono); font-style: normal; font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 5px; font-weight: 500; }
+
+  .curious { background: var(--curious-bg); padding: 22px 24px 24px; display: flex; flex-direction: column; gap: 16px; margin-top: 6px; }
+  .curious > .label { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .curious > .label b { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--curious); font-weight: 500; }
+  .curious > .label span { font-family: var(--mono); font-size: 10.5px; color: var(--muted); }
+  /* Every curious item and every side note is a toggle, closed until it is asked for,
+     and its summary says what is inside, so the line alone is enough to decide on. */
+  details.bit > summary, details.ctx > summary {
+    display: flex; align-items: baseline; gap: 10px; cursor: pointer; list-style: none;
+    padding: 4px 0; margin: 0; border-radius: 3px;
+  }
+  details.bit > summary::-webkit-details-marker,
+  details.ctx > summary::-webkit-details-marker { display: none; }
+  details.bit > summary::after, details.ctx > summary::after {
+    content: ''; width: 6px; height: 6px; flex: none; margin-left: auto; align-self: center;
+    border-right: 1.6px solid currentColor; border-bottom: 1.6px solid currentColor;
+    transform: translateY(-2px) rotate(45deg); opacity: .45; transition: transform .18s ease, opacity .18s ease;
+  }
+  details[open].bit > summary::after, details[open].ctx > summary::after {
+    transform: translateY(1px) rotate(225deg); opacity: .75;
+  }
+  details.bit > summary:hover::after, details.ctx > summary:hover::after { opacity: .9; }
+  details.bit > summary:focus-visible, details.ctx > summary:focus-visible {
+    outline: 2px solid var(--accent); outline-offset: 3px;
+  }
+  .bq { display: flex; flex-direction: column; gap: 9px; padding-top: 9px; }
+  .curious > details.bit + details.bit { border-top: 1px solid var(--rule); padding-top: 16px; }
+
+  .bit { display: block; }
+  .bit > summary {
+    font-family: var(--display); font-weight: 600; font-size: 20.5px;
+    line-height: 1.2; color: var(--curious); letter-spacing: -0.005em; text-wrap: balance;
+  }
+  .bit p { font-size: 16.5px; color: var(--ink-soft); }
+  .bit p b { color: var(--ink); font-weight: 600; }
+
+  .plan { display: flex; flex-direction: column; }
+  .ses { display: grid; grid-template-columns: 118px 1fr; gap: 0 24px; padding: 22px 0; border-top: 1px solid var(--rule); }
+  .ses .when { display: flex; flex-direction: column; gap: 3px; padding-top: 3px; }
+  .ses .when b { font-family: var(--mono); font-size: 11px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--accent); font-weight: 500; }
+  .ses .when span { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+  .ses .what { display: flex; flex-direction: column; gap: 8px; }
+  .ses h3 { margin: 0; font-family: var(--display); font-size: 21px; font-weight: 600; line-height: 1.2; }
+  .ses p { font-size: 16.5px; color: var(--ink-soft); }
+
+  .endmatter { border-top: 1px solid var(--rule); padding-top: 24px; font-size: 14.5px; color: var(--muted); display: flex; flex-direction: column; gap: 12px; }
+  .endmatter b { color: var(--ink-soft); font-weight: 600; }
+  .endmatter .weeks { display: grid; grid-template-columns: 96px 1fr; gap: 6px 16px; }
+  .endmatter .weeks dt { font-family: var(--mono); font-size: 11px; color: var(--muted); padding-top: 3px; }
+  .endmatter .weeks dd { margin: 0; color: var(--ink-soft); }
+
+  /* site footer */
+  .sitefoot { border-top: 1px solid var(--rule); background: var(--surface); margin-top: 20px; }
+  .sitefoot .in { max-width: 900px; margin: 0 auto; padding: 40px 26px 30px;
+                  display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 32px; }
+  .sitefoot .col { display: flex; flex-direction: column; gap: 9px; align-items: flex-start; }
+  .sitefoot h2 { margin: 0 0 2px; font-family: var(--mono); font-size: 10.5px; letter-spacing: .13em;
+                 text-transform: uppercase; color: var(--muted); font-weight: 500; }
+  .sitefoot a, .sitefoot button { font-family: var(--body); font-size: 14.5px; color: var(--ink-soft);
+                                  text-decoration: none; background: none; border: 0; padding: 0;
+                                  cursor: pointer; text-align: left; border-bottom: 1px solid transparent; }
+  .sitefoot a:hover, .sitefoot button:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .sitefoot .brand a { font-family: var(--mono); font-size: 11.5px; letter-spacing: .08em;
+                       text-transform: uppercase; color: var(--ink); }
+  .sitefoot .brand p { margin: 0; font-size: 14px; color: var(--muted); max-width: 30ch; }
+  .sitefoot .colophon { max-width: 900px; margin: 0 auto; padding: 16px 26px 34px;
+                        border-top: 1px solid var(--rule); display: flex; flex-wrap: wrap; gap: 6px 28px;
+                        font-size: 12.5px; color: var(--muted); }
+  @media (max-width: 700px) { .sitefoot .in { grid-template-columns: 1fr; gap: 26px; padding: 30px 16px 22px; }
+                              .sitefoot .colophon { padding: 14px 16px 26px; flex-direction: column; } }
+
+  /* the dock: pinned to the bottom, carrying the things used while reading */
+  .dock { position: fixed; left: 0; right: 0; bottom: 0; z-index: 75; background: var(--paper);
+          border-top: 1px solid var(--rule); }
+  .dock .prog { height: 2px; width: 0; background: var(--accent); transition: width .1s linear; }
+  .dock .in { max-width: 900px; margin: 0 auto; padding: 0 20px; height: 45px;
+              display: flex; align-items: center; gap: 2px; }
+  .dock button, .dock a { display: flex; align-items: center; gap: 7px; background: none; border: 0;
+              padding: 8px 10px; border-radius: 5px; cursor: pointer; text-decoration: none;
+              font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+              color: var(--muted); }
+  .dock button:hover, .dock a:hover { color: var(--ink); background: var(--surface); }
+  .dock button:focus-visible, .dock a:focus-visible { outline: 2px solid var(--accent); outline-offset: -1px; }
+  .dock svg { width: 13px; height: 14px; flex: none; }
+  .dock .end { margin-left: auto; }
+  .dock .n { font-family: var(--mono); font-size: 10px; line-height: 1.6; background: var(--sunk);
+             color: var(--ink-soft); border-radius: 9px; padding: 0 6px; min-width: 18px; text-align: center; }
+  .dock .n:empty { display: none; }
+  .dock #bmgo[data-set="1"] { color: var(--accent); }
+  .dock #bmgo[data-set="1"] svg { fill: currentColor; }
+  @media (max-width: 620px) { .dock .in { padding: 0 8px; } .dock .lab { display: none; } }
+
+  /* the highlights drawer, kept out of the reading */
+  .drawer[hidden] { display: none !important; }
+  .drawer { position: fixed; inset: 0; z-index: 90; }
+  .drawer .dback { position: absolute; inset: 0; background: rgba(0,0,0,.34); }
+  .dpanel { position: absolute; top: 0; right: 0; bottom: 0; width: min(460px, 100%);
+            background: var(--paper); border-left: 1px solid var(--rule); box-shadow: -8px 0 28px rgba(0,0,0,.16);
+            display: flex; flex-direction: column; gap: 4px; padding: 22px 26px 30px; overflow-y: auto; }
+  .dhead { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .dhead h2 { margin: 0; font-family: var(--display); font-size: 25px; font-weight: 600; }
+  .dclose { background: none; border: 0; font-size: 26px; line-height: 1; color: var(--muted);
+            cursor: pointer; padding: 0 4px; }
+  .dclose:hover { color: var(--ink); }
+  .dsub { margin: 0 0 14px; font-size: 14px; color: var(--muted); }
+
+
+
+  .ctx { border-left: 2px solid var(--rule); padding: 2px 0 2px 18px; display: block; margin: 26px 0; }
+  .ctx > summary { font-family: var(--display); font-size: 17.5px; font-weight: 600; color: var(--ink-soft); line-height: 1.25; }
+  .ctx > summary i { font-family: var(--mono); font-style: normal; font-size: 10.5px; letter-spacing: .1em;
+                     text-transform: uppercase; color: var(--muted); font-weight: 500; flex: none; padding-top: 3px; }
+  .ctx[open] > summary { color: var(--ink); }
+  .ctx p { font-size: 16.5px; color: var(--ink-soft); }
+  .exm { background: var(--skim-wash); border-left: 3px solid var(--skim); padding: 16px 20px; display: flex; flex-direction: column; gap: 10px; margin: 28px 0; }
+  .exm > b { font-family: var(--mono); font-size: 10.5px; letter-spacing: .11em; text-transform: uppercase; color: var(--skim); font-weight: 500; }
+  .exm p { font-size: 16.5px; color: var(--ink); }
+  .exm p b { color: var(--ink); }
+  .quo { border-left: 3px solid var(--accent); background: var(--surface); padding: 16px 20px; display: flex; flex-direction: column; gap: 10px; margin: 26px 0; }
+  .quo blockquote { margin: 0; font-family: var(--display); font-size: 18.5px; line-height: 1.5; color: var(--ink); }
+  .quo .src { font-family: var(--mono); font-size: 10.5px; letter-spacing: .07em; color: var(--muted); }
+  figure { margin: 28px 0; display: flex; flex-direction: column; gap: 9px; }
+  figure svg { max-width: 100%; height: auto; display: block; }
+  figcaption { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: .03em; line-height: 1.55; max-width: 70ch; }
+
+  /* photographs, plates and maps */
+  figure.pic { margin: 24px 0; gap: 11px; max-width: 82ch; }
+  figure.pic img {
+    /* A tall picture used to run past the bottom of the window, so the whole of it was never
+       visible at once. Capping the height at most of the window and letting the width follow
+       means every picture fits on one screen, caption included. */
+    display: block; width: auto; max-width: 100%; height: auto; max-height: 68vh;
+    /* figure.pic is a column flexbox, whose align-items defaults to stretch. That stretched the
+       image to the full width of the measure and max-height then squashed it, so every portrait
+       picture came out distorted. align-self keeps the image at its own width. */
+    align-self: flex-start;
+    border: 1px solid var(--rule); border-radius: 6px; background: var(--surface);
+  }
+  @media (max-width: 700px) { figure.pic img { max-height: 60vh; } }
+  figure.pic figcaption, figure.dia figcaption {
+    font-family: var(--body); font-size: 15px; line-height: 1.5;
+    letter-spacing: 0; color: var(--ink-soft); max-width: 74ch;
+  }
+  figure.pic figcaption b, figure.dia figcaption b { color: var(--ink); font-weight: 600; }
+  figure.pic .cred, figure.dia .cred {
+    display: block; margin-top: 6px;
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: .05em;
+    line-height: 1.5; color: var(--muted);
+  }
+
+  /* drawings made for this guide, framed the way the photographs are */
+  figure.dia { margin: 24px 0; gap: 11px; max-width: 82ch; }
+  figure.dia .draw { max-width: 100%; overflow-x: auto; }
+  figure.dia svg {
+    display: block; width: 100%; height: auto;
+    border: 1px solid var(--rule); border-radius: 6px; background: var(--surface);
+  }
+  @media (max-width: 700px) {
+    /* On a phone the wider drawings would shrink their labels to about 5px, so each one keeps a
+       floor and its frame scrolls sideways, the way the table of nine texts already does. The
+       caption stays outside the frame and wraps to the screen. */
+    figure.dia svg[aria-labelledby="cvg-ttl"] { min-width: 660px; }
+    figure.dia svg[aria-labelledby="dg-comte-3s"] { min-width: 560px; }
+    figure.dia svg#dia-spine { min-width: 380px; }
+  }
+
+  /* inside the boxes, which already space their children */
+  .bq > figure.pic, .exm > figure.pic, .rd .body > figure.pic,
+  .bq > figure.dia, .exm > figure.dia, .rd .body > figure.dia { margin: 6px 0; }
+
+  .dg-box { fill: var(--surface); stroke: currentColor; stroke-opacity: .22; }
+  .dg-hi { fill: var(--close-wash); stroke: var(--close); stroke-opacity: 1; }
+  .dg-t { fill: currentColor; font-family: "Source Sans 3", -apple-system, sans-serif; }
+  .dg-m { fill: currentColor; font-family: "IBM Plex Mono", monospace; letter-spacing: .08em; }
+  .dg-dim { opacity: .62; }
+  .dg-ln { stroke: currentColor; fill: none; }
+
+
+  /* site header */
+  .site { position: sticky; top: 0; z-index: 70; background: var(--paper);
+          border-bottom: 1px solid var(--rule); }
+  .site .in { max-width: 900px; margin: 0 auto; padding: 0 26px; height: 52px;
+              display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+  .site a { text-decoration: none; }
+  /* The mark goes to the true left edge of the window. The bar already spans the window; only
+     its contents were penned into the 900px column, which left the mark floating in from the
+     edge with empty bar beside it. Everything else stays aligned with the body text.
+     Below the width where the column meets the edges there is no room, so it rejoins the row. */
+  /* display:block with no leading makes the anchor box exactly the size of the mark.
+     As an inline anchor its box carries line-height leading, so centring the anchor
+     left the mark itself 4.25px high. */
+  .site .hubmark { margin-right: 13px; display: block; line-height: 0; }
+  .site .hubmark svg { width: 28px; height: 28px; border-radius: 7px; }
+  @media (min-width: 1020px) {
+    .site .hubmark { position: absolute; left: 22px; top: 50%; transform: translateY(-50%);
+                     margin-right: 0; }
+  }
+  .site .hubmark:hover { opacity: .78; }
+  .site .hubmark:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px;
+                                 border-radius: 6px; }
+
+  .site .home { display: flex; align-items: center; gap: 9px; font-family: var(--mono);
+                font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); }
+  .site .home:hover { color: var(--ink); }
+  .site .home svg { width: 13px; height: 13px; flex: none; }
+  .site nav { display: flex; align-items: center; gap: 16px; }
+  .site nav .cur { font-family: var(--mono); font-size: 11px; letter-spacing: .08em;
+                   text-transform: uppercase; color: var(--muted); }
+  .site nav a { font-family: var(--mono); font-size: 11px; letter-spacing: .08em;
+                text-transform: uppercase; color: var(--accent); border-bottom: 1px solid transparent; }
+  .site nav a:hover { border-bottom-color: var(--accent); }
+  .site .disc { font-family: var(--body); font-size: 12px; font-weight: 400; color: var(--muted);
+                opacity: .8; letter-spacing: 0; text-decoration: none; white-space: nowrap;
+                border-bottom: 1px solid transparent; }
+  .site .disc:hover { opacity: 1; border-bottom-color: var(--rule); }
+  .site .disc i { font-style: normal; opacity: .5; padding: 0 6px; }
+  /* Four things share this row, so it tightens the spacing and holds each one on one line. */
+  .site .in { gap: 14px; }
+  .site .home, .site nav .cur, .site nav a { white-space: nowrap; }
+  /* The header is sticky, so a jump target has to reserve its height or it lands underneath it. */
+  [id] { scroll-margin-top: 74px; }
+  @media (max-width: 560px) { [id] { scroll-margin-top: 66px; } }
+
+  /* the bookmark: one per guide, the place reading stopped */
+  mark.hl.hl-b { background: none; padding: 0; box-shadow: inset 0 -2px 0 var(--accent); border-radius: 0; }
+  /* an inline ribbon after the words, so it cannot land on the line above it */
+  mark.hl.hl-b::after { content: ''; display: inline-block; width: 7px; height: 9px; margin-left: 4px;
+                        vertical-align: 0; background: var(--accent);
+                        clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 72%, 0 100%); }
+  @media (max-width: 820px) { .site .disc { display: none; } }
+  @media (max-width: 560px) { .site .in { padding: 0 16px; height: 48px; gap: 12px; } .site nav .cur { display: none; } }
+  @media (max-width: 400px) { .site .in { gap: 10px; } }
+
+  /* vertical nav */
+  .wrap { position: relative; }
+  #nav { position: fixed; top: calc(50% + 26px); transform: translateY(-50%); left: max(10px, calc(50vw - 598px));
+         width: 132px; display: none; flex-direction: column; gap: 2px; z-index: 40; }
+  #nav a { display: block; font-family: var(--mono); font-size: 10.5px; letter-spacing: .03em;
+           color: var(--muted); text-decoration: none; padding: 4px 0 4px 11px; border-left: 2px solid var(--rule-soft);
+           white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  #nav a:hover { color: var(--ink); border-left-color: var(--muted); }
+  #nav a.on { color: var(--accent); border-left-color: var(--accent); }
+  #nav a.grp { margin-top: 9px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .1em; border-left-color: transparent; padding-left: 0; }
+  #nav a.grp:first-child { margin-top: 0; }
+  #nav a.grp.on { color: var(--accent); border-left-color: transparent; }
+  #nav a.core { color: var(--ink-soft); border-left-color: var(--rule); }
+  #nav a.skim { opacity: .68; }
+  #nav a.last { opacity: .48; }
+  #nav a.on { opacity: 1; }
+  #nav .key { font-family: var(--mono); font-size: 9px; letter-spacing: .06em; color: var(--muted);
+              margin-top: 22px; padding-top: 14px; border-top: 1px solid var(--rule); line-height: 1.8; }
+  #nav .key em { font-style: normal; display: block; letter-spacing: .12em; text-transform: uppercase;
+                 color: var(--muted); opacity: .75; margin-bottom: 5px; }
+  #nav .key i { font-style: normal; display: block; }
+  #nav .key i.a { color: var(--ink-soft); }
+  #nav .key i.b { opacity: .68; }
+  #nav .key i.c { opacity: .48; }
+  @media (min-width: 1180px) { #nav { display: flex; } }
+
+  /* glossary */
+  .gl { display: flex; flex-direction: column; gap: 26px; }
+  .gl-grp { display: flex; flex-direction: column; gap: 10px; }
+  .gl-grp > h3 { margin: 0; font-family: var(--display); font-size: 19px; font-weight: 600; }
+  .gl-grp > h3 span { font-family: var(--mono); font-size: 11px; color: var(--muted); font-weight: 400; letter-spacing: .05em; margin-left: 9px; }
+  .gl dl { margin: 0; display: grid; grid-template-columns: 186px 1fr; gap: 10px 18px; font-size: 16px; }
+  .gl dt { font-family: var(--display); font-style: italic; font-size: 16.5px; color: var(--ink); }
+  .gl dd { margin: 0; color: var(--ink-soft); }
+  @media (max-width: 680px) { .gl dl { grid-template-columns: 1fr; gap: 3px 0; } .gl dt { padding-top: 9px; } }
+
+  /* notes you write.
+     .nbpad is the well. It is recessed, because a recessed surface reads as somewhere to put
+     something in and a raised one reads as something to read, and a long note in a raised card
+     was reading as more of the guide's own prose. The label is drawn directly above the well,
+     close to it and aligned with its left edge, so a page of blocks stays scannable.
+     The left edge holds --rule while a block is empty and --accent once it holds something, from
+     the `has` class the editor already sets on .nbwrap.
+     Nothing in here touches .nb: the note text keeps the face, size, colour, line height and
+     spacing it has always had. */
+  .nbgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(298px, 1fr)); gap: 18px; }
+  .nbwrap { display: flex; flex-direction: column; gap: 6px; }
+  .nbwrap.wide { grid-column: 1 / -1; }
+  .nbhead { display: flex; align-items: baseline; justify-content: space-between; gap: 10px;
+            padding: 0 2px 0 3px; }
+  .nbhead b { font-family: var(--display); font-size: 16.5px; font-weight: 600; color: var(--ink); }
+  .nbhead span { font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .nbpad { position: relative; padding: 14px 16px 16px; background: var(--sunk);
+           border: 1px solid var(--rule); border-left: 3px solid var(--rule); border-radius: 8px;
+           box-shadow: inset 0 1px 0 rgba(0,0,0,.06);
+           transition: border-color .15s, box-shadow .15s; }
+  .nbwrap.has .nbpad { border-left-color: var(--accent); }
+  .nbwrap:focus-within .nbpad { border-color: var(--accent);
+           box-shadow: inset 0 1px 0 rgba(0,0,0,.06), 0 0 0 3px var(--close-wash); }
+  .nb { position: relative; font-size: 15.5px; line-height: 1.6; color: var(--ink); min-height: 46px; outline: none; }
+  .nb.is-empty::before, .cbody.is-empty::before {
+    content: attr(data-ph); position: absolute; left: 0; top: 0; color: var(--muted);
+    font-style: italic; pointer-events: none; }
+  .nb p { margin: 0 0 8px; max-width: none; }
+  .nb p:last-child { margin-bottom: 0; }
+  .nb ul, .nb ol { margin: 5px 0 8px; padding-left: 20px; }
+  .nb li { margin-bottom: 4px; }
+  .nb b, .nb strong { font-weight: 600; }
+  .nb h3, .nb h4, .nb h5 { margin: 12px 0 5px; font-family: var(--display); font-weight: 600; line-height: 1.25; color: var(--ink); }
+  .nb h3 { font-size: 19px; } .nb h4 { font-size: 17px; } .nb h5 { font-size: 15.5px; }
+  .nb > :first-child { margin-top: 0; }
+  .nb hr { border: 0; border-top: 1px solid var(--rule); margin: 12px 0; }
+  .nb blockquote { margin: 8px 0; padding-left: 12px; border-left: 2px solid var(--rule); color: var(--ink-soft); }
+  .c-y { color: var(--c-y); }
+  .c-p { color: var(--c-p); }
+  .c-m { color: var(--muted); }
+  .c-g { color: var(--accent); }
+  /* normal text, spelled out. Needed where a colour is inherited from an enclosing span
+     and stripping that span would recolour words the writer meant to keep. */
+  .c-n { color: var(--ink); }
+  #nb-bar { position: absolute; z-index: 50; display: flex; gap: 2px; padding: 3px; background: var(--surface); border: 1px solid var(--rule); border-radius: 5px; box-shadow: 0 2px 8px rgba(0,0,0,.12); }
+  #nb-bar[hidden] { display: none !important; }
+  #nb-bar button { min-width: 24px; height: 22px; border: 0; border-radius: 3px; background: none; cursor: pointer; color: var(--ink-soft); font-family: var(--display); font-size: 14px; padding: 0 5px; }
+  #nb-bar button:hover { background: var(--sunk); color: var(--ink); }
+  #nb-bar button.i { font-style: italic; }
+  #nb-bar button.l { font-family: var(--mono); font-size: 11px; }
+  #nb-bar .sep { width: 1px; background: var(--rule); margin: 3px 2px; }
+  #nb-bar button.sw { width: 18px; min-width: 18px; height: 18px; border-radius: 3px; align-self: center;
+                      border: 1px solid var(--rule); font-size: 0; }
+  #nb-bar button.sw.y { background: var(--c-y); }
+  #nb-bar button.sw.p { background: var(--c-p); }
+  #nb-bar button.sw.g { background: var(--accent); }
+  #nb-bar button.sw.m { background: var(--muted); }
+  #nb-bar button.sw.x { background: none; font-size: 12px; color: var(--muted); border-color: transparent; }
+  .nbhint { font-family: var(--mono); font-size: 10.5px; color: var(--muted); letter-spacing: .03em; }
+  /* The standing explanation, closed and below the blocks, drawn the same way as the one on
+     the lecture notes page. */
+  details.about { margin-top: 6px; border-top: 1px solid var(--rule); padding-top: 12px; }
+  details.about summary { cursor: pointer; font-family: var(--mono); font-size: 11px;
+    letter-spacing: .1em; text-transform: uppercase; color: var(--muted); list-style: none;
+    display: flex; align-items: center; gap: 8px; }
+  details.about summary::-webkit-details-marker { display: none; }
+  details.about summary::before { content: ""; width: 0; height: 0; border-left: 5px solid currentColor;
+    border-top: 4px solid transparent; border-bottom: 4px solid transparent; transition: transform .15s; }
+  details.about[open] summary::before { transform: rotate(90deg); }
+  details.about summary:hover { color: var(--accent); }
+  details.about summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  details.about .aboutin { display: flex; flex-direction: column; gap: 11px; padding: 14px 0 4px; }
+  /* The pinned bar is z-index 75 and its top edge reaches 635, so an undo offered at the
+     foot of the window sat under it and could not be clicked. The pill clears the bar and
+     stacks above it, because it holds a control with a few seconds to live. */
+  #save { position: fixed; right: 16px; bottom: 64px; z-index: 80; font-family: var(--mono); font-size: 10.5px;
+          letter-spacing: .04em; padding: 6px 10px; border-radius: 4px; background: var(--surface);
+          border: 1px solid var(--rule); color: var(--muted); opacity: 0; transition: opacity .25s; pointer-events: none; }
+  #save.on { opacity: 1; }
+  #save.bad { color: #9B2C2C; border-color: #9B2C2C; opacity: 1; pointer-events: auto; }
+  #save.act { opacity: 1; pointer-events: auto; display: flex; align-items: center; gap: 10px; }
+  #save button { font-family: var(--mono); font-size: 10.5px; letter-spacing: .07em; text-transform: uppercase;
+                 color: var(--accent); background: none; border: 0; border-bottom: 1px solid var(--accent);
+                 padding: 0 0 1px; cursor: pointer; }
+  #save button:hover { color: var(--ink); border-bottom-color: var(--ink); }
+  :root[data-theme="dark"] #save.bad, :root:not([data-theme="light"]) #save.bad { color: #F09B9B; border-color: #F09B9B; }
+  .storenote { background: var(--sunk); padding: 14px 18px; font-size: 15px; color: var(--ink-soft); }
+  .storenote b { color: var(--ink); }
+
+  /* highlights list */
+  .bm { display: flex; flex-direction: column; gap: 22px; }
+  .bmg { display: flex; flex-direction: column; gap: 2px; }
+  .bmg > h3 { margin: 0 0 6px; font-family: var(--display); font-size: 18px; font-weight: 600; }
+  .bmg > h3 span { font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-left: 9px; }
+  .bmi { display: grid; grid-template-columns: 12px 1fr; gap: 0 11px; align-items: start;
+         padding: 8px 10px 8px 0; border-top: 1px solid var(--rule-soft); text-align: left;
+         background: none; border-left: 0; border-right: 0; border-bottom: 0; cursor: pointer; width: 100%; font: inherit; color: inherit; }
+  .bmi:hover { background: var(--surface); }
+  .bmi:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+  .bmi .dots { display: flex; flex-direction: column; gap: 4px; padding-top: 7px; }
+  .bmi .dot { width: 9px; height: 9px; border-radius: 2px; flex: none; }
+  .bmi .dot.y { background: rgba(255,206,0,.85); }
+  .bmi .dot.p { background: rgba(255,92,168,.7); }
+  .bmi .dot.n { background: none; border: 1px dashed var(--accent); }
+  .bmi .dot.b { background: var(--accent); clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 70%, 0 100%); border-radius: 0; height: 11px; width: 8px; }
+  .bmi .bt { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+  .bmi .where { font-family: var(--mono); font-size: 10px; letter-spacing: .07em; text-transform: uppercase;
+                color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .bmi .q { font-size: 15px; line-height: 1.5; color: var(--ink); }
+  .bmi .q .dim { color: var(--muted); }
+  /* the list reuses the page's own highlight colours, so a row looks like what it points at */
+  .bmi .q mark.hl { cursor: inherit; }
+  .bmi .cm { display: block; font-size: 13.5px; color: var(--muted); margin-top: 2px;
+             border-left: 2px solid var(--rule); padding-left: 9px; }
+  .bmg-b { padding: 14px 16px 12px; background: var(--surface); border-left: 2px solid var(--accent); margin-bottom: 10px; }
+  .bmg-b > h3 { color: var(--accent); }
+  .bmg-b .bmi { border-top: 0; padding-top: 0; }
+  .bmg-b .bmi:hover { background: none; text-decoration: underline; text-decoration-color: var(--rule); }
+  .bmclear { align-self: flex-start; margin-top: 6px; background: none; border: 0; padding: 2px 0; cursor: pointer;
+             font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase;
+             color: var(--muted); border-bottom: 1px solid var(--rule); }
+  .bmclear:hover { color: var(--ink); }
+  .bmempty { font-size: 16px; color: var(--muted); }
+  mark.hl.flash { animation: fl 1.4s ease-out; }
+  @keyframes fl { 0%,55% { box-shadow: 0 0 0 4px var(--close-wash); } 100% { box-shadow: 0 0 0 0 transparent; } }
+
+  /* comment rail */
+  #cmts { position: absolute; top: 0; left: 100%; margin-left: 18px; width: 202px; display: none; }
+  #cmts.on { display: block; }
+  .cmt { position: absolute; width: 202px; background: transparent; border-left: 2px solid var(--rule); padding: 2px 0 2px 9px; display: flex; flex-direction: column; gap: 3px; }
+  .cmt.inline { position: static; width: auto; max-width: 420px; margin: 10px 0 10px 16px; }
+  .cmt .q { font-family: var(--mono); font-size: 9px; letter-spacing: .02em; color: var(--muted); line-height: 1.4; opacity: .8; overflow: hidden; }
+  .cmt .cbody { position: relative; font-family: var(--body); font-size: 12.5px; line-height: 1.45; color: var(--ink-soft); outline: none; min-height: 17px; }
+  .cmt .cbody p { margin: 0 0 5px; max-width: none; }
+  .cmt .cbody p:last-child { margin-bottom: 0; }
+  .cmt .cbody ul, .cmt .cbody ol { margin: 4px 0 5px; padding-left: 17px; }
+  .cmt .cbody li { margin-bottom: 2px; }
+  .cmt .cbody hr { border: 0; border-top: 1px solid var(--rule); margin: 7px 0; }
+  .cmt .row { display: none; justify-content: flex-end; }
+  .cmt:hover .row, .cmt:focus-within .row { display: flex; }
+  .cmt button { font-family: var(--mono); font-size: 9px; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); background: none; border: 0; cursor: pointer; padding: 1px 0; }
+  .cmt button:hover { color: var(--ink); }
+  .cmt:hover, .cmt:focus-within { border-left-color: var(--muted); }
+  .cmt.act { border-left-color: var(--ink-soft); }
+
+  mark.hl { background: transparent; color: inherit; padding: .1em 0; border-radius: 2px; cursor: pointer; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+  mark.hl-y { background: rgba(255,206,0,.42); }
+  mark.hl-p { background: rgba(255,92,168,.34); }
+  mark.hl-n { background: rgba(31,107,87,.10); border-bottom: 1px dashed var(--accent); }
+  mark.hl-n.act { background: rgba(31,107,87,.22); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) mark.hl-y { background: rgba(255,206,0,.30); } :root:not([data-theme="light"]) mark.hl-p { background: rgba(255,92,168,.30); } :root:not([data-theme="light"]) mark.hl-n { background: rgba(100,191,161,.12); } }
+  :root[data-theme="dark"] mark.hl-y { background: rgba(255,206,0,.30); }
+  :root[data-theme="dark"] mark.hl-p { background: rgba(255,92,168,.30); }
+  :root[data-theme="dark"] mark.hl-n { background: rgba(100,191,161,.12); }
+  #hl-bar[hidden] { display: none !important; }
+  #hl-bar { position: absolute; z-index: 50; display: flex; gap: 3px; padding: 3px; background: var(--surface); border: 1px solid var(--rule); border-radius: 5px; box-shadow: 0 2px 8px rgba(0,0,0,.12); }
+  #hl-bar button { width: 17px; height: 17px; border: 1px solid var(--rule); border-radius: 3px; cursor: pointer; padding: 0; }
+  #hl-bar button[data-c="y"] { background: rgba(255,206,0,.55); }
+  #hl-bar button[data-c="p"] { background: rgba(255,92,168,.45); }
+  #hl-bar button[data-c="n"] { background: var(--paper); display: flex; align-items: center; justify-content: center; color: var(--ink-soft); }
+  #hl-bar button[data-c="n"] svg { width: 11px; height: 11px; display: block; }
+  #hl-bar button[data-c="b"] { background: var(--paper); display: flex; align-items: center; justify-content: center; color: var(--accent); }
+  #hl-bar button[data-c="b"] svg { width: 11px; height: 11px; display: block; }
+  #hl-bar button:hover { border-color: var(--muted); }
+  #hl-bar button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .hl-hint { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: .03em; margin-top: 12px; }
+
+  @media (max-width: 680px) {
+    .wrap { padding: 34px 16px 60px; gap: 38px; }
+    .facts, footer .weeks, .links { grid-template-columns: 1fr; gap: 3px 0; }
+    .facts dt, footer .weeks dt, .links dt { padding-top: 9px; }
+    .ses, .turn { grid-template-columns: 1fr; gap: 8px; }
+    .turn .who { flex-direction: row; align-items: baseline; gap: 9px; }
+    .rd { gap: 0 16px; }
+    .nine { min-width: 620px; }
+  }
+  @media print {
+    .site, #nav, #hl-bar, #nb-bar, #save, #cmts, .drawer, .sitefoot, .dock { display: none !important; }
+    body { padding-bottom: 0; }
+    body { background: #fff; font-size: 11.5px; }
+    .wrap { max-width: none; padding: 0; gap: 26px; }
+    .rd, section, figure, .exm, .ctx, .quo { break-inside: avoid; }
+    mark.hl { background: none; border-bottom: 1.5px solid #888; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+<header class="site"><div class="in"><a class="hubmark" href="https://myermcat.github.io/course-hub/" title="Course hub" aria-label="Course hub, the front page"><svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#22282E"/><rect x="13" y="13" width="16" height="16" rx="4" fill="#7C5CB8"/><rect x="35" y="13" width="16" height="16" rx="4" fill="#3E9E82"/><rect x="13" y="35" width="16" height="16" rx="4" fill="#4E90C8"/><rect x="35" y="35" width="16" height="16" rx="4" fill="#C08A3E"/></svg></a><a class="home" href="../"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 8H2M7 3 2 8l5 5"/></svg>PHI2394</a><a class="disc" href="../#about" title="How these guides were written">Written with Claude<i>|</i>AI can make mistakes</a><nav aria-label="This week"><span class="cur">Week 3</span><a href="notes.html">Lecture notes</a></nav></div></header>
+
+<nav id="nav" aria-label="Contents">
+  <a class="grp" href="#s-notes">Notes by text</a>
+  <a class="grp" href="#s-set">What is set</a>
+  <a class="grp" href="#s-texts">The two texts</a>
+  <a class="core" href="#kuhn" title="Sismondo ch. 2 &middot; read properly">Kuhn</a>
+  <a class="core" href="#r54" title="Anthology ch. 54 &middot; read properly">Foucault</a>
+  <a class="grp" href="#s-gloss">Glossary</a>
+  <div class="key"><em>Key</em><i class="a">solid = read properly</i><i class="b">faded = skim</i><i class="c">faintest = if time</i></div>
+</nav>
+
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">PHI 2394 B00 &middot; reading for Monday 21 September</div>
+    <h1>Kuhn&#8217;s Paradigms, and Foucault&#8217;s Tower</h1>
+    <p class="standfirst">Two short readings that answer the same question from opposite ends. Kuhn asks what makes a scientific community change its mind. Foucault asks what the machinery for knowing people is actually for.</p>
+    <div class="storenote"><b>Everything you write here stays in this browser.</b> Highlights, comments and notes are saved on the device you are using, and they survive a reload and a closed tab. They do not travel to another computer, they are not sent anywhere, and clearing your browsing data removes them. Nobody else can see them.</div>
+    <p class="hl-hint">Select any text for yellow, pink, or a comment. Comments appear in the margin and the text goes pale green. Click a highlight to remove it, or a commented phrase to edit it. Removing something offers an undo. Everything saves.</p>
+  </header>
+
+  <div class="strip-block" id="s-set">
+    <dl class="facts">
+      <dt>Next class</dt><dd><b>Monday 21 September, 5:30 to 6:50 p.m.</b>, 70 Laurier (MHN) 033. The course runs Mondays and Wednesdays.</dd>
+      <dt>Set for this week</dt><dd>Two items, from the Brightspace module description. <b>Sismondo, <em>An Introduction to Science and Technology Studies</em>, Wiley-Blackwell 2010, chapter 2, "The Kuhnian Revolution", pages 12 to 22, and the word ONLY is hers.</b> Plus <b>Panopticism</b> by Foucault, which is chapter 54 of the packet from the week before.</dd>
+      <dt>Week theme</dt><dd>"Kuhn and Scientific revolutions."</dd>
+      <dt>Course thesis</dt><dd>Slide 3 of the first lecture states it: <b>the scientific method is not fixed, and is socially constructed.</b> Up to now the course has described the claim. This is the week it starts arguing for it.</dd>
+    </dl>
+    <div class="tally">
+      <div><b>11</b><span>pages of Sismondo, and no more</span></div>
+      <div><b>11</b><span>pages of Foucault, already in the packet</span></div>
+      <div class="t-a"><b>2</b><span>texts, and they answer each other</span></div>
+      <div class="t-b"><b>7 Oct</b><span>Exam 1, 30%, covers everything to that date</span></div>
+    </div>
+  </div>
+
+  <section id="s-notes">
+    <h2>My notes</h2>
+    <div class="nbgrid">
+      <div class="nbwrap wide">
+        <div class="nbhead"><b>The argument overall</b><span>both texts</span></div>
+        <div class="nbpad"><div class="nb" contenteditable="true" data-k="gen" data-ph="What the whole week is about&#8230;"></div></div>
+      </div>
+      <div class="nbwrap">
+        <div class="nbhead"><b>Kuhn</b><span>Sismondo ch. 2</span></div>
+        <div class="nbpad"><div class="nb" contenteditable="true" data-k="kuhn" data-ph="Your note&#8230;"></div></div>
+      </div>
+      <div class="nbwrap">
+        <div class="nbhead"><b>Foucault</b><span>ch. 54</span></div>
+        <div class="nbpad"><div class="nb" contenteditable="true" data-k="r54" data-ph="Your note&#8230;"></div></div>
+      </div>
+      <div class="nbwrap wide">
+        <div class="nbhead"><b>Questions to ask</b><span>seminar and office hours</span></div>
+        <div class="nbpad"><div class="nb" contenteditable="true" data-k="ask" data-ph="What you want answered&#8230;"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 id="s-texts">The two texts</h2>
+    <p class="lede">Foucault is narrated in full below, moved here from the week 2 guide because that is the week it is set for. The Kuhn section is background on Kuhn himself, because the assigned chapter sits behind a library sign-in and has not been read yet. What is there is marked as what it is.</p>
+
+    <div class="readings">
+
+      <!-- ============ KUHN ============ -->
+      <article class="rd p-close" id="kuhn">
+        <div class="stripe"></div>
+        <div class="main">
+          <div class="head">
+            <h3><span class="ch">CH 2</span>The Kuhnian Revolution</h3>
+            <div class="who">Sergio Sismondo, <em>An Introduction to Science and Technology Studies</em>, Wiley-Blackwell, 2010</div>
+            <div class="meta"><span class="tag">Read properly</span><span>11 pp, pages 12 to 22, and only those</span></div>
+          </div>
+
+          <div class="mynote"><b>Status</b><span>The chapter itself is a library e-book on Scholars Portal and the link asks for a uOttawa sign-in, so the text has not been read and nothing below is attributed to Sismondo. What follows is Kuhn's own argument, which is what the chapter is about. Sign in once and the narrated version of the chapter, with its page numbers, goes in here.</span></div>
+
+          <p class="qline">Why does a scientific community change its mind, if not because the evidence made it?</p>
+
+          <h4>The book, and the joke about where it was published</h4>
+          <div class="body">
+            <p><b>Thomas Kuhn</b> was an American physicist who moved into the history of science, and in 1962 he published <em>The Structure of Scientific Revolutions</em>. It is short, it is the most cited book of its century in the humanities and social sciences, and it put the word <b>paradigm</b> into ordinary English, where it is now used by people selling software.</p>
+            <p><b>Where it came out is the joke.</b> It was published as a monograph inside the <em>International Encyclopedia of Unified Science</em>, which was the Vienna Circle's own publishing project. Chapter 9 of last week's packet is the Vienna Circle manifesto, arguing that science is one unified structure built up from verified observation statements. Kuhn's book, which says science does not build up and observation statements are not neutral, came out as a volume of their encyclopedia. The people who commissioned it published the thing that undid it.</p>
+          </div>
+
+          <h4>Normal science: most scientists are not testing anything</h4>
+          <div class="body">
+            <p><b>Kuhn's first move is to describe what scientists actually do all day</b>, which is not what the textbook picture says. The textbook picture is that a scientist proposes a bold conjecture and tries to refute it. Kuhn looked at the historical record and found that almost nobody does this almost ever.</p>
+            <p>What they do instead he calls <b>normal science</b>: solving puzzles inside a framework that is not itself in question. Measure this constant more precisely. Extend the theory to one more case. Build an instrument that gets at the quantity the theory says exists. The framework is the tool they work with.</p>
+            <p><b>Puzzle is his word and it is deliberate.</b> A puzzle is something you already believe has a solution, and the interest is in whether you are clever enough to find it. A crossword has an answer. If you fail, the crossword is not discredited, you are. Normal science works the same way, and that is why a failed experiment is normally read as a failed experimenter.</p>
+            <div class="exm">
+              <b>Example &middot; what this feels like from inside</b>
+              <p>In 2011 the OPERA experiment at Gran Sasso measured neutrinos arriving from CERN about sixty nanoseconds earlier than light would have. Faster than light is not a small anomaly; it contradicts special relativity. The team did not announce a revolution. They published the measurement and asked the community to find their mistake, and said so explicitly. Six months later the mistake was found: a fibre-optic cable was not fully screwed in, and a clock oscillator was running fast. The paradigm was never on trial. The cable was.</p>
+            </div>
+          </div>
+
+          <h4>Paradigm, and why the word is slippery</h4>
+          <div class="body">
+            <p><b>Kuhn used <em>paradigm</em> in more senses than he meant to.</b> A critic named Margaret Masterman went through the book and counted twenty-one distinct uses. Kuhn accepted the complaint and in a postscript split it in two, and those two are the ones to hold.</p>
+            <ul>
+              <li><b>The disciplinary matrix.</b> Everything a scientific community shares: the equations it writes down, the models it pictures things with, the values it uses to judge a good theory, the list of problems it thinks are worth solving. Not a theory, a whole working culture.</li>
+              <li><b>The exemplar.</b> A concrete problem already solved, which students work through in training and then imitate for the rest of their careers. The inclined plane. The hydrogen atom. Kuhn said this was the sense he cared about most, and it is the one usually forgotten.</li>
+            </ul>
+            <p><b>The exemplar sense is the interesting one</b>, because it says a scientist is trained less by learning rules than by copying worked examples. Nobody can state the rules of their own field completely. What they have is a stock of cases and a feel for which new problem resembles which old one. That is a craft, and it is learned the way crafts are learned, which puts Kuhn unexpectedly close to the Greek <em>technē</em> in last week's Schadewaldt chapter.</p>
+          </div>
+
+          <h4>Anomaly, crisis, revolution</h4>
+          <div class="body">
+            <p><b>Anomaly.</b> A result the framework cannot digest. Most anomalies get absorbed, adjusted for, or put on a shelf marked "not yet", and there is a good reason for it: a framework that collapsed at the first awkward result would never get any work done.</p>
+            <p><b>Crisis.</b> Anomalies accumulate at a point the community cares about, the fixes start looking like patches, and confidence goes. Kuhn's claim is that this is a state of the <em>community</em>. The same anomalies could have been known for decades and the crisis arrives when confidence does.</p>
+            <p><b>Revolution.</b> A new framework takes over. Not by being added to the old one, but by replacing it, and Kuhn's strongest claim is that the new one does not contain the old as a special case in the way textbooks pretend.</p>
+            <figure class="dgm">
+              <svg viewBox="0 0 700 180" role="img" aria-labelledby="kuhn-cycle-t kuhn-cycle-d">
+                <title id="kuhn-cycle-t">Kuhn's cycle, drawn as a line that breaks</title>
+                <desc id="kuhn-cycle-d">Five stages left to right: normal science, anomaly, crisis, revolution, then normal science again under a new paradigm. The first and last stretches are flat runs of puzzle solving; the break in the middle steps to a different level and starts again there.</desc>
+                <line class="dg-ln" x1="30" y1="120" x2="250" y2="120" stroke-width="2"/>
+                <line class="dg-ln dg-dim" x1="250" y1="120" x2="330" y2="120" stroke-width="2" stroke-dasharray="4 4"/>
+                <line class="dg-ln dg-dim" x1="330" y1="120" x2="410" y2="120" stroke-width="2" stroke-dasharray="2 5"/>
+                <line class="dg-ln" x1="450" y1="62" x2="670" y2="62" stroke-width="2"/>
+                <path class="dg-ln dg-dim" d="M410 120 L450 62" stroke-width="2"/>
+                <circle class="dg-hi" cx="250" cy="120" r="5"/>
+                <circle class="dg-hi" cx="330" cy="120" r="5"/>
+                <circle class="dg-hi" cx="410" cy="120" r="5"/>
+                <text class="dg-m" x="30" y="145" font-size="11">NORMAL SCIENCE</text>
+                <text class="dg-m" x="216" y="106" font-size="11">ANOMALY</text>
+                <text class="dg-m" x="300" y="145" font-size="11">CRISIS</text>
+                <text class="dg-m" x="360" y="106" font-size="11">REVOLUTION</text>
+                <text class="dg-m" x="450" y="50" font-size="11">NORMAL SCIENCE, NEW PARADIGM</text>
+                <text class="dg-t dg-dim" x="452" y="92" font-size="12">the step goes sideways</text>
+              </svg>
+              <figcaption><b>The shape of the claim.</b> Two long flat runs of puzzle solving with a break between them. The textbook picture is one line climbing steadily; Kuhn's is a line that stops and restarts somewhere else, which is why he denies that science accumulates.</figcaption>
+            </figure>
+          </div>
+
+          <h4>Incommensurability, the claim that causes all the trouble</h4>
+          <div class="body">
+            <p><b>Incommensurable means there is no common measure.</b> Kuhn borrowed it from geometry, where the side and the diagonal of a square cannot both be counted in whole units of the same ruler. Applied to paradigms it means you cannot settle the contest by totalling the evidence, because three things move at once.</p>
+            <ul>
+              <li><b>The words change meaning.</b> Mass in Newton is conserved and independent of speed. Mass in Einstein is not. The same word, two different quantities, so a sentence with "mass" in it is not the same claim in both.</li>
+              <li><b>The list of good questions changes.</b> Asking why a body keeps moving is a serious question before Newton and a confused one after him.</li>
+              <li><b>The standards change.</b> What counts as a satisfying explanation is set by the paradigm, so each side scores itself well by its own rules.</li>
+            </ul>
+            <p><b>What Kuhn did not say</b>, and spent thirty years insisting he had not said, is that theory choice is irrational or that anything goes. His position is that there are good reasons, that they are real, and that they do not add up to a proof, so two careful people can weigh them differently. He hated being called a relativist.</p>
+            <div class="exm">
+              <b>Example &middot; the people who never crossed over</b>
+              <p><b>Joseph Priestley</b> isolated oxygen in 1774 and called it dephlogisticated air. He went to his death in 1804 still holding the phlogiston theory, having watched the entire field move to Lavoisier without him. <b>Alfred Wegener</b> proposed continental drift in 1912 with the fit of the coastlines, matching fossils and matching rock beds, and was dismissed for half a century mostly because he had no mechanism. He died on the Greenland ice in 1930. Sea floor spreading arrived in the 1960s and plate tectonics became the framework of the whole science, thirty years too late for him to see it. Max Planck put the general rule bluntly: a new scientific truth does not win by convincing its opponents, it wins because the opponents eventually die and a new generation grows up with it.</p>
+            </div>
+          </div>
+
+          <h4>Why the course sets this here</h4>
+          <div class="body">
+            <p><b>Kuhn moves the unit of analysis from the method to the community.</b> Before him, the question was what rule separates science from everything else, which is the Vienna Circle question. After him, the question is what a trained group of people accepts, why they accept it, and what would make them stop. That is a question about people, and people can be studied by sociologists.</p>
+            <p>Which is exactly where the course goes next. Week 4 is the social construction of scientific knowledge, and the field that grew out of the door Kuhn opened is the one whose textbook this chapter comes from. Sismondo is writing an introduction to science and technology studies, and this chapter is the origin story of the discipline he is introducing.</p>
+          </div>
+
+          <dl class="links">
+            <dt>Answers</dt><dd>The Vienna Circle, chapter 9 of the week 2 packet. They wanted one criterion that made a statement scientific. Kuhn says the criterion is whatever the current community was trained on.</dd>
+            <dt>Answered by</dt><dd>Week 4, the social construction of scientific knowledge, which takes Kuhn's community and studies it the way an anthropologist studies anything else.</dd>
+            <dt>Sits beside</dt><dd>Foucault, below. Kuhn says knowledge is made by a community; Foucault says the machinery for producing knowledge about people is the same machinery that controls them.</dd>
+          </dl>
+
+          <p class="keep"><b>If you keep one thing</b>Scientists spend nearly all their time solving puzzles inside a framework they are not testing, and when the framework changes it gets replaced, because the two frameworks do not share a ruler to be measured against.</p>
+
+          <div class="mynote"><b>My note</b><span>Eleven pages, so read it properly. The three words an exam can ask for by name are normal science, paradigm and incommensurability, and the one people get wrong is paradigm, because they give the vague sense and miss the exemplar.</span></div>
+
+          <div class="curious">
+            <div class="label"><b>For the curious</b><span>none of this is on the exam</span></div>
+
+            <details class="bit"><summary>He got the idea while trying to understand why Aristotle looked stupid</summary><div class="bq">
+              <p>Kuhn was a physics graduate student asked to teach a science course for humanities students, which meant reading Aristotle's physics. It looked like nonsense to him: bad mechanics, wrong in ways a first-year could see. Then, at his desk one summer day in 1947, it reorganised itself. Aristotle was not doing bad Newtonian mechanics, he was doing something else entirely, with a different question and a different notion of motion, and inside that scheme he was not stupid at all. Kuhn described it as a sudden change of shape, and the whole book comes out of that afternoon.</p>
+            </div></details>
+
+            <details class="bit"><summary>The word paradigm escaped and now sells software</summary><div class="bq">
+              <p>Before 1962 the word meant a grammatical model, the table of endings you learn when you conjugate a verb. Kuhn's usage leaked into management, marketing and self-help, where a paradigm shift now means any change of mind at all. Kuhn lived to see this and was not pleased. He is one of a very small number of people who put a word into everyday English and then had to watch what happened to it.</p>
+            </div></details>
+
+            <details class="bit"><summary>The other Kuhn book is about the Copernican revolution</summary><div class="bq">
+              <p><em>The Copernican Revolution</em> came out in 1957, five years earlier, and it is the case study the famous book generalises from. The detail worth knowing: Copernicus did not make better predictions than Ptolemy. His system was about as accurate and about as complicated, still used circles, and still needed epicycles. It won on other grounds, and slowly. If you think revolutions happen because the new theory predicts better, this is the case that says they do not have to.</p>
+            </div></details>
+
+            <details class="bit"><summary>Popper and Kuhn argued in public, and the argument is still running</summary><div class="bq">
+              <p>Karl Popper said science is what can be falsified: a real theory forbids something, and you go looking for the thing it forbids. Kuhn said that describes almost nothing anyone actually does, because a working scientist who gets a contrary result assumes their apparatus is wrong. They met at a colloquium in London in 1965, and the volume that came out of it, <em>Criticism and the Growth of Knowledge</em>, is one of the standard fights in the field. Imre Lakatos spent the rest of his career trying to build something that kept Popper's standards and Kuhn's history at the same time.</p>
+            </div></details>
+
+            <details class="bit"><summary>There is a book called The Poker, and it is about a different fight</summary><div class="bq">
+              <p>A different fight, with the same cast. In 1946 Popper gave a talk at Cambridge and Wittgenstein, who was chairing, picked up a fireplace poker. The two men argued, the poker was waved, and Wittgenstein walked out. Everyone present remembered it differently and nobody agrees on what was said. Two journalists wrote a whole book, <em>Wittgenstein's Poker</em>, about ten minutes in a room. Philosophy of science has better anecdotes than it is given credit for.</p>
+            </div></details>
+          </div>
+        </div>
+      </article>
+
+      <article class="rd p-close" id="r54">
+        <div class="stripe"></div>
+        <div class="main">
+          <div class="head">
+            <h3><span class="ch">CH 54</span>Panopticism</h3>
+            <div class="who">Michel Foucault, from <em>Discipline and Punish</em>, 1975</div>
+            <div class="meta"><span class="tag">Read properly</span><span>11 pp text · 3 pp notes and references</span></div>
+          </div>
+          <div class="span">
+            <div class="bar" role="img" aria-label="Pages 85 to 98 of 98, at the end of the PDF">
+              <i style="flex:84"></i><i class="here-txt" style="flex:11"></i><i class="here-nts" style="flex:3"></i>
+            </div>
+            <div class="cap">pdf pp. 85 to 98 of 98 · text 85 to 95, notes and references 96 to 98 · book pp. 654 to 667</div>
+          </div>
+
+          <p class="qline">What kind of power works by making you watch yourself?</p>
+
+          <h4>He begins with a plague town, and the detail is the argument</h4>
+          <div class="body">
+            <p>A seventeenth-century town under plague. It is closed and cut into quarters and streets, each under an official who may not leave for the duration. Everyone is shut in their house on pain of death.</p>
+            <p>Every inhabitant is registered by name, age and sex regardless of station. Copies of the register go to three places: the quarter's intendant, the town hall, and the official who calls the roll daily at each window. Each person has to appear and answer to their name. Everything observed on the rounds is written down and passed up the chain: deaths, illnesses, complaints, irregularities. Magistrates control all medical treatment, and no other practitioner may treat, no apothecary prepare medicine and no confessor visit a sick person without written permission.</p>
+            <p>Five or six days in, the houses are purified one at a time. Everyone leaves. Furniture is raised off the floor, windows, doors and even keyholes are sealed with wax, and perfume is burned inside. The men who did the work are searched on the way out, to prove they carry nothing they did not bring in.</p>
+            <details class="ctx"><summary><i>Context</i>What "purified" meant, and why it took that form</summary><div class="bq">
+              <p>Nobody in the seventeenth century knew about bacteria. The plague was understood as <b>corrupted air</b>, the same miasma theory that turns up in the Comte chapter two hundred years later. On that account the poison hangs about in a sick house and soaks into anything porous: bedding, clothing, wall hangings.</p>
+              <p>Every step follows from that belief. <b>Burning perfume</b>, usually sulphur, juniper or vinegar, was meant to correct the bad air with strong good air. <b>Sealing the keyholes</b> kept the fumigation smoke inside long enough to reach everything. <b>Raising the furniture</b> let the smoke underneath. And <b>searching the workers</b> did two jobs at once: it stopped looting, and it stopped infected goods leaving the house.</p>
+              <p>The theory was wrong and some of the practice worked anyway, because emptying and fumigating a house also kills fleas and rats. Which is the same accident as Bazalgette's sewers in the Comte chapter: a false account pointing at a useful action.</p>
+              <p><b>Foucault's interest is elsewhere.</b> He is not asking whether the medicine worked. He is pointing at the paperwork: the register, the roll call, the daily written report. Those are the parts that outlived the plague and became how schools and clinics run.</p>
+            </div></details>
+          </div>
+
+          <h4>What he extracts from it: the definition of discipline</h4>
+          <div class="body">
+            <p>Foucault's summary is the sentence to underline. An enclosed, segmented space, observed at every point, every individual fixed in place, the slightest movement supervised, all events recorded, and an <b>uninterrupted work of writing</b> linking the centre to the edges. He calls it a compact model of the disciplinary mechanism.</p>
+            <p><b>Discipline is a technical term for him</b>, and it names a way of exercising power that works by sorting: dividing a crowd into individuals, assigning each one a place, a timetable and a record, and then watching. Its characteristic operation is <em>analysis</em>, in the literal sense of breaking a thing into parts. The plague is a mixture, bodies and diseases and rumours confused together, and the answer to a mixture is to separate it into countable individuals.</p>
+            <p><b>The contrast he draws next is the most quotable thing in the essay.</b> Literature has always dreamed of plague as carnival: laws suspended, prohibitions lifted, masks off, bodies mingling, everyone abandoning the identity they were assigned. There is also a political dream of the plague, and it is the exact reverse of the carnival. Regulation reaching into the smallest details of daily life, and the assignment to every individual of a true name, a true place, a true body, a true disease.</p>
+            <p><b>Two historical models, two techniques.</b> The <b>leper</b> was excluded, in one massive binary cut, exile, and then left to a mass in which telling one person from another was pointless. The <b>plague victim</b> was included and sorted: multiple separations, individualising distribution, surveillance in depth. Modern institutions inherit the second technique while still using the first's language of casting out.</p>
+          </div>
+
+          <h4>Bentham's Panopticon, and why it works</h4>
+          <div class="body">
+            <p>In 1787 Jeremy Bentham designed a building: a ring of cells around a central tower. Each cell runs the full depth of the building and has a window at the outer wall and one at the inner, so the occupant appears from the tower as a perfectly legible silhouette, backlit. The tower has blinds and angled partitions, so its interior stays dark.</p>
+            <figure class="pic">
+              <img src="img/panopticon-reveley-1791.jpg" width="816" height="900" loading="lazy"
+                   alt="An engraved sheet in two parts: at the top a five-storey prison wall cut open to show cells stacked around the outer ring facing a tower in the middle, and below a half-circle floor plan with single cells lettered A along the outer wall and dividing walls running inward to concentric rings at the centre.">
+              <figcaption><b>Elevation, section and plan of Bentham’s panopticon, drawn by Willey Reveley in 1791.</b> The cutaway at the top has five storeys of cells stacked around the outer wall, each lit by a window behind it, so a prisoner appears from the centre as a dark shape against daylight. In the plan below, the inspector’s lodge fills the concentric rings at the middle, screened so that nobody in a cell can tell whether anyone is watching, which is the condition Foucault says makes prisoners police themselves. <span class="cred">Public domain, via Wikimedia Commons.</span></figcaption>
+            </figure>
+            <p>The consequences follow mechanically:</p>
+            <ul>
+              <li><b>The inmate is seen and never sees.</b> He can never verify whether anyone is in the tower at this moment.</li>
+              <li><b>So he behaves at all times as if he were being watched</b>, since the cost of being wrong is too high. Visibility itself becomes the trap.</li>
+              <li><b>The prisoner takes over his own surveillance.</b> The power no longer needs to be applied to him, because he is applying it to himself.</li>
+              <li><b>Which makes it automatic, continuous and cheap.</b> Fewer guards, no chains, no violence, no audience. Bentham's phrase for the effect is <em>power of mind over mind</em>.</li>
+            </ul>
+          </div>
+
+          <h4>The crucial move: it is a diagram</h4>
+          <div class="body">
+            <p>Foucault insists the Panopticon must not be read as a dream building. It is a <b>diagram</b>: a mechanism of power reduced to its ideal form, stripped of any particular use, a figure of political technology that can and must be detached from any specific application.</p>
+            <p>Which is why he lists its uses in a single breath: reform prisoners, treat patients, instruct schoolchildren, confine the insane, supervise workers, put beggars to work. Wherever a task has to be imposed on a multiplicity of people, the schema applies. He also notes Bentham's own sales pitch, quoted for its enthusiasm: morals reformed, health preserved, industry invigorated, instruction diffused, public burdens lightened, economy set upon a rock, all by a simple idea in architecture. A reformer proposed this as reform.</p>
+            <p>And the final point is the subtle one. This power is not a weight pressing from outside on a function it interferes with. It is woven into the function so intimately that it <b>increases that function's efficiency while multiplying its own points of contact</b>. The school teaches better because of it. That is what makes it hard to argue with.</p>
+          </div>
+
+          <h4>Why this belongs in a course about scientific method</h4>
+          <div class="body">
+            <p>Look at what the plague town and the Panopticon are both made of: registers, roll calls, case notes, timetables, examinations, files. Every one of those is simultaneously an <b>instrument of knowledge</b> and an <b>instrument of control</b>. You find out what a person is like by the same act that fixes them in place.</p>
+            <p>Foucault's historical claim is that the human sciences were born inside exactly these institutions: psychiatry, criminology, the study of childhood and education. Prisons, clinics, asylums and schools were the first places with captive populations that could be measured over time. So knowledge about people did not arrive from outside and get applied to institutions. It was produced by them. Once that is on the table, "whose knowledge counts" stops being a philosophical curiosity and becomes a political question, which is where Weeks 4 through 9 of the course begin.</p>
+          </div>
+
+          <dl class="links">
+            <dt>Same move as</dt><dd>Rousseau, who also declines to argue about whether the knowledge is correct and asks what it does to people.</dd>
+            <dt>Undercuts</dt><dd>Bacon directly. Bacon said knowledge is power and meant it as a promise. Foucault says knowledge is power and means it as a diagnosis.</dd>
+            <dt>Inverts</dt><dd>Plato. Plato wanted the person who sees clearly to govern; Foucault says the apparatus for seeing people clearly is the apparatus for governing them.</dd>
+          </dl>
+
+          <p class="keep"><b>If you keep one thing</b>The point of the tower is that you cannot tell whether anyone is watching, so you do the watching for them.</p>
+
+          <div class="mynote"><b>My note</b><span>Hardest prose in the packet, and it punishes stopping. Keep moving, because he restates every difficult point two paragraphs later in plainer words.</span></div>
+
+          <div class="curious">
+            <div class="label"><b>For the curious</b><span>none of this is on the exam</span></div>
+
+            <details class="bit"><summary>Bentham never got one built, and it nearly ruined him</summary><div class="bq">
+              <p>Jeremy Bentham spent roughly two decades and a great deal of his own money trying to persuade the British Parliament to let him build and personally run a Panopticon prison. Land was bought and committees met for years without producing a building. In 1813 Parliament voted him £23,000 in compensation and the scheme died. The most famous building in modern political theory was never constructed by the man who designed it.</p>
+            </div></details>
+
+            <details class="bit"><summary>Bentham himself is on display in a cabinet in London</summary><div class="bq">
+              <p>His will instructed that his body be dissected in front of friends, then preserved, dressed in his own clothes and kept as an <b>Auto-Icon</b>. It is at University College London to this day: his actual skeleton, padded out, in his coat and hat. The preservation of the head went badly, so a wax one was made, and the real mummified head was kept separately and has an undignified history involving students. A man who believed a body should be useful after death is in a box, being looked at forever. Foucault would have enjoyed it.</p>
+              <figure class="pic">
+                <img src="img/bentham-auto-icon.jpg" width="675" height="900" loading="lazy"
+                     alt="A seated figure in a black tailcoat, pale breeches and a wide straw hat, gloved hands resting on a walking stick across the knees, enclosed on every side by a tall glass case in a modern concrete building.">
+                <figcaption><b>Jeremy Bentham’s Auto-Icon in its case at University College London, photographed in April 2026.</b> Bentham’s will asked that his body be preserved, dressed in his own clothes and seated in a case where anyone could come and look at him, and the head is wax because the attempt on the real one left it disfigured. The man who designed a building around permanent inspection is the figure under glass here, with students walking past him all day. <span class="cred">Photograph by Matt Brown, CC BY 4.0, via Wikimedia Commons.</span></figcaption>
+              </figure>
+            </div></details>
+
+            <details class="bit"><summary>One was built in Cuba, and Castro was locked in it</summary><div class="bq">
+              <p>The Presidio Modelo on the Isla de la Juventud was constructed between 1926 and 1928: five enormous circular blocks, each with a watchtower at the centre, exactly to Bentham's plan. Fidel Castro was imprisoned there from 1953 to 1955 after the Moncada attack. It closed in 1967 after riots and hunger strikes over conditions, and stands empty as a museum. Photographs of the interior are the single most useful thing you can look at before reading this chapter.</p>
+              <figure class="pic">
+                <img src="img/presidio-modelo-interior.jpg" width="900" height="602" loading="lazy"
+                     alt="Looking across the floor of a circular prison block: five tiers of small square cell openings curve right around the wall, all of them facing a plain concrete tower standing alone in the centre.">
+                <figcaption><b>Inside one of the circular cell blocks at the Presidio Modelo, Isla de la Juventud, Cuba.</b> This is Bentham’s drawing built at full size and filled with people: every cell faces the tower, and the tower’s windows tell a prisoner nothing about whether a guard is behind them, so a man in a cell had to act all day as though he were being watched. <span class="cred">Photograph by Friman, CC BY-SA 3.0, via Wikimedia Commons.</span></figcaption>
+              </figure>
+            </div></details>
+
+            <details class="bit"><summary>A warning about the first chapter of the book</summary><div class="bq">
+              <p><em>Discipline and Punish</em> opens with several pages on the public torture and execution of Robert-François Damiens in Paris in 1757, in clinical and unbearable detail. It then prints a dull timetable from a young offenders' prison eighty years later, with no comment between them. Hour by hour: rise, prayer, work, meal, work, school. That juxtaposition is the book's whole argument and is why people find it unforgettable. It is not in your extract. It is extremely graphic, so approach it knowing what it is.</p>
+            </div></details>
+
+            <details class="bit"><summary>Foucault was a celebrity, and he looked like one</summary><div class="bq">
+              <p>Bald, white polo necks, a public intellectual in a country that still produces them. He held a chair at the Collège de France, where by tradition lectures are free and open to anyone, and his were so oversubscribed that people arrived hours early with tape recorders. He was tear-gassed at demonstrations, campaigned for prisoners' rights and founded a prisons information group, and helped shelter Vietnamese refugees. He died in 1984 of an AIDS-related illness, among the first prominent French public figures to do so, at a moment when the illness was barely speakable. A life spent writing about who gets classified, confined and spoken about ended with an unbearable symmetry.</p>
+            </div></details>
+
+            <details class="bit"><summary>This chapter is why you can argue about your phone</summary><div class="bq">
+              <p>Almost every current argument about surveillance runs on machinery built here. Workplace productivity monitoring. Exam proctoring software that watches students through their webcams. Social media as a place where people perform for an audience they cannot see. Shoshana Zuboff's <em>The Age of Surveillance Capitalism</em> (2019). Foucault's point was never that someone is spying on you. It is that when you cannot tell whether you are being watched, you start managing yourself, and at that moment nobody has to do anything at all.</p>
+            </div></details>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="s-gloss">
+    <h2>Glossary</h2>
+    <p class="lede">Every term defined in this guide, collected and grouped by the text it comes from. Definitions are repeated here on purpose, so nothing has to be hunted for.</p>
+    <div class="gl">
+
+      <div class="gl-grp">
+        <h3>Kuhn<span>Sismondo ch. 2</span></h3>
+        <dl>
+          <dt>normal science</dt><dd>What scientists do nearly all the time: solving puzzles inside a framework that is not itself being tested. A failure counts against the scientist.</dd>
+          <dt>puzzle</dt><dd>Kuhn's deliberate word for a normal-science problem. Something already believed to have a solution, so failing to find it discredits you.</dd>
+          <dt>paradigm, as disciplinary matrix</dt><dd>Everything a scientific community shares: its equations, its models, its values, and its list of problems worth solving.</dd>
+          <dt>paradigm, as exemplar</dt><dd>A concrete solved problem that students work through and then imitate. Kuhn said this was the sense he cared most about.</dd>
+          <dt>anomaly</dt><dd>A result the framework cannot digest. Most are absorbed, adjusted for, or shelved.</dd>
+          <dt>crisis</dt><dd>Anomalies pile up where the community cares, the fixes start looking like patches, and confidence goes. A state of the community, arriving when confidence does.</dd>
+          <dt>revolution</dt><dd>One framework replacing another. It does not get added on top.</dd>
+          <dt>incommensurability</dt><dd>No common measure between two paradigms. The words change meaning, the good questions change, and the standards for a good answer change, so the evidence cannot simply be totted up.</dd>
+        </dl>
+      </div>
+
+      <div class="gl-grp">
+        <h3>Foucault<span>ch. 54</span></h3>
+        <dl>
+          <dt>discipline</dt><dd>Power that works by sorting: dividing a crowd into individuals, giving each a place, a timetable and a record, then watching. Its operation is analysis, breaking a thing into parts.</dd>
+          <dt>the plague town</dt><dd>The seventeenth-century lockdown Foucault opens with. Registers, daily roll calls, written reports upward. He calls it a compact model of the disciplinary mechanism.</dd>
+          <dt>the leper and the plague victim</dt><dd>Two techniques. The leper is excluded in one binary cut. The plague victim is included and sorted. Modern institutions inherit the second.</dd>
+          <dt>the Panopticon</dt><dd>Bentham's 1787 design: a ring of backlit cells around a dark central tower, so the inmate is seen and can never check whether anyone is looking.</dd>
+          <dt>a diagram of power</dt><dd>Foucault's key move. The Panopticon is a mechanism stripped of any particular use, detachable from prisons and droppable into schools, clinics and workshops.</dd>
+          <dt>power of mind over mind</dt><dd>Bentham's own phrase for the effect.</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <div class="endmatter">
+    <div><b>Where this goes.</b> Week 3 of thirteen. The rest of the term is the argument these two set up:</div>
+    <dl class="weeks">
+      <dt>Week 4</dt><dd>The social construction of scientific knowledge, which is Kuhn's community studied directly</dd>
+      <dt>Weeks 5 to 7</dt><dd>Feminist epistemology and standpoint theory; science, gender and the body &middot; <b>Exam 1, Wed 7 Oct, 30%</b></dd>
+      <dt>Weeks 8 to 9</dt><dd>Feminist philosophy of disability; embodiment and the social model &middot; <b>Exam 2, Wed 11 Nov, 30%</b></dd>
+      <dt>Weeks 10 to 12</dt><dd>Animal minds, human and non-human</dd>
+      <dt>Week 13</dt><dd>Review and exam prep &middot; <b>Final, 40%, date set by the Registrar</b></dd>
+    </dl>
+    <div><b>Source.</b> Sergio Sismondo, <em>An Introduction to Science and Technology Studies</em>, 2nd ed., Wiley-Blackwell 2010, chapter 2, pages 12 to 22, through the uOttawa library. Michel Foucault, "Panopticism", chapter 54 of <em>Week 1, Intro to History of PHILOSOPHY OF TECHNOLOGY.pdf</em> on Brightspace, from Robert C. Scharff and Val Dusek (eds.), <em>Philosophy of Technology: The Technological Condition, An Anthology</em>, 2nd ed., Wiley-Blackwell 2014, pages 654 to 667. Scope, dates and course thesis from the Brightspace module description, the PHI2394-B00 course outline and the first-class slides.</div>
+  </div>
+
+</div>
+
+<div class="dock">
+  <div class="prog" id="prog"></div>
+  <div class="in">
+    <button type="button" id="bmgo" data-set="0" title="Go to your bookmark">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 2.2h8.8v12.1L8 11.1l-4.4 3.2z"/></svg>
+      <span class="lab">Bookmark</span></button>
+    <button type="button" data-marks title="Everything you have marked">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M2.5 3.5h11M2.5 8h11M2.5 12.5h7"/></svg>
+      <span class="lab">Highlights</span><span class="n" id="mcount"></span></button>
+    <a href="notes.html" title="Your notes for each lecture">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.2 2.3 13.7 4.8 5.6 12.9 2.4 13.6l.7-3.2z"/></svg>
+      <span class="lab">Lecture notes</span></a>
+    <button type="button" id="totop" class="end" title="Back to the top">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 13V3M3.5 7.5 8 3l4.5 4.5"/></svg>
+      <span class="lab">Top</span></button>
+  </div>
+</div>
+
+<div id="marks" class="drawer" hidden>
+  <div class="dback" data-close></div>
+  <aside class="dpanel" role="dialog" aria-modal="true" aria-labelledby="marks-h">
+    <div class="dhead">
+      <h2 id="marks-h">My highlights</h2>
+      <button type="button" class="dclose" data-close aria-label="Close">&times;</button>
+    </div>
+    <p class="dsub">Grouped by the text it sits in. Click one to jump to it.</p>
+    <div class="bm" id="bmlist"><p class="bmempty">Nothing marked yet. Select any text in the guide, then pick yellow, pink, a comment or the ribbon that sets your bookmark.</p></div>
+  </aside>
+</div>
+
+<footer class="sitefoot">
+  <div class="in">
+    <div class="col brand">
+      <a href="../">PHI2394 Reading Hub</a>
+      <p>Reading guides for Scientific Thought and Social Values, University of Ottawa.</p>
+    </div>
+    <nav class="col" aria-label="This week">
+      <h2>Week 3</h2>
+      <a href="./">Reading guide</a>
+      <a href="notes.html">My notes</a>
+      <button type="button" data-marks>My highlights</button>
+    </nav>
+    <nav class="col" aria-label="The hub">
+      <h2>The hub</h2>
+      <a href="../">All weeks</a>
+      <a href="../#about">How these were written</a>
+      <a href="https://github.com/myermcat/phi-reading-hub">Source on GitHub</a>
+    </nav>
+  </div>
+  <div class="colophon">
+    <span>Written with Claude. AI can make mistakes, and compression is where it makes them.</span>
+    <span>Your notes, highlights and bookmark are kept in this browser only.</span>
+  </div>
+</footer>
+
+<script>
+/* This guide used to live at week-1 and its store was keyed to that name. The week numbering
+   now follows the course outline, where the same reading is week 2, so anything already saved
+   is copied across to the new key the first time this page loads. Same origin, so the old
+   entries are still readable. */
+(function () {
+  try {
+    [['phi2394-week1-guide-v1', 'phi2394-week2-guide-v1'],
+     ['phi2394-week1-lecture-tab-v1', 'phi2394-week2-lecture-tab-v1']].forEach(function (p) {
+      if (localStorage.getItem(p[1]) === null) {
+        var old = localStorage.getItem(p[0]);
+        if (old !== null) localStorage.setItem(p[1], old);
+      }
+    });
+  } catch (e) {}
+})();
+</script>
+<script src="../shared/editor.js"></script>
+<script>
+(function () {
+  var SEL = 'p,li,h4,h5,blockquote,td,dd,figcaption';
+  var LS = 'phi2394-week3-guide-v1', WIDE = 1400;
+  var root, bar, rail, items = [], notes = {}, ref = null, saveT = null;
+  var drawer = null;
+  function openMarks() {
+    if (!drawer) return;
+    drawer.hidden = false; document.body.style.overflow = 'hidden';
+    var c = drawer.querySelector('.dclose'); if (c) c.focus();
+  }
+  function closeMarks() {
+    if (!drawer || drawer.hidden) return;
+    drawer.hidden = true; document.body.style.overflow = '';
+  }
+
+  function blocks() {
+    return Array.prototype.filter.call(root.querySelectorAll(SEL), function (el) {
+      return !el.querySelector(SEL) && !el.closest('.cmt') && !el.closest('.nb') && el.textContent.trim().length > 0;
+    });
+  }
+  function textNodes(el) {
+    var w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null), a = [], n;
+    while ((n = w.nextNode())) a.push(n);
+    return a;
+  }
+  function offsetIn(el, node, off) {
+    var ns = textNodes(el), t = 0;
+    for (var i = 0; i < ns.length; i++) { if (ns[i] === node) return t + off; t += ns[i].nodeValue.length; }
+    return t;
+  }
+  function strip() {
+    Array.prototype.forEach.call(root.querySelectorAll('mark.hl'), function (m) {
+      var p = m.parentNode;
+      while (m.firstChild) p.insertBefore(m.firstChild, m);
+      p.removeChild(m); p.normalize();
+    });
+    Array.prototype.forEach.call(root.querySelectorAll('.cmt'), function (c) { c.remove(); });
+  }
+  function paint(el, start, end, cls, id) {
+    var ns = textNodes(el), pos = 0, jobs = [];
+    for (var i = 0; i < ns.length; i++) {
+      var len = ns[i].nodeValue.length, s = Math.max(start, pos), e = Math.min(end, pos + len);
+      if (e > s) jobs.push([ns[i], s - pos, e - pos]);
+      pos += len; if (pos >= end) break;
+    }
+    for (var j = jobs.length - 1; j >= 0; j--) {
+      var n = jobs[j][0], a = jobs[j][1], b = jobs[j][2];
+      if (b < n.nodeValue.length) n.splitText(b);
+      var target = a > 0 ? n.splitText(a) : n;
+      var m = document.createElement('mark');
+      m.className = 'hl ' + cls;
+      m.setAttribute('data-id', id);
+      target.parentNode.insertBefore(m, target);
+      m.appendChild(target);
+    }
+  }
+  function card(it) {
+    var c = document.createElement('div');
+    c.className = 'cmt'; c.setAttribute('data-id', it.id);
+    var q = document.createElement('div'); q.className = 'q';
+    q.textContent = '“' + (it.text.length > 70 ? it.text.slice(0, 70) + '…' : it.text) + '”';
+    var ta = document.createElement('div');
+    ta.className = 'cbody'; ta.contentEditable = 'true';
+    ta.setAttribute('data-ph', 'Comment…');
+    ta.innerHTML = Notes.clean(it.body || '');
+    Notes.rich(ta, function () { it.body = ta.innerHTML; save(); });
+    ta.addEventListener('input', function () { it.body = ta.innerHTML; save(); });
+    ta.addEventListener('blur', function () {
+      if (!ta.textContent.trim()) { remove(it.id); return; }
+      it.body = ta.innerHTML; save(); place_notes();
+    });
+    ta.addEventListener('keydown', function (e) { if (e.key === 'Escape') ta.blur(); });
+    var row = document.createElement('div'); row.className = 'row';
+    var del = document.createElement('button'); del.type = 'button'; del.textContent = 'Delete';
+    del.addEventListener('mousedown', function (e) { e.preventDefault(); remove(it.id); });
+    row.appendChild(del);
+    c.appendChild(q); c.appendChild(ta); c.appendChild(row);
+    return c;
+  }
+  function place_notes() {
+    var wide = window.innerWidth >= WIDE;
+    rail.classList.toggle('on', wide);
+    var last = -1e9;
+    items.forEach(function (it) {
+      if (it.kind !== 'note') return;
+      var c = root.querySelector('.cmt[data-id="' + it.id + '"]');
+      var m = root.querySelector('mark[data-id="' + it.id + '"]');
+      if (!c || !m) return;
+      if (!m.getClientRects().length) { c.style.display = 'none'; return; }
+      c.style.display = '';
+
+      if (wide) {
+        if (c.parentNode !== rail) rail.appendChild(c);
+        c.classList.remove('inline');
+        var top = m.getBoundingClientRect().top + window.scrollY - (root.getBoundingClientRect().top + window.scrollY);
+        if (top < last) top = last;
+        c.style.top = top + 'px';
+        last = top + c.offsetHeight + 14;
+      } else {
+        c.classList.add('inline'); c.style.top = '';
+        var host = m.closest(SEL);
+        if (host && c.previousSibling !== host) host.parentNode.insertBefore(c, host.nextSibling);
+      }
+    });
+  }
+  function render() {
+    strip();
+    var bs = blocks();
+    items.forEach(function (it) {
+      if (!it || !it.text) return;
+      var probe = (it.before || '') + it.text + (it.after || '');
+      var order = [], i;
+      // the block this mark was made in comes first, by its opening text, then by its index
+      if (it.head) for (i = 0; i < bs.length; i++) if (bs[i].textContent.slice(0, 90) === it.head) order.push(i);
+      if (typeof it.idx === 'number' && it.idx >= 0 && it.idx < bs.length && order.indexOf(it.idx) < 0) order.push(it.idx);
+      for (i = 0; i < bs.length; i++) if (order.indexOf(i) < 0) order.push(i);
+      for (var j = 0; j < order.length; j++) {
+        var el = bs[order[j]], t = el.textContent, k = -1, st;
+        if (probe !== it.text) k = t.indexOf(probe);
+        if (k >= 0) { st = k + (it.before || '').length; }
+        else if (j < 2 && typeof it.at === 'number' && t.substr(it.at, it.text.length) === it.text) { st = it.at; }
+        else if (j < 2) { k = t.indexOf(it.text); if (k < 0) continue; st = k; }
+        else { continue; }
+        paint(el, st, st + it.text.length,
+          it.kind === 'note' ? 'hl-n' : it.kind === 'bm' ? 'hl-b' : 'hl-' + it.color, it.id);
+        if (it.kind === 'note') rail.appendChild(card(it));
+        return;
+      }
+    });
+    place_notes();
+    listMarks();
+  }
+  // Opening a mark that sits inside a closed toggle has to open the toggle first,
+  // or the scroll lands on a collapsed summary and the mark is nowhere on screen.
+  function goTo(el) {
+    if (!el) return;
+    var d = el.closest('details');
+    while (d) { d.open = true; d = d.parentElement && d.parentElement.closest('details'); }
+    var se = document.scrollingElement || document.documentElement, was = se.scrollTop;
+    try { el.scrollIntoView({ block: 'center', behavior: 'smooth' }); }
+    catch (e) { el.scrollIntoView(true); }
+    // Smooth scrolling is refused in some contexts and silently does nothing, so check
+    // that it actually moved and jump outright when it did not.
+    setTimeout(function () {
+      if (Math.abs((document.scrollingElement || document.documentElement).scrollTop - was) < 4) {
+        el.scrollIntoView({ block: 'center' });
+      }
+    }, 380);
+    el.classList.add('flash');
+    setTimeout(function () { el.classList.remove('flash'); }, 1600);
+  }
+  function bookmark() { return items.filter(function (x) { return x.kind === 'bm'; })[0] || null; }
+  function bmState() {
+    var b = document.getElementById('bmgo');
+    if (!b) return;
+    var it = bookmark();
+    b.setAttribute('data-set', it ? '1' : '0');
+    b.title = it ? 'Go to your bookmark: “' + it.text.slice(0, 60) + '”'
+                 : 'No bookmark yet. Select a word and pick the ribbon.';
+  }
+  // The excerpt shown in the list: the marked words in their own colour with the words
+  // around them left in, because a bare quotation out of context says nothing.
+  function excerpt(el, ids) {
+    var w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null), n, pos = 0, full = '', runs = [];
+    while ((n = w.nextNode())) {
+      var mk = n.parentElement && n.parentElement.closest('mark.hl');
+      var len = n.nodeValue.length;
+      if (mk && ids.indexOf(mk.getAttribute('data-id')) >= 0) {
+        var last = runs[runs.length - 1];
+        if (last && last.e === pos && last.k === mk.className) last.e = pos + len;
+        else runs.push({ s: pos, e: pos + len, k: mk.className });
+      }
+      full += n.nodeValue; pos += len;
+    }
+    var out = document.createElement('span');
+    out.className = 'q';
+    if (!runs.length) { out.textContent = full.slice(0, 160); return out; }
+    var a = Math.max(0, runs[0].s - 75), b = Math.min(full.length, runs[runs.length - 1].e + 75);
+    if (a > 0) { var sp = full.indexOf(' ', a); if (sp > 0 && sp < runs[0].s) a = sp + 1; }
+    if (b < full.length) { var sp2 = full.lastIndexOf(' ', b); if (sp2 > runs[runs.length - 1].e) b = sp2; }
+    function txt(str, dim) {
+      if (!str) return;
+      var e = document.createElement('span');
+      if (dim) e.className = 'dim';
+      e.textContent = str; out.appendChild(e);
+    }
+    if (a > 0) txt('… ', 1);
+    var cur = a;
+    runs.forEach(function (r) {
+      txt(full.slice(cur, r.s), 1);
+      var m = document.createElement('mark');
+      m.className = r.k;
+      m.textContent = full.slice(r.s, r.e);
+      out.appendChild(m); cur = r.e;
+    });
+    txt(full.slice(cur, b), 1);
+    if (b < full.length) txt(' …', 1);
+    return out;
+  }
+  // The highlights list. One row per paragraph, so two marks in the same paragraph read as
+  // one entry, grouped by the text each paragraph sits in. Click a row and go there.
+  function listMarks() {
+    var box = document.getElementById('bmlist');
+    bmState();
+    var n = document.getElementById('mcount');
+    if (n) n.textContent = items.length ? String(items.length) : '';
+    if (!box) return;
+    box.innerHTML = '';
+
+    function where(el) {
+      var art = el.closest('article.rd'), name = 'The argument', ch = '';
+      if (art) {
+        var h = art.querySelector('h3'), chip = h && h.querySelector('.ch'), who = art.querySelector('.who');
+        ch = chip ? chip.textContent.trim().toLowerCase() : '';
+        name = who ? who.textContent.split(',')[0].trim() : (h ? h.textContent : name);
+      } else {
+        var sec = el.closest('section'), sh = sec && sec.querySelector('h2');
+        if (sh) name = sh.textContent.trim();
+      }
+      var node = el, sub = '';
+      while (node && node !== root && !sub) {
+        var sib = node.previousElementSibling;
+        while (sib && !sub) {
+          if (/^H[2-6]$/.test(sib.tagName)) sub = sib.textContent.trim();
+          else if (sib.tagName === 'SUMMARY') sub = sib.textContent.trim();
+          sib = sib.previousElementSibling;
+        }
+        if (!sub && node.parentElement && node.parentElement.tagName === 'DETAILS') {
+          var sm = node.parentElement.querySelector('summary');
+          if (sm) sub = sm.textContent.trim();
+        }
+        node = node.parentElement;
+      }
+      return { name: name, ch: ch, sub: sub };
+    }
+    function row(el, list, cls) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'bmi' + (cls ? ' ' + cls : '');
+      var dots = document.createElement('span'); dots.className = 'dots';
+      var seenC = {};
+      list.forEach(function (it) {
+        var k = it.kind === 'note' ? 'n' : (it.kind === 'bm' ? 'b' : it.color);
+        if (seenC[k]) return; seenC[k] = 1;
+        var d = document.createElement('span'); d.className = 'dot ' + k; dots.appendChild(d);
+      });
+      var txt = document.createElement('span'); txt.className = 'bt';
+      var w = where(el);
+      if (w.sub) {
+        var cap = document.createElement('span'); cap.className = 'where'; cap.textContent = w.sub;
+        txt.appendChild(cap);
+      }
+      txt.appendChild(excerpt(el, list.map(function (x) { return x.id; })));
+      list.forEach(function (it) {
+        if (it.kind !== 'note' || !it.body) return;
+        var cm = document.createElement('span'); cm.className = 'cm';
+        cm.textContent = it.body.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 180);
+        txt.appendChild(cm);
+      });
+      b.appendChild(dots); b.appendChild(txt);
+      b.addEventListener('click', function () {
+        closeMarks();
+        goTo(root.querySelector('mark[data-id="' + list[0].id + '"]'));
+      });
+      return b;
+    }
+
+    // the bookmark first, on its own, because there is only ever one
+    var bm = bookmark(), bmMark = bm && root.querySelector('mark[data-id="' + bm.id + '"]');
+    if (bm && bmMark) {
+      var wrapB = document.createElement('div'); wrapB.className = 'bmg bmg-b';
+      var h3b = document.createElement('h3');
+      h3b.textContent = 'Bookmark';
+      var spb = document.createElement('span'); spb.textContent = 'where you stopped';
+      h3b.appendChild(spb); wrapB.appendChild(h3b);
+      wrapB.appendChild(row(bmMark.closest(SEL) || bmMark.parentElement, [bm], 'isbm'));
+      var clr = document.createElement('button');
+      clr.type = 'button'; clr.className = 'bmclear'; clr.textContent = 'Clear bookmark';
+      clr.addEventListener('click', function () { remove(bm.id); });
+      wrapB.appendChild(clr);
+      box.appendChild(wrapB);
+    }
+
+    // then the highlights and comments, one row per paragraph
+    var groups = [], byName = {}, seen = {}, order = [], perBlock = {};
+    Array.prototype.forEach.call(root.querySelectorAll('mark.hl'), function (m) {
+      var id = m.getAttribute('data-id');
+      if (seen[id]) return;
+      var it = items.filter(function (x) { return x.id === id; })[0];
+      if (!it || it.kind === 'bm') return;
+      seen[id] = 1;
+      var host = m.closest(SEL) || m.parentElement;
+      var k = order.indexOf(host);
+      if (k < 0) { k = order.length; order.push(host); perBlock[k] = []; }
+      perBlock[k].push(it);
+    });
+    order.forEach(function (host, k) {
+      var w = where(host), g = byName[w.name];
+      if (!g) { g = { name: w.name, ch: w.ch, rows: [] }; byName[w.name] = g; groups.push(g); }
+      g.rows.push([host, perBlock[k]]);
+    });
+    if (!groups.length && !bm) {
+      var e = document.createElement('p');
+      e.className = 'bmempty';
+      e.textContent = 'Nothing marked yet. Select any text in the guide, then pick yellow, pink, a comment or the ribbon that sets your bookmark.';
+      box.appendChild(e);
+      return;
+    }
+    groups.forEach(function (g) {
+      var wrap = document.createElement('div'); wrap.className = 'bmg';
+      var h3 = document.createElement('h3');
+      h3.textContent = g.name;
+      if (g.ch) { var sp = document.createElement('span'); sp.textContent = g.ch; h3.appendChild(sp); }
+      wrap.appendChild(h3);
+      g.rows.forEach(function (r) { wrap.appendChild(row(r[0], r[1])); });
+      box.appendChild(wrap);
+    });
+  }
+  var pill = null, pillT = null;
+  function flag(txt, bad) {
+    if (!pill) {
+      pill = document.createElement('div'); pill.id = 'save';
+      pill.setAttribute('role', 'status'); document.body.appendChild(pill);
+    }
+    pill.textContent = txt;
+    pill.className = bad ? 'bad' : (txt ? 'on' : '');
+    if (pillT) clearTimeout(pillT);
+    if (!bad) pillT = setTimeout(function () { pill.className = ''; }, 1400);
+  }
+  // notes.html writes lec1, lec2 and their dates into this same stored object, under this same
+  // key. Both pages therefore read what is stored, change only the keys they own, and write the
+  // whole thing back. A page that writes an object built from its own memory erases whatever the
+  // other page saved since it loaded.
+  var OWN = null;
+  function owned() {
+    if (!OWN) {
+      OWN = {};
+      Array.prototype.forEach.call(document.querySelectorAll('.nb[data-k]'), function (el) {
+        OWN[el.getAttribute('data-k')] = 1;
+      });
+    }
+    return OWN;
+  }
+  function stored() {
+    var v = null;
+    try { v = JSON.parse(localStorage.getItem(LS) || 'null'); } catch (e) {}
+    if (Array.isArray(v)) v = { items: v, notes: {} };
+    if (!v || typeof v !== 'object') v = { items: [], notes: {} };
+    if (!Array.isArray(v.items)) v.items = [];
+    if (!v.notes || typeof v.notes !== 'object') v.notes = {};
+    return v;
+  }
+  function queueRef() {
+    if (saveT) clearTimeout(saveT);
+    saveT = setTimeout(function () {
+      if (ref) ref.set({ items: items, notes: notes }).catch(function () {});
+    }, 400);
+  }
+  // The one write into localStorage: read what is stored, overwrite only the keys named, and
+  // put the whole object back. `extra` carries keys that arrived from the shared database and
+  // belong to no page in particular.
+  function writeStore(extra) {
+    var keep = stored().notes, own = owned(), k;
+    for (k in own) if (Object.prototype.hasOwnProperty.call(own, k) && notes[k] !== undefined) keep[k] = notes[k];
+    if (extra) for (k in extra) if (Object.prototype.hasOwnProperty.call(extra, k)) keep[k] = extra[k];
+    localStorage.setItem(LS, JSON.stringify({ items: items, notes: keep }));
+  }
+  function save() {
+    try {
+      writeStore(null);
+      flag('Saved in this browser', false);
+    } catch (e) {
+      // A private window, or site data turned off. Saying nothing here is how somebody
+      // loses an evening of notes believing they were kept.
+      flag('This browser is not saving. Copy anything you need.', true);
+    }
+    queueRef();
+  }
+  function paintNotes() {
+    Array.prototype.forEach.call(document.querySelectorAll('.nb'), function (el) {
+      if (el !== document.activeElement) {
+        var v = notes[el.getAttribute('data-k')] || '';
+        if (el.innerHTML !== v) el.innerHTML = Notes.clean(v);
+      }
+      Notes.markEmpty(el);
+      var card = el.closest('.nbwrap');
+      if (card) card.classList.toggle('has', !!el.textContent.trim());
+    });
+  }
+
+  /* ---- the editor ---- */
+  /* The editor itself is shared/editor.js, one file for every note she writes in either
+     course. Two kinds of box on this page go through it: the note card under a reading, and
+     the body of a comment on a highlight. Both are named to Notes.bar(), which raises the
+     floating toolbar over a selection in either one. */
+
+  /* Where a change the toolbar or the colour key made belongs. A note card writes into
+     `notes` under its own key, and a comment body writes into the item its card stands for. */
+  function saveBox(el) {
+    if (el.classList.contains('nb')) notes[el.getAttribute('data-k')] = el.innerHTML;
+    else {
+      var c = el.closest('.cmt');
+      var it = c && items.filter(function (x) { return x.id === c.getAttribute('data-id'); })[0];
+      if (it) it.body = el.innerHTML;
+    }
+    save();
+  }
+  function wireNotes() {
+    Notes.bar({ sel: '.nb, .cbody', accent: 'Green text', save: saveBox });
+    Array.prototype.forEach.call(document.querySelectorAll('.nb'), function (el) {
+      el.addEventListener('input', function () {
+        // ahead of rich()'s own listener, so the arrow is in the DOM before it is stored
+        Notes.swapAsTyped();
+        notes[el.getAttribute('data-k')] = el.innerHTML;
+        var card = el.closest('.nbwrap');
+        if (card) card.classList.toggle('has', !!el.textContent.trim());
+        save();
+      });
+      el.addEventListener('blur', function () { Notes.hideBar(); notes[el.getAttribute('data-k')] = el.innerHTML; save(); });
+      Notes.rich(el, function () { notes[el.getAttribute('data-k')] = el.innerHTML; save(); });
+    });
+  }
+  function remove(id) {
+    var gone = items.filter(function (x) { return x.id === id; })[0];
+    items = items.filter(function (x) { return x.id !== id; });
+    save(); render();
+    if (gone) offerUndo(gone);
+  }
+  // One click removes a mark, so one click has to put it back. Without this, a misplaced
+  // click destroys a highlight with no way out of it.
+  function offerUndo(gone) {
+    if (!pill) flag('', false);
+    if (pillT) clearTimeout(pillT);
+    pill.textContent = gone.kind === 'note' ? 'Comment removed' : 'Highlight removed';
+    var b = document.createElement('button');
+    b.type = 'button'; b.textContent = 'Undo';
+    b.addEventListener('click', function () {
+      items.push(gone); save(); render();
+      pill.className = ''; pill.textContent = '';
+    });
+    pill.appendChild(b);
+    pill.className = 'act';
+    pillT = setTimeout(function () { pill.className = ''; pill.textContent = ''; }, 9000);
+  }
+  function capture(kind, color) {
+    var sel = window.getSelection();
+    if (!sel || sel.isCollapsed || sel.rangeCount === 0) return null;
+    var r = sel.getRangeAt(0), made = null, bs = blocks();
+    // There is only ever one bookmark, because there is only ever one place reading stopped.
+    if (kind === 'bm') items = items.filter(function (x) { return x.kind !== 'bm'; });
+    bs.forEach(function (el) {
+      if (!r.intersectsNode(el)) return;
+      var t = el.textContent;
+      var s = el.contains(r.startContainer) ? offsetIn(el, r.startContainer, r.startOffset) : 0;
+      var e = el.contains(r.endContainer) ? offsetIn(el, r.endContainer, r.endOffset) : t.length;
+      if (e <= s) return;
+      var text = t.slice(s, e);
+      if (!text.trim()) return;
+      if ((kind === 'note' || kind === 'bm') && made) return;
+      var it = {
+        id: String(Date.now()) + '-' + Math.random().toString(36).slice(2, 7),
+        text: text, before: t.slice(Math.max(0, s - 40), s), after: t.slice(e, e + 40),
+        head: t.slice(0, 90), idx: bs.indexOf(el), at: s,
+        kind: kind, color: color || 'y', body: ''
+      };
+      items.push(it); made = it;
+    });
+    if (made) { sel.removeAllRanges(); if (kind !== 'note') save(); render(); }
+    return made;
+  }
+  function hide() { bar.hidden = true; }
+  function show() {
+    var sel = window.getSelection();
+    if (!sel || sel.isCollapsed || sel.rangeCount === 0) return hide();
+    if (!sel.toString().trim()) return hide();
+    if (!root.contains(sel.anchorNode) || !root.contains(sel.focusNode)) return hide();
+    var a = document.activeElement;
+    if (a && (a.tagName === 'TEXTAREA' || a.isContentEditable)) return hide();
+    if (sel.anchorNode && sel.anchorNode.parentElement && sel.anchorNode.parentElement.closest('.cmt, .nb')) return hide();
+    var r = sel.getRangeAt(0).getBoundingClientRect();
+    if (!r.width && !r.height) return hide();
+    bar.hidden = false;
+    bar.style.top = (window.scrollY + r.top - bar.offsetHeight - 8) + 'px';
+    bar.style.left = (window.scrollX + r.left) + 'px';
+  }
+  function start() {
+    root = document.querySelector('.wrap');
+    if (!root) return;
+    rail = document.createElement('div'); rail.id = 'cmts';
+    root.appendChild(rail);
+    bar = document.createElement('div');
+    bar.id = 'hl-bar'; bar.hidden = true;
+    bar.innerHTML = '<button type="button" data-c="y" title="Highlight yellow" aria-label="Highlight yellow"></button>' +
+      '<button type="button" data-c="p" title="Highlight pink" aria-label="Highlight pink"></button>' +
+      '<button type="button" data-c="n" title="Add a comment" aria-label="Add a comment"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 9.5A1.5 1.5 0 0 1 12.5 11H6l-3 3V4.5A1.5 1.5 0 0 1 4.5 3h8A1.5 1.5 0 0 1 14 4.5z"/></svg></button>' +
+      '<button type="button" data-c="b" title="Set your bookmark here" aria-label="Set your bookmark here"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M4 2.6h8v11.2L8 10.9l-4 2.9z"/></svg></button>';
+    document.body.appendChild(bar);
+    bar.addEventListener('mousedown', function (e) { e.preventDefault(); });
+    bar.addEventListener('click', function (e) {
+      var b = e.target.closest('button');
+      if (!b) return;
+      var c = b.getAttribute('data-c');
+      bar.hidden = true;
+      if (c === 'n') {
+        var it = capture('note');
+        if (it) {
+          var ta = root.querySelector('.cmt[data-id="' + it.id + '"] .cbody');
+          if (ta) { ta.focus(); }
+        }
+      } else if (c === 'b') { capture('bm'); }
+      else { capture('hl', c); }
+    });
+    // A click on empty space does not clear the selection, so a bare mouseup must never
+    // re-show the bar: only a gesture that actually dragged, or actually changed the
+    // selection, counts as a new selection.
+    var downX = 0, downY = 0, downSel = '';
+    ['mousedown', 'pointerdown', 'touchstart'].forEach(function (ev) {
+      document.addEventListener(ev, function (e) {
+        if (bar.contains(e.target)) return;
+        hide();
+        downX = e.clientX || 0; downY = e.clientY || 0;
+        downSel = String(window.getSelection() || '');
+      }, true);
+    });
+    ['mouseup', 'touchend'].forEach(function (ev) {
+      document.addEventListener(ev, function (e) {
+        if (bar.contains(e.target)) return;
+        var moved = Math.abs((e.clientX || 0) - downX) > 3 || Math.abs((e.clientY || 0) - downY) > 3;
+        var was = downSel;
+        setTimeout(function () {
+          var now = String(window.getSelection() || '');
+          if (!now.trim()) return hide();
+          if (!moved && now === was) return hide();
+          show();
+        }, 0);
+      });
+    });
+    document.addEventListener('keyup', function (e) {
+      if (e.key !== 'Shift' && !(e.shiftKey && e.key.indexOf('Arrow') === 0)) return;
+      var a = document.activeElement;
+      if (a && (a.tagName === 'TEXTAREA' || a.isContentEditable)) return;
+      setTimeout(show, 0);
+    });
+    document.addEventListener('keydown', function (e) { if (e.key !== 'Shift') hide(); });
+    document.addEventListener('selectionchange', function () {
+      var sel = window.getSelection();
+      if (!sel || sel.isCollapsed || !String(sel).trim()) hide();
+    });
+    document.addEventListener('visibilitychange', hide);
+    window.addEventListener('scroll', hide, { passive: true });
+    window.addEventListener('wheel', hide, { passive: true });
+    window.addEventListener('blur', hide);
+    window.addEventListener('resize', function () { hide(); place_notes(); });
+    root.addEventListener('click', function (e) {
+      var m = e.target.closest && e.target.closest('mark.hl');
+      if (!m) return;
+      var id = m.getAttribute('data-id');
+      var it = items.filter(function (x) { return x.id === id; })[0];
+      if (!it) return;
+      if (it.kind === 'note') {
+        var c = root.querySelector('.cmt[data-id="' + id + '"]');
+        Array.prototype.forEach.call(root.querySelectorAll('.cmt.act'), function (x) { x.classList.remove('act'); });
+        Array.prototype.forEach.call(root.querySelectorAll('mark.hl-n.act'), function (x) { x.classList.remove('act'); });
+        if (c) { c.classList.add('act'); m.classList.add('act'); c.scrollIntoView({ block: 'nearest' }); c.querySelector('.cbody').focus(); }
+      } else if (it.kind === 'bm') {
+        goTo(m);
+      } else { remove(id); }
+    });
+    drawer = document.getElementById('marks');
+    Array.prototype.forEach.call(document.querySelectorAll('[data-marks]'), function (b) {
+      b.addEventListener('click', function (e) { e.preventDefault(); openMarks(); });
+    });
+    if (drawer) drawer.addEventListener('click', function (e) {
+      if (e.target.closest('[data-close]')) closeMarks();
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMarks(); });
+    var top = document.getElementById('totop');
+    if (top) top.addEventListener('click', function () {
+      try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch (e) { window.scrollTo(0, 0); }
+    });
+    var go = document.getElementById('bmgo');
+    if (go) go.addEventListener('click', function () {
+      var it = bookmark();
+      var m = it && root.querySelector('mark[data-id="' + it.id + '"]');
+      if (m) { goTo(m); return; }
+      flag('No bookmark yet. Select a word, then pick the ribbon.', true);
+      setTimeout(function () { flag(''); }, 3200);
+    });
+    // A closed toggle prints as a heading with nothing under it, so open everything to print
+    // and put it back afterwards.
+    var reopen = [];
+    window.addEventListener('beforeprint', function () {
+      reopen = [];
+      Array.prototype.forEach.call(document.querySelectorAll('details:not([open])'), function (d) {
+        reopen.push(d); d.open = true;
+      });
+    });
+    window.addEventListener('afterprint', function () {
+      reopen.forEach(function (d) { d.open = false; });
+      reopen = [];
+    });
+    document.addEventListener('toggle', function () { place_notes(); }, true);
+    try {
+      var v = JSON.parse(localStorage.getItem(LS) || 'null');
+      if (Array.isArray(v)) { items = v; }
+      else if (v && typeof v === 'object') { items = v.items || []; notes = v.notes || {}; }
+    } catch (e) {}
+    items.forEach(function (x) { if (!x.kind) x.kind = 'hl'; });
+    wireNotes();
+    paintNotes();
+    render();
+    // A second copy of this page, open in another tab, writes the same key. Pick up what it
+    // saved, so the next save here is built on what is stored. A stale list of highlights in
+    // memory erases the highlight made over there as soon as a note is typed here. Whatever
+    // is being edited here at the moment is left alone.
+    window.addEventListener('storage', function (e) {
+      if (e.key && e.key !== LS) return;
+      var a = document.activeElement;
+      if (a && a.classList && a.classList.contains('cbody')) return;
+      var boxes = {}, fresh = stored(), k;
+      Array.prototype.forEach.call(document.querySelectorAll('.nb[data-k]'), function (el) {
+        boxes[el.getAttribute('data-k')] = el;
+      });
+      for (k in fresh.notes) {
+        if (!Object.prototype.hasOwnProperty.call(fresh.notes, k)) continue;
+        if (boxes[k] && boxes[k] === a) continue;
+        notes[k] = fresh.notes[k];
+      }
+      items = fresh.items;
+      items.forEach(function (x) { if (!x.kind) x.kind = 'hl'; });
+      paintNotes();
+      render();
+    });
+    if (window.claude && typeof claude.use === 'function') {
+      claude.use('db').then(function (db) {
+        if (!db) return;
+        ref = db.doc('highlights/v1');
+        ref.onSnapshot(function (snap) {
+          var d = snap.exists ? snap.data() : null;
+          if (!d) return;
+          if (root.querySelector('.cmt .cbody:focus')) return;
+          // Merged, so a snapshot taken before the lecture notes existed cannot drop them.
+          if (d.notes && typeof d.notes === 'object') {
+            Object.keys(d.notes).forEach(function (k) { notes[k] = d.notes[k]; });
+            paintNotes();
+          }
+          if (Array.isArray(d.items)) {
+            items = d.items.slice();
+            items.forEach(function (x) { if (!x.kind) x.kind = 'hl'; });
+            render();
+          }
+          // Merged the same way a save is, so the lecture notes written on notes.html since
+          // this page loaded survive a snapshot that predates them.
+          try { writeStore(d.notes && typeof d.notes === 'object' ? d.notes : null); } catch (e) {}
+        }, function () {});
+      }).catch(function () {});
+    }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
+  else start();
+})();
+</script>
+
+<script>
+(function () {
+  var nav = document.getElementById('nav');
+  if (!nav) return;
+  var links = Array.prototype.slice.call(nav.querySelectorAll('a'));
+  var targets = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+  function mark() {
+    var best = -1, bestTop = -1e9;
+    for (var i = 0; i < targets.length; i++) {
+      if (!targets[i]) continue;
+      var t = targets[i].getBoundingClientRect().top - 120;
+      if (t <= 0 && t > bestTop) { bestTop = t; best = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle('on', i === best); });
+  }
+  // how far through the reading this is, drawn along the top edge of the dock
+  var prog = document.getElementById('prog');
+  function bar() {
+    if (!prog) return;
+    var se = document.scrollingElement || document.documentElement;
+    var run = se.scrollHeight - window.innerHeight;
+    prog.style.width = (run > 0 ? Math.min(100, Math.max(0, se.scrollTop / run * 100)) : 0) + '%';
+  }
+  window.addEventListener('scroll', function () { mark(); bar(); }, { passive: true });
+  window.addEventListener('resize', function () { mark(); bar(); });
+  mark(); bar();
+})();
+</script>
+</html>

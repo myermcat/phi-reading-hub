@@ -62,8 +62,8 @@ and it works.
 
 ```
 index.html            the hub
-week-1/index.html     the guide
-week-1/cheat-sheet.html
+week-2/index.html     the guide
+week-2/cheat-sheet.html
 ```
 
 Made with [Claude Code](https://claude.com/claude-code) against a written spec, which lives in
