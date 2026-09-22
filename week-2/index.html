@@ -326,18 +326,28 @@
 
   /* photographs, plates and maps */
   figure.pic { margin: 24px 0; gap: 11px; max-width: 82ch; }
+  /* A picture sits inside the reading, so it is capped at a height that leaves the paragraphs
+     on either side of it in view. At most of the window it filled the screen, the argument
+     disappeared behind it, and scrolling past a figure took as long as reading a section.
+     Detail is not lost: the image is a link to the file at full size. */
+  /* The box is sized on the link, in pixels worked out from the picture's own proportions for a
+     300px tall picture, and the image fills it. Sizing the image instead does not work: an image
+     that has not loaded yet has no size of its own, so with both axes auto it collapses to
+     nothing and the page jumps as it scrolls past, and clamping only the height leaves the width
+     where it was and squashes the picture. */
+  figure.pic a.zoom { display: block; align-self: flex-start; max-width: 100%; cursor: zoom-in; }
   figure.pic img {
-    /* A tall picture used to run past the bottom of the window, so the whole of it was never
-       visible at once. Capping the height at most of the window and letting the width follow
-       means every picture fits on one screen, caption included. */
-    display: block; width: auto; max-width: 100%; height: auto; max-height: 68vh;
+    display: block; width: 100%; height: auto;
     /* figure.pic is a column flexbox, whose align-items defaults to stretch. That stretched the
        image to the full width of the measure and max-height then squashed it, so every portrait
        picture came out distorted. align-self keeps the image at its own width. */
     align-self: flex-start;
     border: 1px solid var(--rule); border-radius: 6px; background: var(--surface);
+    transition: border-color .15s;
   }
-  @media (max-width: 700px) { figure.pic img { max-height: 60vh; } }
+  figure.pic a.zoom:hover img { border-color: var(--accent); }
+  figure.pic a.zoom:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  @media (max-width: 700px) { figure.pic a.zoom { width: 100% !important; } }
   figure.pic figcaption, figure.dia figcaption {
     font-family: var(--body); font-size: 15px; line-height: 1.5;
     letter-spacing: 0; color: var(--ink-soft); max-width: 74ch;
@@ -781,8 +791,8 @@
     <div class="minihead">Pressure point one, somebody chose what to measure</div>
     <p class="lede">A measurement is an answer, and answers need a question first. In the 1830s and 40s the American physician Samuel Morton filled hundreds of human skulls with seed and then lead shot to measure their internal volume, sorted the results by race, and published a ranking. The measuring was careful. The decision to sort skulls by race at all, and to treat volume as a proxy for intelligence, came from a theory he held before he picked up the first skull. Nobody was measuring forearms.</p>
     <figure class="pic">
-      <img src="img/crania-americana-plate-41-osage.jpg" width="620" height="900" loading="lazy"
-           alt="A lithographed human skull in three-quarter profile on a foxed book page, with faint dotted measuring lines below the jaw, the running head Morton’s Crania Americana at the top left, Pl. 41 at the top right, and the word OSAGE lettered in capitals beneath the drawing.">
+      <a class="zoom" style="width:207px" href="img/crania-americana-plate-41-osage.jpg" target="_blank" rel="noopener" title="Open this picture at full size"><img src="img/crania-americana-plate-41-osage.jpg" width="620" height="900" loading="lazy"
+           alt="A lithographed human skull in three-quarter profile on a foxed book page, with faint dotted measuring lines below the jaw, the running head Morton’s Crania Americana at the top left, Pl. 41 at the top right, and the word OSAGE lettered in capitals beneath the drawing." style="aspect-ratio:620/900"></a>
       <figcaption><b>Plate 41 of Samuel Morton’s <em>Crania Americana</em>, 1839, lithographed by John Collins of Philadelphia.</b> Every skull in the book was drawn with its nation lettered underneath and its number in the series of seventy-eight printed in the corner. The category was fixed before Morton poured mustard seed or lead shot into the braincase to measure its capacity. <span class="cred">Public domain, via Wikimedia Commons.</span></figcaption>
     </figure>
     <p class="lede">The end of the story matters too. Stephen Jay Gould re-examined Morton's work in <em>The Mismeasure of Man</em> (1981) and argued the numbers had been unconsciously fudged. Researchers who re-measured the skulls in 2011 concluded Morton's figures were mostly accurate and Gould had been unfair to him. The conclusion is still garbage. Accurate measurements, worthless knowledge.</p>
@@ -816,8 +826,8 @@
       <details class="bit"><summary>What Freeman changed, and did it ever help anyone</summary><div class="bq">
         <p>Walter Freeman, an American neurologist, brought Moniz's operation to the United States with a neurosurgeon, James Watts. Around 1945 Freeman developed a faster version, going in through the eye socket above the eyeball with a thin instrument, which needed no drilling, no operating theatre and no surgeon. He was not licensed to give anaesthetic, so he knocked patients unconscious with an electric shock first. That version took about ten minutes and could be done in a clinic. He performed roughly 3,500. Tens of thousands were done across the country.</p>
         <figure class="pic">
-          <img src="img/transorbital-leucotome.jpg" width="701" height="900" loading="lazy"
-               alt="Black and white photograph of two slender surgical instruments on a pale background, each a plain wooden handle joined by a metal collar to a long steel shaft that tapers to a needle point.">
+          <a class="zoom" style="width:234px" href="img/transorbital-leucotome.jpg" target="_blank" rel="noopener" title="Open this picture at full size"><img src="img/transorbital-leucotome.jpg" width="701" height="900" loading="lazy"
+               alt="Black and white photograph of two slender surgical instruments on a pale background, each a plain wooden handle joined by a metal collar to a long steel shaft that tapers to a needle point." style="aspect-ratio:701/900"></a>
           <figcaption><b>Two lobotomy instruments from a set inscribed by Walter Freeman, photographed around 1950.</b> The shaft went under a patient’s upper eyelid and through the thin bone at the top of the eye socket, driven by a mallet, and the ten minutes of practised skill that followed rested on an account of the mind that was false. <span class="cred">Wellcome Collection, CC BY 4.0, via Wikimedia Commons.</span></figcaption>
         </figure>
         <p><b>Did it help anyone?</b> Some people, in a narrow sense. Follow-ups of the period reported roughly a third improved, a third unchanged and a third worse, with no control groups, no blinding and no agreed measure of improvement. Some patients with severe chronic agitation or crippling obsessive states did become calmer, and some went home from institutions they would otherwise never have left. That was real for those people.</p>
@@ -1144,8 +1154,8 @@
           <div class="body">
             <p>People have been chained in a cave since childhood, facing a blank wall, unable to turn their heads. Behind and above them a fire burns. Between the fire and their backs runs a low walkway with a screen along it, like the screen a puppeteer works behind. People walk that path carrying carved figures of humans and animals, held up above the screen.</p>
             <figure class="pic">
-              <img src="img/plato-cave-saenredam.jpg" width="900" height="660" loading="lazy"
-                   alt="An engraving of a cave interior: a flame burns in a vessel hung on a chain at the centre, a line of costumed figures carries statues, torches and trumpets along the top of a high wall that cuts the cave in two, their shadows fall across the rock face at the right, a dense crowd sits packed below the wall facing those shadows, and a group of robed scholars stands apart on the left under a bright opening to the daylight.">
+              <a class="zoom" style="width:409px" href="img/plato-cave-saenredam.jpg" target="_blank" rel="noopener" title="Open this picture at full size"><img src="img/plato-cave-saenredam.jpg" width="900" height="660" loading="lazy"
+                   alt="An engraving of a cave interior: a flame burns in a vessel hung on a chain at the centre, a line of costumed figures carries statues, torches and trumpets along the top of a high wall that cuts the cave in two, their shadows fall across the rock face at the right, a dense crowd sits packed below the wall facing those shadows, and a group of robed scholars stands apart on the left under a bright opening to the daylight." style="aspect-ratio:900/660"></a>
               <figcaption><b><em>Antrum Platonicum</em>, engraved by Jan Saenredam in 1604 after a design by Cornelis van Haarlem.</b> The flame on its chain is the fire, the long wall is the screen the bearers walk behind, the personifications along its top are the objects they carry, and the crowd below the wall sees only the shadows thrown on the rock at the right. <span class="cred">Rijksmuseum, CC0, via Wikimedia Commons.</span></figcaption>
             </figure>
             <p>The prisoners see the shadows those figures throw on the wall in front of them, and they hear the carriers' voices bounce back off the wall. They have never seen anything else. So they take the shadows for the things themselves, and when an echo arrives they assume the shadow is speaking.</p>
@@ -1686,8 +1696,8 @@
             <details class="bit"><summary>The Greeks built a computer and then nobody built another for 1,400 years</summary><div class="bq">
               <p>In 1901 sponge divers found a wrecked ship off the island of Antikythera. Among the cargo was a corroded lump of bronze containing at least thirty interlocking gears. The <b>Antikythera mechanism</b>, built around 100 BCE, modelled the movements of the sun and moon, tracked the lunar calendar and predicted eclipses, using a differential gear train. Nothing of comparable mechanical complexity is known in Europe again until the astronomical clocks of the fourteenth century, which is the period Lynn White writes about eight chapters later in this reading.</p>
               <figure class="pic">
-                <img src="img/antikythera-mechanism-fragment-a.jpg" width="900" height="900" loading="lazy"
-                     alt="A roughly square slab of corroded bronze, mottled pale green over dark grey, held upright in a museum case by clear plastic supports, with a large wheel of four spokes and the rims of smaller toothed wheels showing through the crust.">
+                <a class="zoom" style="width:300px" href="img/antikythera-mechanism-fragment-a.jpg" target="_blank" rel="noopener" title="Open this picture at full size"><img src="img/antikythera-mechanism-fragment-a.jpg" width="900" height="900" loading="lazy"
+                     alt="A roughly square slab of corroded bronze, mottled pale green over dark grey, held upright in a museum case by clear plastic supports, with a large wheel of four spokes and the rims of smaller toothed wheels showing through the crust." style="aspect-ratio:900/900"></a>
                 <figcaption><b>Fragment A of the Antikythera mechanism, National Archaeological Museum, Athens.</b> The four-spoked wheel filling the upper half is one of at least thirty interlocking bronze gears cut around 100 BCE, and a device of that precision could only come out of a craft tradition doing real engineering. <span class="cred">Photograph by Logg Tandy, CC BY 4.0, via Wikimedia Commons.</span></figcaption>
               </figure>
             </div></details>
@@ -1733,8 +1743,8 @@
             <p>By 1620 the learned world had been arguing about Aristotle for roughly nineteen centuries and had produced, by Bacon's reckoning, almost nothing anyone could use. Meanwhile three inventions had reshaped the world, the compass, gunpowder and printing, and all three had been stumbled on by people whose names nobody recorded.</p>
             <p>His diagnosis is that knowledge had been organised as a <b>debating competition</b>, in which the winner is whoever argues most skilfully from what everyone already accepts. A contest like that can never produce anything new, because it only rearranges existing beliefs. He calls his book the <em>Novum Organum</em>, the new instrument, as a direct replacement for Aristotle's works on logic, which were called the <em>Organon</em>.</p>
             <figure class="pic">
-              <img src="img/instauratio-magna-title-page.jpg" width="591" height="900" loading="lazy"
-                   alt="An engraved page showing two tall classical columns standing in the sea, a sailing ship passing between them into open water with a second ship small on the horizon beyond, the Latin title lettered in the sky above and the date 1620 at the foot.">
+              <a class="zoom" style="width:197px" href="img/instauratio-magna-title-page.jpg" target="_blank" rel="noopener" title="Open this picture at full size"><img src="img/instauratio-magna-title-page.jpg" width="591" height="900" loading="lazy"
+                   alt="An engraved page showing two tall classical columns standing in the sea, a sailing ship passing between them into open water with a second ship small on the horizon beyond, the Latin title lettered in the sky above and the date 1620 at the foot." style="aspect-ratio:591/900"></a>
               <figcaption><b>The engraved title page of Bacon’s <em>Instauratio Magna</em>, London, 1620, the volume that carries <em>Novum Organum</em>.</b> The two columns are the Pillars of Hercules, which marked the edge of the ancient world, and Bacon has a ship sail straight between them into open sea under the motto cut along the foot of the plate: many shall pass through and knowledge shall be increased. The first page of the book puts the chapter’s thesis in a picture before the reader reaches a word of it. <span class="cred">Engraved by Simon van de Passe, from the Huntington Library copy. Public domain, via Wikimedia Commons.</span></figcaption>
             </figure>
           </div>
@@ -1912,8 +1922,8 @@
               <p><b>The theory did not merely fail to prevent the epidemic. It produced the change that fed it.</b> Had anyone believed the danger travelled in water, piping the city's waste into the water supply would have been an insane thing to do. Because the danger was believed to travel in air, it looked like sanitation, and in one respect it was: the houses smelled better. Then came the cholera epidemics of 1849 and 1854, and in 1858 a summer hot enough to make the river itself unbearable, which Parliament called the Great Stink and which finally bought Bazalgette his proper sewer system.</p>
               <p><b>Positive.</b> In 1854 the physician John Snow stopped asking what cholera fundamentally <em>is</em>. He mapped where the dead lived against which pump they drew water from, found the deaths clustered on one pump in Broad Street, and had the handle taken off. He could not say what was in the water, because the bacterium was not identified until Robert Koch found it about thirty years later. He had the invariable relation without the essence, and the invariable relation is what stopped people dying.</p>
               <figure class="pic">
-                <img src="img/snow-cholera-map.jpg" width="900" height="844" loading="lazy"
-                     alt="A street map of Soho in London with a short black bar drawn at every address where somebody died of cholera, the bars sparse at the edges of the sheet and piled several deep in the blocks immediately around the pump marked on Broad Street.">
+                <a class="zoom" style="width:320px" href="img/snow-cholera-map.jpg" target="_blank" rel="noopener" title="Open this picture at full size"><img src="img/snow-cholera-map.jpg" width="900" height="844" loading="lazy"
+                     alt="A street map of Soho in London with a short black bar drawn at every address where somebody died of cholera, the bars sparse at the edges of the sheet and piled several deep in the blocks immediately around the pump marked on Broad Street." style="aspect-ratio:900/844"></a>
                 <figcaption><b>John Snow’s map of the 1854 cholera deaths in Soho, lithographed by C. F. Cheffins for <em>On the Mode of Communication of Cholera</em>.</b> Each black bar is one death at that address and each labelled dot is a public water pump, and the bars pile up several deep around the Broad Street pump while the streets nearest the other pumps carry only a scattering. Anyone looking at the sheet sees the correlation before Snow argues for it, which is what Comte means by a positive science: a law established by recording what happened and where. <span class="cred">Public domain, via Wikimedia Commons.</span></figcaption>
               </figure>
               <p><b>One last twist that makes the point sharper.</b> Bazalgette's sewers, designed by men who still believed in bad air, worked. They worked because carrying waste far downstream of the city removes it from the drinking water as surely as it removes it from the nose. A false theory pointed at a real intervention by accident, which is exactly why Comte thinks the test of the positive stage is the reliable relation and never the story underneath it.</p>
@@ -2019,8 +2029,8 @@
           </div>
 
           <figure class="pic">
-            <img src="img/rousseau-discours-frontispiece-1750.jpg" width="591" height="899" loading="lazy"
-                 alt="An engraving: a bearded man wrapped in drapery kneels on a bank of cloud at the upper left and reaches down with a flaming brand to the head of a slender nude youth standing on a low stone block, while at the right a horned satyr with shaggy goat legs recoils with one arm flung up, and a plume of smoke rises behind them.">
+            <a class="zoom" style="width:197px" href="img/rousseau-discours-frontispiece-1750.jpg" target="_blank" rel="noopener" title="Open this picture at full size"><img src="img/rousseau-discours-frontispiece-1750.jpg" width="591" height="899" loading="lazy"
+                 alt="An engraving: a bearded man wrapped in drapery kneels on a bank of cloud at the upper left and reaches down with a flaming brand to the head of a slender nude youth standing on a low stone block, while at the right a horned satyr with shaggy goat legs recoils with one arm flung up, and a plume of smoke rises behind them." style="aspect-ratio:591/899"></a>
             <figcaption><b>The frontispiece of Rousseau&rsquo;s <em>Discourse on the Sciences and Arts</em>, engraved by Jean-Charles Baquoy for the first edition of 1750, the essay the Final Reply defends.</b> Prometheus leans down from the cloud and touches his torch to the head of the figure on the plinth, and the satyr at the right throws up an arm and backs away from the fire. Rousseau explained the plate in print after a critic misread it: the torch is the sciences, made to animate great minds, the satyr is the ordinary man who sees fire for the first time and runs to embrace it, and the Prometheus shouting the warning is Rousseau himself. That is the first step of the argument below drawn as a picture, and the line cut along the foot puts it in six words: <em>Satyre, tu ne le connois pas</em>, satyr, you do not know what it is. <span class="cred">Engraved by Jean-Charles Baquoy, from the Biblioth&egrave;que nationale de France copy. Public domain, via Wikimedia Commons.</span></figcaption>
           </figure>
           <h4>The argument, in three steps</h4>
@@ -2083,8 +2093,8 @@
           <p class="qline">If a statement cannot be checked against experience, does it mean anything at all?</p>
 
           <figure class="pic">
-            <img src="img/moritz-schlick-1927.jpg" width="484" height="703" loading="lazy"
-                 alt="A sepia studio portrait of a middle-aged man in round rimless spectacles, shown from the chest up in a tweed jacket, white shirt and patterned dark tie, turned slightly away from the camera against a plain backdrop.">
+            <a class="zoom" style="width:207px" href="img/moritz-schlick-1927.jpg" target="_blank" rel="noopener" title="Open this picture at full size"><img src="img/moritz-schlick-1927.jpg" width="484" height="703" loading="lazy"
+                 alt="A sepia studio portrait of a middle-aged man in round rimless spectacles, shown from the chest up in a tweed jacket, white shirt and patterned dark tie, turned slightly away from the camera against a plain backdrop." style="aspect-ratio:484/703"></a>
             <figcaption><b>Moritz Schlick, photographed in Vienna in March 1927, two years before the manifesto appeared.</b> Schlick held the University of Vienna chair in the philosophy of the inductive sciences, the post Ernst Mach had held before him, and the group that met around him on Thursday evenings in a seminar room on the Boltzmanngasse is what the text means by the Circle. Carnap, Hahn and Neurath wrote the manifesto and dedicated it to him, which puts a professor of philosophy on the first page of a document arguing that his subject holds no truths of its own and survives as the clarification of what the sciences say. <span class="cred">Photograph by Georg Fayer, March 1927, from the Austrian National Library picture archive. Public domain, via Wikimedia Commons.</span></figcaption>
           </figure>
           <h4>The test, worked through</h4>
@@ -2233,8 +2243,8 @@
             </ul>
             <p>That last one is the whole thesis in one sermon. Inventing had become a thing a preacher could hold up as a sign of the times.</p>
             <figure class="pic">
-              <img src="img/salisbury-cathedral-clock.jpg" width="603" height="900" loading="lazy"
-                   alt="An open iron frame about waist high standing on a stone cathedral floor, holding two sets of large toothed wheels and a rope drum, with a horizontal bar carrying two flat weights above it, and nowhere on it a dial or a hand.">
+              <a class="zoom" style="width:201px" href="img/salisbury-cathedral-clock.jpg" target="_blank" rel="noopener" title="Open this picture at full size"><img src="img/salisbury-cathedral-clock.jpg" width="603" height="900" loading="lazy"
+                   alt="An open iron frame about waist high standing on a stone cathedral floor, holding two sets of large toothed wheels and a rope drum, with a horizontal bar carrying two flat weights above it, and nowhere on it a dial or a hand." style="aspect-ratio:603/900"></a>
               <figcaption><b>The Salisbury Cathedral clock, made about 1386 and restored to working order in 1956.</b> The open iron frame holds two gear trains and a rope drum, and it has no dial and no hands, because the machine was built only to release a hammer onto a bell on the hour. White takes a machine of this kind as his evidence for the invention of invention: the bar swinging at the upper left beats at a steady rate, so every hour it counts out is the same length as the one before. <span class="cred">Photograph by Rwendland, CC BY-SA 3.0, via Wikimedia Commons.</span></figcaption>
             </figure>
             <details class="ctx"><summary><i>Compare</i>Harari's empty maps, and why it is a different argument</summary><div class="bq">
@@ -2258,8 +2268,8 @@
               <li><b>The dignity of manual labour.</b> Among the literate classes of the Greco-Roman world, working with your hands was for slaves. Jewish tradition held the command to labour six days as binding as the command to rest on the seventh, and monasticism carried that into Europe as the doctrine that work is worship. So for centuries the most learned men in the West were also men who worked with their hands, in institutions that kept records. Head and hand in one building is a very good recipe for innovation.</li>
             </ul>
             <figure class="pic">
-              <img src="img/god-the-geometer.jpg" width="657" height="900" loading="lazy"
-                   alt="A gold-ground manuscript painting of a bearded, haloed figure in a blue robe, leaning forward to set one leg of a large pair of compasses into a round disc holding swirling water, gold landmasses, a red sun and a pale moon.">
+              <a class="zoom" style="width:219px" href="img/god-the-geometer.jpg" target="_blank" rel="noopener" title="Open this picture at full size"><img src="img/god-the-geometer.jpg" width="657" height="900" loading="lazy"
+                   alt="A gold-ground manuscript painting of a bearded, haloed figure in a blue robe, leaning forward to set one leg of a large pair of compasses into a round disc holding swirling water, gold landmasses, a red sun and a pale moon." style="aspect-ratio:657/900"></a>
               <figcaption><b>The frontispiece of the <em>Bible moralisée</em>, painted in France about 1220 to 1230.</b> God bends over the unformed world and sets one leg of a carpenter’s compasses into the disc of water, earth, sun and moon he is drawing. Western art hands the Creator an instrument off a craftsman’s bench here, which is why a medieval reader could treat the design of machines as serious work. <span class="cred">Anonymous illuminator, Österreichische Nationalbibliothek, Codex Vindobonensis 2554, folio 1 verso. Public domain, via Wikimedia Commons.</span></figcaption>
             </figure>
           </div>
@@ -2351,8 +2361,8 @@
           <div class="body">
             <p>Cog was a humanoid robot then being built at MIT, and Dennett was working with the team. The design principle was that intelligence needs a body and constant contact with the world, and that a machine should learn by interacting with people, and should never be handed a model of the world in advance. Which is why the chapter is full of hardware detail: noisy motors, artificial ears, artificial retinas. The philosophy is being argued through the engineering constraints.</p>
             <figure class="pic">
-              <img src="img/cog-robot-mit-museum.jpg" width="600" height="900" loading="lazy"
-                   alt="A metal upper-body robot inside a museum display case: a small head with camera lenses on top, a skeletal aluminium torso wrapped in coiled blue and purple tubing, two jointed arms reaching forward, all mounted on a grey pedestal with thick bundles of cable running down to the floor.">
+              <a class="zoom" style="width:200px" href="img/cog-robot-mit-museum.jpg" target="_blank" rel="noopener" title="Open this picture at full size"><img src="img/cog-robot-mit-museum.jpg" width="600" height="900" loading="lazy"
+                   alt="A metal upper-body robot inside a museum display case: a small head with camera lenses on top, a skeletal aluminium torso wrapped in coiled blue and purple tubing, two jointed arms reaching forward, all mounted on a grey pedestal with thick bundles of cable running down to the floor." style="aspect-ratio:600/900"></a>
               <figcaption><b>Cog, the humanoid robot built by Rodney Brooks’s group at MIT between 1993 and 2004, now in the MIT Museum.</b> Cog ends at the waist and is bolted to a plinth, with cameras for eyes and springs in the arm joints, so a hand pushing a limb meets the spring and the arm gives way. Dennett argues through this hardware when he says a mind has to learn through a body that people can touch and hand things to. <span class="cred">Photograph by Daderot, CC0 public domain dedication, via Wikimedia Commons.</span></figcaption>
             </figure>
           </div>
@@ -2405,8 +2415,8 @@
             <p><b>This chapter is bound into the same PDF and it is set for the following week.</b> The Brightspace module lists Panopticism under week 3, alongside the Kuhn chapter, so the whole of it is narrated in <a href="../week-3/#r54">the week 3 guide</a> and the glossary for it lives there too.</p>
             <p>He stays in the comparison table and the diagram above, because those are a map of the packet and he is the ninth voice in the quarrel. What he argues, in full, is one link away.</p>
             <figure class="pic">
-              <img src="../week-3/img/panopticon-reveley-1791.jpg" width="816" height="900" loading="lazy"
-                   alt="An engraved sheet in two parts: at the top a five-storey prison wall cut open to show cells stacked around the outer ring facing a tower in the middle, and below a half-circle floor plan with single cells lettered along the outer wall and dividing walls running inward to concentric rings at the centre.">
+              <a class="zoom" style="width:272px" href="../week-3/img/panopticon-reveley-1791.jpg" target="_blank" rel="noopener" title="Open this picture at full size"><img src="../week-3/img/panopticon-reveley-1791.jpg" width="816" height="900" loading="lazy"
+                   alt="An engraved sheet in two parts: at the top a five-storey prison wall cut open to show cells stacked around the outer ring facing a tower in the middle, and below a half-circle floor plan with single cells lettered along the outer wall and dividing walls running inward to concentric rings at the centre." style="aspect-ratio:816/900"></a>
               <figcaption><b>The building the chapter is about: Bentham's panopticon, drawn by Willey Reveley in 1791.</b> Cells around the outside, each lit from behind so a prisoner reads as a dark shape, and an inspector's lodge in the middle screened so that nobody in a cell can tell whether it is occupied. <span class="cred">Public domain, via Wikimedia Commons.</span></figcaption>
             </figure>
           </div>
