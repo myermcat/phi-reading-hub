@@ -366,6 +366,11 @@
   /* drawings made for this guide, framed the way the photographs are */
   figure.dia { margin: 24px 0; gap: 11px; max-width: 82ch; }
   figure.dia .draw { max-width: 100%; overflow-x: auto; }
+  /* A drawing that illustrates a point in the flow is capped the way a picture is, so the
+     paragraph under it stays in view. A drawing that is a reference grid, like the nine authors
+     against three questions, is a thing to study and keeps its size. */
+  figure.dia svg[aria-labelledby="dg-unit"] { max-width: 420px; }
+  figure.dia svg[aria-labelledby="dg-cross"] { max-width: 520px; }
   figure.dia svg {
     display: block; width: 100%; height: auto;
     border: 1px solid var(--rule); border-radius: 6px; background: var(--surface);
@@ -379,6 +384,7 @@
     figure.dia svg#dia-spine { min-width: 380px; }
     figure.dia svg[aria-labelledby="kuhn-cycle-t"] { min-width: 700px; }
     figure.dia svg[aria-labelledby="dg-unit"] { min-width: 400px; }
+    figure.dia svg[aria-labelledby="dg-cross"] { min-width: 420px; }
   }
 
   /* inside the boxes, which already space their children */
@@ -677,8 +683,9 @@
 
 <nav id="nav" aria-label="Contents">
   <a class="grp" href="#s-notes">Notes by text</a>
-  <a class="grp" href="#s-texts">The two texts</a>
-  <a class="core" href="#kuhn" title="Sismondo ch. 2 &middot; read properly">Kuhn<i>1962</i></a>
+  <a class="grp" href="#s-texts">The reading</a>
+  <a class="core" href="#sismondo" title="Sismondo ch. 2 &middot; the assigned chapter">Sismondo<i>2010</i></a>
+  <a class="skim" href="#kuhn" title="Background &middot; Kuhn himself">Kuhn<i>1962</i></a>
   <a class="core" href="#r54" title="Anthology ch. 54 &middot; read properly">Foucault<i>1975</i></a>
   <a class="grp" href="#s-gloss">Glossary</a>
   <div class="key"><em>Key</em><i class="a">solid = read properly</i><i class="b">faded = skim</i><i class="c">faintest = if time</i></div>
@@ -721,22 +728,215 @@
   </section>
 
   <section>
-    <h2 id="s-texts">The two texts</h2>
-    <p class="lede">Foucault is narrated in full below, moved here from the week 2 guide because that is the week it is set for. The Kuhn section is background on Kuhn himself, because the assigned chapter sits behind a library sign-in and has not been read yet. What is there is marked as what it is.</p>
+    <h2 id="s-texts">The reading</h2>
+    <p class="lede">The Sismondo chapter is narrated first, page by page, because that is the assigned text. Under it sits background on Kuhn himself, which the chapter assumes you have. Foucault is narrated in full at the end, moved here from the week 2 guide because this is the week he is set for.</p>
 
     <div class="readings">
 
       <!-- ============ KUHN ============ -->
+      <!-- ============ SISMONDO, THE ASSIGNED CHAPTER ============ -->
+      <article class="rd p-close" id="sismondo">
+        <div class="stripe"></div>
+        <div class="main">
+          <div class="head">
+            <h3><span class="ch">CH 2</span>The Kuhnian Revolution, as Sismondo writes it</h3>
+            <div class="who">Sergio Sismondo, <em>An Introduction to Science and Technology Studies</em>, 2nd ed., Wiley-Blackwell, 2010</div>
+            <div class="meta"><span class="tag">Read properly</span><span>11 pp, pages 12 to 22, and only those</span></div>
+          </div>
+
+          <p class="qline">If paradigms cannot be measured against each other, how does anybody in science talk to anybody else?</p>
+
+          <h4>Why the chapter is set, and what it is doing</h4>
+          <div class="body">
+            <p><b>This is a textbook chapter, and its subject is a field.</b> Sismondo is introducing science and technology studies, and chapter 2 is the origin story of that field: the moment philosophy stopped asking what makes a statement scientific and started asking what a community of scientists does. So the chapter spends its first half on Kuhn and its second half on what people built afterwards, and the second half is the part a reader expecting a summary of Kuhn will miss.</p>
+            <p><b>His one-line version of Kuhn's move</b> is that Kuhn rejected the formalist view with its rules about what science ought to be and looked at the activities instead, so that <b>science is merely what scientists do</b>. Everything else in the chapter follows from taking that seriously.</p>
+          </div>
+
+          <h4>The first target: Whig history</h4>
+          <div class="body">
+            <p><b>Whig history</b>, a phrase Sismondo credits to the historian Herbert Butterfield in 1931, is history written as a series of steps toward the present. In the history of science the temptation is to treat every move toward what we now believe as more rational, more natural, and less in need of explanation than the opposition to it. Copernicus gets no explanation because he turned out to be right; his opponents get explained away as stupid or frightened.</p>
+            <p><b>Sismondo's objection is about causes, and it is short.</b> Events must follow their causes, so a sequence of events cannot be explained by where it ended up. Explaining 1543 by what happened in 1687 is explaining a thing by something that had not happened yet.</p>
+            <p><b>Why it matters for the rest:</b> take the teleology out, and there is room for changes that are not improvements. That room is where the whole account of revolutions goes.</p>
+          </div>
+
+          <h4>What a paradigm is, in this chapter's words</h4>
+          <div class="body">
+            <p><b>Normal science is the science done when a field shares four things:</b> recognition of key past achievements, beliefs about which theories are right, an understanding of which problems matter, and methods for solving them. A group that shares those four shares a <b>paradigm</b>.</p>
+            <p><b>The word came from grammar</b>, where a paradigm is the table of endings you learn and then copy, and Sismondo keeps that sense deliberately: it points at an achievement that serves as an example for others to follow. Newton's mechanics, Lavoisier's chemistry and Mendel's genetics each did that, structuring the research that came after them.</p>
+            <p><b>A paradigm has two sides, and the second one is the one that gets forgotten.</b> The theoretical side is a <em>worldview</em>: categories and frameworks to slot phenomena into. The practical side is a <em>form of life</em>, the phrase borrowed from Wittgenstein: patterns of behaviour, ways of working, what you do with your hands all day.</p>
+            <div class="exm">
+              <b>Example &middot; Lavoisier's balance</b>
+              <p>Sismondo's own case for the two sides. Lavoisier's ideas about elements and the conservation of mass gave later chemists a framework for generating further ideas, which is the worldview half. But he also insisted that measurement, and the balance in particular, was how chemistry got done, and <b>that reshaped what chemists physically did at the bench</b>. A generation later a chemist weighing everything before and after a reaction was not consulting a theory. That was simply what chemistry looked like.</p>
+            </div>
+            <p><b>Normal science is puzzle solving</b>, and the word is doing work. A problem is to be solved within the terms of the paradigm, so failing to solve one is a mark against the researcher and never against the theory or the method. An unsolved problem is not evidence against anything. It is an <b>anomaly</b>, left for somebody later.</p>
+            <p><b>Sismondo's explanation for why the paradigm is not questioned is training, and he is blunt about it.</b> The natural sciences are exceptionally good at socialising their practitioners: textbooks that present a standardised view of the field and its history, long apprenticeships, and years of being set problems that are well understood and already have known answers. A student is not taught to doubt the framework, because every exercise they are given presupposes it.</p>
+          </div>
+
+          <h4>Crisis, revolution, and the sentence that caused the trouble</h4>
+          <div class="body">
+            <p><b>Anomalies accumulate</b>, because a paradigm can only ever be a partial way of dealing with its subject. Some of them stop being puzzles and start being real problems, which produces discomfort with the terms of the framework itself. That is <b>crisis</b>.</p>
+            <p><b>Then the generational part.</b> If an alternative appears that solves some of the central unsolved problems, the scientists who take it up first are the younger ones, the ones not yet fully indoctrinated into the way of life of the older paradigm. As the older and more conservative scientists become marginalised, the alternative becomes a paradigm itself and a new period of normal science begins.</p>
+            <p><b>Progress exists inside normal science and not across revolutions.</b> Within a paradigm everyone can recognise everyone else's achievements, so progress is easy to talk about. A revolution both builds and destroys: some of the research done under the old paradigm will no longer make sense under the new one.</p>
+            <div class="quo">
+              <blockquote>Science does not track the truth, but creates different partial views that can be considered to contain truth only by people who hold those views!</blockquote>
+              <div class="src">Sismondo, page 16, calling this the most radical implication in Kuhn's book. The exclamation mark is his.</div>
+            </div>
+            <p><b>Read that carefully, because it is a report and not an endorsement.</b> Sismondo is saying what follows <em>if Kuhn is right</em>, and the next four pages are him arguing that this part of Kuhn is not right.</p>
+          </div>
+
+          <h4>Incommensurability, and its three roots</h4>
+          <div class="body">
+            <p><b>Incommensurable means lacking a common measure.</b> Sismondo gives Kuhn three separate reasons for the claim, and keeping them apart is what lets him knock them down one at a time.</p>
+            <ol>
+              <li><b>Meaning.</b> From the positivist picture, where the meaning of a theoretical term comes from the observations it implies. Kuhn extends it: a term's meaning depends on the whole constellation of claims it sits in. Change the paradigm and every key term shifts, so no term in one maps neatly onto a term in the other.</li>
+              <li><b>The theory-dependence of observation.</b> Borrowed from N. R. Hanson in 1958. There is no raw observation in ordinary circumstances: we do not see dots and lines, we see recognisable objects, and what we recognise is guided by the concepts we already have. So during a revolution people stop seeing one way and start seeing another.</li>
+              <li><b>The historian's experience.</b> Kuhn's own, from doing the work: past science is genuinely opaque, and parts of it look bizarre. Sismondo adds the sharp version of this. If somebody finds very old research easy to understand in present-day terms, they are probably doing violence to it. Newton's physics looks strikingly modern in a modern textbook, much less so in its original printing, and less so again once his religious and alchemical work is put beside it.</li>
+            </ol>
+            <div class="quo">
+              <blockquote>In a sense that I am unable to explicate further, the proponents of competing paradigms practice their trades in different worlds.</blockquote>
+              <div class="src">Kuhn, quoted by Sismondo on page 17. Note what Kuhn admits in the first eight words.</div>
+            </div>
+          </div>
+
+          <h4>And then he takes it apart, which is the half that gets missed</h4>
+          <div class="body">
+            <p><b>This is the pivot of the chapter, and a reader skimming for a summary of Kuhn will read straight past it.</b> Having set out the three roots, Sismondo argues that the strong claim fails on all of them.</p>
+            <p><b>Meaning.</b> The case for semantic incommensurability has had a great deal of attention and almost all of it negative. Meanings do change. They do not change so much, or so systematically, that claims using them cannot be compared. Most philosophers and linguists who have worked on it have concluded the claim cannot be sustained, and Donald Davidson argued in 1974 that a change of meaning that radical cannot even be made sense of.</p>
+            <p><b>History.</b> That problems, concepts and methods change is uncontroversial. The difficulty of interpreting past science can be overcome, and the proof is that historical research keeps overturning present-centred readings of the past. If the past were really sealed off, that could not happen.</p>
+            <p><b>Kuhn moved first.</b> By 1965 he had already retreated to saying that by incommensurability he meant only <b>incomplete communication</b> or <b>difficulty of translation</b>, sometimes ending in communication breakdown. On that reading it is still a real phenomenon, and a useful one: people working on the same subject can and do fail to understand each other.</p>
+            <p><b>And if there is no radical incommensurability there is no radical break between paradigms either.</b> Sismondo turns this into a methodological principle. Complete ruptures are inexplicable. When a historian explains an innovation they explain it as a reworking of resources that were already available, because every new idea, practice and object has sources, and to assume otherwise is to invoke magic.</p>
+            <div class="exm">
+              <b>Example &middot; Galison's particle detectors</b>
+              <p>Peter Galison studied detectors in physics in detail and found that <b>the parts of science do not change at the same time</b>. A new detector is used at first for the same experiments as the one it replaced, and sits in the same theoretical setting. When a theory changes, the instruments and the experiments do not immediately change with it. So a discontinuity in one part is fenced in by continuity in the others, and the picture of a clean break across the whole of a science is wrong.</p>
+            </div>
+            <div class="quo">
+              <blockquote>The strength of the thread does not reside in the fact that some one fibre runs through its whole length, but in the overlapping of many fibres.</blockquote>
+              <div class="src">Wittgenstein, quoted by Sismondo on page 18 for the point that science is stable <em>because</em> it is disunified.</div>
+            </div>
+            <p><b>That is the chapter's own best line and it is worth holding.</b> Science hangs together not through one continuous thing running through it but through overlap. It gets what Sismondo calls an <em>ad hoc unity</em> from the fact that its parts rarely change together.</p>
+          </div>
+
+          <h4>So how do people across a boundary actually talk? Two answers</h4>
+          <div class="body">
+            <p><b>These are the two named concepts most likely to be asked for, and neither of them is Kuhn's.</b> They are what the field built once it accepted that different specialties really do work differently.</p>
+            <p><b>Start with the ordinary case.</b> A molecular biologist's work is not obviously interesting or even comprehensible to an evolutionary ecologist, and with some translation it sometimes becomes so. Disciplines are what Karin Knorr Cetina calls <b>epistemic cultures</b>, with different orientations to their objects, different social units, different ways of interacting. Yet they interact anyway, and science gets some unity out of it. The question is how.</p>
+            <p><b>A trading zone</b>, the term is Galison's, is a place where practices from different fields interact through a simplified shared language, a pidgin, without either side having to assimilate. Traders exchange goods without adopting each other's culture. Collaborations in a trading zone can work even when the two sides do not agree about what the problems are or what the words mean.</p>
+            <figure class="pic">
+              <a class="zoom" style="width:296px" href="img/feynman-diagram-annihilation.png" target="_blank" rel="noopener" title="Open this picture at full size">
+                <img class="ink" src="img/feynman-diagram-annihilation.png" width="690" height="700" loading="lazy" style="aspect-ratio:690/700"
+                     alt="A plain line drawing on two axes, the upright one marked t for time and the flat one marked s for space. Two straight lines with arrowheads come in from the bottom left and the bottom right and meet at a single point in the middle, and from that point one wavy line runs upward. Nothing else is on the page.">
+              </a>
+              <figcaption><b>A Feynman diagram, the plainest one there is: two particles come in, meet, and leave as a single wave.</b> Time runs up the page. The two straight lines are an electron and its antiparticle arriving; the point where they touch is the moment they annihilate; the wavy line going up is the photon that is left. Nothing in the drawing is to scale and nothing in it is a measurement. Sismondo cites it for the way it travelled. It spread through the field in the 1950s <b>because it was simple and could be read in more than one way</b>, so schools holding quite different theories could each take it up and each mean something slightly their own by it. A shared thing that survives being understood differently is what he means by a pidgin. <span class="cred">Drawing by Romainbehar, CC0, via Wikimedia Commons.</span></figcaption>
+            </figure>
+            <div class="exm">
+              <b>Example &middot; Feynman diagrams as a pidgin</b>
+              <p>Richard Feynman's little drawings of particle interactions spread through physics in the 1950s, carried by visiting postdoctoral fellows. Sismondo's point, following David Kaiser, is that they spread <b>because they were simple and could be read in more than one way</b>. Different schools with different theoretical commitments picked them up, adapted them and developed local styles of using them, and they still worked as a way of communicating across those differences. He then turns the example against the concept: it seems a stretch to say theoretical physicists needed a pidgin to talk to each other, and yet that is exactly what the diagrams look like.</p>
+            </div>
+            <p><b>Boundary objects</b>, from Susan Leigh Star and James Griesemer in 1989, put the weight on things. An object works as a bridge if it can hold the attention of different social worlds at once and stay recognisably itself in each of them.</p>
+            <div class="exm">
+              <b>Example &middot; the Berkeley Museum of Vertebrate Zoology</b>
+              <p>The case Star and Griesemer built the idea on. Amateur collectors, professional scientists, philanthropists and administrators all had different visions of what the museum was for and what work mattered, which is incommensurability in miniature. What held them together was <b>the standardised record of a specimen</b>. The record meant something different to each group, and every group could contribute to it and use it. Nobody had to change their practice or translate anything. They coordinated through a shared object instead.</p>
+            </div>
+            <figure class="dia">
+              <div class="draw">
+              <svg viewBox="0 0 420 246" role="img" aria-labelledby="dg-cross">
+                <title id="dg-cross">The two answers to how people across a boundary work together: a shared simplified language, and a shared object that means something different to each side.</title>
+                <text class="dg-m" x="10" y="14" font-size="12">TRADING ZONE</text>
+                <text class="dg-m" x="228" y="14" font-size="12">BOUNDARY OBJECT</text>
+                <text class="dg-t dg-dim" x="10" y="32" font-size="12">they share a language</text>
+                <text class="dg-t dg-dim" x="228" y="32" font-size="12">they share a thing</text>
+                <rect class="dg-box" x="10" y="46" width="84" height="40" rx="5"/>
+                <text class="dg-t" x="24" y="71" font-size="13">Field A</text>
+                <rect class="dg-box" x="118" y="46" width="84" height="40" rx="5"/>
+                <text class="dg-t" x="132" y="71" font-size="13">Field B</text>
+                <path class="dg-ln" d="M52 86 L52 104" stroke-width="1.5" marker-end="url(#dg-cross-a)"/>
+                <path class="dg-ln" d="M160 86 L160 104" stroke-width="1.5" marker-end="url(#dg-cross-a)"/>
+                <rect class="dg-hi" x="10" y="108" width="192" height="40" rx="5"/>
+                <text class="dg-t" x="24" y="133" font-size="13">A pidgin they both speak</text>
+                <text class="dg-t dg-dim" x="10" y="172" font-size="12">Feynman diagrams</text>
+                <text class="dg-t dg-dim" x="10" y="192" font-size="12">Nobody assimilates.</text>
+                <text class="dg-t dg-dim" x="10" y="212" font-size="12">They trade.</text>
+                <rect class="dg-box" x="228" y="46" width="84" height="40" rx="5"/>
+                <text class="dg-t" x="242" y="71" font-size="13">Field A</text>
+                <rect class="dg-box" x="336" y="46" width="74" height="40" rx="5"/>
+                <text class="dg-t" x="348" y="71" font-size="13">Field B</text>
+                <path class="dg-ln" d="M270 86 L270 104" stroke-width="1.5" marker-end="url(#dg-cross-a)"/>
+                <path class="dg-ln" d="M373 86 L373 104" stroke-width="1.5" marker-end="url(#dg-cross-a)"/>
+                <rect class="dg-hi" x="228" y="108" width="182" height="40" rx="5"/>
+                <text class="dg-t" x="242" y="133" font-size="13">One object, two readings</text>
+                <text class="dg-t dg-dim" x="228" y="172" font-size="12">A specimen record card</text>
+                <text class="dg-t dg-dim" x="228" y="192" font-size="12">Nobody translates.</text>
+                <text class="dg-t dg-dim" x="228" y="212" font-size="12">They both write on it.</text>
+                <line class="dg-ln dg-dim" x1="214" y1="8" x2="214" y2="220" stroke-width="1"/>
+                <text class="dg-m dg-dim" x="10" y="238" font-size="12">EACH SIDE IS LEFT AS IT WAS</text>
+                <defs>
+                  <marker id="dg-cross-a" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto">
+                    <path d="M0 0 L8 4 L0 8 z" fill="currentColor"/>
+                  </marker>
+                </defs>
+              </svg>
+              </div>
+              <figcaption><b>Two ways of working across a boundary, and what they have in common.</b> A trading zone gives the two sides a stripped-down shared language and lets them exchange without either becoming the other. A boundary object gives them one thing solid enough to stay itself in both worlds while meaning something different in each. Neither asks anybody to change what they do, which is why both work where full translation would fail. The chapter's own caution is that ideas this accommodating fit almost any case, and may be describing a difficulty smaller than it looks.</figcaption>
+            </figure>
+            <p><b>Sismondo is sceptical of both, and says so.</b> The boundary object concept has been applied to an enormous range of things, including, within the original article alone, the museum itself, the animal species in it, the state of California and the specimen records. Engineers' sketches, the parameters of climate models, and breeds of rabbits and poultry connecting fanciers to geneticists have all been called boundary objects since.</p>
+            <p><b>His conclusion is the deflationary one.</b> The sheer number and variety of these bridges suggests that coordination and communication across boundaries are common, and that a good deal of it happens by plain translation: researchers learn what colleagues in other fields know and put things in terms those colleagues can follow. Trading zones and boundary objects may therefore <b>overstate the difficulty</b>. Incommensurability, as it turns up in practice, is often not a serious barrier at all.</p>
+          </div>
+
+          <h4>What the chapter says the book destroyed</h4>
+          <div class="body">
+            <p><b>The conclusion lines Kuhn up against four positions</b>, three of which are in the week 2 packet, and this list is the most examinable paragraph in the chapter.</p>
+            <ul>
+              <li><b>Against functionalism.</b> Scientific communities are organised around ideas and practices, from the bottom up. Functionalism had them organised around ideals of behaviour, serving an overarching goal.</li>
+              <li><b>Against positivism.</b> Changes in theory are driven by changes of vision. Data follows: if a worldview is a theory, then data sits under theory, which is the reverse of what positivism said.</li>
+              <li><b>Against falsificationism.</b> Anomalies are typically set aside. Only during a revolution are they used to justify rejecting a theory.</li>
+              <li><b>Against all of them.</b> On the largest scale the history of science is a story of change. Uninterrupted progress is the story it is usually told as.</li>
+            </ul>
+            <p><b>On the irrationalist reading, Sismondo is dismissive.</b> The book was read as saying science is fundamentally irrational, or is mob rule, because it violated almost everybody's ideas about rationality and progress. Looking back, he says, it is difficult to find much irrationalism in it, and possible to read the book as fairly conservative, Steve Fuller having argued it is politically conservative as well.</p>
+            <p><b>And the verdict, which is oddly generous and oddly brutal at once.</b> Few of Kuhn's specific ideas have survived fully intact. The book profoundly affected everything that came after it anyway, because what it did was create a space for studying the practices of science locally, in their own terms, with no need to score them against progress or against an ideal.</p>
+          </div>
+
+          <h4>The three boxes, which are examinable and easy to skip</h4>
+          <div class="body">
+            <p><b>Sismondo's boxes are set apart from the text and carry named material.</b> All three are inside the assigned pages.</p>
+            <details class="ctx"><summary><i>Box 2.1</i>The modernity of science, page 13</summary><div class="bq">
+              <p>Derek de Solla Price's finding: science has grown <b>exponentially</b> for three hundred years. Its share of US gross national product doubled every 20 years. The cumulative number of journals founded doubled every 15 years, as did membership of scientific institutes and the number of people holding scientific degrees. Articles in many subfields doubled every 10 years.</p>
+              <p><b>The consequence is the memorable fact:</b> between 80 and 90 per cent of all the scientists who have ever lived are alive now, and for a senior scientist, between 80 and 90 per cent of all the scientific papers ever written appeared in their own lifetime.</p>
+              <p><b>Why it belongs in this chapter.</b> For a working scientist the distant past of the field is nearly irrelevant, buried under more recent work, and citation patterns show it. Price called the frequently cited network of papers at a given moment the <b>research front</b>, which continually picks up new papers and drops old ones. So whether or not paradigms exist as Kuhn describes them, science attends to the present and leaves its past to historians. Sismondo adds that rapid growth is also why science looks like a young person's occupation, since at any moment a disproportionate number of scientists have only just arrived.</p>
+            </div></details>
+            <details class="ctx"><summary><i>Box 2.2</i>Foundationalism, page 15</summary><div class="bq">
+              <p><b>Foundationalism</b> is the thesis that knowledge traces back to firm foundations, usually some combination of sense impressions and rational principles holding up everything above them. Its metaphor is a building planted in the ground: ask why you believe something and the answer is more beliefs, each brick supported by more beneath it, and the wall cannot go down forever.</p>
+              <p><b>Sismondo's two objections.</b> Sense experiences are the most plausible candidate for the bottom course, but a finite collection of data points cannot determine which generalisation to believe, which is the problem of induction again. And beliefs about sense impressions are not secure either, since we routinely doubt what we see and reinterpret it in the light of what we know.</p>
+              <p><b>The conclusion is to abandon the metaphor.</b> Which is why this box sits in the Kuhn chapter: if there is no floor, the question of what holds knowledge up has to be answered by something other than a foundation, and the candidate the rest of the book offers is a community.</p>
+            </div></details>
+            <details class="ctx"><summary><i>Box 2.3</i>The theory-dependence of observation, page 18</summary><div class="bq">
+              <p><b>The claim</b>, from Hanson and Kuhn, is that scientific observations are shaped by what the observer already believes. Sismondo reports that philosophers, psychologists and cognitive scientists broadly agree this happens, and disagree about how much it matters for understanding science.</p>
+              <p><b>His own move is to widen what observation means.</b> Scientific observation is rarely one person perceiving something unaided. Much data is collected by machine and then organised by scientists to display a phenomenon publicly, and if that organising counts as observing, then observation is theory-dependent in a way nobody needs to argue about.</p>
+              <p><b>And the dependence runs wider still.</b> Scientists attend to the objects that background beliefs say are worth looking at, design experiments around theoretically inspired questions, and judge what is relevant enough to remember and pass on by standards their field already holds.</p>
+            </div></details>
+          </div>
+
+          <dl class="links">
+            <dt>Answers</dt><dd>The Vienna Circle, chapter 9 of the week 2 packet, and Popper with it. Both wanted a rule that separates science from everything else; this chapter says the rule is whatever the current community was trained on, and then spends four pages limiting how far that goes.</dd>
+            <dt>Answered by</dt><dd>Week 4, the social construction of scientific knowledge. Chapters 3 and 5 of this same book, which the chapter is clearing the ground for.</dd>
+            <dt>Sits beside</dt><dd>Foucault, below. Kuhn says knowledge is made by a trained community; Foucault says the machinery for producing knowledge about people is the machinery that manages them.</dd>
+          </dl>
+
+          <p class="keep"><b>If you keep one thing</b>Half this chapter sets out Kuhn's claim that rival paradigms have no common measure, and the other half argues that the strong version of it fails, that Kuhn himself had retreated to "difficulty of translation" by 1965, and that science holds together because its parts never change all at once.</p>
+
+          <div class="mynote"><b>My note</b><span>The trap is stopping at page 16. Everything up to there is Kuhn and reads like a summary; everything after is Sismondo taking the strong claim apart and introducing trading zones and boundary objects, which are the two terms with named authors attached and the likeliest short-answer material in the whole chapter. Learn Galison with trading zones and Star and Griesemer with boundary objects.</span></div>
+        </div>
+      </article>
+
       <article class="rd p-close" id="kuhn">
         <div class="stripe"></div>
         <div class="main">
           <div class="head">
-            <h3><span class="ch">CH 2</span>The Kuhnian Revolution</h3>
-            <div class="who">Sergio Sismondo, <em>An Introduction to Science and Technology Studies</em>, Wiley-Blackwell, 2010</div>
-            <div class="meta"><span class="tag">Read properly</span><span>11 pp, pages 12 to 22, and only those</span></div>
+            <h3><span class="ch">BACKGROUND</span>Kuhn himself, behind the chapter</h3>
+            <div class="who">Thomas Kuhn, <em>The Structure of Scientific Revolutions</em>, 1962</div>
+            <div class="meta"><span class="tag">Context</span><span>not the assigned text</span></div>
           </div>
 
-          <div class="mynote"><b>Status</b><span>The chapter itself is a library e-book on Scholars Portal and the link asks for a uOttawa sign-in, so the text has not been read and nothing below is attributed to Sismondo. What follows is Kuhn's own argument, which is what the chapter is about. Sign in once and the narrated version of the chapter, with its page numbers, goes in here.</span></div>
+          <div class="mynote"><b>What this is</b><span>Kuhn's own argument, which the assigned chapter is about and mostly assumes. None of it is attributed to Sismondo, and the examples here are not his. The chapter itself is narrated above, with its page numbers. Read that one for the exam and this one for the background it leans on.</span></div>
 
           <p class="qline">Why does a scientific community change its mind, if not because the evidence made it?</p>
 
@@ -905,7 +1105,9 @@
             </div></details>
 
             <details class="bit"><summary>The other Kuhn book is about the Copernican revolution</summary><div class="bq">
-              <p><em>The Copernican Revolution</em> came out in 1957, five years earlier, and it is the case study the famous book generalises from. The detail worth knowing: Copernicus did not make better predictions than Ptolemy. His system was about as accurate and about as complicated, still used circles, and still needed epicycles. It won on other grounds, and slowly. If you think revolutions happen because the new theory predicts better, this is the case that says they do not have to.</p>
+              <p><em>The Copernican Revolution</em> came out in 1957, five years earlier, and it is the case study the famous book generalises from. The detail worth knowing: Copernicus did not make better predictions than Ptolemy. His system was about as accurate and about as complicated, still used circles, and still needed epicycles.</p>
+              <p><b>What it won on instead.</b> Retrograde motion, the loop a planet appears to make against the stars when it seems to reverse and go back on itself, falls out of a moving earth on its own, where Ptolemy had to build a circle-on-a-circle for each planet to produce it. The order of the planets and their distances from the sun also fall out, where Ptolemy could put them in any order he liked and nothing changed. And it dropped the equant, a device Ptolemy used that Copernicus thought cheated. None of that is a prediction. It is tidiness, and a system that answers questions the other one could only be told the answers to.</p>
+              <p><b>Then two things arrived that did not exist in 1543.</b> Kepler replaced the circles with ellipses in 1609 and the predictions finally did get better. Galileo turned a telescope on Venus in 1610 and found it goes through phases like the moon, which the Ptolemaic arrangement cannot produce. The argument took about a century and was settled by instruments nobody had when it started.</p>
             </div></details>
 
             <details class="bit"><summary>Popper and Kuhn argued in public, and the argument is still running</summary><div class="bq">
@@ -1157,6 +1359,20 @@
       }
     });
   } catch (e) {}
+})();
+</script>
+<script>
+/* One curious item open at a time. A dozen of them open at once turns the panel into a wall,
+   which is what collapsing them was for. Closing happens per panel, so a side note somewhere
+   else on the page is left alone. */
+(function () {
+  document.addEventListener('toggle', function (e) {
+    var d = e.target;
+    if (!d.open || !d.matches || !d.matches('.curious > details.bit')) return;
+    Array.prototype.forEach.call(d.parentElement.children, function (s) {
+      if (s !== d && s.tagName === 'DETAILS' && s.open) s.open = false;
+    });
+  }, true);
 })();
 </script>
 <script src="../shared/editor.js"></script>

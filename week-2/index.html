@@ -2656,6 +2656,20 @@
   } catch (e) {}
 })();
 </script>
+<script>
+/* One curious item open at a time. A dozen of them open at once turns the panel into a wall,
+   which is what collapsing them was for. Closing happens per panel, so a side note somewhere
+   else on the page is left alone. */
+(function () {
+  document.addEventListener('toggle', function (e) {
+    var d = e.target;
+    if (!d.open || !d.matches || !d.matches('.curious > details.bit')) return;
+    Array.prototype.forEach.call(d.parentElement.children, function (s) {
+      if (s !== d && s.tagName === 'DETAILS' && s.open) s.open = false;
+    });
+  }, true);
+})();
+</script>
 <script src="../shared/editor.js"></script>
 <script>
 (function () {
