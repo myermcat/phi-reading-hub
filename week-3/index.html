@@ -377,6 +377,8 @@
     figure.dia svg[aria-labelledby="cvg-ttl"] { min-width: 660px; }
     figure.dia svg[aria-labelledby="dg-comte-3s"] { min-width: 560px; }
     figure.dia svg#dia-spine { min-width: 380px; }
+    figure.dia svg[aria-labelledby="kuhn-cycle-t"] { min-width: 700px; }
+    figure.dia svg[aria-labelledby="dg-unit"] { min-width: 400px; }
   }
 
   /* inside the boxes, which already space their children */
@@ -453,6 +455,9 @@
   #nav a { display: block; font-family: var(--mono); font-size: 10.5px; letter-spacing: .03em;
            color: var(--muted); text-decoration: none; padding: 4px 0 4px 11px; border-left: 2px solid var(--rule-soft);
            white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  /* The year each text was written, so the rail is also a timeline. The gaps are the point:
+     Plato to Bacon is two thousand years and Rousseau to Comte is eighty. */
+  #nav a i { font-style: normal; font-size: 9px; letter-spacing: .05em; opacity: .62; margin-left: 6px; }
   #nav a:hover { color: var(--ink); border-left-color: var(--muted); }
   #nav a.on { color: var(--accent); border-left-color: var(--accent); }
   #nav a.grp { margin-top: 9px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .1em; border-left-color: transparent; padding-left: 0; }
@@ -673,8 +678,8 @@
 <nav id="nav" aria-label="Contents">
   <a class="grp" href="#s-notes">Notes by text</a>
   <a class="grp" href="#s-texts">The two texts</a>
-  <a class="core" href="#kuhn" title="Sismondo ch. 2 &middot; read properly">Kuhn</a>
-  <a class="core" href="#r54" title="Anthology ch. 54 &middot; read properly">Foucault</a>
+  <a class="core" href="#kuhn" title="Sismondo ch. 2 &middot; read properly">Kuhn<i>1962</i></a>
+  <a class="core" href="#r54" title="Anthology ch. 54 &middot; read properly">Foucault<i>1975</i></a>
   <a class="grp" href="#s-gloss">Glossary</a>
   <div class="key"><em>Key</em><i class="a">solid = read properly</i><i class="b">faded = skim</i><i class="c">faintest = if time</i></div>
 </nav>
@@ -742,8 +747,17 @@
             <figure class="pic">
               <a class="zoom" style="width:442px" href="img/thomas-kuhn-1977.jpg" target="_blank" rel="noopener" title="Open this picture at full size"><img src="img/thomas-kuhn-1977.jpg" width="820" height="556" loading="lazy"
                    alt="A man in a suit and tie with heavy dark-framed glasses, standing at a blackboard in profile, one hand raised to a curve he has chalked on it." style="aspect-ratio:820/556"></a>
-              <figcaption><b>Thomas Kuhn in 1977, fifteen years after the book.</b> He trained as a physicist and moved into history, and by this date he had spent a decade arguing that the thing everyone took from his book was not what he had written. He accepted that science makes progress. What he denied was that it does so by piling one result on top of another. <span class="cred">Photograph by Bob Bielk, public domain, via Wikimedia Commons.</span></figcaption>
+              <figcaption><b>Thomas Kuhn in 1977, fifteen years after the book.</b> He trained as a physicist and moved into history, and by this date he had spent a decade telling people they had misread him. What they had taken from it, and what he had actually written, are set out below. <span class="cred">Photograph by Bob Bielk, public domain, via Wikimedia Commons.</span></figcaption>
             </figure>
+          </div>
+
+          <h4>What people took from it, and what he wrote</h4>
+          <div class="body">
+            <p><b>What the book was read as saying</b> was that science is not rational. That a paradigm wins by fashion, politics or the deaths of the people who disagree, that one is as good as another, and that there is no such thing as getting closer to the truth. That reading is why "paradigm shift" now means any change of mind at all, and it is the reading Kuhn spent the rest of his life denying.</p>
+            <p><b>What he wrote is narrower.</b> There are real reasons for preferring one theory to another, and he named five: accuracy, consistency, breadth, simplicity and fruitfulness. His claim is that those five do not settle it, because two people can weigh them differently and neither is being stupid. One prefers the theory that fits the measurements better, the other the theory that covers more ground, and there is no further rule that says which of them is right. So the choice is reasoned and underdetermined at the same time, which is a long way from irrational.</p>
+            <p><b>Progress he never denied.</b> Later science solves more puzzles, more precisely, than earlier science. What he denied was the shape the textbooks give it.</p>
+            <p><b>The textbook shape is a wall.</b> Each generation lays a course of bricks on the one below, nothing already laid is ever taken out, and the wall only gets higher. On that picture Newton is still standing inside Einstein, as the special case you get at low speeds.</p>
+            <p><b>Kuhn says bricks come out.</b> Newtonian mass is a fixed quantity that a body simply has; relativistic mass changes with speed and converts into energy. They are not the same quantity with a correction term, so the sentence "mass is conserved" is not a true claim that Einstein kept and refined. It was thrown away and something else was put in its place that happens to give nearly the same numbers when things move slowly. Phlogiston went out of the wall entirely. Caloric, the weightless fluid heat was made of, went out. The crystal spheres carrying the planets went out. A wall that loses courses is not a wall being built up, and that is the whole of what "science does not accumulate" means.</p>
           </div>
 
           <h4>Normal science: most scientists are not testing anything</h4>
@@ -777,10 +791,10 @@
                    alt="A page from a sixteenth-century printed book showing seven nested circles drawn around a small sun at the centre, each ring labelled in Latin with the name of a planet and the length of its orbit, and the moon drawn on a small circle beside the earth." style="aspect-ratio:820/702"></a>
               <figcaption><b>The diagram from Copernicus, <em>De revolutionibus orbium coelestium</em>, 1543.</b> Kuhn wrote a whole book about this one case before he wrote the famous one. The detail that matters for the argument: this system was about as accurate as the one it replaced, about as complicated, and still needed circles inside circles to make the numbers come out. It did not win by predicting better, which is why Kuhn went looking for what else decides. <span class="cred">Public domain, via Wikimedia Commons.</span></figcaption>
             </figure>
-            <figure class="dgm">
-              <svg viewBox="0 0 700 180" role="img" aria-labelledby="kuhn-cycle-t kuhn-cycle-d">
-                <title id="kuhn-cycle-t">Kuhn's cycle, drawn as a line that breaks</title>
-                <desc id="kuhn-cycle-d">Five stages left to right: normal science, anomaly, crisis, revolution, then normal science again under a new paradigm. The first and last stretches are flat runs of puzzle solving; the break in the middle steps to a different level and starts again there.</desc>
+            <figure class="dia">
+              <div class="draw">
+              <svg viewBox="0 0 700 180" role="img" aria-labelledby="kuhn-cycle-t">
+                <title id="kuhn-cycle-t">Kuhn's cycle drawn as a line that breaks: two flat runs of puzzle solving with a step between them.</title>
                 <line class="dg-ln" x1="30" y1="120" x2="250" y2="120" stroke-width="2"/>
                 <line class="dg-ln dg-dim" x1="250" y1="120" x2="330" y2="120" stroke-width="2" stroke-dasharray="4 4"/>
                 <line class="dg-ln dg-dim" x1="330" y1="120" x2="410" y2="120" stroke-width="2" stroke-dasharray="2 5"/>
@@ -796,7 +810,8 @@
                 <text class="dg-m" x="450" y="50" font-size="11">NORMAL SCIENCE, NEW PARADIGM</text>
                 <text class="dg-t dg-dim" x="452" y="92" font-size="12">the step goes sideways</text>
               </svg>
-              <figcaption><b>The shape of the claim.</b> Two long flat runs of puzzle solving with a break between them. The textbook picture is one line climbing steadily; Kuhn's is a line that stops and restarts somewhere else, which is why he denies that science accumulates.</figcaption>
+              </div>
+              <figcaption><b>The shape of the claim.</b> Five stages left to right: normal science, anomaly, crisis, revolution, then normal science again under a new paradigm. Two long flat runs of puzzle solving with a break between them. The textbook picture is one line climbing steadily; Kuhn's is a line that stops and restarts somewhere else, which is why he denies that science accumulates.</figcaption>
             </figure>
           </div>
 
@@ -817,13 +832,54 @@
             <p><b>What Kuhn did not say</b>, and spent thirty years insisting he had not said, is that theory choice is irrational or that anything goes. His position is that there are good reasons, that they are real, and that they do not add up to a proof, so two careful people can weigh them differently. He hated being called a relativist.</p>
             <div class="exm">
               <b>Example &middot; the people who never crossed over</b>
-              <p><b>Joseph Priestley</b> isolated oxygen in 1774 and called it dephlogisticated air. He went to his death in 1804 still holding the phlogiston theory, having watched the entire field move to Lavoisier without him. <b>Alfred Wegener</b> proposed continental drift in 1912 with the fit of the coastlines, matching fossils and matching rock beds, and was dismissed for half a century mostly because he had no mechanism. He died on the Greenland ice in 1930. Sea floor spreading arrived in the 1960s and plate tectonics became the framework of the whole science, thirty years too late for him to see it. Max Planck put the general rule bluntly: a new scientific truth does not win by convincing its opponents, it wins because the opponents eventually die and a new generation grows up with it.</p>
+              <p><b>Joseph Priestley</b> isolated oxygen in 1774 and called it dephlogisticated air. <b>Phlogiston</b> was the substance eighteenth-century chemistry thought fire was made of: everything burnable was held to contain it, burning was held to be the stuff escaping, and a candle was held to go out under a jar because the trapped air had taken up all the phlogiston it could hold. On that account Priestley had not found a new gas, he had found air with the phlogiston taken out, which is why he named it that. Lavoisier's account reversed the direction: burning is the thing taking oxygen up out of the air. Priestley went to his death in 1804 still holding the older view, having watched the entire field move without him. <b>Alfred Wegener</b> proposed continental drift in 1912 with the fit of the coastlines, matching fossils and matching rock beds, and was dismissed for half a century mostly because he had no mechanism. He died on the Greenland ice in 1930. Sea floor spreading arrived in the 1960s and plate tectonics became the framework of the whole science, thirty years too late for him to see it. Max Planck put the general rule bluntly: a new scientific truth does not win by convincing its opponents, it wins because the opponents eventually die and a new generation grows up with it.</p>
             </div>
           </div>
 
           <h4>Why the course sets this here</h4>
           <div class="body">
             <p><b>Kuhn moves the unit of analysis from the method to the community.</b> Before him, the question was what rule separates science from everything else, which is the Vienna Circle question. After him, the question is what a trained group of people accepts, why they accept it, and what would make them stop. That is a question about people, and people can be studied by sociologists.</p>
+            <figure class="dia">
+              <div class="draw">
+              <svg viewBox="0 0 400 286" width="100%" role="img" aria-labelledby="dg-unit">
+                <title id="dg-unit">What a philosopher of science examines, before Kuhn and after: on the left a statement and its evidence, on the right a community and its training.</title>
+                <text class="dg-m" x="10" y="14" font-size="12">BEFORE</text>
+                <text class="dg-m" x="210" y="14" font-size="12">AFTER KUHN</text>
+                <text class="dg-t dg-dim" x="10" y="34" font-size="12">Is this sentence science?</text>
+                <text class="dg-t dg-dim" x="210" y="34" font-size="12">Why does this group accept it?</text>
+
+                <rect class="dg-box" x="10" y="48" width="180" height="42" rx="5"/>
+                <text class="dg-t" x="24" y="74" font-size="14">A statement</text>
+                <rect class="dg-box" x="210" y="48" width="180" height="42" rx="5"/>
+                <text class="dg-t" x="224" y="74" font-size="14">A community</text>
+
+                <path class="dg-ln" d="M100 90 L100 114" stroke-width="1.6" marker-end="url(#dg-unit-a)"/>
+                <path class="dg-ln" d="M300 90 L300 114" stroke-width="1.6" marker-end="url(#dg-unit-a)"/>
+
+                <rect class="dg-box" x="10" y="118" width="180" height="42" rx="5"/>
+                <text class="dg-t" x="24" y="144" font-size="14">Its evidence</text>
+                <rect class="dg-box" x="210" y="118" width="180" height="42" rx="5"/>
+                <text class="dg-t" x="224" y="144" font-size="14">Its training</text>
+
+                <path class="dg-ln" d="M100 160 L100 184" stroke-width="1.6" marker-end="url(#dg-unit-a)"/>
+                <path class="dg-ln" d="M300 160 L300 184" stroke-width="1.6" marker-end="url(#dg-unit-a)"/>
+
+                <rect class="dg-box" x="10" y="188" width="180" height="42" rx="5"/>
+                <text class="dg-t" x="24" y="214" font-size="14">Science, or not</text>
+                <rect class="dg-hi" x="210" y="188" width="180" height="42" rx="5"/>
+                <text class="dg-t" x="224" y="214" font-size="14">What it accepts</text>
+
+                <path class="dg-ln dg-dim" d="M130 262 L272 262" stroke-width="1.4" marker-end="url(#dg-unit-a)"/>
+                <text class="dg-m" x="10" y="266" font-size="12">THE UNIT</text>
+                <defs>
+                  <marker id="dg-unit-a" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto">
+                    <path d="M0 0 L8 4 L0 8 z" fill="currentColor"/>
+                  </marker>
+                </defs>
+              </svg>
+              </div>
+              <figcaption><b>The question changes what you have to go and look at.</b> On the left the object of study is a sentence, and the job is to check it against the evidence and rule on it. A philosopher can do that from a desk. On the right the object of study is a group of people: what they were trained on, which worked examples they copy, what they will count as a solved problem. That is not something you can rule on. It is something you have to go and watch, and watching people is what sociologists and anthropologists do, which is how a question in philosophy turned into a research programme in the social sciences.</figcaption>
+            </figure>
             <p>Which is exactly where the course goes next. Week 4 is the social construction of scientific knowledge, and the field that grew out of the door Kuhn opened is the one whose textbook this chapter comes from. Sismondo is writing an introduction to science and technology studies, and this chapter is the origin story of the discipline he is introducing.</p>
           </div>
 
