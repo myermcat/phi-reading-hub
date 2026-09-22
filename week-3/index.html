@@ -326,22 +326,32 @@
 
   /* photographs, plates and maps */
   figure.pic { margin: 24px 0; gap: 11px; max-width: 82ch; }
+  /* A picture sits inside the reading, so it is capped at a height that leaves the paragraphs
+     on either side of it in view. At most of the window it filled the screen, the argument
+     disappeared behind it, and scrolling past a figure took as long as reading a section.
+     Detail is not lost: the image is a link to the file at full size. */
+  /* The box is sized on the link, in pixels worked out from the picture's own proportions for a
+     300px tall picture, and the image fills it. Sizing the image instead does not work: an image
+     that has not loaded yet has no size of its own, so with both axes auto it collapses to
+     nothing and the page jumps as it scrolls past, and clamping only the height leaves the width
+     where it was and squashes the picture. */
+  figure.pic a.zoom { display: block; align-self: flex-start; max-width: 100%; cursor: zoom-in; }
   figure.pic img {
-    /* A tall picture used to run past the bottom of the window, so the whole of it was never
-       visible at once. Capping the height at most of the window and letting the width follow
-       means every picture fits on one screen, caption included. */
-    display: block; width: auto; max-width: 100%; height: auto; max-height: 68vh;
+    display: block; width: 100%; height: auto;
     /* figure.pic is a column flexbox, whose align-items defaults to stretch. That stretched the
        image to the full width of the measure and max-height then squashed it, so every portrait
        picture came out distorted. align-self keeps the image at its own width. */
     align-self: flex-start;
     border: 1px solid var(--rule); border-radius: 6px; background: var(--surface);
+    transition: border-color .15s;
   }
+  figure.pic a.zoom:hover img { border-color: var(--accent); }
+  figure.pic a.zoom:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
   /* A line drawing with a transparent background is black ink on nothing, which in the dark
      theme is black ink on a dark page and reads as an empty box. Give that kind of picture the
      paper it was printed on. */
   figure.pic img.ink { background: #fff; padding: 14px; }
-  @media (max-width: 700px) { figure.pic img { max-height: 60vh; } }
+  @media (max-width: 700px) { figure.pic a.zoom { width: 100% !important; } }
   figure.pic figcaption, figure.dia figcaption {
     font-family: var(--body); font-size: 15px; line-height: 1.5;
     letter-spacing: 0; color: var(--ink-soft); max-width: 74ch;
@@ -730,8 +740,8 @@
             <p><b>Thomas Kuhn</b> was an American physicist who moved into the history of science, and in 1962 he published <em>The Structure of Scientific Revolutions</em>. It is short, it is the most cited book of its century in the humanities and social sciences, and it put the word <b>paradigm</b> into ordinary English, where it is now used by people selling software.</p>
             <p><b>Where it came out is the joke.</b> It was published as a monograph inside the <em>International Encyclopedia of Unified Science</em>, which was the Vienna Circle's own publishing project. Chapter 9 of last week's packet is the Vienna Circle manifesto, arguing that science is one unified structure built up from verified observation statements. Kuhn's book, which says science does not build up and observation statements are not neutral, came out as a volume of their encyclopedia. The people who commissioned it published the thing that undid it.</p>
             <figure class="pic">
-              <img src="img/thomas-kuhn-1977.jpg" width="820" height="556" loading="lazy"
-                   alt="A man in a suit and tie with heavy dark-framed glasses, standing at a blackboard in profile, one hand raised to a curve he has chalked on it.">
+              <a class="zoom" style="width:442px" href="img/thomas-kuhn-1977.jpg" target="_blank" rel="noopener" title="Open this picture at full size"><img src="img/thomas-kuhn-1977.jpg" width="820" height="556" loading="lazy"
+                   alt="A man in a suit and tie with heavy dark-framed glasses, standing at a blackboard in profile, one hand raised to a curve he has chalked on it." style="aspect-ratio:820/556"></a>
               <figcaption><b>Thomas Kuhn in 1977, fifteen years after the book.</b> He trained as a physicist and moved into history, and by this date he had spent a decade arguing that the thing everyone took from his book was not what he had written. He accepted that science makes progress. What he denied was that it does so by piling one result on top of another. <span class="cred">Photograph by Bob Bielk, public domain, via Wikimedia Commons.</span></figcaption>
             </figure>
           </div>
@@ -763,8 +773,8 @@
             <p><b>Crisis.</b> Anomalies accumulate at a point the community cares about, the fixes start looking like patches, and confidence goes. Kuhn's claim is that this is a state of the <em>community</em>. The same anomalies could have been known for decades and the crisis arrives when confidence does.</p>
             <p><b>Revolution.</b> A new framework takes over. Not by being added to the old one, but by replacing it, and Kuhn's strongest claim is that the new one does not contain the old as a special case in the way textbooks pretend.</p>
             <figure class="pic">
-              <img src="img/copernicus-heliocentric-1543.jpg" width="820" height="702" loading="lazy"
-                   alt="A page from a sixteenth-century printed book showing seven nested circles drawn around a small sun at the centre, each ring labelled in Latin with the name of a planet and the length of its orbit, and the moon drawn on a small circle beside the earth.">
+              <a class="zoom" style="width:350px" href="img/copernicus-heliocentric-1543.jpg" target="_blank" rel="noopener" title="Open this picture at full size"><img src="img/copernicus-heliocentric-1543.jpg" width="820" height="702" loading="lazy"
+                   alt="A page from a sixteenth-century printed book showing seven nested circles drawn around a small sun at the centre, each ring labelled in Latin with the name of a planet and the length of its orbit, and the moon drawn on a small circle beside the earth." style="aspect-ratio:820/702"></a>
               <figcaption><b>The diagram from Copernicus, <em>De revolutionibus orbium coelestium</em>, 1543.</b> Kuhn wrote a whole book about this one case before he wrote the famous one. The detail that matters for the argument: this system was about as accurate as the one it replaced, about as complicated, and still needed circles inside circles to make the numbers come out. It did not win by predicting better, which is why Kuhn went looking for what else decides. <span class="cred">Public domain, via Wikimedia Commons.</span></figcaption>
             </figure>
             <figure class="dgm">
@@ -800,8 +810,8 @@
             </ul>
             <p><b>Kuhn's own picture for it is the duck and the rabbit.</b> One set of lines, two ways of seeing, and no third way of seeing it that is neutral between them. You can flip between them and you cannot hold both at once, and nothing in the drawing itself settles which one is correct. A scientist who moves to a new paradigm does not get a better view of the same thing; the thing looks different.</p>
             <figure class="pic">
-              <img class="ink" src="img/duck-rabbit-1892.png" width="820" height="720" loading="lazy"
-                   alt="A magazine page in blackletter type. The heading asks, in German, which animals most resemble one another. Below it an engraved animal head reads either as a duck facing left, the two long shapes being its bill, or as a rabbit facing right, the same two shapes being its ears. The line under it names both.">
+              <a class="zoom" style="width:342px" href="img/duck-rabbit-1892.png" target="_blank" rel="noopener" title="Open this picture at full size"><img class="ink" src="img/duck-rabbit-1892.png" width="820" height="720" loading="lazy"
+                   alt="A magazine page in blackletter type. The heading asks, in German, which animals most resemble one another. Below it an engraved animal head reads either as a duck facing left, the two long shapes being its bill, or as a rabbit facing right, the same two shapes being its ears. The line under it names both." style="aspect-ratio:820/720"></a>
               <figcaption><b>The duck and the rabbit, from the German humour magazine <em>Fliegende Blätter</em> in 1892.</b> The heading asks which animals most resemble one another and the line below answers, rabbit and duck. Kuhn borrows the figure from psychology to say what a change of paradigm is like: the lines on the page never move, what changes is what they are a picture of, and there is no position outside the two from which to check. <span class="cred">Public domain, via Wikimedia Commons.</span></figcaption>
             </figure>
             <p><b>What Kuhn did not say</b>, and spent thirty years insisting he had not said, is that theory choice is irrational or that anything goes. His position is that there are good reasons, that they are real, and that they do not add up to a proof, so two careful people can weigh them differently. He hated being called a relativist.</p>
@@ -895,8 +905,8 @@
           <div class="body">
             <p>In 1787 Jeremy Bentham designed a building: a ring of cells around a central tower. Each cell runs the full depth of the building and has a window at the outer wall and one at the inner, so the occupant appears from the tower as a perfectly legible silhouette, backlit. The tower has blinds and angled partitions, so its interior stays dark.</p>
             <figure class="pic">
-              <img src="img/panopticon-reveley-1791.jpg" width="816" height="900" loading="lazy"
-                   alt="An engraved sheet in two parts: at the top a five-storey prison wall cut open to show cells stacked around the outer ring facing a tower in the middle, and below a half-circle floor plan with single cells lettered A along the outer wall and dividing walls running inward to concentric rings at the centre.">
+              <a class="zoom" style="width:272px" href="img/panopticon-reveley-1791.jpg" target="_blank" rel="noopener" title="Open this picture at full size"><img src="img/panopticon-reveley-1791.jpg" width="816" height="900" loading="lazy"
+                   alt="An engraved sheet in two parts: at the top a five-storey prison wall cut open to show cells stacked around the outer ring facing a tower in the middle, and below a half-circle floor plan with single cells lettered A along the outer wall and dividing walls running inward to concentric rings at the centre." style="aspect-ratio:816/900"></a>
               <figcaption><b>Elevation, section and plan of Bentham’s panopticon, drawn by Willey Reveley in 1791.</b> The cutaway at the top has five storeys of cells stacked around the outer wall, each lit by a window behind it, so a prisoner appears from the centre as a dark shape against daylight. In the plan below, the inspector’s lodge fills the concentric rings at the middle, screened so that nobody in a cell can tell whether anyone is watching, which is the condition Foucault says makes prisoners police themselves. <span class="cred">Public domain, via Wikimedia Commons.</span></figcaption>
             </figure>
             <p>The consequences follow mechanically:</p>
@@ -941,8 +951,8 @@
             <details class="bit"><summary>Bentham himself is on display in a cabinet in London</summary><div class="bq">
               <p>His will instructed that his body be dissected in front of friends, then preserved, dressed in his own clothes and kept as an <b>Auto-Icon</b>. It is at University College London to this day: his actual skeleton, padded out, in his coat and hat. The preservation of the head went badly, so a wax one was made, and the real mummified head was kept separately and has an undignified history involving students. A man who believed a body should be useful after death is in a box, being looked at forever. Foucault would have enjoyed it.</p>
               <figure class="pic">
-                <img src="img/bentham-auto-icon.jpg" width="675" height="900" loading="lazy"
-                     alt="A seated figure in a black tailcoat, pale breeches and a wide straw hat, gloved hands resting on a walking stick across the knees, enclosed on every side by a tall glass case in a modern concrete building.">
+                <a class="zoom" style="width:225px" href="img/bentham-auto-icon.jpg" target="_blank" rel="noopener" title="Open this picture at full size"><img src="img/bentham-auto-icon.jpg" width="675" height="900" loading="lazy"
+                     alt="A seated figure in a black tailcoat, pale breeches and a wide straw hat, gloved hands resting on a walking stick across the knees, enclosed on every side by a tall glass case in a modern concrete building." style="aspect-ratio:675/900"></a>
                 <figcaption><b>Jeremy Bentham’s Auto-Icon in its case at University College London, photographed in April 2026.</b> Bentham’s will asked that his body be preserved, dressed in his own clothes and seated in a case where anyone could come and look at him, and the head is wax because the attempt on the real one left it disfigured. The man who designed a building around permanent inspection is the figure under glass here, with students walking past him all day. <span class="cred">Photograph by Matt Brown, CC BY 4.0, via Wikimedia Commons.</span></figcaption>
               </figure>
             </div></details>
@@ -950,8 +960,8 @@
             <details class="bit"><summary>One was built in Cuba, and Castro was locked in it</summary><div class="bq">
               <p>The Presidio Modelo on the Isla de la Juventud was constructed between 1926 and 1928: five enormous circular blocks, each with a watchtower at the centre, exactly to Bentham's plan. Fidel Castro was imprisoned there from 1953 to 1955 after the Moncada attack. It closed in 1967 after riots and hunger strikes over conditions, and stands empty as a museum. Photographs of the interior are the single most useful thing you can look at before reading this chapter.</p>
               <figure class="pic">
-                <img src="img/presidio-modelo-interior.jpg" width="900" height="602" loading="lazy"
-                     alt="Looking across the floor of a circular prison block: five tiers of small square cell openings curve right around the wall, all of them facing a plain concrete tower standing alone in the centre.">
+                <a class="zoom" style="width:449px" href="img/presidio-modelo-interior.jpg" target="_blank" rel="noopener" title="Open this picture at full size"><img src="img/presidio-modelo-interior.jpg" width="900" height="602" loading="lazy"
+                     alt="Looking across the floor of a circular prison block: five tiers of small square cell openings curve right around the wall, all of them facing a plain concrete tower standing alone in the centre." style="aspect-ratio:900/602"></a>
                 <figcaption><b>Inside one of the circular cell blocks at the Presidio Modelo, Isla de la Juventud, Cuba.</b> This is Bentham’s drawing built at full size and filled with people: every cell faces the tower, and the tower’s windows tell a prisoner nothing about whether a guard is behind them, so a man in a cell had to act all day as though he were being watched. <span class="cred">Photograph by Friman, CC BY-SA 3.0, via Wikimedia Commons.</span></figcaption>
               </figure>
             </div></details>
