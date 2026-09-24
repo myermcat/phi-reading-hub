@@ -127,6 +127,23 @@
   .tabrow button:hover { color: var(--ink); }
   .tabrow button[aria-selected="true"] { color: var(--accent); border-bottom-color: var(--accent); }
   .tabrow button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+  /* the professor's own posted notes, kept apart from anything she writes */
+  .pn { display: flex; flex-direction: column; gap: 26px; }
+  .pn .src { font-family: var(--mono); font-size: 11px; letter-spacing: .04em; color: var(--muted);
+             border-left: 2px solid var(--rule); padding: 8px 0 8px 14px; line-height: 1.6; }
+  .pn section { display: flex; flex-direction: column; gap: 12px; }
+  .pn h3 { margin: 0; font-family: var(--display); font-size: 21px; font-weight: 600; line-height: 1.2; }
+  .pn h3 span { display: block; font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em;
+                text-transform: uppercase; color: var(--accent); font-weight: 500; margin-bottom: 5px; }
+  .pn h4 { margin: 10px 0 0; font-family: var(--display); font-size: 17px; font-weight: 600; }
+  .pn p, .pn li { font-size: 16px; color: var(--ink-soft); }
+  .pn p { margin: 0; }
+  .pn ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 7px; }
+  .pn b { color: var(--ink); font-weight: 600; }
+  .pn blockquote { margin: 4px 0; padding: 12px 16px; background: var(--surface);
+                   border-left: 3px solid var(--rule); font-size: 15.5px; color: var(--ink-soft); }
+  .pn blockquote cite { display: block; margin-top: 7px; font-family: var(--mono); font-size: 10.5px;
+                        font-style: normal; color: var(--muted); }
   .lecpanel { display: flex; flex-direction: column; gap: 14px; padding-top: 22px; }
   .lecpanel[hidden] { display: none; }
   .lechead { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
@@ -284,6 +301,7 @@
     <div class="tabrow" role="tablist" aria-label="Lectures">
       <button type="button" role="tab" id="tab-lec1" aria-controls="panel-lec1" aria-selected="true" tabindex="0">Lecture 1</button>
       <button type="button" role="tab" id="tab-lec2" aria-controls="panel-lec2" aria-selected="false" tabindex="-1">Lecture 2</button>
+      <button type="button" role="tab" id="tab-prof" aria-controls="panel-prof" aria-selected="false" tabindex="-1">Prof&#8217;s notes</button>
     </div>
 
     <div class="lecpanel" role="tabpanel" id="panel-lec1" aria-labelledby="tab-lec1">
@@ -317,13 +335,107 @@
         <div class="nbpad"><div class="nb" contenteditable="true" data-k="lec2" data-ph="What was said in the second lecture&hellip;"></div></div>
       </div>
     </div>
+
+    <div class="lecpanel" role="tabpanel" id="panel-prof" aria-labelledby="tab-prof" hidden>
+      <div class="pn">
+        <div class="src">What the professor posted for each class, set out in her order and her terms. Sources: <em>Week 2 - Lecture Guide</em> and <em>Sept 16 Lecture Guide, Week 2 Bacon, Rousseau, Middle Ages</em> on Brightspace. Quotations are the ones she quoted, from their original authors.</div>
+
+        <section>
+          <h3><span>Monday 14 September</span>The Greeks, Schadewaldt, Plato</h3>
+          <h4>Physics in the Greek and ancient world</h4>
+          <ul>
+            <li><b>Homer</b>, eighth century BCE. The <em>Odyssey</em> relies on the role and order of the cosmos, which is a central concern for the Greek world.</li>
+            <li><b>Heraclitus</b>, sixth century BCE, historian and philosopher.</li>
+          </ul>
+          <blockquote>Sound thinking is man's greatest power, and his highest aptitude consists in the fact that he has the capacity to say what is, and that he can fashion creatively by hearkening to nature.<cite>Heraclitus, quoted on her slide</cite></blockquote>
+          <ul>
+            <li>Her summary line: <b>nature is in harmony.</b></li>
+          </ul>
+          <h4>Plato, 428 to 348 BCE</h4>
+          <ul>
+            <li>Born in Athens to an aristocratic family. Wrote 26 dialogues and ran a school, the Academy.</li>
+            <li>Dialogues are philosophical and literary texts written as a dialogue. Socrates is almost always the primary interlocutor, and <b>Plato does not speak in his own texts</b>. Socrates was a real person, but this is Plato's Socrates.</li>
+            <li><b>The Republic</b>, the dialogue set. The <b>allegory of the cave</b>: how we distinguish what is real from what is not, which is a method of inquiry.</li>
+            <li><b>Kalliopolis</b>, the ideal or most beautiful city. Plato's utopian vision, where the rulers are philosophers and correct education is central to the city's success.</li>
+            <li><b>Metaphysics</b>: what is the origin and nature of all things in the cosmos, and how do we investigate it. The Platonic Forms.</li>
+          </ul>
+          <h4>Aristotle, 384 to 322 BCE</h4>
+          <ul>
+            <li>Philosopher and first biologist, studied with Plato in Athens. Born in Stagira and <b>never an Athenian citizen</b>. Became tutor to Alexander the Great.</li>
+          </ul>
+          <h4>Physis and techne</h4>
+          <ul>
+            <li><b>Physis</b>, nature: the creative origin of everything. Everything comes out of and grows from nature. It implies movement, and it is the centre and origin of all activity. The question it answers is what causes movement.</li>
+            <li><b>Techne</b>: produced by man, and not on its own a part of nature. Nature is separate from techne. It is the combination of man and nature.</li>
+            <li><b>Telos</b>, in Aristotle: the end goal of each living thing in the world.</li>
+          </ul>
+          <blockquote>Techne is that knowledge and ability which is directed to producing and constructing, and thus occupies a sort of intermediate place between mere experience or know-how, empeiria, and theoretical knowledge, episteme. Techne differs from theoretical knowledge, episteme, in that the latter has to do with what is immutable, purely existent and primary, whereas techne, as productive knowledge, bears upon the domain of what is mutable, in the process of becoming, and comes to be.<cite>Schadewaldt on Aristotle, page 29, quoted on her slide</cite></blockquote>
+          <blockquote>A knowledge that is likewise productive but which, however rich and diverse it may be, has a false idea of the thing itself remains simply atechnia, blunder.<cite>Schadewaldt, page 29. Atechnia is a false idea of the thing, held confidently.</cite></blockquote>
+          <h4>Schadewaldt's argument</h4>
+          <blockquote>Our modern conception of nature more and more abandoned the comprehensive wholeness of the ancient Greek physis, the wholeness and unity of form and motion, law and life, causality and purpose; and in developing the modern dualism between thought and extension we have separated nature and spirit, nature and freedom, subject and object, from one another. This reduction of nature to what is calculable has proven to be extraordinarily successful. It has brought us the most astounding discoveries, and placed in our hands the greatest means of power, although at the cost of an impoverishment that is hard to estimate.<cite>Schadewaldt, quoted on her slide</cite></blockquote>
+          <ul>
+            <li><b>The reduction of nature to what is calculable</b> is the result of the scientific process, and his dualism is impoverished. It is less like the Greek connection between nature and techne.</li>
+            <li><b>His solution, to overcome dualism:</b> return man, as observing subject, back into the act of nature's inquiry and study of the world.</li>
+          </ul>
+          <h4>The three questions she put to the room</h4>
+          <ul>
+            <li>What do you think Schadewaldt means?</li>
+            <li>Is the argument about the dualism of nature and techne convincing, and why?</li>
+            <li>Are humans ever really separate from their inquiry?</li>
+          </ul>
+          <h4>The allegory of the cave</h4>
+          <ul>
+            <li>A dialogue between <b>Glaucon and Socrates</b>. The allegory is taking shadows on the cave wall for the real objects. The method of inquiry is looking into the light.</li>
+            <li><b>What Plato wants to know:</b> how do we know what is true and what the substance of a thing is; how do we verify facts; how do we know the sources of our information; what methods of inquiry are we to use.</li>
+            <li>Inside the cave. <b>Learning as painful.</b> Leaving the cave means moving upward, which becomes Plato's journey of the soul, the upward journey to the intelligible realm against the sensible world where the shadows are.</li>
+          </ul>
+          <blockquote>Education isn't what some people declare it to be, namely, putting knowledge into souls that lack it, like putting sight into blind eyes.<cite>Plato, page 11 of the extract, quoted on her slide</cite></blockquote>
+          <ul>
+            <li><b>Education is turning around</b>, turning the soul toward the light. Sight is no good if you are not looking in the right place.</li>
+            <li><b>Philosopher kings</b> should be the leaders and guardians of the city. Her quotation describes them as people who are awake while everyone else is dreaming. Their education needs geometry and astronomy.</li>
+            <li><b>Dialectic</b>: the Platonic method of inquiry, the best way to get to the truth, and the process of separating opinion from knowledge and understanding.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3><span>Wednesday 16 September</span>Middle Ages, Bacon, Rousseau</h3>
+          <h4>Technology and the Middle Ages, Lynn White Jr.</h4>
+          <ul>
+            <li><b>His argument:</b> the development of religious worldviews influences the development of technologies.</li>
+            <li>The Western technological and economic world is shaped by the goals of the Judaeo-Christian worldview.</li>
+            <li>Around <b>1300</b>, in the Middle Ages, the first ideas of <b>Deism</b> start to develop: God as a clockmaker who set the world in motion.</li>
+            <li>Work, the work ethic, and the production of technology all become related to worship, and as important as it.</li>
+          </ul>
+          <blockquote>The Christian Creator God, the architect of the cosmos and the potter who shaped man from clay in his own image, commands man to rule the world and to help to fulfill the divine will in it as a creative cooperator with him. History, far from being cyclical as it is in most religions, in Christianity is unique and unilinear; it is accelerating toward a spiritual goal; there is no time to lose; therefore, work, including manual work, is an essential and pressing form of worship.<cite>Lynn White, page 513, quoted on her slide</cite></blockquote>
+          <h4>Francis Bacon, 1561 to 1626</h4>
+          <ul>
+            <li>Early modern philosopher, and <b>the father of empiricism</b>: the careful observation of nature. Strongly influenced by the Scientific Revolution.</li>
+            <li><b>Empiricist</b>: the senses are the original source of knowledge.</li>
+            <li>Her example of the new engagement with the empirical: mathematical laws such as gravity, meaning Newton's laws, which allow the movement of planets, moons and celestial bodies to be predicted. Against that, <b>for Plato mathematics was a way to gain greater access to the abstract.</b></li>
+            <li><b>Knowledge is power</b>, meaning power over the physical world. Against Plato, where power is intellectual and grasped by the soul's ability to perceive a transcendental realm.</li>
+            <li>Bacon was highly critical of <b>Aristotle and the alchemists</b>. His problem with the Aristotelian worldview is <b>telos</b>: a fundamental order that must be understood, with the world revealing itself to the observer. Her contrast is Galileo, 1564 to 1642, finding that the planets revolve around the sun.</li>
+          </ul>
+          <blockquote>The alchemists or empirics had been like the ant, only to store up and use things; the Aristotelians or dogmatists had been like spiders, spinning webs from their own entrails. The proper natural philosopher should proceed in the way of the bee, to gather material from the flowers and then to convert and digest it.<cite>Bacon's simile, Novum Organum I.95, quoted on her slide</cite></blockquote>
+          <ul>
+            <li>And his complaint about the ancients: in Greece and Rome ethics and politics dominated philosophy, with the consequence that natural philosophy performed <b>the role of a servant</b>.</li>
+          </ul>
+          <h4>Jean-Jacques Rousseau, 1712 to 1778</h4>
+          <ul>
+            <li>French philosopher, influenced by the Enlightenment and the French Revolution.</li>
+            <li>Argued that a <b>return to Greek values</b> was necessary for the benefit of society and education, idealising the Greek focus on science and art in education.</li>
+            <li><b>Progress is only possible through education</b>, much as it was for the Greeks.</li>
+            <li><b>Barbarous people are those who lack virtue</b>, which she ties back to Plato, Socrates and Aristotle.</li>
+          </ul>
+        </section>
+      </div>
+    </div>
   </div>
 
   <details class="about">
     <summary>What this page is, and how to write in it</summary>
     <div class="aboutin">
       <p>Week 2 runs across two lectures. Each tab keeps its own notes and its own date, saved in this browser beside the highlights on the reading guide.</p>
-      <p>What each author argues goes in <a href="./#s-notes">the notes by text</a> on the reading guide. This page is for what was said in the room.</p>
+      <p>What each author argues goes in <a href="./#s-notes">the notes by text</a> on the reading guide. This page is for what was said in the room. The third tab holds what the professor posted, which is the closest thing there is to a list of what she thinks is worth knowing.</p>
       <p>Type straight into a tab and it saves on its own. <b>Cmd or Ctrl + B</b> for bold, <b>+ I</b> for italic, <b>+ H</b> for the last colour you used, and again to take it off. Selecting text brings up a small bar with bold, italic, a bullet list and the colours. Typing <b>- </b> or <b>1. </b> starts a list, <b>### </b> starts a heading, and <b>Tab</b> inside a list indents.</p>
     </div>
   </details>
