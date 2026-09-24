@@ -127,6 +127,23 @@
   .tabrow button:hover { color: var(--ink); }
   .tabrow button[aria-selected="true"] { color: var(--accent); border-bottom-color: var(--accent); }
   .tabrow button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+  /* the professor's own posted notes, kept apart from anything she writes */
+  .pn { display: flex; flex-direction: column; gap: 26px; }
+  .pn .src { font-family: var(--mono); font-size: 11px; letter-spacing: .04em; color: var(--muted);
+             border-left: 2px solid var(--rule); padding: 8px 0 8px 14px; line-height: 1.6; }
+  .pn section { display: flex; flex-direction: column; gap: 12px; }
+  .pn h3 { margin: 0; font-family: var(--display); font-size: 21px; font-weight: 600; line-height: 1.2; }
+  .pn h3 span { display: block; font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em;
+                text-transform: uppercase; color: var(--accent); font-weight: 500; margin-bottom: 5px; }
+  .pn h4 { margin: 10px 0 0; font-family: var(--display); font-size: 17px; font-weight: 600; }
+  .pn p, .pn li { font-size: 16px; color: var(--ink-soft); }
+  .pn p { margin: 0; }
+  .pn ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 7px; }
+  .pn b { color: var(--ink); font-weight: 600; }
+  .pn blockquote { margin: 4px 0; padding: 12px 16px; background: var(--surface);
+                   border-left: 3px solid var(--rule); font-size: 15.5px; color: var(--ink-soft); }
+  .pn blockquote cite { display: block; margin-top: 7px; font-family: var(--mono); font-size: 10.5px;
+                        font-style: normal; color: var(--muted); }
   .lecpanel { display: flex; flex-direction: column; gap: 14px; padding-top: 22px; }
   .lecpanel[hidden] { display: none; }
   .lechead { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
@@ -284,6 +301,7 @@
     <div class="tabrow" role="tablist" aria-label="Lectures">
       <button type="button" role="tab" id="tab-lec1" aria-controls="panel-lec1" aria-selected="true" tabindex="0">Lecture 1</button>
       <button type="button" role="tab" id="tab-lec2" aria-controls="panel-lec2" aria-selected="false" tabindex="-1">Lecture 2</button>
+      <button type="button" role="tab" id="tab-prof" aria-controls="panel-prof" aria-selected="false" tabindex="-1">Prof&#8217;s notes</button>
     </div>
 
     <div class="lecpanel" role="tabpanel" id="panel-lec1" aria-labelledby="tab-lec1">
@@ -317,13 +335,105 @@
         <div class="nbpad"><div class="nb" contenteditable="true" data-k="lec2" data-ph="What was said in the second lecture&hellip;"></div></div>
       </div>
     </div>
+
+    <div class="lecpanel" role="tabpanel" id="panel-prof" aria-labelledby="tab-prof" hidden>
+      <div class="pn">
+        <div class="src">What the professor posted for each class, set out in her order and her terms. Sources: <em>Sept 21 Lecture Notes Week 3</em> and <em>Lecture Notes Sept 23</em> on Brightspace. Quotations are the ones she quoted, from their original authors.</div>
+
+        <section>
+          <h3><span>Monday 21 September</span>Foucault</h3>
+          <p><b>Michel Foucault, 1926 to 1984, French philosopher.</b></p>
+          <h4>History of Madness, 1961</h4>
+          <ul>
+            <li>His argument: the claimed scientific neutrality of modern medical treatment of insanity is in fact a cover for controlling challenges to conventional bourgeois morality.</li>
+            <li>What was presented as objective, incontrovertible scientific discovery, that madness is mental illness, was the product of questionable social and ethical commitments.</li>
+            <li><b>Her examples: homosexuality and hysteria.</b></li>
+          </ul>
+          <h4>Discipline and Punish, 1975</h4>
+          <ul>
+            <li>A genealogical study of the development of the gentler modern way of imprisoning criminals, in place of torturing or killing them.</li>
+            <li><b>Three primary techniques of control</b> in modern disciplinary society: <b>hierarchical observation</b>, <b>normalizing judgment</b>, and <b>the examination</b>.</li>
+            <li><b>Normalization</b> is the goal, and it creates judicial systems with normal against abnormal citizens. Her examples: standardized education programmes, medical practices, industrial processes and production.</li>
+            <li><b>Hierarchical observation</b> leads to <b>power-knowledge</b>, the two combined into a unified whole: "the development of force and the establishment of truth". Foucault builds on Bacon's <b>knowledge is power</b>, and sees power and knowledge as having the same goal, which is controlling what we know.</li>
+            <li><b>Docile bodies.</b> Discipline produces them: the bodies of prisoners, soldiers, workers, schoolchildren, subjected to disciplinary power to make them useful and easier to control.</li>
+          </ul>
+          <blockquote>The human body becomes a machine the functioning of which could be optimized, calculated, and improved. The function, movements and capabilities were broken down into narrow segments, analyzed in detail and recomposed in a maximally effective way.<cite>Stanford Encyclopedia of Philosophy, quoted on her slide</cite></blockquote>
+          <ul>
+            <li><b>The modern prison</b> punishes by depriving inmates of liberty, and categorizes their nature.</li>
+          </ul>
+          <h4>Panopticism</h4>
+          <ul>
+            <li>The text opens with <b>the plague town</b>. The plague is met with Order: sort out the disease and separate bodies, sort out evil, which increases fear and death.</li>
+            <li>The plague has a <b>political dream</b>: a strict division, and the penetration of regulation into even the smallest details of everyday life.</li>
+            <li><b>A panoptic utopia</b>, the utopia of a perfectly governed city. Her own note on the slide: <b>think Plato, Republic, the Kalliopolis.</b> The role of executive power. Normal against abnormal. Designing institutions to correct the abnormal, as in the plague example.</li>
+            <li><b>Spaces of exclusion</b>: places for beggars, vagabonds, madmen and the disorderly. Her example, the nineteenth-century psychiatric asylum. The problem is that these spaces are formed by the real population, and authorities exercise power through a binary of division and branding: mad against sane, dangerous against harmless, normal against abnormal.</li>
+          </ul>
+          <h4>Bentham's Panopticon</h4>
+          <ul>
+            <li><b>Jeremy Bentham, English philosopher.</b> Most famous for utilitarianism. Spent much of his life fighting for prison reform. Her slide gives his dates as 1748 to 1834; he died in 1832.</li>
+            <li>A perfect system of observation: one guard can see everything.</li>
+          </ul>
+          <blockquote>At the periphery, an annular building; at the centre, a tower; this tower is pierced with wide windows that open onto the inner side of the ring; the peripheric building is divided into cells, each of which extends the whole width of the building; they have two windows, one on the inside, corresponding to the windows of the tower; the other, on the outside, allows the light to cross the cell from one end to the other.<cite>Foucault, quoted in full on her slide</cite></blockquote>
+          <ul>
+            <li><b>The purpose</b> is to induce in the inmate a state of constant surveillance, because of their permanent visibility.</li>
+            <li><b>Bentham's principle of power, in three words she listed on their own:</b> visibility, unverifiability, and external power becoming non-corporeal.</li>
+          </ul>
+          <blockquote>The Panopticon is a royal menagerie; the animal is replaced by man, individual distribution by specific grouping and the king by the machinery of a furtive power.<cite>Foucault, quoted on her slide, on individualizing observation, classification and the analytical arrangement of space</cite></blockquote>
+        </section>
+
+        <section>
+          <h3><span>Wednesday 23 September</span>The Kuhnian Revolution</h3>
+          <p><b>Thomas Kuhn, philosopher of science.</b> Her slide gives 1922 to 1966; he died in 1996. <em>The Structure of Scientific Revolutions</em>, one of the most cited academic books of all time.</p>
+          <ul>
+            <li>It marked a break with <b>positive doctrines</b>. The positivist paradigm emerged in the Enlightenment and underpinned the major principles of the natural sciences: non-contextual, formal and standardised research that seeks analytically to separate distinct variables.</li>
+            <li>His influence is strongest in the history of science.</li>
+            <li>He held that science enjoys periods of stable growth punctuated by revisionary revolutions.</li>
+          </ul>
+          <h4>The Copernican Revolution</h4>
+          <ul>
+            <li><b>Nicolaus Copernicus, 1473 to 1543</b>, mathematician and astronomer. He held the sun stationary and the earth moving around it, against Aristotle's earth-centred worldview.</li>
+            <li>Her framing, and it is the important one: <b>Copernicus held that the sun needed to be at the centre for circular motion to work.</b></li>
+            <li>He is later recognised for initiating the Scientific Revolution.</li>
+            <li><b>The Scientific Revolution</b>, sixteenth and seventeenth century. It replaced the Greek worldview that had prevailed for two thousand years. Science becomes its own discipline, distinct from philosophy. It replaced the Christian focus of the European worldview and embraced utilitarian concerns.</li>
+          </ul>
+          <h4>The argument of the book</h4>
+          <ul>
+            <li>The history of science is not uniform. It alternates between <b>normal</b> and <b>revolutionary</b> phases.</li>
+            <li>He rejected the idea that research makes steady progress, and he rejected <b>Whig history</b>, which she quoted from the chapter: history that constructs the past as a series of steps toward present views, where the temptation is to see the past through the lens of the present. Since events must follow their causes, a sequence of events cannot be explained teleologically by the fact that it represents progress.</li>
+            <li><b>Normal science is puzzle solving.</b> A field shares <b>paradigms</b>: patterns for others to follow, which serve as theoretical and methodological tools. Her examples, straight from the chapter: <b>Newton's mechanics, Lavoisier's chemistry, Mendel's genetics.</b> Lavoisier's ideas about elements and the conservation of mass formed frameworks for later chemists.</li>
+            <li><b>Foundationalism</b>: the idea that knowledge can be traced back to a firm foundation, on the metaphor of a foundation we keep building on. The problem she named is induction. And she noted this is not like the Aristotelian telos, where a thing moves toward an ideal form.</li>
+            <li><b>Paradigms</b> are well-structured theories of research. Normal science uses fixed theories, values, instruments and metaphysical assumptions. In a <b>revolution</b> the disciplinary matrix is revised and an anomalous problem gets solved.</li>
+          </ul>
+          <h4>Incommensurability</h4>
+          <ul>
+            <li>As scientific practices change there may be <b>no common measure</b> for comparison. Puzzles and paradigms are judged in relation to one another, and if they are too different comparison becomes difficult or impossible.</li>
+            <li><b>Kuhn's three principles of incommensurability, in her words:</b> meanings of terms change, <b>indoctrination</b>, and historical context change.</li>
+            <li><b>The critiques.</b> Many hold that semantic incommensurability can be overcome and is therefore not a real limitation. Kuhn modified his position in response and emphasised that communication remains difficult within the scientific community.</li>
+            <li>Others point out that many paradigms stay while others change, and that the same experiments, instruments and theories can be used to get better results. <b>Her example: particle detectors were used the same way at a later stage. The theory changed and the instrument of detection stayed where it was.</b></li>
+            <li><b>Her conclusion: science is an ad hoc system that is disunified.</b> It does not need one abiding thread or foundational idea to unify it and make it successful, which is the Wittgenstein point.</li>
+          </ul>
+          <h4>The modernity of science</h4>
+          <ul>
+            <li>New scientists are less indoctrinated with generalisations and more responsible for change and new approaches. Older scientists tend to become more conservative, and marginalised if they do not change.</li>
+            <li>Research patterns show that scientists pay more attention to the most recent findings, and past research has little perceived value, which gives the impression that science and scientists are young and modern.</li>
+          </ul>
+          <h4>What she listed as Kuhn's contributions</h4>
+          <ul>
+            <li><b>Normal science</b>: progress is easy to talk about here, because achievements are apparent.</li>
+            <li><b>Revolutions</b>: not progressive, because they both build and destroy paradigms.</li>
+            <li><b>Incommensurability</b>: different theories can lack a common measure, because paradigms and theoretical terms change between eras.</li>
+            <li><b>His view of progress</b>: science is not progressivist, it moves from one more or less adequate paradigm to another; it has no unified or overarching goal in the way foundationalism supposes; and on the largest scale it is a story of change, where the usual telling has uninterrupted progress.</li>
+          </ul>
+        </section>
+      </div>
+    </div>
   </div>
 
   <details class="about">
     <summary>What this page is, and how to write in it</summary>
     <div class="aboutin">
       <p>Week 3 runs across two lectures. Each tab keeps its own notes and its own date, saved in this browser beside the highlights on the reading guide.</p>
-      <p>What each author argues goes in <a href="./#s-notes">the notes by text</a> on the reading guide. This page is for what was said in the room.</p>
+      <p>What each author argues goes in <a href="./#s-notes">the notes by text</a> on the reading guide. This page is for what was said in the room. The third tab holds what the professor posted, which is the closest thing there is to a list of what she thinks is worth knowing.</p>
       <p>Type straight into a tab and it saves on its own. <b>Cmd or Ctrl + B</b> for bold, <b>+ I</b> for italic, <b>+ H</b> for the last colour you used, and again to take it off. Selecting text brings up a small bar with bold, italic, a bullet list and the colours. Typing <b>- </b> or <b>1. </b> starts a list, <b>### </b> starts a heading, and <b>Tab</b> inside a list indents.</p>
     </div>
   </details>
