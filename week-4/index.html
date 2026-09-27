@@ -1,0 +1,2002 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PHI2394 Week 4 Reading Guide</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%232E8E74'/%3E%3Cellipse%20cx='32'%20cy='33'%20rx='12.5'%20ry='15'%20fill='none'%20stroke='%23fff'%20stroke-width='7'/%3E%3Crect%20x='28.5'%20y='7'%20width='7'%20height='50'%20rx='3.5'%20fill='%23fff'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,600&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --paper:      #EDEFEC;
+    --surface:    #F6F7F4;
+    --sunk:       #E3E6E1;
+    --ink:        #191D1A;
+    --ink-soft:   #414944;
+    --muted:      #6E766F;
+    --rule:       #D2D8D1;
+    --rule-soft:  #E1E5DF;
+    --close:      #1F6B57;
+    --close-wash: #CFE3DA;
+    --skim:       #8E6318;
+    --skim-wash:  #ECDDC2;
+    --skip:       #7E867F;
+    --skip-wash:  #D9DDD8;
+    --accent:     #1F6B57;
+    --curious:    #6B4372;
+    --curious-bg: #F2EEF3;
+    --lead:       #2E574A;
+    --c-y:        #8A6A0B;
+    --c-p:        #AE2F73;
+    --ghost:      #DADFD9;
+
+    --display: "Newsreader", Georgia, "Times New Roman", serif;
+    --body:    "Source Sans 3", -apple-system, "Segoe UI", sans-serif;
+    --mono:    "IBM Plex Mono", "SF Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #141815; --surface: #1B201D; --sunk: #10130F;
+      --ink: #E4E8E3; --ink-soft: #B4BCB6; --muted: #8B948D;
+      --rule: #2C332E; --rule-soft: #232925;
+      --close: #64BFA1; --close-wash: #214136;
+      --skim: #D9A957; --skim-wash: #3C3220;
+      --skip: #79827B; --skip-wash: #272D29;
+      --accent: #64BFA1;
+      --curious: #C4A0CB; --curious-bg: #221B25;
+      --lead: #93C2B2;
+      --c-y: #E3BE57;
+      --c-p: #FF97C6;
+      --ghost: #262C28;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #141815; --surface: #1B201D; --sunk: #10130F;
+    --ink: #E4E8E3; --ink-soft: #B4BCB6; --muted: #8B948D;
+    --rule: #2C332E; --rule-soft: #232925;
+    --close: #64BFA1; --close-wash: #214136;
+    --skim: #D9A957; --skim-wash: #3C3220;
+    --skip: #79827B; --skip-wash: #272D29;
+    --accent: #64BFA1;
+    --curious: #C4A0CB; --curious-bg: #221B25;
+    --lead: #93C2B2;
+    --c-y: #E3BE57;
+    --c-p: #FF97C6;
+    --ghost: #262C28;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--paper); color: var(--ink); font-family: var(--body);
+    font-size: 17.5px; line-height: 1.6; -webkit-font-smoothing: antialiased;
+    padding-bottom: 47px;
+  }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 40px 26px 90px; display: flex; flex-direction: column; gap: 48px; }
+  .eyebrow { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted); }
+  h1 {
+    font-family: var(--display); font-weight: 600; font-size: clamp(34px, 5.6vw, 50px);
+    line-height: 1.06; letter-spacing: -0.015em; margin: 10px 0 0; text-wrap: balance;
+  }
+  .standfirst {
+    font-family: var(--display); font-size: clamp(18px, 2.4vw, 21.5px); line-height: 1.5;
+    color: var(--ink-soft); max-width: 62ch; margin: 14px 0 0;
+  }
+  p { margin: 0; max-width: 82ch; }
+  .lede { color: var(--ink-soft); }
+
+  .strip-block { display: flex; flex-direction: column; gap: 11px; }
+  .strip { display: flex; width: 100%; height: 52px; border: 1px solid var(--rule); overflow: hidden; }
+  .seg { display: flex; min-width: 0; }
+  .seg + .seg { border-left: 1px solid var(--paper); }
+  .seg .txt, .seg .nts {
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--mono); font-size: 11px; color: #fff; min-width: 0; overflow: hidden;
+  }
+  .seg .nts { background: var(--skip-wash); }
+  .p-close .txt { background: var(--close); }
+  .p-skim  .txt { background: var(--skim); }
+  .p-skip  .txt { background: var(--skip); }
+  .strip-key { display: flex; flex-wrap: wrap; gap: 6px 18px; font-family: var(--mono); font-size: 11px; color: var(--muted); }
+  .strip-key i { font-style: normal; display: inline-flex; align-items: center; gap: 7px; }
+  .strip-key i::before { content: ""; width: 13px; height: 13px; display: inline-block; border: 1px solid var(--rule); }
+  .k-close::before { background: var(--close); }
+  .k-skim::before  { background: var(--skim); }
+  .k-skip::before  { background: var(--skip); }
+  .k-notes::before { background: var(--skip-wash); }
+
+  .tally { display: flex; flex-wrap: wrap; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  .tally > div { flex: 1 1 140px; padding: 14px 18px 14px 0; display: flex; flex-direction: column; gap: 2px; }
+  .tally > div + div { padding-left: 18px; border-left: 1px solid var(--rule-soft); }
+  .tally b { font-family: var(--mono); font-weight: 500; font-size: 24px; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+  .tally span { font-size: 13px; color: var(--muted); line-height: 1.35; }
+  .t-a b { color: var(--close); }
+  .t-b b { color: var(--skim); }
+
+  section { display: flex; flex-direction: column; gap: 20px; }
+  h2 { font-family: var(--display); font-weight: 600; font-size: 28px; letter-spacing: -0.01em; margin: 0; text-wrap: balance; }
+  h2 + p { margin-top: -8px; }
+  section > .ctx, section > .exm, section > .scroller, section > figure { margin: 26px 0; }
+  h3.sub { font-family: var(--display); font-weight: 600; font-size: 21px; margin: 14px 0 -8px; letter-spacing: -0.005em; }
+  .minihead { margin: 10px 0 -10px; font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+
+  .facts {
+    background: var(--surface); border-left: 3px solid var(--close);
+    padding: 20px 24px; display: grid; grid-template-columns: 150px 1fr; gap: 10px 18px; font-size: 16px;
+  }
+  .facts dt { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); padding-top: 4px; }
+  .facts dd { margin: 0; color: var(--ink-soft); }
+  .facts dd b { color: var(--ink); font-weight: 600; }
+
+  ul.plain { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 10px; max-width: 82ch; color: var(--ink-soft); }
+  ul.plain b { color: var(--ink); }
+
+  .nine { width: 100%; border-collapse: collapse; font-size: 15.5px; }
+  .nine th {
+    text-align: left; font-family: var(--mono); font-size: 10px; letter-spacing: 0.09em;
+    text-transform: uppercase; color: var(--muted); font-weight: 500;
+    padding: 0 14px 9px 0; border-bottom: 1px solid var(--rule); vertical-align: bottom;
+  }
+  .nine td { padding: 12px 14px 12px 0; border-bottom: 1px solid var(--rule-soft); vertical-align: top; color: var(--ink-soft); }
+  .nine td:first-child { color: var(--ink); font-weight: 600; white-space: nowrap; padding-right: 18px; }
+  .nine td:first-child span { display: block; font-family: var(--mono); font-size: 10px; font-weight: 400; color: var(--muted); letter-spacing: 0.04em; }
+  .scroller { overflow-x: auto; margin: 30px 0; }
+
+  .convo { display: flex; flex-direction: column; }
+  .turn { display: grid; grid-template-columns: 128px 1fr; gap: 0 22px; padding: 16px 0; border-top: 1px solid var(--rule-soft); }
+  .turn:first-child { border-top: 1px solid var(--rule); }
+  .turn .who { display: flex; flex-direction: column; gap: 1px; padding-top: 2px; }
+  .turn .who b { font-family: var(--body); font-size: 15px; font-weight: 600; }
+  .turn .who span { font-family: var(--mono); font-size: 10.5px; color: var(--muted); }
+  .turn p { font-size: 16.5px; }
+
+  .readings { display: flex; flex-direction: column; }
+  .rd { display: grid; grid-template-columns: 4px 1fr; gap: 0 22px; padding: 36px 0; border-top: 1px solid var(--rule); }
+  .rd .stripe { background: var(--skip); }
+  .rd.p-close .stripe { background: var(--close); }
+  .rd.p-skim  .stripe { background: var(--skim); }
+  .rd .main { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
+
+  .rd .head { display: flex; flex-direction: column; gap: 7px; }
+  .rd h3 { margin: 0; font-family: var(--display); font-size: 25px; font-weight: 600; line-height: 1.16; text-wrap: balance; }
+  .rd h3 .ch { font-family: var(--mono); font-size: 14px; font-weight: 500; color: var(--muted); letter-spacing: 0.02em; margin-right: 10px; vertical-align: 3px; }
+  .rd .who { font-family: var(--display); font-style: italic; font-size: 18px; color: var(--ink-soft); }
+  .rd .meta { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.03em; }
+  .tag { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.09em; text-transform: uppercase; padding: 2.5px 8px; }
+  .p-close .tag { background: var(--close-wash); color: var(--close); }
+  .p-skim  .tag { background: var(--skim-wash);  color: var(--skim); }
+  .p-skip  .tag { background: var(--skip-wash);  color: var(--skip); }
+
+  .span { display: flex; flex-direction: column; gap: 5px; }
+  .span .bar { display: flex; height: 14px; width: 100%; border: 1px solid var(--rule); overflow: hidden; }
+  .span .bar i { display: block; background: var(--ghost); }
+  .span .bar i.here-txt { background: var(--close); }
+  .p-skim .span .bar i.here-txt { background: var(--skim); }
+  .p-skip .span .bar i.here-txt { background: var(--skip); }
+  .span .bar i.here-nts { background: var(--skip-wash); }
+  .span .cap { font-family: var(--mono); font-size: 10.5px; color: var(--muted); letter-spacing: 0.03em; }
+
+  .qline { font-family: var(--display); font-size: 19.5px; line-height: 1.42; padding: 12px 0 12px 16px; border-left: 2px solid var(--accent); color: var(--ink); }
+
+  .rd h4 { margin: 8px 0 -7px; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+  .rd ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 9px; max-width: 82ch; }
+  .rd li { padding-left: 2px; }
+  .rd .body { display: flex; flex-direction: column; gap: 14px; }
+  .rd .body > .scroller, .rd .body > figure, .rd .body > .quo,
+  .rd .body > .ctx, .rd .body > .exm { margin: 16px 0; }
+  .rd .body > ul, .rd .body > ol { margin: 4px 0 6px; }
+  .rd .body > p > b:first-child, .rd .body > ul > li > b:first-child,
+  .rd .body > ol > li > b:first-child { color: var(--lead); }
+  .rd .body h5 {
+    margin: 12px 0 -4px; font-family: var(--display); font-weight: 600;
+    font-size: 18.5px; line-height: 1.25; color: var(--ink); letter-spacing: -.005em;
+  }
+
+  .links { display: grid; grid-template-columns: 84px 1fr; gap: 8px 14px; font-size: 16px; border-top: 1px solid var(--rule-soft); border-bottom: 1px solid var(--rule-soft); padding: 13px 0; }
+  .links dt { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); padding-top: 4px; }
+  .links dd { margin: 0; color: var(--ink-soft); }
+
+  .mynote { background: var(--sunk); padding: 16px 20px; font-size: 16.5px; color: var(--ink-soft); display: flex; flex-direction: column; gap: 6px; }
+  .mynote b { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+
+  .keep { font-family: var(--display); font-size: 18.5px; line-height: 1.45; font-style: italic; color: var(--ink); border-left: 2px solid var(--rule); padding: 2px 0 2px 14px; }
+  .keep b { font-family: var(--mono); font-style: normal; font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 5px; font-weight: 500; }
+
+  .curious { background: var(--curious-bg); padding: 22px 24px 24px; display: flex; flex-direction: column; gap: 16px; margin-top: 6px; }
+  .curious > .label { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .curious > .label b { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--curious); font-weight: 500; }
+  .curious > .label span { font-family: var(--mono); font-size: 10.5px; color: var(--muted); }
+  /* Every curious item and every side note is a toggle, closed until it is asked for,
+     and its summary says what is inside, so the line alone is enough to decide on. */
+  details.bit > summary, details.ctx > summary {
+    display: flex; align-items: baseline; gap: 10px; cursor: pointer; list-style: none;
+    padding: 4px 0; margin: 0; border-radius: 3px;
+  }
+  details.bit > summary::-webkit-details-marker,
+  details.ctx > summary::-webkit-details-marker { display: none; }
+  details.bit > summary::after, details.ctx > summary::after {
+    content: ''; width: 6px; height: 6px; flex: none; margin-left: auto; align-self: center;
+    border-right: 1.6px solid currentColor; border-bottom: 1.6px solid currentColor;
+    transform: translateY(-2px) rotate(45deg); opacity: .45; transition: transform .18s ease, opacity .18s ease;
+  }
+  details[open].bit > summary::after, details[open].ctx > summary::after {
+    transform: translateY(1px) rotate(225deg); opacity: .75;
+  }
+  details.bit > summary:hover::after, details.ctx > summary:hover::after { opacity: .9; }
+  details.bit > summary:focus-visible, details.ctx > summary:focus-visible {
+    outline: 2px solid var(--accent); outline-offset: 3px;
+  }
+  .bq { display: flex; flex-direction: column; gap: 9px; padding-top: 9px; }
+  .curious > details.bit + details.bit { border-top: 1px solid var(--rule); padding-top: 16px; }
+
+  .bit { display: block; }
+  .bit > summary {
+    font-family: var(--display); font-weight: 600; font-size: 20.5px;
+    line-height: 1.2; color: var(--curious); letter-spacing: -0.005em; text-wrap: balance;
+  }
+  .bit p { font-size: 16.5px; color: var(--ink-soft); }
+  .bit p b { color: var(--ink); font-weight: 600; }
+
+  .plan { display: flex; flex-direction: column; }
+  .ses { display: grid; grid-template-columns: 118px 1fr; gap: 0 24px; padding: 22px 0; border-top: 1px solid var(--rule); }
+  .ses .when { display: flex; flex-direction: column; gap: 3px; padding-top: 3px; }
+  .ses .when b { font-family: var(--mono); font-size: 11px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--accent); font-weight: 500; }
+  .ses .when span { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+  .ses .what { display: flex; flex-direction: column; gap: 8px; }
+  .ses h3 { margin: 0; font-family: var(--display); font-size: 21px; font-weight: 600; line-height: 1.2; }
+  .ses p { font-size: 16.5px; color: var(--ink-soft); }
+
+  .endmatter { border-top: 1px solid var(--rule); padding-top: 24px; font-size: 14.5px; color: var(--muted); display: flex; flex-direction: column; gap: 12px; }
+  .endmatter b { color: var(--ink-soft); font-weight: 600; }
+  .endmatter .weeks { display: grid; grid-template-columns: 96px 1fr; gap: 6px 16px; }
+  .endmatter .weeks dt { font-family: var(--mono); font-size: 11px; color: var(--muted); padding-top: 3px; }
+  .endmatter .weeks dd { margin: 0; color: var(--ink-soft); }
+
+  /* site footer */
+  .sitefoot { border-top: 1px solid var(--rule); background: var(--surface); margin-top: 20px; }
+  .sitefoot .in { max-width: 900px; margin: 0 auto; padding: 40px 26px 30px;
+                  display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 32px; }
+  .sitefoot .col { display: flex; flex-direction: column; gap: 9px; align-items: flex-start; }
+  .sitefoot h2 { margin: 0 0 2px; font-family: var(--mono); font-size: 10.5px; letter-spacing: .13em;
+                 text-transform: uppercase; color: var(--muted); font-weight: 500; }
+  .sitefoot a, .sitefoot button { font-family: var(--body); font-size: 14.5px; color: var(--ink-soft);
+                                  text-decoration: none; background: none; border: 0; padding: 0;
+                                  cursor: pointer; text-align: left; border-bottom: 1px solid transparent; }
+  .sitefoot a:hover, .sitefoot button:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .sitefoot .brand a { font-family: var(--mono); font-size: 11.5px; letter-spacing: .08em;
+                       text-transform: uppercase; color: var(--ink); }
+  .sitefoot .brand p { margin: 0; font-size: 14px; color: var(--muted); max-width: 30ch; }
+  .sitefoot .colophon { max-width: 900px; margin: 0 auto; padding: 16px 26px 34px;
+                        border-top: 1px solid var(--rule); display: flex; flex-wrap: wrap; gap: 6px 28px;
+                        font-size: 12.5px; color: var(--muted); }
+  @media (max-width: 700px) { .sitefoot .in { grid-template-columns: 1fr; gap: 26px; padding: 30px 16px 22px; }
+                              .sitefoot .colophon { padding: 14px 16px 26px; flex-direction: column; } }
+
+  /* the dock: pinned to the bottom, carrying the things used while reading */
+  .dock { position: fixed; left: 0; right: 0; bottom: 0; z-index: 75; background: var(--paper);
+          border-top: 1px solid var(--rule); }
+  .dock .prog { height: 2px; width: 0; background: var(--accent); transition: width .1s linear; }
+  .dock .in { max-width: 900px; margin: 0 auto; padding: 0 20px; height: 45px;
+              display: flex; align-items: center; gap: 2px; }
+  .dock button, .dock a { display: flex; align-items: center; gap: 7px; background: none; border: 0;
+              padding: 8px 10px; border-radius: 5px; cursor: pointer; text-decoration: none;
+              font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+              color: var(--muted); }
+  .dock button:hover, .dock a:hover { color: var(--ink); background: var(--surface); }
+  .dock button:focus-visible, .dock a:focus-visible { outline: 2px solid var(--accent); outline-offset: -1px; }
+  .dock svg { width: 13px; height: 14px; flex: none; }
+  .dock .end { margin-left: auto; }
+  .dock .n { font-family: var(--mono); font-size: 10px; line-height: 1.6; background: var(--sunk);
+             color: var(--ink-soft); border-radius: 9px; padding: 0 6px; min-width: 18px; text-align: center; }
+  .dock .n:empty { display: none; }
+  .dock #bmgo[data-set="1"] { color: var(--accent); }
+  .dock #bmgo[data-set="1"] svg { fill: currentColor; }
+  @media (max-width: 620px) { .dock .in { padding: 0 8px; } .dock .lab { display: none; } }
+
+  /* the highlights drawer, kept out of the reading */
+  .drawer[hidden] { display: none !important; }
+  .drawer { position: fixed; inset: 0; z-index: 90; }
+  .drawer .dback { position: absolute; inset: 0; background: rgba(0,0,0,.34); }
+  .dpanel { position: absolute; top: 0; right: 0; bottom: 0; width: min(460px, 100%);
+            background: var(--paper); border-left: 1px solid var(--rule); box-shadow: -8px 0 28px rgba(0,0,0,.16);
+            display: flex; flex-direction: column; gap: 4px; padding: 22px 26px 30px; overflow-y: auto; }
+  .dhead { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .dhead h2 { margin: 0; font-family: var(--display); font-size: 25px; font-weight: 600; }
+  .dclose { background: none; border: 0; font-size: 26px; line-height: 1; color: var(--muted);
+            cursor: pointer; padding: 0 4px; }
+  .dclose:hover { color: var(--ink); }
+  .dsub { margin: 0 0 14px; font-size: 14px; color: var(--muted); }
+
+
+
+  .ctx { border-left: 2px solid var(--rule); padding: 2px 0 2px 18px; display: block; margin: 26px 0; }
+  .ctx > summary { font-family: var(--display); font-size: 17.5px; font-weight: 600; color: var(--ink-soft); line-height: 1.25; }
+  .ctx > summary i { font-family: var(--mono); font-style: normal; font-size: 10.5px; letter-spacing: .1em;
+                     text-transform: uppercase; color: var(--muted); font-weight: 500; flex: none; padding-top: 3px; }
+  .ctx[open] > summary { color: var(--ink); }
+  .ctx p { font-size: 16.5px; color: var(--ink-soft); }
+  .exm { background: var(--skim-wash); border-left: 3px solid var(--skim); padding: 16px 20px; display: flex; flex-direction: column; gap: 10px; margin: 28px 0; }
+  .exm > b { font-family: var(--mono); font-size: 10.5px; letter-spacing: .11em; text-transform: uppercase; color: var(--skim); font-weight: 500; }
+  .exm p { font-size: 16.5px; color: var(--ink); }
+  .exm p b { color: var(--ink); }
+  .quo { border-left: 3px solid var(--accent); background: var(--surface); padding: 16px 20px; display: flex; flex-direction: column; gap: 10px; margin: 26px 0; }
+  .quo blockquote { margin: 0; font-family: var(--display); font-size: 18.5px; line-height: 1.5; color: var(--ink); }
+  .quo .src { font-family: var(--mono); font-size: 10.5px; letter-spacing: .07em; color: var(--muted); }
+  figure { margin: 28px 0; display: flex; flex-direction: column; gap: 9px; }
+  figure svg { max-width: 100%; height: auto; display: block; }
+  figcaption { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: .03em; line-height: 1.55; max-width: 70ch; }
+
+  /* photographs, plates and maps */
+  figure.pic { margin: 24px 0; gap: 11px; max-width: 82ch; }
+  /* A picture sits inside the reading, so it is capped at a height that leaves the paragraphs
+     on either side of it in view. At most of the window it filled the screen, the argument
+     disappeared behind it, and scrolling past a figure took as long as reading a section.
+     Detail is not lost: the image is a link to the file at full size. */
+  /* The box is sized on the link, in pixels worked out from the picture's own proportions for a
+     300px tall picture, and the image fills it. Sizing the image instead does not work: an image
+     that has not loaded yet has no size of its own, so with both axes auto it collapses to
+     nothing and the page jumps as it scrolls past, and clamping only the height leaves the width
+     where it was and squashes the picture. */
+  figure.pic a.zoom { display: block; align-self: flex-start; max-width: 100%; cursor: zoom-in; }
+  figure.pic img {
+    display: block; width: 100%; height: auto;
+    /* figure.pic is a column flexbox, whose align-items defaults to stretch. That stretched the
+       image to the full width of the measure and max-height then squashed it, so every portrait
+       picture came out distorted. align-self keeps the image at its own width. */
+    align-self: flex-start;
+    border: 1px solid var(--rule); border-radius: 6px; background: var(--surface);
+    transition: border-color .15s;
+  }
+  figure.pic a.zoom:hover img { border-color: var(--accent); }
+  figure.pic a.zoom:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  /* A line drawing with a transparent background is black ink on nothing, which in the dark
+     theme is black ink on a dark page and reads as an empty box. Give that kind of picture the
+     paper it was printed on. */
+  figure.pic img.ink { background: #fff; padding: 14px; }
+  @media (max-width: 700px) { figure.pic a.zoom { width: 100% !important; } }
+  figure.pic figcaption, figure.dia figcaption {
+    font-family: var(--body); font-size: 15px; line-height: 1.5;
+    letter-spacing: 0; color: var(--ink-soft); max-width: 74ch;
+  }
+  figure.pic figcaption b, figure.dia figcaption b { color: var(--ink); font-weight: 600; }
+  figure.pic .cred, figure.dia .cred {
+    display: block; margin-top: 6px;
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: .05em;
+    line-height: 1.5; color: var(--muted);
+  }
+
+  /* drawings made for this guide, framed the way the photographs are */
+  figure.dia { margin: 24px 0; gap: 11px; max-width: 82ch; }
+  figure.dia .draw { max-width: 100%; overflow-x: auto; }
+  /* A drawing that illustrates a point in the flow is capped the way a picture is, so the
+     paragraph under it stays in view. A drawing that is a reference grid, like the nine authors
+     against three questions, is a thing to study and keeps its size. */
+  figure.dia svg[aria-labelledby="dg-matt"] { max-width: 470px; }
+  figure.dia svg[aria-labelledby="dg-seven"] { max-width: 560px; }
+  figure.dia svg {
+    display: block; width: 100%; height: auto;
+    border: 1px solid var(--rule); border-radius: 6px; background: var(--surface);
+  }
+  @media (max-width: 700px) {
+    /* On a phone the wider drawings would shrink their labels to about 5px, so each one keeps a
+       floor and its frame scrolls sideways, the way the table of nine texts already does. The
+       caption stays outside the frame and wraps to the screen. */
+    figure.dia svg[aria-labelledby="cvg-ttl"] { min-width: 660px; }
+    figure.dia svg[aria-labelledby="dg-comte-3s"] { min-width: 560px; }
+    figure.dia svg#dia-spine { min-width: 380px; }
+    figure.dia svg[aria-labelledby="dg-matt"] { min-width: 520px; }
+    figure.dia svg[aria-labelledby="dg-seven"] { min-width: 560px; }
+  }
+
+  /* inside the boxes, which already space their children */
+  .bq > figure.pic, .exm > figure.pic, .rd .body > figure.pic,
+  .bq > figure.dia, .exm > figure.dia, .rd .body > figure.dia { margin: 6px 0; }
+
+  .dg-box { fill: var(--surface); stroke: currentColor; stroke-opacity: .22; }
+  .dg-hi { fill: var(--close-wash); stroke: var(--close); stroke-opacity: 1; }
+  .dg-t { fill: currentColor; font-family: "Source Sans 3", -apple-system, sans-serif; }
+  .dg-m { fill: currentColor; font-family: "IBM Plex Mono", monospace; letter-spacing: .08em; }
+  .dg-dim { opacity: .62; }
+  .dg-ln { stroke: currentColor; fill: none; }
+
+
+  /* site header */
+  .site { position: sticky; top: 0; z-index: 70; background: var(--paper);
+          border-bottom: 1px solid var(--rule); }
+  .site .in { max-width: 900px; margin: 0 auto; padding: 0 26px; height: 52px;
+              display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+  .site a { text-decoration: none; }
+  /* The mark goes to the true left edge of the window. The bar already spans the window; only
+     its contents were penned into the 900px column, which left the mark floating in from the
+     edge with empty bar beside it. Everything else stays aligned with the body text.
+     Below the width where the column meets the edges there is no room, so it rejoins the row. */
+  /* display:block with no leading makes the anchor box exactly the size of the mark.
+     As an inline anchor its box carries line-height leading, so centring the anchor
+     left the mark itself 4.25px high. */
+  .site .hubmark { margin-right: 13px; display: block; line-height: 0; }
+  .site .hubmark svg { width: 28px; height: 28px; border-radius: 7px; }
+  @media (min-width: 1020px) {
+    .site .hubmark { position: absolute; left: 22px; top: 50%; transform: translateY(-50%);
+                     margin-right: 0; }
+  }
+  .site .hubmark:hover { opacity: .78; }
+  .site .hubmark:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px;
+                                 border-radius: 6px; }
+
+  .site .home { display: flex; align-items: center; gap: 9px; font-family: var(--mono);
+                font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); }
+  .site .home:hover { color: var(--ink); }
+  .site .home svg { width: 13px; height: 13px; flex: none; }
+  .site nav { display: flex; align-items: center; gap: 16px; }
+  .site nav .cur { font-family: var(--mono); font-size: 11px; letter-spacing: .08em;
+                   text-transform: uppercase; color: var(--muted); }
+  .site nav a { font-family: var(--mono); font-size: 11px; letter-spacing: .08em;
+                text-transform: uppercase; color: var(--accent); border-bottom: 1px solid transparent; }
+  .site nav a:hover { border-bottom-color: var(--accent); }
+  .site .disc { font-family: var(--body); font-size: 12px; font-weight: 400; color: var(--muted);
+                opacity: .8; letter-spacing: 0; text-decoration: none; white-space: nowrap;
+                border-bottom: 1px solid transparent; }
+  .site .disc:hover { opacity: 1; border-bottom-color: var(--rule); }
+  .site .disc i { font-style: normal; opacity: .5; padding: 0 6px; }
+  /* Four things share this row, so it tightens the spacing and holds each one on one line. */
+  .site .in { gap: 14px; }
+  .site .home, .site nav .cur, .site nav a { white-space: nowrap; }
+  /* The header is sticky, so a jump target has to reserve its height or it lands underneath it. */
+  [id] { scroll-margin-top: 74px; }
+  @media (max-width: 560px) { [id] { scroll-margin-top: 66px; } }
+
+  /* the bookmark: one per guide, the place reading stopped */
+  mark.hl.hl-b { background: none; padding: 0; box-shadow: inset 0 -2px 0 var(--accent); border-radius: 0; }
+  /* an inline ribbon after the words, so it cannot land on the line above it */
+  mark.hl.hl-b::after { content: ''; display: inline-block; width: 7px; height: 9px; margin-left: 4px;
+                        vertical-align: 0; background: var(--accent);
+                        clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 72%, 0 100%); }
+  @media (max-width: 820px) { .site .disc { display: none; } }
+  @media (max-width: 560px) { .site .in { padding: 0 16px; height: 48px; gap: 12px; } .site nav .cur { display: none; } }
+  @media (max-width: 400px) { .site .in { gap: 10px; } }
+
+  /* vertical nav */
+  .wrap { position: relative; }
+  #nav { position: fixed; top: calc(50% + 26px); transform: translateY(-50%); left: max(10px, calc(50vw - 598px));
+         width: 132px; display: none; flex-direction: column; gap: 2px; z-index: 40; }
+  #nav a { display: block; font-family: var(--mono); font-size: 10.5px; letter-spacing: .03em;
+           color: var(--muted); text-decoration: none; padding: 4px 0 4px 11px; border-left: 2px solid var(--rule-soft);
+           white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  /* The year each text was written, so the rail is also a timeline. The gaps are the point:
+     Plato to Bacon is two thousand years and Rousseau to Comte is eighty. */
+  #nav a i { font-style: normal; font-size: 9px; letter-spacing: .05em; opacity: .62; margin-left: 6px; }
+  #nav a:hover { color: var(--ink); border-left-color: var(--muted); }
+  #nav a.on { color: var(--accent); border-left-color: var(--accent); }
+  #nav a.grp { margin-top: 9px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .1em; border-left-color: transparent; padding-left: 0; }
+  #nav a.grp:first-child { margin-top: 0; }
+  #nav a.grp.on { color: var(--accent); border-left-color: transparent; }
+  #nav a.core { color: var(--ink-soft); border-left-color: var(--rule); }
+  #nav a.skim { opacity: .68; }
+  #nav a.last { opacity: .48; }
+  #nav a.on { opacity: 1; }
+  #nav .key { font-family: var(--mono); font-size: 9px; letter-spacing: .06em; color: var(--muted);
+              margin-top: 22px; padding-top: 14px; border-top: 1px solid var(--rule); line-height: 1.8; }
+  #nav .key em { font-style: normal; display: block; letter-spacing: .12em; text-transform: uppercase;
+                 color: var(--muted); opacity: .75; margin-bottom: 5px; }
+  #nav .key i { font-style: normal; display: block; }
+  #nav .key i.a { color: var(--ink-soft); }
+  #nav .key i.b { opacity: .68; }
+  #nav .key i.c { opacity: .48; }
+  @media (min-width: 1180px) { #nav { display: flex; } }
+
+  /* glossary */
+  .gl { display: flex; flex-direction: column; gap: 26px; }
+  .gl-grp { display: flex; flex-direction: column; gap: 10px; }
+  .gl-grp > h3 { margin: 0; font-family: var(--display); font-size: 19px; font-weight: 600; }
+  .gl-grp > h3 span { font-family: var(--mono); font-size: 11px; color: var(--muted); font-weight: 400; letter-spacing: .05em; margin-left: 9px; }
+  .gl dl { margin: 0; display: grid; grid-template-columns: 186px 1fr; gap: 10px 18px; font-size: 16px; }
+  .gl dt { font-family: var(--display); font-style: italic; font-size: 16.5px; color: var(--ink); }
+  .gl dd { margin: 0; color: var(--ink-soft); }
+  @media (max-width: 680px) { .gl dl { grid-template-columns: 1fr; gap: 3px 0; } .gl dt { padding-top: 9px; } }
+
+  /* notes you write.
+     .nbpad is the well. It is recessed, because a recessed surface reads as somewhere to put
+     something in and a raised one reads as something to read, and a long note in a raised card
+     was reading as more of the guide's own prose. The label is drawn directly above the well,
+     close to it and aligned with its left edge, so a page of blocks stays scannable.
+     The left edge holds --rule while a block is empty and --accent once it holds something, from
+     the `has` class the editor already sets on .nbwrap.
+     Nothing in here touches .nb: the note text keeps the face, size, colour, line height and
+     spacing it has always had. */
+  .nbgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(298px, 1fr)); gap: 18px; }
+  .nbwrap { display: flex; flex-direction: column; gap: 6px; }
+  .nbwrap.wide { grid-column: 1 / -1; }
+  .nbhead { display: flex; align-items: baseline; justify-content: space-between; gap: 10px;
+            padding: 0 2px 0 3px; }
+  .nbhead b { font-family: var(--display); font-size: 16.5px; font-weight: 600; color: var(--ink); }
+  .nbhead span { font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .nbpad { position: relative; padding: 14px 16px 16px; background: var(--sunk);
+           border: 1px solid var(--rule); border-left: 3px solid var(--rule); border-radius: 8px;
+           box-shadow: inset 0 1px 0 rgba(0,0,0,.06);
+           transition: border-color .15s, box-shadow .15s; }
+  .nbwrap.has .nbpad { border-left-color: var(--accent); }
+  .nbwrap:focus-within .nbpad { border-color: var(--accent);
+           box-shadow: inset 0 1px 0 rgba(0,0,0,.06), 0 0 0 3px var(--close-wash); }
+  .nb { position: relative; font-size: 15.5px; line-height: 1.6; color: var(--ink); min-height: 46px; outline: none; }
+  .nb.is-empty::before, .cbody.is-empty::before {
+    content: attr(data-ph); position: absolute; left: 0; top: 0; color: var(--muted);
+    font-style: italic; pointer-events: none; }
+  .nb p { margin: 0 0 8px; max-width: none; }
+  .nb p:last-child { margin-bottom: 0; }
+  .nb ul, .nb ol { margin: 5px 0 8px; padding-left: 20px; }
+  .nb li { margin-bottom: 4px; }
+  .nb b, .nb strong { font-weight: 600; }
+  .nb h3, .nb h4, .nb h5 { margin: 12px 0 5px; font-family: var(--display); font-weight: 600; line-height: 1.25; color: var(--ink); }
+  .nb h3 { font-size: 19px; } .nb h4 { font-size: 17px; } .nb h5 { font-size: 15.5px; }
+  .nb > :first-child { margin-top: 0; }
+  .nb hr { border: 0; border-top: 1px solid var(--rule); margin: 12px 0; }
+  .nb blockquote { margin: 8px 0; padding-left: 12px; border-left: 2px solid var(--rule); color: var(--ink-soft); }
+  .c-y { color: var(--c-y); }
+  .c-p { color: var(--c-p); }
+  .c-m { color: var(--muted); }
+  .c-g { color: var(--accent); }
+  /* normal text, spelled out. Needed where a colour is inherited from an enclosing span
+     and stripping that span would recolour words the writer meant to keep. */
+  .c-n { color: var(--ink); }
+  #nb-bar { position: absolute; z-index: 50; display: flex; gap: 2px; padding: 3px; background: var(--surface); border: 1px solid var(--rule); border-radius: 5px; box-shadow: 0 2px 8px rgba(0,0,0,.12); }
+  #nb-bar[hidden] { display: none !important; }
+  #nb-bar button { min-width: 24px; height: 22px; border: 0; border-radius: 3px; background: none; cursor: pointer; color: var(--ink-soft); font-family: var(--display); font-size: 14px; padding: 0 5px; }
+  #nb-bar button:hover { background: var(--sunk); color: var(--ink); }
+  #nb-bar button.i { font-style: italic; }
+  #nb-bar button.l { font-family: var(--mono); font-size: 11px; }
+  #nb-bar .sep { width: 1px; background: var(--rule); margin: 3px 2px; }
+  #nb-bar button.sw { width: 18px; min-width: 18px; height: 18px; border-radius: 3px; align-self: center;
+                      border: 1px solid var(--rule); font-size: 0; }
+  #nb-bar button.sw.y { background: var(--c-y); }
+  #nb-bar button.sw.p { background: var(--c-p); }
+  #nb-bar button.sw.g { background: var(--accent); }
+  #nb-bar button.sw.m { background: var(--muted); }
+  #nb-bar button.sw.x { background: none; font-size: 12px; color: var(--muted); border-color: transparent; }
+  .nbhint { font-family: var(--mono); font-size: 10.5px; color: var(--muted); letter-spacing: .03em; }
+  /* The standing explanation, closed and below the blocks, drawn the same way as the one on
+     the lecture notes page. */
+  details.about { margin-top: 6px; border-top: 1px solid var(--rule); padding-top: 12px; }
+  details.about summary { cursor: pointer; font-family: var(--mono); font-size: 11px;
+    letter-spacing: .1em; text-transform: uppercase; color: var(--muted); list-style: none;
+    display: flex; align-items: center; gap: 8px; }
+  details.about summary::-webkit-details-marker { display: none; }
+  details.about summary::before { content: ""; width: 0; height: 0; border-left: 5px solid currentColor;
+    border-top: 4px solid transparent; border-bottom: 4px solid transparent; transition: transform .15s; }
+  details.about[open] summary::before { transform: rotate(90deg); }
+  details.about summary:hover { color: var(--accent); }
+  details.about summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  details.about .aboutin { display: flex; flex-direction: column; gap: 11px; padding: 14px 0 4px; }
+  /* The pinned bar is z-index 75 and its top edge reaches 635, so an undo offered at the
+     foot of the window sat under it and could not be clicked. The pill clears the bar and
+     stacks above it, because it holds a control with a few seconds to live. */
+  #save { position: fixed; right: 16px; bottom: 64px; z-index: 80; font-family: var(--mono); font-size: 10.5px;
+          letter-spacing: .04em; padding: 6px 10px; border-radius: 4px; background: var(--surface);
+          border: 1px solid var(--rule); color: var(--muted); opacity: 0; transition: opacity .25s; pointer-events: none; }
+  #save.on { opacity: 1; }
+  #save.bad { color: #9B2C2C; border-color: #9B2C2C; opacity: 1; pointer-events: auto; }
+  #save.act { opacity: 1; pointer-events: auto; display: flex; align-items: center; gap: 10px; }
+  #save button { font-family: var(--mono); font-size: 10.5px; letter-spacing: .07em; text-transform: uppercase;
+                 color: var(--accent); background: none; border: 0; border-bottom: 1px solid var(--accent);
+                 padding: 0 0 1px; cursor: pointer; }
+  #save button:hover { color: var(--ink); border-bottom-color: var(--ink); }
+  :root[data-theme="dark"] #save.bad, :root:not([data-theme="light"]) #save.bad { color: #F09B9B; border-color: #F09B9B; }
+  .storenote { background: var(--sunk); padding: 14px 18px; font-size: 15px; color: var(--ink-soft); }
+  .storenote b { color: var(--ink); }
+
+  /* highlights list */
+  .bm { display: flex; flex-direction: column; gap: 22px; }
+  .bmg { display: flex; flex-direction: column; gap: 2px; }
+  .bmg > h3 { margin: 0 0 6px; font-family: var(--display); font-size: 18px; font-weight: 600; }
+  .bmg > h3 span { font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-left: 9px; }
+  .bmi { display: grid; grid-template-columns: 12px 1fr; gap: 0 11px; align-items: start;
+         padding: 8px 10px 8px 0; border-top: 1px solid var(--rule-soft); text-align: left;
+         background: none; border-left: 0; border-right: 0; border-bottom: 0; cursor: pointer; width: 100%; font: inherit; color: inherit; }
+  .bmi:hover { background: var(--surface); }
+  .bmi:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+  .bmi .dots { display: flex; flex-direction: column; gap: 4px; padding-top: 7px; }
+  .bmi .dot { width: 9px; height: 9px; border-radius: 2px; flex: none; }
+  .bmi .dot.y { background: rgba(255,206,0,.85); }
+  .bmi .dot.p { background: rgba(255,92,168,.7); }
+  .bmi .dot.n { background: none; border: 1px dashed var(--accent); }
+  .bmi .dot.b { background: var(--accent); clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 70%, 0 100%); border-radius: 0; height: 11px; width: 8px; }
+  .bmi .bt { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+  .bmi .where { font-family: var(--mono); font-size: 10px; letter-spacing: .07em; text-transform: uppercase;
+                color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .bmi .q { font-size: 15px; line-height: 1.5; color: var(--ink); }
+  .bmi .q .dim { color: var(--muted); }
+  /* the list reuses the page's own highlight colours, so a row looks like what it points at */
+  .bmi .q mark.hl { cursor: inherit; }
+  .bmi .cm { display: block; font-size: 13.5px; color: var(--muted); margin-top: 2px;
+             border-left: 2px solid var(--rule); padding-left: 9px; }
+  .bmg-b { padding: 14px 16px 12px; background: var(--surface); border-left: 2px solid var(--accent); margin-bottom: 10px; }
+  .bmg-b > h3 { color: var(--accent); }
+  .bmg-b .bmi { border-top: 0; padding-top: 0; }
+  .bmg-b .bmi:hover { background: none; text-decoration: underline; text-decoration-color: var(--rule); }
+  .bmclear { align-self: flex-start; margin-top: 6px; background: none; border: 0; padding: 2px 0; cursor: pointer;
+             font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase;
+             color: var(--muted); border-bottom: 1px solid var(--rule); }
+  .bmclear:hover { color: var(--ink); }
+  .bmempty { font-size: 16px; color: var(--muted); }
+  mark.hl.flash { animation: fl 1.4s ease-out; }
+  @keyframes fl { 0%,55% { box-shadow: 0 0 0 4px var(--close-wash); } 100% { box-shadow: 0 0 0 0 transparent; } }
+
+  /* comment rail */
+  #cmts { position: absolute; top: 0; left: 100%; margin-left: 18px; width: 202px; display: none; }
+  #cmts.on { display: block; }
+  .cmt { position: absolute; width: 202px; background: transparent; border-left: 2px solid var(--rule); padding: 2px 0 2px 9px; display: flex; flex-direction: column; gap: 3px; }
+  .cmt.inline { position: static; width: auto; max-width: 420px; margin: 10px 0 10px 16px; }
+  .cmt .q { font-family: var(--mono); font-size: 9px; letter-spacing: .02em; color: var(--muted); line-height: 1.4; opacity: .8; overflow: hidden; }
+  .cmt .cbody { position: relative; font-family: var(--body); font-size: 12.5px; line-height: 1.45; color: var(--ink-soft); outline: none; min-height: 17px; }
+  .cmt .cbody p { margin: 0 0 5px; max-width: none; }
+  .cmt .cbody p:last-child { margin-bottom: 0; }
+  .cmt .cbody ul, .cmt .cbody ol { margin: 4px 0 5px; padding-left: 17px; }
+  .cmt .cbody li { margin-bottom: 2px; }
+  .cmt .cbody hr { border: 0; border-top: 1px solid var(--rule); margin: 7px 0; }
+  .cmt .row { display: none; justify-content: flex-end; }
+  .cmt:hover .row, .cmt:focus-within .row { display: flex; }
+  .cmt button { font-family: var(--mono); font-size: 9px; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); background: none; border: 0; cursor: pointer; padding: 1px 0; }
+  .cmt button:hover { color: var(--ink); }
+  .cmt:hover, .cmt:focus-within { border-left-color: var(--muted); }
+  .cmt.act { border-left-color: var(--ink-soft); }
+
+  mark.hl { background: transparent; color: inherit; padding: .1em 0; border-radius: 2px; cursor: pointer; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+  mark.hl-y { background: rgba(255,206,0,.42); }
+  mark.hl-p { background: rgba(255,92,168,.34); }
+  mark.hl-n { background: rgba(31,107,87,.10); border-bottom: 1px dashed var(--accent); }
+  mark.hl-n.act { background: rgba(31,107,87,.22); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) mark.hl-y { background: rgba(255,206,0,.30); } :root:not([data-theme="light"]) mark.hl-p { background: rgba(255,92,168,.30); } :root:not([data-theme="light"]) mark.hl-n { background: rgba(100,191,161,.12); } }
+  :root[data-theme="dark"] mark.hl-y { background: rgba(255,206,0,.30); }
+  :root[data-theme="dark"] mark.hl-p { background: rgba(255,92,168,.30); }
+  :root[data-theme="dark"] mark.hl-n { background: rgba(100,191,161,.12); }
+  #hl-bar[hidden] { display: none !important; }
+  #hl-bar { position: absolute; z-index: 50; display: flex; gap: 3px; padding: 3px; background: var(--surface); border: 1px solid var(--rule); border-radius: 5px; box-shadow: 0 2px 8px rgba(0,0,0,.12); }
+  #hl-bar button { width: 17px; height: 17px; border: 1px solid var(--rule); border-radius: 3px; cursor: pointer; padding: 0; }
+  #hl-bar button[data-c="y"] { background: rgba(255,206,0,.55); }
+  #hl-bar button[data-c="p"] { background: rgba(255,92,168,.45); }
+  #hl-bar button[data-c="n"] { background: var(--paper); display: flex; align-items: center; justify-content: center; color: var(--ink-soft); }
+  #hl-bar button[data-c="n"] svg { width: 11px; height: 11px; display: block; }
+  #hl-bar button[data-c="b"] { background: var(--paper); display: flex; align-items: center; justify-content: center; color: var(--accent); }
+  #hl-bar button[data-c="b"] svg { width: 11px; height: 11px; display: block; }
+  #hl-bar button:hover { border-color: var(--muted); }
+  #hl-bar button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .hl-hint { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: .03em; margin-top: 12px; }
+
+  @media (max-width: 680px) {
+    .wrap { padding: 34px 16px 60px; gap: 38px; }
+    .facts, footer .weeks, .links { grid-template-columns: 1fr; gap: 3px 0; }
+    .facts dt, footer .weeks dt, .links dt { padding-top: 9px; }
+    .ses, .turn { grid-template-columns: 1fr; gap: 8px; }
+    .turn .who { flex-direction: row; align-items: baseline; gap: 9px; }
+    .rd { gap: 0 16px; }
+    .nine { min-width: 620px; }
+  }
+  @media print {
+    .site, #nav, #hl-bar, #nb-bar, #save, #cmts, .drawer, .sitefoot, .dock { display: none !important; }
+    body { padding-bottom: 0; }
+    body { background: #fff; font-size: 11.5px; }
+    .wrap { max-width: none; padding: 0; gap: 26px; }
+    .rd, section, figure, .exm, .ctx, .quo { break-inside: avoid; }
+    mark.hl { background: none; border-bottom: 1.5px solid #888; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+<header class="site"><div class="in"><a class="hubmark" href="https://myermcat.github.io/course-hub/" title="Course hub" aria-label="Course hub, the front page"><svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#22282E"/><rect x="13" y="13" width="16" height="16" rx="4" fill="#7C5CB8"/><rect x="35" y="13" width="16" height="16" rx="4" fill="#3E9E82"/><rect x="13" y="35" width="16" height="16" rx="4" fill="#4E90C8"/><rect x="35" y="35" width="16" height="16" rx="4" fill="#C08A3E"/></svg></a><a class="home" href="../"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 8H2M7 3 2 8l5 5"/></svg>PHI2394</a><a class="disc" href="../#about" title="How these guides were written">Written with Claude<i>|</i>AI can make mistakes</a><nav aria-label="This week"><span class="cur">Week 4</span><a href="notes.html">Lecture notes</a></nav></div></header>
+
+<nav id="nav" aria-label="Contents">
+  <a class="grp" href="#s-notes">Notes by text</a>
+  <a class="grp" href="#s-texts">The reading</a>
+  <a class="core" href="#ch4" title="Sismondo ch. 4 &middot; read properly">Stratification<i>ch 4</i></a>
+  <a class="core" href="#ch6" title="Sismondo ch. 6 &middot; read properly">Construction<i>ch 6</i></a>
+  <a class="grp" href="#s-gloss">Glossary</a>
+  <div class="key"><em>Key</em><i class="a">solid = read properly</i><i class="b">faded = skim</i><i class="c">faintest = if time</i></div>
+</nav>
+
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">PHI 2394 B00 &middot; reading for Monday 28 September</div>
+    <h1>Who Gets Credited, and What &#8220;Constructed&#8221; Means</h1>
+    <p class="standfirst">Two chapters of Sismondo. The first asks whether science rewards the right people. The second takes the phrase everybody argues about and shows it is seven different claims, some obviously true and one probably false.</p>
+    <div class="storenote"><b>Everything you write here stays in this browser.</b> Highlights, comments and notes are saved on the device you are using, and they survive a reload and a closed tab. They do not travel to another computer, they are not sent anywhere, and clearing your browsing data removes them. Nobody else can see them.</div>
+  </header>
+
+  <div class="strip-block">
+    <div class="tally">
+      <div><b>11</b><span>pages of chapter 4, pages 36 to 46</span></div>
+      <div><b>15</b><span>pages of chapter 6, pages 57 to 71</span></div>
+      <div class="t-a"><b>2</b><span>chapters, one book, no packet</span></div>
+      <div class="t-b"><b>7 Oct</b><span>Exam 1, 30%, nine days after this class</span></div>
+    </div>
+    <div class="mynote"><b>A page number to fix</b><span>The Brightspace module gives chapter 4 as starting at page 35. Page 35 is the last page of chapter 3. <b>Chapter 4 runs 36 to 46</b> and chapter 6 runs 57 to 71, checked against the running heads. Chapter 5, on the Strong Programme, sits between them and is not set.</span></div>
+  </div>
+
+  <section id="s-notes">
+    <h2>My notes</h2>
+    <div class="nbgrid">
+      <div class="nbwrap wide">
+        <div class="nbhead"><b>The argument overall</b><span>both chapters</span></div>
+        <div class="nbpad"><div class="nb" contenteditable="true" data-k="gen" data-ph="What the whole week is about&#8230;"></div></div>
+      </div>
+      <div class="nbwrap">
+        <div class="nbhead"><b>Stratification</b><span>ch. 4</span></div>
+        <div class="nbpad"><div class="nb" contenteditable="true" data-k="ch4" data-ph="Your note&#8230;"></div></div>
+      </div>
+      <div class="nbwrap">
+        <div class="nbhead"><b>Construction</b><span>ch. 6</span></div>
+        <div class="nbpad"><div class="nb" contenteditable="true" data-k="ch6" data-ph="Your note&#8230;"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 id="s-texts">The reading</h2>
+    <p class="lede">Two chapters from the same book as last week, and they do different jobs. Chapter 4 is evidence: numbers about who publishes, who gets cited, and who leaves. Chapter 6 is conceptual: a taxonomy of what the word construction is doing in seven different arguments.</p>
+
+    <div class="readings">
+      <!-- ============ CHAPTER 4 ============ -->
+      <article class="rd p-close" id="ch4">
+        <div class="stripe"></div>
+        <div class="main">
+          <div class="head">
+            <h3><span class="ch">CH 4</span>Stratification and Discrimination</h3>
+            <div class="who">Sergio Sismondo, <em>An Introduction to Science and Technology Studies</em>, 2nd ed., Wiley-Blackwell, 2010</div>
+            <div class="meta"><span class="tag">Read properly</span><span>11 pp, pages 36 to 46</span></div>
+          </div>
+
+          <p class="qline">Does science reward the best work, or does work become the best by being rewarded?</p>
+
+          <h4>The number the chapter opens on</h4>
+          <div class="body">
+            <p><b>Of the 55 Nobel laureates working in the United States in 1963, 34 had studied or collaborated with one of 46 previous prize-winners.</b> And the ones who had worked with a laureate before doing their own important research collected their prizes at an average age of <b>44</b>, against <b>53</b> for everyone else.</p>
+            <p><b>Then the question the whole chapter is built on, in Sismondo's own framing.</b> Are those clusters the tip of a merit-based iceberg, or artefacts of a prestige system gone wrong? Is the knowledge elites are recognised for intrinsically valuable, <em>or does it become valuable because of its association with elites</em>?</p>
+            <p><b>Two predictions on the record, both wrong.</b> Francis Bacon, in the week 2 packet, thought his inductive method would <b>level</b> the differences between intellects and let science be industrialised: anyone following the procedure would do useful work. Three hundred years later the Spanish philosopher Jos&eacute; Ortega y Gasset claimed science had progressed thanks in great part to the work of men astoundingly mediocre, and even less than mediocre.</p>
+            <p><b>The distributions say otherwise.</b> Roughly <b>10 per cent of scientific authors produce 50 per cent of all papers</b>. An estimated <b>80 per cent of citations go to 20 per cent of papers</b>. Science is not flat and it is not a machine that runs on interchangeable operators. Bacon and Ortega are both wrong about its structure.</p>
+          </div>
+
+          <h4>A warning about the measuring instrument, which is Box 4.1</h4>
+          <div class="body">
+            <p><b>Citation counts are the evidence for everything above, so the chapter stops to ask whether they measure anything.</b> The assumption is that a citation records an influence: this paper gave me important background, so I cite it.</p>
+            <p><b>Sismondo says that is an idealisation, and the reason is what a scientific paper actually is.</b> A paper that looks like an account of an experiment is a <b>rational reconstruction</b> of one. Details are cleaned up, idiosyncrasies are left out, and the order of events is changed to make the right narrative. The paper is an <em>argument</em>.</p>
+            <p><b>From which it follows that its citations are vehicles for the argument.</b> They are chosen for what will persuade the intended audience. Informal conversation, the thing somebody told you at a conference, the paper too obvious to cite, all of it is invisible. Citations can also do several jobs at once. His conclusion is flat: citation analysis is a poor tool for studying communication and influence.</p>
+            <p><b>He then uses the numbers anyway</b>, on the grounds that they are so lopsided that even a crude measure carries the point. Which is a move worth noticing, because it is the shape of a lot of arguments in this field: the instrument is bad, the signal is big, and the author carries on with the caveat stated.</p>
+          </div>
+
+          <h4>The same numbers, two opposite policies</h4>
+          <div class="body">
+            <p><b>This is the most useful three paragraphs in the chapter, because it shows a fact doing no work on its own.</b></p>
+            <p><b>Jonathan and Stephen Cole read the figures as efficiency.</b> If 80 per cent of citations go to 20 per cent of papers, put the funding where the influential work is. Science is already stratified; funding should reflect that. Most of the less-cited papers need not have been written, and given how often the same discovery is made independently, the work would have happened anyway.</p>
+            <p><b>Stephen Turner and Daryl Chubin read the same figures as waste.</b> The Coles' conclusion rests on an assumption that the top 20 per cent are cited because they are intrinsically more valuable. Deny that, and the numbers say science is ignoring a majority of perfectly good work. The policy then goes the other way: level the playing field, reduce the effects of prestige and old-boy networks.</p>
+            <p><b>What the disagreement turns on</b>, in Sismondo's words, is how accurate science's system of recognition is. And that question is difficult to answer, which is why the same table supports both policies.</p>
+            <div class="exm">
+              <b>Example &middot; and a third objection nobody in that argument raised</b>
+              <p>Both camps assume the <b>publication</b> is where scientific value lives. Chandra Mukerji suggests oceanography gets government support because it maintains <b>a pool of skilled oceanographers</b> who can be called on when needed. On that account the papers are almost a by-product and the standing capability is the thing being funded. Elsewhere, skills and knowledge move into the world directly, as laboratory tools and products, without passing through a journal at all. Sismondo does not think either alternative is right in general. He raises them to show what a narrow focus on publications leaves out.</p>
+            </div>
+          </div>
+
+          <h4>What makes a scientist productive, and why the lists are useless</h4>
+          <div class="body">
+            <p><b>No single variable dominates.</b> One survey builds a portrait of the most productive scientist as someone who is driven, has a strong ego, acts autonomously, plays with ideas, tolerates ambiguity, is at home with abstractions, is detached from non-scientific social relations, reserves mornings for writing, works on routinised problems, is relatively young, went to a prestigious graduate school, had a prestigious mentor, is at a prestigious employer, has freedom to choose problems, has a history of success, and has been cited before.</p>
+            <p>A later study offers shorter adjectives, in order of importance: <b>persistent, smart, civil, creative, entrepreneurial, aggressive, tasteful, confident, adaptable.</b></p>
+            <p><b>Sismondo's verdict on both lists is worth copying.</b> Many of the items are uncontroversial and none of them is particularly helpful to somebody trying to understand scientific processes. Peak productive years cluster around the mid-forties, and nobody knows why or what would change it. Persistence may matter enormously, and the sources of persistence are unclear. <b>A list of correlates is not an explanation.</b></p>
+            <p><b>One variable does something, though, and it is the one that matters.</b> Scientists at prestigious institutions are strikingly more productive, and institutional prestige is a strong predictor.</p>
+            <p><b>The obvious explanation is selection, and the evidence rules it out.</b> Do prestigious departments simply hire people who were going to be more productive anyway? Not in general: <b>the differences in productivity emerge after people have been hired.</b> And it is hard to imagine any hiring committee picking that consistently, in a job market that is almost always tight, between candidates whose potential differs very slightly.</p>
+            <p><b>So prestige is doing something.</b> Better facilities. Better networks. More intellectual stimulation. More internal pressure and reward. Or simply more visibility, and therefore more reward for the same work, which Sismondo states as a conclusion with an exclamation mark: <b>if that is right, then prestige by itself makes people's research valuable.</b></p>
+          </div>
+
+          <h4>The Matthew Effect, which is the chapter's engine</h4>
+          <div class="body">
+            <p><b>Robert Merton named it after a line in the Gospel of Matthew</b>: to whoever has, more shall be given, and from whoever has not, even what he has shall be taken away.</p>
+            <p><b>The mechanism is a chain where each link is small and the compounding is not.</b> Somebody with the traits on those lists is more likely to get a famous mentor. A famous mentor makes a prestigious graduate school more likely. That makes a prestigious department more likely. That brings better facilities, better conversation, and above all more visibility. More visibility means more citations. <b>And citation is itself a reward</b>: people whose work is cited go on publishing. The sociologist Randall Collins calls citations sources of <em>emotional energy</em>.</p>
+            <figure class="dia">
+              <div class="draw">
+              <svg viewBox="0 0 520 300" role="img" aria-labelledby="dg-matt">
+                <title id="dg-matt">The cumulative advantage chain: a small early difference passing through mentor, school, department and visibility, and arriving back at the start as a larger difference.</title>
+                <text class="dg-m" x="10" y="16" font-size="12">A SMALL DIFFERENCE AT THE START</text>
+                <rect class="dg-box" x="10" y="28" width="150" height="38" rx="5"/>
+                <text class="dg-t" x="24" y="52" font-size="13">A famous mentor</text>
+                <path class="dg-ln" d="M85 66 L85 86" stroke-width="1.5" marker-end="url(#dg-matt-a)"/>
+                <rect class="dg-box" x="10" y="90" width="150" height="38" rx="5"/>
+                <text class="dg-t" x="24" y="114" font-size="13">A better school</text>
+                <path class="dg-ln" d="M85 128 L85 148" stroke-width="1.5" marker-end="url(#dg-matt-a)"/>
+                <rect class="dg-box" x="10" y="152" width="150" height="38" rx="5"/>
+                <text class="dg-t" x="24" y="176" font-size="13">A better department</text>
+                <path class="dg-ln" d="M160 171 L196 171" stroke-width="1.5" marker-end="url(#dg-matt-a)"/>
+                <rect class="dg-box" x="200" y="152" width="150" height="38" rx="5"/>
+                <text class="dg-t" x="214" y="176" font-size="13">More visibility</text>
+                <path class="dg-ln" d="M350 171 L386 171" stroke-width="1.5" marker-end="url(#dg-matt-a)"/>
+                <rect class="dg-hi" x="360" y="90" width="150" height="38" rx="5"/>
+                <text class="dg-t" x="374" y="114" font-size="13">More citations</text>
+                <path class="dg-ln" d="M435 152 L435 130" stroke-width="1.5" marker-end="url(#dg-matt-a)"/>
+                <rect class="dg-box" x="360" y="152" width="150" height="38" rx="5"/>
+                <text class="dg-t" x="374" y="176" font-size="13">A reward, so more work</text>
+                <path class="dg-ln dg-dim" d="M435 90 L435 66 L85 66" stroke-width="1.4" fill="none" marker-end="url(#dg-matt-a)"/>
+                <text class="dg-m" x="10" y="238" font-size="12">A LARGE DIFFERENCE AT THE END</text>
+                <text class="dg-t dg-dim" x="10" y="262" font-size="12">Nothing in the chain has to be unfair for the ending to be unequal.</text>
+                <defs>
+                  <marker id="dg-matt-a" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto">
+                    <path d="M0 0 L8 4 L0 8 z" fill="currentColor"/>
+                  </marker>
+                </defs>
+              </svg>
+              </div>
+              <figcaption><b>Why Sismondo likes this hypothesis: it refuses both easy answers.</b> It does not say the reward system tracks merit and it does not say the reward system is a racket. It says that <b>differences small enough to be arguable, which may or may not be differences in merit, end up producing differences large enough to be undeniable</b>, including differences in how much work somebody actually does. The unfairness does not need to be anywhere in particular. It is in the compounding.</figcaption>
+            </figure>
+          </div>
+
+          <h4>Discrimination, and the numbers he puts behind it</h4>
+          <div class="body">
+            <p><b>His framing is that women are worse represented the more elite the grouping</b>, and the figures step down accordingly.</p>
+            <ul>
+              <li><b>United States, 2005.</b> Women earned <b>46 per cent</b> of doctorates in the social sciences, natural sciences and engineering, up from 31 per cent a decade before. But <b>49 per cent in the biological sciences and 18 per cent in engineering.</b></li>
+              <li><b>United States, 2006.</b> Only <b>19 per cent</b> of senior faculty in those areas were women, heavily concentrated in the life and social sciences.</li>
+              <li><b>Europe.</b> Only <b>15 per cent</b> of senior university faculty across all fields. And the variation between countries is enormous: in 2003 women earned 72 per cent of life science and 45 per cent of physical science doctorates in <b>Italy</b>, against 47 and 23 per cent in <b>Germany</b>. Senior medical faculty: 22 per cent women in the <b>UK</b>, 6 per cent in Germany.</li>
+              <li><b>Japan</b> stands out among large research nations as particularly gendered, with smaller percentages of women researchers of every kind than the United States or any European country.</li>
+              <li>And in most countries women are unlikely to be <b>gatekeepers</b>: editors of major journals, chairs of important boards.</li>
+            </ul>
+            <p><b>The country variation is the part to think about.</b> Italy and Germany are both rich European countries with good universities, and the gap between 72 and 47 per cent has nothing to do with biology. Whatever is producing these numbers travels with the culture.</p>
+          </div>
+
+          <h4>Box 4.2: the golden age that was a dark age</h4>
+          <div class="body">
+            <p><b>Margaret Rossiter's history of women scientists in America turns on one finding</b>, and it is counter-intuitive: <b>feminisation is linked to a fall in status, and masculinisation to a rise in it.</b> The direction of causation is from who holds the jobs to how the jobs are regarded.</p>
+            <p><b>What that produced, twice.</b> When women began entering scientific fields in the 1860s and 1870s, the men already there perceived that their work was losing its masculine status, and pushed women into marginal positions where they would be <b>invisible</b>. In the twentieth century women found they could enter much more easily through <em>new</em> fields, home economics and nutritional science, where they could do sociology, economics, biology and chemistry under another name. The fields as a whole were then poorly regarded, because they were feminised.</p>
+            <figure class="pic">
+              <a class="zoom" style="width:369px" href="img/harvard-computers-1890.jpg" target="_blank" rel="noopener" title="Open this picture at full size">
+                <img src="img/harvard-computers-1890.jpg" width="820" height="667" loading="lazy" style="aspect-ratio:820/667"
+                     alt="A crowded nineteenth-century office. About eight women in high-necked dark dresses sit along two sides of a long table covered in papers and ledgers, several of them writing or examining photographic plates, with a man standing at the back of the room.">
+              </a>
+              <figcaption><b>The women employed at the Harvard College Observatory to measure and classify stellar photographs, around 1890.</b> They were called computers, because computing was what they did, and they were paid roughly a quarter to a half of what a man doing the same work would have earned. Among them Annie Jump Cannon classified several hundred thousand stars and built the scheme astronomers still use, and Henrietta Swan Leavitt found the relation that let the distance to other galaxies be measured at all. The job existed for women because it was tedious, poorly paid and had been reclassified as clerical, which is Rossiter's mechanism in a single photograph. <span class="cred">Harvard University Archives, public domain, via Wikimedia Commons.</span></figcaption>
+            </figure>
+            <p><b>And the sentence in the box that people quote.</b> Women's colleges had been a safe place for women scientists to work and build credentials. After the Second World War, as American universities expanded, those colleges and the less prestigious universities followed the leading ones in hiring more men. <b>The golden age of American science after the war was a dark age for women in it.</b></p>
+            <p><b>What changed it was not science.</b> The shift came in the 1960s, from outside: the National Organization for Women, Betty Friedan, and Alice Rossi's 1965 article in <em>Science</em> titled "Women in Science: Why So Few?", which made the case that science was no different from any other profession. Alongside that ran a legal revolution producing anti-discrimination law and affirmative action, which women then used as resources to get in.</p>
+          </div>
+
+          <h4>The pipeline, and why Sismondo half rejects it</h4>
+          <div class="body">
+            <p><b>The standard metaphor is Natalie Angier's.</b> Women flow through a pipe with leaks at every joint along its span, a pipe that begins with a high-pressure surge of young women at the source, a roiling Amazon of smart graduate students, and ends at the spigot with a trickle of women prominent enough to be deans or department heads or to win a Nobel Prize.</p>
+            <p><b>His objection is that the picture makes the problem one of leakage</b>, which puts all the attention at the joints and none at either end. The metaphor only works if you also attend to <b>intake, blockage and filters</b>: processes of inclusion and exclusion. In many fields <em>there is no roiling Amazon at the source to begin with</em>, and the women who are there do not simply leak out, they are discouraged the whole way along.</p>
+            <p><b>The framing he prefers is Sara Delamont's three problems</b>, and they are the three sub-headings of the rest of the chapter: <b>getting in, staying in, and getting on.</b></p>
+          </div>
+
+          <h4>Getting in</h4>
+          <div class="body">
+            <p><b>Science and engineering have masculine images and the stereotypical scientist is male</b>, and that shapes what girls believe about their own capacity. Quite young girls may find it hard to think of themselves as potential scientists, and in many environments they are actively discouraged by teachers, peers and parents. The consequence is structural and not merely attitudinal: <b>by the end of secondary school many girls who might have been interested already lack the background subjects</b> they would need to study science at university. The door closes before anybody applies.</p>
+            <div class="exm">
+              <b>Example &middot; what the advertisements in <em>Science</em> are teaching</b>
+              <p>An analysis of the advertising in the journal <em>Science</em> found, in its own words, more cultural content between the covers than we would care to acknowledge. <b>Men are more likely to be depicted as scientific heroes.</b> They are also more likely to be shown as nerds or nonconformists, and more likely to be shown at play. The words <b>simple</b> and <b>easy</b> go with pictures of women; <b>fast</b>, <b>reliable</b> and <b>accurate</b> go with pictures of men. And a female figure can stand as a symbol of nature in a way a male figure cannot, which puts women on the side of the thing being investigated.</p>
+            </div>
+          </div>
+
+          <h4>Staying in</h4>
+          <div class="body">
+            <p><b>The concept to take from this section is the unofficial PhD programme.</b> Alongside the official courses, exams and research there runs a second curriculum: study groups, pick-up basketball, informal mentoring, and simply the ongoing conversation and consultation of a department. Even a well-integrated student can be shut out of parts of it.</p>
+            <div class="quo">
+              <blockquote>We would all go to parties together and go and have beer on Friday, but if somebody came in to ask what drying agent to use to clean up THF, they would never ask me. It just wasn't something that would cross their minds.</blockquote>
+              <div class="src">A woman doctoral student, quoted on page 43. Note what is and is not happening: she is invited to everything social and consulted about nothing technical.</div>
+            </div>
+            <p><b>Then the hardest number in the chapter.</b> A study of peer review scores for postdoctoral fellowships at the Swedish Medical Research Council found reviewers rating men's accomplishments as overwhelmingly more valuable than apparently equivalent accomplishments by women. To be given the same competence score as a male colleague, a woman needed to exceed his scientific productivity by <b>about three extra papers in <em>Nature</em> or <em>Science</em>, or twenty extra papers in an excellent specialist journal.</b></p>
+            <p><b>And a clash of clocks.</b> Shirley Tilghman, a molecular biologist and later president of Princeton, argues that the pressure at the start of a career falls hardest on women. Research productivity decides whether a senior graduate student or postdoc gets a permanent job, and new faculty then have about six years to clear an all-or-nothing tenure hurdle. <b>Those are exactly the years in which women are most likely to want to have children.</b></p>
+          </div>
+
+          <h4>Getting on</h4>
+          <div class="body">
+            <p><b>The discriminations at this stage are individually small enough to argue about.</b> Women hired at the same time as male peers tend to have smaller laboratories, and to have negotiated worse arrangements for start-up grants, for the overhead the university takes from their research money, for salary and for teaching load.</p>
+            <p><b>And they remain outside the informal networks.</b> Inside their departments they tend not to have informal mentors to steer them through opaque processes. Outside them they do less collaborative research. And they are less well connected to the networks that carry <em>unpublished</em> work, which leaves them more dependent on the published literature and therefore always slightly behind. Sismondo quotes Jonathan Cole's formulation: <b>women have moved into science, but they are not of the community of science.</b></p>
+            <p><b>Which is where the Matthew Effect returns and does the argument's real work.</b> In any individual case these differences look trivial, and a woman may well shrug them off. But if competition is strong enough, and if advantage compounds, <b>the small irritants are enough on their own to keep her from getting on.</b> No single act of discrimination has to be large.</p>
+          </div>
+
+          <h4>The maths gene, and what he says about it</h4>
+          <div class="body">
+            <p><b>One side claims a biological propensity.</b> Claims of a maths gene or something like it go back to 1980, and as recently as 2005 the president of Harvard, Lawrence Summers, invoked biology to explain differences in men's and women's success in science and engineering.</p>
+            <p><b>Sismondo's reply is two lines and both are worth having.</b> First, <b>genes only act in environments</b>, so a claim that a difference is genetic, stated without the environment, is an ideological statement wearing the clothes of a finding. Second, the claim runs against the trend: boys' and girls' test scores in mathematics have been converging.</p>
+            <p><b>The other side claims a difference in style, and he reports it without endorsing it.</b> A number of feminists and non-feminists have argued that women tend to think in more concrete terms, are better served by problem-centred learning, think more relationally, and produce more holistic pictures. <b>He parks the whole question for chapter 7</b>, which is the feminist epistemology material and which is weeks 5 to 7 of this course.</p>
+          </div>
+
+          <h4>The conclusion, and the question it leaves open</h4>
+          <div class="body">
+            <p><b>What cumulative advantage buys the argument is a mechanism</b>, a way of explaining how something as vague as a culture produces effects as concrete as a salary. No single obstacle decisively keeps women out of the pipeline or ejects them from it. The compounded effect of all of them may be enough. And it explains why individual women's accounts of succeeding and not succeeding can sound completely different from one another and still fit a pattern.</p>
+            <p><b>Then the sentence the chapter title has been leading to.</b> With discrimination in view, science is hard to see as efficiently using its resources. <b>It looks less like an efficient meritocracy and more like an inefficient old boys' network</b>, in which people and ideas become important partly because of where they sit in a social network.</p>
+            <p><b>And the claim that connects this chapter to the next one.</b> Elite groups are <b>socially constructed</b>. They are not reflections of a natural hierarchy. He concedes immediately that elites do produce more and better knowledge, because they have the advantages and the reinforcement. The open question is the one he started with and does not close: <b>does some of the knowledge elites are recognised for become important because of its association with them, and could science be significantly different if it were more egalitarian?</b></p>
+          </div>
+
+          <dl class="links">
+            <dt>Answers</dt><dd>Bacon, chapter 4 of the week 2 packet, by name. Bacon predicted the method would level intellectual differences; the citation distributions say it did not.</dd>
+            <dt>Rests on</dt><dd>Chapter 3, which is not set, on Merton's norms of science. The line just before this chapter begins is about whether those norms shape real behaviour even when applied flexibly.</dd>
+            <dt>Sets up</dt><dd>Chapter 6, below: if elite groups are socially constructed, the obvious next question is what construction means. And chapter 7, which is weeks 5 to 7 of this course.</dd>
+          </dl>
+
+          <p class="keep"><b>If you keep one thing</b>Success in science compounds: a small early advantage produces a better mentor, a better department, more visibility and more citations, and citation is itself a reward that produces more work. So a gap too small to call unfair at any single step ends up large, which is how a culture with no single villain in it produces a measurably unequal profession.</p>
+
+          <div class="mynote"><b>My note</b><span>The examinable items here are named things: the <b>Matthew Effect</b> and who named it, the <b>pipeline</b> metaphor and Sismondo's objection to it, <b>getting in, staying in, getting on</b>, and the <b>unofficial PhD programme</b>. The Swedish peer review finding is the one statistic worth memorising, because it is short and it settles an argument.</span></div>
+
+          <div class="curious">
+            <div class="label"><b>For the curious</b><span>none of this is on the exam</span></div>
+
+            <details class="bit"><summary>The verse is Matthew 13:12, and Merton knew exactly what he was doing</summary><div class="bq">
+              <p>The line is from the parable of the sower: to whoever has, more will be given, and from whoever has not, even what he has will be taken away. In the gospel it is about receptivity to a teaching. Merton borrowed it in 1968 for a paper about how scientific credit accumulates, and the borrowing is sardonic: a verse about spiritual reward describing a funding system.</p>
+              <p>His wife, the sociologist Harriet Zuckerman, did the underlying research on Nobel laureates, which is the study this chapter opens with. Merton acknowledged that her work was so central that the paper should have been co-authored, and said so publicly, years later.</p>
+            </div></details>
+
+            <details class="bit"><summary>The Harvard computers were paid by the star</summary><div class="bq">
+              <p>Edward Pickering hired women at the Harvard College Observatory from the 1880s because they could be paid 25 to 50 cents an hour, roughly half a man's wage, and because the work of measuring and cataloguing photographic plates was considered clerical. Around eighty women worked there over four decades.</p>
+              <p>What they produced was not clerical. <b>Annie Jump Cannon</b> classified some 350,000 stars and devised the spectral scheme, O B A F G K M, that astronomy still uses. <b>Henrietta Swan Leavitt</b> discovered that a certain kind of variable star pulses at a rate fixed by its brightness, which gave astronomy its first reliable way of measuring distance beyond our own galaxy. Hubble used her relation to show the universe is expanding, and said she deserved a Nobel Prize. She had died four years before he could nominate her, and the prize is not awarded posthumously.</p>
+            </div></details>
+
+            <details class="bit"><summary>The Summers speech cost him the job</summary><div class="bq">
+              <p>In January 2005 Lawrence Summers, then president of Harvard, spoke at a conference on diversifying the science workforce and offered three explanations for why women are under-represented at the top of science: that they are less willing to work eighty-hour weeks, that there is a difference in the distribution of innate aptitude at the high end, and discrimination, which he ranked last.</p>
+              <p>One attendee walked out. The transcript was released a month later. The Harvard Faculty of Arts and Sciences passed a motion of no confidence in March, the first in the university's history, and he resigned in February 2006. He later pledged 50 million dollars of Harvard money to diversity efforts. His successor was <b>Drew Gilpin Faust</b>, the first woman to lead Harvard in its then 371 years.</p>
+            </div></details>
+
+            <details class="bit"><summary>Jane Dee ran an experimental household</summary><div class="bq">
+              <p>Box 4.3 of the chapter is about women just outside the formal borders of science. Its example is <b>Jane Dee</b>, wife of the Elizabethan mathematician and alchemist John Dee, who kept the largest library in England at their house in Mortlake and a laboratory alongside it.</p>
+              <p>Natural philosophy in that period was done at home, which made the household a laboratory and the wife its manager. Jane Dee had to run an establishment full of apparatus, assistants and visitors, act as a full partner in the work, and at the same time occupy a position Elizabethan society had no name for. The point of studying her is not to recover a hidden discovery. It is that the boundary between the household and the laboratory is where the line around science was drawn, and somebody was standing on it.</p>
+            </div></details>
+          </div>
+        </div>
+      </article>
+
+      <!-- ============ CHAPTER 6 ============ -->
+      <article class="rd p-close" id="ch6">
+        <div class="stripe"></div>
+        <div class="main">
+          <div class="head">
+            <h3><span class="ch">CH 6</span>The Social Construction of Scientific and Technical Realities</h3>
+            <div class="who">Sergio Sismondo, <em>An Introduction to Science and Technology Studies</em>, 2nd ed., Wiley-Blackwell, 2010</div>
+            <div class="meta"><span class="tag">Read properly</span><span>15 pp, pages 57 to 71</span></div>
+          </div>
+
+          <p class="qline">When somebody says a scientific fact is socially constructed, which of seven quite different things are they saying?</p>
+
+          <h4>What the chapter is doing, which is not what you expect</h4>
+          <div class="body">
+            <p><b>The phrase arrived in the field in the late 1970s and then went everywhere.</b> Books have claimed to show the construction of facts, of knowledge, of theories, of phenomena, of science, of technologies, of societies. It became the label holding a lot of different work together, and the target of fierce attacks from historians, philosophers and sociologists, usually fighting under the banner of <b>realism</b>.</p>
+            <p><b>Sismondo's move is to refuse to defend or attack it, and to take it apart instead.</b> Ian Hacking, writing on constructivism in 1999, had gone the other way: he built the strongest possible version to set against realism, defined by three features, the <b>contingency</b> of facts, <b>nominalism</b> about kinds, and <b>external explanations</b> for why beliefs stay put. On Hacking's version a constructivist says of an established theory that it was not the only one that could have won, that its categories are human impositions and never natural kinds, and that the reasons it succeeded were never evidential reasons.</p>
+            <p><b>Sismondo pulls the phrase into seven separate claims instead.</b> Some are plainly anti-realist. Some are not. Several are so obviously true that a realist has to accept them. <b>That is what the chapter is for, and it is why she set it.</b></p>
+            <p><b>What all seven have in common</b> is three reminders: that science and technology are <b>social</b>; that they are <b>active</b>, which is what the building metaphor is for; and that they <b>do not run in a straight line from nature to ideas about nature</b>, so their products are not themselves natural.</p>
+            <div class="ctx"><b>Context: what realism is, since it is the other team</b>
+              <p>Realism, in Sismondo's description, is an <em>intuition</em> and never quite a doctrine: that truths depend more on the natural world than on the people who state them, that there is a way the world is, and that it can be discovered and represented reasonably accurately.</p>
+              <p>He then points out how loose that is. Realists disagree about what science realistically represents, about what representing accurately means, and about whether the issue is fundamentally about knowledge or about things. And there is no good account of what makes real things real. <b>So realism is usually a negative position</b>, defined against whichever anti-realism is in front of it, and seldom a thesis of its own.</p>
+            </div>
+            <figure class="dia">
+              <div class="draw">
+              <svg viewBox="0 0 560 264" role="img" aria-labelledby="dg-seven">
+                <title id="dg-seven">The seven senses of construction arranged from the ones a realist can accept to the one Sismondo rejects.</title>
+                <text class="dg-m" x="10" y="16" font-size="12">A REALIST CAN ACCEPT THESE</text>
+                <rect class="dg-box" x="10" y="26" width="168" height="34" rx="5"/>
+                <text class="dg-t" x="22" y="47" font-size="13">1 Social reality</text>
+                <rect class="dg-box" x="10" y="66" width="168" height="34" rx="5"/>
+                <text class="dg-t" x="22" y="87" font-size="13">2 Things and phenomena</text>
+                <rect class="dg-box" x="10" y="106" width="168" height="34" rx="5"/>
+                <text class="dg-t" x="22" y="127" font-size="13">3 Environments</text>
+                <text class="dg-m" x="196" y="16" font-size="12">THESE ARE THE ARGUMENT</text>
+                <rect class="dg-box" x="196" y="26" width="168" height="34" rx="5"/>
+                <text class="dg-t" x="208" y="47" font-size="13">4 Theories</text>
+                <rect class="dg-box" x="196" y="66" width="168" height="34" rx="5"/>
+                <text class="dg-t" x="208" y="87" font-size="13">5 Heterogeneous</text>
+                <rect class="dg-box" x="196" y="106" width="168" height="34" rx="5"/>
+                <text class="dg-t" x="208" y="127" font-size="13">6 Kinds</text>
+                <text class="dg-m" x="382" y="16" font-size="12">THIS ONE HE REJECTS</text>
+                <rect class="dg-hi" x="382" y="66" width="168" height="34" rx="5"/>
+                <text class="dg-t" x="394" y="87" font-size="13">7 Nature itself</text>
+                <text class="dg-t dg-dim" x="382" y="122" font-size="12">Agreement makes it so.</text>
+                <text class="dg-t dg-dim" x="382" y="140" font-size="12">Latour: implausible.</text>
+                <path class="dg-ln dg-dim" d="M10 176 L544 176" stroke-width="1.4" marker-end="url(#dg-seven-a)"/>
+                <text class="dg-m" x="10" y="198" font-size="12">WEAKER</text>
+                <text class="dg-m" x="470" y="198" font-size="12">STRONGER</text>
+                <text class="dg-t dg-dim" x="10" y="226" font-size="12">The word is the same in all seven. The claim is not.</text>
+                <defs>
+                  <marker id="dg-seven-a" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto">
+                    <path d="M0 0 L8 4 L0 8 z" fill="currentColor"/>
+                  </marker>
+                </defs>
+              </svg>
+              </div>
+              <figcaption><b>The shape of the chapter, and the reason to read it.</b> Most arguments about social construction are people at opposite ends of this row shouting past each other. The claim that a laboratory phenomenon is manufactured and the claim that scientific agreement makes nature true share a word and almost nothing else. Sismondo's list lets you ask which one is on the table, which is the single most useful thing you can do in that argument.</figcaption>
+            </figure>
+          </div>
+
+          <h4>1. The construction of social reality</h4>
+          <div class="body">
+            <p><b>Where the phrase came from.</b> STS took it from Peter Berger and Thomas Luckmann's <em>The Social Construction of Reality</em> of 1966, a book about the sociology of knowledge. Their subject is <b>social</b> reality: the institutions and structures that exist because enough people behave as though they do.</p>
+            <p><b>Their conditions are worth having exactly</b>, because they are a recipe. To construct an X you need only three things. That knowledge of X encourages behaviour which makes other people more or less likely to act as though X exists. That knowledge of X is reasonably common. And that knowledge of X gets passed on. Given those, <b>X cannot be wished away, and so it exists.</b></p>
+            <div class="exm">
+              <b>Example &middot; gender, which is his own</b>
+              <p><b>Gender is real, because it is difficult not to take account of it.</b> Gender structures create constraints and resources that people have to reckon with, and treating people as gendered tends to produce gendered people. Then the line that does the philosophical work: <b>genders have causal powers, which is probably the best sign of reality we have.</b> And at the same time they are plainly not simply given by nature, which historical research and the differences between contemporary cultures both show.</p>
+              <p>So this is a case where socially constructed and <em>real</em> are not opposites. That is the point of putting this sense first.</p>
+            </div>
+            <p><b>What it means for science.</b> Knowledge, methods, epistemologies, disciplinary boundaries and styles of work are all real social objects of this kind, and <b>contingently</b> real. Ludwik Fleck made the point in 1935: a scientist who fails to account for a taken-for-granted fact meets resistance from colleagues, and that resistance is the fact's social reality showing itself.</p>
+            <p><b>And the sentence that stops this being a criticism.</b> The social reality of knowledge is a <b>precondition of progress</b>. If nothing is reasonably solid, there is nothing to build on.</p>
+            <p><b>The active version.</b> Latour and Woolgar tracked one statement about a hormone through the literature as it moved from near-nonsense, to possible, to false, to possibly true, to a solid fact, and catalogued what can be done to a paper along the way: ignore it, cite it approvingly, cite it dismissively, question it strongly or weakly, and finally ignore it again because everyone accepts it. <b>Facts are constructed by scientists, one operation at a time, and never by science in the abstract.</b></p>
+          </div>
+
+          <h4>Box 6.1, which is the most memorable thing in the chapter</h4>
+          <div class="body">
+            <p><b>The general problem: it is hard to say when a discovery happened.</b> Was oxygen discovered when Priestley made a pure sample of it, when Lavoisier explained what it was, or later still when somebody gave an account that matches ours? Augustine Brannigan's answer is an <b>attributional model</b>: discoveries are not events in themselves, they are <b>events retrospectively recognised as origins</b>.</p>
+            <figure class="pic">
+              <a class="zoom" style="width:256px" href="img/gregor-mendel.jpg" target="_blank" rel="noopener" title="Open this picture at full size">
+                <img src="img/gregor-mendel.jpg" width="699" height="820" loading="lazy" style="aspect-ratio:699/820"
+                     alt="A formal nineteenth-century photographic portrait of a stout man in the dark habit and high collar of an Augustinian abbot, wearing small round spectacles and a pectoral cross, holding a sprig of fuchsia.">
+              </a>
+              <figcaption><b>Gregor Mendel, the monk who did not know he had discovered anything.</b> The textbook story is that his 1866 paper was ignored in an obscure journal until three researchers rediscovered it in 1900. Brannigan shows the paper was reasonably well cited before 1900, in the literature on <b>agricultural hybridisation</b>, where its main result, the three-to-one ratio, was already known. He was read as confirming that ratio and offering a formal explanation of it, and from the way he presents his own results, <b>he does not seem to have thought he had discovered a law.</b> <span class="cred">Public domain, via Wikimedia Commons.</span></figcaption>
+            </figure>
+            <p><b>How he became the discoverer, which is a story about a priority dispute and hardly at all about peas.</b> Hugo de Vries had read Mendel before 1900, and the first of his three papers on his own results does not mention him. Carl Correns read de Vries's first paper, realised he had lost the race, and quickly published his own work <b>labelling the finding "Mendel's Law"</b>. Having lost priority to a living rival, he assigned it to a dead man instead. De Vries's later papers accept Mendel's priority in awkward afterthoughts and grumble about the obscurity of the journal.</p>
+            <p><b>And Sismondo's line.</b> Had Correns read one or two generations further back, the title could have gone to any of several people. <b>Mendel discovered his laws in 1866, but only as a result of the events of 1900.</b></p>
+          </div>
+
+          <h4>2. The construction of things and phenomena</h4>
+          <div class="body">
+            <p><b>This is the sense he calls the most novel, and its subject is objects.</b> Many of the things scientists study are not natural things.</p>
+            <p><b>Karin Knorr Cetina's formulation:</b> nature is not to be found in the laboratory. To an outside observer the laboratory shows itself as a place from which nature has been <em>excluded</em> as far as possible.</p>
+            <p><b>The evidence is ordinary and that is the force of it.</b> The materials arrive already prepared: chemists buy purified reagents, geneticists use established DNA libraries, biologists use engineered animal models. Once inside, the objects are put in artificial situations to see how they react, and subjected to what Latour calls <b>trials of strength</b>. And at best scientists <b>create phenomena</b>, new stable objects of study that did not previously occur. Hacking's version: most of the phenomena of modern physics are manufactured.</p>
+            <p><b>So laboratory knowledge is knowledge about distinctly non-natural things</b>, built by hands-on material work.</p>
+            <p><b>And the asymmetry he points out is worth keeping.</b> For technology none of this is the least bit surprising. Technology is expected to give new shape to old materials and leave nature behind. The claim only sounds radical when it is made about science, because science is presumed to display the forms of nature exactly as they are.</p>
+          </div>
+
+          <h4>3. The construction of material and social environments</h4>
+          <div class="body">
+            <p><b>The easiest of the seven: science and technology change the world, and changing the world is building it.</b></p>
+            <p><b>Technology, intended and not.</b> The success of the petrol car helped create the suburb and the suburban way of living, and to the extent that manufacturers worked to grow the suburban market, that was deliberate. Computers, programs and networks are designed with their social effects in view: dispersed work, control at a distance, or straight military power.</p>
+            <p><b>Science too, and his example is pointed.</b> Research into the causes of gender difference has the effect of <b>naturalising</b> those differences. There is great public appetite for it, so work on genes, hormones and brain differences between men and women is well reported, and more often than not reported to emphasise how inevitable stereotypical behaviour is. <b>There is good reason to expect that the reporting has effects on gender itself</b>, which loops straight back to sense 1.</p>
+            <p><b>And policy.</b> Government action is increasingly held accountable to scientific evidence, to the point where almost nothing in health, the economy, the environment or defence can be done unless it can be claimed that a study supports it. Studies shape policies, and policies shape the material and social world.</p>
+          </div>
+
+          <h4>4. The construction of theories</h4>
+          <div class="body">
+            <p><b>The plainest sense: scientists build accounts, models and theories on top of data.</b> Science is constructive in a geometrical sense, making a pattern appear given the fixed points that practice has produced.</p>
+            <p><b>And the surprise is who else says this.</b> That science constructs representations on top of data is roughly the central claim of <b>logical positivism</b>, which is the Vienna Circle in week 2's packet. For positivism there is an essential contingency in theories: for any good theory you can build others that account for the data equally well. Bas van Fraassen puts it directly: he uses the adjective <em>constructive</em> to indicate his view that scientific activity is construction and never discovery, construction of models that must be adequate to the phenomena, and not discovery of truth about the unobservable.</p>
+            <p><b>Where the positivists get off the train</b> is that they thought this contingency was largely eliminated by prior decisions about frameworks: scientists settle the logical framework first, then work inside it.</p>
+            <p><b>Sismondo says it cannot be that tidy.</b> Given the problem of induction, there is no mechanical route from a finite pile of data to a good theory. When Knorr Cetina explains why particular theories succeed she points to established practices, earlier decisions, concepts stretched to new uses, tinkering and local contingencies. <b>Representations of nature are connected to nature and do not necessarily correspond to it in any strong sense.</b></p>
+            <div class="exm">
+              <b>Example &middot; two disputes settled by something other than the evidence</b>
+              <p><b>Newton against Leibniz.</b> The choice between their metaphysics may have been bound up with political circumstances, which is Steven Shapin's argument.</p>
+              <p><b>Pasteur against Pouchet on spontaneous generation.</b> The particular way that dispute was resolved was shaped by <b>the composition of the prize committee that decided it.</b> Pasteur is remembered as having settled the question experimentally. The historical work says the committee mattered too.</p>
+              <p>Sismondo's reason for using controversies is structural: a controversy is a moment when the alternatives are visible, because both are still being argued for, and it also shows you the forces that close the argument down.</p>
+            </div>
+            <div class="ctx"><b>Context: Box 6.2, realism against empiricism</b>
+              <p><b>The classic empiricist argument against believing theories.</b> All the evidence for a theory is empirical data. Two theories making the same predictions cannot be told apart by data. Any theory is one of infinitely many empirically equivalent theories. So there is no reason to think yours is the true one, and truth in the usual sense is superfluous.</p>
+              <p><b>The realist replies.</b> Data is not the only evidence: it is desirable that a theory be consistent with metaphysical commitments, which cuts the field down, so the infinity of rivals is an illusion because only a few are plausible. And there is no way to make sense of science's success without the approximate truth of its best theories.</p>
+              <p><b>Richard Boyd's version is the sharpest.</b> Do not argue about how well theories predict. Argue about how well <b>background</b> theories shape research, because the truth of those is the best explanation of why scientific methods reliably work at all.</p>
+            </div>
+          </div>
+
+          <h4>5. Heterogeneous construction</h4>
+          <div class="body">
+            <p><b>The term to learn here is heterogeneous engineering</b>, from John Law. An entrepreneurial engineer faces technical, social and economic problems at once and has to bind the solutions into a configuration that works. So they are simultaneously producing knowledge, social realities, and material things, and <b>the constructions can be separated on paper and not in practice.</b></p>
+            <p><b>The strong version of the claim:</b> builders of technology have to build the artefact <em>and</em> build the environment in which the artefact can function, and neither job can usually be done alone. They must combine raw materials, skills, knowledge and capital, which means enrolling a lot of actors who are not all immediately compatible.</p>
+            <p><b>And scientific work is the same.</b> Actor-network theory treats scientists and engineers as separated only by disciplinary boundaries. Both build networks, the larger and more stable the better, out of laboratory equipment, established knowledge, patrons, money and institutions. <b>No one piece of a network can determine the shape of the whole.</b></p>
+            <p><b>The word for the general case is co-production</b>, and his examples are good ones. The criteria for good climate science are shaped by policy concerns while the criteria for good policy are shaped by climate science. Ideas about health and disease bend around standardised classifications of diseases and interventions. Assisted reproduction looks miraculous and works through mundane work integrating political, legal, ethical, bureaucratic, medical, technical and intensely personal domains at once.</p>
+            <figure class="pic">
+              <a class="zoom" style="width:269px" href="img/cervical-smear-pap-stain.jpg" target="_blank" rel="noopener" title="Open this picture at full size">
+                <img src="img/cervical-smear-pap-stain.jpg" width="734" height="820" loading="lazy" style="aspect-ratio:734/820"
+                     alt="A microscope view of a cervical smear stained in pinks and blue-greens. Dozens of flat cells with small dark nuclei are scattered across the field, several overlapping, with a few smaller round cells among them.">
+              </a>
+              <figcaption><b>A cervical smear under the microscope, stained by Papanicolaou's method.</b> Somebody has to look at this and decide. Box 6.3 of the chapter is about how that job was made possible, and the answer is not a better microscope. <span class="cred">Photograph by Adel Stoyanova, CC BY-SA 4.0, via Wikimedia Commons.</span></figcaption>
+            </figure>
+            <div class="exm">
+              <b>Example &middot; Box 6.3, how the Pap smear became the right tool for the job</b>
+              <p><b>It began somewhere else entirely.</b> Papanicolaou published in 1917 on vaginal smears as a way of telling what stage of the oestrous cycle a guinea pig was in. Over the following decade he found he could also spot free-floating human cancer cells.</p>
+              <p><b>His 1928 presentation of that was met with little enthusiasm</b>, for three separate reasons: the results were not convincing, pathologists were not used to looking at free-floating cells, and gynaecologists were not interested in cancer. <b>He abandoned it for another decade.</b></p>
+              <p><b>What revived it was an institution.</b> The American Cancer Society took up the test and created an environment that could support the long tinkering needed to fix it. And it was never fixed, exactly: the test still has chronic ambiguities about the nature of cancer, about which cells count as abnormal, and about how a slide should be read, and a <b>false negative rate between 15 and 50 per cent</b> depending on circumstances.</p>
+              <p><b>Here is the part that makes it heterogeneous construction and not simply a medical success story.</b> The test became cheap enough to use as mass screening <b>by gendering the division of labour</b>. Technicians, mainly women, could be paid less than the mainly male pathologists, could be paid piecework, and could do some of the reading at home. That is what made the volume possible, and volume is what makes a screening test work at all.</p>
+              <p><b>And each fix produced the next problem.</b> Volume meant eyestrain, and the combination of low status with life-and-death responsibility. Automated record keeping cut costs further. High rates of misreading created public pressure to rate and regulate the laboratories, and women's health activists got governments to limit how many slides one technician may read in a day, shutting down the worst of what were called Pap mills. Misreadings also pushed laboratories into working directly with clinics, developing <b>local</b> classifications in place of the standard scheme, and those local schemes test better.</p>
+              <p><b>Many material and social things had to be built for the test to succeed</b>, and the social ones are not a footnote to the biology. They are why it exists.</p>
+            </div>
+          </div>
+
+          <h4>6. The construction of kinds</h4>
+          <div class="body">
+            <p><b>An old philosophical fight, imported.</b> Are natural kinds part of the world, or only part of our classifying? The traditional version is about universals, the abstractions that range over individual things, like redness.</p>
+            <ul>
+              <li><b>Nominalists</b> hold that kinds are human impositions, even where classifying is easy and everyone agrees. Only individual objects are real. Their difficulty with the other view: where would a general property exist, and how would it attach to an object?</li>
+              <li><b>Realists</b> hold that kinds are real features of the world, even where their edges are fuzzy and their application partly conventional. Their difficulty with the other view: do we not <em>discover</em> features of the world, and if kinds were not real, why would classifying be worth anything?</li>
+            </ul>
+            <p><b>Nominalism is one way of cashing out the construction metaphor.</b> If kinds are not features of the world then they are made, and if they are made by groups of people then they are socially made.</p>
+            <p><b>And then the sentence that earns the chapter its place in this course.</b> Since science is the most influential institution that classifies things, <b>science is central to the social construction of reality.</b> Deciding what counts as a species, a disease, a planet or a race is deciding what there is.</p>
+          </div>
+
+          <h4>7. The construction of nature, which is the one everybody fights about</h4>
+          <div class="body">
+            <p><b>It is a short step from nominalism to the strongest claim in the field, and Sismondo takes the step and then refuses it.</b> On this version, representations directly shape their objects: <b>when scientists agree on a claim, they literally make it true.</b> The world comes to match the agreement, with the arrow of dependence pointing that way. When engineers agree on the most efficient solution, that makes it the most efficient one.</p>
+            <p><b>He calls it neo-Kantian constructivism</b>, because Kant held that human beings impose some structures on the world, and this is that with a social mind in place of an individual one.</p>
+            <p><b>Two things make it plausible, and they are not stupid.</b></p>
+            <ul>
+              <li><b>There is no independent access.</b> The natures of things are never available without a representation. When anyone agrees about anything they do so in response to sense experience, mediated information and arguments, and even sense experience is itself a response to something.</li>
+              <li><b>Contingency before stability.</b> Close studies of science find a great deal of contingency in knowledge before it settles. <b>Disagreement is the rule and not the exception.</b> Yet objects behave themselves once agreement is reached, and that change needs explaining.</li>
+            </ul>
+            <div class="quo">
+              <blockquote>Science as something already in existence, already completed, is the most objective, impersonal thing that we humans know. Science as something coming into being, as a goal, is just as subjectively psychologically conditioned as are all other human endeavors.</blockquote>
+              <div class="src">Einstein, quoted on page 68. Finished science and science in progress look like different activities, and this whole field is the study of the second one.</div>
+            </div>
+            <p><b>Steve Woolgar states the position most directly</b>, arguing that the existence and character of a discovered object differ according to the social network, that the network does not merely mediate between the object and the observation but <b>constitutes</b> the object, and that the relationship therefore inverts: the representation gives rise to the object.</p>
+            <p><b>Sismondo's objection is a question about mechanism, and it is devastating precisely because it is simple.</b> Kant's version was modest because it was individual: a person imposes structure as they apprehend the world, and there is nothing to explain. STS cannot be modest in that way, because its whole emphasis is social. So: <b>how does consensus affect material reality? How do the convictions of authorities carry weight with the world that the convictions of non-authorities do not? How does agreement cause a change in matter?</b></p>
+            <p><b>If it were true, representation would act at a distance with no mediators.</b> A successful representation would change or create the thing it represents, with no causal connection running from one to the other. That violates fundamental assumptions about cause and effect, and it is why Latour says social constructivism is not plausible for more than a second.</p>
+            <p><b>Then a political objection, and it is the one worth carrying into a seminar.</b> Feminists point out that science's images of women are sometimes sexist, especially in how fast they naturalise gender. <b>If neo-Kantian constructivism were right, a feminist critic could try to change science's construction of women but could not call it false</b>, because scientific consensus would be true by definition. The same trap catches environmentalists: they could argue about the dominant view of how resilient nature is, and never say it was wrong. <b>The strongest form of the constructivist claim disarms exactly the people who most want to use it.</b></p>
+            <p><b>And then he half gives it back.</b> Given that several of the other six senses are obviously true, neo-Kantian constructivism may be a decent approximation and methodologically useful even if it is wrong as metaphysics. Talk about the social construction of reality may amount to little more than metaphor or sweeping language, and as a metaphor it does a job: it draws attention to contingency, and sends researchers off to ask what caused it.</p>
+            <div class="ctx"><b>Context: Box 6.4, and why this matters outside the seminar room</b>
+              <p><b>The worry.</b> Some people in environmental studies argue that constructivism undercuts scientific knowledge. Public trust in science rests on a picture of formulaic methods uncovering truths about nature, and STS keeps showing that other circumstances would have produced other knowledge. So constructivism looks like it cripples science's ability to underwrite environmental politics.</p>
+              <p><b>Sismondo says that is a misdiagnosis, and his reason is empirical.</b> Environmental politics already pits experts against each other. Each side presents its own view as entirely forced by nature and reason, with no room for disagreement, while finding all the places the other side's argument was open to choices. <b>So the fact that scientific knowledge is laden with choices is not a secret that STS is letting out. It is rediscovered in every dispute.</b></p>
+              <p><b>The constructive conclusion.</b> Science should be built with controversy already in mind, and its authority should not rest on a formal picture of itself that is incorrect, because resting on that means being rejected the moment the picture fails. Science solves more public problems when its knowledge is adjusted to its public context and attuned to what other people know.</p>
+            </div>
+          </div>
+
+          <h4>The conclusion, which is more conciliatory than the reputation of the phrase</h4>
+          <div class="body">
+            <p><b>The phrase escaped the field.</b> Construction talk is now used in psychology, geography, environmental studies, education, management, cultural studies and even accounting, and STS is partly responsible: because scientific knowledge is normally taken to reflect the natural world with scientists as passive conduits, saying that scientific realities are constructed was a genuinely radical claim, and radical claims travel.</p>
+            <p><b>But the diversity means there is no neat theory there.</b> What survives is the three reminders: science and technology are social, they are active, and they do not take nature as it comes.</p>
+            <p><b>And the closing position, which is the thing to quote if anyone accuses this field of relativism.</b> Some of these forms are controversial in principle and all are controversial in application, but given their diversity <b>even the staunchest realist cannot dismiss constructivist claims out of hand.</b> Constructivism is the study of how scientists and technologists build socially situated knowledge and things, and such studies can show how scientists build <em>good</em> representations of the material world, in a perfectly ordinary sense.</p>
+            <p><b>He then says where science's power comes from</b>, in his own voice: its ability to manipulate nature and measure nature's reactions, and its ability to carry those measurements across time and space to other laboratories and other contexts. <b>Laboratory technologies contribute to objectivity and to objective knowledge.</b></p>
+            <p><b>So constructivist STS may even support a version of realism.</b> Not the idea that anybody has unmediated knowledge of reality, and not the idea that there is one complete set of truths. But a version.</p>
+          </div>
+
+          <dl class="links">
+            <dt>Answers</dt><dd>The Vienna Circle, chapter 9 of the week 2 packet, twice. Sense 4 points out that constructing theories on top of data is the positivists' own claim, and Box 6.2 is the argument they started about whether to believe theories at all.</dd>
+            <dt>Rests on</dt><dd>Kuhn, last week. Sense 6 cites him on kinds, and the contingency that makes sense 7 tempting is the contingency <em>Structure</em> found.</dd>
+            <dt>Answered by</dt><dd>Chapter 7, feminist epistemologies, which is weeks 5 to 7. The political objection to sense 7 is a preview of it: a critic who needs to call something false cannot be a strong constructivist.</dd>
+          </dl>
+
+          <p class="keep"><b>If you keep one thing</b>Social construction is seven different claims wearing one phrase, running from the plainly true, that laboratory phenomena are manufactured and disciplines are real social objects, to the one Sismondo rejects, that scientific agreement literally makes nature the way it is. The useful question in any argument about it is which of the seven is being asserted.</p>
+
+          <div class="mynote"><b>My note</b><span>Learn the seven in order and learn which end he stands at. The named items most likely to be asked for are <b>heterogeneous engineering</b>, <b>co-production</b>, <b>nominalism against realism about kinds</b>, <b>neo-Kantian constructivism</b>, and Brannigan's <b>attributional model of discovery</b>. If you remember one example, make it the Pap smear, because it carries sense 5 whole.</span></div>
+
+          <div class="curious">
+            <div class="label"><b>For the curious</b><span>none of this is on the exam</span></div>
+
+            <details class="bit"><summary>The Pap smear was rejected because gynaecologists were not interested in cancer</summary><div class="bq">
+              <p>That line in Box 6.3 is easy to skim past and it is remarkable. In 1928 a test that could detect cervical cancer early failed to interest the specialty that treats cervical cancer, because early detection was not what that specialty thought it was for. Cancer was something you found when it presented, and by then the useful question was surgical.</p>
+              <p>The estimate usually given is that the test has cut deaths from cervical cancer in developed countries by around seventy per cent since it came into routine use. It sat unused for ten years for reasons that had nothing to do with whether it worked.</p>
+            </div></details>
+
+            <details class="bit"><summary>There is a real argument about what Mendel's numbers show</summary><div class="bq">
+              <p>In 1936 the statistician and geneticist R. A. Fisher reanalysed Mendel's published data and found it fitted the expected ratios <b>too well</b>: the deviations were smaller than chance should have produced, by a margin he put at about one in thirty thousand.</p>
+              <p>Fisher did not accuse Mendel of faking it. His suggestion was that an assistant, knowing what was expected, had helped the counts along. The argument has run ever since, with defences ranging from sampling procedures that would bias the counts innocently, to the observation that classifying a pea as wrinkled or round involves judgement calls, and judgement drifts toward what you expect. Which is Box 2.3 from last week, the theory-dependence of observation, showing up in a monastery garden.</p>
+            </div></details>
+
+            <details class="bit"><summary>The Science Wars, and a hoax that is still being argued about</summary><div class="bq">
+              <p>The fierce arguments Sismondo mentions in his first paragraph have a name. In 1996 the physicist <b>Alan Sokal</b> submitted an article to the cultural studies journal <em>Social Text</em> arguing that quantum gravity was a social and linguistic construct. It was deliberate nonsense, stuffed with fashionable citations, and they published it. He announced the hoax the same day in another magazine.</p>
+              <p>What it proved is still disputed. Sokal's supporters said it showed a field with no standards. Critics pointed out that <em>Social Text</em> was not peer reviewed at the time and that one editor waving through a physicist writing about physics proves little about the arguments themselves. Almost nobody in the field held the position Sokal parodied, which is Sismondo's sense 7, and Latour, the most famous name attached to it, had already rejected it.</p>
+            </div></details>
+
+            <details class="bit"><summary>Latour spent his last years worrying he had helped the wrong people</summary><div class="bq">
+              <p>Bruno Latour, whose line about implausibility Sismondo quotes, wrote an essay in 2004 called "Why Has Critique Run out of Steam?" It opens with him reading about climate change denial and recognising the argumentative moves: that the science is not settled, that there is a lack of scientific certainty, that other interests are at work.</p>
+              <p>His worry was that a generation had been trained to expose facts as socially constructed, and that the technique had been picked up by people using it to defend industries against inconvenient findings. His answer was not to recant but to change the task: critique should be about <em>assembling</em> and protecting the things that matter, with debunking set aside. He died in 2022.</p>
+            </div></details>
+
+            <details class="bit"><summary>Berger and Luckmann were writing about something much less exciting</summary><div class="bq">
+              <p><em>The Social Construction of Reality</em> has almost nothing to do with science. It is a 1966 book in the sociology of knowledge, and it is mostly about how ordinary social arrangements come to feel like facts of nature: queueing, marriage, money, what counts as a rude question.</p>
+              <p>Their machinery is three-part. <b>Externalisation</b>, people act and make institutions. <b>Objectivation</b>, the institutions come to seem like external things with their own reality. <b>Internalisation</b>, the next generation is brought up inside them and experiences them as simply how the world is. STS borrowed the title and applied the machinery to laboratories, which the authors had not had in mind.</p>
+            </div></details>
+          </div>
+        </div>
+      </article>
+
+
+    </div>
+  </section>
+
+  <section id="s-gloss">
+    <h2>Glossary</h2>
+    <p class="lede">Every term defined in this guide, collected and grouped by the chapter it comes from. Definitions are repeated here on purpose, so nothing has to be hunted for.</p>
+    <div class="gl">
+
+      <div class="gl-grp">
+        <h3>Stratification<span>ch. 4</span></h3>
+        <dl>
+          <dt>stratification</dt><dd>The fact that science is layered: a small minority of people produce most of the papers and receive most of the citations. Roughly 10 per cent of authors produce half of all papers.</dd>
+          <dt>the Matthew Effect</dt><dd>Merton's name, from Matthew 13:12, for the way scientific advantage compounds. A small early edge produces a better mentor, a better department, more visibility, more citations, and citation is itself a reward that produces more work.</dd>
+          <dt>cumulative advantage</dt><dd>The general form of the same idea, and the reason Sismondo likes it: differences too small to call unfair at any one step end up producing differences large enough to be undeniable.</dd>
+          <dt>rational reconstruction</dt><dd>What a scientific paper is, as against a record of what happened. Details cleaned up, idiosyncrasies removed, order of events rearranged to make the argument work. Why citation counts measure persuasion, and not influence.</dd>
+          <dt>the pipeline</dt><dd>The standard metaphor for women leaving science, with leaks at every joint. Sismondo accepts it only if intake, blockage and filters are attended to as well as leakage, since in many fields there are few women at the source to begin with.</dd>
+          <dt>getting in, staying in, getting on</dt><dd>Sara Delamont's three problems, and the three stages the chapter uses in place of the pipeline.</dd>
+          <dt>the unofficial PhD programme</dt><dd>The second curriculum that runs beside the official one: study groups, informal mentoring, the conversation in the corridor. Being socially included in it does not guarantee being technically included in it.</dd>
+          <dt>feminisation and status</dt><dd>Rossiter's finding that a field's status falls as women enter it and rises as men do, which is why women could enter science most easily through new fields that were then poorly regarded.</dd>
+        </dl>
+      </div>
+
+      <div class="gl-grp">
+        <h3>Construction<span>ch. 6</span></h3>
+        <dl>
+          <dt>social construction, the three reminders</dt><dd>Whatever else it claims, it reminds us that science and technology are social, that they are active, and that they do not run straight from nature to ideas about nature.</dd>
+          <dt>realism</dt><dd>The intuition that truths depend more on the natural world than on the people stating them. Sismondo notes it is usually a negative position, defined against whichever anti-realism is in front of it.</dd>
+          <dt>the Berger and Luckmann conditions</dt><dd>What it takes to construct a social X: knowledge of X shapes behaviour toward X, knowledge of X is common, and knowledge of X is transmitted. Then X cannot be wished away, and so it exists.</dd>
+          <dt>attributional model of discovery</dt><dd>Brannigan's claim that discoveries are not events in themselves but events retrospectively recognised as origins. Mendel discovered his laws in 1866 as a result of what happened in 1900.</dd>
+          <dt>creating phenomena</dt><dd>The laboratory sense of construction: materials arrive purified and standardised, objects are put in artificial situations, and new stable objects of study are manufactured. Nature is excluded from the laboratory, never brought into it.</dd>
+          <dt>heterogeneous engineering</dt><dd>Law's term. Building an artefact and building the environment in which it can work are one job, because neither can be done alone.</dd>
+          <dt>co-production</dt><dd>Science and social order shaping each other at the same time. The criteria for good climate science are shaped by policy while the criteria for good policy are shaped by climate science.</dd>
+          <dt>nominalism</dt><dd>The view that kinds are human impositions and only individual objects are real. Its opposite here is realism about kinds. Nominalism is one way of cashing out the construction metaphor.</dd>
+          <dt>neo-Kantian constructivism</dt><dd>The strongest sense: when scientists agree on a claim they literally make it true. Sismondo rejects it, because it requires representation to act at a distance with no causal connection.</dd>
+        </dl>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="endmatter">
+    <div><b>Where this goes.</b> Week 4 of thirteen, and the last week before the first exam:</div>
+    <dl class="weeks">
+      <dt>Weeks 5 to 7</dt><dd>Feminist epistemology and standpoint theory; science, gender and the body. Chapter 7 of this book, which both chapters here point forward to &middot; <b>Exam 1, Wed 7 Oct, 30%</b></dd>
+      <dt>Weeks 8 to 9</dt><dd>Feminist philosophy of disability; embodiment and the social model &middot; <b>Exam 2, Wed 11 Nov, 30%</b></dd>
+      <dt>Weeks 10 to 12</dt><dd>Animal minds, human and non-human</dd>
+      <dt>Week 13</dt><dd>Review and exam prep &middot; <b>Final, 40%, date set by the Registrar</b></dd>
+    </dl>
+    <div><b>Source.</b> Sergio Sismondo, <em>An Introduction to Science and Technology Studies</em>, 2nd ed., Wiley-Blackwell 2010, chapter 4, pages 36 to 46, and chapter 6, pages 57 to 71, through the uOttawa library. Scope and dates from the Brightspace module description and the PHI2394-B00 course outline. The module gives chapter 4 as beginning on page 35; the running heads put the chapter opener on page 36.</div>
+  </div>
+
+</div>
+
+<div class="dock">
+  <div class="prog" id="prog"></div>
+  <div class="in">
+    <button type="button" id="bmgo" data-set="0" title="Go to your bookmark">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 2.2h8.8v12.1L8 11.1l-4.4 3.2z"/></svg>
+      <span class="lab">Bookmark</span></button>
+    <button type="button" data-marks title="Everything you have marked">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M2.5 3.5h11M2.5 8h11M2.5 12.5h7"/></svg>
+      <span class="lab">Highlights</span><span class="n" id="mcount"></span></button>
+    <a href="notes.html" title="Your notes for each lecture">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.2 2.3 13.7 4.8 5.6 12.9 2.4 13.6l.7-3.2z"/></svg>
+      <span class="lab">Lecture notes</span></a>
+    <button type="button" id="totop" class="end" title="Back to the top">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 13V3M3.5 7.5 8 3l4.5 4.5"/></svg>
+      <span class="lab">Top</span></button>
+  </div>
+</div>
+
+<div id="marks" class="drawer" hidden>
+  <div class="dback" data-close></div>
+  <aside class="dpanel" role="dialog" aria-modal="true" aria-labelledby="marks-h">
+    <div class="dhead">
+      <h2 id="marks-h">My highlights</h2>
+      <button type="button" class="dclose" data-close aria-label="Close">&times;</button>
+    </div>
+    <p class="dsub">Grouped by the text it sits in. Click one to jump to it.</p>
+    <div class="bm" id="bmlist"><p class="bmempty">Nothing marked yet. Select any text in the guide, then pick yellow, pink, a comment or the ribbon that sets your bookmark.</p></div>
+  </aside>
+</div>
+
+<footer class="sitefoot">
+  <div class="in">
+    <div class="col brand">
+      <a href="../">PHI2394 Reading Hub</a>
+      <p>Reading guides for Scientific Thought and Social Values, University of Ottawa.</p>
+    </div>
+    <nav class="col" aria-label="This week">
+      <h2>Week 4</h2>
+      <a href="./">Reading guide</a>
+      <a href="notes.html">My notes</a>
+      <button type="button" data-marks>My highlights</button>
+    </nav>
+    <nav class="col" aria-label="The hub">
+      <h2>The hub</h2>
+      <a href="../">All weeks</a>
+      <a href="../#about">How these were written</a>
+      <a href="https://github.com/myermcat/phi-reading-hub">Source on GitHub</a>
+    </nav>
+  </div>
+  <div class="colophon">
+    <span>Written with Claude. AI can make mistakes, and compression is where it makes them.</span>
+    <span>Your notes, highlights and bookmark are kept in this browser only.</span>
+  </div>
+</footer>
+
+<script>
+/* This guide used to live at week-1 and its store was keyed to that name. The week numbering
+   now follows the course outline, where the same reading is week 2, so anything already saved
+   is copied across to the new key the first time this page loads. Same origin, so the old
+   entries are still readable. */
+(function () {
+  try {
+    [['phi2394-week1-guide-v1', 'phi2394-week2-guide-v1'],
+     ['phi2394-week1-lecture-tab-v1', 'phi2394-week2-lecture-tab-v1']].forEach(function (p) {
+      if (localStorage.getItem(p[1]) === null) {
+        var old = localStorage.getItem(p[0]);
+        if (old !== null) localStorage.setItem(p[1], old);
+      }
+    });
+  } catch (e) {}
+})();
+</script>
+<script>
+/* One curious item open at a time. A dozen of them open at once turns the panel into a wall,
+   which is what collapsing them was for. Closing happens per panel, so a side note somewhere
+   else on the page is left alone. */
+(function () {
+  document.addEventListener('toggle', function (e) {
+    var d = e.target;
+    if (!d.open || !d.matches || !d.matches('.curious > details.bit')) return;
+    Array.prototype.forEach.call(d.parentElement.children, function (s) {
+      if (s !== d && s.tagName === 'DETAILS' && s.open) s.open = false;
+    });
+  }, true);
+})();
+</script>
+<script src="../shared/editor.js"></script>
+<script>
+(function () {
+  var SEL = 'p,li,h4,h5,blockquote,td,dd,figcaption';
+  var LS = 'phi2394-week4-guide-v1', WIDE = 1400;
+  var root, bar, rail, items = [], notes = {}, ref = null, saveT = null;
+  var drawer = null;
+  function openMarks() {
+    if (!drawer) return;
+    drawer.hidden = false; document.body.style.overflow = 'hidden';
+    var c = drawer.querySelector('.dclose'); if (c) c.focus();
+  }
+  function closeMarks() {
+    if (!drawer || drawer.hidden) return;
+    drawer.hidden = true; document.body.style.overflow = '';
+  }
+
+  function blocks() {
+    return Array.prototype.filter.call(root.querySelectorAll(SEL), function (el) {
+      return !el.querySelector(SEL) && !el.closest('.cmt') && !el.closest('.nb') && el.textContent.trim().length > 0;
+    });
+  }
+  function textNodes(el) {
+    var w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null), a = [], n;
+    while ((n = w.nextNode())) a.push(n);
+    return a;
+  }
+  function offsetIn(el, node, off) {
+    var ns = textNodes(el), t = 0;
+    for (var i = 0; i < ns.length; i++) { if (ns[i] === node) return t + off; t += ns[i].nodeValue.length; }
+    return t;
+  }
+  function strip() {
+    Array.prototype.forEach.call(root.querySelectorAll('mark.hl'), function (m) {
+      var p = m.parentNode;
+      while (m.firstChild) p.insertBefore(m.firstChild, m);
+      p.removeChild(m); p.normalize();
+    });
+    Array.prototype.forEach.call(root.querySelectorAll('.cmt'), function (c) { c.remove(); });
+  }
+  function paint(el, start, end, cls, id) {
+    var ns = textNodes(el), pos = 0, jobs = [];
+    for (var i = 0; i < ns.length; i++) {
+      var len = ns[i].nodeValue.length, s = Math.max(start, pos), e = Math.min(end, pos + len);
+      if (e > s) jobs.push([ns[i], s - pos, e - pos]);
+      pos += len; if (pos >= end) break;
+    }
+    for (var j = jobs.length - 1; j >= 0; j--) {
+      var n = jobs[j][0], a = jobs[j][1], b = jobs[j][2];
+      if (b < n.nodeValue.length) n.splitText(b);
+      var target = a > 0 ? n.splitText(a) : n;
+      var m = document.createElement('mark');
+      m.className = 'hl ' + cls;
+      m.setAttribute('data-id', id);
+      target.parentNode.insertBefore(m, target);
+      m.appendChild(target);
+    }
+  }
+  function card(it) {
+    var c = document.createElement('div');
+    c.className = 'cmt'; c.setAttribute('data-id', it.id);
+    var q = document.createElement('div'); q.className = 'q';
+    q.textContent = '“' + (it.text.length > 70 ? it.text.slice(0, 70) + '…' : it.text) + '”';
+    var ta = document.createElement('div');
+    ta.className = 'cbody'; ta.contentEditable = 'true';
+    ta.setAttribute('data-ph', 'Comment…');
+    ta.innerHTML = Notes.clean(it.body || '');
+    Notes.rich(ta, function () { it.body = ta.innerHTML; save(); });
+    ta.addEventListener('input', function () { it.body = ta.innerHTML; save(); });
+    ta.addEventListener('blur', function () {
+      if (!ta.textContent.trim()) { remove(it.id); return; }
+      it.body = ta.innerHTML; save(); place_notes();
+    });
+    ta.addEventListener('keydown', function (e) { if (e.key === 'Escape') ta.blur(); });
+    var row = document.createElement('div'); row.className = 'row';
+    var del = document.createElement('button'); del.type = 'button'; del.textContent = 'Delete';
+    del.addEventListener('mousedown', function (e) { e.preventDefault(); remove(it.id); });
+    row.appendChild(del);
+    c.appendChild(q); c.appendChild(ta); c.appendChild(row);
+    return c;
+  }
+  function place_notes() {
+    var wide = window.innerWidth >= WIDE;
+    rail.classList.toggle('on', wide);
+    var last = -1e9;
+    items.forEach(function (it) {
+      if (it.kind !== 'note') return;
+      var c = root.querySelector('.cmt[data-id="' + it.id + '"]');
+      var m = root.querySelector('mark[data-id="' + it.id + '"]');
+      if (!c || !m) return;
+      if (!m.getClientRects().length) { c.style.display = 'none'; return; }
+      c.style.display = '';
+
+      if (wide) {
+        if (c.parentNode !== rail) rail.appendChild(c);
+        c.classList.remove('inline');
+        var top = m.getBoundingClientRect().top + window.scrollY - (root.getBoundingClientRect().top + window.scrollY);
+        if (top < last) top = last;
+        c.style.top = top + 'px';
+        last = top + c.offsetHeight + 14;
+      } else {
+        c.classList.add('inline'); c.style.top = '';
+        var host = m.closest(SEL);
+        if (host && c.previousSibling !== host) host.parentNode.insertBefore(c, host.nextSibling);
+      }
+    });
+  }
+  function render() {
+    strip();
+    var bs = blocks();
+    items.forEach(function (it) {
+      if (!it || !it.text) return;
+      var probe = (it.before || '') + it.text + (it.after || '');
+      var order = [], i;
+      // the block this mark was made in comes first, by its opening text, then by its index
+      if (it.head) for (i = 0; i < bs.length; i++) if (bs[i].textContent.slice(0, 90) === it.head) order.push(i);
+      if (typeof it.idx === 'number' && it.idx >= 0 && it.idx < bs.length && order.indexOf(it.idx) < 0) order.push(it.idx);
+      for (i = 0; i < bs.length; i++) if (order.indexOf(i) < 0) order.push(i);
+      for (var j = 0; j < order.length; j++) {
+        var el = bs[order[j]], t = el.textContent, k = -1, st;
+        if (probe !== it.text) k = t.indexOf(probe);
+        if (k >= 0) { st = k + (it.before || '').length; }
+        else if (j < 2 && typeof it.at === 'number' && t.substr(it.at, it.text.length) === it.text) { st = it.at; }
+        else if (j < 2) { k = t.indexOf(it.text); if (k < 0) continue; st = k; }
+        else { continue; }
+        paint(el, st, st + it.text.length,
+          it.kind === 'note' ? 'hl-n' : it.kind === 'bm' ? 'hl-b' : 'hl-' + it.color, it.id);
+        if (it.kind === 'note') rail.appendChild(card(it));
+        return;
+      }
+    });
+    place_notes();
+    listMarks();
+  }
+  // Opening a mark that sits inside a closed toggle has to open the toggle first,
+  // or the scroll lands on a collapsed summary and the mark is nowhere on screen.
+  function goTo(el) {
+    if (!el) return;
+    var d = el.closest('details');
+    while (d) { d.open = true; d = d.parentElement && d.parentElement.closest('details'); }
+    var se = document.scrollingElement || document.documentElement, was = se.scrollTop;
+    try { el.scrollIntoView({ block: 'center', behavior: 'smooth' }); }
+    catch (e) { el.scrollIntoView(true); }
+    // Smooth scrolling is refused in some contexts and silently does nothing, so check
+    // that it actually moved and jump outright when it did not.
+    setTimeout(function () {
+      if (Math.abs((document.scrollingElement || document.documentElement).scrollTop - was) < 4) {
+        el.scrollIntoView({ block: 'center' });
+      }
+    }, 380);
+    el.classList.add('flash');
+    setTimeout(function () { el.classList.remove('flash'); }, 1600);
+  }
+  function bookmark() { return items.filter(function (x) { return x.kind === 'bm'; })[0] || null; }
+  function bmState() {
+    var b = document.getElementById('bmgo');
+    if (!b) return;
+    var it = bookmark();
+    b.setAttribute('data-set', it ? '1' : '0');
+    b.title = it ? 'Go to your bookmark: “' + it.text.slice(0, 60) + '”'
+                 : 'No bookmark yet. Select a word and pick the ribbon.';
+  }
+  // The excerpt shown in the list: the marked words in their own colour with the words
+  // around them left in, because a bare quotation out of context says nothing.
+  function excerpt(el, ids) {
+    var w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null), n, pos = 0, full = '', runs = [];
+    while ((n = w.nextNode())) {
+      var mk = n.parentElement && n.parentElement.closest('mark.hl');
+      var len = n.nodeValue.length;
+      if (mk && ids.indexOf(mk.getAttribute('data-id')) >= 0) {
+        var last = runs[runs.length - 1];
+        if (last && last.e === pos && last.k === mk.className) last.e = pos + len;
+        else runs.push({ s: pos, e: pos + len, k: mk.className });
+      }
+      full += n.nodeValue; pos += len;
+    }
+    var out = document.createElement('span');
+    out.className = 'q';
+    if (!runs.length) { out.textContent = full.slice(0, 160); return out; }
+    var a = Math.max(0, runs[0].s - 75), b = Math.min(full.length, runs[runs.length - 1].e + 75);
+    if (a > 0) { var sp = full.indexOf(' ', a); if (sp > 0 && sp < runs[0].s) a = sp + 1; }
+    if (b < full.length) { var sp2 = full.lastIndexOf(' ', b); if (sp2 > runs[runs.length - 1].e) b = sp2; }
+    function txt(str, dim) {
+      if (!str) return;
+      var e = document.createElement('span');
+      if (dim) e.className = 'dim';
+      e.textContent = str; out.appendChild(e);
+    }
+    if (a > 0) txt('… ', 1);
+    var cur = a;
+    runs.forEach(function (r) {
+      txt(full.slice(cur, r.s), 1);
+      var m = document.createElement('mark');
+      m.className = r.k;
+      m.textContent = full.slice(r.s, r.e);
+      out.appendChild(m); cur = r.e;
+    });
+    txt(full.slice(cur, b), 1);
+    if (b < full.length) txt(' …', 1);
+    return out;
+  }
+  // The highlights list. One row per paragraph, so two marks in the same paragraph read as
+  // one entry, grouped by the text each paragraph sits in. Click a row and go there.
+  function listMarks() {
+    var box = document.getElementById('bmlist');
+    bmState();
+    var n = document.getElementById('mcount');
+    if (n) n.textContent = items.length ? String(items.length) : '';
+    if (!box) return;
+    box.innerHTML = '';
+
+    function where(el) {
+      var art = el.closest('article.rd'), name = 'The argument', ch = '';
+      if (art) {
+        var h = art.querySelector('h3'), chip = h && h.querySelector('.ch'), who = art.querySelector('.who');
+        ch = chip ? chip.textContent.trim().toLowerCase() : '';
+        name = who ? who.textContent.split(',')[0].trim() : (h ? h.textContent : name);
+      } else {
+        var sec = el.closest('section'), sh = sec && sec.querySelector('h2');
+        if (sh) name = sh.textContent.trim();
+      }
+      var node = el, sub = '';
+      while (node && node !== root && !sub) {
+        var sib = node.previousElementSibling;
+        while (sib && !sub) {
+          if (/^H[2-6]$/.test(sib.tagName)) sub = sib.textContent.trim();
+          else if (sib.tagName === 'SUMMARY') sub = sib.textContent.trim();
+          sib = sib.previousElementSibling;
+        }
+        if (!sub && node.parentElement && node.parentElement.tagName === 'DETAILS') {
+          var sm = node.parentElement.querySelector('summary');
+          if (sm) sub = sm.textContent.trim();
+        }
+        node = node.parentElement;
+      }
+      return { name: name, ch: ch, sub: sub };
+    }
+    function row(el, list, cls) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'bmi' + (cls ? ' ' + cls : '');
+      var dots = document.createElement('span'); dots.className = 'dots';
+      var seenC = {};
+      list.forEach(function (it) {
+        var k = it.kind === 'note' ? 'n' : (it.kind === 'bm' ? 'b' : it.color);
+        if (seenC[k]) return; seenC[k] = 1;
+        var d = document.createElement('span'); d.className = 'dot ' + k; dots.appendChild(d);
+      });
+      var txt = document.createElement('span'); txt.className = 'bt';
+      var w = where(el);
+      if (w.sub) {
+        var cap = document.createElement('span'); cap.className = 'where'; cap.textContent = w.sub;
+        txt.appendChild(cap);
+      }
+      txt.appendChild(excerpt(el, list.map(function (x) { return x.id; })));
+      list.forEach(function (it) {
+        if (it.kind !== 'note' || !it.body) return;
+        var cm = document.createElement('span'); cm.className = 'cm';
+        cm.textContent = it.body.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 180);
+        txt.appendChild(cm);
+      });
+      b.appendChild(dots); b.appendChild(txt);
+      b.addEventListener('click', function () {
+        closeMarks();
+        goTo(root.querySelector('mark[data-id="' + list[0].id + '"]'));
+      });
+      return b;
+    }
+
+    // the bookmark first, on its own, because there is only ever one
+    var bm = bookmark(), bmMark = bm && root.querySelector('mark[data-id="' + bm.id + '"]');
+    if (bm && bmMark) {
+      var wrapB = document.createElement('div'); wrapB.className = 'bmg bmg-b';
+      var h3b = document.createElement('h3');
+      h3b.textContent = 'Bookmark';
+      var spb = document.createElement('span'); spb.textContent = 'where you stopped';
+      h3b.appendChild(spb); wrapB.appendChild(h3b);
+      wrapB.appendChild(row(bmMark.closest(SEL) || bmMark.parentElement, [bm], 'isbm'));
+      var clr = document.createElement('button');
+      clr.type = 'button'; clr.className = 'bmclear'; clr.textContent = 'Clear bookmark';
+      clr.addEventListener('click', function () { remove(bm.id); });
+      wrapB.appendChild(clr);
+      box.appendChild(wrapB);
+    }
+
+    // then the highlights and comments, one row per paragraph
+    var groups = [], byName = {}, seen = {}, order = [], perBlock = {};
+    Array.prototype.forEach.call(root.querySelectorAll('mark.hl'), function (m) {
+      var id = m.getAttribute('data-id');
+      if (seen[id]) return;
+      var it = items.filter(function (x) { return x.id === id; })[0];
+      if (!it || it.kind === 'bm') return;
+      seen[id] = 1;
+      var host = m.closest(SEL) || m.parentElement;
+      var k = order.indexOf(host);
+      if (k < 0) { k = order.length; order.push(host); perBlock[k] = []; }
+      perBlock[k].push(it);
+    });
+    order.forEach(function (host, k) {
+      var w = where(host), g = byName[w.name];
+      if (!g) { g = { name: w.name, ch: w.ch, rows: [] }; byName[w.name] = g; groups.push(g); }
+      g.rows.push([host, perBlock[k]]);
+    });
+    if (!groups.length && !bm) {
+      var e = document.createElement('p');
+      e.className = 'bmempty';
+      e.textContent = 'Nothing marked yet. Select any text in the guide, then pick yellow, pink, a comment or the ribbon that sets your bookmark.';
+      box.appendChild(e);
+      return;
+    }
+    groups.forEach(function (g) {
+      var wrap = document.createElement('div'); wrap.className = 'bmg';
+      var h3 = document.createElement('h3');
+      h3.textContent = g.name;
+      if (g.ch) { var sp = document.createElement('span'); sp.textContent = g.ch; h3.appendChild(sp); }
+      wrap.appendChild(h3);
+      g.rows.forEach(function (r) { wrap.appendChild(row(r[0], r[1])); });
+      box.appendChild(wrap);
+    });
+  }
+  var pill = null, pillT = null;
+  function flag(txt, bad) {
+    if (!pill) {
+      pill = document.createElement('div'); pill.id = 'save';
+      pill.setAttribute('role', 'status'); document.body.appendChild(pill);
+    }
+    pill.textContent = txt;
+    pill.className = bad ? 'bad' : (txt ? 'on' : '');
+    if (pillT) clearTimeout(pillT);
+    if (!bad) pillT = setTimeout(function () { pill.className = ''; }, 1400);
+  }
+  // notes.html writes lec1, lec2 and their dates into this same stored object, under this same
+  // key. Both pages therefore read what is stored, change only the keys they own, and write the
+  // whole thing back. A page that writes an object built from its own memory erases whatever the
+  // other page saved since it loaded.
+  var OWN = null;
+  function owned() {
+    if (!OWN) {
+      OWN = {};
+      Array.prototype.forEach.call(document.querySelectorAll('.nb[data-k]'), function (el) {
+        OWN[el.getAttribute('data-k')] = 1;
+      });
+    }
+    return OWN;
+  }
+  function stored() {
+    var v = null;
+    try { v = JSON.parse(localStorage.getItem(LS) || 'null'); } catch (e) {}
+    if (Array.isArray(v)) v = { items: v, notes: {} };
+    if (!v || typeof v !== 'object') v = { items: [], notes: {} };
+    if (!Array.isArray(v.items)) v.items = [];
+    if (!v.notes || typeof v.notes !== 'object') v.notes = {};
+    return v;
+  }
+  function queueRef() {
+    if (saveT) clearTimeout(saveT);
+    saveT = setTimeout(function () {
+      if (ref) ref.set({ items: items, notes: notes }).catch(function () {});
+    }, 400);
+  }
+  // The one write into localStorage: read what is stored, overwrite only the keys named, and
+  // put the whole object back. `extra` carries keys that arrived from the shared database and
+  // belong to no page in particular.
+  function writeStore(extra) {
+    var keep = stored().notes, own = owned(), k;
+    for (k in own) if (Object.prototype.hasOwnProperty.call(own, k) && notes[k] !== undefined) keep[k] = notes[k];
+    if (extra) for (k in extra) if (Object.prototype.hasOwnProperty.call(extra, k)) keep[k] = extra[k];
+    localStorage.setItem(LS, JSON.stringify({ items: items, notes: keep }));
+  }
+  function save() {
+    try {
+      writeStore(null);
+      flag('Saved in this browser', false);
+    } catch (e) {
+      // A private window, or site data turned off. Saying nothing here is how somebody
+      // loses an evening of notes believing they were kept.
+      flag('This browser is not saving. Copy anything you need.', true);
+    }
+    queueRef();
+  }
+  function paintNotes() {
+    Array.prototype.forEach.call(document.querySelectorAll('.nb'), function (el) {
+      if (el !== document.activeElement) {
+        var v = notes[el.getAttribute('data-k')] || '';
+        if (el.innerHTML !== v) el.innerHTML = Notes.clean(v);
+      }
+      Notes.markEmpty(el);
+      var card = el.closest('.nbwrap');
+      if (card) card.classList.toggle('has', !!el.textContent.trim());
+    });
+  }
+
+  /* ---- the editor ---- */
+  /* The editor itself is shared/editor.js, one file for every note she writes in either
+     course. Two kinds of box on this page go through it: the note card under a reading, and
+     the body of a comment on a highlight. Both are named to Notes.bar(), which raises the
+     floating toolbar over a selection in either one. */
+
+  /* Where a change the toolbar or the colour key made belongs. A note card writes into
+     `notes` under its own key, and a comment body writes into the item its card stands for. */
+  function saveBox(el) {
+    if (el.classList.contains('nb')) notes[el.getAttribute('data-k')] = el.innerHTML;
+    else {
+      var c = el.closest('.cmt');
+      var it = c && items.filter(function (x) { return x.id === c.getAttribute('data-id'); })[0];
+      if (it) it.body = el.innerHTML;
+    }
+    save();
+  }
+  function wireNotes() {
+    Notes.bar({ sel: '.nb, .cbody', accent: 'Green text', save: saveBox });
+    Array.prototype.forEach.call(document.querySelectorAll('.nb'), function (el) {
+      el.addEventListener('input', function () {
+        // ahead of rich()'s own listener, so the arrow is in the DOM before it is stored
+        Notes.swapAsTyped();
+        notes[el.getAttribute('data-k')] = el.innerHTML;
+        var card = el.closest('.nbwrap');
+        if (card) card.classList.toggle('has', !!el.textContent.trim());
+        save();
+      });
+      el.addEventListener('blur', function () { Notes.hideBar(); notes[el.getAttribute('data-k')] = el.innerHTML; save(); });
+      Notes.rich(el, function () { notes[el.getAttribute('data-k')] = el.innerHTML; save(); });
+    });
+  }
+  function remove(id) {
+    var gone = items.filter(function (x) { return x.id === id; })[0];
+    items = items.filter(function (x) { return x.id !== id; });
+    save(); render();
+    if (gone) offerUndo(gone);
+  }
+  // One click removes a mark, so one click has to put it back. Without this, a misplaced
+  // click destroys a highlight with no way out of it.
+  function offerUndo(gone) {
+    if (!pill) flag('', false);
+    if (pillT) clearTimeout(pillT);
+    pill.textContent = gone.kind === 'note' ? 'Comment removed' : 'Highlight removed';
+    var b = document.createElement('button');
+    b.type = 'button'; b.textContent = 'Undo';
+    b.addEventListener('click', function () {
+      items.push(gone); save(); render();
+      pill.className = ''; pill.textContent = '';
+    });
+    pill.appendChild(b);
+    pill.className = 'act';
+    pillT = setTimeout(function () { pill.className = ''; pill.textContent = ''; }, 9000);
+  }
+  function capture(kind, color) {
+    var sel = window.getSelection();
+    if (!sel || sel.isCollapsed || sel.rangeCount === 0) return null;
+    var r = sel.getRangeAt(0), made = null, bs = blocks();
+    // There is only ever one bookmark, because there is only ever one place reading stopped.
+    if (kind === 'bm') items = items.filter(function (x) { return x.kind !== 'bm'; });
+    bs.forEach(function (el) {
+      if (!r.intersectsNode(el)) return;
+      var t = el.textContent;
+      var s = el.contains(r.startContainer) ? offsetIn(el, r.startContainer, r.startOffset) : 0;
+      var e = el.contains(r.endContainer) ? offsetIn(el, r.endContainer, r.endOffset) : t.length;
+      if (e <= s) return;
+      var text = t.slice(s, e);
+      if (!text.trim()) return;
+      if ((kind === 'note' || kind === 'bm') && made) return;
+      var it = {
+        id: String(Date.now()) + '-' + Math.random().toString(36).slice(2, 7),
+        text: text, before: t.slice(Math.max(0, s - 40), s), after: t.slice(e, e + 40),
+        head: t.slice(0, 90), idx: bs.indexOf(el), at: s,
+        kind: kind, color: color || 'y', body: ''
+      };
+      items.push(it); made = it;
+    });
+    if (made) { sel.removeAllRanges(); if (kind !== 'note') save(); render(); }
+    return made;
+  }
+  function hide() { bar.hidden = true; }
+  function show() {
+    var sel = window.getSelection();
+    if (!sel || sel.isCollapsed || sel.rangeCount === 0) return hide();
+    if (!sel.toString().trim()) return hide();
+    if (!root.contains(sel.anchorNode) || !root.contains(sel.focusNode)) return hide();
+    var a = document.activeElement;
+    if (a && (a.tagName === 'TEXTAREA' || a.isContentEditable)) return hide();
+    if (sel.anchorNode && sel.anchorNode.parentElement && sel.anchorNode.parentElement.closest('.cmt, .nb')) return hide();
+    var r = sel.getRangeAt(0).getBoundingClientRect();
+    if (!r.width && !r.height) return hide();
+    bar.hidden = false;
+    bar.style.top = (window.scrollY + r.top - bar.offsetHeight - 8) + 'px';
+    bar.style.left = (window.scrollX + r.left) + 'px';
+  }
+  function start() {
+    root = document.querySelector('.wrap');
+    if (!root) return;
+    rail = document.createElement('div'); rail.id = 'cmts';
+    root.appendChild(rail);
+    bar = document.createElement('div');
+    bar.id = 'hl-bar'; bar.hidden = true;
+    bar.innerHTML = '<button type="button" data-c="y" title="Highlight yellow" aria-label="Highlight yellow"></button>' +
+      '<button type="button" data-c="p" title="Highlight pink" aria-label="Highlight pink"></button>' +
+      '<button type="button" data-c="n" title="Add a comment" aria-label="Add a comment"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 9.5A1.5 1.5 0 0 1 12.5 11H6l-3 3V4.5A1.5 1.5 0 0 1 4.5 3h8A1.5 1.5 0 0 1 14 4.5z"/></svg></button>' +
+      '<button type="button" data-c="b" title="Set your bookmark here" aria-label="Set your bookmark here"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M4 2.6h8v11.2L8 10.9l-4 2.9z"/></svg></button>';
+    document.body.appendChild(bar);
+    bar.addEventListener('mousedown', function (e) { e.preventDefault(); });
+    bar.addEventListener('click', function (e) {
+      var b = e.target.closest('button');
+      if (!b) return;
+      var c = b.getAttribute('data-c');
+      bar.hidden = true;
+      if (c === 'n') {
+        var it = capture('note');
+        if (it) {
+          var ta = root.querySelector('.cmt[data-id="' + it.id + '"] .cbody');
+          if (ta) { ta.focus(); }
+        }
+      } else if (c === 'b') { capture('bm'); }
+      else { capture('hl', c); }
+    });
+    // A click on empty space does not clear the selection, so a bare mouseup must never
+    // re-show the bar: only a gesture that actually dragged, or actually changed the
+    // selection, counts as a new selection.
+    var downX = 0, downY = 0, downSel = '';
+    ['mousedown', 'pointerdown', 'touchstart'].forEach(function (ev) {
+      document.addEventListener(ev, function (e) {
+        if (bar.contains(e.target)) return;
+        hide();
+        downX = e.clientX || 0; downY = e.clientY || 0;
+        downSel = String(window.getSelection() || '');
+      }, true);
+    });
+    ['mouseup', 'touchend'].forEach(function (ev) {
+      document.addEventListener(ev, function (e) {
+        if (bar.contains(e.target)) return;
+        var moved = Math.abs((e.clientX || 0) - downX) > 3 || Math.abs((e.clientY || 0) - downY) > 3;
+        var was = downSel;
+        setTimeout(function () {
+          var now = String(window.getSelection() || '');
+          if (!now.trim()) return hide();
+          if (!moved && now === was) return hide();
+          show();
+        }, 0);
+      });
+    });
+    document.addEventListener('keyup', function (e) {
+      if (e.key !== 'Shift' && !(e.shiftKey && e.key.indexOf('Arrow') === 0)) return;
+      var a = document.activeElement;
+      if (a && (a.tagName === 'TEXTAREA' || a.isContentEditable)) return;
+      setTimeout(show, 0);
+    });
+    document.addEventListener('keydown', function (e) { if (e.key !== 'Shift') hide(); });
+    document.addEventListener('selectionchange', function () {
+      var sel = window.getSelection();
+      if (!sel || sel.isCollapsed || !String(sel).trim()) hide();
+    });
+    document.addEventListener('visibilitychange', hide);
+    window.addEventListener('scroll', hide, { passive: true });
+    window.addEventListener('wheel', hide, { passive: true });
+    window.addEventListener('blur', hide);
+    window.addEventListener('resize', function () { hide(); place_notes(); });
+    root.addEventListener('click', function (e) {
+      var m = e.target.closest && e.target.closest('mark.hl');
+      if (!m) return;
+      var id = m.getAttribute('data-id');
+      var it = items.filter(function (x) { return x.id === id; })[0];
+      if (!it) return;
+      if (it.kind === 'note') {
+        var c = root.querySelector('.cmt[data-id="' + id + '"]');
+        Array.prototype.forEach.call(root.querySelectorAll('.cmt.act'), function (x) { x.classList.remove('act'); });
+        Array.prototype.forEach.call(root.querySelectorAll('mark.hl-n.act'), function (x) { x.classList.remove('act'); });
+        if (c) { c.classList.add('act'); m.classList.add('act'); c.scrollIntoView({ block: 'nearest' }); c.querySelector('.cbody').focus(); }
+      } else if (it.kind === 'bm') {
+        goTo(m);
+      } else { remove(id); }
+    });
+    drawer = document.getElementById('marks');
+    Array.prototype.forEach.call(document.querySelectorAll('[data-marks]'), function (b) {
+      b.addEventListener('click', function (e) { e.preventDefault(); openMarks(); });
+    });
+    if (drawer) drawer.addEventListener('click', function (e) {
+      if (e.target.closest('[data-close]')) closeMarks();
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMarks(); });
+    var top = document.getElementById('totop');
+    if (top) top.addEventListener('click', function () {
+      try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch (e) { window.scrollTo(0, 0); }
+    });
+    var go = document.getElementById('bmgo');
+    if (go) go.addEventListener('click', function () {
+      var it = bookmark();
+      var m = it && root.querySelector('mark[data-id="' + it.id + '"]');
+      if (m) { goTo(m); return; }
+      flag('No bookmark yet. Select a word, then pick the ribbon.', true);
+      setTimeout(function () { flag(''); }, 3200);
+    });
+    // A closed toggle prints as a heading with nothing under it, so open everything to print
+    // and put it back afterwards.
+    var reopen = [];
+    window.addEventListener('beforeprint', function () {
+      reopen = [];
+      Array.prototype.forEach.call(document.querySelectorAll('details:not([open])'), function (d) {
+        reopen.push(d); d.open = true;
+      });
+    });
+    window.addEventListener('afterprint', function () {
+      reopen.forEach(function (d) { d.open = false; });
+      reopen = [];
+    });
+    document.addEventListener('toggle', function () { place_notes(); }, true);
+    try {
+      var v = JSON.parse(localStorage.getItem(LS) || 'null');
+      if (Array.isArray(v)) { items = v; }
+      else if (v && typeof v === 'object') { items = v.items || []; notes = v.notes || {}; }
+    } catch (e) {}
+    items.forEach(function (x) { if (!x.kind) x.kind = 'hl'; });
+    wireNotes();
+    paintNotes();
+    render();
+    // A second copy of this page, open in another tab, writes the same key. Pick up what it
+    // saved, so the next save here is built on what is stored. A stale list of highlights in
+    // memory erases the highlight made over there as soon as a note is typed here. Whatever
+    // is being edited here at the moment is left alone.
+    window.addEventListener('storage', function (e) {
+      if (e.key && e.key !== LS) return;
+      var a = document.activeElement;
+      if (a && a.classList && a.classList.contains('cbody')) return;
+      var boxes = {}, fresh = stored(), k;
+      Array.prototype.forEach.call(document.querySelectorAll('.nb[data-k]'), function (el) {
+        boxes[el.getAttribute('data-k')] = el;
+      });
+      for (k in fresh.notes) {
+        if (!Object.prototype.hasOwnProperty.call(fresh.notes, k)) continue;
+        if (boxes[k] && boxes[k] === a) continue;
+        notes[k] = fresh.notes[k];
+      }
+      items = fresh.items;
+      items.forEach(function (x) { if (!x.kind) x.kind = 'hl'; });
+      paintNotes();
+      render();
+    });
+    if (window.claude && typeof claude.use === 'function') {
+      claude.use('db').then(function (db) {
+        if (!db) return;
+        ref = db.doc('highlights/v1');
+        ref.onSnapshot(function (snap) {
+          var d = snap.exists ? snap.data() : null;
+          if (!d) return;
+          if (root.querySelector('.cmt .cbody:focus')) return;
+          // Merged, so a snapshot taken before the lecture notes existed cannot drop them.
+          if (d.notes && typeof d.notes === 'object') {
+            Object.keys(d.notes).forEach(function (k) { notes[k] = d.notes[k]; });
+            paintNotes();
+          }
+          if (Array.isArray(d.items)) {
+            items = d.items.slice();
+            items.forEach(function (x) { if (!x.kind) x.kind = 'hl'; });
+            render();
+          }
+          // Merged the same way a save is, so the lecture notes written on notes.html since
+          // this page loaded survive a snapshot that predates them.
+          try { writeStore(d.notes && typeof d.notes === 'object' ? d.notes : null); } catch (e) {}
+        }, function () {});
+      }).catch(function () {});
+    }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
+  else start();
+})();
+</script>
+
+<script>
+(function () {
+  var nav = document.getElementById('nav');
+  if (!nav) return;
+  var links = Array.prototype.slice.call(nav.querySelectorAll('a'));
+  var targets = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+  function mark() {
+    var best = -1, bestTop = -1e9;
+    for (var i = 0; i < targets.length; i++) {
+      if (!targets[i]) continue;
+      var t = targets[i].getBoundingClientRect().top - 120;
+      if (t <= 0 && t > bestTop) { bestTop = t; best = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle('on', i === best); });
+  }
+  // how far through the reading this is, drawn along the top edge of the dock
+  var prog = document.getElementById('prog');
+  function bar() {
+    if (!prog) return;
+    var se = document.scrollingElement || document.documentElement;
+    var run = se.scrollHeight - window.innerHeight;
+    prog.style.width = (run > 0 ? Math.min(100, Math.max(0, se.scrollTop / run * 100)) : 0) + '%';
+  }
+  window.addEventListener('scroll', function () { mark(); bar(); }, { passive: true });
+  window.addEventListener('resize', function () { mark(); bar(); });
+  mark(); bar();
+})();
+</script>
+</html>
