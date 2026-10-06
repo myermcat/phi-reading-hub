@@ -67,6 +67,33 @@
   .also a{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--muted);text-decoration:none;
       border:1px solid var(--rule);border-radius:20px;padding:7px 14px;transition:border-color .15s,color .15s}
   .also a:hover{color:var(--ink);border-color:var(--muted)}
+  /* The teaching page is not course material, so it carries its own accent and sits apart
+     from the week cards, below them, after a rule. */
+  .aside-card{position:relative;display:grid;gap:14px 22px;padding:28px 30px 24px;text-decoration:none;color:inherit;
+      background:var(--surface);border:1px solid #B9A7D6;border-radius:12px;overflow:hidden;
+      box-shadow:0 1px 2px rgba(16,24,20,.05),0 6px 18px -8px rgba(16,24,20,.16);
+      transition:transform .18s cubic-bezier(.2,.7,.3,1),box-shadow .18s,border-color .18s}
+  .aside-card::before{content:"";position:absolute;inset:0 auto 0 0;width:4px;background:#6A4C93;transition:width .18s}
+  .aside-card:hover{transform:translateY(-3px);border-color:#6A4C93;
+      box-shadow:0 2px 4px rgba(16,24,20,.06),0 18px 34px -12px rgba(16,24,20,.3)}
+  .aside-card:hover::before{width:6px}
+  .aside-card:focus-visible{outline:2px solid #6A4C93;outline-offset:3px}
+  .aside-card .n{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#6A4C93}
+  .aside-card h3{margin:0;font-family:var(--display);font-size:clamp(23px,3vw,28px);font-weight:600;line-height:1.16;letter-spacing:-.015em}
+  .aside-card p{font-size:16px;color:var(--ink-soft);max-width:58ch}
+  .aside-card .go{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;
+      letter-spacing:.1em;text-transform:uppercase;color:#6A4C93;margin-top:2px}
+  .aside-card .go svg{width:15px;height:15px;transition:transform .18s}
+  .aside-card:hover .go svg{transform:translateX(4px)}
+  .aside-sep{border:0;border-top:1px solid var(--rule);margin:8px 0 0}
+  @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .aside-card{border-color:#4A3A66}
+    :root:not([data-theme="light"]) .aside-card::before{background:#B99BE0}
+    :root:not([data-theme="light"]) .aside-card .n,:root:not([data-theme="light"]) .aside-card .go{color:#B99BE0}
+    :root:not([data-theme="light"]) .aside-card:hover{border-color:#B99BE0}}
+  :root[data-theme="dark"] .aside-card{border-color:#4A3A66}
+  :root[data-theme="dark"] .aside-card::before{background:#B99BE0}
+  :root[data-theme="dark"] .aside-card .n,:root[data-theme="dark"] .aside-card .go{color:#B99BE0}
+  :root[data-theme="dark"] .aside-card:hover{border-color:#B99BE0}
   .soon{padding:22px 30px;border:1px dashed var(--rule);border-radius:12px;display:flex;flex-direction:column;gap:5px;color:var(--muted)}
   .soon .n{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase}
   .soon .t{font-size:16px}
@@ -185,6 +212,16 @@
       </a>
       <div class="also"><a href="week-2/cheat-sheet.html">Week 2 cheat sheet</a> <a href="week-2/notes.html">Week 2 lecture notes</a></div>
     </div>
+
+    <hr class="aside-sep">
+    <a class="aside-card" href="teaching/">
+      <div class="n">Not course material</div>
+      <h3>How to make somebody understand something</h3>
+      <p>Twelve findings on why explanations fail, each with the bad version and the good version written out. Collected because the same faults kept turning up in the lecture theatre and in these guides.</p>
+      <div class="go">Open it
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"/></svg>
+      </div>
+    </a>
   </section>
 
   <section>
