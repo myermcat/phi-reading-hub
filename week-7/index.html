@@ -1,0 +1,2111 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PHI2394 Week 7 Reading Guide</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%232E8E74'/%3E%3Cellipse%20cx='32'%20cy='33'%20rx='12.5'%20ry='15'%20fill='none'%20stroke='%23fff'%20stroke-width='7'/%3E%3Crect%20x='28.5'%20y='7'%20width='7'%20height='50'%20rx='3.5'%20fill='%23fff'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,600&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --paper:      #EDEFEC;
+    --surface:    #F6F7F4;
+    --sunk:       #E3E6E1;
+    --ink:        #191D1A;
+    --ink-soft:   #414944;
+    --muted:      #6E766F;
+    --rule:       #D2D8D1;
+    --rule-soft:  #E1E5DF;
+    --close:      #1F6B57;
+    --close-wash: #CFE3DA;
+    --skim:       #8E6318;
+    --skim-wash:  #ECDDC2;
+    --skip:       #7E867F;
+    --skip-wash:  #D9DDD8;
+    --accent:     #1F6B57;
+    --curious:    #6B4372;
+    --curious-bg: #F2EEF3;
+    --lead:       #2E574A;
+    --c-y:        #8A6A0B;
+    --c-p:        #AE2F73;
+    --ghost:      #DADFD9;
+
+    --display: "Newsreader", Georgia, "Times New Roman", serif;
+    --body:    "Source Sans 3", -apple-system, "Segoe UI", sans-serif;
+    --mono:    "IBM Plex Mono", "SF Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #141815; --surface: #1B201D; --sunk: #10130F;
+      --ink: #E4E8E3; --ink-soft: #B4BCB6; --muted: #8B948D;
+      --rule: #2C332E; --rule-soft: #232925;
+      --close: #64BFA1; --close-wash: #214136;
+      --skim: #D9A957; --skim-wash: #3C3220;
+      --skip: #79827B; --skip-wash: #272D29;
+      --accent: #64BFA1;
+      --curious: #C4A0CB; --curious-bg: #221B25;
+      --lead: #93C2B2;
+      --c-y: #E3BE57;
+      --c-p: #FF97C6;
+      --ghost: #262C28;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #141815; --surface: #1B201D; --sunk: #10130F;
+    --ink: #E4E8E3; --ink-soft: #B4BCB6; --muted: #8B948D;
+    --rule: #2C332E; --rule-soft: #232925;
+    --close: #64BFA1; --close-wash: #214136;
+    --skim: #D9A957; --skim-wash: #3C3220;
+    --skip: #79827B; --skip-wash: #272D29;
+    --accent: #64BFA1;
+    --curious: #C4A0CB; --curious-bg: #221B25;
+    --lead: #93C2B2;
+    --c-y: #E3BE57;
+    --c-p: #FF97C6;
+    --ghost: #262C28;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--paper); color: var(--ink); font-family: var(--body);
+    font-size: 17.5px; line-height: 1.6; -webkit-font-smoothing: antialiased;
+    padding-bottom: 47px;
+  }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 40px 26px 90px; display: flex; flex-direction: column; gap: 48px; }
+  .eyebrow { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted); }
+  h1 {
+    font-family: var(--display); font-weight: 600; font-size: clamp(34px, 5.6vw, 50px);
+    line-height: 1.06; letter-spacing: -0.015em; margin: 10px 0 0; text-wrap: balance;
+  }
+  .standfirst {
+    font-family: var(--display); font-size: clamp(18px, 2.4vw, 21.5px); line-height: 1.5;
+    color: var(--ink-soft); max-width: 62ch; margin: 14px 0 0;
+  }
+  p { margin: 0; max-width: 82ch; }
+  .lede { color: var(--ink-soft); }
+
+  .strip-block { display: flex; flex-direction: column; gap: 11px; }
+  .strip { display: flex; width: 100%; height: 52px; border: 1px solid var(--rule); overflow: hidden; }
+  .seg { display: flex; min-width: 0; }
+  .seg + .seg { border-left: 1px solid var(--paper); }
+  .seg .txt, .seg .nts {
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--mono); font-size: 11px; color: #fff; min-width: 0; overflow: hidden;
+  }
+  .seg .nts { background: var(--skip-wash); }
+  .p-close .txt { background: var(--close); }
+  .p-skim  .txt { background: var(--skim); }
+  .p-skip  .txt { background: var(--skip); }
+  .strip-key { display: flex; flex-wrap: wrap; gap: 6px 18px; font-family: var(--mono); font-size: 11px; color: var(--muted); }
+  .strip-key i { font-style: normal; display: inline-flex; align-items: center; gap: 7px; }
+  .strip-key i::before { content: ""; width: 13px; height: 13px; display: inline-block; border: 1px solid var(--rule); }
+  .k-close::before { background: var(--close); }
+  .k-skim::before  { background: var(--skim); }
+  .k-skip::before  { background: var(--skip); }
+  .k-notes::before { background: var(--skip-wash); }
+
+  .tally { display: flex; flex-wrap: wrap; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  .tally > div { flex: 1 1 140px; padding: 14px 18px 14px 0; display: flex; flex-direction: column; gap: 2px; }
+  .tally > div + div { padding-left: 18px; border-left: 1px solid var(--rule-soft); }
+  .tally b { font-family: var(--mono); font-weight: 500; font-size: 24px; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+  .tally span { font-size: 13px; color: var(--muted); line-height: 1.35; }
+  .t-a b { color: var(--close); }
+  .t-b b { color: var(--skim); }
+
+  section { display: flex; flex-direction: column; gap: 20px; }
+  h2 { font-family: var(--display); font-weight: 600; font-size: 28px; letter-spacing: -0.01em; margin: 0; text-wrap: balance; }
+  h2 + p { margin-top: -8px; }
+  section > .ctx, section > .exm, section > .scroller, section > figure { margin: 26px 0; }
+  h3.sub { font-family: var(--display); font-weight: 600; font-size: 21px; margin: 14px 0 -8px; letter-spacing: -0.005em; }
+  .minihead { margin: 10px 0 -10px; font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+
+  .facts {
+    background: var(--surface); border-left: 3px solid var(--close);
+    padding: 20px 24px; display: grid; grid-template-columns: 150px 1fr; gap: 10px 18px; font-size: 16px;
+  }
+  .facts dt { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); padding-top: 4px; }
+  .facts dd { margin: 0; color: var(--ink-soft); }
+  .facts dd b { color: var(--ink); font-weight: 600; }
+
+  ul.plain { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 10px; max-width: 82ch; color: var(--ink-soft); }
+  ul.plain b { color: var(--ink); }
+
+  .nine { width: 100%; border-collapse: collapse; font-size: 15.5px; }
+  .nine th {
+    text-align: left; font-family: var(--mono); font-size: 10px; letter-spacing: 0.09em;
+    text-transform: uppercase; color: var(--muted); font-weight: 500;
+    padding: 0 14px 9px 0; border-bottom: 1px solid var(--rule); vertical-align: bottom;
+  }
+  .nine td { padding: 12px 14px 12px 0; border-bottom: 1px solid var(--rule-soft); vertical-align: top; color: var(--ink-soft); }
+  .nine td:first-child { color: var(--ink); font-weight: 600; white-space: nowrap; padding-right: 18px; }
+  .nine td:first-child span { display: block; font-family: var(--mono); font-size: 10px; font-weight: 400; color: var(--muted); letter-spacing: 0.04em; }
+  .scroller { overflow-x: auto; margin: 30px 0; }
+
+  .convo { display: flex; flex-direction: column; }
+  .turn { display: grid; grid-template-columns: 128px 1fr; gap: 0 22px; padding: 16px 0; border-top: 1px solid var(--rule-soft); }
+  .turn:first-child { border-top: 1px solid var(--rule); }
+  .turn .who { display: flex; flex-direction: column; gap: 1px; padding-top: 2px; }
+  .turn .who b { font-family: var(--body); font-size: 15px; font-weight: 600; }
+  .turn .who span { font-family: var(--mono); font-size: 10.5px; color: var(--muted); }
+  .turn p { font-size: 16.5px; }
+
+  .readings { display: flex; flex-direction: column; }
+  .rd { display: grid; grid-template-columns: 4px 1fr; gap: 0 22px; padding: 36px 0; border-top: 1px solid var(--rule); }
+  .rd .stripe { background: var(--skip); }
+  .rd.p-close .stripe { background: var(--close); }
+  .rd.p-skim  .stripe { background: var(--skim); }
+  .rd .main { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
+
+  .rd .head { display: flex; flex-direction: column; gap: 7px; }
+  .rd h3 { margin: 0; font-family: var(--display); font-size: 25px; font-weight: 600; line-height: 1.16; text-wrap: balance; }
+  .rd h3 .ch { font-family: var(--mono); font-size: 14px; font-weight: 500; color: var(--muted); letter-spacing: 0.02em; margin-right: 10px; vertical-align: 3px; }
+  .rd .who { font-family: var(--display); font-style: italic; font-size: 18px; color: var(--ink-soft); }
+  .rd .meta { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.03em; }
+  .tag { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.09em; text-transform: uppercase; padding: 2.5px 8px; }
+  .p-close .tag { background: var(--close-wash); color: var(--close); }
+  .p-skim  .tag { background: var(--skim-wash);  color: var(--skim); }
+  .p-skip  .tag { background: var(--skip-wash);  color: var(--skip); }
+
+  .span { display: flex; flex-direction: column; gap: 5px; }
+  .span .bar { display: flex; height: 14px; width: 100%; border: 1px solid var(--rule); overflow: hidden; }
+  .span .bar i { display: block; background: var(--ghost); }
+  .span .bar i.here-txt { background: var(--close); }
+  .p-skim .span .bar i.here-txt { background: var(--skim); }
+  .p-skip .span .bar i.here-txt { background: var(--skip); }
+  .span .bar i.here-nts { background: var(--skip-wash); }
+  .span .cap { font-family: var(--mono); font-size: 10.5px; color: var(--muted); letter-spacing: 0.03em; }
+
+  .qline { font-family: var(--display); font-size: 19.5px; line-height: 1.42; padding: 12px 0 12px 16px; border-left: 2px solid var(--accent); color: var(--ink); }
+
+  .rd h4 { margin: 8px 0 -7px; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+  .rd ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 9px; max-width: 82ch; }
+  .rd li { padding-left: 2px; }
+  .rd .body { display: flex; flex-direction: column; gap: 14px; }
+  .rd .body > .scroller, .rd .body > figure, .rd .body > .quo,
+  .rd .body > .ctx, .rd .body > .exm { margin: 16px 0; }
+  .rd .body > ul, .rd .body > ol { margin: 4px 0 6px; }
+  .rd .body > p > b:first-child, .rd .body > ul > li > b:first-child,
+  .rd .body > ol > li > b:first-child { color: var(--lead); }
+  .rd .body h5 {
+    margin: 12px 0 -4px; font-family: var(--display); font-weight: 600;
+    font-size: 18.5px; line-height: 1.25; color: var(--ink); letter-spacing: -.005em;
+  }
+
+  .links { display: grid; grid-template-columns: 84px 1fr; gap: 8px 14px; font-size: 16px; border-top: 1px solid var(--rule-soft); border-bottom: 1px solid var(--rule-soft); padding: 13px 0; }
+  .links dt { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); padding-top: 4px; }
+  .links dd { margin: 0; color: var(--ink-soft); }
+
+  .mynote { background: var(--sunk); padding: 16px 20px; font-size: 16.5px; color: var(--ink-soft); display: flex; flex-direction: column; gap: 6px; }
+  .mynote b { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+
+  .keep { font-family: var(--display); font-size: 18.5px; line-height: 1.45; font-style: italic; color: var(--ink); border-left: 2px solid var(--rule); padding: 2px 0 2px 14px; }
+  .keep b { font-family: var(--mono); font-style: normal; font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 5px; font-weight: 500; }
+
+  .curious { background: var(--curious-bg); padding: 22px 24px 24px; display: flex; flex-direction: column; gap: 16px; margin-top: 6px; }
+  .curious > .label { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .curious > .label b { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--curious); font-weight: 500; }
+  .curious > .label span { font-family: var(--mono); font-size: 10.5px; color: var(--muted); }
+  /* Every curious item and every side note is a toggle, closed until it is asked for,
+     and its summary says what is inside, so the line alone is enough to decide on. */
+  details.bit > summary, details.ctx > summary {
+    display: flex; align-items: baseline; gap: 10px; cursor: pointer; list-style: none;
+    padding: 4px 0; margin: 0; border-radius: 3px;
+  }
+  details.bit > summary::-webkit-details-marker,
+  details.ctx > summary::-webkit-details-marker { display: none; }
+  details.bit > summary::after, details.ctx > summary::after {
+    content: ''; width: 6px; height: 6px; flex: none; margin-left: auto; align-self: center;
+    border-right: 1.6px solid currentColor; border-bottom: 1.6px solid currentColor;
+    transform: translateY(-2px) rotate(45deg); opacity: .45; transition: transform .18s ease, opacity .18s ease;
+  }
+  details[open].bit > summary::after, details[open].ctx > summary::after {
+    transform: translateY(1px) rotate(225deg); opacity: .75;
+  }
+  details.bit > summary:hover::after, details.ctx > summary:hover::after { opacity: .9; }
+  details.bit > summary:focus-visible, details.ctx > summary:focus-visible {
+    outline: 2px solid var(--accent); outline-offset: 3px;
+  }
+  .bq { display: flex; flex-direction: column; gap: 9px; padding-top: 9px; }
+  .curious > details.bit + details.bit { border-top: 1px solid var(--rule); padding-top: 16px; }
+
+  .bit { display: block; }
+  .bit > summary {
+    font-family: var(--display); font-weight: 600; font-size: 20.5px;
+    line-height: 1.2; color: var(--curious); letter-spacing: -0.005em; text-wrap: balance;
+  }
+  .bit p { font-size: 16.5px; color: var(--ink-soft); }
+  .bit p b { color: var(--ink); font-weight: 600; }
+
+  .plan { display: flex; flex-direction: column; }
+  .ses { display: grid; grid-template-columns: 118px 1fr; gap: 0 24px; padding: 22px 0; border-top: 1px solid var(--rule); }
+  .ses .when { display: flex; flex-direction: column; gap: 3px; padding-top: 3px; }
+  .ses .when b { font-family: var(--mono); font-size: 11px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--accent); font-weight: 500; }
+  .ses .when span { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+  .ses .what { display: flex; flex-direction: column; gap: 8px; }
+  .ses h3 { margin: 0; font-family: var(--display); font-size: 21px; font-weight: 600; line-height: 1.2; }
+  .ses p { font-size: 16.5px; color: var(--ink-soft); }
+
+  .endmatter { border-top: 1px solid var(--rule); padding-top: 24px; font-size: 14.5px; color: var(--muted); display: flex; flex-direction: column; gap: 12px; }
+  .endmatter b { color: var(--ink-soft); font-weight: 600; }
+  .endmatter .weeks { display: grid; grid-template-columns: 96px 1fr; gap: 6px 16px; }
+  .endmatter .weeks dt { font-family: var(--mono); font-size: 11px; color: var(--muted); padding-top: 3px; }
+  .endmatter .weeks dd { margin: 0; color: var(--ink-soft); }
+
+  /* site footer */
+  .sitefoot { border-top: 1px solid var(--rule); background: var(--surface); margin-top: 20px; }
+  .sitefoot .in { max-width: 900px; margin: 0 auto; padding: 40px 26px 30px;
+                  display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 32px; }
+  .sitefoot .col { display: flex; flex-direction: column; gap: 9px; align-items: flex-start; }
+  .sitefoot h2 { margin: 0 0 2px; font-family: var(--mono); font-size: 10.5px; letter-spacing: .13em;
+                 text-transform: uppercase; color: var(--muted); font-weight: 500; }
+  .sitefoot a, .sitefoot button { font-family: var(--body); font-size: 14.5px; color: var(--ink-soft);
+                                  text-decoration: none; background: none; border: 0; padding: 0;
+                                  cursor: pointer; text-align: left; border-bottom: 1px solid transparent; }
+  .sitefoot a:hover, .sitefoot button:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .sitefoot .brand a { font-family: var(--mono); font-size: 11.5px; letter-spacing: .08em;
+                       text-transform: uppercase; color: var(--ink); }
+  .sitefoot .brand p { margin: 0; font-size: 14px; color: var(--muted); max-width: 30ch; }
+  .sitefoot .colophon { max-width: 900px; margin: 0 auto; padding: 16px 26px 34px;
+                        border-top: 1px solid var(--rule); display: flex; flex-wrap: wrap; gap: 6px 28px;
+                        font-size: 12.5px; color: var(--muted); }
+  @media (max-width: 700px) { .sitefoot .in { grid-template-columns: 1fr; gap: 26px; padding: 30px 16px 22px; }
+                              .sitefoot .colophon { padding: 14px 16px 26px; flex-direction: column; } }
+
+  /* the dock: pinned to the bottom, carrying the things used while reading */
+  .dock { position: fixed; left: 0; right: 0; bottom: 0; z-index: 75; background: var(--paper);
+          border-top: 1px solid var(--rule); }
+  .dock .prog { height: 2px; width: 0; background: var(--accent); transition: width .1s linear; }
+  .dock .in { max-width: 900px; margin: 0 auto; padding: 0 20px; height: 45px;
+              display: flex; align-items: center; gap: 2px; }
+  .dock button, .dock a { display: flex; align-items: center; gap: 7px; background: none; border: 0;
+              padding: 8px 10px; border-radius: 5px; cursor: pointer; text-decoration: none;
+              font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+              color: var(--muted); }
+  .dock button:hover, .dock a:hover { color: var(--ink); background: var(--surface); }
+  .dock button:focus-visible, .dock a:focus-visible { outline: 2px solid var(--accent); outline-offset: -1px; }
+  .dock svg { width: 13px; height: 14px; flex: none; }
+  .dock .end { margin-left: auto; }
+  .dock .n { font-family: var(--mono); font-size: 10px; line-height: 1.6; background: var(--sunk);
+             color: var(--ink-soft); border-radius: 9px; padding: 0 6px; min-width: 18px; text-align: center; }
+  .dock .n:empty { display: none; }
+  .dock #bmgo[data-set="1"] { color: var(--accent); }
+  .dock #bmgo[data-set="1"] svg { fill: currentColor; }
+  @media (max-width: 620px) { .dock .in { padding: 0 8px; } .dock .lab { display: none; } }
+
+  /* the highlights drawer, kept out of the reading */
+  .drawer[hidden] { display: none !important; }
+  .drawer { position: fixed; inset: 0; z-index: 90; }
+  .drawer .dback { position: absolute; inset: 0; background: rgba(0,0,0,.34); }
+  .dpanel { position: absolute; top: 0; right: 0; bottom: 0; width: min(460px, 100%);
+            background: var(--paper); border-left: 1px solid var(--rule); box-shadow: -8px 0 28px rgba(0,0,0,.16);
+            display: flex; flex-direction: column; gap: 4px; padding: 22px 26px 30px; overflow-y: auto; }
+  .dhead { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .dhead h2 { margin: 0; font-family: var(--display); font-size: 25px; font-weight: 600; }
+  .dclose { background: none; border: 0; font-size: 26px; line-height: 1; color: var(--muted);
+            cursor: pointer; padding: 0 4px; }
+  .dclose:hover { color: var(--ink); }
+  .dsub { margin: 0 0 14px; font-size: 14px; color: var(--muted); }
+
+
+
+  .ctx { border-left: 2px solid var(--rule); padding: 2px 0 2px 18px; display: block; margin: 26px 0; }
+  .ctx > summary { font-family: var(--display); font-size: 17.5px; font-weight: 600; color: var(--ink-soft); line-height: 1.25; }
+  .ctx > summary i { font-family: var(--mono); font-style: normal; font-size: 10.5px; letter-spacing: .1em;
+                     text-transform: uppercase; color: var(--muted); font-weight: 500; flex: none; padding-top: 3px; }
+  .ctx[open] > summary { color: var(--ink); }
+  .ctx p { font-size: 16.5px; color: var(--ink-soft); }
+  .seven { margin: 28px 0; display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--rule); }
+  .seven > div { border-bottom: 1px solid var(--rule); padding: 14px 0; display: grid; grid-template-columns: 30px 1fr; gap: 0 14px; }
+  .seven .n { font-family: var(--mono); font-size: 12px; color: var(--skim); padding-top: 3px; }
+  .seven .w { font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); }
+  .seven .cl { font-size: 16.5px; color: var(--ink); margin: 5px 0 0; }
+  .seven .rp { font-size: 15px; color: var(--ink-soft); margin: 6px 0 0; }
+  .seven .rp b { font-family: var(--mono); font-size: 10.5px; letter-spacing: .09em; text-transform: uppercase; color: var(--ink-soft); font-weight: 500; }
+  @media (max-width: 420px) { .seven > div { grid-template-columns: 1fr; gap: 0; } .seven .n { padding: 0 0 2px; } }
+  .exm { background: var(--skim-wash); border-left: 3px solid var(--skim); padding: 16px 20px; display: flex; flex-direction: column; gap: 10px; margin: 28px 0; }
+  .exm > b { font-family: var(--mono); font-size: 10.5px; letter-spacing: .11em; text-transform: uppercase; color: var(--skim); font-weight: 500; }
+  .exm p { font-size: 16.5px; color: var(--ink); }
+  .exm p b { color: var(--ink); }
+  .quo { border-left: 3px solid var(--accent); background: var(--surface); padding: 16px 20px; display: flex; flex-direction: column; gap: 10px; margin: 26px 0; }
+  .quo blockquote { margin: 0; font-family: var(--display); font-size: 18.5px; line-height: 1.5; color: var(--ink); }
+  .quo .src { font-family: var(--mono); font-size: 10.5px; letter-spacing: .07em; color: var(--muted); }
+  figure { margin: 28px 0; display: flex; flex-direction: column; gap: 9px; }
+  figure svg { max-width: 100%; height: auto; display: block; }
+  figcaption { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: .03em; line-height: 1.55; max-width: 70ch; }
+
+  /* photographs, plates and maps */
+  figure.pic { margin: 24px 0; gap: 11px; max-width: 82ch; }
+  /* A picture sits inside the reading, so it is capped at a height that leaves the paragraphs
+     on either side of it in view. At most of the window it filled the screen, the argument
+     disappeared behind it, and scrolling past a figure took as long as reading a section.
+     Detail is not lost: the image is a link to the file at full size. */
+  /* The box is sized on the link, in pixels worked out from the picture's own proportions for a
+     300px tall picture, and the image fills it. Sizing the image instead does not work: an image
+     that has not loaded yet has no size of its own, so with both axes auto it collapses to
+     nothing and the page jumps as it scrolls past, and clamping only the height leaves the width
+     where it was and squashes the picture. */
+  figure.pic a.zoom { display: block; align-self: flex-start; max-width: 100%; cursor: zoom-in; }
+  figure.pic img {
+    display: block; width: 100%; height: auto;
+    /* figure.pic is a column flexbox, whose align-items defaults to stretch. That stretched the
+       image to the full width of the measure and max-height then squashed it, so every portrait
+       picture came out distorted. align-self keeps the image at its own width. */
+    align-self: flex-start;
+    border: 1px solid var(--rule); border-radius: 6px; background: var(--surface);
+    transition: border-color .15s;
+  }
+  figure.pic a.zoom:hover img { border-color: var(--accent); }
+  figure.pic a.zoom:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  /* A line drawing with a transparent background is black ink on nothing, which in the dark
+     theme is black ink on a dark page and reads as an empty box. Give that kind of picture the
+     paper it was printed on. */
+  figure.pic img.ink { background: #fff; padding: 14px; }
+  @media (max-width: 700px) { figure.pic a.zoom { width: 100% !important; } }
+  figure.pic figcaption, figure.dia figcaption {
+    font-family: var(--body); font-size: 15px; line-height: 1.5;
+    letter-spacing: 0; color: var(--ink-soft); max-width: 74ch;
+  }
+  figure.pic figcaption b, figure.dia figcaption b { color: var(--ink); font-weight: 600; }
+  figure.pic .cred, figure.dia .cred {
+    display: block; margin-top: 6px;
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: .05em;
+    line-height: 1.5; color: var(--muted);
+  }
+
+  /* drawings made for this guide, framed the way the photographs are */
+  figure.dia { margin: 24px 0; gap: 11px; max-width: 82ch; }
+  figure.dia .draw { max-width: 100%; overflow-x: auto; }
+  /* A drawing that illustrates a point in the flow is capped the way a picture is, so the
+     paragraph under it stays in view. A drawing that is a reference grid, like the nine authors
+     against three questions, is a thing to study and keeps its size. */
+  figure.dia svg[aria-labelledby="dg-matt"] { max-width: 470px; }
+  figure.dia svg[aria-labelledby="dg-seven"] { max-width: 560px; }
+  figure.dia svg {
+    display: block; width: 100%; height: auto;
+    border: 1px solid var(--rule); border-radius: 6px; background: var(--surface);
+  }
+  @media (max-width: 700px) {
+    /* On a phone the wider drawings would shrink their labels to about 5px, so each one keeps a
+       floor and its frame scrolls sideways, the way the table of nine texts already does. The
+       caption stays outside the frame and wraps to the screen. */
+    figure.dia svg[aria-labelledby="cvg-ttl"] { min-width: 660px; }
+    figure.dia svg[aria-labelledby="dg-comte-3s"] { min-width: 560px; }
+    figure.dia svg#dia-spine { min-width: 380px; }
+    figure.dia svg[aria-labelledby="dg-matt"] { min-width: 520px; }
+    figure.dia svg[aria-labelledby="dg-seven"] { min-width: 560px; }
+    figure.dia svg[aria-labelledby="dg-three7"] { min-width: 700px; }
+  }
+
+  /* inside the boxes, which already space their children */
+  .bq > figure.pic, .exm > figure.pic, .rd .body > figure.pic,
+  .bq > figure.dia, .exm > figure.dia, .rd .body > figure.dia { margin: 6px 0; }
+
+  .dg-box { fill: var(--surface); stroke: currentColor; stroke-opacity: .22; }
+  .dg-hi { fill: var(--close-wash); stroke: var(--close); stroke-opacity: 1; }
+  .dg-t { fill: currentColor; font-family: "Source Sans 3", -apple-system, sans-serif; }
+  .dg-m { fill: currentColor; font-family: "IBM Plex Mono", monospace; letter-spacing: .08em; }
+  .dg-dim { opacity: .62; }
+  .dg-ln { stroke: currentColor; fill: none; }
+
+
+  /* site header */
+  .site { position: sticky; top: 0; z-index: 70; background: var(--paper);
+          border-bottom: 1px solid var(--rule); }
+  .site .in { max-width: 900px; margin: 0 auto; padding: 0 26px; height: 52px;
+              display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+  .site a { text-decoration: none; }
+  /* The mark goes to the true left edge of the window. The bar already spans the window; only
+     its contents were penned into the 900px column, which left the mark floating in from the
+     edge with empty bar beside it. Everything else stays aligned with the body text.
+     Below the width where the column meets the edges there is no room, so it rejoins the row. */
+  /* display:block with no leading makes the anchor box exactly the size of the mark.
+     As an inline anchor its box carries line-height leading, so centring the anchor
+     left the mark itself 4.25px high. */
+  .site .hubmark { margin-right: 13px; display: block; line-height: 0; }
+  .site .hubmark svg { width: 28px; height: 28px; border-radius: 7px; }
+  @media (min-width: 1020px) {
+    .site .hubmark { position: absolute; left: 22px; top: 50%; transform: translateY(-50%);
+                     margin-right: 0; }
+  }
+  .site .hubmark:hover { opacity: .78; }
+  .site .hubmark:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px;
+                                 border-radius: 6px; }
+
+  .site .home { display: flex; align-items: center; gap: 9px; font-family: var(--mono);
+                font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); }
+  .site .home:hover { color: var(--ink); }
+  .site .home svg { width: 13px; height: 13px; flex: none; }
+  .site nav { display: flex; align-items: center; gap: 16px; }
+  .site nav .cur { font-family: var(--mono); font-size: 11px; letter-spacing: .08em;
+                   text-transform: uppercase; color: var(--muted); }
+  .site nav a { font-family: var(--mono); font-size: 11px; letter-spacing: .08em;
+                text-transform: uppercase; color: var(--accent); border-bottom: 1px solid transparent; }
+  .site nav a:hover { border-bottom-color: var(--accent); }
+  .site .disc { font-family: var(--body); font-size: 12px; font-weight: 400; color: var(--muted);
+                opacity: .8; letter-spacing: 0; text-decoration: none; white-space: nowrap;
+                border-bottom: 1px solid transparent; }
+  .site .disc:hover { opacity: 1; border-bottom-color: var(--rule); }
+  .site .disc i { font-style: normal; opacity: .5; padding: 0 6px; }
+  /* Four things share this row, so it tightens the spacing and holds each one on one line. */
+  .site .in { gap: 14px; }
+  .site .home, .site nav .cur, .site nav a { white-space: nowrap; }
+  /* The header is sticky, so a jump target has to reserve its height or it lands underneath it. */
+  [id] { scroll-margin-top: 74px; }
+  @media (max-width: 560px) { [id] { scroll-margin-top: 66px; } }
+
+  /* the bookmark: one per guide, the place reading stopped */
+  mark.hl.hl-b { background: none; padding: 0; box-shadow: inset 0 -2px 0 var(--accent); border-radius: 0; }
+  /* an inline ribbon after the words, so it cannot land on the line above it */
+  mark.hl.hl-b::after { content: ''; display: inline-block; width: 7px; height: 9px; margin-left: 4px;
+                        vertical-align: 0; background: var(--accent);
+                        clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 72%, 0 100%); }
+  @media (max-width: 820px) { .site .disc { display: none; } }
+  @media (max-width: 560px) { .site .in { padding: 0 16px; height: 48px; gap: 12px; } .site nav .cur { display: none; } }
+  @media (max-width: 400px) { .site .in { gap: 10px; } }
+
+  /* vertical nav */
+  .wrap { position: relative; }
+  #nav { position: fixed; top: calc(50% + 26px); transform: translateY(-50%); left: max(10px, calc(50vw - 598px));
+         width: 132px; display: none; flex-direction: column; gap: 2px; z-index: 40; }
+  #nav a { display: block; font-family: var(--mono); font-size: 10.5px; letter-spacing: .03em;
+           color: var(--muted); text-decoration: none; padding: 4px 0 4px 11px; border-left: 2px solid var(--rule-soft);
+           white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  /* The year each text was written, so the rail is also a timeline. The gaps are the point:
+     Plato to Bacon is two thousand years and Rousseau to Comte is eighty. */
+  #nav a i { font-style: normal; font-size: 9px; letter-spacing: .05em; opacity: .62; margin-left: 6px; }
+  #nav a:hover { color: var(--ink); border-left-color: var(--muted); }
+  #nav a.on { color: var(--accent); border-left-color: var(--accent); }
+  #nav a.grp { margin-top: 9px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .1em; border-left-color: transparent; padding-left: 0; }
+  #nav a.grp:first-child { margin-top: 0; }
+  #nav a.grp.on { color: var(--accent); border-left-color: transparent; }
+  #nav a.core { color: var(--ink-soft); border-left-color: var(--rule); }
+  #nav a.skim { opacity: .68; }
+  #nav a.last { opacity: .48; }
+  #nav a.on { opacity: 1; }
+  #nav .key { font-family: var(--mono); font-size: 9px; letter-spacing: .06em; color: var(--muted);
+              margin-top: 22px; padding-top: 14px; border-top: 1px solid var(--rule); line-height: 1.8; }
+  #nav .key em { font-style: normal; display: block; letter-spacing: .12em; text-transform: uppercase;
+                 color: var(--muted); opacity: .75; margin-bottom: 5px; }
+  #nav .key i { font-style: normal; display: block; }
+  #nav .key i.a { color: var(--ink-soft); }
+  #nav .key i.b { opacity: .68; }
+  #nav .key i.c { opacity: .48; }
+  @media (min-width: 1180px) { #nav { display: flex; } }
+
+  /* glossary. Closed by default: it is a reference list and not something to read through,
+     and left open it makes the page look twice as long as it is. */
+  .glbox { border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); margin: 22px 0 0; }
+  .glbox > summary { list-style: none; cursor: pointer; padding: 15px 0; display: flex; align-items: baseline; gap: 12px;
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); }
+  .glbox > summary::-webkit-details-marker { display: none; }
+  .glbox > summary::after { content: 'show'; margin-left: auto; font-size: 11px; color: var(--muted); }
+  .glbox[open] > summary::after { content: 'hide'; }
+  .glbox > summary:hover { color: var(--ink); }
+  .glbox > summary b { font-family: var(--display); font-size: 16px; letter-spacing: 0; text-transform: none; font-weight: 600; color: var(--ink); }
+  .glbox > .gl { padding: 4px 0 26px; }
+  .gl { display: flex; flex-direction: column; gap: 26px; }
+  .gl-grp { display: flex; flex-direction: column; gap: 10px; }
+  .gl-grp > h3 { margin: 0; font-family: var(--display); font-size: 19px; font-weight: 600; }
+  .gl-grp > h3 span { font-family: var(--mono); font-size: 11px; color: var(--muted); font-weight: 400; letter-spacing: .05em; margin-left: 9px; }
+  .gl dl { margin: 0; display: grid; grid-template-columns: 186px 1fr; gap: 10px 18px; font-size: 16px; }
+  .gl dt { font-family: var(--display); font-style: italic; font-size: 16.5px; color: var(--ink); }
+  .gl dd { margin: 0; color: var(--ink-soft); }
+  @media (max-width: 680px) { .gl dl { grid-template-columns: 1fr; gap: 3px 0; } .gl dt { padding-top: 9px; } }
+
+  /* notes you write.
+     .nbpad is the well. It is recessed, because a recessed surface reads as somewhere to put
+     something in and a raised one reads as something to read, and a long note in a raised card
+     was reading as more of the guide's own prose. The label is drawn directly above the well,
+     close to it and aligned with its left edge, so a page of blocks stays scannable.
+     The left edge holds --rule while a block is empty and --accent once it holds something, from
+     the `has` class the editor already sets on .nbwrap.
+     Nothing in here touches .nb: the note text keeps the face, size, colour, line height and
+     spacing it has always had. */
+  .nbgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(298px, 1fr)); gap: 18px; }
+  .nbwrap { display: flex; flex-direction: column; gap: 6px; }
+  .nbwrap.wide { grid-column: 1 / -1; }
+  .nbhead { display: flex; align-items: baseline; justify-content: space-between; gap: 10px;
+            padding: 0 2px 0 3px; }
+  .nbhead b { font-family: var(--display); font-size: 16.5px; font-weight: 600; color: var(--ink); }
+  .nbhead span { font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .nbpad { position: relative; padding: 14px 16px 16px; background: var(--sunk);
+           border: 1px solid var(--rule); border-left: 3px solid var(--rule); border-radius: 8px;
+           box-shadow: inset 0 1px 0 rgba(0,0,0,.06);
+           transition: border-color .15s, box-shadow .15s; }
+  .nbwrap.has .nbpad { border-left-color: var(--accent); }
+  .nbwrap:focus-within .nbpad { border-color: var(--accent);
+           box-shadow: inset 0 1px 0 rgba(0,0,0,.06), 0 0 0 3px var(--close-wash); }
+  .nb { position: relative; font-size: 15.5px; line-height: 1.6; color: var(--ink); min-height: 46px; outline: none; }
+  .nb.is-empty::before, .cbody.is-empty::before {
+    content: attr(data-ph); position: absolute; left: 0; top: 0; color: var(--muted);
+    font-style: italic; pointer-events: none; }
+  .nb p { margin: 0 0 8px; max-width: none; }
+  .nb p:last-child { margin-bottom: 0; }
+  .nb ul, .nb ol { margin: 5px 0 8px; padding-left: 20px; }
+  .nb li { margin-bottom: 4px; }
+  .nb b, .nb strong { font-weight: 600; }
+  .nb h3, .nb h4, .nb h5 { margin: 12px 0 5px; font-family: var(--display); font-weight: 600; line-height: 1.25; color: var(--ink); }
+  .nb h3 { font-size: 19px; } .nb h4 { font-size: 17px; } .nb h5 { font-size: 15.5px; }
+  .nb > :first-child { margin-top: 0; }
+  .nb hr { border: 0; border-top: 1px solid var(--rule); margin: 12px 0; }
+  .nb blockquote { margin: 8px 0; padding-left: 12px; border-left: 2px solid var(--rule); color: var(--ink-soft); }
+  .c-y { color: var(--c-y); }
+  .c-p { color: var(--c-p); }
+  .c-m { color: var(--muted); }
+  .c-g { color: var(--accent); }
+  /* normal text, spelled out. Needed where a colour is inherited from an enclosing span
+     and stripping that span would recolour words the writer meant to keep. */
+  .c-n { color: var(--ink); }
+  #nb-bar { position: absolute; z-index: 50; display: flex; gap: 2px; padding: 3px; background: var(--surface); border: 1px solid var(--rule); border-radius: 5px; box-shadow: 0 2px 8px rgba(0,0,0,.12); }
+  #nb-bar[hidden] { display: none !important; }
+  #nb-bar button { min-width: 24px; height: 22px; border: 0; border-radius: 3px; background: none; cursor: pointer; color: var(--ink-soft); font-family: var(--display); font-size: 14px; padding: 0 5px; }
+  #nb-bar button:hover { background: var(--sunk); color: var(--ink); }
+  #nb-bar button.i { font-style: italic; }
+  #nb-bar button.l { font-family: var(--mono); font-size: 11px; }
+  #nb-bar .sep { width: 1px; background: var(--rule); margin: 3px 2px; }
+  #nb-bar button.sw { width: 18px; min-width: 18px; height: 18px; border-radius: 3px; align-self: center;
+                      border: 1px solid var(--rule); font-size: 0; }
+  #nb-bar button.sw.y { background: var(--c-y); }
+  #nb-bar button.sw.p { background: var(--c-p); }
+  #nb-bar button.sw.g { background: var(--accent); }
+  #nb-bar button.sw.m { background: var(--muted); }
+  #nb-bar button.sw.x { background: none; font-size: 12px; color: var(--muted); border-color: transparent; }
+  .nbhint { font-family: var(--mono); font-size: 10.5px; color: var(--muted); letter-spacing: .03em; }
+  /* The standing explanation, closed and below the blocks, drawn the same way as the one on
+     the lecture notes page. */
+  details.about { margin-top: 6px; border-top: 1px solid var(--rule); padding-top: 12px; }
+  details.about summary { cursor: pointer; font-family: var(--mono); font-size: 11px;
+    letter-spacing: .1em; text-transform: uppercase; color: var(--muted); list-style: none;
+    display: flex; align-items: center; gap: 8px; }
+  details.about summary::-webkit-details-marker { display: none; }
+  details.about summary::before { content: ""; width: 0; height: 0; border-left: 5px solid currentColor;
+    border-top: 4px solid transparent; border-bottom: 4px solid transparent; transition: transform .15s; }
+  details.about[open] summary::before { transform: rotate(90deg); }
+  details.about summary:hover { color: var(--accent); }
+  details.about summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  details.about .aboutin { display: flex; flex-direction: column; gap: 11px; padding: 14px 0 4px; }
+  /* The pinned bar is z-index 75 and its top edge reaches 635, so an undo offered at the
+     foot of the window sat under it and could not be clicked. The pill clears the bar and
+     stacks above it, because it holds a control with a few seconds to live. */
+  #save { position: fixed; right: 16px; bottom: 64px; z-index: 80; font-family: var(--mono); font-size: 10.5px;
+          letter-spacing: .04em; padding: 6px 10px; border-radius: 4px; background: var(--surface);
+          border: 1px solid var(--rule); color: var(--muted); opacity: 0; transition: opacity .25s; pointer-events: none; }
+  #save.on { opacity: 1; }
+  #save.bad { color: #9B2C2C; border-color: #9B2C2C; opacity: 1; pointer-events: auto; }
+  #save.act { opacity: 1; pointer-events: auto; display: flex; align-items: center; gap: 10px; }
+  #save button { font-family: var(--mono); font-size: 10.5px; letter-spacing: .07em; text-transform: uppercase;
+                 color: var(--accent); background: none; border: 0; border-bottom: 1px solid var(--accent);
+                 padding: 0 0 1px; cursor: pointer; }
+  #save button:hover { color: var(--ink); border-bottom-color: var(--ink); }
+  :root[data-theme="dark"] #save.bad, :root:not([data-theme="light"]) #save.bad { color: #F09B9B; border-color: #F09B9B; }
+  .storenote { background: var(--sunk); padding: 14px 18px; font-size: 15px; color: var(--ink-soft); }
+  .storenote b { color: var(--ink); }
+
+  /* highlights list */
+  .bm { display: flex; flex-direction: column; gap: 22px; }
+  .bmg { display: flex; flex-direction: column; gap: 2px; }
+  .bmg > h3 { margin: 0 0 6px; font-family: var(--display); font-size: 18px; font-weight: 600; }
+  .bmg > h3 span { font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-left: 9px; }
+  .bmi { display: grid; grid-template-columns: 12px 1fr; gap: 0 11px; align-items: start;
+         padding: 8px 10px 8px 0; border-top: 1px solid var(--rule-soft); text-align: left;
+         background: none; border-left: 0; border-right: 0; border-bottom: 0; cursor: pointer; width: 100%; font: inherit; color: inherit; }
+  .bmi:hover { background: var(--surface); }
+  .bmi:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+  .bmi .dots { display: flex; flex-direction: column; gap: 4px; padding-top: 7px; }
+  .bmi .dot { width: 9px; height: 9px; border-radius: 2px; flex: none; }
+  .bmi .dot.y { background: rgba(255,206,0,.85); }
+  .bmi .dot.p { background: rgba(255,92,168,.7); }
+  .bmi .dot.n { background: none; border: 1px dashed var(--accent); }
+  .bmi .dot.b { background: var(--accent); clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 70%, 0 100%); border-radius: 0; height: 11px; width: 8px; }
+  .bmi .bt { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+  .bmi .where { font-family: var(--mono); font-size: 10px; letter-spacing: .07em; text-transform: uppercase;
+                color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .bmi .q { font-size: 15px; line-height: 1.5; color: var(--ink); }
+  .bmi .q .dim { color: var(--muted); }
+  /* the list reuses the page's own highlight colours, so a row looks like what it points at */
+  .bmi .q mark.hl { cursor: inherit; }
+  .bmi .cm { display: block; font-size: 13.5px; color: var(--muted); margin-top: 2px;
+             border-left: 2px solid var(--rule); padding-left: 9px; }
+  .bmg-b { padding: 14px 16px 12px; background: var(--surface); border-left: 2px solid var(--accent); margin-bottom: 10px; }
+  .bmg-b > h3 { color: var(--accent); }
+  .bmg-b .bmi { border-top: 0; padding-top: 0; }
+  .bmg-b .bmi:hover { background: none; text-decoration: underline; text-decoration-color: var(--rule); }
+  .bmclear { align-self: flex-start; margin-top: 6px; background: none; border: 0; padding: 2px 0; cursor: pointer;
+             font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase;
+             color: var(--muted); border-bottom: 1px solid var(--rule); }
+  .bmclear:hover { color: var(--ink); }
+  .bmempty { font-size: 16px; color: var(--muted); }
+  mark.hl.flash { animation: fl 1.4s ease-out; }
+  @keyframes fl { 0%,55% { box-shadow: 0 0 0 4px var(--close-wash); } 100% { box-shadow: 0 0 0 0 transparent; } }
+
+  /* comment rail */
+  #cmts { position: absolute; top: 0; left: 100%; margin-left: 18px; width: 202px; display: none; }
+  #cmts.on { display: block; }
+  .cmt { position: absolute; width: 202px; background: transparent; border-left: 2px solid var(--rule); padding: 2px 0 2px 9px; display: flex; flex-direction: column; gap: 3px; }
+  .cmt.inline { position: static; width: auto; max-width: 420px; margin: 10px 0 10px 16px; }
+  .cmt .q { font-family: var(--mono); font-size: 9px; letter-spacing: .02em; color: var(--muted); line-height: 1.4; opacity: .8; overflow: hidden; }
+  .cmt .cbody { position: relative; font-family: var(--body); font-size: 12.5px; line-height: 1.45; color: var(--ink-soft); outline: none; min-height: 17px; }
+  .cmt .cbody p { margin: 0 0 5px; max-width: none; }
+  .cmt .cbody p:last-child { margin-bottom: 0; }
+  .cmt .cbody ul, .cmt .cbody ol { margin: 4px 0 5px; padding-left: 17px; }
+  .cmt .cbody li { margin-bottom: 2px; }
+  .cmt .cbody hr { border: 0; border-top: 1px solid var(--rule); margin: 7px 0; }
+  .cmt .row { display: none; justify-content: flex-end; }
+  .cmt:hover .row, .cmt:focus-within .row { display: flex; }
+  .cmt button { font-family: var(--mono); font-size: 9px; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); background: none; border: 0; cursor: pointer; padding: 1px 0; }
+  .cmt button:hover { color: var(--ink); }
+  .cmt:hover, .cmt:focus-within { border-left-color: var(--muted); }
+  .cmt.act { border-left-color: var(--ink-soft); }
+
+  mark.hl { background: transparent; color: inherit; padding: .1em 0; border-radius: 2px; cursor: pointer; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+  mark.hl-y { background: rgba(255,206,0,.42); }
+  mark.hl-p { background: rgba(255,92,168,.34); }
+  mark.hl-n { background: rgba(31,107,87,.10); border-bottom: 1px dashed var(--accent); }
+  mark.hl-n.act { background: rgba(31,107,87,.22); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) mark.hl-y { background: rgba(255,206,0,.30); } :root:not([data-theme="light"]) mark.hl-p { background: rgba(255,92,168,.30); } :root:not([data-theme="light"]) mark.hl-n { background: rgba(100,191,161,.12); } }
+  :root[data-theme="dark"] mark.hl-y { background: rgba(255,206,0,.30); }
+  :root[data-theme="dark"] mark.hl-p { background: rgba(255,92,168,.30); }
+  :root[data-theme="dark"] mark.hl-n { background: rgba(100,191,161,.12); }
+  #hl-bar[hidden] { display: none !important; }
+  #hl-bar { position: absolute; z-index: 50; display: flex; gap: 3px; padding: 3px; background: var(--surface); border: 1px solid var(--rule); border-radius: 5px; box-shadow: 0 2px 8px rgba(0,0,0,.12); }
+  #hl-bar button { width: 17px; height: 17px; border: 1px solid var(--rule); border-radius: 3px; cursor: pointer; padding: 0; }
+  #hl-bar button[data-c="y"] { background: rgba(255,206,0,.55); }
+  #hl-bar button[data-c="p"] { background: rgba(255,92,168,.45); }
+  #hl-bar button[data-c="n"] { background: var(--paper); display: flex; align-items: center; justify-content: center; color: var(--ink-soft); }
+  #hl-bar button[data-c="n"] svg { width: 11px; height: 11px; display: block; }
+  #hl-bar button[data-c="b"] { background: var(--paper); display: flex; align-items: center; justify-content: center; color: var(--accent); }
+  #hl-bar button[data-c="b"] svg { width: 11px; height: 11px; display: block; }
+  #hl-bar button:hover { border-color: var(--muted); }
+  #hl-bar button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .hl-hint { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: .03em; margin-top: 12px; }
+
+  @media (max-width: 680px) {
+    .wrap { padding: 34px 16px 60px; gap: 38px; }
+    .facts, footer .weeks, .links { grid-template-columns: 1fr; gap: 3px 0; }
+    .facts dt, footer .weeks dt, .links dt { padding-top: 9px; }
+    .ses, .turn { grid-template-columns: 1fr; gap: 8px; }
+    .turn .who { flex-direction: row; align-items: baseline; gap: 9px; }
+    .rd { gap: 0 16px; }
+    .nine { min-width: 620px; }
+  }
+  @media print {
+    .site, #nav, #hl-bar, #nb-bar, #save, #cmts, .drawer, .sitefoot, .dock { display: none !important; }
+    body { padding-bottom: 0; }
+    body { background: #fff; font-size: 11.5px; }
+    .wrap { max-width: none; padding: 0; gap: 26px; }
+    .rd, section, figure, .exm, .ctx, .quo { break-inside: avoid; }
+    mark.hl { background: none; border-bottom: 1.5px solid #888; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+<header class="site"><div class="in"><a class="hubmark" href="https://myermcat.github.io/course-hub/" title="Course hub" aria-label="Course hub, the front page"><svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#22282E"/><rect x="13" y="13" width="16" height="16" rx="4" fill="#7C5CB8"/><rect x="35" y="13" width="16" height="16" rx="4" fill="#3E9E82"/><rect x="13" y="35" width="16" height="16" rx="4" fill="#4E90C8"/><rect x="35" y="35" width="16" height="16" rx="4" fill="#C08A3E"/></svg></a><a class="home" href="../"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 8H2M7 3 2 8l5 5"/></svg>PHI2394</a><a class="disc" href="../#about" title="How these guides were written">Written with Claude<i>|</i>AI can make mistakes</a><nav aria-label="This week"><span class="cur">Week 7</span><a href="notes.html">Lecture notes</a></nav></div></header>
+
+<nav id="nav" aria-label="Contents">
+  <a class="grp" href="#s-notes">Notes</a>
+  <a class="grp" href="#s-arg">The argument</a>
+  <a class="grp" href="#s-texts">The reading</a>
+  <a class="core" href="#ch15" title="Intemann &middot; the central chapter, read properly">Values in science<i>ch 15</i></a>
+  <a class="core" href="#ch19" title="Giordano &middot; read properly">Science for the people<i>ch 19</i></a>
+  <a class="core" href="#ch3" title="Detlefsen on Du Ch&acirc;telet &middot; read properly">Du Ch&acirc;telet<i>ch 3</i></a>
+  <a class="skim" href="#ch20" title="Nelson &middot; narrated in week 6">Biology<i>ch 20</i></a>
+  <a class="grp" href="#s-gloss">Glossary</a>
+  <div class="key"><em>Key</em><i class="a">solid = read properly</i><i class="b">faded = skim</i><i class="c">faintest = if time</i></div>
+</nav>
+
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">PHI 2394 B00 &middot; reading for Monday 19 October</div>
+    <h1>If Values Are In There Anyway, Whose?</h1>
+    <p class="standfirst">Last week ended by showing that a value enters research at every decision. That leaves a question nobody can dodge: which values, chosen by whom, and in service of what. Four chapters, three answers, and one eighteenth-century woman who worked it out first.</p>
+    <div class="storenote"><b>Everything you write here stays in this browser.</b> Highlights, comments and notes are saved on the device you are using, and they survive a reload and a closed tab. They do not travel to another computer, they are not sent anywhere, and clearing your browsing data removes them. Nobody else can see them.</div>
+  </header>
+
+  <div class="strip-block">
+    <div class="tally">
+      <div><b>15</b><span>pages of ch. 15, printed 201 to 215</span></div>
+      <div><b>10</b><span>pages of ch. 19, printed 250 to 259</span></div>
+      <div class="t-a"><b>12</b><span>pages of ch. 3, printed 41 to 52</span></div>
+      <div class="t-b"><b>37</b><span>pages to read. Ch. 20 was done in week 6</span></div>
+    </div>
+  </div>
+
+  <section id="s-notes">
+    <h2>My notes</h2>
+    <div class="nbgrid">
+      <div class="nbwrap wide">
+        <div class="nbhead"><b>The week overall</b><span>four chapters of the handbook</span></div>
+        <div class="nbpad"><div class="nb" contenteditable="true" data-k="gen" data-ph="What the whole week is about&#8230;"></div></div>
+      </div>
+      <div class="nbwrap">
+        <div class="nbhead"><b>Values in science</b><span>ch. 15, Intemann</span></div>
+        <div class="nbpad"><div class="nb" contenteditable="true" data-k="ch15" data-ph="Your note&#8230;"></div></div>
+      </div>
+      <div class="nbwrap">
+        <div class="nbhead"><b>Science for the people</b><span>ch. 19, Giordano</span></div>
+        <div class="nbpad"><div class="nb" contenteditable="true" data-k="ch19" data-ph="Your note&#8230;"></div></div>
+      </div>
+      <div class="nbwrap">
+        <div class="nbhead"><b>Du Ch&acirc;telet</b><span>ch. 3, Detlefsen</span></div>
+        <div class="nbpad"><div class="nb" contenteditable="true" data-k="ch3" data-ph="Your note&#8230;"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="s-arg">
+    <h2>The argument</h2>
+    <p class="lede">The question this week settles: once you admit that values are inside science and cannot be removed, what stops it being a free-for-all?</p>
+
+    <div class="body">
+      <p><b>The answer the week gives: you replace the rule that values must be absent with rules about which values are allowed and who gets to argue about them. Two such rules are on offer and they disagree about how much to demand.</b></p>
+      <p><b>Start with what is being given up, because it has a name and it is the thing every chapter attacks.</b> The <b>value-free ideal</b>, which this week abbreviates <b>VFI</b>, says that social, moral and political values must play no part in the <em>core</em> of science. Nobody ever claimed values are absent entirely: of course they decide what gets funded and what you may do to a research subject. The claim is narrower and tougher. Heather Douglas calls the protected part the <b>heart</b> of scientific reasoning: deciding what counts as evidence, which theory the evidence supports, and what to accept. There, values are supposed to be out.</p>
+      <p><b>Week 6 showed that is not how research works.</b> This week's chapter 15 names <b>five</b> places a value enters and gives a case for each, and the conclusion is the same: the VFI describes nothing anybody does.</p>
+      <p><b>So why does anybody still defend it, and why does it matter that they do?</b> Because it has been doing a job. Intemann is sharp about this, and it is the thing that makes her chapter different from an ordinary philosophy-of-science complaint. <b>The VFI was used to shut three arguments down.</b></p>
+      <ol>
+        <li><b>It made diversity in science a political question with no scientific stake.</b> If method is objective and works the same in anybody's hands, then who does the science cannot matter to the result. You may want women in laboratories for reasons of fairness. You have no epistemic reason, which means no reason that bears on the quality of the science.</li>
+        <li><b>It turned every documented case of sexist research into an isolated lapse.</b> The rod and frame test was not evidence about how science works, it was one team failing to follow the rules. And the feminists pointing it out were the ones importing politics.</li>
+        <li><b>It made who benefits from science somebody else's problem.</b> If a scientist's job is only to check whether data support a theory, then the fact that 90 per cent of biomedical research money goes to diseases affecting 10 per cent of the world is not a scientific question at all.</li>
+      </ol>
+      <p><b>That is why feminists went after the VFI, where noting it was inaccurate would have been enough for anybody else.</b> Non-feminist philosophers attacked it too, and for good reasons, mostly that it is unattainable. The feminist complaint is different: <b>the VFI was an obstacle that could be used to dismiss three specific arguments without answering them.</b></p>
+      <p><b>Then the problem the week actually has to solve.</b> Take away the VFI and you owe an account of what replaces it, or the objection from week 5 comes straight back: if any values are allowed, anybody can claim their own, and there is nothing left to argue with. The two answers in chapter 15 are both attempts to pay that debt.</p>
+      <p><b>Answer one, the value-management model.</b> Any values may enter, provided the community is diverse enough and critical enough to catch the ones doing damage. Values get <em>managed</em>, and never chosen. This is Longino's four norms from week 6, now used as a political proposal.</p>
+      <p><b>Answer two, the social justice model.</b> That is not enough, because it assumes a level field that does not exist. Publicly funded science should have an aim, and the aim is to benefit everyone and especially the worst off. This one <b>picks</b> values, where the first only manages them.</p>
+      <p><b>And the third chapter asks a question neither of them asks.</b> Giordano points out that both answers are arguments conducted among academics about how academics should behave. If you look instead at people outside universities who have produced real knowledge, Black Panther clinics, the women's health movement, the AIDS activists who rewrote how drug trials run, then the question stops being which values scientists should hold and becomes <b>who counts as a scientist at all.</b></p>
+    </div>
+
+    <figure class="dia">
+      <div class="draw">
+      <svg viewBox="0 0 700 300" role="img" aria-labelledby="dg-three7" style="font-family:var(--body)">
+        <title id="dg-three7">The value-free ideal and the two replacements set out as three columns, giving the rule each proposes, what it asks of a researcher, and the objection each faces.</title>
+        <text class="dg-m dg-dim" x="12" y="15" font-size="11" style="font-family:var(--mono)">THE VALUE-FREE IDEAL</text>
+        <text class="dg-m dg-dim" x="248" y="15" font-size="11" style="font-family:var(--mono)">VALUE MANAGEMENT</text>
+        <text class="dg-m dg-dim" x="484" y="15" font-size="11" style="font-family:var(--mono)">SOCIAL JUSTICE</text>
+        <rect class="dg-box" x="8" y="24" width="220" height="264" rx="3"/>
+        <rect class="dg-box" x="244" y="24" width="220" height="264" rx="3"/>
+        <rect class="dg-box dg-hi" x="480" y="24" width="212" height="264" rx="3"/>
+        <text class="dg-t dg-dim" x="20" y="46" font-size="11" style="font-family:var(--mono)">THE RULE</text>
+        <text class="dg-t dg-dim" x="256" y="46" font-size="11" style="font-family:var(--mono)">THE RULE</text>
+        <text class="dg-t dg-dim" x="492" y="46" font-size="11" style="font-family:var(--mono)">THE RULE</text>
+        <text class="dg-t" x="20" y="68" font-size="12.5">Keep social and moral</text>
+        <text class="dg-t" x="20" y="85" font-size="12.5">values out of the core:</text>
+        <text class="dg-t" x="20" y="102" font-size="12.5">evidence, support,</text>
+        <text class="dg-t" x="20" y="119" font-size="12.5">acceptance.</text>
+        <text class="dg-t" x="256" y="68" font-size="12.5">Let any values in, and</text>
+        <text class="dg-t" x="256" y="85" font-size="12.5">build a community</text>
+        <text class="dg-t" x="256" y="102" font-size="12.5">diverse and critical</text>
+        <text class="dg-t" x="256" y="119" font-size="12.5">enough to catch them.</text>
+        <text class="dg-t" x="492" y="68" font-size="12.5">Give science an aim:</text>
+        <text class="dg-t" x="492" y="85" font-size="12.5">benefit everyone, and</text>
+        <text class="dg-t" x="492" y="102" font-size="12.5">especially the worst</text>
+        <text class="dg-t" x="492" y="119" font-size="12.5">off. Start enquiry there.</text>
+        <text class="dg-t dg-dim" x="20" y="150" font-size="11" style="font-family:var(--mono)">SO A RESEARCHER</text>
+        <text class="dg-t dg-dim" x="256" y="150" font-size="11" style="font-family:var(--mono)">SO A RESEARCHER</text>
+        <text class="dg-t dg-dim" x="492" y="150" font-size="11" style="font-family:var(--mono)">SO A RESEARCHER</text>
+        <text class="dg-t" x="20" y="172" font-size="12.5">tries to have none,</text>
+        <text class="dg-t" x="20" y="189" font-size="12.5">and reports data.</text>
+        <text class="dg-t" x="256" y="172" font-size="12.5">makes values explicit</text>
+        <text class="dg-t" x="256" y="189" font-size="12.5">and submits them to</text>
+        <text class="dg-t" x="256" y="206" font-size="12.5">people who hold other</text>
+        <text class="dg-t" x="256" y="223" font-size="12.5">ones.</text>
+        <text class="dg-t" x="492" y="172" font-size="12.5">works with the people</text>
+        <text class="dg-t" x="492" y="189" font-size="12.5">affected, from framing</text>
+        <text class="dg-t" x="492" y="206" font-size="12.5">the question onward.</text>
+        <text class="dg-t dg-dim" x="20" y="237" font-size="11" style="font-family:var(--mono)">THE OBJECTION</text>
+        <text class="dg-t dg-dim" x="256" y="251" font-size="11" style="font-family:var(--mono)">THE OBJECTION</text>
+        <text class="dg-t dg-dim" x="492" y="237" font-size="11" style="font-family:var(--mono)">THE OBJECTION</text>
+        <text class="dg-t" x="20" y="259" font-size="12.5">Nobody has ever done</text>
+        <text class="dg-t" x="20" y="276" font-size="12.5">it, and it silences three</text>
+        <text class="dg-t" x="20" y="293" font-size="12.5">arguments.</text>
+        <text class="dg-t" x="256" y="273" font-size="12.5">Assumes a level field</text>
+        <text class="dg-t" x="256" y="290" font-size="12.5">that does not exist.</text>
+        <text class="dg-t" x="492" y="259" font-size="12.5">Whose justice? And is</text>
+        <text class="dg-t" x="492" y="276" font-size="12.5">all research supposed</text>
+        <text class="dg-t" x="492" y="293" font-size="12.5">to serve it?</text>
+      </svg>
+      </div>
+      <figcaption><b>One rule removed and two offered in its place.</b> The left column is what the whole term has been dismantling, and the bottom row of it is the part this chapter adds: it was useful to somebody. The two on the right differ in one thing, which is worth getting straight before the exam. <b>Management lets all values in and relies on argument between people who hold different ones. Social justice picks a value first</b>, declares what science is for, and judges the rest against it. Intemann prefers the second as an addition to the first, and is open that it leaves hard questions unanswered, which is the last row.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2 id="s-texts">The reading</h2>
+    <p class="lede">Three chapters to read, from the same handbook, plus one that was narrated in week 6 and belongs to this week on the revised reading guide. Chapter 15 is the one the exam will come from. Chapter 19 is the hardest and the most interesting. Chapter 3 is a historical case and the easiest reading of the term.</p>
+
+    <div class="readings">
+
+      <article class="rd p-close" id="ch15">
+        <div class="stripe"></div>
+        <div class="main">
+          <div class="head">
+            <h3><span class="ch">CH 15</span>Feminist Perspectives on Values in Science</h3>
+            <div class="who">Kristen Intemann, in Crasnow and Intemann (eds), <em>The Routledge Handbook of Feminist Philosophy of Science</em>, Routledge, 2020</div>
+            <div class="meta"><span class="tag">Read properly</span><span>15 pp, printed pages 201 to 215</span></div>
+          </div>
+
+          <div class="why"><b>Why this chapter is set.</b> It is the summary of the whole term's argument, written by one of the authors of the book you read in weeks 5 and 6, and it has the two lists the exam will want: the five ways values enter, and the two models that replace the value-free ideal.</div>
+
+          <h4>The case the chapter opens on, and what it is doing there</h4>
+          <div class="body">
+            <p><b>The question: can a treatment be studied for sixty years and still get the basic facts wrong, with nobody breaking any rules?</b></p>
+            <p><b>The answer is yes, and hormone replacement therapy is the case.</b> Here it is in order.</p>
+            <p><b>From the 1940s, HRT became the standard treatment</b> for the symptoms of menopause: hot flushes, night sweats, broken sleep. Uncontroversial so far.</p>
+            <p><b>In 1966 a physician named Robert Wilson published a bestseller called <em>Feminine Forever</em></b>, and prescriptions jumped. His claim was larger than symptom relief. HRT would <b>reverse or prevent</b> menopause and <b>preserve femininity</b>: more sexual drive, less vaginal dryness, and skin that did not age or droop.</p>
+            <p><b>By the 1980s and 1990s the claims had grown again.</b> HRT was being described as safe, effective, and protective against cardiovascular disease, osteoporosis and some cancers.</p>
+            <p><b>In 2002 one of the largest randomised trials ever run reported.</b> The Women's Health Initiative found that HRT, in some forms and in some women, <b>raised</b> the risk of breast cancer, heart disease, stroke and clots.</p>
+            <p><b>And the sentence that makes it a philosophy case.</b> Some argued the result should have surprised nobody, because there had been warnings for decades that the evidence for the benefits was thin and that evidence of risk existed.</p>
+            <p><b>So where exactly did the value judgments get in?</b> Intemann names three, and they are three different kinds.</p>
+            <ul>
+              <li><b>What counts as a benefit.</b> Treating <em>skin that ages or droops</em> as a health benefit is a value judgment, and one shaped by a norm about what a woman is for.</li>
+              <li><b>What counts as an acceptable risk.</b> Saying the benefits outweigh the risks is not arithmetic. It depends on how good you think the benefits are and how bad the outcomes would be, and both are judgments.</li>
+              <li><b>How much evidence is enough, and of what kind.</b> Whether observational studies suffice, or whether you require a randomised trial, is a decision somebody made long before the 2002 trial existed.</li>
+            </ul>
+            <p><b>Nobody in this story is a villain</b>, which is the point. The chapter's claim is that careful people following the rules produced this, so stricter rules are not the fix.</p>
+          </div>
+
+          <h4>The five places a value gets in</h4>
+          <div class="body">
+            <p><b>The question: if values are not confined to choosing topics, where else are they?</b></p>
+            <p><b>The answer is five places, and this is the list to be able to produce.</b> Each comes with a case, and the cases are better revision than the headings.</p>
+          </div>
+
+          <div class="exm">
+            <b>Example &middot; one &middot; framing the research problem</b>
+            <p><b>The claim.</b> Science does not chase true beliefs, it chases <em>significant</em> ones, so somebody decides what is significant. Grant agencies say so openly: proposals are judged on social impact as well as merit.</p>
+            <p><b>The figure to remember.</b> <b>90 per cent of biomedical research funding goes to diseases affecting 10 per cent of the world's population.</b> Fixing that needs an explicit value judgment that effort should go where need is greatest. Neutrality is not available: doing nothing is also a choice.</p>
+            <p><b>And the framing case, which connects to week 6.</b> Contraceptive research has focused on women. That framing decides that <b>women carry the testing, the taking and the side effects</b>. The researchers need not have thought women should bear more risk, and many wanted to give women control over reproduction. The frame made the judgment anyway. Make it explicit and a different one looks better grounded: that the burden should be shared, or that we need methods that give men equal responsibility.</p>
+          </div>
+
+          <div class="exm">
+            <b>Example &middot; two &middot; observing and describing</b>
+            <p><b>The claim.</b> Observation is <b>theory-laden</b>, which is week 3, and the background assumptions doing the loading can be social ones.</p>
+            <p><b>Emily Martin on the textbook sperm and egg.</b> Standard accounts had the egg <b>passively floating</b> down the fallopian tube and being <b>penetrated</b> by a sperm that actively <b>burrows</b> in. The biology is a complex chemical interaction between the two surfaces, so the metaphor was obscuring the mechanism.</p>
+            <p><b>And the part that makes it more than a historical curiosity.</b> When the newer, correct account arrived, the language stayed gendered. The egg became a femme fatale that <b>ensnares</b> the sperm with its sticky surface. <b>Correcting the biology did not correct the metaphor</b>, which tells you the metaphor was not resting on the biology.</p>
+            <p><b>What archaeologists counted as a tool.</b> Research on the evolution of tool use focused on tools for hunting and killing, which are the ones associated with men. Baskets and reeds for foraging were not counted as tools. They were not rejected as data, they were <b>not seen as data</b>. Feminist archaeologists asking what women contributed is what turned baskets into evidence, which is values opening a line of evidence, where every other case here has them closing one.</p>
+          </div>
+
+          <div class="exm">
+            <b>Example &middot; three &middot; when the concept itself carries a value</b>
+            <p><b>The claim.</b> Some things science studies are value-laden all the way down, and no amount of care removes it.</p>
+            <p><b>Harm to children of divorce</b>, which is Anderson's case from week 5's chapter 2. Harm was measured as economic and psychological damage from not having two parents in one house. But harm could include what happens to a child whose mother stays in an abusive marriage, or stays because she cannot afford to leave. <b>Deciding what counts as harm decides what the study finds.</b></p>
+            <p><b>Home birth, and this one is worth the detail.</b> Studies showing hospital birth is safer measure <b>infant and maternal mortality</b>, which for low-risk women in the United States is extremely low either way. People who choose home birth are usually weighing different risks: hospital births have much higher rates of caesarean section, episiotomy, fetal monitoring and infection. Those are less grave and <b>far more likely</b>. Many studies of the safety of home birth never measured them. So the study has made a judgment about which bad outcomes count as safety, and called the result a measurement.</p>
+          </div>
+
+          <figure class="pic">
+            <a class="zoom" style="width:471px" href="img/mice.jpg" target="_blank" rel="noopener" title="Open this picture at full size">
+              <img src="img/mice.jpg" width="960" height="612" loading="lazy" alt="Several white laboratory mice in a clear plastic cage with bedding, one standing up against the side.">
+            </a>
+            <figcaption><b>Laboratory mice, and the fourth place values get in.</b> Rodent studies of how drugs affect behaviour use male animals almost exclusively, including for conditions commoner in women. The reason given is that hormone cycles in females add a variable that makes causes harder to isolate. <span class="cred">Galina Fomina, CC BY 4.0, via Wikimedia Commons.</span></figcaption>
+          </figure>
+
+          <div class="exm">
+            <b>Example &middot; four &middot; choosing the model</b>
+            <p><b>The claim.</b> A model represents some features and drops others, so building one is deciding what matters.</p>
+            <p><b>Male-only animal models.</b> Rodent studies of drug effects use males nearly exclusively, despite evidence that drug metabolism differs by sex. <b>And it holds even for conditions commoner in women</b>: depression and anxiety disorders, stroke, thyroid disease, cardiovascular disease.</p>
+            <p><b>The reason given, and the two replies.</b> The reason is that the female oestrous cycle adds a confounding variable that makes causes harder to establish. First reply: that assumption is itself doubtful on the evidence. Second reply, which is the philosophical one: choosing males <b>for simplicity and predictive power</b> treats those epistemic gains as worth more than the consequences for female patients, and <b>that trade is a value judgment nobody wrote down.</b> The consequence is diagnostic guidelines and treatments that fit women less well.</p>
+            <p><b>And the same shape in climate models.</b> Models measuring the <b>aggregate</b> effect of climate change on food production can report that losses where drought hits are offset by gains in milder regions. True of the total, and it hides the distribution. Just policy needs to know <b>who</b> loses, and an aggregate is built so as not to say.</p>
+          </div>
+
+          <div class="exm">
+            <b>Example &middot; five &middot; interpreting data and weighing alternatives</b>
+            <p><b>The claim, and it is the sharpest one in the chapter.</b> Whether a hypothesis is justified is a <em>comparative</em> judgment: it has to beat the alternatives. So anything shaping <b>which alternatives occur to you</b> also shapes how well supported your conclusion is. That is Okruhlik's argument, and it means a conclusion can be unjustified without any single step being wrong.</p>
+            <p><b>The rod and frame test again, now from Longino's angle.</b> Week 6 gave Fausto-Sterling's objection: the test may measure willingness to keep making demands of a man in a dark room. Longino adds why nobody noticed. The researchers were <b>overwhelmingly male and shared values and interests</b>, so the design flaw was invisible from inside the group, and the alternative explanation never came up to be rejected.</p>
+            <p><b>And the result that settles it.</b> When the experiment was altered to control for these variables, <b>the difference in performance disappeared.</b></p>
+          </div>
+
+          <h4>What replaces the value-free ideal, and the test any replacement has to pass</h4>
+          <div class="body">
+            <p><b>The question: what has to be true of a replacement for it to satisfy feminists specifically?</b></p>
+            <p><b>The answer is four conditions: a replacement has to do the three political jobs the VFI was doing, and protect the science as well.</b> A replacement has to answer:</p>
+            <ol>
+              <li><b>Does it matter who participates in science, and if so why?</b> An epistemic reason, on top of a fair one.</li>
+              <li><b>How can feminist values play a positive role</b>, having only ever been the thing to be scrubbed out?</li>
+              <li><b>How do we make sure the products of science benefit marginalised groups</b>, given how reliably they have reinforced the arrangement?</li>
+              <li><b>And how is the epistemic integrity of science protected</b> once values are admitted?</li>
+            </ol>
+          </div>
+
+          <h4>Model one: value management</h4>
+          <div class="body">
+            <p><b>The question: can you let all values in and still get objectivity out?</b></p>
+            <p><b>The answer is yes, if the community is built right, and the building instructions are Longino's four norms.</b> Rolin's name for the arrangement is the <b>value-management model</b>.</p>
+            <ol>
+              <li>There must be recognised avenues for criticism of evidence, methods, assumptions and reasoning.</li>
+              <li>There must be shared standards that critics can appeal to.</li>
+              <li>The community as a whole must respond to criticism.</li>
+              <li>Intellectual authority must be shared equally among qualified practitioners.</li>
+            </ol>
+            <p><b>The mechanism, in one line:</b> you cannot see your own assumptions, and you can see somebody else's easily. So a community holding different values will catch what each member cannot.</p>
+            <p><b>It passes all four tests, which is why it is the mainstream answer.</b> Diversity gets an <em>epistemic</em> job, so question one is answered. Feminist values can be the better-grounded ones in a given case, so question two is answered: if interventions ought to work as well for women as men, that is a reason against male-only animal models; if gathering is work, baskets are tools. Including people whose interests were absent changes what gets studied, so question three is answered. And shared standards plus live criticism protect integrity, so question four is answered.</p>
+            <p><b>Then the objection Intemann raises against her own preferred field.</b> The model <b>assumes a level field</b>, and treats science as a place where any value may enter and be judged on equal terms. She lists what is wrong with that picture:</p>
+            <ul>
+              <li><b>Research is increasingly privately funded</b>, and funders decide what gets pursued, which methods regulators require, and what gets published. Pharmaceutical trials often retain the right to withhold negative results.</li>
+              <li><b>Manufactured dissent</b>, which is week 5's Merchants of Doubt arriving from the other direction: privately funded scientists raise objections in order to stall policy, confuse the public and <b>divert other scientists' time</b>.</li>
+              <li><b>Who gets to participate at all is unequal before anybody reaches a laboratory.</b> A third of United States schools are rural and a fifth of students attend one, and rural schools get less funding, less fast internet, and have more trouble keeping qualified science teachers.</li>
+              <li><b>And the culture inside the field excludes without any explicit discrimination</b>: work demands incompatible with parenting, harassment, and a climate that makes staying undesirable even where nobody discounts your work.</li>
+            </ul>
+            <p><b>So the objection is not that the four norms are wrong.</b> It is that a model which depends on equal intellectual authority cannot deliver it in a world arranged like this one.</p>
+          </div>
+
+          <h4>Model two: social justice</h4>
+          <div class="body">
+            <p><b>The question: what do you add once you accept the field is not level?</b></p>
+            <p><b>The answer is an aim.</b> The <b>social justice model</b> starts from a commitment: a central purpose of publicly funded science is to achieve social justice, meaning <b>science should benefit everyone and particularly those who are worst off</b>. Intemann presents it as an addition to the first model, and never a rival to it.</p>
+            <p><b>What makes it different in one line:</b> the management model is <b>pluralist</b>, letting all values compete. <b>The social justice model prioritises some values over others before the competition starts.</b></p>
+            <p><b>The method attached to it has a name you should keep.</b> <b>Studying up</b>, or studying from the margins out. In practice that means working with members of the affected group to frame the problem, identifying everyone affected, asking whether the usual concepts serve all of them, investigating how the problem shows up differently for different groups, and asking how systems of power contribute to it.</p>
+            <p><b>Why it answers question one better.</b> People in marginalised positions are likelier to have evidence about how arrangements disadvantage them, and the line Intemann uses is the memorable one: <b>privilege is easier to identify by those who do not have it.</b></p>
+            <p><b>And she does not pretend it is finished.</b> Three questions she poses and leaves open: are there competing conceptions of justice, and what if they conflict? Should <em>all</em> research aim at it, or can research be worth doing without advancing it? And how is it applied to a concrete decision?</p>
+          </div>
+
+          <div class="kone"><b>If you keep one thing.</b> The value-free ideal was never only a mistaken description of science. It was doing work: it made diversity a question with no scientific stake, turned every documented bias into one team's lapse, and made who benefits somebody else's department. That is why removing it is a political act as well as a philosophical one, and why what replaces it has to answer <b>who participates, whose values, who benefits, and what protects the science</b> all at once.</div>
+
+          <div class="quar">
+            <b>Where it belongs in the quarrel</b>
+            <ul>
+              <li><b>It completes week 6.</b> Chapter 4 showed values enter at nine decision points. This asks which values should, and who decides.</li>
+              <li><b>It answers week 5's relativism objection</b> in its strongest form: both models keep shared standards of evidence, so neither is the free-for-all the objection imagines.</li>
+              <li><b>It is answered by chapter 19 below</b>, which says both models are academics arguing about academics.</li>
+              <li><b>It sets up weeks 8 and 9.</b> Tremain on disability is the social justice model applied to a group, and the normalization material is how a category gets built in the first place.</li>
+            </ul>
+          </div>
+
+          <div class="mynote"><b>My note</b><span>This is the chapter to revise from, because it compresses the term. Be able to produce <b>the five ways values enter, with one case each</b>, and <b>the two models with the one-line difference between them</b>: management lets all values compete under four norms, social justice picks an aim first. The HRT case is the best opening example you have for any question about values, because it has three distinct kinds of judgment in one story. The 90 and 10 figure on biomedical funding is the kind of number an examiner likes. And note that Intemann is one of the two authors of the textbook from weeks 5 and 6, so her framing is the course's framing.</span></div>
+
+          <div class="curious">
+            <div class="label"><b>For the curious</b><span>none of this is on the exam</span></div>
+
+            <details class="bit"><summary>The book that drove the HRT boom was paid for by the company selling it</summary><div class="bq">
+              <p><em>Feminine Forever</em> sold around 100,000 copies in its first year and was serialised in women's magazines. Robert Wilson's research foundation was funded by Wyeth, the pharmaceutical company making Premarin, the most widely prescribed form of the drug, along with other manufacturers. His son later said publicly that Wyeth had funded the book itself.</p>
+              <p>The chapter does not mention this, and it is worth knowing because it cuts both ways. It makes the case look like straightforward corruption, which would let the rest of science off. Intemann's point is the harder one: <b>the value judgments she lists were made by ordinary researchers too</b>, for decades after Wilson, by people with no cheque involved.</p>
+            </div></details>
+
+            <details class="bit"><summary>The 2002 trial was stopped early, and the fallout is still argued about</summary><div class="bq">
+              <p>The Women's Health Initiative oestrogen-plus-progestin arm was halted about three years ahead of schedule because the monitoring board judged the harms had crossed a pre-set boundary. Prescriptions fell by roughly half within a year, worldwide.</p>
+              <p>Since then the picture has become more complicated in the direction the chapter describes: risk and benefit depend on which hormones, what dose, for how long, and <b>how close to menopause the patient started</b>, which matters most of all. Women starting under sixty appear to have a different risk profile from the trial's average participant, who was in her sixties. Which is the chapter's argument once more: an aggregate answer hid a distribution.</p>
+            </div></details>
+
+            <details class="bit"><summary>Emily Martin&#8217;s paper is one of the most reprinted in the field</summary><div class="bq">
+              <p>"The Egg and the Sperm: How Science Has Constructed a Romance Based on Stereotypical Male-Female Roles", <em>Signs</em>, 1991. She went through the textbooks and tabulated the verbs. Sperm <em>deliver</em>, <em>activate</em>, <em>penetrate</em>; eggs are <em>transported</em>, <em>swept</em>, <em>drift</em>.</p>
+              <p>The biology that displaced it came largely from a Johns Hopkins laboratory finding that the sperm's forward thrust is weak and that it is the chemical interaction at the egg's surface that moves the sperm in. Martin's observation is that the new finding was reported with the egg as an aggressor, which is a different stereotype doing the same job.</p>
+            </div></details>
+          </div>
+
+        </div>
+      </article>
+
+      <article class="rd p-close" id="ch19">
+        <div class="stripe"></div>
+        <div class="main">
+          <div class="head">
+            <h3><span class="ch">CH 19</span>Feminist Science for the People</h3>
+            <div class="who">Sara Giordano, in Crasnow and Intemann (eds), <em>The Routledge Handbook of Feminist Philosophy of Science</em>, Routledge, 2020</div>
+            <div class="meta"><span class="tag">Read properly</span><span>10 pp, printed pages 250 to 259</span></div>
+          </div>
+
+          <div class="why"><b>Why this chapter is set.</b> It is the one that refuses the question the others are asking. Chapters 4, 5 and 15 debate how scientists should behave. This asks who gets to be one, and whether the push to include more people has mostly served the institution doing the including. It is the most radical thing on the reading list and the most likely to annoy you, in either direction.</div>
+
+          <h4>What &#8220;public understanding of science&#8221; turned out to mean</h4>
+          <div class="body">
+            <p><b>The question: when institutions say the public needs to understand science better, what are they actually asking for?</b></p>
+            <p><b>The answer, and it is the chapter's opening move: what is wanted is appreciation.</b> Giordano's claim is that the literature itself says so, and she goes to the first issue of the journal to show it.</p>
+            <p><b>The assumption underneath, which has a name.</b> The <b>deficit model</b>: the public has a hole where knowledge should be, and filling it will produce support for science. Science studies has pushed against it for decades, which is where calls for <b>democratic science</b> come from.</p>
+            <p><b>Where the demand came from historically, and this is the part worth holding on to.</b> It takes root after the Second World War, and it is tangled with <b>nationalism</b>. An assumption that science is good in itself did not survive the war. <b>Who controlled it mattered.</b> Giordano puts the asymmetry plainly: Germany could be condemned for unethical experimentation that harmed and killed millions, while the United States had to defend its use of the atomic bomb on hundreds of thousands. So the push for a scientifically literate public was about national pride and national security, and the worry about science in the <em>wrong hands</em> runs from Cold War politics into the war on terror and into bioethics today.</p>
+            <p><b>Then the close reading she builds the section on.</b> The first article in the first issue of <em>Public Understanding of Science</em>, 1992, by two policy advocates at a cancer research fund, argues scientists should get involved so the public will see them as normal people and trust them. It identifies two threats.</p>
+            <ul>
+              <li><b>Unskilled working women</b>, named as the hardest group to reach, who the authors assume get their information from television game shows and tabloids. The suggested remedy is putting a scientist into a soap opera.</li>
+              <li><b>Animal rights activists</b>, and the way this is done is the thing to notice. The authors cite polls showing public distrust about animal research, and then set them beside a fear that people think scientific curiosity could produce a child with yellow eyes and three noses. <b>Giordano's objection is that the connection is spurious</b>, and that lumping a reasoned objection together with a fantasy discredits the objection by association.</li>
+            </ul>
+            <p><b>And why she picks that article, when worse ones exist.</b> It is the first article in the first journal of the field, so it set the terms. It also appeared alongside critical pieces in the same issue, which tells you the field was entangled with scientists and policy makers from the start.</p>
+          </div>
+
+          <h4>The thing she is pointing at: inclusion that leaves the system intact</h4>
+          <div class="body">
+            <p><b>The question: why would more people being let in fail to fix anything?</b></p>
+            <p><b>The answer: because the movements of the 1960s and 1970s were not asking to be let into the existing arrangement, and the version that survived was the one that asked for exactly that.</b></p>
+            <p><b>The reasoning in order.</b> Those movements held that categories of race, gender, sexuality and ability were <b>not inevitable</b> but were doing work for the economic and political system. So the goal was to change the system, and not to admit a few people to it. What happened instead was that admitting some people from excluded groups <b>let the system carry on</b> and redrew the lines somewhere else.</p>
+            <p><b>Her two cases.</b> A politics of <b>respectability</b>, meaning conformity to white, heterosexual, middle-class norms about how a woman behaves and what family she lives in, was used to justify withholding state support from poor Black women by blaming individuals or culture. And the campaign for same-sex marriage won healthcare benefits for couples with jobs that provide healthcare <b>while leaving marriage itself unquestioned</b>, so people without jobs or insurance stayed outside. The pattern both share: the boundary moved, and the people on the far side of the new one became harder to see.</p>
+            <p><b>What that means for science.</b> Calls to open science to everyone, made without correcting the inequality first, end up meaning <b>everyone who is already economically successful</b>. She calls this a colourblind and genderblind politics, and the objection is that we do not live in a raceless or genderless world, so a rule that ignores race and gender preserves whatever the existing distribution happens to be.</p>
+          </div>
+
+          <h4>The argument you will want to argue with: illiteracy as resistance</h4>
+          <div class="body">
+            <p><b>The question: is somebody who rejects a scientific explanation necessarily ignorant of it?</b></p>
+            <p><b>The answer the chapter defends: sometimes they know it and are refusing it, and that is a different thing.</b></p>
+            <p><b>The evidence she cites.</b> Barr and Birke interviewed women about adult science education and found that some <b>knew the scientific answers and chose other explanations</b>. Emily Martin found that what looked like scientific illiteracy among working-class women was resistance to medical authority on menstruation. So the category <em>ignorant</em> was being applied to people making a choice.</p>
+            <p><b>Then the stronger version, which is where most readers get off.</b> Lucía Egaña Rojas writes that a transfeminist technology <b>will value illiteracy</b>, for being unproductive for industry, as a way of finding paths that speed and productivity never imagine. The underlying observation: tying epistemic authority to literacy devalues the knowledge of most of the world's poorest people.</p>
+            <p><b>Her example of what happens to anybody who says this out loud.</b> During the Fees Must Fall protests in South Africa in 2016, a student suggested that science is a colonial project and should be abandoned before something new is built. The video went round under <b>#ScienceMustFall</b>. Giordano's point is about the response: the suggestion was <b>not argued with but used as evidence of ignorance</b>, and then used to discredit the whole movement.</p>
+            <p><b>And the sentence that makes the argument serious.</b> The people making the decisions that reproduce an unequal society every day <b>are the best educated people in it.</b> So more education cannot be the whole answer, and the alternatives she gathers are unlearning, rewriting, unschooling, failure and illiteracy.</p>
+            <p><b>What to do with this if you think it is wrong.</b> Her own footnote concedes the obvious objection: this is not a purist stance, and nobody is giving up medicine or phones. The claim is narrower, that in specific cases refusing the scientific framing is a legitimate move, and never a deficit. That narrow claim is the one to argue against if you want to, and <b>the broad version is one she does not make.</b></p>
+          </div>
+
+          <figure class="pic">
+            <a class="zoom" style="width:425px" href="img/panthers.jpg" target="_blank" rel="noopener" title="Open this picture at full size">
+              <img src="img/panthers.jpg" width="960" height="677" loading="lazy" alt="A 1972 flier for the Black Community Survival Conference, offering 10,000 free bags of groceries, with photographs of Angela Davis, Bobby Seale and Ericka Huggins and a list of speakers down the left side.">
+            </a>
+            <figcaption><b>The Black Panther Party's Community Survival Conference, Oakland, March 1972.</b> Giordano names the party's health work as democratic science that was already happening while the journals were discussing how to reach the public. Fourth from the bottom in the speakers list: <b>Donald Williams, medical authority on sickle cell anaemia</b>. The party ran mass screening for sickle cell at a time when the disease was medically neglected, alongside free clinics and its own criticism of racist scientific data. <span class="cred">Black Panther Party, public domain, via Wikimedia Commons.</span></figcaption>
+          </figure>
+
+          <h4>Who was already doing it</h4>
+          <div class="body">
+            <p><b>The question: if the universities were asking how to reach the public, what was the public doing?</b></p>
+            <p><b>The answer: producing knowledge, in four movements she names, none of which was invited.</b></p>
+            <ul>
+              <li><b>The feminist women's health movement</b>, which made its own medical knowledge and distributed it, <em>Our Bodies, Ourselves</em> being the best-known product.</li>
+              <li><b>The Black Panther Party</b>, which made health justice part of its platform: criticising racist scientific data, providing health information and medical services against a history of medical neglect, and running public education and testing for sickle cell anaemia.</li>
+              <li><b>The environmental justice movement</b>, which from the 1980s collected its own data on environmental racism and built a movement that still works against corporate interests.</li>
+              <li><b>HIV and AIDS activists</b>, who <b>changed the way clinical trials are run</b> and took a direct part in revising the definitions and the scientific facts of the disease.</li>
+            </ul>
+            <p><b>And the question she asks of the field.</b> Why were the people writing about public understanding of science not learning from any of these? Her answer: those initiatives never wanted a participatory relationship. <b>They wanted attachment, appreciation and trust</b>, and feminist disloyalty to science was one of the things they were worried about.</p>
+          </div>
+
+          <figure class="pic">
+            <a class="zoom" style="width:214px" href="img/actup.jpg" target="_blank" rel="noopener" title="Open this picture at full size">
+              <img src="img/actup.jpg" width="500" height="700" loading="lazy" alt="A black and white photograph of a man lying on a kerb at a protest, resting against a placard reading AZT kills me, ddI kills me, with a skull and the line What about me Dr Fauci? I need an anti-viral or I die.">
+            </a>
+            <figcaption><b>ACT UP at the National Institutes of Health, 1990.</b> The placard is an argument about trial design: both approved antivirals were failing this protester and he is asking why the research agenda does not include him. AIDS activists learned the pharmacology, sat on the committees and <b>changed how clinical trials are run</b>, which is Giordano's case that knowledge production outside the academy is a fact, and never a proposal. <span class="cred">NIH History Office, public domain, via Wikimedia Commons.</span></figcaption>
+          </figure>
+
+          <h4>What happened when democratic science became fashionable</h4>
+          <div class="body">
+            <p><b>The question: the do-it-yourself biology labs say they are opening science to everyone. Are they?</b></p>
+            <p><b>The answer from her own fieldwork: no, and what surprised her is that the participants were untroubled by it.</b></p>
+            <p><b>What she found.</b> The rhetoric of open science for all is used to build support for these spaces. The people actually in them are <b>overwhelmingly already scientifically trained</b>, many holding academic posts or having worked in large biotechnology companies. Most are there to become <b>biological entrepreneurs</b>. The aim is freedom from the constraints of traditional research, and not a wider membership.</p>
+            <p><b>The detail that bothered her.</b> The successes they highlighted were the ones that <b>made a profit</b>, and she had expected collective spaces that shared results and profits. Her word for her own reaction is puzzlement, and she traces it to a difference in what people mean by democratic.</p>
+            <p><b>Then a correction she makes to her own side.</b> Harding defines democratising science as making sure that those who bear the consequences of science policy have a proportionate share in making it, so that <b>women's interests and values count</b>. Giordano accepts the sentiment and rejects the category: <b>treating women as a single group with shared interests has stood in for the interests of white middle-class women.</b></p>
+            <p><b>And the argument she uses to make that stick.</b> Harriet Washington's <b>medical apartheid</b>: it is not that all women need including, it is that <b>some women, primarily Black women, have been used for the benefit of other women's health.</b> The separation was neither unfortunate nor accidental. Some bodies are undervalued so they can be used for the benefit of others. If that is right, then democratising science means counting the people whose bodies have been most subjected to the medical gaze, and not women in general.</p>
+            <p><b>Her three worked models, briefly, since she gives them a paragraph each.</b></p>
+            <ul>
+              <li><b>The science shop</b>, from the Netherlands in the 1970s: a desk where community members bring research questions for graduate students to answer. It has drifted into a service for businesses, and feminists argue it could be run from a feminist studies department with an explicit commitment to justice.</li>
+              <li><b>Community-based participatory research.</b> At its worst, the language is used to get free labour and community buy-in for research whose goals are still set by funders. Kim TallBear's objection is that it keeps the boundary between inside and outside the academy; her alternative phrase is <b>standing with</b> communities.</li>
+              <li><b>Public engagement</b>, as in the Write2Know campaign in Canada, which argues for access to evidence about environmental toxins, political power for the people most affected, and the ability to produce new data in those communities.</li>
+            </ul>
+          </div>
+
+          <div class="kone"><b>If you keep one thing.</b> Every other chapter this term asks how scientists should reason. This one asks who counts as a scientist, and answers it by pointing at people who produced real knowledge without permission: the Panthers on sickle cell, the women's health movement, the AIDS activists who rewrote trial design. <b>Its warning is that opening a door changes nothing if the room stays the same</b>, and that the inclusive version of a demand is often the version that survives because it threatens least.</div>
+
+          <div class="quar">
+            <b>Where it belongs in the quarrel</b>
+            <ul>
+              <li><b>It attacks chapter 15 from the left.</b> Both of Intemann's models assume science is something academics do and debate how they should do it.</li>
+              <li><b>It extends week 6's chapter 5.</b> Agnotology asked how ignorance gets produced. This asks what gets called ignorance, and by whom.</li>
+              <li><b>It is answered by the obvious objection</b>, that a movement cannot test a drug, and that the authority it attacks is partly earned. The chapter takes that in a footnote and narrows the claim.</li>
+              <li><b>It connects to week 8.</b> Tremain on who gets defined as abnormal is the same move applied to disability.</li>
+            </ul>
+          </div>
+
+          <div class="mynote"><b>My note</b><span>This chapter will be the hardest to read, because it assumes vocabulary from critical race theory and decolonial studies that the course has not taught. Do not try to get all of it. The four things worth having are <b>the deficit model</b>, <b>appreciation in place of understanding</b> as what public understanding of science has meant, <b>the four movements that produced knowledge from outside</b>, and <b>medical apartheid</b> as the reason women cannot be treated as one group. If a seminar asks for a criticism of the course itself, this chapter is the one that supplies it.</span></div>
+
+          <div class="curious">
+            <div class="label"><b>For the curious</b><span>none of this is on the exam</span></div>
+
+            <details class="bit"><summary>The AIDS activists really did change how drugs get tested</summary><div class="bq">
+              <p>Steven Epstein's <em>Impure Science</em>, 1996, is the book the chapter cites. ACT UP's treatment and data committee taught itself immunology and trial statistics well enough to argue with the National Institutes of Health on its own terms, and then won several of those arguments.</p>
+              <p>Concrete results: parallel track, which let people take an experimental drug while trials continued, accelerated approval for drugs treating life-threatening illness, and a rewriting of trial entry rules that had excluded women and injecting drug users from the studies whose results would then be applied to them. Whatever you think of the chapter's larger claims, <b>that is non-scientists altering scientific method and getting better science out of it.</b></p>
+            </div></details>
+
+            <details class="bit"><summary>The sickle cell story is more complicated and more interesting than either side says</summary><div class="bq">
+              <p>The Panthers' screening programme reached tens of thousands and is credited with pushing sickle cell onto the federal agenda, resulting in the National Sickle Cell Anemia Control Act of 1972.</p>
+              <p>And the law went wrong in a way nobody intended. Screening in several states was made mandatory for Black citizens, carrier status was widely confused with having the disease, and people lost jobs and insurance because of it. The programme was substantially rewritten in 1976 to make testing voluntary. <b>A movement forced a neglected disease into public science, and the institution that took it up produced a new harm</b>, which is a sharper illustration of the chapter's argument than the chapter gives.</p>
+            </div></details>
+
+            <details class="bit"><summary>Science for the People was an actual organisation</summary><div class="bq">
+              <p>The chapter's title is borrowed. Science for the People was a radical scientists' group founded in 1969 out of a walkout at a physics conference, which ran a magazine of the same name until 1989 and campaigned against military research funding, against sociobiology, and for community control of technology.</p>
+              <p>It was revived in 2014 and still publishes. Several people in the original group were working scientists at elite institutions, which complicates the inside and outside distinction the chapter draws.</p>
+            </div></details>
+          </div>
+
+        </div>
+      </article>
+
+      <article class="rd p-close" id="ch3">
+        <div class="stripe"></div>
+        <div class="main">
+          <div class="head">
+            <h3><span class="ch">CH 3</span>&Eacute;milie Du Ch&acirc;telet: Feminism, Epistemology and Natural Philosophy</h3>
+            <div class="who">Karen Detlefsen, in Crasnow and Intemann (eds), <em>The Routledge Handbook of Feminist Philosophy of Science</em>, Routledge, 2020</div>
+            <div class="meta"><span class="tag">Read properly</span><span>12 pp, printed pages 41 to 52</span></div>
+          </div>
+
+          <div class="why"><b>Why this chapter is set.</b> Everything else this term argues that the position of the knower affects the knowledge. This is the cleanest case of it anybody has: a woman shut out of the French academy noticed that beliefs about women were held without examination, turned that into a general rule about belief, applied the rule to a scientific quarrel she had no stake in, and got the right answer about scientific method a century and a half before anybody else.</div>
+
+          <h4>The claim the chapter is making, which is bigger than it first looks</h4>
+          <div class="body">
+            <p><b>The question: did being a woman make any difference to Du Ch&acirc;telet's physics, or is she simply a woman who happened to do physics?</b></p>
+            <p><b>Detlefsen's answer: it made the difference, and the path from one to the other is traceable in three steps.</b></p>
+            <ol>
+              <li>She noticed that beliefs about women were held <b>without ever being examined</b>, and that she had suffered from it.</li>
+              <li>She generalised that into a position about belief itself, which modern philosophy calls <b>the ethics of belief</b>: you have a duty to examine what you believe before believing it.</li>
+              <li>She applied that rule to the biggest scientific quarrel of her day, saw that <b>both sides were holding positions out of national loyalty</b>, and so was free to take the correct middle position that neither side could reach.</li>
+            </ol>
+            <p><b>And the correct position she reached is the one you were taught in school.</b> Hypotheses are central to science. In 1740 that was close to heresy.</p>
+          </div>
+
+          <figure class="pic">
+            <a class="zoom" style="width:238px" href="img/duchatelet.jpg" target="_blank" rel="noopener" title="Open this picture at full size">
+              <img src="img/duchatelet.jpg" width="812" height="1024" loading="lazy" alt="An eighteenth-century oil portrait of a woman in a blue silk dress with lace cuffs, seated at a desk holding a pair of dividers, with an armillary sphere and papers behind her.">
+            </a>
+            <figcaption><b>&Eacute;milie Du Ch&acirc;telet, 1706 to 1749, painted by Marianne Loir.</b> Look at what she is holding: a pair of dividers, with an armillary sphere behind her and papers on the desk. Portraits of women of her rank did not usually carry instruments, and the painting is making the same argument she spent her life making. <span class="cred">Marianne Loir, public domain, via Wikimedia Commons.</span></figcaption>
+          </figure>
+
+          <h4>Step one: what she noticed about beliefs concerning women</h4>
+          <div class="body">
+            <p><b>The question she asks in the preface to her translation of Mandeville: why have women produced nothing?</b></p>
+            <p><b>And her answer is that the question is the wrong way round.</b> She asks why, in so many centuries, no good tragedy, poem, history, painting or book of physics came from a woman, and says that these creatures, whose understanding appears in all things equal to that of men, seem to be <b>stopped by an invincible force on this side of a barrier</b>. She invites anybody to explain it.</p>
+            <p><b>Then she explains it.</b> If she were king, she says, she would let women share in all the rights of humanity and <b>most of all those of the mind</b>. Women seem born to deceive, and their souls are scarcely allowed any other exercise. Many are either ignorant of their own talents, through flaws in their education, or <b>bury them out of prejudice and for lack of a bold spirit.</b> And she says that what she has experienced herself confirms it.</p>
+            <p><b>What makes this more than a complaint.</b> She identifies a loop. The belief that women are naturally frivolous produces institutions that give women nothing to do with their minds, which produces women who have done nothing, which confirms the belief. <b>And she names the part done from inside</b>, where women take the prejudice on themselves and bury what they have.</p>
+            <p><b>Then the generalisation, from her <em>Discourse on Happiness</em>.</b> A source of happiness is to be free of prejudice, and <b>the decision rests with us</b> to be rid of it. Her definition is the usable one: <b>prejudice is an opinion accepted without examination, because it would be indefensible otherwise.</b> We all have enough intelligence to examine what others want us to believe.</p>
+          </div>
+
+          <h4>Step two: the rule, and the company it puts her in</h4>
+          <div class="body">
+            <p><b>The question: what does it mean to say you have a duty about what you believe?</b></p>
+            <p><b>The answer: that believing is something you do, so it can be done responsibly or not, and doing it badly is a fault, and never bad luck.</b> The name arrived in 1877 with W. K. Clifford, whose version is absolute: it is wrong always, everywhere, and for anyone, to believe anything on insufficient evidence.</p>
+            <p><b>Du Ch&acirc;telet is a century and a half earlier and in good company.</b> Detlefsen sets three thinkers beside each other, and the useful observation is that each has <b>a different authority in view</b>.</p>
+            <ul>
+              <li><b>Descartes</b> aims at the Scholastics, arguing that human error is our own fault for assenting to what we have not examined clearly, which rots the foundations of the sciences.</li>
+              <li><b>Hume</b> aims at religious authority, arguing in <em>On Miracles</em> that people set aside countless regularities of nature on the strength of one reported exception. A marble statue said to bleed outweighs every piece of marble that has never bled.</li>
+              <li><b>Du Ch&acirc;telet</b> aims at <b>prejudice about women</b>, and at <b>national partisanship in science</b>.</li>
+            </ul>
+            <p><b>And what all three share, which is the sentence to take.</b> A commitment to education for everyone, as the source both of evidence and of <b>self-ownership of the mind</b>, which is the best guard against authorities who use the gullible to spread untruths, whether about the natural world or about the social one.</p>
+            <p><b>How she passes it on.</b> Her masterwork opens as a letter to her son. She tells him to accustom his mind early to think and to be <b>self-sufficient</b>, and then: whatever side you take in this dispute among philosophers, guard yourself against the obstinacy that the spirit of national partisanship produces, <b>which is dangerous everywhere in life and ridiculous in physics.</b></p>
+          </div>
+
+          <h4>Step three: the quarrel, and why everybody was getting it wrong</h4>
+          <div class="body">
+            <p><b>The question: what was actually in dispute in European science in 1740?</b></p>
+            <p><b>The answer, in the framework Detlefsen uses: two camps, and the fight was about whether hypotheses are allowed at all.</b></p>
+            <p><b>Speculative natural philosophy</b> reasons from principles about how things must be. <b>Experimental natural philosophy</b> builds from experiment and observation. By the 1690s the experimental side had hardened into <b>opposition to hypotheses</b>, which is the part a modern reader finds strange.</p>
+            <p><b>What they meant by the charge.</b> Newton: experimental philosophy reduces phenomena to general rules, while hypothetical philosophy consists in <b>imaginary explications of things and imaginary arguments</b> for or against them, and he follows the first while Descartes and Leibniz follow the second too much. A contemporary dismisses the systems of Descartes, Gassendi and Hobbes as possibly <b>chimeras and amusing notions, fit to entertain working heads.</b></p>
+            <p><b>And the nationalism riding on top of it, which is why her rule is relevant.</b> Voltaire's <em>Elements of Newton's Philosophy</em> draws a bright line between the old French way of hypotheses and the new British hard-headed experimentalism, and tells the French to catch up. <b>So the scientific question had an English answer and a French answer</b>, which is exactly the situation her letter to her son is about.</p>
+            <p><b>One piece of context worth having, because it changes who she is.</b> For decades her thought was treated as derivative of Voltaire's, with whom she lived and worked. Detlefsen calls that claim evidence-free, and says close examination of her work has debunked it. Her treatment of hypotheses is the example: <b>she does not agree with him.</b></p>
+          </div>
+
+          <figure class="pic">
+            <a class="zoom" style="width:217px" href="img/institutions.jpg" target="_blank" rel="noopener" title="Open this picture at full size">
+              <img src="img/institutions.jpg" width="960" height="1327" loading="lazy" alt="The 1740 title page of Institutions de Physique, printed in French with a decorative engraved headpiece, giving the place of publication as Paris and the date MDCCXL.">
+            </a>
+            <figcaption><b>The title page of <em>Institutions de Physique</em>, Paris, 1740.</b> Her name is not on it. The book was published anonymously, presented as a physics textbook for her thirteen-year-old son, and chapter 4 of it is the account of hypotheses that the field would take another century and a half to arrive at independently. <span class="cred">Public domain, via Wikimedia Commons.</span></figcaption>
+          </figure>
+
+          <h4>What she actually said about hypotheses</h4>
+          <div class="body">
+            <p><b>The question: if a hypothesis is a guess, why should science be allowed them?</b></p>
+            <p><b>Her answer: because there is no other way to reach a cause you cannot observe and cannot derive, and the fix is to constrain them, where everybody around her wanted them banned.</b> This is chapter 4 of the <em>Foundations</em>, and the four constraints she sets are, in substance, the modern ones.</p>
+            <p><b>First, why they are necessary.</b> Hypotheses are needed in all cases where the true reason for a phenomenon cannot be discovered <b>either in advance, from truths already known, or afterwards, from experiment.</b> That gap is permanent, so the tool is permanent. Her flat version: without hypotheses there would be no astronomy now.</p>
+            <p><b>And the argument from who used them.</b> Copernicus, Kepler, Huygens, Descartes, Leibniz <b>and Newton himself</b> all devised useful hypotheses to explain difficult phenomena, so those who want to ban them from philosophy <b>intend harm to the interests of science.</b> The target is anybody leaning too hard on Newton's famous line that he feigns no hypotheses.</p>
+            <p><b>Then the constraints, which are what make the account modern.</b></p>
+            <ol>
+              <li><b>Test them.</b> Once a hypothesis is posed, experiments get done to find out whether it is a good one, <b>experiments which would never have been thought of without it.</b> That is the hypothesis earning its place by generating work.</li>
+              <li><b>One falsifying observation kills it.</b> A hypothesis becomes false when it is found to contradict a well-established observation. That is falsification, stated plainly, two centuries before Popper gave it a name.</li>
+              <li><b>Fruitfulness counts.</b> A good hypothesis explains the phenomenon it was built for <b>and</b> its further consequences agree with observation.</li>
+              <li><b>Be modest, and take it apart before throwing it out.</b> A hypothesis can be <b>true in one of its parts and false in another.</b></li>
+            </ol>
+            <p><b>Her fourth constraint has teeth, because she uses it against the winning side.</b> Descartes explained gravity with vortices, and by her time the idea was held in contempt because Newton's account had won. She will not have the wholesale rejection: it cannot legitimately be concluded that a vortex, or several vortices conceived differently, <b>cannot</b> be the cause of these movements. That is the ethics of belief applied to an opinion everybody around her held.</p>
+            <p><b>And her conclusion, which is the passage to know.</b> Hypotheses are <b>only probable propositions</b>, more or less probable according to how many of the attendant circumstances they account for. A very high degree of probability has nearly the effect on us of certainty, so hypotheses <b>eventually become truths for us</b> when the probability rises far enough. A hypothesis becomes improbable in proportion to the circumstances it fails to explain, and <b>false when it contradicts a well-established observation.</b></p>
+            <p><b>What is remarkable about that is not the content but the date.</b> Degrees of probability, falsification by a single result, and theories that are accepted without being proved. That is roughly the twentieth-century account, written in 1740 by somebody the Acad&eacute;mie would not admit.</p>
+          </div>
+
+          <div class="kone"><b>If you keep one thing.</b> Du Ch&acirc;telet got the right answer about hypotheses because she was the only person in the room with no stake in the fight. Both camps were defending national positions; she was excluded from the institutions that made those positions worth defending, so she could ask which parts of each were true. <b>That is the standpoint argument of weeks 5 and 6, demonstrated in 1740 by somebody who arrived at it herself</b>, starting from noticing that nobody had ever examined what they believed about women.</div>
+
+          <div class="quar">
+            <b>Where it belongs in the quarrel</b>
+            <ul>
+              <li><b>It is week 6's standpoint theory as a historical case.</b> Harding's inversion thesis says the excluded see the assumptions of the included. This is a worked example with a date on it.</li>
+              <li><b>It answers week 2.</b> That packet argued about what the scientific method is. She settles the part about hypotheses, and settles it correctly.</li>
+              <li><b>It answers week 3.</b> Her falsification rule is Popper's, long before Popper, and her modesty about vortices is the anti-dogmatism Kuhn said paradigms prevent.</li>
+              <li><b>It is answered by the suspicion that this is hindsight</b>, picking the one eighteenth-century figure who agrees with us. Detlefsen's defence is that her method was explicit and general, and that she applied it against her own circle's consensus.</li>
+            </ul>
+          </div>
+
+          <div class="mynote"><b>My note</b><span>The easiest reading of the term and the best value for revision time. Four things: <b>the ethics of belief</b> and her definition of prejudice as an opinion accepted without examination; <b>the speculative against experimental divide</b> and the strange fact that the experimental side opposed hypotheses; <b>her four constraints</b>, of which falsification is the one to name; and <b>the loop she identifies</b>, where a belief about women produces the conditions that confirm it. If an exam asks for an example of standpoint theory, she is a better answer than the primatologists, because the mechanism is visible: excluded from the institutions, therefore free of their loyalties.</span></div>
+
+          <div class="curious">
+            <div class="label"><b>For the curious</b><span>none of this is on the exam</span></div>
+
+            <details class="bit"><summary>She translated Newton and it is still the French edition in print</summary><div class="bq">
+              <p>Her translation of the <em>Principia</em> into French, with a commentary that rewrites Newton's geometry into the calculus of Leibniz and adds the results of the intervening fifty years, was finished in 1749 and published in 1759. <b>It is still the standard French translation.</b></p>
+              <p>She was working against a deadline she knew about: she was pregnant at forty-two, believed she would not survive the birth, and wrote through the nights to finish. She died of an infection six days after the delivery. The commentary that makes the translation important was the part she was racing to complete.</p>
+            </div></details>
+
+            <details class="bit"><summary>She published her prize essay on fire anonymously, and so did Voltaire, against each other</summary><div class="bq">
+              <p>In 1737 the Acad&eacute;mie Royale des Sciences set a prize on the nature of fire. Voltaire entered. Du Ch&acirc;telet entered separately and in secret, without telling him, after concluding his approach was wrong.</p>
+              <p>Neither won, and the Acad&eacute;mie published both essays, which made her the first woman to have a paper published by it. Her essay suggested that heat and light might be forms of the same thing and that different coloured lights would carry different heating power, which is a guess in the right direction about infrared radiation, found experimentally by Herschel in 1800.</p>
+            </div></details>
+
+            <details class="bit"><summary>She was barred from the caf&eacute; where the physicists met, so she dressed as a man</summary><div class="bq">
+              <p>The Caf&eacute; Gradot in Paris was where the mathematicians and natural philosophers gathered, and it did not admit women. The story, from contemporaries, is that she was turned away, went to a tailor, had men's clothes made, and walked back in. The staff let her sit.</p>
+              <p>Ancient gossip levels of reliability apply to the details. The underlying fact does not: the institutions where the arguments happened, the caf&eacute;s and the Acad&eacute;mie, were closed to her, which is Detlefsen's whole point about why she could see what the men in them could not.</p>
+            </div></details>
+          </div>
+
+        </div>
+      </article>
+
+      <article class="rd p-skim" id="ch20">
+        <div class="stripe"></div>
+        <div class="main">
+          <div class="head">
+            <h3><span class="ch">CH 20</span>Feminist Philosophy of Biology</h3>
+            <div class="who">Lynn Hankinson Nelson, in the same handbook, pages 263 to 274</div>
+            <div class="meta"><span class="tag">Already written up</span><span>12 pp &middot; narrated in the week 6 guide</span></div>
+          </div>
+
+          <div class="why"><b>This chapter moved.</b> The reading guide read on 28 September put it in week 6, and the revised one puts it here. It was narrated in full in the <a href="../week-6/#nelson">week 6 guide</a> and is not repeated, because one copy that gets corrected beats two that drift.</div>
+
+          <div class="body">
+            <p><b>What is in it, so you can decide whether to reread.</b> Two case studies. Darwin inventing sexual selection to explain the peacock's train, and building eager males and coy females into the theory as part of the same package. And the 1960s baboon studies that reported male dominance running the troop, until Jeanne Altmann watched the females and concluded the opposite.</p>
+          </div>
+
+          <figure class="pic">
+            <a class="zoom" style="width:300px" href="../week-6/img/baboon.jpg" target="_blank" rel="noopener" title="Open this picture at full size">
+              <img src="../week-6/img/baboon.jpg" width="900" height="900" loading="lazy" alt="A large male yellow baboon sitting upright on a boulder in front of green scrub, facing the camera.">
+            </a>
+            <figcaption><b>A male yellow baboon in Amboseli National Park, where Jeanne Altmann worked.</b> This is what the first generation of fieldworkers watched, and the drama between males is what their reports were built around. The full account is in <a href="../week-6/#nelson">week 6</a>. <span class="cred">Diego Delso, CC BY-SA 4.0, via Wikimedia Commons.</span></figcaption>
+          </figure>
+
+          <div class="body">
+            <p><b>Why it belongs with this week.</b> Nelson's refusal to call the old work bad science is the claim that makes chapter 15 necessary. The baboon studies were respected, peer reviewed and methodologically ordinary. <b>If the fault is not carelessness, then stricter rules cannot fix it</b>, and you need an account of which values should be in there instead. That is what Intemann supplies.</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="s-gloss">
+    <h2>Glossary</h2>
+    <details class="glbox">
+      <summary><b>Every term in this guide, defined</b><span>26 of them</span></summary>
+    <div class="gl">
+
+      <div class="gl-grp">
+        <h3>Values in science<span>ch. 15</span></h3>
+        <dl>
+          <dt>the value-free ideal, VFI</dt><dd>Social, moral and political values must play no part in the core of science: deciding what counts as evidence, which theory it supports, and what to accept. Douglas calls that core the heart of scientific reasoning. Everything this week attacks it.</dd>
+          <dt>non-epistemic values</dt><dd>Moral, political, social and economic values, held to be distinct from the aims of knowing. The VFI is about keeping these out, and it grants that some values, such as valuing prediction or empirical adequacy, are part of the enterprise.</dd>
+          <dt>the three jobs the VFI did</dt><dd>It made diversity a question with no scientific stake, turned documented bias into isolated bad science, and made who benefits somebody else's department. Intemann's reason feminists attacked it, where correcting it would have done for anybody else.</dd>
+          <dt>the five entry points</dt><dd>Framing the problem, observing and describing, value-laden concepts and risk, choosing models, interpreting data and weighing alternatives.</dd>
+          <dt>significant truths</dt><dd>Kitcher. Science chases truths somebody thinks worth having, so somebody decides. The 90 and 10 figure on biomedical funding is the case.</dd>
+          <dt>theory-ladenness</dt><dd>Observation is shaped by background assumptions, and those assumptions can be social. Martin on the passive egg and the burrowing sperm.</dd>
+          <dt>the value-management model</dt><dd>Rolin, from Longino. Any values may enter, and a sufficiently diverse and critical community catches the damaging ones. Objectivity is a property of how the community is run.</dd>
+          <dt>Longino&#8217;s four norms</dt><dd>Recognised avenues for criticism; shared standards critics can appeal to; a community that responds to criticism; intellectual authority shared equally among qualified practitioners.</dd>
+          <dt>manufactured dissent</dt><dd>Privately funded researchers raising objections in order to stall policy, confuse the public and divert other scientists' time. The Merchants of Doubt strategy, named as an obstacle to the management model.</dd>
+          <dt>the social justice model</dt><dd>Publicly funded science should aim at benefiting everyone and especially the worst off. It prioritises some values before the argument starts, where management lets all values compete.</dd>
+          <dt>studying up</dt><dd>Studying from the margins out: working with the affected group to frame the problem, identify everyone affected, and ask how power contributed to it.</dd>
+        </dl>
+      </div>
+
+      <div class="gl-grp">
+        <h3>Science for the people<span>ch. 19</span></h3>
+        <dl>
+          <dt>the deficit model</dt><dd>The assumption that the public has a hole where knowledge should be, and that filling it produces support for science. The thing science studies has spent decades pushing against.</dd>
+          <dt>appreciation in place of understanding</dt><dd>Giordano's charge that public understanding of science has mostly meant building trust and attachment, and that the literature says so itself.</dd>
+          <dt>democratic science</dt><dd>Broader participation in knowledge production. Her warning is that the phrase is used by do-it-yourself biology spaces whose members are already scientifically trained and mostly want freedom to become entrepreneurs.</dd>
+          <dt>science illiteracy as resistance</dt><dd>Some people know the scientific explanation and choose another. Barr and Birke, and Martin on menstruation. The claim is narrow and the footnote says so.</dd>
+          <dt>medical apartheid</dt><dd>Washington. Some women, primarily Black women, have been used for the benefit of other women's health, and the separation is necessary to the arrangement, and never accidental. Her reason women cannot be treated as one group.</dd>
+          <dt>standing with</dt><dd>TallBear's alternative to community-based participatory research, which she argues keeps the boundary between inside and outside the academy in place.</dd>
+        </dl>
+      </div>
+
+      <div class="gl-grp">
+        <h3>Du Ch&acirc;telet<span>ch. 3</span></h3>
+        <dl>
+          <dt>the ethics of belief</dt><dd>Believing is something you do, so it can be done responsibly or not. Named by Clifford in 1877; practised by Du Ch&acirc;telet from the 1730s.</dd>
+          <dt>prejudice</dt><dd>Her definition, and it is usable: an opinion accepted without examination, because it would be indefensible otherwise.</dd>
+          <dt>speculative and experimental natural philosophy</dt><dd>The two camps of early modern science. By the 1690s the experimental side had hardened into opposition to hypotheses, which is the position she refused.</dd>
+          <dt>her four constraints on hypotheses</dt><dd>They must generate experiments; one well-established contrary observation kills one; a good one explains more than it was built for; and a hypothesis can be true in one part and false in another.</dd>
+          <dt>self-sufficiency of the mind</dt><dd>What she tells her son to cultivate, and what the ethics of belief requires: thoughts that belong to you, free of national partisanship and anybody else's authority.</dd>
+        </dl>
+      </div>
+
+    </div>
+    </details>
+  </section>
+
+  <div class="endmatter">
+    <div><b>Where this goes.</b> Week 7 of thirteen, and the last week before reading week:</div>
+    <dl class="weeks">
+      <dt>Oct 25 to 31</dt><dd>Reading week, no classes</dd>
+      <dt>Weeks 8 to 9</dt><dd>Nov 2 to 11. Feminist philosophy of disability. Tremain, <em>Foucault and Feminist Philosophy of Disability</em>, ch. 1 groundwork (p. 1) and ch. 2 power and normalization (p. 47), then ch. 5 bioethics as a technology of government (p. 159) &middot; <b>Exam 2, Wed 11 Nov, 30%</b></dd>
+      <dt>Weeks 10 to 12</dt><dd>Nov 16 to Dec 1. Animal minds, human and non-human. Andrews, <em>The Animal Mind</em></dd>
+      <dt>Week 13</dt><dd>Dec 7 to 9. Review and exam prep &middot; <b>Final, 40%, date set by the Registrar</b></dd>
+    </dl>
+    <div><b>Sources.</b> All four chapters from Sharon Crasnow and Kristen Intemann (eds), <em>The Routledge Handbook of Feminist Philosophy of Science</em>, Routledge 2020, through the uOttawa library: Detlefsen on Du Ch&acirc;telet, pages 41 to 52; Intemann on values in science, pages 201 to 215; Giordano on science for the people, pages 250 to 259; Nelson on biology, pages 263 to 274. Page numbers are the printed ones, and none of the four carries a figure of its own.</div>
+  </div>
+
+<div class="dock">
+  <div class="prog" id="prog"></div>
+  <div class="in">
+    <button type="button" id="bmgo" data-set="0" title="Go to your bookmark">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 2.2h8.8v12.1L8 11.1l-4.4 3.2z"/></svg>
+      <span class="lab">Bookmark</span></button>
+    <button type="button" data-marks title="Everything you have marked">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M2.5 3.5h11M2.5 8h11M2.5 12.5h7"/></svg>
+      <span class="lab">Highlights</span><span class="n" id="mcount"></span></button>
+    <a href="notes.html" title="Your notes for each lecture">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.2 2.3 13.7 4.8 5.6 12.9 2.4 13.6l.7-3.2z"/></svg>
+      <span class="lab">Lecture notes</span></a>
+    <button type="button" id="totop" class="end" title="Back to the top">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 13V3M3.5 7.5 8 3l4.5 4.5"/></svg>
+      <span class="lab">Top</span></button>
+  </div>
+</div>
+
+<div id="marks" class="drawer" hidden>
+  <div class="dback" data-close></div>
+  <aside class="dpanel" role="dialog" aria-modal="true" aria-labelledby="marks-h">
+    <div class="dhead">
+      <h2 id="marks-h">My highlights</h2>
+      <button type="button" class="dclose" data-close aria-label="Close">&times;</button>
+    </div>
+    <p class="dsub">Grouped by the text it sits in. Click one to jump to it.</p>
+    <div class="bm" id="bmlist"><p class="bmempty">Nothing marked yet. Select any text in the guide, then pick yellow, pink, a comment or the ribbon that sets your bookmark.</p></div>
+  </aside>
+</div>
+
+<footer class="sitefoot">
+  <div class="in">
+    <div class="col brand">
+      <a href="../">PHI2394 Reading Hub</a>
+      <p>Reading guides for Scientific Thought and Social Values, University of Ottawa.</p>
+    </div>
+    <nav class="col" aria-label="This week">
+      <h2>Week 7</h2>
+      <a href="./">Reading guide</a>
+      <a href="notes.html">My notes</a>
+      <button type="button" data-marks>My highlights</button>
+    </nav>
+    <nav class="col" aria-label="The hub">
+      <h2>The hub</h2>
+      <a href="../">All weeks</a>
+      <a href="../#about">How these were written</a>
+      <a href="https://github.com/myermcat/phi-reading-hub">Source on GitHub</a>
+    </nav>
+  </div>
+  <div class="colophon">
+    <span>Written with Claude. AI can make mistakes, and compression is where it makes them.</span>
+    <span>Your notes, highlights and bookmark are kept in this browser only.</span>
+  </div>
+</footer>
+
+<script>
+/* This guide used to live at week-1 and its store was keyed to that name. The week numbering
+   now follows the course outline, where the same reading is week 2, so anything already saved
+   is copied across to the new key the first time this page loads. Same origin, so the old
+   entries are still readable. */
+(function () {
+  try {
+    [['phi2394-week1-guide-v1', 'phi2394-week2-guide-v1'],
+     ['phi2394-week1-lecture-tab-v1', 'phi2394-week2-lecture-tab-v1']].forEach(function (p) {
+      if (localStorage.getItem(p[1]) === null) {
+        var old = localStorage.getItem(p[0]);
+        if (old !== null) localStorage.setItem(p[1], old);
+      }
+    });
+  } catch (e) {}
+})();
+</script>
+<script>
+/* One curious item open at a time. A dozen of them open at once turns the panel into a wall,
+   which is what collapsing them was for. Closing happens per panel, so a side note somewhere
+   else on the page is left alone. */
+(function () {
+  document.addEventListener('toggle', function (e) {
+    var d = e.target;
+    if (!d.open || !d.matches || !d.matches('.curious > details.bit')) return;
+    Array.prototype.forEach.call(d.parentElement.children, function (s) {
+      if (s !== d && s.tagName === 'DETAILS' && s.open) s.open = false;
+    });
+  }, true);
+})();
+</script>
+<script src="../shared/editor.js"></script>
+<script>
+(function () {
+  var SEL = 'p,li,h4,h5,blockquote,td,dd,figcaption';
+  var LS = 'phi2394-week7-guide-v1', WIDE = 1400;
+  var root, bar, rail, items = [], notes = {}, ref = null, saveT = null;
+  var drawer = null;
+  function openMarks() {
+    if (!drawer) return;
+    drawer.hidden = false; document.body.style.overflow = 'hidden';
+    var c = drawer.querySelector('.dclose'); if (c) c.focus();
+  }
+  function closeMarks() {
+    if (!drawer || drawer.hidden) return;
+    drawer.hidden = true; document.body.style.overflow = '';
+  }
+
+  function blocks() {
+    return Array.prototype.filter.call(root.querySelectorAll(SEL), function (el) {
+      return !el.querySelector(SEL) && !el.closest('.cmt') && !el.closest('.nb') && el.textContent.trim().length > 0;
+    });
+  }
+  function textNodes(el) {
+    var w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null), a = [], n;
+    while ((n = w.nextNode())) a.push(n);
+    return a;
+  }
+  function offsetIn(el, node, off) {
+    var ns = textNodes(el), t = 0;
+    for (var i = 0; i < ns.length; i++) { if (ns[i] === node) return t + off; t += ns[i].nodeValue.length; }
+    return t;
+  }
+  function strip() {
+    Array.prototype.forEach.call(root.querySelectorAll('mark.hl'), function (m) {
+      var p = m.parentNode;
+      while (m.firstChild) p.insertBefore(m.firstChild, m);
+      p.removeChild(m); p.normalize();
+    });
+    Array.prototype.forEach.call(root.querySelectorAll('.cmt'), function (c) { c.remove(); });
+  }
+  function paint(el, start, end, cls, id) {
+    var ns = textNodes(el), pos = 0, jobs = [];
+    for (var i = 0; i < ns.length; i++) {
+      var len = ns[i].nodeValue.length, s = Math.max(start, pos), e = Math.min(end, pos + len);
+      if (e > s) jobs.push([ns[i], s - pos, e - pos]);
+      pos += len; if (pos >= end) break;
+    }
+    for (var j = jobs.length - 1; j >= 0; j--) {
+      var n = jobs[j][0], a = jobs[j][1], b = jobs[j][2];
+      if (b < n.nodeValue.length) n.splitText(b);
+      var target = a > 0 ? n.splitText(a) : n;
+      var m = document.createElement('mark');
+      m.className = 'hl ' + cls;
+      m.setAttribute('data-id', id);
+      target.parentNode.insertBefore(m, target);
+      m.appendChild(target);
+    }
+  }
+  function card(it) {
+    var c = document.createElement('div');
+    c.className = 'cmt'; c.setAttribute('data-id', it.id);
+    var q = document.createElement('div'); q.className = 'q';
+    q.textContent = '“' + (it.text.length > 70 ? it.text.slice(0, 70) + '…' : it.text) + '”';
+    var ta = document.createElement('div');
+    ta.className = 'cbody'; ta.contentEditable = 'true';
+    ta.setAttribute('data-ph', 'Comment…');
+    ta.innerHTML = Notes.clean(it.body || '');
+    Notes.rich(ta, function () { it.body = ta.innerHTML; save(); });
+    ta.addEventListener('input', function () { it.body = ta.innerHTML; save(); });
+    ta.addEventListener('blur', function () {
+      if (!ta.textContent.trim()) { remove(it.id); return; }
+      it.body = ta.innerHTML; save(); place_notes();
+    });
+    ta.addEventListener('keydown', function (e) { if (e.key === 'Escape') ta.blur(); });
+    var row = document.createElement('div'); row.className = 'row';
+    var del = document.createElement('button'); del.type = 'button'; del.textContent = 'Delete';
+    del.addEventListener('mousedown', function (e) { e.preventDefault(); remove(it.id); });
+    row.appendChild(del);
+    c.appendChild(q); c.appendChild(ta); c.appendChild(row);
+    return c;
+  }
+  function place_notes() {
+    var wide = window.innerWidth >= WIDE;
+    rail.classList.toggle('on', wide);
+    var last = -1e9;
+    items.forEach(function (it) {
+      if (it.kind !== 'note') return;
+      var c = root.querySelector('.cmt[data-id="' + it.id + '"]');
+      var m = root.querySelector('mark[data-id="' + it.id + '"]');
+      if (!c || !m) return;
+      if (!m.getClientRects().length) { c.style.display = 'none'; return; }
+      c.style.display = '';
+
+      if (wide) {
+        if (c.parentNode !== rail) rail.appendChild(c);
+        c.classList.remove('inline');
+        var top = m.getBoundingClientRect().top + window.scrollY - (root.getBoundingClientRect().top + window.scrollY);
+        if (top < last) top = last;
+        c.style.top = top + 'px';
+        last = top + c.offsetHeight + 14;
+      } else {
+        c.classList.add('inline'); c.style.top = '';
+        var host = m.closest(SEL);
+        if (host && c.previousSibling !== host) host.parentNode.insertBefore(c, host.nextSibling);
+      }
+    });
+  }
+  function render() {
+    strip();
+    var bs = blocks();
+    items.forEach(function (it) {
+      if (!it || !it.text) return;
+      var probe = (it.before || '') + it.text + (it.after || '');
+      var order = [], i;
+      // the block this mark was made in comes first, by its opening text, then by its index
+      if (it.head) for (i = 0; i < bs.length; i++) if (bs[i].textContent.slice(0, 90) === it.head) order.push(i);
+      if (typeof it.idx === 'number' && it.idx >= 0 && it.idx < bs.length && order.indexOf(it.idx) < 0) order.push(it.idx);
+      for (i = 0; i < bs.length; i++) if (order.indexOf(i) < 0) order.push(i);
+      for (var j = 0; j < order.length; j++) {
+        var el = bs[order[j]], t = el.textContent, k = -1, st;
+        if (probe !== it.text) k = t.indexOf(probe);
+        if (k >= 0) { st = k + (it.before || '').length; }
+        else if (j < 2 && typeof it.at === 'number' && t.substr(it.at, it.text.length) === it.text) { st = it.at; }
+        else if (j < 2) { k = t.indexOf(it.text); if (k < 0) continue; st = k; }
+        else { continue; }
+        paint(el, st, st + it.text.length,
+          it.kind === 'note' ? 'hl-n' : it.kind === 'bm' ? 'hl-b' : 'hl-' + it.color, it.id);
+        if (it.kind === 'note') rail.appendChild(card(it));
+        return;
+      }
+    });
+    place_notes();
+    listMarks();
+  }
+  // Opening a mark that sits inside a closed toggle has to open the toggle first,
+  // or the scroll lands on a collapsed summary and the mark is nowhere on screen.
+  function goTo(el) {
+    if (!el) return;
+    var d = el.closest('details');
+    while (d) { d.open = true; d = d.parentElement && d.parentElement.closest('details'); }
+    var se = document.scrollingElement || document.documentElement, was = se.scrollTop;
+    try { el.scrollIntoView({ block: 'center', behavior: 'smooth' }); }
+    catch (e) { el.scrollIntoView(true); }
+    // Smooth scrolling is refused in some contexts and silently does nothing, so check
+    // that it actually moved and jump outright when it did not.
+    setTimeout(function () {
+      if (Math.abs((document.scrollingElement || document.documentElement).scrollTop - was) < 4) {
+        el.scrollIntoView({ block: 'center' });
+      }
+    }, 380);
+    el.classList.add('flash');
+    setTimeout(function () { el.classList.remove('flash'); }, 1600);
+  }
+  function bookmark() { return items.filter(function (x) { return x.kind === 'bm'; })[0] || null; }
+  function bmState() {
+    var b = document.getElementById('bmgo');
+    if (!b) return;
+    var it = bookmark();
+    b.setAttribute('data-set', it ? '1' : '0');
+    b.title = it ? 'Go to your bookmark: “' + it.text.slice(0, 60) + '”'
+                 : 'No bookmark yet. Select a word and pick the ribbon.';
+  }
+  // The excerpt shown in the list: the marked words in their own colour with the words
+  // around them left in, because a bare quotation out of context says nothing.
+  function excerpt(el, ids) {
+    var w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null), n, pos = 0, full = '', runs = [];
+    while ((n = w.nextNode())) {
+      var mk = n.parentElement && n.parentElement.closest('mark.hl');
+      var len = n.nodeValue.length;
+      if (mk && ids.indexOf(mk.getAttribute('data-id')) >= 0) {
+        var last = runs[runs.length - 1];
+        if (last && last.e === pos && last.k === mk.className) last.e = pos + len;
+        else runs.push({ s: pos, e: pos + len, k: mk.className });
+      }
+      full += n.nodeValue; pos += len;
+    }
+    var out = document.createElement('span');
+    out.className = 'q';
+    if (!runs.length) { out.textContent = full.slice(0, 160); return out; }
+    var a = Math.max(0, runs[0].s - 75), b = Math.min(full.length, runs[runs.length - 1].e + 75);
+    if (a > 0) { var sp = full.indexOf(' ', a); if (sp > 0 && sp < runs[0].s) a = sp + 1; }
+    if (b < full.length) { var sp2 = full.lastIndexOf(' ', b); if (sp2 > runs[runs.length - 1].e) b = sp2; }
+    function txt(str, dim) {
+      if (!str) return;
+      var e = document.createElement('span');
+      if (dim) e.className = 'dim';
+      e.textContent = str; out.appendChild(e);
+    }
+    if (a > 0) txt('… ', 1);
+    var cur = a;
+    runs.forEach(function (r) {
+      txt(full.slice(cur, r.s), 1);
+      var m = document.createElement('mark');
+      m.className = r.k;
+      m.textContent = full.slice(r.s, r.e);
+      out.appendChild(m); cur = r.e;
+    });
+    txt(full.slice(cur, b), 1);
+    if (b < full.length) txt(' …', 1);
+    return out;
+  }
+  // The highlights list. One row per paragraph, so two marks in the same paragraph read as
+  // one entry, grouped by the text each paragraph sits in. Click a row and go there.
+  function listMarks() {
+    var box = document.getElementById('bmlist');
+    bmState();
+    var n = document.getElementById('mcount');
+    if (n) n.textContent = items.length ? String(items.length) : '';
+    if (!box) return;
+    box.innerHTML = '';
+
+    function where(el) {
+      var art = el.closest('article.rd'), name = 'The argument', ch = '';
+      if (art) {
+        var h = art.querySelector('h3'), chip = h && h.querySelector('.ch'), who = art.querySelector('.who');
+        ch = chip ? chip.textContent.trim().toLowerCase() : '';
+        name = who ? who.textContent.split(',')[0].trim() : (h ? h.textContent : name);
+      } else {
+        var sec = el.closest('section'), sh = sec && sec.querySelector('h2');
+        if (sh) name = sh.textContent.trim();
+      }
+      var node = el, sub = '';
+      while (node && node !== root && !sub) {
+        var sib = node.previousElementSibling;
+        while (sib && !sub) {
+          if (/^H[2-6]$/.test(sib.tagName)) sub = sib.textContent.trim();
+          else if (sib.tagName === 'SUMMARY') sub = sib.textContent.trim();
+          sib = sib.previousElementSibling;
+        }
+        if (!sub && node.parentElement && node.parentElement.tagName === 'DETAILS') {
+          var sm = node.parentElement.querySelector('summary');
+          if (sm) sub = sm.textContent.trim();
+        }
+        node = node.parentElement;
+      }
+      return { name: name, ch: ch, sub: sub };
+    }
+    function row(el, list, cls) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'bmi' + (cls ? ' ' + cls : '');
+      var dots = document.createElement('span'); dots.className = 'dots';
+      var seenC = {};
+      list.forEach(function (it) {
+        var k = it.kind === 'note' ? 'n' : (it.kind === 'bm' ? 'b' : it.color);
+        if (seenC[k]) return; seenC[k] = 1;
+        var d = document.createElement('span'); d.className = 'dot ' + k; dots.appendChild(d);
+      });
+      var txt = document.createElement('span'); txt.className = 'bt';
+      var w = where(el);
+      if (w.sub) {
+        var cap = document.createElement('span'); cap.className = 'where'; cap.textContent = w.sub;
+        txt.appendChild(cap);
+      }
+      txt.appendChild(excerpt(el, list.map(function (x) { return x.id; })));
+      list.forEach(function (it) {
+        if (it.kind !== 'note' || !it.body) return;
+        var cm = document.createElement('span'); cm.className = 'cm';
+        cm.textContent = it.body.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 180);
+        txt.appendChild(cm);
+      });
+      b.appendChild(dots); b.appendChild(txt);
+      b.addEventListener('click', function () {
+        closeMarks();
+        goTo(root.querySelector('mark[data-id="' + list[0].id + '"]'));
+      });
+      return b;
+    }
+
+    // the bookmark first, on its own, because there is only ever one
+    var bm = bookmark(), bmMark = bm && root.querySelector('mark[data-id="' + bm.id + '"]');
+    if (bm && bmMark) {
+      var wrapB = document.createElement('div'); wrapB.className = 'bmg bmg-b';
+      var h3b = document.createElement('h3');
+      h3b.textContent = 'Bookmark';
+      var spb = document.createElement('span'); spb.textContent = 'where you stopped';
+      h3b.appendChild(spb); wrapB.appendChild(h3b);
+      wrapB.appendChild(row(bmMark.closest(SEL) || bmMark.parentElement, [bm], 'isbm'));
+      var clr = document.createElement('button');
+      clr.type = 'button'; clr.className = 'bmclear'; clr.textContent = 'Clear bookmark';
+      clr.addEventListener('click', function () { remove(bm.id); });
+      wrapB.appendChild(clr);
+      box.appendChild(wrapB);
+    }
+
+    // then the highlights and comments, one row per paragraph
+    var groups = [], byName = {}, seen = {}, order = [], perBlock = {};
+    Array.prototype.forEach.call(root.querySelectorAll('mark.hl'), function (m) {
+      var id = m.getAttribute('data-id');
+      if (seen[id]) return;
+      var it = items.filter(function (x) { return x.id === id; })[0];
+      if (!it || it.kind === 'bm') return;
+      seen[id] = 1;
+      var host = m.closest(SEL) || m.parentElement;
+      var k = order.indexOf(host);
+      if (k < 0) { k = order.length; order.push(host); perBlock[k] = []; }
+      perBlock[k].push(it);
+    });
+    order.forEach(function (host, k) {
+      var w = where(host), g = byName[w.name];
+      if (!g) { g = { name: w.name, ch: w.ch, rows: [] }; byName[w.name] = g; groups.push(g); }
+      g.rows.push([host, perBlock[k]]);
+    });
+    if (!groups.length && !bm) {
+      var e = document.createElement('p');
+      e.className = 'bmempty';
+      e.textContent = 'Nothing marked yet. Select any text in the guide, then pick yellow, pink, a comment or the ribbon that sets your bookmark.';
+      box.appendChild(e);
+      return;
+    }
+    groups.forEach(function (g) {
+      var wrap = document.createElement('div'); wrap.className = 'bmg';
+      var h3 = document.createElement('h3');
+      h3.textContent = g.name;
+      if (g.ch) { var sp = document.createElement('span'); sp.textContent = g.ch; h3.appendChild(sp); }
+      wrap.appendChild(h3);
+      g.rows.forEach(function (r) { wrap.appendChild(row(r[0], r[1])); });
+      box.appendChild(wrap);
+    });
+  }
+  var pill = null, pillT = null;
+  function flag(txt, bad) {
+    if (!pill) {
+      pill = document.createElement('div'); pill.id = 'save';
+      pill.setAttribute('role', 'status'); document.body.appendChild(pill);
+    }
+    pill.textContent = txt;
+    pill.className = bad ? 'bad' : (txt ? 'on' : '');
+    if (pillT) clearTimeout(pillT);
+    if (!bad) pillT = setTimeout(function () { pill.className = ''; }, 1400);
+  }
+  // notes.html writes lec1, lec2 and their dates into this same stored object, under this same
+  // key. Both pages therefore read what is stored, change only the keys they own, and write the
+  // whole thing back. A page that writes an object built from its own memory erases whatever the
+  // other page saved since it loaded.
+  var OWN = null;
+  function owned() {
+    if (!OWN) {
+      OWN = {};
+      Array.prototype.forEach.call(document.querySelectorAll('.nb[data-k]'), function (el) {
+        OWN[el.getAttribute('data-k')] = 1;
+      });
+    }
+    return OWN;
+  }
+  function stored() {
+    var v = null;
+    try { v = JSON.parse(localStorage.getItem(LS) || 'null'); } catch (e) {}
+    if (Array.isArray(v)) v = { items: v, notes: {} };
+    if (!v || typeof v !== 'object') v = { items: [], notes: {} };
+    if (!Array.isArray(v.items)) v.items = [];
+    if (!v.notes || typeof v.notes !== 'object') v.notes = {};
+    return v;
+  }
+  function queueRef() {
+    if (saveT) clearTimeout(saveT);
+    saveT = setTimeout(function () {
+      if (ref) ref.set({ items: items, notes: notes }).catch(function () {});
+    }, 400);
+  }
+  // The one write into localStorage: read what is stored, overwrite only the keys named, and
+  // put the whole object back. `extra` carries keys that arrived from the shared database and
+  // belong to no page in particular.
+  function writeStore(extra) {
+    var keep = stored().notes, own = owned(), k;
+    for (k in own) if (Object.prototype.hasOwnProperty.call(own, k) && notes[k] !== undefined) keep[k] = notes[k];
+    if (extra) for (k in extra) if (Object.prototype.hasOwnProperty.call(extra, k)) keep[k] = extra[k];
+    localStorage.setItem(LS, JSON.stringify({ items: items, notes: keep }));
+  }
+  function save() {
+    try {
+      writeStore(null);
+      flag('Saved in this browser', false);
+    } catch (e) {
+      // A private window, or site data turned off. Saying nothing here is how somebody
+      // loses an evening of notes believing they were kept.
+      flag('This browser is not saving. Copy anything you need.', true);
+    }
+    queueRef();
+  }
+  function paintNotes() {
+    Array.prototype.forEach.call(document.querySelectorAll('.nb'), function (el) {
+      if (el !== document.activeElement) {
+        var v = notes[el.getAttribute('data-k')] || '';
+        if (el.innerHTML !== v) el.innerHTML = Notes.clean(v);
+      }
+      Notes.markEmpty(el);
+      var card = el.closest('.nbwrap');
+      if (card) card.classList.toggle('has', !!el.textContent.trim());
+    });
+  }
+
+  /* ---- the editor ---- */
+  /* The editor itself is shared/editor.js, one file for every note she writes in either
+     course. Two kinds of box on this page go through it: the note card under a reading, and
+     the body of a comment on a highlight. Both are named to Notes.bar(), which raises the
+     floating toolbar over a selection in either one. */
+
+  /* Where a change the toolbar or the colour key made belongs. A note card writes into
+     `notes` under its own key, and a comment body writes into the item its card stands for. */
+  function saveBox(el) {
+    if (el.classList.contains('nb')) notes[el.getAttribute('data-k')] = el.innerHTML;
+    else {
+      var c = el.closest('.cmt');
+      var it = c && items.filter(function (x) { return x.id === c.getAttribute('data-id'); })[0];
+      if (it) it.body = el.innerHTML;
+    }
+    save();
+  }
+  function wireNotes() {
+    Notes.bar({ sel: '.nb, .cbody', accent: 'Green text', save: saveBox });
+    Array.prototype.forEach.call(document.querySelectorAll('.nb'), function (el) {
+      el.addEventListener('input', function () {
+        // ahead of rich()'s own listener, so the arrow is in the DOM before it is stored
+        Notes.swapAsTyped();
+        notes[el.getAttribute('data-k')] = el.innerHTML;
+        var card = el.closest('.nbwrap');
+        if (card) card.classList.toggle('has', !!el.textContent.trim());
+        save();
+      });
+      el.addEventListener('blur', function () { Notes.hideBar(); notes[el.getAttribute('data-k')] = el.innerHTML; save(); });
+      Notes.rich(el, function () { notes[el.getAttribute('data-k')] = el.innerHTML; save(); });
+    });
+  }
+  function remove(id) {
+    var gone = items.filter(function (x) { return x.id === id; })[0];
+    items = items.filter(function (x) { return x.id !== id; });
+    save(); render();
+    if (gone) offerUndo(gone);
+  }
+  // One click removes a mark, so one click has to put it back. Without this, a misplaced
+  // click destroys a highlight with no way out of it.
+  function offerUndo(gone) {
+    if (!pill) flag('', false);
+    if (pillT) clearTimeout(pillT);
+    pill.textContent = gone.kind === 'note' ? 'Comment removed' : 'Highlight removed';
+    var b = document.createElement('button');
+    b.type = 'button'; b.textContent = 'Undo';
+    b.addEventListener('click', function () {
+      items.push(gone); save(); render();
+      pill.className = ''; pill.textContent = '';
+    });
+    pill.appendChild(b);
+    pill.className = 'act';
+    pillT = setTimeout(function () { pill.className = ''; pill.textContent = ''; }, 9000);
+  }
+  function capture(kind, color) {
+    var sel = window.getSelection();
+    if (!sel || sel.isCollapsed || sel.rangeCount === 0) return null;
+    var r = sel.getRangeAt(0), made = null, bs = blocks();
+    // There is only ever one bookmark, because there is only ever one place reading stopped.
+    if (kind === 'bm') items = items.filter(function (x) { return x.kind !== 'bm'; });
+    bs.forEach(function (el) {
+      if (!r.intersectsNode(el)) return;
+      var t = el.textContent;
+      var s = el.contains(r.startContainer) ? offsetIn(el, r.startContainer, r.startOffset) : 0;
+      var e = el.contains(r.endContainer) ? offsetIn(el, r.endContainer, r.endOffset) : t.length;
+      if (e <= s) return;
+      var text = t.slice(s, e);
+      if (!text.trim()) return;
+      if ((kind === 'note' || kind === 'bm') && made) return;
+      var it = {
+        id: String(Date.now()) + '-' + Math.random().toString(36).slice(2, 7),
+        text: text, before: t.slice(Math.max(0, s - 40), s), after: t.slice(e, e + 40),
+        head: t.slice(0, 90), idx: bs.indexOf(el), at: s,
+        kind: kind, color: color || 'y', body: ''
+      };
+      items.push(it); made = it;
+    });
+    if (made) { sel.removeAllRanges(); if (kind !== 'note') save(); render(); }
+    return made;
+  }
+  function hide() { bar.hidden = true; }
+  function show() {
+    var sel = window.getSelection();
+    if (!sel || sel.isCollapsed || sel.rangeCount === 0) return hide();
+    if (!sel.toString().trim()) return hide();
+    if (!root.contains(sel.anchorNode) || !root.contains(sel.focusNode)) return hide();
+    var a = document.activeElement;
+    if (a && (a.tagName === 'TEXTAREA' || a.isContentEditable)) return hide();
+    if (sel.anchorNode && sel.anchorNode.parentElement && sel.anchorNode.parentElement.closest('.cmt, .nb')) return hide();
+    var r = sel.getRangeAt(0).getBoundingClientRect();
+    if (!r.width && !r.height) return hide();
+    bar.hidden = false;
+    bar.style.top = (window.scrollY + r.top - bar.offsetHeight - 8) + 'px';
+    bar.style.left = (window.scrollX + r.left) + 'px';
+  }
+  function start() {
+    root = document.querySelector('.wrap');
+    if (!root) return;
+    rail = document.createElement('div'); rail.id = 'cmts';
+    root.appendChild(rail);
+    bar = document.createElement('div');
+    bar.id = 'hl-bar'; bar.hidden = true;
+    bar.innerHTML = '<button type="button" data-c="y" title="Highlight yellow" aria-label="Highlight yellow"></button>' +
+      '<button type="button" data-c="p" title="Highlight pink" aria-label="Highlight pink"></button>' +
+      '<button type="button" data-c="n" title="Add a comment" aria-label="Add a comment"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 9.5A1.5 1.5 0 0 1 12.5 11H6l-3 3V4.5A1.5 1.5 0 0 1 4.5 3h8A1.5 1.5 0 0 1 14 4.5z"/></svg></button>' +
+      '<button type="button" data-c="b" title="Set your bookmark here" aria-label="Set your bookmark here"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M4 2.6h8v11.2L8 10.9l-4 2.9z"/></svg></button>';
+    document.body.appendChild(bar);
+    bar.addEventListener('mousedown', function (e) { e.preventDefault(); });
+    bar.addEventListener('click', function (e) {
+      var b = e.target.closest('button');
+      if (!b) return;
+      var c = b.getAttribute('data-c');
+      bar.hidden = true;
+      if (c === 'n') {
+        var it = capture('note');
+        if (it) {
+          var ta = root.querySelector('.cmt[data-id="' + it.id + '"] .cbody');
+          if (ta) { ta.focus(); }
+        }
+      } else if (c === 'b') { capture('bm'); }
+      else { capture('hl', c); }
+    });
+    // A click on empty space does not clear the selection, so a bare mouseup must never
+    // re-show the bar: only a gesture that actually dragged, or actually changed the
+    // selection, counts as a new selection.
+    var downX = 0, downY = 0, downSel = '';
+    ['mousedown', 'pointerdown', 'touchstart'].forEach(function (ev) {
+      document.addEventListener(ev, function (e) {
+        if (bar.contains(e.target)) return;
+        hide();
+        downX = e.clientX || 0; downY = e.clientY || 0;
+        downSel = String(window.getSelection() || '');
+      }, true);
+    });
+    ['mouseup', 'touchend'].forEach(function (ev) {
+      document.addEventListener(ev, function (e) {
+        if (bar.contains(e.target)) return;
+        var moved = Math.abs((e.clientX || 0) - downX) > 3 || Math.abs((e.clientY || 0) - downY) > 3;
+        var was = downSel;
+        setTimeout(function () {
+          var now = String(window.getSelection() || '');
+          if (!now.trim()) return hide();
+          if (!moved && now === was) return hide();
+          show();
+        }, 0);
+      });
+    });
+    document.addEventListener('keyup', function (e) {
+      if (e.key !== 'Shift' && !(e.shiftKey && e.key.indexOf('Arrow') === 0)) return;
+      var a = document.activeElement;
+      if (a && (a.tagName === 'TEXTAREA' || a.isContentEditable)) return;
+      setTimeout(show, 0);
+    });
+    document.addEventListener('keydown', function (e) { if (e.key !== 'Shift') hide(); });
+    document.addEventListener('selectionchange', function () {
+      var sel = window.getSelection();
+      if (!sel || sel.isCollapsed || !String(sel).trim()) hide();
+    });
+    document.addEventListener('visibilitychange', hide);
+    window.addEventListener('scroll', hide, { passive: true });
+    window.addEventListener('wheel', hide, { passive: true });
+    window.addEventListener('blur', hide);
+    window.addEventListener('resize', function () { hide(); place_notes(); });
+    root.addEventListener('click', function (e) {
+      var m = e.target.closest && e.target.closest('mark.hl');
+      if (!m) return;
+      var id = m.getAttribute('data-id');
+      var it = items.filter(function (x) { return x.id === id; })[0];
+      if (!it) return;
+      if (it.kind === 'note') {
+        var c = root.querySelector('.cmt[data-id="' + id + '"]');
+        Array.prototype.forEach.call(root.querySelectorAll('.cmt.act'), function (x) { x.classList.remove('act'); });
+        Array.prototype.forEach.call(root.querySelectorAll('mark.hl-n.act'), function (x) { x.classList.remove('act'); });
+        if (c) { c.classList.add('act'); m.classList.add('act'); c.scrollIntoView({ block: 'nearest' }); c.querySelector('.cbody').focus(); }
+      } else if (it.kind === 'bm') {
+        goTo(m);
+      } else { remove(id); }
+    });
+    drawer = document.getElementById('marks');
+    Array.prototype.forEach.call(document.querySelectorAll('[data-marks]'), function (b) {
+      b.addEventListener('click', function (e) { e.preventDefault(); openMarks(); });
+    });
+    if (drawer) drawer.addEventListener('click', function (e) {
+      if (e.target.closest('[data-close]')) closeMarks();
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMarks(); });
+    var top = document.getElementById('totop');
+    if (top) top.addEventListener('click', function () {
+      try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch (e) { window.scrollTo(0, 0); }
+    });
+    var go = document.getElementById('bmgo');
+    if (go) go.addEventListener('click', function () {
+      var it = bookmark();
+      var m = it && root.querySelector('mark[data-id="' + it.id + '"]');
+      if (m) { goTo(m); return; }
+      flag('No bookmark yet. Select a word, then pick the ribbon.', true);
+      setTimeout(function () { flag(''); }, 3200);
+    });
+    // A closed toggle prints as a heading with nothing under it, so open everything to print
+    // and put it back afterwards.
+    var reopen = [];
+    window.addEventListener('beforeprint', function () {
+      reopen = [];
+      Array.prototype.forEach.call(document.querySelectorAll('details:not([open])'), function (d) {
+        reopen.push(d); d.open = true;
+      });
+    });
+    window.addEventListener('afterprint', function () {
+      reopen.forEach(function (d) { d.open = false; });
+      reopen = [];
+    });
+    document.addEventListener('toggle', function () { place_notes(); }, true);
+    try {
+      var v = JSON.parse(localStorage.getItem(LS) || 'null');
+      if (Array.isArray(v)) { items = v; }
+      else if (v && typeof v === 'object') { items = v.items || []; notes = v.notes || {}; }
+    } catch (e) {}
+    items.forEach(function (x) { if (!x.kind) x.kind = 'hl'; });
+    wireNotes();
+    paintNotes();
+    render();
+    // A second copy of this page, open in another tab, writes the same key. Pick up what it
+    // saved, so the next save here is built on what is stored. A stale list of highlights in
+    // memory erases the highlight made over there as soon as a note is typed here. Whatever
+    // is being edited here at the moment is left alone.
+    window.addEventListener('storage', function (e) {
+      if (e.key && e.key !== LS) return;
+      var a = document.activeElement;
+      if (a && a.classList && a.classList.contains('cbody')) return;
+      var boxes = {}, fresh = stored(), k;
+      Array.prototype.forEach.call(document.querySelectorAll('.nb[data-k]'), function (el) {
+        boxes[el.getAttribute('data-k')] = el;
+      });
+      for (k in fresh.notes) {
+        if (!Object.prototype.hasOwnProperty.call(fresh.notes, k)) continue;
+        if (boxes[k] && boxes[k] === a) continue;
+        notes[k] = fresh.notes[k];
+      }
+      items = fresh.items;
+      items.forEach(function (x) { if (!x.kind) x.kind = 'hl'; });
+      paintNotes();
+      render();
+    });
+    if (window.claude && typeof claude.use === 'function') {
+      claude.use('db').then(function (db) {
+        if (!db) return;
+        ref = db.doc('highlights/v1');
+        ref.onSnapshot(function (snap) {
+          var d = snap.exists ? snap.data() : null;
+          if (!d) return;
+          if (root.querySelector('.cmt .cbody:focus')) return;
+          // Merged, so a snapshot taken before the lecture notes existed cannot drop them.
+          if (d.notes && typeof d.notes === 'object') {
+            Object.keys(d.notes).forEach(function (k) { notes[k] = d.notes[k]; });
+            paintNotes();
+          }
+          if (Array.isArray(d.items)) {
+            items = d.items.slice();
+            items.forEach(function (x) { if (!x.kind) x.kind = 'hl'; });
+            render();
+          }
+          // Merged the same way a save is, so the lecture notes written on notes.html since
+          // this page loaded survive a snapshot that predates them.
+          try { writeStore(d.notes && typeof d.notes === 'object' ? d.notes : null); } catch (e) {}
+        }, function () {});
+      }).catch(function () {});
+    }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
+  else start();
+})();
+</script>
+
+<script>
+(function () {
+  var nav = document.getElementById('nav');
+  if (!nav) return;
+  var links = Array.prototype.slice.call(nav.querySelectorAll('a'));
+  var targets = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+  function mark() {
+    var best = -1, bestTop = -1e9;
+    for (var i = 0; i < targets.length; i++) {
+      if (!targets[i]) continue;
+      var t = targets[i].getBoundingClientRect().top - 120;
+      if (t <= 0 && t > bestTop) { bestTop = t; best = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle('on', i === best); });
+  }
+  // how far through the reading this is, drawn along the top edge of the dock
+  var prog = document.getElementById('prog');
+  function bar() {
+    if (!prog) return;
+    var se = document.scrollingElement || document.documentElement;
+    var run = se.scrollHeight - window.innerHeight;
+    prog.style.width = (run > 0 ? Math.min(100, Math.max(0, se.scrollTop / run * 100)) : 0) + '%';
+  }
+  window.addEventListener('scroll', function () { mark(); bar(); }, { passive: true });
+  window.addEventListener('resize', function () { mark(); bar(); });
+  mark(); bar();
+})();
+</script>
+</html>
