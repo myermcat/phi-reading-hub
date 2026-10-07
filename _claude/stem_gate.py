@@ -22,6 +22,11 @@ BANNED = [
  r"\bcarry (his|her|the|this|that) argument\b", r"\bwhat stayed the same\b",
  r"\bthat detail\b", r"\bthis detail\b", r"\bwhy is that important\b",
  r"\bwhat was the point\b", r"\bwhat is the point\b",
+ # a metaphor cannot be the thing the question turns on
+ r"\bwhere the other (two|one)\b", r"\bis where .{0,20} meet\b",
+ # a year and a country do not identify a study
+ r"\bwhat did the figures\b", r"\bwhat do the numbers\b", r"\bwhat was the pattern\b",
+ r"\bwhat did it show\b", r"\bwhat was the finding\b",
 ]
 def scan(stem):
     plain = re.sub(r"<[^>]+>", " ", stem)
