@@ -132,7 +132,7 @@ WEEK2 = [
   ("That nature has been reduced to what is calculable, which splits thought from extension, nature from spirit, and subject from object, and leaves an impoverishment that is hard to estimate.",
    "His word is dualism, meaning a split into two things the Greeks held as one. <i>Physis</i> held form and motion, law and life, causality and purpose together. Keeping only the calculable half works extremely well and drops the rest."),
   ("That modern science makes claims it cannot prove, because induction never justifies a general law.",
-   "A real problem, and a different one. Watch a thousand swans, see that every one is white, and conclude that all swans are white. The conclusion covers every swan there has ever been, and you looked at a thousand, so the thousand can never make it safe. Europeans believed exactly that until a Dutch expedition reached Western Australia in 1697 and found black ones. Reasoning upward from particular cases to a general law like that is called <b>induction</b>, and that gap in it is the problem of induction. It bites Bacon, whose whole method runs on it, and it bites the idea that knowledge is stacked like a brick wall on a bottom course that needs nothing under it, which is called <b>foundationalism</b>.")],
+   "A real problem, and a different one. Watch a thousand swans, see that every one is white, and conclude that all swans are white. The conclusion covers every swan there has ever been, and you looked at a thousand, so the thousand can never make it safe. Europeans believed exactly that until a Dutch expedition reached Western Australia in 1697 and found black ones. Reasoning upward from particular cases to a general law like that is called <b>induction</b>, and that gap in it is the problem of induction. It bites Bacon, whose whole method runs on it, and it bites the idea that every claim rests on a lower claim down to a bottom layer that needs no reason under it, which is called <b>foundationalism</b>.")],
  3, "He praises the results in the same sentence as the complaint. So the complaint concerns what got left out."),
 
 ("Schadewaldt &middot; the solution",
@@ -208,7 +208,7 @@ WEEK2 = [
  2, "<i>Meta</i> here means after. After what, and in what sense of after?"),
 
 ("Who Francis Bacon is",
- "How did the professor introduce Francis Bacon?",
+ "Which description fits Francis Bacon?",
  [("Early modern philosopher, 1561 to 1626, the father of empiricism, strongly influenced by the Scientific Revolution.",
    "Empiricism means the senses are the original source of knowledge, from the Greek <i>empeiria</i>, experience. Its opposite is the view that reason alone gets you there, which is Plato. Bacon's version has teeth because he adds experiment."),
   ("The astronomer who found that the planets revolve around the sun.",
