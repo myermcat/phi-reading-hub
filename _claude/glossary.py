@@ -79,7 +79,7 @@ GROUPS = [
  ("Galileo", "1564 to 1642", "found by looking that the planets revolve around the sun",
   "The counter-example to Aristotle's patient observer waiting for the world to reveal its purposes. He went and got the answer."),
  ("Positivism", "", "the doctrine that real knowledge comes only from what you can observe and measure",
-  "Positive here has nothing to do with good. Her description: research that is non-contextual, so where and when you did it should not matter; formal and standardised, so anyone following the procedure gets the same result; and analytic, so it separates variables and holds the rest still."),
+  "Three demands on method follow. <b>Non-contextual</b>: the result cannot depend on who ran it, or where, or when. <b>Standardised</b>: anyone following the same procedure gets the same result. <b>Analytic</b>: isolate one variable and hold the rest still. Kuhn attacks the first, since a paradigm is a context. Positive here has nothing to do with good."),
  ("Realism", "", "there is one way the world is, and we can find it out and describe it accurately",
   "Truths depend mostly on the natural world and only slightly on the people stating them."),
  ("Instrumentalism", "", "a theory is a tool that works, with no claim attached about what is really there",
