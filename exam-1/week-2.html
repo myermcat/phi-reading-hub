@@ -66,6 +66,7 @@
   li.q.ok{border-left-color:var(--good)}
   li.q.no{border-left-color:var(--bad)}
   .topic{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .topic .seen{color:var(--hot);border:1px solid var(--hot);padding:1px 6px;margin-left:8px;letter-spacing:.07em}
   .stem{font-size:18px;line-height:1.45;max-width:68ch}
   .stem .n{font-family:var(--mono);font-size:12px;color:var(--accent);margin-right:9px;font-weight:500}
 
@@ -160,7 +161,7 @@
   <div>
     <div class="eyebrow">PHI 2394 B00 &middot; exam 1 practice &middot; week 2</div>
     <h1>Week 2: the Greeks, Bacon and the Middle Ages</h1>
-    <p class="standfirst">Twenty-five questions on Plato, Aristotle, Schadewaldt, Bacon, Lynn White and Rousseau. Multiple choice, one best answer each.</p>
+    <p class="standfirst">Twenty-five questions on Plato, Aristotle, Schadewaldt, Bacon, Lynn White and Rousseau. Multiple choice, one best answer each. Fifteen of these were in the first batch and are flagged, so you can skip them or use them as a second pass.</p>
   </div>
 
   <div class="how">
@@ -177,7 +178,7 @@
   <ol class="quiz" id="quiz">
 
   <li class="q" id="q1" data-a="2">
-    <p class="topic">Plato &middot; the text, the author, the dialogue</p>
+    <p class="topic">Plato &middot; the text, the author, the dialogue <span class="seen">answered before</span></p>
     <p class="stem"><span class="n">1</span> The allegory of the cave comes from which text, and who are the two speakers in it?</p>
     <ol class="opts">
       <li><button type="button" class="opt"><span class="lt">A</span><span>The <i>Apology</i>, a conversation between Socrates and his accuser Meletus.</span></button>
@@ -197,7 +198,7 @@
   </li>
 
   <li class="q" id="q2" data-a="3">
-    <p class="topic">Plato &middot; what education is</p>
+    <p class="topic">Plato &middot; what education is <span class="seen">answered before</span></p>
     <p class="stem"><span class="n">2</span> Plato writes that education is not &ldquo;putting knowledge into souls that lack it, like putting sight into blind eyes&rdquo;. So what is it?</p>
     <ol class="opts">
       <li><button type="button" class="opt"><span class="lt">A</span><span>Filling the student with the knowledge the teacher already has.</span></button>
@@ -217,7 +218,7 @@
   </li>
 
   <li class="q" id="q3" data-a="3">
-    <p class="topic">Plato &middot; the Kalliopolis</p>
+    <p class="topic">Plato &middot; the Kalliopolis <span class="seen">answered before</span></p>
     <p class="stem"><span class="n">3</span> Beside Foucault's &ldquo;panoptic utopia, the utopia of a perfectly governed city&rdquo;, the professor wrote on her own slide: &ldquo;think Plato, <i>Republic</i>, the Kalliopolis&rdquo;. What is the Kalliopolis, and why is it there?</p>
     <ol class="opts">
       <li><button type="button" class="opt"><span class="lt">A</span><span>The cave itself, because both Plato and Foucault describe people who cannot see their own confinement.</span></button>
@@ -237,7 +238,7 @@
   </li>
 
   <li class="q" id="q4" data-a="2">
-    <p class="topic">Plato against Aristotle &middot; which theory matches which philosopher</p>
+    <p class="topic">Plato against Aristotle &middot; which theory matches which philosopher <span class="seen">answered before</span></p>
     <p class="stem"><span class="n">4</span> Plato and Aristotle both use the word form. What is the difference?</p>
     <ol class="opts">
       <li><button type="button" class="opt"><span class="lt">A</span><span>Plato puts form in the object; Aristotle puts it in a realm outside ours.</span></button>
@@ -257,7 +258,7 @@
   </li>
 
   <li class="q" id="q5" data-a="3">
-    <p class="topic">Aristotle &middot; what form answers</p>
+    <p class="topic">Aristotle &middot; what form answers <span class="seen">answered before</span></p>
     <p class="stem"><span class="n">5</span> In the lecture, Aristotle's form and <i>telos</i> are offered as his answer to a question. Which question?</p>
     <ol class="opts">
       <li><button type="button" class="opt"><span class="lt">A</span><span>How can we be sure our senses are telling us the truth?</span></button>
@@ -277,7 +278,7 @@
   </li>
 
   <li class="q" id="q6" data-a="1">
-    <p class="topic">Aristotle &middot; what is critical to him</p>
+    <p class="topic">Aristotle &middot; what is critical to him <span class="seen">answered before</span></p>
     <p class="stem"><span class="n">6</span> <i>Telos</i> is the term she stressed as critical to Aristotle. What does it mean?</p>
     <ol class="opts">
       <li><button type="button" class="opt"><span class="lt">A</span><span>The end or goal of each living thing, meaning that everything has an intended purpose it is growing toward.</span></button>
@@ -297,7 +298,7 @@
   </li>
 
   <li class="q" id="q7" data-a="4">
-    <p class="topic">The era question that is really about the person</p>
+    <p class="topic">The era question that is really about the person <span class="seen">answered before</span></p>
     <p class="stem"><span class="n">7</span> Which of these is true of Aristotle?</p>
     <ol class="opts">
       <li><button type="button" class="opt"><span class="lt">A</span><span>He was born in Athens to an aristocratic family and founded a school called the Academy.</span></button>
@@ -317,7 +318,7 @@
   </li>
 
   <li class="q" id="q8" data-a="2">
-    <p class="topic">Schadewaldt &middot; physis and techne</p>
+    <p class="topic">Schadewaldt &middot; physis and techne <span class="seen">answered before</span></p>
     <p class="stem"><span class="n">8</span> What is the difference between <i>physis</i> and <i>techne</i>?</p>
     <ol class="opts">
       <li><button type="button" class="opt"><span class="lt">A</span><span><i>Physis</i> is the study of nature and <i>techne</i> is the study of tools, so they are two branches of one subject.</span></button>
@@ -377,7 +378,7 @@
   </li>
 
   <li class="q" id="q11" data-a="3">
-    <p class="topic">Schadewaldt &middot; what Wolfgang said</p>
+    <p class="topic">Schadewaldt &middot; what Wolfgang said <span class="seen">answered before</span></p>
     <p class="stem"><span class="n">11</span> Schadewaldt says the modern conception of nature has been &ldquo;extraordinarily successful&rdquo; and has cost us something. What is his complaint?</p>
     <ol class="opts">
       <li><button type="button" class="opt"><span class="lt">A</span><span>That science has produced weapons, so the problem is what the knowledge gets used for.</span></button>
@@ -397,7 +398,7 @@
   </li>
 
   <li class="q" id="q12" data-a="4">
-    <p class="topic">Schadewaldt &middot; the solution</p>
+    <p class="topic">Schadewaldt &middot; the solution <span class="seen">answered before</span></p>
     <p class="stem"><span class="n">12</span> What does Schadewaldt propose as the way out of that dualism?</p>
     <ol class="opts">
       <li><button type="button" class="opt"><span class="lt">A</span><span>Stop using mathematics to describe nature.</span></button>
@@ -517,7 +518,7 @@
   </li>
 
   <li class="q" id="q18" data-a="1">
-    <p class="topic">Who Francis Bacon is</p>
+    <p class="topic">Who Francis Bacon is <span class="seen">answered before</span></p>
     <p class="stem"><span class="n">18</span> Which description fits Francis Bacon?</p>
     <ol class="opts">
       <li><button type="button" class="opt"><span class="lt">A</span><span>Early modern philosopher, 1561 to 1626, the father of empiricism, strongly influenced by the Scientific Revolution.</span></button>
@@ -557,7 +558,7 @@
   </li>
 
   <li class="q" id="q20" data-a="2">
-    <p class="topic">Bacon against Aristotle</p>
+    <p class="topic">Bacon against Aristotle <span class="seen">answered before</span></p>
     <p class="stem"><span class="n">20</span> What exactly was Bacon's problem with the Aristotelian worldview?</p>
     <ol class="opts">
       <li><button type="button" class="opt"><span class="lt">A</span><span>That Aristotle relied on observation, and observation is unreliable.</span></button>
@@ -597,7 +598,7 @@
   </li>
 
   <li class="q" id="q22" data-a="4">
-    <p class="topic">The Middle Ages &middot; Lynn White Jr.</p>
+    <p class="topic">The Middle Ages &middot; Lynn White Jr. <span class="seen">answered before</span></p>
     <p class="stem"><span class="n">22</span> What is Lynn White's argument about technology in the Middle Ages?</p>
     <ol class="opts">
       <li><button type="button" class="opt"><span class="lt">A</span><span>Technology advanced once the Church lost its authority over learning.</span></button>
@@ -637,7 +638,7 @@
   </li>
 
   <li class="q" id="q24" data-a="1">
-    <p class="topic">Which theory matches which philosopher</p>
+    <p class="topic">Which theory matches which philosopher <span class="seen">answered before</span></p>
     <p class="stem"><span class="n">24</span> Which claim is Rousseau's?</p>
     <ol class="opts">
       <li><button type="button" class="opt"><span class="lt">A</span><span>A return to Greek values is necessary for society and education, and progress is only possible through education.</span></button>
@@ -657,7 +658,7 @@
   </li>
 
   <li class="q" id="q25" data-a="2">
-    <p class="topic">The era question</p>
+    <p class="topic">The era question <span class="seen">answered before</span></p>
     <p class="stem"><span class="n">25</span> Put these four in the order they worked, earliest first: Bentham, Copernicus, Rousseau, Bacon.</p>
     <ol class="opts">
       <li><button type="button" class="opt"><span class="lt">A</span><span>Bacon, Copernicus, Rousseau, Bentham</span></button>
