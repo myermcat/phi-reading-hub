@@ -39,7 +39,7 @@ WEEK3 = [
  2, "Her list of examples had four items and only one of them was a prisoner."),
 
 ("Foucault &middot; the body as machine",
- "The Stanford Encyclopedia passage on her slide says the human body becomes a machine whose functioning could be optimized, calculated and improved. How?",
+ "Under discipline the human body becomes a machine whose functioning can be optimized, calculated and improved. By what procedure?",
  [("By medical intervention and surgery.",
    "No surgery in the passage."),
   ("By measuring it against the average body in the population.",
@@ -63,7 +63,7 @@ WEEK3 = [
  2, "She used one word for its status in the system, and that word was not technique."),
 
 ("Foucault &middot; normalization in practice",
- "Which were her examples of normalization at work?",
+ "Where does normalization operate, away from prisons and courts?",
  [("Prisons, armies and asylums.",
    "All Foucault subjects. She gave a different list for this term."),
   ("Courts, police and parliaments.",
@@ -111,7 +111,7 @@ WEEK3 = [
  3, "Her example for it was an institution from the nineteenth century."),
 
 ("Foucault &middot; the modern prison",
- "What does the modern prison do, in her two-part formulation?",
+ "What does the modern prison do to an inmate? Two things, and the second is the one people forget.",
  [("It deprives inmates of liberty, and it categorizes their nature.",
    "The second half is the part people forget and the part that carries the argument. Losing your liberty is the punishment. Having your nature written down and filed is the new thing, and it is what links the prison to the clinic and the school."),
   ("It punishes the body, and it saves the soul.",
@@ -147,7 +147,7 @@ WEEK3 = [
  2, "A menagerie is a royal zoo. Ask what each of its three parts turns into."),
 
 ("Kuhn &middot; the break with positivism",
- "Thomas Kuhn's book marked a break with what the professor called positive doctrines. What was the positivist paradigm she described?",
+ "Kuhn's book marks a break with the positivist picture of what research should look like. What does that picture demand?",
  [("The belief that science always produces socially positive outcomes.",
    "A false friend. Positive here has nothing to do with good."),
   ("A view emerging in the Enlightenment: non-contextual, formal and standardised research that seeks analytically to separate distinct variables.",
@@ -171,7 +171,7 @@ WEEK3 = [
  3, "His central methodological objection is to a way of writing about the past."),
 
 ("Kuhn &middot; Copernicus",
- "What did Copernicus hold, in the professor's own framing of it?",
+ "Copernicus moved the sun to the centre of the system. What was his reason for doing it?",
  [("That the earth rotates on its axis once a day.",
    "True of Copernicus and not the framing she chose."),
   ("That observation should outrank authority.",
@@ -207,7 +207,7 @@ WEEK3 = [
  1, "Ask what the people doing it were called before and after."),
 
 ("Kuhn &middot; foundationalism",
- "What is foundationalism, and what problem did she name for it?",
+ "What is foundationalism, and what is the problem with it?",
  [("The view that science rests on experiment, and the problem is cost.",
    "Not her definition and not her problem."),
   ("The idea that knowledge can be traced back to a firm foundation we keep building on, and the problem is induction.",
@@ -219,7 +219,7 @@ WEEK3 = [
  2, "The metaphor is architectural, and the trouble is at the bottom."),
 
 ("Kuhn &middot; foundationalism against telos",
- "She noted that foundationalism is <b>not</b> like one other idea in the course. Which, and why?",
+ "One other idea in this course resembles foundationalism and works in the opposite direction. Which, and what is the difference?",
  [("Not like Plato's Forms, because foundations are physical.",
    "Not the contrast she drew."),
   ("Not like Bacon's induction, because foundations are deductive.",
@@ -231,7 +231,7 @@ WEEK3 = [
  3, "One picture has the destination fixed in advance. The other has only a starting point."),
 
 ("Kuhn &middot; revolutions",
- "What happens in a revolution, in her wording?",
+ "What happens in a Kuhnian revolution?",
  [("A theory is falsified by a crucial experiment.",
    "Popper's picture, and Kuhn's account makes the crucial experiment hard to believe in."),
   ("The disciplinary matrix is revised and an anomalous problem gets solved.",
@@ -243,7 +243,7 @@ WEEK3 = [
  2, "Two things happen, and one of them is to the shared equipment of the field."),
 
 ("Kuhn &middot; the critique",
- "What is the main critique of incommensurability she gave, and how did Kuhn respond?",
+ "What is the main critique of incommensurability, and how did Kuhn respond to it?",
  [("That paradigms do not really exist; Kuhn abandoned the term.",
    "He never abandoned it."),
   ("That semantic incommensurability can be overcome and so is not a real limitation; Kuhn modified his position and emphasised that communication remains difficult within the scientific community.",
@@ -255,7 +255,7 @@ WEEK3 = [
  2, "The critique attacks the first of his three reasons, the one about the meanings of terms."),
 
 ("Kuhn &middot; the particle detector",
- "Kuhn says two paradigms can have no shared measure to compare them by. She offered a counter-example: the same particle detectors were used in the same way before and after the theory around them changed. Why does that trouble his claim?",
+ "Kuhn says two paradigms can have no shared measure to compare them by. Here is a counter-example: the same particle detectors were used in the same way before and after the theory around them changed. Why does that trouble his claim?",
  [("It shows revolutions happen far more often than Kuhn allowed.",
    "How often revolutions happen is a separate argument, and the detector says nothing about it."),
   ("It shows that a new instrument is what causes a revolution in the first place.",

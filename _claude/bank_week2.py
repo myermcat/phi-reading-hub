@@ -32,7 +32,7 @@ WEEK2 = [
  3, "If the eyes are not broken, what is the problem with them?"),
 
 ("Plato &middot; the Kalliopolis",
- "Beside Foucault's &ldquo;panoptic utopia, the utopia of a perfectly governed city&rdquo;, the professor wrote on her own slide: &ldquo;think Plato, <i>Republic</i>, the Kalliopolis&rdquo;. What is the Kalliopolis, and why is it there?",
+ "Foucault describes a &ldquo;panoptic utopia, the utopia of a perfectly governed city&rdquo;. Plato's Kalliopolis is its ancestor. What is the Kalliopolis, and what do the two share?",
  [("The cave itself, because both Plato and Foucault describe people who cannot see their own confinement.",
    "Tempting, and the one to beware of. The Kalliopolis is a city, and the cave is a separate image."),
   ("The Athenian democracy Plato lived under, which Foucault treats as the first disciplinary society.",
@@ -68,7 +68,7 @@ WEEK2 = [
  3, "<i>Physis</i> was defined in the lecture as implying one particular thing. What was it?"),
 
 ("Aristotle &middot; what is critical to him",
- "<i>Telos</i> is the term she stressed as critical to Aristotle. What does it mean?",
+ "<i>Telos</i> is the term Aristotle's whole picture turns on. What does it mean?",
  [("The end or goal of each living thing, meaning that everything has an intended purpose it is growing toward.",
    "The word literally means end. Track it: Bacon attacks it as his central objection to Aristotle, Kuhn says history cannot be explained by what it led to, and she said explicitly that the idea of knowledge resting on a firm bottom layer, which is called <b>foundationalism</b>, works differently from <i>telos</i>."),
   ("The material a thing is made out of.",
@@ -152,7 +152,7 @@ WEEK2 = [
  4, "A dualism separates two things. Which two does he most want rejoined, given he keeps praising the results?"),
 
 ("The Greeks &middot; Heraclitus",
- "She quoted Heraclitus, sixth century BCE: sound thinking is man's greatest power, and his highest aptitude is that he can say what is and &ldquo;fashion creatively by hearkening to nature&rdquo;. What was her one-line summary of him?",
+ "Heraclitus, sixth century BCE, wrote that sound thinking is man's greatest power, and that his highest aptitude is being able to say what is and &ldquo;fashion creatively by hearkening to nature&rdquo;. What does that assume about nature?",
  [("Nature is in harmony.",
    "Her summary line, written under the quotation. It matters because it is the background assumption Plato and Aristotle are both working against: there is an order out there, and thinking well means listening to it."),
   ("Everything is in flux.",
@@ -164,7 +164,7 @@ WEEK2 = [
  1, "Hearkening means listening. What does the quotation assume is out there to be listened to?"),
 
 ("Plato &middot; who is speaking",
- "She stressed one point about how to read the dialogues. Which?",
+ "What has to be kept in mind when reading any line out of one of Plato's dialogues?",
  [("Socrates wrote nothing, so the dialogues are our only record of his real views.",
    "The opposite of her point. She said Socrates was a real person, and this is Plato's Socrates."),
   ("Plato does not speak in his own texts. Socrates was a real person, but the Socrates in the dialogues is Plato's.",
@@ -272,7 +272,7 @@ WEEK2 = [
  4, "Which way does the causation run in his argument, from belief to tools or from tools to belief?"),
 
 ("The Middle Ages &middot; Deism",
- "Around 1300, she said, the first ideas of Deism start to develop. What is the picture, and why does it matter for science?",
+ "Around 1300 the first ideas of Deism start to develop. What is the picture, and why does it matter for science?",
  [("God as a clockmaker who set the world in motion, which makes studying the mechanism a pious act.",
    "Once God winds the world up and steps back, the world is a mechanism, and taking it apart to see how it runs becomes a way of admiring the maker. That is how a religious worldview ends up licensing mechanical science."),
   ("God as a judge who intervenes constantly, which makes natural law impossible.",
