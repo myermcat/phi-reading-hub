@@ -67,33 +67,15 @@
   .also a{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--muted);text-decoration:none;
       border:1px solid var(--rule);border-radius:20px;padding:7px 14px;transition:border-color .15s,color .15s}
   .also a:hover{color:var(--ink);border-color:var(--muted)}
+  /* Exam prep is a tag in the .also row style, in the hot accent so it reads apart from a week. */
+  .also a.prep{color:#8E6318;border-color:#C9A95F}
+  .also a.prep:hover{color:#6E4C11;border-color:#8E6318}
+  @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .also a.prep{color:#D9A957;border-color:#6B5520}
+    :root:not([data-theme="light"]) .also a.prep:hover{color:#EFC579;border-color:#D9A957}}
+  :root[data-theme="dark"] .also a.prep{color:#D9A957;border-color:#6B5520}
+  :root[data-theme="dark"] .also a.prep:hover{color:#EFC579;border-color:#D9A957}
   /* The teaching page is not course material, so it carries its own accent and sits apart
      from the week cards, below them, after a rule. */
-  .prep-card{position:relative;display:grid;gap:12px 22px;padding:26px 30px 23px;text-decoration:none;color:inherit;
-    background:var(--surface);border:1px solid #C9A95F;transition:transform .18s,border-color .18s}
-  .prep-card::before{content:"";position:absolute;inset:0 auto 0 0;width:4px;background:#8E6318;transition:width .18s}
-  .prep-card:hover{transform:translateY(-3px);border-color:#8E6318}
-  .prep-card:hover::before{width:6px}
-  .prep-card:focus-visible{outline:2px solid #8E6318;outline-offset:3px}
-  .prep-card .badge{display:inline-flex;align-items:center;gap:7px;align-self:start;
-    font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
-    color:#FFF;background:#8E6318;padding:5px 10px}
-  .prep-card h3{margin:0;font-family:var(--display);font-size:clamp(23px,3vw,28px);font-weight:600;line-height:1.16;letter-spacing:-.015em}
-  .prep-card p{font-size:16px;color:var(--ink-soft);max-width:58ch}
-  .prep-card .go{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;
-    letter-spacing:.08em;text-transform:uppercase;color:#8E6318}
-  .prep-card .go svg{width:15px;height:15px;transition:transform .18s}
-  .prep-card:hover .go svg{transform:translateX(4px)}
-  @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .prep-card{border-color:#6B5520}
-    :root:not([data-theme="light"]) .prep-card::before{background:#D9A957}
-    :root:not([data-theme="light"]) .prep-card .badge{background:#D9A957;color:#141815}
-    :root:not([data-theme="light"]) .prep-card .go{color:#D9A957}
-    :root:not([data-theme="light"]) .prep-card:hover{border-color:#D9A957}}
-  :root[data-theme="dark"] .prep-card{border-color:#6B5520}
-  :root[data-theme="dark"] .prep-card::before{background:#D9A957}
-  :root[data-theme="dark"] .prep-card .badge{background:#D9A957;color:#141815}
-  :root[data-theme="dark"] .prep-card .go{color:#D9A957}
-  :root[data-theme="dark"] .prep-card:hover{border-color:#D9A957}
   .aside-card{position:relative;display:grid;gap:14px 22px;padding:28px 30px 24px;text-decoration:none;color:inherit;
       background:var(--surface);border:1px solid #B9A7D6;border-radius:12px;overflow:hidden;
       box-shadow:0 1px 2px rgba(16,24,20,.05),0 6px 18px -8px rgba(16,24,20,.16);
@@ -173,19 +155,9 @@
     <p class="standfirst">Every argument in the week's reading, written out for someone who has not opened the source. Plus a cheat sheet for the week before an exam.</p>
   </header>
 
-  <a class="prep-card" href="exam-1/">
-    <span class="badge">Prep for midterm 1</span>
-    <h3>Practice questions for exam 1</h3>
-    <p>Multiple choice, one set per week, built from the professor's posted notes and the eleven
-      topics she named in her exam review. Pick an option, open a hint when stuck, then check the
-      whole set and get a score with the reasoning under every option.</p>
-    <div class="go">Open the practice sets
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"/></svg>
-    </div>
-  </a>
-
   <section>
     <h2>Weeks</h2>
+    <div class="also"><a class="prep" href="exam-1/">Prep for midterm 1</a></div>
     <div class="weeks">
       <a class="wk" href="week-7/">
         <div class="ghost" aria-hidden="true">07</div>
