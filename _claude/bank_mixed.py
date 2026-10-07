@@ -6,7 +6,7 @@ MIXED = [
 ('The Greeks &middot; before Plato',
  'Homer wrote in the eighth century BCE. What picture of the world does the <i>Odyssey</i> rely on?',
  [('A cosmos with an order and a place for everything in it.',
-   'Eighth century BCE, and it sets up the background assumption everything later argues inside: there is an order out there. Heraclitus then says nature is in harmony, Plato puts the order in a realm outside ours, and Aristotle puts it in the things themselves.'),
+   'Eighth century BCE. It supplies the one thing nobody in the course disputes: there is an order out there. Every later argument is about where that order is and how a person gets at it. Heraclitus then says nature is in harmony, Plato puts the order in a realm outside ours, and Aristotle puts it in the things themselves.'),
   ('A world of pure chance, where the gods intervene at random.',
    'The opposite of the picture she drew from it.'),
   ('An early form of the scientific method.',
