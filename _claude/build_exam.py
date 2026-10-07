@@ -4,6 +4,7 @@ REPO = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
 from bank_week2 import WEEK2
 from bank_week3 import WEEK3
+from bank_week4 import WEEK4
 
 LETTERS = "ABCD"
 
@@ -293,6 +294,11 @@ if __name__ == "__main__":
          "Week 3: Foucault and Kuhn",
          "Twenty-five questions on the panopticon, discipline and normalization, then paradigms, "
          "revolutions and incommensurability.", "phi2394-practice-w3-v1"),
+        (WEEK4, "exam-1/week-4.html", "PHI2394 Week 4 Practice",
+         "Week 4", "PHI 2394 B00 &middot; exam 1 practice &middot; week 4",
+         "Week 4: the social construction of scientific knowledge",
+         "Twenty-five questions on stratification and discrimination, then on what it means to say "
+         "a fact is constructed.", "phi2394-practice-w4-v1"),
     ]:
         p, n = build(*args)
         print("built", os.path.relpath(p, REPO), n, "questions,", os.path.getsize(p), "bytes")

@@ -1,0 +1,758 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PHI2394 Week 4 Practice</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%231F6B57'/%3E%3Cpath%20d='M22%2024a10%2010%200%200%201%2020%200c0%206-7%207-9%2012'%20fill='none'%20stroke='%23fff'%20stroke-width='6'%20stroke-linecap='round'/%3E%3Ccircle%20cx='32'%20cy='48'%20r='4'%20fill='%23fff'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;1,6..72,400&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root{--paper:#EDEFEC;--surface:#F6F7F4;--sunk:#E3E6E1;--ink:#191D1A;--ink-soft:#414944;
+    --muted:#6E766F;--rule:#D2D8D1;--rule-soft:#E1E5DF;--accent:#1F6B57;--accent-wash:#CFE3DA;
+    --good:#1F6B57;--good-wash:#D6E9E0;--bad:#9B2C2C;--bad-wash:#F2DCDC;--hot:#8E6318;--hot-wash:#F0E4CB;
+    --display:"Newsreader",Georgia,serif;--body:"Source Sans 3",-apple-system,"Segoe UI",sans-serif;
+    --mono:"IBM Plex Mono","SF Mono",Menlo,monospace;color-scheme:light}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    --paper:#141815;--surface:#1B201D;--sunk:#10130F;--ink:#E4E8E3;--ink-soft:#B4BCB6;--muted:#8B948D;
+    --rule:#2C332E;--rule-soft:#232925;--accent:#64BFA1;--accent-wash:#214136;--good:#64BFA1;
+    --good-wash:#1E3A30;--bad:#E08080;--bad-wash:#3B2222;--hot:#D9A957;--hot-wash:#352C1C;color-scheme:dark}}
+  :root[data-theme="dark"]{--paper:#141815;--surface:#1B201D;--sunk:#10130F;--ink:#E4E8E3;
+    --ink-soft:#B4BCB6;--muted:#8B948D;--rule:#2C332E;--rule-soft:#232925;--accent:#64BFA1;
+    --accent-wash:#214136;--good:#64BFA1;--good-wash:#1E3A30;--bad:#E08080;--bad-wash:#3B2222;
+    --hot:#D9A957;--hot-wash:#352C1C;color-scheme:dark}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;
+       line-height:1.55;-webkit-font-smoothing:antialiased;padding-bottom:72px}
+  .wrap{max-width:830px;margin:0 auto;padding:32px 24px 80px;display:flex;flex-direction:column;gap:28px}
+  a{color:var(--accent)}
+  .site{position:sticky;top:0;z-index:70;background:var(--paper);border-bottom:1px solid var(--rule)}
+  .site .in{max-width:830px;margin:0 auto;padding:0 24px;height:50px;display:flex;align-items:center;
+            justify-content:space-between;gap:14px}
+  .site a,.site .cur{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+  .site a{text-decoration:none;color:var(--accent)}
+  .site .cur{color:var(--muted)}
+  .eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+  h1{font-family:var(--display);font-weight:600;font-size:clamp(31px,5.2vw,44px);line-height:1.07;
+     letter-spacing:-.015em;margin:10px 0 0;text-wrap:balance}
+  .standfirst{font-family:var(--display);font-size:clamp(17px,2.3vw,19.5px);line-height:1.5;
+              color:var(--ink-soft);max-width:60ch;margin:13px 0 0}
+  p{margin:0;max-width:74ch}
+  .how{background:var(--sunk);padding:15px 19px;display:flex;flex-direction:column;gap:7px;
+       font-size:15.5px;color:var(--ink-soft)}
+  .how b{color:var(--ink)}
+
+  ol.quiz{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:1px;background:var(--rule)}
+  li.q{background:var(--surface);padding:21px 22px 17px;display:flex;flex-direction:column;gap:13px;
+       border-left:3px solid transparent}
+  li.q.ok{border-left-color:var(--good)}
+  li.q.no{border-left-color:var(--bad)}
+  .topic{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .stem{font-size:18px;line-height:1.45;max-width:68ch}
+  .stem .n{font-family:var(--mono);font-size:12px;color:var(--accent);margin-right:9px;font-weight:500}
+
+  ol.opts{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+  ol.opts>li{display:flex;flex-direction:column}
+  button.opt{display:flex;gap:11px;width:100%;text-align:left;font:inherit;font-size:16px;color:var(--ink);
+             background:var(--paper);border:1px solid var(--rule);padding:10px 13px;cursor:pointer;
+             line-height:1.4;align-items:flex-start}
+  button.opt:hover:not(:disabled){border-color:var(--accent)}
+  button.opt .lt{font-family:var(--mono);font-size:13px;color:var(--muted);flex:none;padding-top:1px}
+  button.opt.sel{background:var(--accent-wash);border-color:var(--accent)}
+  button.opt.sel .lt{color:var(--accent)}
+  li.q.checked button.opt{cursor:default}
+  li.q.checked button.opt.pick-right{background:var(--good-wash);border-color:var(--good)}
+  li.q.checked button.opt.pick-right .lt{color:var(--good)}
+  li.q.checked button.opt.pick-wrong{background:var(--bad-wash);border-color:var(--bad)}
+  li.q.checked button.opt.pick-wrong .lt{color:var(--bad)}
+  .why{display:none;font-size:15px;color:var(--ink-soft);padding:7px 13px 2px 36px;max-width:66ch}
+  li.q.checked .why,li.q.shown .why{display:block}
+  .why b{color:var(--ink)}
+  @media (max-width:560px){.why{padding-left:14px}}
+
+  .tools{display:flex;gap:8px;flex-wrap:wrap}
+  button.tool{display:inline-flex;align-items:center;gap:7px;font:inherit;font-family:var(--mono);
+              font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);
+              background:none;border:1px solid var(--rule);padding:6px 11px;cursor:pointer}
+  button.tool:hover{color:var(--ink);border-color:var(--rule)}
+  button.tool svg{width:14px;height:14px;flex:none}
+  button.tool.on{color:var(--accent);border-color:var(--accent)}
+  .panel{display:none;font-size:15.5px;line-height:1.5;padding:12px 15px;max-width:70ch}
+  .panel.open{display:block}
+  .hint{background:var(--hot-wash);color:var(--ink-soft);border-left:3px solid var(--hot)}
+  .ans{background:var(--sunk);color:var(--ink-soft);border-left:3px solid var(--accent)}
+  .ans .lt{font-family:var(--mono);color:var(--accent);font-weight:500}
+
+  .finish{display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+  button.big{font:inherit;font-size:16px;color:var(--paper);background:var(--accent);border:none;
+             padding:13px 26px;cursor:pointer;font-weight:600}
+  button.big:hover{opacity:.9}
+  .result{display:none;flex-direction:column;gap:9px;width:100%}
+  .result.open{display:flex}
+  .result .big-score{font-family:var(--display);font-size:38px;line-height:1.1;color:var(--ink)}
+  .result .note{font-size:15.5px;color:var(--ink-soft)}
+  .result .jump{display:flex;gap:8px;flex-wrap:wrap}
+  .result .jump a{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-decoration:none;
+                  color:var(--bad);border:1px solid var(--bad);padding:5px 9px}
+
+  .bar{position:fixed;left:0;right:0;bottom:0;z-index:80;background:var(--surface);
+       border-top:1px solid var(--rule);height:52px;display:flex;align-items:center}
+  .bar .in{max-width:830px;margin:0 auto;padding:0 24px;width:100%;display:flex;align-items:center;
+           justify-content:space-between;gap:16px}
+  .bar .tick{font-family:var(--mono);font-size:13px;color:var(--ink)}
+  .bar .tick i{font-style:normal;color:var(--muted)}
+  .bar button{font:inherit;font-family:var(--mono);font-size:11px;letter-spacing:.08em;
+              text-transform:uppercase;color:var(--accent);background:none;border:1px solid var(--rule);
+              padding:7px 13px;cursor:pointer}
+  .bar button:hover{border-color:var(--accent)}
+  @media (max-width:560px){.wrap{padding:24px 15px 70px}li.q{padding:17px 15px 14px}}
+</style>
+
+<header class="site"><div class="in">
+  <a href="./">All practice sets</a>
+  <span class="cur">Week 4</span>
+</div></header>
+
+<div class="wrap">
+  <div>
+    <div class="eyebrow">PHI 2394 B00 &middot; exam 1 practice &middot; week 4</div>
+    <h1>Week 4: the social construction of scientific knowledge</h1>
+    <p class="standfirst">Twenty-five questions on stratification and discrimination, then on what it means to say a fact is constructed.</p>
+  </div>
+
+  <div class="how">
+    <p><b>Answer every question before opening anything.</b> Guessing first and then being
+      corrected beats reading the answer first. That is the pretesting effect, and it is the
+      single largest free gain available tonight.</p>
+    <p><b>The hint tells you where to look without telling you the answer.</b> Use it when you are
+      stuck, and skip it when you are not.</p>
+    <p><b>Then press check my answers at the bottom.</b> Every option gets its reasoning, including
+      the ones you did not pick, because the wrong options are where the learning is.</p>
+  </div>
+
+  <ol class="quiz" id="quiz">
+
+  <li class="q" id="q1" data-a="2">
+    <p class="topic">Stratification &middot; do citations show influence</p>
+    <p class="stem"><span class="n">1</span> Of the 55 Nobel laureates working in the United States in 1963, how many had studied or collaborated with a previous prize-winner, and what difference did it make to them?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>About a third, and they won at roughly the same age as everyone else.</span></button>
+        <p class="why">Both halves understate what the numbers show.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>34 of the 55, and those who had worked with a laureate before doing their own important research won at an average age of 44, against 53 for the others.</span></button>
+        <p class="why">Zuckerman 1977, quoted on her slide. Her conclusion from it: scientists tend to form elite groupings. The nine-year gap is the part to carry, because it is a measurable career advantage attached to who you trained with and not to what you found.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>All 55, because the prize is only ever awarded inside established schools.</span></button>
+        <p class="why">The figure is 34, and the remaining 21 matter to the argument.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>12 of the 55, which she offered as evidence that mentorship has little effect.</span></button>
+        <p class="why">Her reading of the numbers runs the other way.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">Her conclusion from the figure was that scientists form elite groupings. Which option supports that?</div>
+    <div class="panel ans"><span class="lt">B.</span> Zuckerman 1977, quoted on her slide. Her conclusion from it: scientists tend to form elite groupings. The nine-year gap is the part to carry, because it is a measurable career advantage attached to who you trained with and not to what you found.</div>
+  </li>
+
+  <li class="q" id="q2" data-a="1">
+    <p class="topic">Stratification &middot; what Bacon expected</p>
+    <p class="stem"><span class="n">2</span> Francis Bacon makes a second appearance in week 4. What did he expect from the inductive method, and how did it turn out?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>He expected it to level the differences amongst intellectual abilities. In practice a small number of scientists dominate: 10 per cent of authors produce half of all papers, and 80 per cent of citations go to 20 per cent of papers.</span></button>
+        <p class="why">This is why he is in this lecture. Bacon's promise was that a method anyone can follow makes genius unnecessary, so ordinary people working carefully would do the work. The distribution of output says something else happened.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>He expected science to be the preserve of a gifted few, which is what occurred.</span></button>
+        <p class="why">The opposite of his claim. His whole pitch was that method replaces genius.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>He expected it to make science profitable, which it did.</span></button>
+        <p class="why">Not the claim in these notes.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>He expected it to end disagreement between schools, and it did not.</span></button>
+        <p class="why">Not the expectation she quoted.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">Bacon's pitch was that a method anyone can follow makes a certain kind of person unnecessary. Which kind?</div>
+    <div class="panel ans"><span class="lt">A.</span> This is why he is in this lecture. Bacon's promise was that a method anyone can follow makes genius unnecessary, so ordinary people working carefully would do the work. The distribution of output says something else happened.</div>
+  </li>
+
+  <li class="q" id="q3" data-a="3">
+    <p class="topic">Stratification &middot; Cole and Cole on funding</p>
+    <p class="stem"><span class="n">3</span> What did Cole and Cole find about how scientific funding is distributed?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>It goes mostly to early-career researchers, to give them a start.</span></button>
+        <p class="why">The pattern described runs the other way.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>It is allocated by lottery among qualified applicants.</span></button>
+        <p class="why">Not described anywhere in the lecture.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>It is often placed in the hands of the most influential, or of institutions with a history of success and public trust built largely by having been around a long time.</span></button>
+        <p class="why">Note the phrase about being around a long time. It means part of what buys the funding is age, and age is not a measure of present quality. Funding opportunities then contribute to stratification, which is the layering of a field into a small advantaged group and everyone else.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>It follows citation counts directly, which makes it a fair measure of merit.</span></button>
+        <p class="why">She made the point that citations are not the only measure of success.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">The phrase in her notes about why some institutions are trusted is about duration.</div>
+    <div class="panel ans"><span class="lt">C.</span> Note the phrase about being around a long time. It means part of what buys the funding is age, and age is not a measure of present quality. Funding opportunities then contribute to stratification, which is the layering of a field into a small advantaged group and everyone else.</div>
+  </li>
+
+  <li class="q" id="q4" data-a="2">
+    <p class="topic">Stratification &middot; what a productive scientist looks like</p>
+    <p class="stem"><span class="n">4</span> A recent study gave a list of behavioural categories for productive scientists, in order of importance. What was first on it?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>Intelligent, then hard-working, then lucky.</span></button>
+        <p class="why">Not the list, and smart appears second in the real one.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>Persistent, then smart, then civil.</span></button>
+        <p class="why">Hermanowicz 2006. Persistence outranking intelligence is the point, and civil at number three is the surprise. The rest of the order runs creative, entrepreneurial, aggressive, tasteful, confident, adaptable.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>Creative, then confident, then adaptable.</span></button>
+        <p class="why">All three are on the list, lower down.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>Ambitious, then well-connected, then well-funded.</span></button>
+        <p class="why">Not the study's categories.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">The first item has nothing to do with ability, and the third is about manners.</div>
+    <div class="panel ans"><span class="lt">B.</span> Hermanowicz 2006. Persistence outranking intelligence is the point, and civil at number three is the surprise. The rest of the order runs creative, entrepreneurial, aggressive, tasteful, confident, adaptable.</div>
+  </li>
+
+  <li class="q" id="q5" data-a="2">
+    <p class="topic">Stratification &middot; age and output</p>
+    <p class="stem"><span class="n">5</span> When are scientists most productive, and what did she say about why it changes?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>In their late twenties, and the decline is explained by family responsibilities.</span></button>
+        <p class="why">Neither the age nor the explanation given.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>In their mid-forties, after which it decreases, and the reason for the decline is unclear.</span></button>
+        <p class="why">That admission is the thing to remember. She said the reason is unclear, which means a question on this wants the fact and not an explanation. Note how oddly it reads beside the laureates who won at 44.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>Output is flat across a career.</span></button>
+        <p class="why">She described a peak and a decline.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>In their sixties, once they have institutional backing.</span></button>
+        <p class="why">Not the pattern given.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">She named an age and then declined to explain the decline.</div>
+    <div class="panel ans"><span class="lt">B.</span> That admission is the thing to remember. She said the reason is unclear, which means a question on this wants the fact and not an explanation. Note how oddly it reads beside the laureates who won at 44.</div>
+  </li>
+
+  <li class="q" id="q6" data-a="3">
+    <p class="topic">Stratification &middot; prestige</p>
+    <p class="stem"><span class="n">6</span> Institutional prestige predicts productivity. What was her striking conclusion about why?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>Prestigious places hire better people, so the prestige is just a result.</span></button>
+        <p class="why">The candidates are described as highly competitive with very slight distinctions between them, which undercuts this.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>Prestige has no causal effect and the correlation is accidental.</span></button>
+        <p class="why">She offered several mechanisms, so she takes the effect to be real.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>Better facilities and networking, more intellectual stimulation, greater internal pressure and reward, and more visibility and therefore more reward. If that is right, prestige by itself makes people's research valuable.</span></button>
+        <p class="why">Read the last sentence slowly, because it is the uncomfortable one. The same work done in two places is worth different amounts, and the difference comes from the place. That is cumulative advantage with a mechanism attached.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>Prestigious institutions have more money, which is the whole explanation.</span></button>
+        <p class="why">Funding is one of several mechanisms she listed.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">One of these options ends with a claim that the place, by itself, changes what the work is worth.</div>
+    <div class="panel ans"><span class="lt">C.</span> Read the last sentence slowly, because it is the uncomfortable one. The same work done in two places is worth different amounts, and the difference comes from the place. That is cumulative advantage with a mechanism attached.</div>
+  </li>
+
+  <li class="q" id="q7" data-a="1">
+    <p class="topic">Stratification &middot; cumulative advantage</p>
+    <p class="stem"><span class="n">7</span> What is the cumulative advantage hypothesis, and what does it do to the picture of science as a meritocracy?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>Success breeds success, which makes scientific success look elitist and idiosyncratic where it had looked merit based.</span></button>
+        <p class="why">The loop in concrete terms: a good first post means a bigger lab, a bigger lab means more results, more results means a stronger grant, a stronger grant means a bigger lab again. Nobody in the loop is doing anything unfair, and the gap widens anyway. This is the week 4 idea most likely to carry a question.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>Advantages accumulate across a lifetime but even out between generations.</span></button>
+        <p class="why">No such evening out is claimed.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>Scientists who publish early are penalised later.</span></button>
+        <p class="why">The reverse of the hypothesis.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>Merit accumulates, so the most successful are genuinely the most able.</span></button>
+        <p class="why">The hypothesis is offered as a challenge to exactly this reading.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">Four words, and the second two are the same as the first two.</div>
+    <div class="panel ans"><span class="lt">A.</span> The loop in concrete terms: a good first post means a bigger lab, a bigger lab means more results, more results means a stronger grant, a stronger grant means a bigger lab again. Nobody in the loop is doing anything unfair, and the gap widens anyway. This is the week 4 idea most likely to carry a question.</div>
+  </li>
+
+  <li class="q" id="q8" data-a="2">
+    <p class="topic">Discrimination &middot; Rossiter</p>
+    <p class="stem"><span class="n">8</span> Margaret Rossiter's historical study of women in American science found a link between who works in a field and how the field is regarded. What is it?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>Fields with more women attract more funding.</span></button>
+        <p class="why">The opposite direction.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>Feminisation is linked to a lowering of status and masculinisation to an increase of status, and women were pushed into the invisible sciences such as home economics and nutritional science.</span></button>
+        <p class="why">The 1982 finding underneath it is the sharp one: men perceive their own work as less masculine because women are present. So the status of the work tracks who is doing it, and not what the work is. Her examples of fields that feminised: sociology, economics, biology, chemistry.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>Women and men were paid equally once anti-discrimination law arrived in the 1960s.</span></button>
+        <p class="why">Not a claim in the lecture.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>Status is set by the difficulty of the subject, so the hard sciences stayed male.</span></button>
+        <p class="why">This is the justification the finding undermines.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">The study is about what happens to a field's reputation when the people in it change.</div>
+    <div class="panel ans"><span class="lt">B.</span> The 1982 finding underneath it is the sharp one: men perceive their own work as less masculine because women are present. So the status of the work tracks who is doing it, and not what the work is. Her examples of fields that feminised: sociology, economics, biology, chemistry.</div>
+  </li>
+
+  <li class="q" id="q9" data-a="2">
+    <p class="topic">Discrimination &middot; the golden age</p>
+    <p class="stem"><span class="n">9</span> What did she say about the golden age of science in the United States after the Second World War?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>It was a golden age for everyone, since funding expanded for all.</span></button>
+        <p class="why">The phrase she used was deliberately two-sided.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>It was a dark age for women, because more men were hired into the institutions where women had been working during the war.</span></button>
+        <p class="why">Two things at once: the field expands and a group inside it loses ground, because the expansion was staffed by men returning from the war. The 1960s anti-discrimination laws arose in response to the discrimination of the 1940s and 1950s.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>It ended women's exclusion from laboratory science.</span></button>
+        <p class="why">The reverse of what she described.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>It had no effect on the gender composition of science.</span></button>
+        <p class="why">She described a direct effect.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">The phrase pairs a golden age for one group with its opposite for another.</div>
+    <div class="panel ans"><span class="lt">B.</span> Two things at once: the field expands and a group inside it loses ground, because the expansion was staffed by men returning from the war. The 1960s anti-discrimination laws arose in response to the discrimination of the 1940s and 1950s.</div>
+  </li>
+
+  <li class="q" id="q10" data-a="2">
+    <p class="topic">Discrimination &middot; the pipeline</p>
+    <p class="stem"><span class="n">10</span> The pipeline image quoted on her slide describes women in science and engineering. What is the image, and what does it imply about where the problem is?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>A ladder with missing rungs, so the problem is at the top.</span></button>
+        <p class="why">Not the image quoted.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>A pipe with leaks at every joint along its span, starting with a high-pressure surge of young women and ending with a trickle at the spigot. So there is no single point of failure.</span></button>
+        <p class="why">Every joint leaks, which is why no one fix repairs it. Her three-part summary was getting in, staying in, getting on, and she added that the intake matters too: women have to get into the pipe in the first place.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>A funnel, so the problem is that too few women apply.</span></button>
+        <p class="why">Intake is one part of her point, and the quotation is about losses all the way along.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>A closed valve at the end, so the problem is promotion to senior roles.</span></button>
+        <p class="why">Senior roles are where the trickle shows, and the losses happen throughout.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">The quotation names a leak at every joint, which rules out any single-cause answer.</div>
+    <div class="panel ans"><span class="lt">B.</span> Every joint leaks, which is why no one fix repairs it. Her three-part summary was getting in, staying in, getting on, and she added that the intake matters too: women have to get into the pipe in the first place.</div>
+  </li>
+
+  <li class="q" id="q11" data-a="2">
+    <p class="topic">Discrimination &middot; Wenneras and Wold</p>
+    <p class="stem"><span class="n">11</span> Peer review scores for postdoctoral fellowships at the Swedish Medical Research Council were studied in 2001. What did it take for a woman to be scored as competent as a man?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>A recommendation from a senior male colleague.</span></button>
+        <p class="why">Not what the study measured.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>Roughly three extra papers in <i>Nature</i> or <i>Science</i>, or about 20 extra papers in an excellent specialist journal.</span></button>
+        <p class="why">The number is the thing to carry, because it converts a vague claim about bias into a measured quantity. Note what makes it powerful: peer review is the mechanism science uses to be fair, so the bias is inside the correction itself.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>A doctorate from a more prestigious institution.</span></button>
+        <p class="why">Not the finding.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>Nothing. The study found scores were equal.</span></button>
+        <p class="why">The study found men's accomplishments rated as overwhelmingly more valuable than apparently equivalent ones by women.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">The finding is a number, and the number is what makes it quotable.</div>
+    <div class="panel ans"><span class="lt">B.</span> The number is the thing to carry, because it converts a vague claim about bias into a measured quantity. Note what makes it powerful: peer review is the mechanism science uses to be fair, so the bias is inside the correction itself.</div>
+  </li>
+
+  <li class="q" id="q12" data-a="2">
+    <p class="topic">Discrimination &middot; how it works in practice</p>
+    <p class="stem"><span class="n">12</span> How did she say young female scientists are discriminated against, and why do small differences matter?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>Through open refusal of appointments, which is rare and so has little effect.</span></button>
+        <p class="why">She described something that works without anyone refusing anything.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>Smaller labs, worse startup conditions such as lower grants or salary and more teaching in place of research, and exclusion from informal networks. Where competition is strong, cumulative advantage turns small irritants into enough to keep women from getting on.</span></button>
+        <p class="why">Cole and Singer 1991. The mechanism is the one from the first half of the lecture, applied: each difference looks trivial and is shrugged off, and because advantage compounds, trivial differences at the start produce large gaps later. The doctoral student quoted on the slide gives the network version: nobody ever thought to ask her a technical question.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>Through formal quotas that cap the number of women hired.</span></button>
+        <p class="why">No such quotas are described.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>Through explicitly hostile supervisors.</span></button>
+        <p class="why">Her examples are structural and not about individual hostility.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">The answer has to connect to cumulative advantage from the first half of the lecture.</div>
+    <div class="panel ans"><span class="lt">B.</span> Cole and Singer 1991. The mechanism is the one from the first half of the lecture, applied: each difference looks trivial and is shrugged off, and because advantage compounds, trivial differences at the start produce large gaps later. The doctoral student quoted on the slide gives the network version: nobody ever thought to ask her a technical question.</div>
+  </li>
+
+  <li class="q" id="q13" data-a="3">
+    <p class="topic">Discrimination &middot; the maths gene</p>
+    <p class="stem"><span class="n">13</span> Claims have been made about a biological propensity explaining boys' better results in mathematics, and Harvard's president invoked biology in 2005. What was her verdict?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>The claims are correct and explain most of the gap.</span></button>
+        <p class="why">The lecture rejects them.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>The claims are untestable and so neither true nor false.</span></button>
+        <p class="why">She gave a reason they fail, which is stronger than calling them untestable.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>Genes only ever act in environments, so such claims are ideological statements. They also run against recent trends, where boys' and girls' mathematics scores are converging.</span></button>
+        <p class="why">Two separate objections and it is worth holding both. The first is conceptual: there is no such thing as a genetic effect outside an environment, so a claim about genes alone is a claim about nothing. The second is empirical: the gap has been shrinking, and genes do not change in thirty years.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>The claims are irrelevant because women outperform men in science overall.</span></button>
+        <p class="why">Not a claim she made.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">She gave one objection about what a gene can mean and one about what the test scores have been doing.</div>
+    <div class="panel ans"><span class="lt">C.</span> Two separate objections and it is worth holding both. The first is conceptual: there is no such thing as a genetic effect outside an environment, so a claim about genes alone is a claim about nothing. The second is empirical: the gap has been shrinking, and genes do not change in thirty years.</div>
+  </li>
+
+  <li class="q" id="q14" data-a="2">
+    <p class="topic">Discrimination &middot; the conclusion</p>
+    <p class="stem"><span class="n">14</span> What was her conclusion at the end of the discrimination lecture?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>There is one principal cause, which is hiring.</span></button>
+        <p class="why">She said directly that there is no one reason.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>There is no one reason that keeps women out of science. Science looks much more like a boys' club than a meritocracy, and those in elite positions produce more because of a combination of competitive advantages.</span></button>
+        <p class="why">Notice that the conclusion of the second half is the conclusion of the first half with gender added. Cumulative advantage explains elite productivity in general, and discrimination is one more thing that compounds.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>The problem has been solved by anti-discrimination law.</span></button>
+        <p class="why">Her 2005 and 2006 figures are given to show it has not.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>Women leave science by choice, so the distribution reflects preference.</span></button>
+        <p class="why">The argument is built against this reading.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">Her conclusion joins the two halves of the lecture, the stratification half and the discrimination half.</div>
+    <div class="panel ans"><span class="lt">B.</span> Notice that the conclusion of the second half is the conclusion of the first half with gender added. Cumulative advantage explains elite productivity in general, and discrimination is one more thing that compounds.</div>
+  </li>
+
+  <li class="q" id="q15" data-a="2">
+    <p class="topic">Social construction &middot; Hacking</p>
+    <p class="stem"><span class="n">15</span> Ian Hacking wrote on constructivism in 1999. What is the core of constructivism set against realism, in her notes?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>Scientific theories are made up and have nothing to do with the world.</span></button>
+        <p class="why">The overstatement. Nothing in the lecture denies that theories answer to the world.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>Any given theory is not the only one that could have been established, so the success of a theory is not by itself evidence for it. It could have been established another way.</span></button>
+        <p class="why">The claim is about what success proves. A working theory shows that this arrangement works, and not that no other arrangement would have. That is why a constructivist can accept every result of science and still refuse the inference from it works to it is the truth.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>Scientists construct their instruments, and therefore their results.</span></button>
+        <p class="why">Instruments appear in the lecture and this is not the Hacking claim.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>Only social facts are constructed; natural facts are discovered.</span></button>
+        <p class="why">The argument she presents applies to scientific facts too.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">The claim concerns what a theory's working proves, and what it leaves open.</div>
+    <div class="panel ans"><span class="lt">B.</span> The claim is about what success proves. A working theory shows that this arrangement works, and not that no other arrangement would have. That is why a constructivist can accept every result of science and still refuse the inference from it works to it is the truth.</div>
+  </li>
+
+  <li class="q" id="q16" data-a="2">
+    <p class="topic">Social construction &middot; realism</p>
+    <p class="stem"><span class="n">16</span> What is the realist position, as her notes state it?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>The view that one should accept a situation as it is and not try to change it.</span></button>
+        <p class="why">This is the everyday use of the word realism and it is a different thing entirely. Worth separating, because the two meanings share one word.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>The intuition that truths depend mostly on the natural world and only slightly on the people who articulate them: there is a way the world is, and it is possible to discover it and represent it accurately.</span></button>
+        <p class="why">Three parts: the world has a definite way it is, we can find it out, and we can represent it accurately. A constructivist can accept the first and still dispute the second and third.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>The view that only what can be measured is real.</span></button>
+        <p class="why">Closer to positivism.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>The view that scientific theories are useful fictions.</span></button>
+        <p class="why">That is instrumentalism, and it is the opposite of realism.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">One of these is the ordinary English sense of the word and the trap in the question.</div>
+    <div class="panel ans"><span class="lt">B.</span> Three parts: the world has a definite way it is, we can find it out, and we can represent it accurately. A constructivist can accept the first and still dispute the second and third.</div>
+  </li>
+
+  <li class="q" id="q17" data-a="2">
+    <p class="topic">Social construction &middot; the sociology of knowledge</p>
+    <p class="stem"><span class="n">17</span> How does something become a real social institution, on the account given?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>By being written into law.</span></button>
+        <p class="why">Law is one way and the account given is more general.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>Institutions exist because enough people act as if they exist, which means they cannot simply be wished away. Her example was polite society, or polite behaviour.</span></button>
+        <p class="why">The conditions listed: knowledge of a thing encourages behaviour that increases other people's tendency to act as though it exists, there is reasonably common knowledge of it, and that knowledge is transmitted. Politeness is a good test case, since there is no law requiring it and no building that houses it, and it still constrains everybody.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>By being discovered to correspond to a natural fact.</span></button>
+        <p class="why">The account is explicitly about things that are not given by nature.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>By being agreed on in an explicit social contract.</span></button>
+        <p class="why">No agreement is required on this account, only behaviour.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">Her example was something with no law behind it that everyone still obeys.</div>
+    <div class="panel ans"><span class="lt">B.</span> The conditions listed: knowledge of a thing encourages behaviour that increases other people's tendency to act as though it exists, there is reasonably common knowledge of it, and that knowledge is transmitted. Politeness is a good test case, since there is no law requiring it and no building that houses it, and it still constrains everybody.</div>
+  </li>
+
+  <li class="q" id="q18" data-a="3">
+    <p class="topic">Social construction &middot; why gender counts as real</p>
+    <p class="stem"><span class="n">18</span> The passage she quoted says gender is real. On what grounds?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>Because it is determined by biology.</span></button>
+        <p class="why">The passage says genders are undoubtedly not simply given by nature.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>Because it is recognised in law.</span></button>
+        <p class="why">Not the argument given.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>Because it is difficult not to take account of it. Gender structures create constraints and resources people have to reckon with, and treating people as gendered tends to create gendered people. Genders have causal powers, which is probably the best sign of reality we have.</span></button>
+        <p class="why">The test offered for reality is causal power: a thing is real if it makes a difference to what happens. The loop in the middle is the mechanism, since treating people as gendered produces gendered people, which then justifies the treatment. Historical research and differences between cultures show it is not simply given by nature.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>Because every known society has had it in the same form.</span></button>
+        <p class="why">The passage appeals to divergences between cultures, which is the opposite.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">The passage names one test for whether something is real, and it is about effects.</div>
+    <div class="panel ans"><span class="lt">C.</span> The test offered for reality is causal power: a thing is real if it makes a difference to what happens. The loop in the middle is the mechanism, since treating people as gendered produces gendered people, which then justifies the treatment. Historical research and differences between cultures show it is not simply given by nature.</div>
+  </li>
+
+  <li class="q" id="q19" data-a="1">
+    <p class="topic">Social construction &middot; contingently real</p>
+    <p class="stem"><span class="n">19</span> Knowledge, methods, epistemologies, disciplinary boundaries and styles of work are called real social objects, and contingently real. What does contingently real mean?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>They are real, and they did not have to be this way. They were built out of something and could have been built differently.</span></button>
+        <p class="why">Contingent means it could have been otherwise. The boundary between chemistry and physics is real, since it decides who gets hired into which department and whose paper gets reviewed by whom, and nothing in nature required the line to fall where it does.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>They are only real to the people who believe in them.</span></button>
+        <p class="why">Being real for some people and not others is a different claim, and these objects constrain everyone in the field.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>They are real only until they are disproved.</span></button>
+        <p class="why">Disciplinary boundaries are not the kind of thing that gets disproved.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>They are not really real, and the phrase is a hedge.</span></button>
+        <p class="why">The word real in the phrase is meant seriously, which is the point of it.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">Contingent is the opposite of necessary. Ask whether it had to be this way.</div>
+    <div class="panel ans"><span class="lt">A.</span> Contingent means it could have been otherwise. The boundary between chemistry and physics is real, since it decides who gets hired into which department and whose paper gets reviewed by whom, and nothing in nature required the line to fall where it does.</div>
+  </li>
+
+  <li class="q" id="q20" data-a="3">
+    <p class="topic">Social construction &middot; the laboratory</p>
+    <p class="stem"><span class="n">20</span> Karin Knorr Cetina wrote that nature is not to be found in the laboratory. What did she mean?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>That laboratory results are fabricated.</span></button>
+        <p class="why">A charge of fraud, and not her claim.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>That laboratories study models and simulations, and never the real thing.</span></button>
+        <p class="why">The materials in a laboratory are real. The point is what has been done to them.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>That to an outside observer the laboratory is a site of action from which nature is as much as possible excluded. It is a space of prepared materials, intentionally shaped and manipulated.</span></button>
+        <p class="why">Think of what is actually on a bench: purified reagents, bred strains, filtered air, controlled temperature. Every one of those is nature with most of nature removed. So a result from a laboratory is a result about a highly artificial arrangement, and getting it to apply outside is extra work and never automatic.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>That laboratories are too small to contain natural phenomena.</span></button>
+        <p class="why">Not an argument about scale.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">Picture what is physically on a laboratory bench, and ask how much of it you could find outdoors.</div>
+    <div class="panel ans"><span class="lt">C.</span> Think of what is actually on a bench: purified reagents, bred strains, filtered air, controlled temperature. Every one of those is nature with most of nature removed. So a result from a laboratory is a result about a highly artificial arrangement, and getting it to apply outside is extra work and never automatic.</div>
+  </li>
+
+  <li class="q" id="q21" data-a="2">
+    <p class="topic">Social construction &middot; how theories get built</p>
+    <p class="stem"><span class="n">21</span> What is meant by saying scientific theories are constructed with reference to data but are not implied by the data?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>The data are usually wrong, so theories go beyond them.</span></button>
+        <p class="why">The claim holds even when the data are perfect.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>A theory is built on real observations, and the observations alone do not determine which theory you should build. More than one theory fits the same fixed points.</span></button>
+        <p class="why">Kevin's own gloss in his notes says it plainly: a theory is based on real observations, and the observations alone do not automatically tell you exactly what theory to create. Her image was geometrical, making patterns appear given the fixed points that practice produces, the way more than one curve passes through the same scatter of dots.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>Theories come first and data are gathered to support them.</span></button>
+        <p class="why">The order described runs from data to representation.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>Data are theory-laden, so there are no observations independent of theory.</span></button>
+        <p class="why">A real position in the field, and a different claim from the one made here.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">Picture a handful of dots on a page and ask how many curves pass through all of them.</div>
+    <div class="panel ans"><span class="lt">B.</span> Kevin's own gloss in his notes says it plainly: a theory is based on real observations, and the observations alone do not automatically tell you exactly what theory to create. Her image was geometrical, making patterns appear given the fixed points that practice produces, the way more than one curve passes through the same scatter of dots.</div>
+  </li>
+
+  <li class="q" id="q22" data-a="2">
+    <p class="topic">Social construction &middot; heterogeneous construction</p>
+    <p class="stem"><span class="n">22</span> What is heterogeneous engineering, in Law's sense?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>Engineering that combines several branches, such as mechanical and electrical.</span></button>
+        <p class="why">Heterogeneous here means mixing kinds of thing, and not mixing branches of engineering.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>Building the artifact and building the environment in which it can function at the same time, by enrolling raw materials, skills, knowledge, capital and people who may not be immediately compatible.</span></button>
+        <p class="why">Neither half can usually be done on its own. The network is heterogeneous because it joins isolated parts of the material and the social world: equipment, established knowledge, patrons, money, institutions. And no single piece determines the shape of the whole, which is why a better device does not win by being better.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>Designing a technology to work in any environment without modification.</span></button>
+        <p class="why">The opposite of the claim, which is that the environment has to be built too.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>Combining several incompatible technologies into one product.</span></button>
+        <p class="why">Not the sense of the term.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">The word heterogeneous points at the mixture of material things and social things in one network.</div>
+    <div class="panel ans"><span class="lt">B.</span> Neither half can usually be done on its own. The network is heterogeneous because it joins isolated parts of the material and the social world: equipment, established knowledge, patrons, money, institutions. And no single piece determines the shape of the whole, which is why a better device does not win by being better.</div>
+  </li>
+
+  <li class="q" id="q23" data-a="2">
+    <p class="topic">Social construction &middot; co-production</p>
+    <p class="stem"><span class="n">23</span> Science and social order are said to be co-produced. What does that mean, and what was the example?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>Science is produced by society, so social forces fully determine its content.</span></button>
+        <p class="why">A one-way claim, and co-production runs both ways.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>Scientific knowledge and social arrangements make each other. Good climate science depends on policies that fund it, and ideas of health and disease are defined by classifications of disease, so ADHD can be framed as a mental disorder or as extreme procrastination.</span></button>
+        <p class="why">Both directions at once. Researchers need funding to study climate change, so the policy produces the science, and the science is then used to justify the policy. The ADHD case shows the same loop in a classification: the category decides who counts as ill, and who counts as ill is then evidence that the category tracks something.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>Two laboratories producing the same result independently.</span></button>
+        <p class="why">Replication, and a different idea.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>Scientists and engineers collaborating on a shared product.</span></button>
+        <p class="why">Not the sense of co-production used here.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">The prefix co means the causation runs in both directions at once.</div>
+    <div class="panel ans"><span class="lt">B.</span> Both directions at once. Researchers need funding to study climate change, so the policy produces the science, and the science is then used to justify the policy. The ADHD case shows the same loop in a classification: the category decides who counts as ill, and who counts as ill is then evidence that the category tracks something.</div>
+  </li>
+
+  <li class="q" id="q24" data-a="3">
+    <p class="topic">The construction of kinds</p>
+    <p class="stem"><span class="n">24</span> On the construction of kinds, what separates the nominalist from the realist?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>The nominalist thinks classifications are useful; the realist thinks they are useless.</span></button>
+        <p class="why">Both sides think classification works. They disagree about why.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>The nominalist studies names and the realist studies things, so they are doing different jobs.</span></button>
+        <p class="why">They are answering one question, about whether the categories were found or made.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>The nominalist says kinds are human impositions, even where we share classifications easily, so the objects of classification are mental and linguistic. The realist says kinds are real features of the world.</span></button>
+        <p class="why">Kevin flagged this one as examinable while it was being taught. The nominalist's hard problem is that we agree on classifications so easily, which looks like evidence of tracking something real; the answer is that shared training explains the agreement. Behind it is Hacking: another theory could have been established, so success is not proof.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>The nominalist denies that the external world exists.</span></button>
+        <p class="why">The overstatement. The claim is about our categories and leaves alone the question of whether there is anything out there.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">Both camps agree that classifying works. The disagreement is about what makes it work.</div>
+    <div class="panel ans"><span class="lt">C.</span> Kevin flagged this one as examinable while it was being taught. The nominalist's hard problem is that we agree on classifications so easily, which looks like evidence of tracking something real; the answer is that shared training explains the agreement. Behind it is Hacking: another theory could have been established, so success is not proof.</div>
+  </li>
+
+  <li class="q" id="q25" data-a="2">
+    <p class="topic">Social construction &middot; the conclusion</p>
+    <p class="stem"><span class="n">25</span> What did she say at the end about where science gets its power?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>From the authority of its institutions.</span></button>
+        <p class="why">Institutions appear in the lecture and this is not her conclusion.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>From its ability to manipulate nature and measure nature's reactions, and to translate those measurements across time and space to other laboratories and other contexts. Laboratories and technology contribute to objectivity and objective knowledge.</span></button>
+        <p class="why">The second half is the one that answers the week. After a lecture arguing that laboratories exclude nature and that facts are constructed, she ends by saying those same laboratories produce objectivity. The construction claim is about how objective knowledge gets made, and not a denial that it exists.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>From the fact that its theories are true.</span></button>
+        <p class="why">The lecture spends its length arguing that truth is not what explains the power here.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>From public trust, which is why funding follows reputation.</span></button>
+        <p class="why">A point from the first half of the week, and not this conclusion.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">Her last line gives laboratories a positive role, which is a surprise after an hour of construction talk.</div>
+    <div class="panel ans"><span class="lt">B.</span> The second half is the one that answers the week. After a lecture arguing that laboratories exclude nature and that facts are constructed, she ends by saying those same laboratories produce objectivity. The construction claim is about how objective knowledge gets made, and not a denial that it exists.</div>
+  </li>
+
+  </ol>
+
+  <div class="finish">
+    <button type="button" class="big" id="check">Check my answers</button>
+    <div class="result" id="result">
+      <div class="big-score" id="bigscore"></div>
+      <p class="note" id="resnote"></p>
+      <div class="jump" id="jump"></div>
+    </div>
+  </div>
+</div>
+
+<div class="bar"><div class="in">
+  <span class="tick" id="tick"></span>
+  <button type="button" id="reset">Start over</button>
+</div></div>
+
+<script>
+(function(){
+  var KEY='phi2394-practice-w4-v1';
+  var qs=[].slice.call(document.querySelectorAll('li.q'));
+  var picked={},checked=false;
+  try{picked=JSON.parse(localStorage.getItem(KEY)||'{}')||{};}catch(e){picked={};}
+
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(picked));}catch(e){}}
+
+  function answered(){var n=0;qs.forEach(function(q,i){if(picked[i]!=null)n++;});return n;}
+  function correct(){var n=0;qs.forEach(function(q,i){if(picked[i]===+q.dataset.a)n++;});return n;}
+
+  function tick(){
+    document.getElementById('tick').innerHTML=
+      answered()+' of '+qs.length+' answered'+(checked?' <i>&middot; '+correct()+' right</i>':'');
+  }
+
+  function paint(q,i){
+    var p=picked[i],a=+q.dataset.a;
+    q.querySelectorAll('button.opt').forEach(function(b,k){
+      b.classList.remove('sel','pick-right','pick-wrong');
+      b.disabled=checked;
+      if(!checked){ if(p===k+1) b.classList.add('sel'); return; }
+      if(k+1===a) b.classList.add('pick-right');
+      else if(k+1===p) b.classList.add('pick-wrong');
+    });
+    q.classList.toggle('checked',checked);
+    q.classList.toggle('ok',checked&&p===a);
+    q.classList.toggle('no',checked&&p!==a);
+  }
+
+  qs.forEach(function(q,i){
+    q.querySelectorAll('button.opt').forEach(function(b,k){
+      b.addEventListener('click',function(){
+        if(checked)return;
+        picked[i]=k+1;save();paint(q,i);tick();
+      });
+    });
+    var h=q.querySelector('.hint'),an=q.querySelector('.ans');
+    q.querySelector('.t-hint').addEventListener('click',function(){
+      h.classList.toggle('open');this.classList.toggle('on',h.classList.contains('open'));
+    });
+    q.querySelector('.t-ans').addEventListener('click',function(){
+      an.classList.toggle('open');this.classList.toggle('on',an.classList.contains('open'));
+      q.classList.toggle('shown',an.classList.contains('open'));
+    });
+    paint(q,i);
+  });
+  tick();
+
+  document.getElementById('check').addEventListener('click',function(){
+    checked=true;
+    qs.forEach(paint);tick();
+    var n=correct(),un=qs.length-answered();
+    document.getElementById('bigscore').textContent=n+' out of '+qs.length;
+    var pct=Math.round(n/qs.length*100);
+    var msg='That is '+pct+' per cent. ';
+    if(un>0) msg+=un+' question'+(un===1?' was':'s were')+' left blank and counted as wrong. ';
+    msg+=n===qs.length?'Nothing left to restudy here.'
+        :'Read the reasoning under every red question, including why the option you picked is wrong.';
+    document.getElementById('resnote').textContent=msg;
+    var j=document.getElementById('jump');j.innerHTML='';
+    qs.forEach(function(q,i){
+      if(picked[i]===+q.dataset.a)return;
+      var a=document.createElement('a');a.href='#q'+(i+1);a.textContent='Q'+(i+1);j.appendChild(a);
+    });
+    document.getElementById('result').classList.add('open');
+    document.getElementById('result').scrollIntoView({behavior:'smooth',block:'center'});
+  });
+
+  document.getElementById('reset').addEventListener('click',function(){
+    picked={};checked=false;save();
+    qs.forEach(function(q,i){
+      paint(q,i);
+      q.classList.remove('shown');
+      q.querySelectorAll('.panel').forEach(function(p){p.classList.remove('open');});
+      q.querySelectorAll('.tool').forEach(function(t){t.classList.remove('on');});
+    });
+    document.getElementById('result').classList.remove('open');
+    tick();window.scrollTo({top:0,behavior:'smooth'});
+  });
+})();
+</script>
+</html>
