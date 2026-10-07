@@ -5,6 +5,7 @@ sys.path.insert(0, HERE)
 from bank_week2 import WEEK2
 from bank_week3 import WEEK3
 from bank_week4 import WEEK4
+from bank_mixed import MIXED
 
 LETTERS = "ABCD"
 
@@ -68,15 +69,23 @@ HEAD = """<!doctype html>
   button.opt .lt{font-family:var(--mono);font-size:13px;color:var(--muted);flex:none;padding-top:1px}
   button.opt.sel{background:var(--accent-wash);border-color:var(--accent)}
   button.opt.sel .lt{color:var(--accent)}
-  li.q.checked button.opt{cursor:default}
-  li.q.checked button.opt.pick-right{background:var(--good-wash);border-color:var(--good)}
-  li.q.checked button.opt.pick-right .lt{color:var(--good)}
-  li.q.checked button.opt.pick-wrong{background:var(--bad-wash);border-color:var(--bad)}
-  li.q.checked button.opt.pick-wrong .lt{color:var(--bad)}
-  .why{display:none;font-size:15px;color:var(--ink-soft);padding:7px 13px 2px 36px;max-width:66ch}
-  li.q.checked .why,li.q.shown .why{display:block}
-  .why b{color:var(--ink)}
-  @media (max-width:560px){.why{padding-left:14px}}
+  li.q.done button.opt{cursor:default}
+  li.q.done button.opt.pick-right{background:var(--good-wash);border-color:var(--good)}
+  li.q.done button.opt.pick-right .lt{color:var(--good)}
+  li.q.done button.opt.pick-wrong{background:var(--bad-wash);border-color:var(--bad)}
+  li.q.done button.opt.pick-wrong .lt{color:var(--bad)}
+  .why{display:none}
+  .verdict{display:none;flex-direction:column;gap:9px;font-size:15.5px;line-height:1.5;
+           padding:13px 16px;max-width:70ch;border-left:3px solid var(--rule);background:var(--sunk)}
+  li.q.done .verdict{display:flex}
+  li.q.done.ok .verdict{border-left-color:var(--good)}
+  li.q.done.no .verdict{border-left-color:var(--bad)}
+  .verdict p{margin:0;color:var(--ink-soft);max-width:68ch}
+  .verdict b{color:var(--ink)}
+  .verdict .head{font-family:var(--mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase}
+  li.q.ok .verdict .head{color:var(--good)}
+  li.q.no .verdict .head{color:var(--bad)}
+  .verdict .yours{padding-top:3px;border-top:1px solid var(--rule)}
 
   .tools{display:flex;gap:8px;flex-wrap:wrap}
   button.tool{display:inline-flex;align-items:center;gap:7px;font:inherit;font-family:var(--mono);
@@ -129,13 +138,14 @@ HEAD = """<!doctype html>
   </div>
 
   <div class="how">
-    <p><b>Answer every question before opening anything.</b> Guessing first and then being
+    <p><b>Commit to an answer before you reach for the hint.</b> Guessing first and then being
       corrected beats reading the answer first. That is the pretesting effect, and it is the
       single largest free gain available tonight.</p>
     <p><b>The hint tells you where to look without telling you the answer.</b> Use it when you are
       stuck, and skip it when you are not.</p>
-    <p><b>Then press check my answers at the bottom.</b> Every option gets its reasoning, including
-      the ones you did not pick, because the wrong options are where the learning is.</p>
+    <p><b>The answer appears the moment you click.</b> You get the reasoning for the right option,
+      and when you pick a wrong one you also get why that particular option fails. There is a
+      running score at the bottom of the screen.</p>
   </div>
 
   <ol class="quiz" id="quiz">
@@ -150,10 +160,9 @@ __OPTS__
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">__HINT__</div>
-    <div class="panel ans"><span class="lt">__ALET__.</span> __AWHY__</div>
+    <div class="verdict"></div>
   </li>
 """
 
@@ -164,7 +173,7 @@ TAIL = """
   </ol>
 
   <div class="finish">
-    <button type="button" class="big" id="check">Check my answers</button>
+    <button type="button" class="big" id="check">Show my score</button>
     <div class="result" id="result">
       <div class="big-score" id="bigscore"></div>
       <p class="note" id="resnote"></p>
@@ -180,84 +189,91 @@ TAIL = """
 
 <script>
 (function(){
-  var KEY='__KEY__';
+  var KEY='__KEY__', L='ABCD';
   var qs=[].slice.call(document.querySelectorAll('li.q'));
-  var picked={},checked=false;
+  var picked={};
   try{picked=JSON.parse(localStorage.getItem(KEY)||'{}')||{};}catch(e){picked={};}
-
   function save(){try{localStorage.setItem(KEY,JSON.stringify(picked));}catch(e){}}
-
   function answered(){var n=0;qs.forEach(function(q,i){if(picked[i]!=null)n++;});return n;}
   function correct(){var n=0;qs.forEach(function(q,i){if(picked[i]===+q.dataset.a)n++;});return n;}
-
   function tick(){
-    document.getElementById('tick').innerHTML=
-      answered()+' of '+qs.length+' answered'+(checked?' <i>&middot; '+correct()+' right</i>':'');
+    var n=answered();
+    document.getElementById('tick').innerHTML =
+      n ? n+' of '+qs.length+' answered <i>&middot; '+correct()+' right</i>'
+        : 'Pick an option to begin';
   }
-
+  function esc(x){return x;}
+  function verdict(q,i){
+    var p=picked[i], a=+q.dataset.a;
+    var whys=[].slice.call(q.querySelectorAll('p.why')).map(function(w){return w.innerHTML;});
+    var v=q.querySelector('.verdict');
+    if(p==null){v.innerHTML='';return;}
+    var html='';
+    if(p===a){
+      html += '<p class="head">Correct &middot; '+L[a-1]+'</p>';
+      html += '<p>'+esc(whys[a-1])+'</p>';
+    }else{
+      html += '<p class="head">Not quite &middot; the answer is '+L[a-1]+'</p>';
+      html += '<p><b>'+L[a-1]+'.</b> '+esc(whys[a-1])+'</p>';
+      html += '<p class="yours"><b>Why '+L[p-1]+' fails.</b> '+esc(whys[p-1])+'</p>';
+    }
+    v.innerHTML=html;
+  }
   function paint(q,i){
-    var p=picked[i],a=+q.dataset.a;
+    var p=picked[i], a=+q.dataset.a, done=p!=null;
     q.querySelectorAll('button.opt').forEach(function(b,k){
       b.classList.remove('sel','pick-right','pick-wrong');
-      b.disabled=checked;
-      if(!checked){ if(p===k+1) b.classList.add('sel'); return; }
+      b.disabled=done;
+      if(!done)return;
       if(k+1===a) b.classList.add('pick-right');
       else if(k+1===p) b.classList.add('pick-wrong');
     });
-    q.classList.toggle('checked',checked);
-    q.classList.toggle('ok',checked&&p===a);
-    q.classList.toggle('no',checked&&p!==a);
+    q.classList.toggle('done',done);
+    q.classList.toggle('ok',done&&p===a);
+    q.classList.toggle('no',done&&p!==a);
+    verdict(q,i);
   }
-
   qs.forEach(function(q,i){
     q.querySelectorAll('button.opt').forEach(function(b,k){
       b.addEventListener('click',function(){
-        if(checked)return;
-        picked[i]=k+1;save();paint(q,i);tick();
+        if(picked[i]!=null)return;
+        picked[i]=k+1; save(); paint(q,i); tick();
       });
     });
-    var h=q.querySelector('.hint'),an=q.querySelector('.ans');
+    var h=q.querySelector('.hint');
     q.querySelector('.t-hint').addEventListener('click',function(){
-      h.classList.toggle('open');this.classList.toggle('on',h.classList.contains('open'));
-    });
-    q.querySelector('.t-ans').addEventListener('click',function(){
-      an.classList.toggle('open');this.classList.toggle('on',an.classList.contains('open'));
-      q.classList.toggle('shown',an.classList.contains('open'));
+      h.classList.toggle('open'); this.classList.toggle('on',h.classList.contains('open'));
     });
     paint(q,i);
   });
   tick();
 
   document.getElementById('check').addEventListener('click',function(){
-    checked=true;
-    qs.forEach(paint);tick();
-    var n=correct(),un=qs.length-answered();
+    var n=correct(), un=qs.length-answered();
     document.getElementById('bigscore').textContent=n+' out of '+qs.length;
-    var pct=Math.round(n/qs.length*100);
-    var msg='That is '+pct+' per cent. ';
-    if(un>0) msg+=un+' question'+(un===1?' was':'s were')+' left blank and counted as wrong. ';
-    msg+=n===qs.length?'Nothing left to restudy here.'
-        :'Read the reasoning under every red question, including why the option you picked is wrong.';
+    var msg='That is '+Math.round(n/qs.length*100)+' per cent. ';
+    if(un>0) msg+=un+' question'+(un===1?' is':'s are')+' still unanswered and counted as wrong. ';
+    msg+= n===qs.length ? 'Nothing left to restudy here.'
+        : 'The jumps below go straight to the ones you missed.';
     document.getElementById('resnote').textContent=msg;
-    var j=document.getElementById('jump');j.innerHTML='';
+    var j=document.getElementById('jump'); j.innerHTML='';
     qs.forEach(function(q,i){
       if(picked[i]===+q.dataset.a)return;
-      var a=document.createElement('a');a.href='#q'+(i+1);a.textContent='Q'+(i+1);j.appendChild(a);
+      var a=document.createElement('a'); a.href='#q'+(i+1); a.textContent='Q'+(i+1); j.appendChild(a);
     });
     document.getElementById('result').classList.add('open');
     document.getElementById('result').scrollIntoView({behavior:'smooth',block:'center'});
   });
 
   document.getElementById('reset').addEventListener('click',function(){
-    picked={};checked=false;save();
+    picked={}; save();
     qs.forEach(function(q,i){
       paint(q,i);
-      q.classList.remove('shown');
-      q.querySelectorAll('.panel').forEach(function(p){p.classList.remove('open');});
+      q.querySelectorAll('.panel').forEach(function(x){x.classList.remove('open');});
       q.querySelectorAll('.tool').forEach(function(t){t.classList.remove('on');});
     });
     document.getElementById('result').classList.remove('open');
-    tick();window.scrollTo({top:0,behavior:'smooth'});
+    tick(); window.scrollTo({top:0,behavior:'smooth'});
   });
 })();
 </script>
@@ -299,6 +315,12 @@ if __name__ == "__main__":
          "Week 4: the social construction of scientific knowledge",
          "Twenty-five questions on stratification and discrimination, then on what it means to say "
          "a fact is constructed.", "phi2394-practice-w4-v1"),
+        (MIXED, "exam-1/mixed.html", "PHI2394 Mixed Practice", "Mixed 25",
+         "PHI 2394 B00 &middot; exam 1 practice &middot; all four lectures",
+         "All four lectures at once",
+         "Twenty-five questions built straight from the eleven topics the professor named in her "
+         "exam review. This set jumps between weeks the way the real paper will.",
+         "phi2394-practice-mixed-v1"),
     ]:
         p, n = build(*args)
         print("built", os.path.relpath(p, REPO), n, "questions,", os.path.getsize(p), "bytes")

@@ -58,15 +58,23 @@
   button.opt .lt{font-family:var(--mono);font-size:13px;color:var(--muted);flex:none;padding-top:1px}
   button.opt.sel{background:var(--accent-wash);border-color:var(--accent)}
   button.opt.sel .lt{color:var(--accent)}
-  li.q.checked button.opt{cursor:default}
-  li.q.checked button.opt.pick-right{background:var(--good-wash);border-color:var(--good)}
-  li.q.checked button.opt.pick-right .lt{color:var(--good)}
-  li.q.checked button.opt.pick-wrong{background:var(--bad-wash);border-color:var(--bad)}
-  li.q.checked button.opt.pick-wrong .lt{color:var(--bad)}
-  .why{display:none;font-size:15px;color:var(--ink-soft);padding:7px 13px 2px 36px;max-width:66ch}
-  li.q.checked .why,li.q.shown .why{display:block}
-  .why b{color:var(--ink)}
-  @media (max-width:560px){.why{padding-left:14px}}
+  li.q.done button.opt{cursor:default}
+  li.q.done button.opt.pick-right{background:var(--good-wash);border-color:var(--good)}
+  li.q.done button.opt.pick-right .lt{color:var(--good)}
+  li.q.done button.opt.pick-wrong{background:var(--bad-wash);border-color:var(--bad)}
+  li.q.done button.opt.pick-wrong .lt{color:var(--bad)}
+  .why{display:none}
+  .verdict{display:none;flex-direction:column;gap:9px;font-size:15.5px;line-height:1.5;
+           padding:13px 16px;max-width:70ch;border-left:3px solid var(--rule);background:var(--sunk)}
+  li.q.done .verdict{display:flex}
+  li.q.done.ok .verdict{border-left-color:var(--good)}
+  li.q.done.no .verdict{border-left-color:var(--bad)}
+  .verdict p{margin:0;color:var(--ink-soft);max-width:68ch}
+  .verdict b{color:var(--ink)}
+  .verdict .head{font-family:var(--mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase}
+  li.q.ok .verdict .head{color:var(--good)}
+  li.q.no .verdict .head{color:var(--bad)}
+  .verdict .yours{padding-top:3px;border-top:1px solid var(--rule)}
 
   .tools{display:flex;gap:8px;flex-wrap:wrap}
   button.tool{display:inline-flex;align-items:center;gap:7px;font:inherit;font-family:var(--mono);
@@ -119,13 +127,14 @@
   </div>
 
   <div class="how">
-    <p><b>Answer every question before opening anything.</b> Guessing first and then being
+    <p><b>Commit to an answer before you reach for the hint.</b> Guessing first and then being
       corrected beats reading the answer first. That is the pretesting effect, and it is the
       single largest free gain available tonight.</p>
     <p><b>The hint tells you where to look without telling you the answer.</b> Use it when you are
       stuck, and skip it when you are not.</p>
-    <p><b>Then press check my answers at the bottom.</b> Every option gets its reasoning, including
-      the ones you did not pick, because the wrong options are where the learning is.</p>
+    <p><b>The answer appears the moment you click.</b> You get the reasoning for the right option,
+      and when you pick a wrong one you also get why that particular option fails. There is a
+      running score at the bottom of the screen.</p>
   </div>
 
   <ol class="quiz" id="quiz">
@@ -145,10 +154,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">Plato wrote twenty-six dialogues. This one is his long work about the ideal city.</div>
-    <div class="panel ans"><span class="lt">B.</span> Book seven of the <i>Republic</i>. Glaucon is the one being walked through the cave. She said there is a question on the text, the author and the name of the dialogue, so hold three facts: Plato wrote it, the dialogue is the <i>Republic</i>, and Plato never speaks in his own voice anywhere.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q2" data-a="3">
@@ -166,10 +174,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">If the eyes are not broken, what is the problem with them?</div>
-    <div class="panel ans"><span class="lt">C.</span> Her phrase on the slide was that education is turning around. The eyes already work. They are pointed at the wall. Sight is no good if you are not looking in the right place.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q3" data-a="3">
@@ -187,10 +194,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint"><i>Kalli</i> is the Greek for beautiful. <i>Polis</i> is the Greek for city.</div>
-    <div class="panel ans"><span class="lt">C.</span> <i>Kalli</i> means beautiful, so the most beautiful city. Foucault says the plague town has a political dream of strict division and regulation reaching into the smallest details of daily life. Plato wrote the attractive version of that dream.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q4" data-a="2">
@@ -208,10 +214,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">One of the two could do biology. Which one, and why does that follow from where he puts form?</div>
-    <div class="panel ans"><span class="lt">B.</span> The consequence is what to remember. Because Aristotle keeps form in the dog and the tree, he can go and dissect them, which is why she called him the first biologist. Plato's theory points away from the physical world.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q5" data-a="3">
@@ -229,10 +234,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint"><i>Physis</i> was defined in the lecture as implying one particular thing. What was it?</div>
-    <div class="panel ans"><span class="lt">C.</span> The question the whole Greek picture is organised around, and she said so twice. <i>Physis</i> implies movement. Plato answers with the Forms in a realm outside ours, Aristotle with form in the thing and a goal it moves toward.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q6" data-a="1">
@@ -250,10 +254,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">The word survives in English in <i>teleology</i>.</div>
-    <div class="panel ans"><span class="lt">A.</span> The word literally means end. Track it: Bacon attacks it as his central objection to Aristotle, Kuhn says history cannot be explained by what it led to, and she said explicitly that foundationalism is not like <i>telos</i>.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q7" data-a="4">
@@ -271,10 +274,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">Two of these four describe Plato's life.</div>
-    <div class="panel ans"><span class="lt">D.</span> 384 to 322 BCE, and she called him the first biologist. The non-citizenship is why he had to leave Athens at the end of his life.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q8" data-a="2">
@@ -292,10 +294,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">One of the two is where everything comes from. The other needs a person involved.</div>
-    <div class="panel ans"><span class="lt">B.</span> <i>Physis</i> is the origin and centre of all activity and it implies movement, which is why it answers the question about what causes things to move. Schadewaldt's whole complaint is that modern science pulled the two apart.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q9" data-a="2">
@@ -313,10 +314,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">One Greek word means plain experience. The other is the root of the English word <i>epistemology</i>.</div>
-    <div class="panel ans"><span class="lt">B.</span> The passage she quoted from page 29. <i>Techne</i> is productive knowledge, so it works on things that are still changing. That is what makes it lower than <i>episteme</i> and higher than raw experience.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q10" data-a="2">
@@ -334,10 +334,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">The prefix <i>a</i> means without. What is it without, given the knowledge in question still works?</div>
-    <div class="panel ans"><span class="lt">B.</span> Her gloss on the slide was that <i>atechnia</i> is a false idea of the thing, held confidently. Note that it can be rich and diverse and still be a blunder, which is the uncomfortable part.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q11" data-a="3">
@@ -355,10 +354,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">He praises the results in the same sentence as the complaint. So the complaint concerns what got left out.</div>
-    <div class="panel ans"><span class="lt">C.</span> His word is dualism, meaning a split into two things the Greeks held as one. <i>Physis</i> held form and motion, law and life, causality and purpose together. Keeping only the calculable half works extremely well and drops the rest.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q12" data-a="4">
@@ -376,10 +374,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">A dualism separates two things. Which two does he most want rejoined, given he keeps praising the results?</div>
-    <div class="panel ans"><span class="lt">D.</span> The dualism puts the observer outside what is observed, so the fix puts the observer back inside it. Carry this past the exam: weeks 5 and 6 make the same move under new names, situated knowledge and standpoint theory.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q13" data-a="1">
@@ -397,10 +394,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">Hearkening means listening. What does the quotation assume is out there to be listened to?</div>
-    <div class="panel ans"><span class="lt">A.</span> Her summary line, written under the quotation. It matters because it is the background assumption Plato and Aristotle are both working against: there is an order out there, and thinking well means listening to it.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q14" data-a="2">
@@ -418,10 +414,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">Count how many times Plato uses the word <i>I</i> in the <i>Republic</i>.</div>
-    <div class="panel ans"><span class="lt">B.</span> Which means you can never quote a line as Plato's own opinion. It is a character's. She ran the Academy point alongside it: twenty-six dialogues, and a school.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q15" data-a="2">
@@ -439,10 +434,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">Two of these four are real meanings of the word from other centuries. Which one is the one she defined?</div>
-    <div class="panel ans"><span class="lt">B.</span> Her definition. It is a method, which is why it belongs in a course on scientific method: Plato's answer to the question of how you find out anything at all. The cave is the picture of it, and dialectic is the procedure.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q16" data-a="2">
@@ -460,10 +454,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">The subjects are the two that deal in things you cannot touch.</div>
-    <div class="panel ans"><span class="lt">B.</span> Her quotation described them exactly that way. The geometry and astronomy matter: for Plato mathematics is a way to gain access to the abstract, which is the contrast she later drew with Bacon, for whom mathematics predicts what physical bodies will do.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q17" data-a="2">
@@ -481,10 +474,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint"><i>Meta</i> here means after. After what, and in what sense of after?</div>
-    <div class="panel ans"><span class="lt">B.</span> A filing decision became the name of a discipline. Worth having, because it is a small concrete case of the course thesis: a category in science got its name from a filing accident. The subject's own nature had nothing to do with it.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q18" data-a="1">
@@ -502,10 +494,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">The word for his position comes from the Greek <i>empeiria</i>, experience.</div>
-    <div class="panel ans"><span class="lt">A.</span> Empiricism means the senses are the original source of knowledge, from the Greek <i>empeiria</i>, experience. Its opposite is the view that reason alone gets you there, which is Plato. Bacon's version has teeth because he adds experiment.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q19" data-a="3">
@@ -523,10 +514,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">Where does a spider's web physically come from?</div>
-    <div class="panel ans"><span class="lt">C.</span> The dogmatists, in Bacon's word. The insult is precise: they produce elaborate systems out of themselves and take nothing in from the world. Ant collects and does not think, spider thinks and does not collect, bee does both. From <i>Novum Organum</i> I.95, quoted in full on her slide.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q20" data-a="2">
@@ -544,10 +534,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">Bacon was also critical of the alchemists. What do the Aristotelians and the alchemists have in common, in his eyes?</div>
-    <div class="panel ans"><span class="lt">B.</span> If everything already has a purpose built in, your job is to receive the order. Bacon wants you to go and get it, by experiment, which is why knowledge turns into power over the physical world.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q21" data-a="1">
@@ -565,10 +554,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">He is making a claim about which subject was treated as more important than which.</div>
-    <div class="panel ans"><span class="lt">A.</span> Her wording. The charge is about rank: studying nature was treated as a junior subject that served the questions people really cared about. Bacon wants it at the centre, because it is the part that produces power over the physical world.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q22" data-a="4">
@@ -586,10 +574,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">Which way does the causation run in his argument, from belief to tools or from tools to belief?</div>
-    <div class="panel ans"><span class="lt">D.</span> His chain: God is a creator and an architect, man is made in his image and told to rule the world as a creative cooperator, and Christian history runs in one direction toward a goal, so there is no time to lose. Therefore manual work is an essential and pressing form of worship.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q23" data-a="1">
@@ -607,10 +594,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">The usual image for it is a piece of machinery that keeps running after you wind it.</div>
-    <div class="panel ans"><span class="lt">A.</span> Once God winds the world up and steps back, the world is a mechanism, and taking it apart to see how it runs becomes a way of admiring the maker. That is how a religious worldview ends up licensing mechanical science.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q24" data-a="1">
@@ -628,10 +614,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">He is the one in this week who looks backwards for his model.</div>
-    <div class="panel ans"><span class="lt">A.</span> 1712 to 1778, French, shaped by the Enlightenment and the French Revolution. He is the counter-current in the week: an Enlightenment figure doubting that progress in the sciences and arts improved anyone's morals. His line that barbarous people are those who lack virtue is tied straight back to Plato, Socrates and Aristotle.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q25" data-a="2">
@@ -649,16 +634,15 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">One of the four died before the other three were born.</div>
-    <div class="panel ans"><span class="lt">B.</span> 1473 to 1543, 1561 to 1626, 1712 to 1778, 1748 to 1832. Her detail standard means centuries are enough: Copernicus is late fifteenth into the sixteenth, Bacon straddles 1600, and Rousseau and Bentham overlap in the eighteenth.</div>
+    <div class="verdict"></div>
   </li>
 
   </ol>
 
   <div class="finish">
-    <button type="button" class="big" id="check">Check my answers</button>
+    <button type="button" class="big" id="check">Show my score</button>
     <div class="result" id="result">
       <div class="big-score" id="bigscore"></div>
       <p class="note" id="resnote"></p>
@@ -674,84 +658,91 @@
 
 <script>
 (function(){
-  var KEY='phi2394-practice-w2-v1';
+  var KEY='phi2394-practice-w2-v1', L='ABCD';
   var qs=[].slice.call(document.querySelectorAll('li.q'));
-  var picked={},checked=false;
+  var picked={};
   try{picked=JSON.parse(localStorage.getItem(KEY)||'{}')||{};}catch(e){picked={};}
-
   function save(){try{localStorage.setItem(KEY,JSON.stringify(picked));}catch(e){}}
-
   function answered(){var n=0;qs.forEach(function(q,i){if(picked[i]!=null)n++;});return n;}
   function correct(){var n=0;qs.forEach(function(q,i){if(picked[i]===+q.dataset.a)n++;});return n;}
-
   function tick(){
-    document.getElementById('tick').innerHTML=
-      answered()+' of '+qs.length+' answered'+(checked?' <i>&middot; '+correct()+' right</i>':'');
+    var n=answered();
+    document.getElementById('tick').innerHTML =
+      n ? n+' of '+qs.length+' answered <i>&middot; '+correct()+' right</i>'
+        : 'Pick an option to begin';
   }
-
+  function esc(x){return x;}
+  function verdict(q,i){
+    var p=picked[i], a=+q.dataset.a;
+    var whys=[].slice.call(q.querySelectorAll('p.why')).map(function(w){return w.innerHTML;});
+    var v=q.querySelector('.verdict');
+    if(p==null){v.innerHTML='';return;}
+    var html='';
+    if(p===a){
+      html += '<p class="head">Correct &middot; '+L[a-1]+'</p>';
+      html += '<p>'+esc(whys[a-1])+'</p>';
+    }else{
+      html += '<p class="head">Not quite &middot; the answer is '+L[a-1]+'</p>';
+      html += '<p><b>'+L[a-1]+'.</b> '+esc(whys[a-1])+'</p>';
+      html += '<p class="yours"><b>Why '+L[p-1]+' fails.</b> '+esc(whys[p-1])+'</p>';
+    }
+    v.innerHTML=html;
+  }
   function paint(q,i){
-    var p=picked[i],a=+q.dataset.a;
+    var p=picked[i], a=+q.dataset.a, done=p!=null;
     q.querySelectorAll('button.opt').forEach(function(b,k){
       b.classList.remove('sel','pick-right','pick-wrong');
-      b.disabled=checked;
-      if(!checked){ if(p===k+1) b.classList.add('sel'); return; }
+      b.disabled=done;
+      if(!done)return;
       if(k+1===a) b.classList.add('pick-right');
       else if(k+1===p) b.classList.add('pick-wrong');
     });
-    q.classList.toggle('checked',checked);
-    q.classList.toggle('ok',checked&&p===a);
-    q.classList.toggle('no',checked&&p!==a);
+    q.classList.toggle('done',done);
+    q.classList.toggle('ok',done&&p===a);
+    q.classList.toggle('no',done&&p!==a);
+    verdict(q,i);
   }
-
   qs.forEach(function(q,i){
     q.querySelectorAll('button.opt').forEach(function(b,k){
       b.addEventListener('click',function(){
-        if(checked)return;
-        picked[i]=k+1;save();paint(q,i);tick();
+        if(picked[i]!=null)return;
+        picked[i]=k+1; save(); paint(q,i); tick();
       });
     });
-    var h=q.querySelector('.hint'),an=q.querySelector('.ans');
+    var h=q.querySelector('.hint');
     q.querySelector('.t-hint').addEventListener('click',function(){
-      h.classList.toggle('open');this.classList.toggle('on',h.classList.contains('open'));
-    });
-    q.querySelector('.t-ans').addEventListener('click',function(){
-      an.classList.toggle('open');this.classList.toggle('on',an.classList.contains('open'));
-      q.classList.toggle('shown',an.classList.contains('open'));
+      h.classList.toggle('open'); this.classList.toggle('on',h.classList.contains('open'));
     });
     paint(q,i);
   });
   tick();
 
   document.getElementById('check').addEventListener('click',function(){
-    checked=true;
-    qs.forEach(paint);tick();
-    var n=correct(),un=qs.length-answered();
+    var n=correct(), un=qs.length-answered();
     document.getElementById('bigscore').textContent=n+' out of '+qs.length;
-    var pct=Math.round(n/qs.length*100);
-    var msg='That is '+pct+' per cent. ';
-    if(un>0) msg+=un+' question'+(un===1?' was':'s were')+' left blank and counted as wrong. ';
-    msg+=n===qs.length?'Nothing left to restudy here.'
-        :'Read the reasoning under every red question, including why the option you picked is wrong.';
+    var msg='That is '+Math.round(n/qs.length*100)+' per cent. ';
+    if(un>0) msg+=un+' question'+(un===1?' is':'s are')+' still unanswered and counted as wrong. ';
+    msg+= n===qs.length ? 'Nothing left to restudy here.'
+        : 'The jumps below go straight to the ones you missed.';
     document.getElementById('resnote').textContent=msg;
-    var j=document.getElementById('jump');j.innerHTML='';
+    var j=document.getElementById('jump'); j.innerHTML='';
     qs.forEach(function(q,i){
       if(picked[i]===+q.dataset.a)return;
-      var a=document.createElement('a');a.href='#q'+(i+1);a.textContent='Q'+(i+1);j.appendChild(a);
+      var a=document.createElement('a'); a.href='#q'+(i+1); a.textContent='Q'+(i+1); j.appendChild(a);
     });
     document.getElementById('result').classList.add('open');
     document.getElementById('result').scrollIntoView({behavior:'smooth',block:'center'});
   });
 
   document.getElementById('reset').addEventListener('click',function(){
-    picked={};checked=false;save();
+    picked={}; save();
     qs.forEach(function(q,i){
       paint(q,i);
-      q.classList.remove('shown');
-      q.querySelectorAll('.panel').forEach(function(p){p.classList.remove('open');});
+      q.querySelectorAll('.panel').forEach(function(x){x.classList.remove('open');});
       q.querySelectorAll('.tool').forEach(function(t){t.classList.remove('on');});
     });
     document.getElementById('result').classList.remove('open');
-    tick();window.scrollTo({top:0,behavior:'smooth'});
+    tick(); window.scrollTo({top:0,behavior:'smooth'});
   });
 })();
 </script>
