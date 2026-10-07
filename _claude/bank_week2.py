@@ -102,7 +102,7 @@ WEEK2 = [
 ('Bacon &middot; his complaint about the ancients',
  'What did Bacon say had gone wrong with philosophy in Greece and Rome?',
  [('Ethics and politics dominated philosophy, with the consequence that natural philosophy performed the role of a servant.',
-   'Her wording. The charge is about rank: studying nature was treated as a junior subject that served the questions people really cared about. Bacon wants it at the centre, because it is the part that produces power over the physical world.'),
+   'The word to stop on is <b>servant</b>. A servant does what the household asks and nothing else. So in Greece and Rome, when anybody studied nature, they did it because an ethical or a political question needed an answer, and they stopped once it had one. Nature was never the subject. It was a supply of material for the subjects people actually cared about.<br><br><b>What went wrong, in Bacon\'s view:</b> this is why a thousand years of extremely clever people left almost nothing you could use. He rates the Greeks highly. His complaint is about where they aimed. The best minds spent their lives on how to live and how to govern, so nobody stayed on nature long enough for findings to pile up into anything. He wants natural philosophy promoted out of service and made the main business, because it is the part that gives you power over the physical world.'),
   ('They had no mathematics capable of describing motion.',
    'Not his complaint, and the Greeks had a great deal of mathematics.'),
   ("They wrote in dialogue form, which hides the author's own view.",
