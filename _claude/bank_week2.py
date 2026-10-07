@@ -2,6 +2,10 @@
 # 14 and 16 September, or from the lecture recording of 14 September.
 # Shape: (topic, question, [(option, why) x4], answer index starting at 1, hint)
 
+# Questions 19 and the rest of this list are new. These numbers were in the first batch
+# she answered in chat, so they are flagged on the page and she can skip or re-test them.
+SEEN = {1, 2, 3, 4, 5, 6, 7, 8, 11, 12, 18, 20, 22, 24, 25}
+
 WEEK2 = [
 ("Plato &middot; the text, the author, the dialogue",
  "The allegory of the cave comes from which text, and who are the two speakers in it?",

@@ -21,16 +21,19 @@ def nav():
     for i, (pid, name) in enumerate(PEOPLE, 1):
         out.append('    <a class="sub" href="#%s"><i>%d</i>%s</a>' % (pid, i, name))
     out.append('    <a href="#twice">Who turns up twice</a>')
+    out.append('    <a href="#glossary">Glossary</a>')
     for gid, title, _ in GROUPS:
-        out.append('    <a href="#%s">%s</a>' % (gid, title))
+        out.append('    <a class="sub" href="#%s"><i></i>%s</a>' % (gid, title))
     out.append('  </nav>')
     return "\n".join(out) + "\n"
 
 def glossary():
-    out = []
+    out = ['    <section>', '      <h2 id="glossary">Glossary</h2>',
+           '      <p>Fifty-five terms, grouped by where they come from. Each one is written to make '
+           'sense read on its own.</p>', '    </section>', '']
     for gid, title, rows in GROUPS:
-        out.append('    <section>')
-        out.append('      <h2 id="%s">%s</h2>' % (gid, title))
+        out.append('    <section class="gl">')
+        out.append('      <h3 id="%s">%s</h3>' % (gid, title))
         out.append('      <dl>')
         for term, who, short, extra in rows:
             w = '<span class="who">%s</span>' % who if who else ''

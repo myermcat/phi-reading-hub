@@ -34,12 +34,14 @@
 
   nav.rail{display:none}
   @media (min-width:1000px){
-    nav.rail{display:block;position:sticky;top:74px;align-self:start}
+    nav.rail{display:block;position:sticky;top:66px;align-self:start;
+             max-height:calc(100vh - 92px);overflow-y:auto;overscroll-behavior:contain;
+             scrollbar-width:thin}
     nav.rail .k{font-family:var(--mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;
-                color:var(--muted);margin-bottom:11px}
-    nav.rail a{display:block;font-size:14.5px;color:var(--ink-soft);text-decoration:none;
-               padding:6px 0 6px 13px;border-left:2px solid var(--rule);line-height:1.3}
-    nav.rail a.sub{font-size:13px;padding:3.5px 0 3.5px 13px;color:var(--muted)}
+                color:var(--muted);margin-bottom:8px}
+    nav.rail a{display:block;font-size:13.5px;color:var(--ink-soft);text-decoration:none;
+               padding:4px 0 4px 13px;border-left:2px solid var(--rule);line-height:1.25}
+    nav.rail a.sub{font-size:12.5px;padding:2.5px 0 2.5px 13px;color:var(--muted)}
     nav.rail a.sub i{font-style:normal;font-family:var(--mono);font-size:10px;
                      display:inline-block;width:17px;color:var(--rule-soft)}
     nav.rail a.sub:hover i{color:var(--muted)}
@@ -55,6 +57,9 @@
   h2{font-family:var(--display);font-weight:600;font-size:26px;margin:0;letter-spacing:-.01em;
      scroll-margin-top:72px}
   h3{font-family:var(--display);font-weight:600;font-size:19px;margin:0;scroll-margin-top:72px}
+  section.gl{gap:11px;padding-left:17px;border-left:2px solid var(--rule)}
+  section.gl h3{font-size:20px;color:var(--ink)}
+  section.gl + section.gl{margin-top:-10px}
   section{display:flex;flex-direction:column;gap:15px}
   p{margin:0;max-width:74ch;color:var(--ink-soft)}
 
