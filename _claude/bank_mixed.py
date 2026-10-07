@@ -4,7 +4,7 @@
 
 MIXED = [
 ("The Greeks &middot; before Plato",
- "Homer is the first name in the course. What did the professor say the <i>Odyssey</i> relies on?",
+ "Homer, eighth century BCE, is the earliest writer this term reaches back to. What picture of the world does the <i>Odyssey</i> rely on?",
  [("A cosmos with an order and a place for everything in it.",
    "Eighth century BCE, and it sets up the background assumption everything later argues inside: there is an order out there. Heraclitus then says nature is in harmony, Plato puts the order in a realm outside ours, and Aristotle puts it in the things themselves."),
   ("A world of pure chance, where the gods intervene at random.",
@@ -28,7 +28,7 @@ MIXED = [
  2, "Two different reactions, aimed at two different things he might do."),
 
 ("Plato against Bacon &middot; what mathematics is for",
- "Both Plato and the new science of the 1600s put mathematics near the centre. She drew a contrast. What is it?",
+ "Both Plato and the new science of the 1600s put mathematics near the centre. They want different things from it. What is the difference?",
  [("Plato uses it to predict what bodies will do; the new science uses it to train the mind.",
    "The right contrast with the two sides swapped."),
   ("For Plato it gives access to the abstract, to what you cannot touch; for the new science it is a law like gravity, used to predict where the planets will be.",
@@ -73,7 +73,7 @@ MIXED = [
  1, "Their test for whether a sentence means anything is the same test positivism applies to knowledge."),
 
 ("Galileo &middot; her contrast with Bacon",
- "She brought Galileo in while explaining Bacon's objection to Aristotle. What was Galileo's role in the point?",
+ "Bacon objects that the Aristotelian waits for the world to reveal its built-in purposes. Galileo is the standing counter-example. What did he do that makes him one?",
  [("He showed that the planets revolve around the sun, so the order was found by going and looking.",
    "Bacon's complaint about Aristotle is that the world is supposed to reveal itself to a patient observer who grasps its built-in purposes. Galileo, 1564 to 1642, is the counter-example: he pointed an instrument at the sky and found out. He went and got the answer. Nobody waited for it to arrive."),
   ("He proved Aristotle right about the heavens.",
@@ -133,7 +133,7 @@ MIXED = [
  2, "One doubt is about morals, one about knowledge, one about power."),
 
 ("Kuhn &middot; his examples",
- "Kuhn needs examples of a paradigm. Which three did she take from the chapter?",
+ "Kuhn names three worked examples of a paradigm. Which three?",
  [("Copernicus, Galileo and Newton.",
    "All three are in the course and this is not the trio she listed."),
   ("Newton's mechanics, Lavoisier's chemistry, Mendel's genetics.",
@@ -169,7 +169,7 @@ MIXED = [
  2, "Ask whether the quantity the word names stays put when the object starts moving fast."),
 
 ("Foucault &middot; what the watching produces",
- "Hierarchical observation leads to something she called a unified whole. What, and in whose phrase?",
+ "Hierarchical observation produces something Foucault calls a unified whole. What is it, and how does he gloss it?",
  [("Power-knowledge, which Foucault glosses as the development of force and the establishment of truth.",
    "One act with two outputs at the same moment: force grows and a truth gets fixed. That is why he writes it with a hyphen. Two words joined by <i>and</i> would be two things that cooperate; he means one thing with two faces."),
   ("Normalization, which Foucault glosses as the production of docile bodies.",

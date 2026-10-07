@@ -64,7 +64,7 @@ WEEK4 = [
  2, "She named an age and then declined to explain the decline."),
 
 ("Stratification &middot; prestige",
- "Institutional prestige predicts productivity. What was her striking conclusion about why?",
+ "Institutional prestige predicts productivity. What explains the link?",
  [("Prestigious places hire better people, so the prestige is just a result.",
    "The candidates are described as highly competitive with very slight distinctions between them, which undercuts this."),
   ("Prestige has no causal effect and the correlation is accidental.",
@@ -112,7 +112,7 @@ WEEK4 = [
  2, "The phrase pairs a golden age for one group with its opposite for another."),
 
 ("Discrimination &middot; the pipeline",
- "The pipeline image quoted on her slide describes women in science and engineering. What is the image, and what does it imply about where the problem is?",
+ "Women in science and engineering are described through an image of a pipe. What is the image, and what does it imply about where the problem lies?",
  [("A ladder with missing rungs, so the problem is at the top.",
    "Not the image quoted."),
   ("A pipe with leaks at every joint along its span, starting with a high-pressure surge of young women and ending with a trickle at the spigot. So there is no single point of failure.",
@@ -136,7 +136,7 @@ WEEK4 = [
  2, "The finding is a number, and the number is what makes it quotable."),
 
 ("Discrimination &middot; how it works in practice",
- "How did she say young female scientists are discriminated against, and why do small differences matter?",
+ "How are young female scientists discriminated against in practice, and why do small differences matter?",
  [("Through open refusal of appointments, which is rare and so has little effect.",
    "She described something that works without anyone refusing anything."),
   ("Smaller labs, worse startup conditions such as lower grants or salary and more teaching in place of research, and exclusion from informal networks. Where competition is strong, cumulative advantage turns small irritants into enough to keep women from getting on.",
@@ -148,7 +148,7 @@ WEEK4 = [
  2, "The answer has to connect to cumulative advantage from the first half of the lecture."),
 
 ("Discrimination &middot; the maths gene",
- "Claims have been made about an inborn tendency, a biological <b>propensity</b>, explaining boys' better results in mathematics, and Harvard's president invoked biology in 2005. What was her verdict?",
+ "Claims have been made about an inborn tendency, a biological <b>propensity</b>, explaining boys' better results in mathematics, and Harvard's president invoked biology in 2005. What is wrong with that kind of claim?",
  [("The claims are correct and explain most of the gap.",
    "The lecture rejects them."),
   ("The claims are untestable and so neither true nor false.",
@@ -172,7 +172,7 @@ WEEK4 = [
  2, "One half showed advantage compounding for everyone. The other showed who it compounds against."),
 
 ("Social construction &middot; Hacking",
- "Ian Hacking wrote on constructivism in 1999. What is the core of constructivism set against realism, in her notes?",
+ "Ian Hacking wrote on constructivism in 1999. What is the core of constructivism, set against realism?",
  [("Scientific theories are made up and have nothing to do with the world.",
    "The overstatement. Nothing in the lecture denies that theories answer to the world."),
   ("Any given theory is not the only one that could have been established, so the success of a theory is not by itself evidence for it. It could have been established another way.",
@@ -184,7 +184,7 @@ WEEK4 = [
  2, "The claim concerns what a theory's working proves, and what it leaves open."),
 
 ("Social construction &middot; realism",
- "What is the realist position, as her notes state it?",
+ "What is the realist position about scientific truth?",
  [("The view that one should accept a situation as it is and not try to change it.",
    "This is the everyday use of the word realism and it is a different thing entirely. Worth separating, because the two meanings share one word."),
   ("The intuition that truths depend mostly on the natural world and only slightly on the people who articulate them: there is a way the world is, and it is possible to discover it and represent it accurately.",
@@ -208,7 +208,7 @@ WEEK4 = [
  2, "Her example was something with no law behind it that everyone still obeys."),
 
 ("Social construction &middot; why gender counts as real",
- "The passage she quoted says gender is real. On what grounds?",
+ "Gender is called real in this week's reading. On what grounds?",
  [("Because it is determined by biology.",
    "The passage says genders are undoubtedly not simply given by nature."),
   ("Because it is recognised in law.",
@@ -292,7 +292,7 @@ WEEK4 = [
  3, "Both camps agree that classifying works. The disagreement is about what makes it work."),
 
 ("Social construction &middot; the conclusion",
- "The lecture spent an hour arguing that laboratories shut nature out and that facts are built. So what, at the end of it, does she say gives science its power?",
+ "Chapter 6 spends its length arguing that laboratories shut nature out and that facts get built. Where, by the end of it, does science's power come from?",
  [("From the authority of its institutions.",
    "Institutions appear in the lecture and this is not her conclusion."),
   ("From its ability to manipulate nature and measure nature's reactions, and to translate those measurements across time and space to other laboratories and other contexts. Laboratories and technology contribute to objectivity and objective knowledge.",
