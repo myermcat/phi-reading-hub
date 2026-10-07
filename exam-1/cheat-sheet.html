@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PHI2394 Exam 1 Cheat Sheet</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%238E6318'/%3E%3Crect%20x='15'%20y='17'%20width='34'%20height='6' rx='3' fill='%23fff'/%3E%3Crect%20x='15'%20y='29'%20width='24'%20height='6' rx='3' fill='%23fff'/%3E%3Crect%20x='15'%20y='41'%20width='30'%20height='6' rx='3' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;1,6..72,400&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root{--paper:#EDEFEC;--surface:#F6F7F4;--sunk:#E3E6E1;--ink:#191D1A;--ink-soft:#414944;
+    --muted:#6E766F;--rule:#D2D8D1;--rule-soft:#E1E5DF;--accent:#1F6B57;--accent-wash:#CFE3DA;
+    --hot:#8E6318;
+    --display:"Newsreader",Georgia,serif;--body:"Source Sans 3",-apple-system,"Segoe UI",sans-serif;
+    --mono:"IBM Plex Mono","SF Mono",Menlo,monospace;color-scheme:light}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    --paper:#141815;--surface:#1B201D;--sunk:#10130F;--ink:#E4E8E3;--ink-soft:#B4BCB6;--muted:#8B948D;
+    --rule:#2C332E;--rule-soft:#232925;--accent:#64BFA1;--accent-wash:#214136;--hot:#D9A957;
+    color-scheme:dark}}
+  :root[data-theme="dark"]{--paper:#141815;--surface:#1B201D;--sunk:#10130F;--ink:#E4E8E3;
+    --ink-soft:#B4BCB6;--muted:#8B948D;--rule:#2C332E;--rule-soft:#232925;--accent:#64BFA1;
+    --accent-wash:#214136;--hot:#D9A957;color-scheme:dark}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16.5px;
+       line-height:1.5;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent)}
+  .site{position:sticky;top:0;z-index:70;background:var(--paper);border-bottom:1px solid var(--rule)}
+  .site .in{max-width:1180px;margin:0 auto;padding:0 24px;height:50px;display:flex;align-items:center;
+            justify-content:space-between;gap:14px}
+  .site a,.site .cur{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+  .site a{text-decoration:none;color:var(--accent)}
+  .site .cur{color:var(--muted)}
+
+  .shell{max-width:1180px;margin:0 auto;padding:30px 24px 90px;display:grid;gap:34px}
+  @media (min-width:1000px){ .shell{grid-template-columns:186px minmax(0,1fr);gap:44px;align-items:start} }
+
+  nav.rail{display:none}
+  @media (min-width:1000px){
+    nav.rail{display:block;position:sticky;top:74px;align-self:start}
+    nav.rail .k{font-family:var(--mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;
+                color:var(--muted);margin-bottom:11px}
+    nav.rail a{display:block;font-size:14.5px;color:var(--ink-soft);text-decoration:none;
+               padding:6px 0 6px 13px;border-left:2px solid var(--rule);line-height:1.3}
+    nav.rail a:hover{color:var(--ink);border-left-color:var(--muted)}
+    nav.rail a.on{color:var(--accent);border-left-color:var(--accent)}
+  }
+  main{display:flex;flex-direction:column;gap:38px;min-width:0}
+  .eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+  h1{font-family:var(--display);font-weight:600;font-size:clamp(31px,5vw,44px);line-height:1.06;
+     letter-spacing:-.015em;margin:10px 0 0}
+  .standfirst{font-family:var(--display);font-size:18px;line-height:1.45;color:var(--ink-soft);
+              max-width:58ch;margin:12px 0 0}
+  h2{font-family:var(--display);font-weight:600;font-size:26px;margin:0;letter-spacing:-.01em;
+     scroll-margin-top:72px}
+  h3{font-family:var(--display);font-weight:600;font-size:19px;margin:0;scroll-margin-top:72px}
+  section{display:flex;flex-direction:column;gap:15px}
+  p{margin:0;max-width:74ch;color:var(--ink-soft)}
+
+  figure.dia{margin:0;display:flex;flex-direction:column;gap:9px}
+  .draw{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .draw svg{display:block;min-width:660px;width:100%;height:auto;color:var(--ink)}
+  figcaption{font-size:14px;color:var(--muted);max-width:70ch}
+  svg .bx{fill:var(--surface);stroke:var(--rule);stroke-width:1}
+  svg .bx.crit{stroke:var(--accent)}
+  svg .t{fill:currentColor;font-family:var(--body);font-size:13px;font-weight:600}
+  svg .s{fill:var(--ink-soft);font-family:var(--body);font-size:12px}
+  svg .r{fill:var(--muted);font-family:var(--body);font-size:11.5px;font-style:italic}
+  svg .ar{stroke:var(--muted);stroke-width:1;fill:none}
+  svg .n{fill:var(--accent);font-family:var(--mono);font-size:11px}
+
+  dl{margin:0;display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule)}
+  dl>div{background:var(--surface);padding:11px 15px;display:grid;gap:3px}
+  @media (min-width:680px){ dl>div{grid-template-columns:200px minmax(0,1fr);gap:4px 18px;align-items:baseline} }
+  dt{font-weight:600;color:var(--ink);font-size:15.5px}
+  dt .gk{font-family:var(--display);font-style:italic;font-weight:600}
+  dt span.who{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.05em;
+              color:var(--muted);font-weight:400;text-transform:uppercase;padding-top:2px}
+  dd{margin:0;color:var(--ink-soft);font-size:15.5px;line-height:1.45}
+  dd b{color:var(--ink)}
+</style>
+
+<header class="site"><div class="in">
+  <a href="./">Exam 1 practice</a>
+  <span class="cur">Cheat sheet</span>
+</div></header>
+
+<div class="shell">
+  <nav class="rail" aria-label="On this page">
+    <div class="k">On this page</div>
+    <a href="#map">The map</a>
+    <a href="#greek">Greek terms</a>
+    <a href="#method">Method and knowledge</a>
+    <a href="#kuhn">Kuhn</a>
+    <a href="#foucault">Foucault</a>
+    <a href="#week4">Week 4</a>
+  </nav>
+
+  <main>
+    <div>
+      <div class="eyebrow">PHI 2394 B00 &middot; exam 1 &middot; draft</div>
+      <h1>Cheat sheet</h1>
+      <p class="standfirst">Two things only, as asked: who argued what and in what order, then every
+        term the course uses with a plain definition.</p>
+    </div>
+
+    <section id="map-sec">
+      <h2 id="map">The map</h2>
+      <p>Read 1 to 6 down the first column, then 7 to 11 down the second. The line under each box
+        says how it leads to the next one. The outlined boxes are the modern writers who look back
+        and reinterpret the rest.</p>
+      <figure class="dia">
+        <div class="draw">
+          <svg viewBox="0 0 680 600" role="img" aria-labelledby="maptitle mapdesc">
+            <title id="maptitle">The order of arguments in weeks 2 to 4</title>
+            <desc id="mapdesc">Eleven numbered boxes in two columns. The first column runs from Plato
+              and Aristotle through the Middle Ages, Copernicus, Bacon and Rousseau. The second
+              continues with Bentham, positivism, Kuhn, Foucault and social construction. A line of
+              text between boxes says how each leads to the next.</desc>
+
+            <rect class="bx" x="40" y="22" width="290" height="52" rx="3"/>
+            <text class="n" x="56" y="44">1</text><text class="t" x="76" y="44">Plato, 428 to 348 BCE</text>
+            <text class="s" x="56" y="64">Forms in a realm outside ours</text>
+            <line class="ar" x1="64" y1="78" x2="64" y2="104"/><polygon points="61,104 67,104 64,110" fill="var(--muted)"/>
+            <text class="r" x="80" y="97">his student, and he moves form</text>
+
+            <rect class="bx" x="40" y="114" width="290" height="52" rx="3"/>
+            <text class="n" x="56" y="136">2</text><text class="t" x="76" y="136">Aristotle, 384 to 322 BCE</text>
+            <text class="s" x="56" y="156">Form and telos inside the thing</text>
+            <line class="ar" x1="64" y1="170" x2="64" y2="196"/><polygon points="61,196 67,196 64,202" fill="var(--muted)"/>
+            <text class="r" x="80" y="189">his cosmos holds for 2000 years</text>
+
+            <rect class="bx" x="40" y="206" width="290" height="52" rx="3"/>
+            <text class="n" x="56" y="228">3</text><text class="t" x="76" y="228">The Middle Ages, by 1300</text>
+            <text class="s" x="56" y="248">Work as worship, God the clockmaker</text>
+            <line class="ar" x1="64" y1="262" x2="64" y2="288"/><polygon points="61,288 67,288 64,294" fill="var(--muted)"/>
+            <text class="r" x="80" y="281">Lynn White reads this period</text>
+
+            <rect class="bx" x="40" y="298" width="290" height="52" rx="3"/>
+            <text class="n" x="56" y="320">4</text><text class="t" x="76" y="320">Copernicus, 1473 to 1543</text>
+            <text class="s" x="56" y="340">Sun at the centre, against Aristotle</text>
+            <line class="ar" x1="64" y1="354" x2="64" y2="380"/><polygon points="61,380 67,380 64,386" fill="var(--muted)"/>
+            <text class="r" x="80" y="373">the Greek content breaks first</text>
+
+            <rect class="bx" x="40" y="390" width="290" height="52" rx="3"/>
+            <text class="n" x="56" y="412">5</text><text class="t" x="76" y="412">Bacon, 1561 to 1626</text>
+            <text class="s" x="56" y="432">Senses first, knowledge is power</text>
+            <line class="ar" x1="64" y1="446" x2="64" y2="472"/><polygon points="61,472 67,472 64,478" fill="var(--muted)"/>
+            <text class="r" x="80" y="465">then the method breaks too</text>
+
+            <rect class="bx" x="40" y="482" width="290" height="52" rx="3"/>
+            <text class="n" x="56" y="504">6</text><text class="t" x="76" y="504">Rousseau, 1712 to 1778</text>
+            <text class="s" x="56" y="524">Progress only through education</text>
+
+            <rect class="bx" x="370" y="22" width="290" height="52" rx="3"/>
+            <text class="n" x="386" y="44">7</text><text class="t" x="406" y="44">Bentham, 1748 to 1832</text>
+            <text class="s" x="386" y="64">Utilitarianism, and the panopticon</text>
+            <line class="ar" x1="394" y1="78" x2="394" y2="104"/><polygon points="391,104 397,104 394,110" fill="var(--muted)"/>
+            <text class="r" x="410" y="97">Bacon's line hardens into doctrine</text>
+
+            <rect class="bx" x="370" y="114" width="290" height="52" rx="3"/>
+            <text class="n" x="386" y="136">8</text><text class="t" x="406" y="136">Positivism, 1800s to 1930s</text>
+            <text class="s" x="386" y="156">Only the observable counts</text>
+            <line class="ar" x1="394" y1="170" x2="394" y2="196"/><polygon points="391,196 397,196 394,202" fill="var(--muted)"/>
+            <text class="r" x="410" y="189">Kuhn breaks with it</text>
+
+            <rect class="bx crit" x="370" y="206" width="290" height="52" rx="3"/>
+            <text class="n" x="386" y="228">9</text><text class="t" x="406" y="228">Kuhn, 1922 to 1996</text>
+            <text class="s" x="386" y="248">Paradigms and revolutions</text>
+            <line class="ar" x1="394" y1="262" x2="394" y2="288"/><polygon points="391,288 397,288 394,294" fill="var(--muted)"/>
+            <text class="r" x="410" y="281">if science shifts, so can power</text>
+
+            <rect class="bx crit" x="370" y="298" width="290" height="52" rx="3"/>
+            <text class="n" x="386" y="320">10</text><text class="t" x="406" y="320">Foucault, 1926 to 1984</text>
+            <text class="s" x="386" y="340">Power-knowledge, normalization</text>
+            <line class="ar" x1="394" y1="354" x2="394" y2="380"/><polygon points="391,380 397,380 394,386" fill="var(--muted)"/>
+            <text class="r" x="410" y="373">both feed the next claim</text>
+
+            <rect class="bx crit" x="370" y="390" width="290" height="52" rx="3"/>
+            <text class="n" x="386" y="412">11</text><text class="t" x="406" y="412">Social construction, 1990s</text>
+            <text class="s" x="386" y="432">Kinds are human impositions</text>
+          </svg>
+        </div>
+        <figcaption>The three outlined boxes are the people who look back at the rest and say what
+          it was really doing. Everything before them is the tradition being built.</figcaption>
+      </figure>
+    </section>
+
+    <section>
+      <h2 id="greek">Greek terms</h2>
+      <dl>
+        <div><dt><span class="gk">physis</span><span class="who">Schadewaldt</span></dt><dd>Nature, meaning the creative origin that everything grows out of. It implies movement, which is why it answers the Greek question about what makes things move.</dd></div>
+        <div><dt><span class="gk">techne</span><span class="who">Schadewaldt</span></dt><dd>Skill at making or doing something. Produced by people, which makes it a combination of man and nature. On its own it is no part of nature.</dd></div>
+        <div><dt><span class="gk">episteme</span><span class="who">Schadewaldt</span></dt><dd>Theoretical knowledge, of what is immutable and primary. Ranked above <span class="gk">techne</span>, which deals with what is still changing.</dd></div>
+        <div><dt><span class="gk">empeiria</span><span class="who">Schadewaldt</span></dt><dd>Plain experience, know-how with no account behind it. <span class="gk">Techne</span> sits between this and <span class="gk">episteme</span>.</dd></div>
+        <div><dt><span class="gk">atechnia</span><span class="who">Schadewaldt</span></dt><dd>Productive knowledge built on a false idea of the thing itself, held confidently. His word for a blunder. It can be rich and diverse and still be one.</dd></div>
+        <div><dt><span class="gk">telos</span><span class="who">Aristotle</span></dt><dd>The end or goal of a thing. Everything has a purpose it is growing toward, and knowing a thing means knowing its end. The root of the English <i>teleology</i>.</dd></div>
+        <div><dt>Form</dt><dd><b>Plato:</b> the Forms are perfect originals in a realm outside this one, and things here are copies. <b>Aristotle:</b> form is in the thing itself, together with its <span class="gk">telos</span>. That is why Aristotle could do biology.</dd></div>
+        <div><dt>Dialectic<span class="who">Plato</span></dt><dd>His method of inquiry, and the best route to truth: separating opinion from knowledge and understanding.</dd></div>
+        <div><dt>Kalliopolis<span class="who">Plato</span></dt><dd>The beautiful city. His ideal state, ruled by philosophers, where correct education is central. She paired it with Foucault's perfectly governed city.</dd></div>
+        <div><dt>Philosopher kings<span class="who">Plato</span></dt><dd>The rulers and guardians of the Kalliopolis. Awake while everyone else is dreaming. Their education needs geometry and astronomy.</dd></div>
+        <div><dt>Metaphysics</dt><dd>The study of the origin and nature of all things in the cosmos, and of how to investigate them. The name is an accident: compilers filed Aristotle's book after his <i>Physics</i>.</dd></div>
+      </dl>
+    </section>
+
+    <section>
+      <h2 id="method">Method and knowledge</h2>
+      <dl>
+        <div><dt>Empiricism<span class="who">Bacon</span></dt><dd>The senses are the original source of knowledge. From the Greek <span class="gk">empeiria</span>, experience. Its opposite is the view that reason alone gets you there, which is Plato.</dd></div>
+        <div><dt>Induction</dt><dd>Reasoning upward from particular cases to a general law. A thousand white swans, so all swans are white. The conclusion covers every swan there is and you checked a thousand, so the cases never make the law safe. Europeans held that one until 1697, when a Dutch expedition found black swans in Western Australia.</dd></div>
+        <div><dt>Foundationalism</dt><dd>Knowledge stacked like a brick wall: every claim resting on a lower claim, down to a bottom course that needs nothing under it. The problem is that the bottom course is laid by induction. The tracing runs downward through reasons, never backward through history.</dd></div>
+        <div><dt>Knowledge is power<span class="who">Bacon</span></dt><dd>Know how a thing works and you can make it do what you want. He meant power over the physical world and he meant it as a promise.</dd></div>
+        <div><dt>Ant, spider, bee<span class="who">Bacon</span></dt><dd>Ant: the alchemists, who collect and never think. Spider: the Aristotelians, spinning systems out of their own entrails. Bee: the proper natural philosopher, who gathers and then digests. <i>Novum Organum</i> I.95.</dd></div>
+        <div><dt>Deism<span class="who">Lynn White</span></dt><dd>God as a clockmaker who set the world going and stepped back. Developing around 1300. It makes studying the mechanism a pious act.</dd></div>
+        <div><dt>Positivism</dt><dd>Real knowledge comes only from what you can observe and measure. As she described it: non-contextual, formal and standardised research that separates distinct variables. Positive here has nothing to do with good.</dd></div>
+        <div><dt>Realism</dt><dd>Truths depend mostly on the natural world and only slightly on the people stating them. There is a way the world is, it can be discovered, and it can be represented accurately.</dd></div>
+        <div><dt>Instrumentalism</dt><dd>A theory is a useful tool and never a claim about what is really there. The opposite of realism.</dd></div>
+        <div><dt>Epistemology</dt><dd>A view about what counts as knowledge and how you are allowed to get it.</dd></div>
+      </dl>
+    </section>
+
+    <section>
+      <h2 id="kuhn">Kuhn</h2>
+      <dl>
+        <div><dt>Normal science</dt><dd>Puzzle solving inside a shared paradigm, during the long stable stretches between revolutions. A puzzle has a known shape and a guaranteed answer, so failing one means you failed, never that the paradigm did.</dd></div>
+        <div><dt>Paradigm</dt><dd>A pattern for others to follow, working as a theoretical and methodological tool. The whole shared kit: fixed theories, values, instruments and assumptions about what exists. Her examples: Newton's mechanics, Lavoisier's chemistry, Mendel's genetics.</dd></div>
+        <div><dt>Disciplinary matrix</dt><dd>Kuhn's later and more careful word for a paradigm.</dd></div>
+        <div><dt>Anomaly</dt><dd>A result a field cannot make fit, however hard it tries. A pile of them is what eventually breaks a paradigm.</dd></div>
+        <div><dt>Revolution</dt><dd>The disciplinary matrix is revised and an anomalous problem gets solved. Not progress, because a revolution builds and destroys paradigms at the same time.</dd></div>
+        <div><dt>Incommensurability</dt><dd>No common measure for comparing two paradigms. Her three reasons: the meanings of terms change, indoctrination, and historical context changes.</dd></div>
+        <div><dt>Whig history</dt><dd>History that builds the past into a series of steps toward present views. Kuhn's objection: events must follow their causes, so a sequence cannot be explained by the fact that it represents progress.</dd></div>
+        <div><dt>Ad hoc</dt><dd>Put together for the particular case at hand. Her conclusion was that science is an ad hoc system, disunified, and successful without one abiding thread. The Wittgenstein point.</dd></div>
+        <div><dt>Copernicus<span class="who">1473 to 1543</span></dt><dd>Sun stationary, earth moving, against Aristotle's earth-centred cosmos. Her framing: he held that the sun needed to be at the centre for circular motion to work.</dd></div>
+      </dl>
+    </section>
+
+    <section>
+      <h2 id="foucault">Foucault</h2>
+      <dl>
+        <div><dt>Panopticon<span class="who">Bentham</span></dt><dd>A ring of cells round a central tower, each cell with two windows so light crosses it and the occupant shows as a silhouette. The inmate is permanently visible and can never check whether the tower is occupied.</dd></div>
+        <div><dt>Bentham's three words</dt><dd>Visibility, unverifiability, and external power becoming non-corporeal. Non-corporeal means the power stops needing a body in the tower.</dd></div>
+        <div><dt>Utilitarianism<span class="who">Bentham</span></dt><dd>The right action is whichever produces the greatest happiness for the greatest number. What he was actually famous for, ahead of the panopticon.</dd></div>
+        <div><dt>Three techniques of control</dt><dd>Hierarchical observation, normalizing judgment, and the examination. Watch, rank, record. The examination is where the first two meet.</dd></div>
+        <div><dt>Power-knowledge</dt><dd>Power and knowledge as one thing with the same goal, which is controlling what we know. His gloss: the development of force and the establishment of truth. He builds it on Bacon's knowledge is power and turns a promise into an accusation.</dd></div>
+        <div><dt>Normalization</dt><dd>The goal of disciplinary power. It produces judicial systems sorting citizens into normal and abnormal. Her examples: standardized education, medical practices, industrial processes.</dd></div>
+        <div><dt>Docile bodies</dt><dd>Bodies made useful and easier to control by discipline: prisoners, soldiers, workers, schoolchildren. The body becomes a machine, broken into segments, analysed and recomposed for maximum effect.</dd></div>
+        <div><dt>Genealogy</dt><dd>Tracing how a practice came to be without assuming it was an improvement. The method of <i>Discipline and Punish</i>, 1975.</dd></div>
+        <div><dt>The plague town</dt><dd>How <i>Panopticism</i> opens. The plague is met with Order: sorting the disease, separating bodies, sorting evil, which increases fear and death. Its political dream is strict division and regulation reaching the smallest details of daily life.</dd></div>
+        <div><dt><i>History of Madness</i><span class="who">1961</span></dt><dd>The claimed scientific neutrality of modern treatment of insanity covers for controlling challenges to conventional bourgeois morality. Her examples: homosexuality and hysteria.</dd></div>
+      </dl>
+    </section>
+
+    <section>
+      <h2 id="week4">Week 4</h2>
+      <dl>
+        <div><dt>Stratification</dt><dd>The layering of a field into a small advantaged group and everyone else. 10 per cent of authors produce half of all papers; 80 per cent of citations go to 20 per cent of papers.</dd></div>
+        <div><dt>Cumulative advantage</dt><dd>Success breeds success. A good first post means a bigger lab, more results, a stronger grant, a bigger lab again. It makes scientific success look elitist where it had looked merit based.</dd></div>
+        <div><dt>Meritocracy</dt><dd>A system where who gets ahead tracks how good they are. Her conclusion was that science looks much more like a boys' club than one of these.</dd></div>
+        <div><dt>Zuckerman 1977</dt><dd>34 of the 55 US Nobel laureates in 1963 had studied or collaborated with a previous winner. Those who had won at an average age of 44, against 53 for the others.</dd></div>
+        <div><dt>Rossiter</dt><dd>Feminisation lowers a field's status, masculinisation raises it. Women were pushed into the invisible sciences such as home economics and nutritional science.</dd></div>
+        <div><dt>Wenneras and Wold 2001</dt><dd>At the Swedish Medical Research Council a woman needed about three extra papers in <i>Nature</i> or <i>Science</i>, or 20 extra in a good specialist journal, to be scored as competent as a man.</dd></div>
+        <div><dt>Social construction</dt><dd>The construction of facts, knowledge, theories, phenomena, science, technologies and societies. Truth, rationality and the material world have limited value without interpretation or rhetorical work.</dd></div>
+        <div><dt>Constructivism<span class="who">Hacking 1999</span></dt><dd>Our categories are human handiwork. Any given theory is not the only one that could have been established, so a theory's success is not by itself evidence for it.</dd></div>
+        <div><dt>Contingently real</dt><dd>Real, and it did not have to be this way. Knowledge, methods, epistemologies, disciplinary boundaries and styles of work are all real social objects of this kind.</dd></div>
+        <div><dt>Nominalist and realist about kinds</dt><dd><b>Nominalist:</b> kinds are human impositions, so the objects of classification are mental and linguistic. <b>Realist:</b> kinds are real features of the world. Her test case was ADHD.</dd></div>
+        <div><dt>Knorr Cetina</dt><dd>Nature is not to be found in the laboratory. To an outside observer it is a site of action from which nature is as much as possible excluded: a space of prepared materials, intentionally shaped.</dd></div>
+        <div><dt>Heterogeneous engineering<span class="who">Law 1987</span></dt><dd>Building the artifact and the environment it can work in at the same time, by enrolling materials, skills, knowledge, capital and people. No one piece of the network determines the shape of the whole.</dd></div>
+        <div><dt>Co-production</dt><dd>Scientific knowledge and social arrangements make each other. Researchers need funding to study climate change, and the science then justifies the policy. ADHD can be framed as a disorder or as extreme procrastination.</dd></div>
+      </dl>
+    </section>
+  </main>
+</div>
+
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('nav.rail a'));
+  var heads=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1));});
+  function mark(){
+    var best=0;
+    heads.forEach(function(h,i){ if(h && h.getBoundingClientRect().top<=110) best=i; });
+    links.forEach(function(a,i){ a.classList.toggle('on', i===best); });
+  }
+  window.addEventListener('scroll',mark,{passive:true}); mark();
+})();
+</script>
+</html>
