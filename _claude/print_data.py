@@ -40,9 +40,11 @@ SHORT = {
    "chain stops. The bottom layer is laid by <b>induction</b>, so it is the least secure part. Traced "
    "<i>down</i> through reasons, never <i>back</i> through time, which is Whig history."),
  "Positivism":
-  ("real knowledge comes only from what you can observe and measure",
-   "Positive has nothing to do with good. Non-contextual (where and when should not matter), formal and "
-   "standardised (anyone following the procedure gets the same result), analytic (separate the variables)."),
+  ("only what can be observed and measured counts as knowledge",
+   "So research has to be <b>non-contextual</b> (the result cannot depend on who ran it, or where, or when), "
+   "<b>standardised</b> (anyone following the same procedure gets the same result), and <b>analytic</b> "
+   "(isolate one variable, hold the rest still). <b>Kuhn's target:</b> a paradigm is a context, so the first "
+   "of the three goes."),
 }
 
 # The map, cut to what fits a side of A4. Each card: number, name, dates, the question,
@@ -75,10 +77,10 @@ MAP = [
   "<b>Ant</b> the alchemists, pile up and do nothing. <b>Spider</b> the Aristotelians, spin systems out of themselves. <b>Bee</b>, gathers then digests.",
   "Against <i>telos</i>: if a thing carries its purpose, you wait to receive it. He wants you to go and take it.",
  ], "Not everyone is pleased about the new confidence in progress.", False),
-(6, "Rousseau", "1712 to 1778", "Has progress in the sciences and arts made us better?", [
-  "No. A <b>return to Greek values</b>, and progress only through education.",
-  "Barbarous people are those who lack virtue, which ties back to Plato and Aristotle.",
-  "The counter-current inside the Enlightenment.",
+(6, "Rousseau", "1712 to 1778", "Has progress in the sciences and arts made people better?", [
+  "<b>No.</b> Learning advanced. Morals did not.",
+  "A society is measured by the <b>virtue</b> of its people. Great learning with no virtue is still barbarous.",
+  "Virtue comes from <b>education</b>, on the Greek model. So that is the only route to real progress.",
  ], "Meanwhile institutions are being designed by arithmetic.", False),
 (7, "Bentham", "1748 to 1832", "How should an institution be arranged?", [
   "<b>Utilitarianism</b>: the greatest happiness of the greatest number. What he was famous for in his lifetime.",
@@ -86,9 +88,11 @@ MAP = [
   "Ring of cells, central tower, two windows per cell so the occupant shows as a silhouette.",
  ], "Bacon's confidence in method hardens into a doctrine about knowledge itself.", False),
 (8, "Positivism", "Comte, the Vienna Circle", "What counts as real knowledge?", [
-  "<b>Only what you can observe and measure.</b> Positive has nothing to do with good.",
-  "Non-contextual, formal and standardised, and analytic: separate the variables and hold the rest still.",
- ], "Which brings the course to its hinge.", False),
+  "<b>Only what can be observed and measured.</b> Anything else is not knowledge.",
+  "So research must be <b>non-contextual</b>: the result cannot depend on who ran it, or where, or when.",
+  "<b>Standardised</b>: anyone following the same procedure gets the same result.",
+  "<b>Analytic</b>: isolate one variable, hold the rest still.",
+ ], "Kuhn's target. A paradigm is a context, so the first of the three goes.", False),
 (9, "Kuhn", "1922 to 1996", "Does science accumulate steadily toward the truth?", [
   "<b>No.</b> Long stable stretches, broken by revisionary breaks. Against positivism and against steady progress.",
   "<b>Paradigm:</b> the shared picture a field works from, with its instruments, standards and assumptions. Newton, Lavoisier, Mendel.",
