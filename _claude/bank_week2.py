@@ -30,7 +30,7 @@ WEEK2 = [
 ('The Greeks &middot; Heraclitus',
  "Heraclitus, sixth century BCE, wrote that sound thinking is man's greatest power, and that his highest aptitude is being able to say what is and &ldquo;fashion creatively by hearkening to nature&rdquo;. What does that assume about nature?",
  [('Nature is in harmony.',
-   'Her summary line, written under the quotation. It matters because it is the background assumption Plato and Aristotle are both working against: there is an order out there, and thinking well means listening to it.'),
+   'Her summary line, written under the quotation. It matters because both Plato and Aristotle accept it and then split over what follows. All three agree there is an order out there. Heraclitus says you reach it by listening to nature. <b>Plato keeps the order and throws out the method</b>: the senses show you shadows, the real order is the Forms in a realm outside this one, and you get there by dialectic. <b>Aristotle keeps both</b>: the order is in the things around you, as form and an end they grow toward, so looking at the world is exactly how you find it. That is the disagreement the whole of week 2 is about, and the thing nobody disputes is that there is an order at all.'),
   ('Everything is in flux.',
    'The famous Heraclitus line about stepping into the same river twice. She used a different one.'),
   ('Man is the measure of all things.',
