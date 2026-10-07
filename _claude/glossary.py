@@ -27,6 +27,8 @@ GROUPS = [
   "Sound thinking is man's greatest power, and his highest aptitude is being able to say what is and fashion creatively by hearkening to nature. Hearkening means listening, so the quotation assumes there is an order out there to listen to."),
  ("Aristotle", "384 to 322 BCE", "born in Stagira, never an Athenian citizen, studied under Plato, tutored Alexander the Great",
   "Called the first biologist. The non-citizenship is why he had to leave Athens at the end of his life."),
+ ("Geocentrism", "Aristotle", "the earth at the centre of the universe, with everything else turning round it",
+  "Nobody had to assume it. It falls out of the <i>telos</i> doctrine. Earth's natural place is the centre, which is why a dropped rock falls, and by the same reasoning the earth itself sits at the centre. The heavens are a different stuff that moves in perfect circles forever, because that is what that stuff is for. Copernicus and then Galileo broke it."),
  ("The Academy", "Plato", "his school in Athens, where the English word academy comes from",
   "Aristocratic women are known to have attended it."),
  ("The cave", "Plato", "prisoners chained facing a wall, taking the shadows on it for the real things",
