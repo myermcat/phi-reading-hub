@@ -107,7 +107,7 @@ MIXED = [
   ('That nature has been reduced to what is calculable, which splits thought from extension, nature from spirit, and subject from object, and leaves an impoverishment that is hard to estimate.',
    'His word is dualism, meaning a split into two things that the Greeks held as one. The Greek <i>physis</i> held form and motion, law and life, causality and purpose together. Keeping only the calculable half works extremely well and drops the rest.'),
   ('That modern science makes claims it cannot prove, because induction never justifies a general law.',
-   "A real problem, and a different one. Watch a thousand swans, see that every one is white, and conclude that all swans are white. The conclusion covers every swan there has ever been, and you looked at a thousand, so the thousand can never make it safe. Europeans believed exactly that until a Dutch expedition reached Western Australia in 1697 and found black ones. Reasoning upward from particular cases to a general law is called <b>induction</b>, and that gap is the problem of induction. It bites Bacon, whose method runs on it, and it bites the idea that knowledge is stacked like a brick wall on a bottom course that needs nothing under it, which is called <b>foundationalism</b>.")],
+   "A real problem, and a different one. Watch a thousand swans, see that every one is white, and conclude that all swans are white. The conclusion covers every swan there has ever been, and you looked at a thousand, so the thousand can never make it safe. Europeans believed exactly that until a Dutch expedition reached Western Australia in 1697 and found black ones. Reasoning upward from particular cases to a general law is called <b>induction</b>, and that gap is the problem of induction. It bites Bacon, whose method runs on it, and it bites the idea that every claim rests on a lower claim down to a bottom layer that needs no reason under it, which is called <b>foundationalism</b>.")],
  3, 'He praises the results in the same sentence as the complaint, so look for what got left out.'),
 
 ('What Wolfgang said',
@@ -123,7 +123,7 @@ MIXED = [
  4, 'A dualism separates two things. Which two does he most want rejoined?'),
 
 ('Who Francis Bacon is',
- 'How did the professor introduce Francis Bacon?',
+ 'Which description fits Francis Bacon?',
  [('Early modern philosopher, 1561 to 1626, the father of empiricism, strongly influenced by the Scientific Revolution.',
    'Empiricism means the senses are the original source of knowledge. "Father of empiricism" is her phrase, and it is the one to have ready. His slogan is knowledge is power, and she stressed it means power over the physical world.'),
   ('The astronomer who found that the planets revolve around the sun.',

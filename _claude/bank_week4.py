@@ -52,7 +52,7 @@ WEEK4 = [
  2, "The first item has nothing to do with ability, and the third is about manners."),
 
 ("Stratification &middot; age and output",
- "When are scientists most productive, and what did she say about why it changes?",
+ "Scientific output peaks at one age and falls afterwards. What age, and what explanation did the lecture give for the fall?",
  [("In their late twenties, and the decline is explained by family responsibilities.",
    "Neither the age nor the explanation given."),
   ("In their mid-forties, after which it decreases, and the reason for the decline is unclear.",
@@ -100,7 +100,7 @@ WEEK4 = [
  2, "The study is about what happens to a field's reputation when the people in it change."),
 
 ("Discrimination &middot; the golden age",
- "What did she say about the golden age of science in the United States after the Second World War?",
+ "American science expanded fast after the Second World War, and the period is remembered as a golden age. What happened to women inside it, and what caused it?",
  [("It was a golden age for everyone, since funding expanded for all.",
    "The phrase she used was deliberately two-sided."),
   ("It was a dark age for women, because more men were hired into the institutions where women had been working during the war.",
@@ -160,7 +160,7 @@ WEEK4 = [
  3, "She gave one objection about what a gene can mean and one about what the test scores have been doing."),
 
 ("Discrimination &middot; the conclusion",
- "What was her conclusion at the end of the discrimination lecture?",
+ "The week ran two halves, stratification and then discrimination. What single picture of science do the two halves add up to?",
  [("There is one principal cause, which is hiring.",
    "She said directly that there is no one reason."),
   ("There is no one reason that keeps women out of science. Science looks much more like a boys' club than a meritocracy, and those in elite positions produce more because of a combination of competitive advantages.",
@@ -292,7 +292,7 @@ WEEK4 = [
  3, "Both camps agree that classifying works. The disagreement is about what makes it work."),
 
 ("Social construction &middot; the conclusion",
- "What did she say at the end about where science gets its power?",
+ "The lecture spent an hour arguing that laboratories shut nature out and that facts are built. So what, at the end of it, does she say gives science its power?",
  [("From the authority of its institutions.",
    "Institutions appear in the lecture and this is not her conclusion."),
   ("From its ability to manipulate nature and measure nature's reactions, and to translate those measurements across time and space to other laboratories and other contexts. Laboratories and technology contribute to objectivity and objective knowledge.",
