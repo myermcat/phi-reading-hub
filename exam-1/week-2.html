@@ -22,10 +22,30 @@
   *{box-sizing:border-box}
   body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;
        line-height:1.55;-webkit-font-smoothing:antialiased;padding-bottom:72px}
-  .wrap{max-width:830px;margin:0 auto;padding:32px 24px 80px;display:flex;flex-direction:column;gap:28px}
+  .shell{max-width:1120px;margin:0 auto;padding:32px 24px 80px;display:grid;gap:30px}
+  @media (min-width:1040px){ .shell{grid-template-columns:148px minmax(0,1fr);gap:40px;align-items:start} }
+  .wrap{display:flex;flex-direction:column;gap:28px;min-width:0}
+  nav.qrail{display:none}
+  @media (min-width:1040px){
+    nav.qrail{display:block;position:sticky;top:74px;align-self:start}
+    nav.qrail .k{font-family:var(--mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;
+                 color:var(--muted);margin-bottom:10px}
+    nav.qrail .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}
+    nav.qrail a{display:flex;align-items:center;justify-content:center;height:27px;font-family:var(--mono);
+                font-size:12px;color:var(--muted);text-decoration:none;border:1px solid var(--rule);
+                background:var(--paper)}
+    nav.qrail a:hover{border-color:var(--accent);color:var(--ink)}
+    nav.qrail a.ok{background:var(--good-wash);border-color:var(--good);color:var(--good)}
+    nav.qrail a.no{background:var(--bad-wash);border-color:var(--bad);color:var(--bad)}
+    nav.qrail .legend{margin-top:13px;display:flex;flex-direction:column;gap:6px;font-size:12px;color:var(--muted)}
+    nav.qrail .legend span{display:flex;align-items:center;gap:8px}
+    nav.qrail .legend i{width:11px;height:11px;border:1px solid var(--rule);display:block;flex:none}
+    nav.qrail .legend i.ok{background:var(--good-wash);border-color:var(--good)}
+    nav.qrail .legend i.no{background:var(--bad-wash);border-color:var(--bad)}
+  }
   a{color:var(--accent)}
   .site{position:sticky;top:0;z-index:70;background:var(--paper);border-bottom:1px solid var(--rule)}
-  .site .in{max-width:830px;margin:0 auto;padding:0 24px;height:50px;display:flex;align-items:center;
+  .site .in{max-width:1120px;margin:0 auto;padding:0 24px;height:50px;display:flex;align-items:center;
             justify-content:space-between;gap:14px}
   .site a,.site .cur{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
   .site a{text-decoration:none;color:var(--accent)}
@@ -42,7 +62,7 @@
 
   ol.quiz{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:1px;background:var(--rule)}
   li.q{background:var(--surface);padding:21px 22px 17px;display:flex;flex-direction:column;gap:13px;
-       border-left:3px solid transparent}
+       border-left:3px solid transparent;scroll-margin-top:64px}
   li.q.ok{border-left-color:var(--good)}
   li.q.no{border-left-color:var(--bad)}
   .topic{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
@@ -103,7 +123,7 @@
 
   .bar{position:fixed;left:0;right:0;bottom:0;z-index:80;background:var(--surface);
        border-top:1px solid var(--rule);height:52px;display:flex;align-items:center}
-  .bar .in{max-width:830px;margin:0 auto;padding:0 24px;width:100%;display:flex;align-items:center;
+  .bar .in{max-width:1120px;margin:0 auto;padding:0 24px;width:100%;display:flex;align-items:center;
            justify-content:space-between;gap:16px}
   .bar .tick{font-family:var(--mono);font-size:13px;color:var(--ink)}
   .bar .tick i{font-style:normal;color:var(--muted)}
@@ -111,7 +131,7 @@
               text-transform:uppercase;color:var(--accent);background:none;border:1px solid var(--rule);
               padding:7px 13px;cursor:pointer}
   .bar button:hover{border-color:var(--accent)}
-  @media (max-width:560px){.wrap{padding:24px 15px 70px}li.q{padding:17px 15px 14px}}
+  @media (max-width:560px){.shell{padding:24px 15px 70px}li.q{padding:17px 15px 14px}}
 </style>
 
 <header class="site"><div class="in">
@@ -119,7 +139,18 @@
   <span class="cur">Week 2</span>
 </div></header>
 
-<div class="wrap">
+<div class="shell">
+  <nav class="qrail" aria-label="Questions">
+    <div class="k">Questions</div>
+    <div class="grid" id="qrail"></div>
+    <div class="legend">
+      <span><i class="ok"></i>right</span>
+      <span><i class="no"></i>wrong</span>
+      <span><i></i>not yet</span>
+    </div>
+  </nav>
+
+  <main class="wrap">
   <div>
     <div class="eyebrow">PHI 2394 B00 &middot; exam 1 practice &middot; week 2</div>
     <h1>Week 2: the Greeks, Bacon and the Middle Ages</h1>
@@ -649,6 +680,7 @@
       <div class="jump" id="jump"></div>
     </div>
   </div>
+  </main>
 </div>
 
 <div class="bar"><div class="in">
@@ -665,11 +697,30 @@
   function save(){try{localStorage.setItem(KEY,JSON.stringify(picked));}catch(e){}}
   function answered(){var n=0;qs.forEach(function(q,i){if(picked[i]!=null)n++;});return n;}
   function correct(){var n=0;qs.forEach(function(q,i){if(picked[i]===+q.dataset.a)n++;});return n;}
+  var railCells=[];
+  (function buildRail(){
+    var g=document.getElementById('qrail');
+    if(!g)return;
+    qs.forEach(function(q,i){
+      var a=document.createElement('a');
+      a.href='#q'+(i+1); a.textContent=String(i+1);
+      a.title='Question '+(i+1);
+      g.appendChild(a); railCells.push(a);
+    });
+  })();
+  function rail(){
+    railCells.forEach(function(a,i){
+      var p=picked[i], ans=+qs[i].dataset.a;
+      a.classList.toggle('ok', p!=null && p===ans);
+      a.classList.toggle('no', p!=null && p!==ans);
+    });
+  }
   function tick(){
     var n=answered();
     document.getElementById('tick').innerHTML =
       n ? n+' of '+qs.length+' answered <i>&middot; '+correct()+' right</i>'
         : 'Pick an option to begin';
+    rail();
   }
   function esc(x){return x;}
   function verdict(q,i){
