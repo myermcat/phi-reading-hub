@@ -219,7 +219,7 @@ WEEK3 = [
  2, "The metaphor is architectural, and the trouble is at the bottom."),
 
 ("Kuhn &middot; foundationalism against telos",
- "One other idea in this course resembles foundationalism and works in the opposite direction. Which, and what is the difference?",
+ "One other idea resembles foundationalism and runs in the opposite direction. Which, and what is the difference?",
  [("Not like Plato's Forms, because foundations are physical.",
    "Not the contrast she drew."),
   ("Not like Bacon's induction, because foundations are deductive.",
@@ -267,7 +267,7 @@ WEEK3 = [
  3, "If both sides go on trusting the same detector, ask what that detector is to the two of them."),
 
 ("Kuhn &middot; her conclusion",
- "Kuhn denies that science has a single fixed method, a secure foundation, or steady progress toward truth. Something still has to explain why it works as well as it does. What answer does the course give?",
+ "Kuhn denies that science has a single fixed method, a secure foundation, or steady progress toward truth. Something still has to explain why it works as well as it does. What is the answer?",
  [("Science is unified by the scientific method.",
    "The view the whole course is written against."),
   ("Science is an ad hoc system that is disunified, and it does not need one abiding thread or foundational idea to be successful. She attached the point to Wittgenstein.",
