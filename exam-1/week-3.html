@@ -1,0 +1,758 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PHI2394 Week 3 Practice</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%231F6B57'/%3E%3Cpath%20d='M22%2024a10%2010%200%200%201%2020%200c0%206-7%207-9%2012'%20fill='none'%20stroke='%23fff'%20stroke-width='6'%20stroke-linecap='round'/%3E%3Ccircle%20cx='32'%20cy='48'%20r='4'%20fill='%23fff'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;1,6..72,400&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root{--paper:#EDEFEC;--surface:#F6F7F4;--sunk:#E3E6E1;--ink:#191D1A;--ink-soft:#414944;
+    --muted:#6E766F;--rule:#D2D8D1;--rule-soft:#E1E5DF;--accent:#1F6B57;--accent-wash:#CFE3DA;
+    --good:#1F6B57;--good-wash:#D6E9E0;--bad:#9B2C2C;--bad-wash:#F2DCDC;--hot:#8E6318;--hot-wash:#F0E4CB;
+    --display:"Newsreader",Georgia,serif;--body:"Source Sans 3",-apple-system,"Segoe UI",sans-serif;
+    --mono:"IBM Plex Mono","SF Mono",Menlo,monospace;color-scheme:light}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    --paper:#141815;--surface:#1B201D;--sunk:#10130F;--ink:#E4E8E3;--ink-soft:#B4BCB6;--muted:#8B948D;
+    --rule:#2C332E;--rule-soft:#232925;--accent:#64BFA1;--accent-wash:#214136;--good:#64BFA1;
+    --good-wash:#1E3A30;--bad:#E08080;--bad-wash:#3B2222;--hot:#D9A957;--hot-wash:#352C1C;color-scheme:dark}}
+  :root[data-theme="dark"]{--paper:#141815;--surface:#1B201D;--sunk:#10130F;--ink:#E4E8E3;
+    --ink-soft:#B4BCB6;--muted:#8B948D;--rule:#2C332E;--rule-soft:#232925;--accent:#64BFA1;
+    --accent-wash:#214136;--good:#64BFA1;--good-wash:#1E3A30;--bad:#E08080;--bad-wash:#3B2222;
+    --hot:#D9A957;--hot-wash:#352C1C;color-scheme:dark}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;
+       line-height:1.55;-webkit-font-smoothing:antialiased;padding-bottom:72px}
+  .wrap{max-width:830px;margin:0 auto;padding:32px 24px 80px;display:flex;flex-direction:column;gap:28px}
+  a{color:var(--accent)}
+  .site{position:sticky;top:0;z-index:70;background:var(--paper);border-bottom:1px solid var(--rule)}
+  .site .in{max-width:830px;margin:0 auto;padding:0 24px;height:50px;display:flex;align-items:center;
+            justify-content:space-between;gap:14px}
+  .site a,.site .cur{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+  .site a{text-decoration:none;color:var(--accent)}
+  .site .cur{color:var(--muted)}
+  .eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+  h1{font-family:var(--display);font-weight:600;font-size:clamp(31px,5.2vw,44px);line-height:1.07;
+     letter-spacing:-.015em;margin:10px 0 0;text-wrap:balance}
+  .standfirst{font-family:var(--display);font-size:clamp(17px,2.3vw,19.5px);line-height:1.5;
+              color:var(--ink-soft);max-width:60ch;margin:13px 0 0}
+  p{margin:0;max-width:74ch}
+  .how{background:var(--sunk);padding:15px 19px;display:flex;flex-direction:column;gap:7px;
+       font-size:15.5px;color:var(--ink-soft)}
+  .how b{color:var(--ink)}
+
+  ol.quiz{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:1px;background:var(--rule)}
+  li.q{background:var(--surface);padding:21px 22px 17px;display:flex;flex-direction:column;gap:13px;
+       border-left:3px solid transparent}
+  li.q.ok{border-left-color:var(--good)}
+  li.q.no{border-left-color:var(--bad)}
+  .topic{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .stem{font-size:18px;line-height:1.45;max-width:68ch}
+  .stem .n{font-family:var(--mono);font-size:12px;color:var(--accent);margin-right:9px;font-weight:500}
+
+  ol.opts{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+  ol.opts>li{display:flex;flex-direction:column}
+  button.opt{display:flex;gap:11px;width:100%;text-align:left;font:inherit;font-size:16px;color:var(--ink);
+             background:var(--paper);border:1px solid var(--rule);padding:10px 13px;cursor:pointer;
+             line-height:1.4;align-items:flex-start}
+  button.opt:hover:not(:disabled){border-color:var(--accent)}
+  button.opt .lt{font-family:var(--mono);font-size:13px;color:var(--muted);flex:none;padding-top:1px}
+  button.opt.sel{background:var(--accent-wash);border-color:var(--accent)}
+  button.opt.sel .lt{color:var(--accent)}
+  li.q.checked button.opt{cursor:default}
+  li.q.checked button.opt.pick-right{background:var(--good-wash);border-color:var(--good)}
+  li.q.checked button.opt.pick-right .lt{color:var(--good)}
+  li.q.checked button.opt.pick-wrong{background:var(--bad-wash);border-color:var(--bad)}
+  li.q.checked button.opt.pick-wrong .lt{color:var(--bad)}
+  .why{display:none;font-size:15px;color:var(--ink-soft);padding:7px 13px 2px 36px;max-width:66ch}
+  li.q.checked .why,li.q.shown .why{display:block}
+  .why b{color:var(--ink)}
+  @media (max-width:560px){.why{padding-left:14px}}
+
+  .tools{display:flex;gap:8px;flex-wrap:wrap}
+  button.tool{display:inline-flex;align-items:center;gap:7px;font:inherit;font-family:var(--mono);
+              font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);
+              background:none;border:1px solid var(--rule);padding:6px 11px;cursor:pointer}
+  button.tool:hover{color:var(--ink);border-color:var(--rule)}
+  button.tool svg{width:14px;height:14px;flex:none}
+  button.tool.on{color:var(--accent);border-color:var(--accent)}
+  .panel{display:none;font-size:15.5px;line-height:1.5;padding:12px 15px;max-width:70ch}
+  .panel.open{display:block}
+  .hint{background:var(--hot-wash);color:var(--ink-soft);border-left:3px solid var(--hot)}
+  .ans{background:var(--sunk);color:var(--ink-soft);border-left:3px solid var(--accent)}
+  .ans .lt{font-family:var(--mono);color:var(--accent);font-weight:500}
+
+  .finish{display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+  button.big{font:inherit;font-size:16px;color:var(--paper);background:var(--accent);border:none;
+             padding:13px 26px;cursor:pointer;font-weight:600}
+  button.big:hover{opacity:.9}
+  .result{display:none;flex-direction:column;gap:9px;width:100%}
+  .result.open{display:flex}
+  .result .big-score{font-family:var(--display);font-size:38px;line-height:1.1;color:var(--ink)}
+  .result .note{font-size:15.5px;color:var(--ink-soft)}
+  .result .jump{display:flex;gap:8px;flex-wrap:wrap}
+  .result .jump a{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-decoration:none;
+                  color:var(--bad);border:1px solid var(--bad);padding:5px 9px}
+
+  .bar{position:fixed;left:0;right:0;bottom:0;z-index:80;background:var(--surface);
+       border-top:1px solid var(--rule);height:52px;display:flex;align-items:center}
+  .bar .in{max-width:830px;margin:0 auto;padding:0 24px;width:100%;display:flex;align-items:center;
+           justify-content:space-between;gap:16px}
+  .bar .tick{font-family:var(--mono);font-size:13px;color:var(--ink)}
+  .bar .tick i{font-style:normal;color:var(--muted)}
+  .bar button{font:inherit;font-family:var(--mono);font-size:11px;letter-spacing:.08em;
+              text-transform:uppercase;color:var(--accent);background:none;border:1px solid var(--rule);
+              padding:7px 13px;cursor:pointer}
+  .bar button:hover{border-color:var(--accent)}
+  @media (max-width:560px){.wrap{padding:24px 15px 70px}li.q{padding:17px 15px 14px}}
+</style>
+
+<header class="site"><div class="in">
+  <a href="./">All practice sets</a>
+  <span class="cur">Week 3</span>
+</div></header>
+
+<div class="wrap">
+  <div>
+    <div class="eyebrow">PHI 2394 B00 &middot; exam 1 practice &middot; week 3</div>
+    <h1>Week 3: Foucault and Kuhn</h1>
+    <p class="standfirst">Twenty-five questions on the panopticon, discipline and normalization, then paradigms, revolutions and incommensurability.</p>
+  </div>
+
+  <div class="how">
+    <p><b>Answer every question before opening anything.</b> Guessing first and then being
+      corrected beats reading the answer first. That is the pretesting effect, and it is the
+      single largest free gain available tonight.</p>
+    <p><b>The hint tells you where to look without telling you the answer.</b> Use it when you are
+      stuck, and skip it when you are not.</p>
+    <p><b>Then press check my answers at the bottom.</b> Every option gets its reasoning, including
+      the ones you did not pick, because the wrong options are where the learning is.</p>
+  </div>
+
+  <ol class="quiz" id="quiz">
+
+  <li class="q" id="q1" data-a="2">
+    <p class="topic">Foucault &middot; Discipline and Punish</p>
+    <p class="stem"><span class="n">1</span> <i>Discipline and Punish</i>, 1975, is described as a genealogical study of what?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>Why punishment became harsher over time.</span></button>
+        <p class="why">His account runs the other way. The modern method is gentler, and that is what he finds worth explaining.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>The development of the gentler modern way of imprisoning criminals, in place of torturing or killing them.</span></button>
+        <p class="why">Genealogical means tracing how a practice came to be, without assuming it was an improvement. The puzzle he sets himself: punishment really did get gentler, so what is the new method doing that the old one could not?</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>The origins of the French legal system.</span></button>
+        <p class="why">The book ranges across Europe and is not a legal history.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>How prisons fail to reduce crime.</span></button>
+        <p class="why">A twentieth-century policy question, and not his.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">The word gentler is in her note, and it is the thing he finds suspicious.</div>
+    <div class="panel ans"><span class="lt">B.</span> Genealogical means tracing how a practice came to be, without assuming it was an improvement. The puzzle he sets himself: punishment really did get gentler, so what is the new method doing that the old one could not?</div>
+  </li>
+
+  <li class="q" id="q2" data-a="3">
+    <p class="topic">Foucault &middot; power-knowledge</p>
+    <p class="stem"><span class="n">2</span> Foucault says hierarchical observation leads to power-knowledge, which he glosses as &ldquo;the development of force and the establishment of truth&rdquo;. Whose slogan is he building on?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>Plato, that the philosopher should rule.</span></button>
+        <p class="why">Plato grounds power in knowledge of the Forms, which is a different relation: knowing comes first and earns the right to rule.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>Rousseau, that progress comes through education.</span></button>
+        <p class="why">Not a claim about power.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>Bacon, that knowledge is power.</span></button>
+        <p class="why">Bacon meant power over the physical world, and he meant it as a promise. Foucault keeps the identity and turns it into an accusation: power and knowledge have the same goal, which is controlling what we know. Same three words, opposite verdict.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>Bentham, that institutions should maximise happiness.</span></button>
+        <p class="why">Utilitarianism is about what to aim at. How knowing and ruling are related is a different question.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">The phrase is three words long and it belongs to someone from week 2.</div>
+    <div class="panel ans"><span class="lt">C.</span> Bacon meant power over the physical world, and he meant it as a promise. Foucault keeps the identity and turns it into an accusation: power and knowledge have the same goal, which is controlling what we know. Same three words, opposite verdict.</div>
+  </li>
+
+  <li class="q" id="q3" data-a="2">
+    <p class="topic">Foucault &middot; docile bodies</p>
+    <p class="stem"><span class="n">3</span> What is a docile body?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>A prisoner who has accepted guilt.</span></button>
+        <p class="why">Docility here is about usefulness. Remorse is a separate matter.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>A body made useful and easier to control by disciplinary power: prisoners, soldiers, workers, schoolchildren.</span></button>
+        <p class="why">The list matters, because it shows how far past the prison the argument reaches. The same technique runs in a barracks, a factory and a classroom. Discipline produces docile bodies, which is why the prison is a model and not an exception.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>A body that has been physically weakened by confinement.</span></button>
+        <p class="why">Discipline makes the body more capable.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>A citizen who obeys the law without needing to be watched.</span></button>
+        <p class="why">Close, and it misses the production. The point is what makes the body that way.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">Her list of examples had four items and only one of them was a prisoner.</div>
+    <div class="panel ans"><span class="lt">B.</span> The list matters, because it shows how far past the prison the argument reaches. The same technique runs in a barracks, a factory and a classroom. Discipline produces docile bodies, which is why the prison is a model and not an exception.</div>
+  </li>
+
+  <li class="q" id="q4" data-a="3">
+    <p class="topic">Foucault &middot; the body as machine</p>
+    <p class="stem"><span class="n">4</span> The Stanford Encyclopedia passage on her slide says the human body becomes a machine whose functioning could be optimized, calculated and improved. How?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>By medical intervention and surgery.</span></button>
+        <p class="why">No surgery in the passage.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>By measuring it against the average body in the population.</span></button>
+        <p class="why">Normalization does involve a norm, and this is not the mechanism described in the quoted passage.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>By breaking its functions, movements and capabilities into narrow segments, analysing them in detail, and recomposing them in a maximally effective way.</span></button>
+        <p class="why">Break down, analyse, recompose. Think of a drill sergeant decomposing a rifle reload into numbered motions, or a factory time-and-motion study. The body is treated as something that can be taken apart on paper and reassembled better.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>By training it to withstand pain.</span></button>
+        <p class="why">That belongs to the older regime of punishment the book describes the end of.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">Three verbs in sequence, and the same three an engineer would use on a mechanism.</div>
+    <div class="panel ans"><span class="lt">C.</span> Break down, analyse, recompose. Think of a drill sergeant decomposing a rifle reload into numbered motions, or a factory time-and-motion study. The body is treated as something that can be taken apart on paper and reassembled better.</div>
+  </li>
+
+  <li class="q" id="q5" data-a="2">
+    <p class="topic">Foucault &middot; normalization</p>
+    <p class="stem"><span class="n">5</span> What is normalization, and what does Foucault say it produces?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>The return of a disturbed person to health, which produces recovery.</span></button>
+        <p class="why">The everyday medical sense of the word, and not his.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>The goal of disciplinary power, which produces judicial systems sorting citizens into normal and abnormal.</span></button>
+        <p class="why">She called it the goal, which is the word to hold. Everything else in the apparatus serves it. Once a norm exists, every person can be placed against it, and the placement is itself a judgment.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>The standardisation of laws across a country, which produces equality before the law.</span></button>
+        <p class="why">Not a claim in the lecture.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>The spread of scientific method into the social sciences, which produces objectivity.</span></button>
+        <p class="why">Not his argument.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">She used one word for its status in the system, and that word was not technique.</div>
+    <div class="panel ans"><span class="lt">B.</span> She called it the goal, which is the word to hold. Everything else in the apparatus serves it. Once a norm exists, every person can be placed against it, and the placement is itself a judgment.</div>
+  </li>
+
+  <li class="q" id="q6" data-a="3">
+    <p class="topic">Foucault &middot; normalization in practice</p>
+    <p class="stem"><span class="n">6</span> Which were her examples of normalization at work?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>Prisons, armies and asylums.</span></button>
+        <p class="why">All Foucault subjects, and not the list she gave for this term.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>Courts, police and parliaments.</span></button>
+        <p class="why">Institutions of law, and normalization works outside the law.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>Standardized education programmes, medical practices, industrial processes and production.</span></button>
+        <p class="why">Notice that none of them is a prison. That is the point of the list: the technique that was visible in the prison is running in a school timetable and a production line, where nobody experiences it as punishment.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>Census-taking, taxation and conscription.</span></button>
+        <p class="why">State functions, and not the ones she named.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">Her examples were all places nobody is being punished.</div>
+    <div class="panel ans"><span class="lt">C.</span> Notice that none of them is a prison. That is the point of the list: the technique that was visible in the prison is running in a school timetable and a production line, where nobody experiences it as punishment.</div>
+  </li>
+
+  <li class="q" id="q7" data-a="3">
+    <p class="topic">Foucault &middot; the plague town</p>
+    <p class="stem"><span class="n">7</span> <i>Panopticism</i> opens with the plague town. What does Foucault say the plague is met with?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>Flight, since those who could leave the city did.</span></button>
+        <p class="why">Historically common, and not his subject.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>Prayer and religious explanation.</span></button>
+        <p class="why">Not the response he analyses.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>Order: sorting out the disease and separating bodies, sorting out evil, which increases fear and death.</span></button>
+        <p class="why">The order is the response, and the last clause is the sting: the sorting makes the fear and the death worse. The plague is the occasion where a town gets to organise itself completely, and Foucault uses it to show what total organisation looks like when it is allowed.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>Medical experiment, since the epidemic gave doctors material.</span></button>
+        <p class="why">Not in the text.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">His answer is a single word, and the surprise is what he says it produces.</div>
+    <div class="panel ans"><span class="lt">C.</span> The order is the response, and the last clause is the sting: the sorting makes the fear and the death worse. The plague is the occasion where a town gets to organise itself completely, and Foucault uses it to show what total organisation looks like when it is allowed.</div>
+  </li>
+
+  <li class="q" id="q8" data-a="2">
+    <p class="topic">Foucault &middot; the political dream</p>
+    <p class="stem"><span class="n">8</span> Foucault says the plague has a &ldquo;political dream&rdquo;. What is it?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>That the state should take over medicine.</span></button>
+        <p class="why">Not the dream he names.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>A strict division, and the penetration of regulation into even the smallest details of everyday life.</span></button>
+        <p class="why">Two halves, and the second is the one that matters: regulation reaching the smallest details. A plague gives authorities a reason to say where every person may stand and at what hour, and Foucault's claim is that this is attractive to power independently of the disease.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>That the city should be rebuilt on rational principles.</span></button>
+        <p class="why">Architecture comes later in the text, with the panopticon.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>That the healthy and the sick should be treated as equals.</span></button>
+        <p class="why">The opposite of the division he describes.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">This is the entry she annotated with Plato and the Kalliopolis.</div>
+    <div class="panel ans"><span class="lt">B.</span> Two halves, and the second is the one that matters: regulation reaching the smallest details. A plague gives authorities a reason to say where every person may stand and at what hour, and Foucault's claim is that this is attractive to power independently of the disease.</div>
+  </li>
+
+  <li class="q" id="q9" data-a="3">
+    <p class="topic">Foucault &middot; spaces of exclusion</p>
+    <p class="stem"><span class="n">9</span> What are the spaces of exclusion, and what is the problem with them?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>Prisons, and the problem is that they do not reform anyone.</span></button>
+        <p class="why">A policy complaint, and not his.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>Borders, and the problem is that they are arbitrary.</span></button>
+        <p class="why">Not discussed.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>Places for beggars, vagabonds, madmen and the disorderly, and the problem is that they are formed by the real population while authority works through a binary of division and branding.</span></button>
+        <p class="why">Her example was the nineteenth-century psychiatric asylum. The binaries she listed: mad against sane, dangerous against harmless, normal against abnormal. The problem is that real and varied people get sorted by a two-way switch, and then treated as the side of the switch they were assigned to.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>Private property, and the problem is that it excludes the poor from land.</span></button>
+        <p class="why">Not his argument here.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">Her example for it was an institution from the nineteenth century.</div>
+    <div class="panel ans"><span class="lt">C.</span> Her example was the nineteenth-century psychiatric asylum. The binaries she listed: mad against sane, dangerous against harmless, normal against abnormal. The problem is that real and varied people get sorted by a two-way switch, and then treated as the side of the switch they were assigned to.</div>
+  </li>
+
+  <li class="q" id="q10" data-a="1">
+    <p class="topic">Foucault &middot; the modern prison</p>
+    <p class="stem"><span class="n">10</span> What does the modern prison do, in her two-part formulation?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>It deprives inmates of liberty, and it categorizes their nature.</span></button>
+        <p class="why">The second half is the part people forget and the part that carries the argument. Losing your liberty is the punishment. Having your nature written down and filed is the new thing, and it is what links the prison to the clinic and the school.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>It punishes the body, and it saves the soul.</span></button>
+        <p class="why">The older religious model.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>It removes the criminal from society, and it deters others.</span></button>
+        <p class="why">The standard justification, and not her formulation.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>It separates the dangerous from the harmless, and it releases the reformed.</span></button>
+        <p class="why">Division and branding is a different point in the lecture.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">One half is about what is taken away. The other is about what is written down.</div>
+    <div class="panel ans"><span class="lt">A.</span> The second half is the part people forget and the part that carries the argument. Losing your liberty is the punishment. Having your nature written down and filed is the new thing, and it is what links the prison to the clinic and the school.</div>
+  </li>
+
+  <li class="q" id="q11" data-a="2">
+    <p class="topic">Foucault &middot; the building itself</p>
+    <p class="stem"><span class="n">11</span> In Foucault's description of the building, how many windows does each cell have, and why?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>One, facing the tower, so the inmate can be seen.</span></button>
+        <p class="why">The obvious design, and it would leave the cell too dark to see into.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>Two, one facing the tower and one on the outside, so the light crosses the cell from one end to the other.</span></button>
+        <p class="why">The detail is the whole trick. Backlighting turns every inmate into a visible silhouette from the tower. The architecture does the surveillance, which is why one person can replace many.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>None, so the inmate is in darkness and the tower is lit.</span></button>
+        <p class="why">This would make the inmate invisible, which defeats the design.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>Two, both facing outward, so the inmate cannot see the tower at all.</span></button>
+        <p class="why">The inmate has to be able to see the tower, because the uncertainty about it is the mechanism.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">Think about what you need behind a person for them to appear as a clear outline.</div>
+    <div class="panel ans"><span class="lt">B.</span> The detail is the whole trick. Backlighting turns every inmate into a visible silhouette from the tower. The architecture does the surveillance, which is why one person can replace many.</div>
+  </li>
+
+  <li class="q" id="q12" data-a="2">
+    <p class="topic">Foucault &middot; the royal menagerie</p>
+    <p class="stem"><span class="n">12</span> Foucault writes that the Panopticon is a royal menagerie in which three things have been replaced. Which three?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>The cage by the cell, the keeper by the guard, the visitor by the inspector.</span></button>
+        <p class="why">A tidy-sounding list and not his.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>The animal by man, individual distribution by specific grouping, and the king by the machinery of a furtive power.</span></button>
+        <p class="why">A menagerie was a royal collection of animals, arranged so one person could view them all. Foucault's three swaps turn it into a prison: the exhibit is now a person, the arrangement is now by category, and the viewer is now a machine with nobody in particular at the centre. Furtive means hidden.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>The garden by the yard, the spectacle by the record, the crowd by the individual.</span></button>
+        <p class="why">Not his wording.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>The animal by the criminal, the king by the state, the menagerie by the prison.</span></button>
+        <p class="why">Half right on the first, and the middle term and the third are wrong.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">A menagerie is a royal zoo. Ask what each of its three parts turns into.</div>
+    <div class="panel ans"><span class="lt">B.</span> A menagerie was a royal collection of animals, arranged so one person could view them all. Foucault's three swaps turn it into a prison: the exhibit is now a person, the arrangement is now by category, and the viewer is now a machine with nobody in particular at the centre. Furtive means hidden.</div>
+  </li>
+
+  <li class="q" id="q13" data-a="2">
+    <p class="topic">Kuhn &middot; the break with positivism</p>
+    <p class="stem"><span class="n">13</span> Thomas Kuhn's book marked a break with what the professor called positive doctrines. What was the positivist paradigm she described?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>The belief that science always produces socially positive outcomes.</span></button>
+        <p class="why">A false friend. Positive here has nothing to do with good.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>A view emerging in the Enlightenment: non-contextual, formal and standardised research that seeks analytically to separate distinct variables.</span></button>
+        <p class="why">Take the three words one at a time. Non-contextual: where and when you did the work should not matter. Formal and standardised: anyone following the procedure gets the same result. Separating variables: isolate one thing and hold the rest still. Kuhn's paradigms attack the first of these directly, because a paradigm is a context.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>The claim that only sense experience counts as evidence, originating with Bacon.</span></button>
+        <p class="why">The empiricist root of positivism, and not the description she gave.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>The doctrine that every scientific claim must be falsifiable.</span></button>
+        <p class="why">Popper, who was arguing against the positivists.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">Positive here is about a kind of method, and the first of its three features is the one Kuhn destroys.</div>
+    <div class="panel ans"><span class="lt">B.</span> Take the three words one at a time. Non-contextual: where and when you did the work should not matter. Formal and standardised: anyone following the procedure gets the same result. Separating variables: isolate one thing and hold the rest still. Kuhn's paradigms attack the first of these directly, because a paradigm is a context.</div>
+  </li>
+
+  <li class="q" id="q14" data-a="3">
+    <p class="topic">Kuhn &middot; where his influence is strongest</p>
+    <p class="stem"><span class="n">14</span> Where is Kuhn's influence strongest?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>In physics.</span></button>
+        <p class="why">His training was in physics and his effect there was slight.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>In sociology.</span></button>
+        <p class="why">Real influence, and not the field she named.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>In the history of science.</span></button>
+        <p class="why">Which makes sense, because his argument is a claim about how to write history. If you cannot explain a sequence by what it led to, the historian's job changes: you have to reconstruct what the old paradigm looked like from inside, as a working system.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>In analytic philosophy.</span></button>
+        <p class="why">His reception there was largely hostile.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">His central methodological objection is to a way of writing about the past.</div>
+    <div class="panel ans"><span class="lt">C.</span> Which makes sense, because his argument is a claim about how to write history. If you cannot explain a sequence by what it led to, the historian's job changes: you have to reconstruct what the old paradigm looked like from inside, as a working system.</div>
+  </li>
+
+  <li class="q" id="q15" data-a="3">
+    <p class="topic">Kuhn &middot; Copernicus</p>
+    <p class="stem"><span class="n">15</span> What did Copernicus hold, in the professor's own framing of it?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>That the earth rotates on its axis once a day.</span></button>
+        <p class="why">True of Copernicus and not the framing she chose.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>That observation should outrank authority.</span></button>
+        <p class="why">A Baconian slogan, and the Copernican system was not driven by new observations.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>That the sun needed to be at the centre for circular motion to work.</span></button>
+        <p class="why">She called this the important framing, so it is likely to be the asked one. Note what it means: he was not following better data. He was preserving perfect circles, an old commitment inherited from the Greeks. A revolution launched in order to keep something old.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>That the planets move in ellipses.</span></button>
+        <p class="why">Kepler, sixty years later, and it is the thing that finally broke the circles Copernicus was protecting.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">She flagged one of these as her framing and as the important one. It gives his motive. The conclusion is the familiar part.</div>
+    <div class="panel ans"><span class="lt">C.</span> She called this the important framing, so it is likely to be the asked one. Note what it means: he was not following better data. He was preserving perfect circles, an old commitment inherited from the Greeks. A revolution launched in order to keep something old.</div>
+  </li>
+
+  <li class="q" id="q16" data-a="2">
+    <p class="topic">Kuhn &middot; what Copernicus opposed</p>
+    <p class="stem"><span class="n">16</span> Copernicus held the sun stationary and the earth moving. Whose worldview was he arguing against?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>Plato's, with the Forms in a realm outside ours.</span></button>
+        <p class="why">Plato's theory of Forms is not an astronomy.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>Aristotle's earth-centred worldview.</span></button>
+        <p class="why">Which is why the Greek picture had to break before modern science could start, and why Aristotle keeps reappearing as the thing being overthrown. Bacon attacks his method, Copernicus attacks his cosmos.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>Bacon's empiricism.</span></button>
+        <p class="why">Bacon is born eighteen years after Copernicus dies.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>The Church's, which had no position on astronomy.</span></button>
+        <p class="why">The Church's astronomy was Aristotle's, so this misses the source.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">The same figure whose method Bacon attacks about eighty years later.</div>
+    <div class="panel ans"><span class="lt">B.</span> Which is why the Greek picture had to break before modern science could start, and why Aristotle keeps reappearing as the thing being overthrown. Bacon attacks his method, Copernicus attacks his cosmos.</div>
+  </li>
+
+  <li class="q" id="q17" data-a="1">
+    <p class="topic">Kuhn &middot; the Scientific Revolution</p>
+    <p class="stem"><span class="n">17</span> What did the Scientific Revolution of the sixteenth and seventeenth centuries replace, and with what consequence for philosophy?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>It replaced the Greek worldview that had prevailed for two thousand years, and science becomes its own discipline, distinct from philosophy.</span></button>
+        <p class="why">The consequence is the one the whole course is about. Before this, studying nature was natural philosophy, a branch of philosophy. It also replaced the Christian focus of the European worldview and embraced utilitarian concerns, meaning knowledge valued for what it can do.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>It replaced medieval alchemy, and philosophy absorbed science into itself.</span></button>
+        <p class="why">The direction of the split is the reverse.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>It replaced religion with reason, and philosophy was abolished in the universities.</span></button>
+        <p class="why">Neither half happened.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>It replaced Latin with vernacular languages, and philosophy became accessible.</span></button>
+        <p class="why">A real change of the period, and not her point.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">Ask what the people doing it were called before and after.</div>
+    <div class="panel ans"><span class="lt">A.</span> The consequence is the one the whole course is about. Before this, studying nature was natural philosophy, a branch of philosophy. It also replaced the Christian focus of the European worldview and embraced utilitarian concerns, meaning knowledge valued for what it can do.</div>
+  </li>
+
+  <li class="q" id="q18" data-a="2">
+    <p class="topic">Kuhn &middot; foundationalism</p>
+    <p class="stem"><span class="n">18</span> What is foundationalism, and what problem did she name for it?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>The view that science rests on experiment, and the problem is cost.</span></button>
+        <p class="why">Not her definition and not her problem.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>The idea that knowledge can be traced back to a firm foundation we keep building on, and the problem is induction.</span></button>
+        <p class="why">The metaphor is a building. Every claim rests on a lower claim, down to something solid. The problem she named: the ground floor is reached by induction, meaning going from particular observations to a general law, and no number of observations guarantees the law. So the foundation is the least secure part.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>The view that every field needs a founder, and the problem is credit.</span></button>
+        <p class="why">A pun on the word, and not the doctrine.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>The claim that mathematics underlies all science, and the problem is that biology resists it.</span></button>
+        <p class="why">Not discussed.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">The metaphor is architectural, and the trouble is at the bottom.</div>
+    <div class="panel ans"><span class="lt">B.</span> The metaphor is a building. Every claim rests on a lower claim, down to something solid. The problem she named: the ground floor is reached by induction, meaning going from particular observations to a general law, and no number of observations guarantees the law. So the foundation is the least secure part.</div>
+  </li>
+
+  <li class="q" id="q19" data-a="3">
+    <p class="topic">Kuhn &middot; foundationalism against telos</p>
+    <p class="stem"><span class="n">19</span> She noted that foundationalism is <b>not</b> like one other idea in the course. Which, and why?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>Not like Plato's Forms, because foundations are physical.</span></button>
+        <p class="why">Not the contrast she drew.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>Not like Bacon's induction, because foundations are deductive.</span></button>
+        <p class="why">Induction is named as foundationalism's problem, so they are not opposites.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>Not like the Aristotelian <i>telos</i>, because in <i>telos</i> a thing moves toward an ideal form, while a foundation is something you build up from.</span></button>
+        <p class="why">Two different pictures of direction. <i>Telos</i> pulls from in front: the end is already fixed and the thing grows toward it. A foundation pushes from below: nothing is fixed ahead and you stack upward. Worth holding, because Kuhn then rejects both as accounts of how science moves.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>Not like Foucault's power-knowledge, because foundations are neutral.</span></button>
+        <p class="why">Not a contrast she drew.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">One picture has the destination fixed in advance. The other has only a starting point.</div>
+    <div class="panel ans"><span class="lt">C.</span> Two different pictures of direction. <i>Telos</i> pulls from in front: the end is already fixed and the thing grows toward it. A foundation pushes from below: nothing is fixed ahead and you stack upward. Worth holding, because Kuhn then rejects both as accounts of how science moves.</div>
+  </li>
+
+  <li class="q" id="q20" data-a="2">
+    <p class="topic">Kuhn &middot; revolutions</p>
+    <p class="stem"><span class="n">20</span> What happens in a revolution, in her wording?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>A theory is falsified by a crucial experiment.</span></button>
+        <p class="why">Popper's picture, and Kuhn's account makes the crucial experiment hard to believe in.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>The disciplinary matrix is revised and an anomalous problem gets solved.</span></button>
+        <p class="why">Disciplinary matrix is Kuhn's later, more careful word for a paradigm: the whole shared kit of theories, values, instruments and assumptions. Revision of the kit, plus the solving of the problem that would not go away. Both halves are needed.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>A majority of scientists change their minds at once.</span></button>
+        <p class="why">Kuhn's account has the old generation largely not changing its mind at all.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>A new instrument makes the old theory unnecessary.</span></button>
+        <p class="why">Her particle detector example argues the reverse: instruments often survive the revolution unchanged.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">Two things happen, and one of them is to the shared equipment of the field.</div>
+    <div class="panel ans"><span class="lt">B.</span> Disciplinary matrix is Kuhn's later, more careful word for a paradigm: the whole shared kit of theories, values, instruments and assumptions. Revision of the kit, plus the solving of the problem that would not go away. Both halves are needed.</div>
+  </li>
+
+  <li class="q" id="q21" data-a="2">
+    <p class="topic">Kuhn &middot; the critique</p>
+    <p class="stem"><span class="n">21</span> What is the main critique of incommensurability she gave, and how did Kuhn respond?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>That paradigms do not really exist; Kuhn abandoned the term.</span></button>
+        <p class="why">He never abandoned it.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>That semantic incommensurability can be overcome and so is not a real limitation; Kuhn modified his position and emphasised that communication remains difficult within the scientific community.</span></button>
+        <p class="why">Semantic means about meaning. The critics' point: if a term shifted meaning, a historian can learn the old meaning, so the barrier is a translation problem and translation problems get solved. Kuhn retreated from impossible to difficult, which is a real concession.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>That revolutions are rarer than he claimed; Kuhn conceded and narrowed his examples.</span></button>
+        <p class="why">Not the critique she gave.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>That the history was inaccurate; Kuhn revised the book.</span></button>
+        <p class="why">Not her account.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">The critique attacks the first of his three reasons, the one about the meanings of terms.</div>
+    <div class="panel ans"><span class="lt">B.</span> Semantic means about meaning. The critics' point: if a term shifted meaning, a historian can learn the old meaning, so the barrier is a translation problem and translation problems get solved. Kuhn retreated from impossible to difficult, which is a real concession.</div>
+  </li>
+
+  <li class="q" id="q22" data-a="3">
+    <p class="topic">Kuhn &middot; the particle detector</p>
+    <p class="stem"><span class="n">22</span> She used particle detectors as an example against Kuhn. What did the example show?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>That new instruments cause revolutions.</span></button>
+        <p class="why">The reverse of the point.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>That detectors are too expensive for small fields.</span></button>
+        <p class="why">Not relevant.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>That the same instrument was used the same way at a later stage: the theory changed and the instrument of detection stayed where it was.</span></button>
+        <p class="why">A direct problem for incommensurability. If the two paradigms really shared no measure, the old detector should have become meaningless under the new theory. It did not. Something survived the revolution intact, which gives you a common measure after all.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>That measurements are theory-laden, so the detector's readings changed meaning.</span></button>
+        <p class="why">That would support Kuhn, and her example was offered against him.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">The example works as an objection, so something has to have stayed the same across the change.</div>
+    <div class="panel ans"><span class="lt">C.</span> A direct problem for incommensurability. If the two paradigms really shared no measure, the old detector should have become meaningless under the new theory. It did not. Something survived the revolution intact, which gives you a common measure after all.</div>
+  </li>
+
+  <li class="q" id="q23" data-a="2">
+    <p class="topic">Kuhn &middot; her conclusion</p>
+    <p class="stem"><span class="n">23</span> What was her conclusion about science at the end of the Kuhn lecture?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>Science is unified by the scientific method.</span></button>
+        <p class="why">The view the whole course is written against.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>Science is an ad hoc system that is disunified, and it does not need one abiding thread or foundational idea to be successful.</span></button>
+        <p class="why">Ad hoc means put together for the particular case at hand. She attached this to Wittgenstein: a set of practices can be held together by overlapping family resemblances with no single feature running through all of them. Success without unity, which answers the course's title question directly.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>Science is progressing toward a complete description of nature.</span></button>
+        <p class="why">Rejected under his view of progress.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>Science is a social construction with no claim on truth.</span></button>
+        <p class="why">Stronger than anything she claimed, and week 4 is careful to avoid it.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">She named a philosopher alongside it, the one known for family resemblance.</div>
+    <div class="panel ans"><span class="lt">B.</span> Ad hoc means put together for the particular case at hand. She attached this to Wittgenstein: a set of practices can be held together by overlapping family resemblances with no single feature running through all of them. Success without unity, which answers the course's title question directly.</div>
+  </li>
+
+  <li class="q" id="q24" data-a="1">
+    <p class="topic">Kuhn &middot; the modernity of science</p>
+    <p class="stem"><span class="n">24</span> Under the modernity of science, what did she say about new and older scientists?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>New scientists are less indoctrinated with generalisations and more responsible for change, and older scientists tend to become more conservative and marginalised if they do not change.</span></button>
+        <p class="why">This is the same mechanism as Kuhn's second reason for incommensurability, seen from the other side. Indoctrination is what makes a paradigm hold, so the least indoctrinated are the ones who can leave it. She added that scientists attend mostly to recent findings and treat past research as low value, which makes the field look young and modern.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>New scientists defend the paradigm hardest because their careers depend on it.</span></button>
+        <p class="why">A reasonable sociological guess, and the opposite of what she said.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>Older scientists lead revolutions because only they have the standing to.</span></button>
+        <p class="why">The reverse of her claim.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>Age makes no difference, because the paradigm constrains everyone equally.</span></button>
+        <p class="why">She drew an explicit contrast between the two groups.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">Which group has had the least time to be trained into the paradigm?</div>
+    <div class="panel ans"><span class="lt">A.</span> This is the same mechanism as Kuhn's second reason for incommensurability, seen from the other side. Indoctrination is what makes a paradigm hold, so the least indoctrinated are the ones who can leave it. She added that scientists attend mostly to recent findings and treat past research as low value, which makes the field look young and modern.</div>
+  </li>
+
+  <li class="q" id="q25" data-a="2">
+    <p class="topic">Kuhn &middot; why revolutions are not progress</p>
+    <p class="stem"><span class="n">25</span> In her list of Kuhn's contributions, why are revolutions <b>not</b> progressive?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>Because they are too rare to count as a trend.</span></button>
+        <p class="why">Frequency is not the issue.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>Because they both build and destroy paradigms.</span></button>
+        <p class="why">Her exact reason, and the contrast with normal science is what makes it clear. Under normal science progress is easy to talk about, because achievements accumulate and are apparent. A revolution adds and subtracts at the same time, so there is no single direction to measure. Oxygen chemistry gained a great deal and lost every question phlogiston could answer.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>Because they are driven by politics and funding.</span></button>
+        <p class="why">Not his argument.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>Because the new paradigm is usually less accurate at first.</span></button>
+        <p class="why">Often historically true, and not the reason she listed.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">Compare it with normal science, where she said progress is easy to talk about. What does a revolution do that puzzle solving does not?</div>
+    <div class="panel ans"><span class="lt">B.</span> Her exact reason, and the contrast with normal science is what makes it clear. Under normal science progress is easy to talk about, because achievements accumulate and are apparent. A revolution adds and subtracts at the same time, so there is no single direction to measure. Oxygen chemistry gained a great deal and lost every question phlogiston could answer.</div>
+  </li>
+
+  </ol>
+
+  <div class="finish">
+    <button type="button" class="big" id="check">Check my answers</button>
+    <div class="result" id="result">
+      <div class="big-score" id="bigscore"></div>
+      <p class="note" id="resnote"></p>
+      <div class="jump" id="jump"></div>
+    </div>
+  </div>
+</div>
+
+<div class="bar"><div class="in">
+  <span class="tick" id="tick"></span>
+  <button type="button" id="reset">Start over</button>
+</div></div>
+
+<script>
+(function(){
+  var KEY='phi2394-practice-w3-v1';
+  var qs=[].slice.call(document.querySelectorAll('li.q'));
+  var picked={},checked=false;
+  try{picked=JSON.parse(localStorage.getItem(KEY)||'{}')||{};}catch(e){picked={};}
+
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(picked));}catch(e){}}
+
+  function answered(){var n=0;qs.forEach(function(q,i){if(picked[i]!=null)n++;});return n;}
+  function correct(){var n=0;qs.forEach(function(q,i){if(picked[i]===+q.dataset.a)n++;});return n;}
+
+  function tick(){
+    document.getElementById('tick').innerHTML=
+      answered()+' of '+qs.length+' answered'+(checked?' <i>&middot; '+correct()+' right</i>':'');
+  }
+
+  function paint(q,i){
+    var p=picked[i],a=+q.dataset.a;
+    q.querySelectorAll('button.opt').forEach(function(b,k){
+      b.classList.remove('sel','pick-right','pick-wrong');
+      b.disabled=checked;
+      if(!checked){ if(p===k+1) b.classList.add('sel'); return; }
+      if(k+1===a) b.classList.add('pick-right');
+      else if(k+1===p) b.classList.add('pick-wrong');
+    });
+    q.classList.toggle('checked',checked);
+    q.classList.toggle('ok',checked&&p===a);
+    q.classList.toggle('no',checked&&p!==a);
+  }
+
+  qs.forEach(function(q,i){
+    q.querySelectorAll('button.opt').forEach(function(b,k){
+      b.addEventListener('click',function(){
+        if(checked)return;
+        picked[i]=k+1;save();paint(q,i);tick();
+      });
+    });
+    var h=q.querySelector('.hint'),an=q.querySelector('.ans');
+    q.querySelector('.t-hint').addEventListener('click',function(){
+      h.classList.toggle('open');this.classList.toggle('on',h.classList.contains('open'));
+    });
+    q.querySelector('.t-ans').addEventListener('click',function(){
+      an.classList.toggle('open');this.classList.toggle('on',an.classList.contains('open'));
+      q.classList.toggle('shown',an.classList.contains('open'));
+    });
+    paint(q,i);
+  });
+  tick();
+
+  document.getElementById('check').addEventListener('click',function(){
+    checked=true;
+    qs.forEach(paint);tick();
+    var n=correct(),un=qs.length-answered();
+    document.getElementById('bigscore').textContent=n+' out of '+qs.length;
+    var pct=Math.round(n/qs.length*100);
+    var msg='That is '+pct+' per cent. ';
+    if(un>0) msg+=un+' question'+(un===1?' was':'s were')+' left blank and counted as wrong. ';
+    msg+=n===qs.length?'Nothing left to restudy here.'
+        :'Read the reasoning under every red question, including why the option you picked is wrong.';
+    document.getElementById('resnote').textContent=msg;
+    var j=document.getElementById('jump');j.innerHTML='';
+    qs.forEach(function(q,i){
+      if(picked[i]===+q.dataset.a)return;
+      var a=document.createElement('a');a.href='#q'+(i+1);a.textContent='Q'+(i+1);j.appendChild(a);
+    });
+    document.getElementById('result').classList.add('open');
+    document.getElementById('result').scrollIntoView({behavior:'smooth',block:'center'});
+  });
+
+  document.getElementById('reset').addEventListener('click',function(){
+    picked={};checked=false;save();
+    qs.forEach(function(q,i){
+      paint(q,i);
+      q.classList.remove('shown');
+      q.querySelectorAll('.panel').forEach(function(p){p.classList.remove('open');});
+      q.querySelectorAll('.tool').forEach(function(t){t.classList.remove('on');});
+    });
+    document.getElementById('result').classList.remove('open');
+    tick();window.scrollTo({top:0,behavior:'smooth'});
+  });
+})();
+</script>
+</html>

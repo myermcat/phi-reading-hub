@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PHI2394 Exam 1 Practice</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%231F6B57'/%3E%3Cpath%20d='M22%2024a10%2010%200%200%201%2020%200c0%206-7%207-9%2012'%20fill='none'%20stroke='%23fff'%20stroke-width='6'%20stroke-linecap='round'/%3E%3Ccircle%20cx='32'%20cy='48'%20r='4'%20fill='%23fff'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;1,6..72,400&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root{--paper:#EDEFEC;--surface:#F6F7F4;--sunk:#E3E6E1;--ink:#191D1A;--ink-soft:#414944;
+    --muted:#6E766F;--rule:#D2D8D1;--accent:#1F6B57;--hot:#8E6318;--hot-wash:#F0E4CB;
+    --display:"Newsreader",Georgia,serif;--body:"Source Sans 3",-apple-system,"Segoe UI",sans-serif;
+    --mono:"IBM Plex Mono","SF Mono",Menlo,monospace;color-scheme:light}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    --paper:#141815;--surface:#1B201D;--sunk:#10130F;--ink:#E4E8E3;--ink-soft:#B4BCB6;--muted:#8B948D;
+    --rule:#2C332E;--accent:#64BFA1;--hot:#D9A957;--hot-wash:#352C1C;color-scheme:dark}}
+  :root[data-theme="dark"]{--paper:#141815;--surface:#1B201D;--sunk:#10130F;--ink:#E4E8E3;
+    --ink-soft:#B4BCB6;--muted:#8B948D;--rule:#2C332E;--accent:#64BFA1;--hot:#D9A957;
+    --hot-wash:#352C1C;color-scheme:dark}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;
+       line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:830px;margin:0 auto;padding:34px 24px 90px;display:flex;flex-direction:column;gap:30px}
+  a{color:var(--accent)}
+  .site{position:sticky;top:0;z-index:70;background:var(--paper);border-bottom:1px solid var(--rule)}
+  .site .in{max-width:830px;margin:0 auto;padding:0 24px;height:50px;display:flex;align-items:center;
+            justify-content:space-between;gap:14px}
+  .site a,.site .cur{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+  .site a{text-decoration:none;color:var(--accent)}
+  .site .cur{color:var(--muted)}
+  .eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+  h1{font-family:var(--display);font-weight:600;font-size:clamp(32px,5.4vw,46px);line-height:1.06;
+     letter-spacing:-.015em;margin:10px 0 0;text-wrap:balance}
+  .standfirst{font-family:var(--display);font-size:clamp(17px,2.3vw,20px);line-height:1.5;
+              color:var(--ink-soft);max-width:60ch;margin:13px 0 0}
+  p{margin:0;max-width:74ch}
+  h2{font-family:var(--display);font-weight:600;font-size:25px;margin:0;letter-spacing:-.01em}
+  section{display:flex;flex-direction:column;gap:15px}
+  .sets{display:flex;flex-direction:column;gap:1px;background:var(--rule);border:1px solid var(--rule)}
+  a.set{background:var(--surface);padding:22px 24px;display:grid;gap:7px;text-decoration:none;color:inherit;
+        border-left:3px solid transparent;transition:border-color .15s,background .15s}
+  a.set:hover{border-left-color:var(--accent);background:var(--sunk)}
+  a.set .n{font-family:var(--mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--accent)}
+  a.set h3{margin:0;font-family:var(--display);font-size:23px;font-weight:600;line-height:1.18}
+  a.set p{font-size:15.5px;color:var(--ink-soft);max-width:62ch}
+  .soon{background:var(--surface);padding:22px 24px;display:grid;gap:7px;border-left:3px solid transparent;opacity:.62}
+  .soon .n{font-family:var(--mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--muted)}
+  .soon h3{margin:0;font-family:var(--display);font-size:23px;font-weight:600;line-height:1.18}
+  .soon p{font-size:15.5px;color:var(--ink-soft)}
+  .how{background:var(--hot-wash);padding:18px 22px;display:flex;flex-direction:column;gap:9px;
+       font-size:16px;color:var(--ink-soft);border-left:3px solid var(--hot)}
+  .how b{color:var(--ink)}
+  ol.steps{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:7px;font-size:16px;color:var(--ink-soft)}
+  ol.steps b{color:var(--ink)}
+  .src{font-size:14.5px;color:var(--muted)}
+  @media (max-width:560px){.wrap{padding:26px 15px 70px}}
+</style>
+
+<header class="site"><div class="in">
+  <a href="../">PHI2394 hub</a>
+  <span class="cur">Exam 1 practice</span>
+</div></header>
+
+<div class="wrap">
+  <div>
+    <div class="eyebrow">PHI 2394 B00 &middot; exam 1 &middot; Wednesday 7 October</div>
+    <h1>Practice for exam 1</h1>
+    <p class="standfirst">Multiple choice only, one best answer each. The sets cover lectures 1 to 4:
+      the Greeks, Bacon, the Middle Ages, Foucault and Kuhn.</p>
+  </div>
+
+  <section>
+    <h2>The sets</h2>
+    <div class="sets">
+      <a class="set" href="week-2.html">
+        <div class="n">Week 2 &middot; 25 questions</div>
+        <h3>The Greeks, Bacon and the Middle Ages</h3>
+        <p>Plato on the cave and on education, Aristotle on form and <i>telos</i>, Schadewaldt on
+          <i>physis</i> and <i>techne</i>, Bacon on the ant and the spider and the bee, Lynn White
+          on work as worship, and Rousseau.</p>
+      </a>
+      <a class="set" href="week-3.html">
+        <div class="n">Week 3 &middot; 25 questions</div>
+        <h3>Foucault and Kuhn</h3>
+        <p>The plague town, the panopticon, docile bodies and normalization. Then normal science,
+          paradigms, incommensurability and why Kuhn says a revolution is not progress.</p>
+      </a>
+      <a class="set" href="mixed.html">
+        <div class="n">Mixed &middot; 25 questions</div>
+        <h3>All four lectures at once</h3>
+        <p>The first set, built straight from the eleven topics the professor named in her exam
+          review. Use it last, as a dress rehearsal, because it jumps between weeks the way the
+          real paper will.</p>
+      </a>
+      <div class="soon">
+        <div class="n">Week 4 &middot; not built yet</div>
+        <h3>The social construction of scientific knowledge</h3>
+        <p>Citation and influence, funding and stratification, discrimination, and the construction
+          of kinds. Kevin's notes flag the construction of kinds as examinable.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>How to use these</h2>
+    <div class="how">
+      <p><b>Answer first, read second.</b> Guessing before you know and then being corrected beats
+        studying first. The order is the whole technique.</p>
+      <p><b>Never leave a wrong answer without reading why it was wrong.</b> Multiple choice without
+        feedback plants the error and does not remove it, which is a measured effect and not a
+        worry.</p>
+    </div>
+    <ol class="steps">
+      <li><b>Do a whole set cold.</b> Use the hint when stuck and leave the answer closed.</li>
+      <li><b>Press check my answers.</b> Read the reasoning under every option, including the
+        options you did not pick.</li>
+      <li><b>Flag the ones you were confident about and still got wrong.</b> Those are worth the
+        most, because errors held with confidence are the ones that correct hardest and stay
+        corrected.</li>
+      <li><b>Come back to the misses after an hour.</b> Re-testing straight away
+        measures short-term memory and teaches nothing.</li>
+      <li><b>Study by contrast.</b> One best answer means telling near neighbours apart: Plato
+        against Aristotle on form, normal against revolutionary science, paradigm against anomaly,
+        <i>physis</i> against <i>techne</i>, nominalist against realist.</li>
+    </ol>
+    <p class="src">The research behind this: Dunlosky and colleagues 2013 on which study techniques
+      work, Roediger and Karpicke 2006 on testing against rereading, Butler and Roediger 2008 on why
+      feedback is required, and Butterfield and Metcalfe on confident errors.</p>
+  </section>
+</div>
+</html>
