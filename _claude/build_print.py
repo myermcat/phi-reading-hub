@@ -58,7 +58,7 @@ h2.grp{break-inside:avoid;break-after:avoid;margin:0 0 1mm;font-size:8pt;font-we
 h2.grp.first{margin-top:0}
 h2.grp:not(.first){margin-top:2.4mm}
 .t{break-inside:avoid;margin:0 0 1.3mm}
-.t b.term{color:var(--green);font-weight:600}
+.t b.term{color:#0c3f31;font-weight:600;background:#c4e3d4;padding:0 .7mm;font-size:calc(__P2F__ * 1.12)}
 .t .who{color:var(--mute);font-size:6.2pt}
 .t span.d{color:var(--soft)}
 .tw{break-inside:avoid;margin:0 0 1.4mm;padding:1.3mm 1.6mm;background:#f6f3ec;border-left:1.2pt solid var(--amber)}
@@ -97,8 +97,7 @@ def glossary_html():
 
 def build():
     p1 = ['<div class="page"><div class="top"><h1>PHI2394 &middot; exam 1 &middot; the map</h1>'
-          '<span class="sub">Read 1 to 11 in order. Green edge: the tradition. '
-          'Violet edge: the modern writers who reinterpret it.</span></div><div class="cols m">']
+          '</div><div class="cols m">']
     for n, name, yr, q, lines, lead, critic in MAP:
         p1.append(card(n, name, yr, q, lines, lead, critic))
     p1.append('<h2 class="grp">Who turns up twice</h2>')
@@ -107,7 +106,7 @@ def build():
     p1.append('</div></div>')
 
     p2 = ['<div class="page"><div class="top"><h1>PHI2394 &middot; exam 1 &middot; the glossary</h1>'
-          '<span class="sub">Weeks 2 and 3. Every entry reads on its own.</span></div>'
+          '</div>'
           '<div class="cols g">', glossary_html(), '</div></div>']
 
     html = ('<!doctype html><html lang="en"><meta charset="utf-8">'

@@ -44,7 +44,13 @@ def columns(section, n, space_twips=200):
     cols.set(qn("w:equalWidth"), "1")
 
 TOKEN = re.compile(r"(<b>|</b>|<i>|</i>)")
-def runs(p, html, size, colour=SOFT, base_bold=False, base_ital=False):
+def hilite(run, hexfill):
+    """A pale chip behind a word, so the eye can find it by scanning."""
+    el = OxmlElement("w:shd")
+    el.set(qn("w:val"), "clear"); el.set(qn("w:color"), "auto"); el.set(qn("w:fill"), hexfill)
+    run._r.get_or_add_rPr().append(el)
+
+def runs(p, html, size, colour=SOFT, base_bold=False, base_ital=False, chip=None):
     html = (html.replace("&middot;", "·").replace("&ldquo;", "“")
                 .replace("&rdquo;", "”").replace("&nbsp;", " ").replace("&amp;", "&"))
     html = re.sub(r"<br\s*/?>", "  ", html)
@@ -59,6 +65,7 @@ def runs(p, html, size, colour=SOFT, base_bold=False, base_ital=False):
         r = p.add_run(part)
         r.font.size = Pt(size); r.font.bold = bold; r.font.italic = ital
         r.font.color.rgb = colour; r.font.name = "Calibri"
+        if chip: hilite(r, chip)
 
 def para(doc, space_after=0, space_before=0, keep=True, with_next=False):
     """with_next holds a card together, so a heading never ends a column alone."""
@@ -121,7 +128,9 @@ def build():
         for term, who, short, extra in rows:
             s_, e_ = SHORT.get(term, (short, extra))
             tp = para(doc, space_after=2)
-            runs(tp, re.sub(r"<[^>]+>", "", term) + " ", P2 + 0.3, GREEN, base_bold=True)
+            runs(tp, " " + re.sub(r"<[^>]+>", "", term) + " ", P2 + 0.9,
+                 RGBColor(0x0C, 0x3F, 0x31), base_bold=True, chip="C4E3D4")
+            runs(tp, " ", P2, SOFT)
             if who: runs(tp, who + " ", P2 - 0.8, MUTE)
             body = s_[0].upper() + s_[1:] + "."
             if e_: body += " " + e_
