@@ -58,15 +58,23 @@
   button.opt .lt{font-family:var(--mono);font-size:13px;color:var(--muted);flex:none;padding-top:1px}
   button.opt.sel{background:var(--accent-wash);border-color:var(--accent)}
   button.opt.sel .lt{color:var(--accent)}
-  li.q.checked button.opt{cursor:default}
-  li.q.checked button.opt.pick-right{background:var(--good-wash);border-color:var(--good)}
-  li.q.checked button.opt.pick-right .lt{color:var(--good)}
-  li.q.checked button.opt.pick-wrong{background:var(--bad-wash);border-color:var(--bad)}
-  li.q.checked button.opt.pick-wrong .lt{color:var(--bad)}
-  .why{display:none;font-size:15px;color:var(--ink-soft);padding:7px 13px 2px 36px;max-width:66ch}
-  li.q.checked .why,li.q.shown .why{display:block}
-  .why b{color:var(--ink)}
-  @media (max-width:560px){.why{padding-left:14px}}
+  li.q.done button.opt{cursor:default}
+  li.q.done button.opt.pick-right{background:var(--good-wash);border-color:var(--good)}
+  li.q.done button.opt.pick-right .lt{color:var(--good)}
+  li.q.done button.opt.pick-wrong{background:var(--bad-wash);border-color:var(--bad)}
+  li.q.done button.opt.pick-wrong .lt{color:var(--bad)}
+  .why{display:none}
+  .verdict{display:none;flex-direction:column;gap:9px;font-size:15.5px;line-height:1.5;
+           padding:13px 16px;max-width:70ch;border-left:3px solid var(--rule);background:var(--sunk)}
+  li.q.done .verdict{display:flex}
+  li.q.done.ok .verdict{border-left-color:var(--good)}
+  li.q.done.no .verdict{border-left-color:var(--bad)}
+  .verdict p{margin:0;color:var(--ink-soft);max-width:68ch}
+  .verdict b{color:var(--ink)}
+  .verdict .head{font-family:var(--mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase}
+  li.q.ok .verdict .head{color:var(--good)}
+  li.q.no .verdict .head{color:var(--bad)}
+  .verdict .yours{padding-top:3px;border-top:1px solid var(--rule)}
 
   .tools{display:flex;gap:8px;flex-wrap:wrap}
   button.tool{display:inline-flex;align-items:center;gap:7px;font:inherit;font-family:var(--mono);
@@ -119,13 +127,14 @@
   </div>
 
   <div class="how">
-    <p><b>Answer every question before opening anything.</b> Guessing first and then being
+    <p><b>Commit to an answer before you reach for the hint.</b> Guessing first and then being
       corrected beats reading the answer first. That is the pretesting effect, and it is the
       single largest free gain available tonight.</p>
     <p><b>The hint tells you where to look without telling you the answer.</b> Use it when you are
       stuck, and skip it when you are not.</p>
-    <p><b>Then press check my answers at the bottom.</b> Every option gets its reasoning, including
-      the ones you did not pick, because the wrong options are where the learning is.</p>
+    <p><b>The answer appears the moment you click.</b> You get the reasoning for the right option,
+      and when you pick a wrong one you also get why that particular option fails. There is a
+      running score at the bottom of the screen.</p>
   </div>
 
   <ol class="quiz" id="quiz">
@@ -145,10 +154,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">The word gentler is in her note, and it is the thing he finds suspicious.</div>
-    <div class="panel ans"><span class="lt">B.</span> Genealogical means tracing how a practice came to be, without assuming it was an improvement. The puzzle he sets himself: punishment really did get gentler, so what is the new method doing that the old one could not?</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q2" data-a="3">
@@ -166,10 +174,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">The phrase is three words long and it belongs to someone from week 2.</div>
-    <div class="panel ans"><span class="lt">C.</span> Bacon meant power over the physical world, and he meant it as a promise. Foucault keeps the identity and turns it into an accusation: power and knowledge have the same goal, which is controlling what we know. Same three words, opposite verdict.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q3" data-a="2">
@@ -187,10 +194,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">Her list of examples had four items and only one of them was a prisoner.</div>
-    <div class="panel ans"><span class="lt">B.</span> The list matters, because it shows how far past the prison the argument reaches. The same technique runs in a barracks, a factory and a classroom. Discipline produces docile bodies, which is why the prison is a model and not an exception.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q4" data-a="3">
@@ -208,10 +214,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">Three verbs in sequence, and the same three an engineer would use on a mechanism.</div>
-    <div class="panel ans"><span class="lt">C.</span> Break down, analyse, recompose. Think of a drill sergeant decomposing a rifle reload into numbered motions, or a factory time-and-motion study. The body is treated as something that can be taken apart on paper and reassembled better.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q5" data-a="2">
@@ -229,10 +234,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">She used one word for its status in the system, and that word was not technique.</div>
-    <div class="panel ans"><span class="lt">B.</span> She called it the goal, which is the word to hold. Everything else in the apparatus serves it. Once a norm exists, every person can be placed against it, and the placement is itself a judgment.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q6" data-a="3">
@@ -250,10 +254,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">Her examples were all places nobody is being punished.</div>
-    <div class="panel ans"><span class="lt">C.</span> Notice that none of them is a prison. That is the point of the list: the technique that was visible in the prison is running in a school timetable and a production line, where nobody experiences it as punishment.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q7" data-a="3">
@@ -271,10 +274,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">His answer is a single word, and the surprise is what he says it produces.</div>
-    <div class="panel ans"><span class="lt">C.</span> The order is the response, and the last clause is the sting: the sorting makes the fear and the death worse. The plague is the occasion where a town gets to organise itself completely, and Foucault uses it to show what total organisation looks like when it is allowed.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q8" data-a="2">
@@ -292,10 +294,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">This is the entry she annotated with Plato and the Kalliopolis.</div>
-    <div class="panel ans"><span class="lt">B.</span> Two halves, and the second is the one that matters: regulation reaching the smallest details. A plague gives authorities a reason to say where every person may stand and at what hour, and Foucault's claim is that this is attractive to power independently of the disease.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q9" data-a="3">
@@ -313,10 +314,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">Her example for it was an institution from the nineteenth century.</div>
-    <div class="panel ans"><span class="lt">C.</span> Her example was the nineteenth-century psychiatric asylum. The binaries she listed: mad against sane, dangerous against harmless, normal against abnormal. The problem is that real and varied people get sorted by a two-way switch, and then treated as the side of the switch they were assigned to.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q10" data-a="1">
@@ -334,10 +334,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">One half is about what is taken away. The other is about what is written down.</div>
-    <div class="panel ans"><span class="lt">A.</span> The second half is the part people forget and the part that carries the argument. Losing your liberty is the punishment. Having your nature written down and filed is the new thing, and it is what links the prison to the clinic and the school.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q11" data-a="2">
@@ -355,10 +354,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">Think about what you need behind a person for them to appear as a clear outline.</div>
-    <div class="panel ans"><span class="lt">B.</span> The detail is the whole trick. Backlighting turns every inmate into a visible silhouette from the tower. The architecture does the surveillance, which is why one person can replace many.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q12" data-a="2">
@@ -376,10 +374,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">A menagerie is a royal zoo. Ask what each of its three parts turns into.</div>
-    <div class="panel ans"><span class="lt">B.</span> A menagerie was a royal collection of animals, arranged so one person could view them all. Foucault's three swaps turn it into a prison: the exhibit is now a person, the arrangement is now by category, and the viewer is now a machine with nobody in particular at the centre. Furtive means hidden.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q13" data-a="2">
@@ -397,10 +394,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">Positive here is about a kind of method, and the first of its three features is the one Kuhn destroys.</div>
-    <div class="panel ans"><span class="lt">B.</span> Take the three words one at a time. Non-contextual: where and when you did the work should not matter. Formal and standardised: anyone following the procedure gets the same result. Separating variables: isolate one thing and hold the rest still. Kuhn's paradigms attack the first of these directly, because a paradigm is a context.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q14" data-a="3">
@@ -418,10 +414,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">His central methodological objection is to a way of writing about the past.</div>
-    <div class="panel ans"><span class="lt">C.</span> Which makes sense, because his argument is a claim about how to write history. If you cannot explain a sequence by what it led to, the historian's job changes: you have to reconstruct what the old paradigm looked like from inside, as a working system.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q15" data-a="3">
@@ -439,10 +434,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">She flagged one of these as her framing and as the important one. It gives his motive. The conclusion is the familiar part.</div>
-    <div class="panel ans"><span class="lt">C.</span> She called this the important framing, so it is likely to be the asked one. Note what it means: he was not following better data. He was preserving perfect circles, an old commitment inherited from the Greeks. A revolution launched in order to keep something old.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q16" data-a="2">
@@ -460,10 +454,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">The same figure whose method Bacon attacks about eighty years later.</div>
-    <div class="panel ans"><span class="lt">B.</span> Which is why the Greek picture had to break before modern science could start, and why Aristotle keeps reappearing as the thing being overthrown. Bacon attacks his method, Copernicus attacks his cosmos.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q17" data-a="1">
@@ -481,10 +474,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">Ask what the people doing it were called before and after.</div>
-    <div class="panel ans"><span class="lt">A.</span> The consequence is the one the whole course is about. Before this, studying nature was natural philosophy, a branch of philosophy. It also replaced the Christian focus of the European worldview and embraced utilitarian concerns, meaning knowledge valued for what it can do.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q18" data-a="2">
@@ -502,10 +494,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">The metaphor is architectural, and the trouble is at the bottom.</div>
-    <div class="panel ans"><span class="lt">B.</span> The metaphor is a building. Every claim rests on a lower claim, down to something solid. The problem she named: the ground floor is reached by induction, meaning going from particular observations to a general law, and no number of observations guarantees the law. So the foundation is the least secure part.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q19" data-a="3">
@@ -523,10 +514,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">One picture has the destination fixed in advance. The other has only a starting point.</div>
-    <div class="panel ans"><span class="lt">C.</span> Two different pictures of direction. <i>Telos</i> pulls from in front: the end is already fixed and the thing grows toward it. A foundation pushes from below: nothing is fixed ahead and you stack upward. Worth holding, because Kuhn then rejects both as accounts of how science moves.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q20" data-a="2">
@@ -544,10 +534,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">Two things happen, and one of them is to the shared equipment of the field.</div>
-    <div class="panel ans"><span class="lt">B.</span> Disciplinary matrix is Kuhn's later, more careful word for a paradigm: the whole shared kit of theories, values, instruments and assumptions. Revision of the kit, plus the solving of the problem that would not go away. Both halves are needed.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q21" data-a="2">
@@ -565,10 +554,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">The critique attacks the first of his three reasons, the one about the meanings of terms.</div>
-    <div class="panel ans"><span class="lt">B.</span> Semantic means about meaning. The critics' point: if a term shifted meaning, a historian can learn the old meaning, so the barrier is a translation problem and translation problems get solved. Kuhn retreated from impossible to difficult, which is a real concession.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q22" data-a="3">
@@ -586,10 +574,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">The example works as an objection, so something has to have stayed the same across the change.</div>
-    <div class="panel ans"><span class="lt">C.</span> A direct problem for incommensurability. If the two paradigms really shared no measure, the old detector should have become meaningless under the new theory. It did not. Something survived the revolution intact, which gives you a common measure after all.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q23" data-a="2">
@@ -607,10 +594,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">She named a philosopher alongside it, the one known for family resemblance.</div>
-    <div class="panel ans"><span class="lt">B.</span> Ad hoc means put together for the particular case at hand. She attached this to Wittgenstein: a set of practices can be held together by overlapping family resemblances with no single feature running through all of them. Success without unity, which answers the course's title question directly.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q24" data-a="1">
@@ -628,10 +614,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">Which group has had the least time to be trained into the paradigm?</div>
-    <div class="panel ans"><span class="lt">A.</span> This is the same mechanism as Kuhn's second reason for incommensurability, seen from the other side. Indoctrination is what makes a paradigm hold, so the least indoctrinated are the ones who can leave it. She added that scientists attend mostly to recent findings and treat past research as low value, which makes the field look young and modern.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q25" data-a="2">
@@ -649,16 +634,15 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">Compare it with normal science, where she said progress is easy to talk about. What does a revolution do that puzzle solving does not?</div>
-    <div class="panel ans"><span class="lt">B.</span> Her exact reason, and the contrast with normal science is what makes it clear. Under normal science progress is easy to talk about, because achievements accumulate and are apparent. A revolution adds and subtracts at the same time, so there is no single direction to measure. Oxygen chemistry gained a great deal and lost every question phlogiston could answer.</div>
+    <div class="verdict"></div>
   </li>
 
   </ol>
 
   <div class="finish">
-    <button type="button" class="big" id="check">Check my answers</button>
+    <button type="button" class="big" id="check">Show my score</button>
     <div class="result" id="result">
       <div class="big-score" id="bigscore"></div>
       <p class="note" id="resnote"></p>
@@ -674,84 +658,91 @@
 
 <script>
 (function(){
-  var KEY='phi2394-practice-w3-v1';
+  var KEY='phi2394-practice-w3-v1', L='ABCD';
   var qs=[].slice.call(document.querySelectorAll('li.q'));
-  var picked={},checked=false;
+  var picked={};
   try{picked=JSON.parse(localStorage.getItem(KEY)||'{}')||{};}catch(e){picked={};}
-
   function save(){try{localStorage.setItem(KEY,JSON.stringify(picked));}catch(e){}}
-
   function answered(){var n=0;qs.forEach(function(q,i){if(picked[i]!=null)n++;});return n;}
   function correct(){var n=0;qs.forEach(function(q,i){if(picked[i]===+q.dataset.a)n++;});return n;}
-
   function tick(){
-    document.getElementById('tick').innerHTML=
-      answered()+' of '+qs.length+' answered'+(checked?' <i>&middot; '+correct()+' right</i>':'');
+    var n=answered();
+    document.getElementById('tick').innerHTML =
+      n ? n+' of '+qs.length+' answered <i>&middot; '+correct()+' right</i>'
+        : 'Pick an option to begin';
   }
-
+  function esc(x){return x;}
+  function verdict(q,i){
+    var p=picked[i], a=+q.dataset.a;
+    var whys=[].slice.call(q.querySelectorAll('p.why')).map(function(w){return w.innerHTML;});
+    var v=q.querySelector('.verdict');
+    if(p==null){v.innerHTML='';return;}
+    var html='';
+    if(p===a){
+      html += '<p class="head">Correct &middot; '+L[a-1]+'</p>';
+      html += '<p>'+esc(whys[a-1])+'</p>';
+    }else{
+      html += '<p class="head">Not quite &middot; the answer is '+L[a-1]+'</p>';
+      html += '<p><b>'+L[a-1]+'.</b> '+esc(whys[a-1])+'</p>';
+      html += '<p class="yours"><b>Why '+L[p-1]+' fails.</b> '+esc(whys[p-1])+'</p>';
+    }
+    v.innerHTML=html;
+  }
   function paint(q,i){
-    var p=picked[i],a=+q.dataset.a;
+    var p=picked[i], a=+q.dataset.a, done=p!=null;
     q.querySelectorAll('button.opt').forEach(function(b,k){
       b.classList.remove('sel','pick-right','pick-wrong');
-      b.disabled=checked;
-      if(!checked){ if(p===k+1) b.classList.add('sel'); return; }
+      b.disabled=done;
+      if(!done)return;
       if(k+1===a) b.classList.add('pick-right');
       else if(k+1===p) b.classList.add('pick-wrong');
     });
-    q.classList.toggle('checked',checked);
-    q.classList.toggle('ok',checked&&p===a);
-    q.classList.toggle('no',checked&&p!==a);
+    q.classList.toggle('done',done);
+    q.classList.toggle('ok',done&&p===a);
+    q.classList.toggle('no',done&&p!==a);
+    verdict(q,i);
   }
-
   qs.forEach(function(q,i){
     q.querySelectorAll('button.opt').forEach(function(b,k){
       b.addEventListener('click',function(){
-        if(checked)return;
-        picked[i]=k+1;save();paint(q,i);tick();
+        if(picked[i]!=null)return;
+        picked[i]=k+1; save(); paint(q,i); tick();
       });
     });
-    var h=q.querySelector('.hint'),an=q.querySelector('.ans');
+    var h=q.querySelector('.hint');
     q.querySelector('.t-hint').addEventListener('click',function(){
-      h.classList.toggle('open');this.classList.toggle('on',h.classList.contains('open'));
-    });
-    q.querySelector('.t-ans').addEventListener('click',function(){
-      an.classList.toggle('open');this.classList.toggle('on',an.classList.contains('open'));
-      q.classList.toggle('shown',an.classList.contains('open'));
+      h.classList.toggle('open'); this.classList.toggle('on',h.classList.contains('open'));
     });
     paint(q,i);
   });
   tick();
 
   document.getElementById('check').addEventListener('click',function(){
-    checked=true;
-    qs.forEach(paint);tick();
-    var n=correct(),un=qs.length-answered();
+    var n=correct(), un=qs.length-answered();
     document.getElementById('bigscore').textContent=n+' out of '+qs.length;
-    var pct=Math.round(n/qs.length*100);
-    var msg='That is '+pct+' per cent. ';
-    if(un>0) msg+=un+' question'+(un===1?' was':'s were')+' left blank and counted as wrong. ';
-    msg+=n===qs.length?'Nothing left to restudy here.'
-        :'Read the reasoning under every red question, including why the option you picked is wrong.';
+    var msg='That is '+Math.round(n/qs.length*100)+' per cent. ';
+    if(un>0) msg+=un+' question'+(un===1?' is':'s are')+' still unanswered and counted as wrong. ';
+    msg+= n===qs.length ? 'Nothing left to restudy here.'
+        : 'The jumps below go straight to the ones you missed.';
     document.getElementById('resnote').textContent=msg;
-    var j=document.getElementById('jump');j.innerHTML='';
+    var j=document.getElementById('jump'); j.innerHTML='';
     qs.forEach(function(q,i){
       if(picked[i]===+q.dataset.a)return;
-      var a=document.createElement('a');a.href='#q'+(i+1);a.textContent='Q'+(i+1);j.appendChild(a);
+      var a=document.createElement('a'); a.href='#q'+(i+1); a.textContent='Q'+(i+1); j.appendChild(a);
     });
     document.getElementById('result').classList.add('open');
     document.getElementById('result').scrollIntoView({behavior:'smooth',block:'center'});
   });
 
   document.getElementById('reset').addEventListener('click',function(){
-    picked={};checked=false;save();
+    picked={}; save();
     qs.forEach(function(q,i){
       paint(q,i);
-      q.classList.remove('shown');
-      q.querySelectorAll('.panel').forEach(function(p){p.classList.remove('open');});
+      q.querySelectorAll('.panel').forEach(function(x){x.classList.remove('open');});
       q.querySelectorAll('.tool').forEach(function(t){t.classList.remove('on');});
     });
     document.getElementById('result').classList.remove('open');
-    tick();window.scrollTo({top:0,behavior:'smooth'});
+    tick(); window.scrollTo({top:0,behavior:'smooth'});
   });
 })();
 </script>

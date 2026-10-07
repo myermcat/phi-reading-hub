@@ -58,15 +58,23 @@
   button.opt .lt{font-family:var(--mono);font-size:13px;color:var(--muted);flex:none;padding-top:1px}
   button.opt.sel{background:var(--accent-wash);border-color:var(--accent)}
   button.opt.sel .lt{color:var(--accent)}
-  li.q.checked button.opt{cursor:default}
-  li.q.checked button.opt.pick-right{background:var(--good-wash);border-color:var(--good)}
-  li.q.checked button.opt.pick-right .lt{color:var(--good)}
-  li.q.checked button.opt.pick-wrong{background:var(--bad-wash);border-color:var(--bad)}
-  li.q.checked button.opt.pick-wrong .lt{color:var(--bad)}
-  .why{display:none;font-size:15px;color:var(--ink-soft);padding:7px 13px 2px 36px;max-width:66ch}
-  li.q.checked .why,li.q.shown .why{display:block}
-  .why b{color:var(--ink)}
-  @media (max-width:560px){.why{padding-left:14px}}
+  li.q.done button.opt{cursor:default}
+  li.q.done button.opt.pick-right{background:var(--good-wash);border-color:var(--good)}
+  li.q.done button.opt.pick-right .lt{color:var(--good)}
+  li.q.done button.opt.pick-wrong{background:var(--bad-wash);border-color:var(--bad)}
+  li.q.done button.opt.pick-wrong .lt{color:var(--bad)}
+  .why{display:none}
+  .verdict{display:none;flex-direction:column;gap:9px;font-size:15.5px;line-height:1.5;
+           padding:13px 16px;max-width:70ch;border-left:3px solid var(--rule);background:var(--sunk)}
+  li.q.done .verdict{display:flex}
+  li.q.done.ok .verdict{border-left-color:var(--good)}
+  li.q.done.no .verdict{border-left-color:var(--bad)}
+  .verdict p{margin:0;color:var(--ink-soft);max-width:68ch}
+  .verdict b{color:var(--ink)}
+  .verdict .head{font-family:var(--mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase}
+  li.q.ok .verdict .head{color:var(--good)}
+  li.q.no .verdict .head{color:var(--bad)}
+  .verdict .yours{padding-top:3px;border-top:1px solid var(--rule)}
 
   .tools{display:flex;gap:8px;flex-wrap:wrap}
   button.tool{display:inline-flex;align-items:center;gap:7px;font:inherit;font-family:var(--mono);
@@ -119,13 +127,14 @@
   </div>
 
   <div class="how">
-    <p><b>Answer every question before opening anything.</b> Guessing first and then being
+    <p><b>Commit to an answer before you reach for the hint.</b> Guessing first and then being
       corrected beats reading the answer first. That is the pretesting effect, and it is the
       single largest free gain available tonight.</p>
     <p><b>The hint tells you where to look without telling you the answer.</b> Use it when you are
       stuck, and skip it when you are not.</p>
-    <p><b>Then press check my answers at the bottom.</b> Every option gets its reasoning, including
-      the ones you did not pick, because the wrong options are where the learning is.</p>
+    <p><b>The answer appears the moment you click.</b> You get the reasoning for the right option,
+      and when you pick a wrong one you also get why that particular option fails. There is a
+      running score at the bottom of the screen.</p>
   </div>
 
   <ol class="quiz" id="quiz">
@@ -145,10 +154,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">Her conclusion from the figure was that scientists form elite groupings. Which option supports that?</div>
-    <div class="panel ans"><span class="lt">B.</span> Zuckerman 1977, quoted on her slide. Her conclusion from it: scientists tend to form elite groupings. The nine-year gap is the part to carry, because it is a measurable career advantage attached to who you trained with and not to what you found.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q2" data-a="1">
@@ -166,10 +174,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">Bacon's pitch was that a method anyone can follow makes a certain kind of person unnecessary. Which kind?</div>
-    <div class="panel ans"><span class="lt">A.</span> This is why he is in this lecture. Bacon's promise was that a method anyone can follow makes genius unnecessary, so ordinary people working carefully would do the work. The distribution of output says something else happened.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q3" data-a="3">
@@ -187,10 +194,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">The phrase in her notes about why some institutions are trusted is about duration.</div>
-    <div class="panel ans"><span class="lt">C.</span> Note the phrase about being around a long time. It means part of what buys the funding is age, and age is not a measure of present quality. Funding opportunities then contribute to stratification, which is the layering of a field into a small advantaged group and everyone else.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q4" data-a="2">
@@ -208,10 +214,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">The first item has nothing to do with ability, and the third is about manners.</div>
-    <div class="panel ans"><span class="lt">B.</span> Hermanowicz 2006. Persistence outranking intelligence is the point, and civil at number three is the surprise. The rest of the order runs creative, entrepreneurial, aggressive, tasteful, confident, adaptable.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q5" data-a="2">
@@ -229,10 +234,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">She named an age and then declined to explain the decline.</div>
-    <div class="panel ans"><span class="lt">B.</span> That admission is the thing to remember. She said the reason is unclear, which means a question on this wants the fact and not an explanation. Note how oddly it reads beside the laureates who won at 44.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q6" data-a="3">
@@ -250,10 +254,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">One of these options ends with a claim that the place, by itself, changes what the work is worth.</div>
-    <div class="panel ans"><span class="lt">C.</span> Read the last sentence slowly, because it is the uncomfortable one. The same work done in two places is worth different amounts, and the difference comes from the place. That is cumulative advantage with a mechanism attached.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q7" data-a="1">
@@ -271,10 +274,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">Four words, and the second two are the same as the first two.</div>
-    <div class="panel ans"><span class="lt">A.</span> The loop in concrete terms: a good first post means a bigger lab, a bigger lab means more results, more results means a stronger grant, a stronger grant means a bigger lab again. Nobody in the loop is doing anything unfair, and the gap widens anyway. This is the week 4 idea most likely to carry a question.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q8" data-a="2">
@@ -292,10 +294,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">The study is about what happens to a field's reputation when the people in it change.</div>
-    <div class="panel ans"><span class="lt">B.</span> The 1982 finding underneath it is the sharp one: men perceive their own work as less masculine because women are present. So the status of the work tracks who is doing it, and not what the work is. Her examples of fields that feminised: sociology, economics, biology, chemistry.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q9" data-a="2">
@@ -313,10 +314,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">The phrase pairs a golden age for one group with its opposite for another.</div>
-    <div class="panel ans"><span class="lt">B.</span> Two things at once: the field expands and a group inside it loses ground, because the expansion was staffed by men returning from the war. The 1960s anti-discrimination laws arose in response to the discrimination of the 1940s and 1950s.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q10" data-a="2">
@@ -334,10 +334,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">The quotation names a leak at every joint, which rules out any single-cause answer.</div>
-    <div class="panel ans"><span class="lt">B.</span> Every joint leaks, which is why no one fix repairs it. Her three-part summary was getting in, staying in, getting on, and she added that the intake matters too: women have to get into the pipe in the first place.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q11" data-a="2">
@@ -355,10 +354,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">The finding is a number, and the number is what makes it quotable.</div>
-    <div class="panel ans"><span class="lt">B.</span> The number is the thing to carry, because it converts a vague claim about bias into a measured quantity. Note what makes it powerful: peer review is the mechanism science uses to be fair, so the bias is inside the correction itself.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q12" data-a="2">
@@ -376,10 +374,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">The answer has to connect to cumulative advantage from the first half of the lecture.</div>
-    <div class="panel ans"><span class="lt">B.</span> Cole and Singer 1991. The mechanism is the one from the first half of the lecture, applied: each difference looks trivial and is shrugged off, and because advantage compounds, trivial differences at the start produce large gaps later. The doctoral student quoted on the slide gives the network version: nobody ever thought to ask her a technical question.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q13" data-a="3">
@@ -397,10 +394,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">She gave one objection about what a gene can mean and one about what the test scores have been doing.</div>
-    <div class="panel ans"><span class="lt">C.</span> Two separate objections and it is worth holding both. The first is conceptual: there is no such thing as a genetic effect outside an environment, so a claim about genes alone is a claim about nothing. The second is empirical: the gap has been shrinking, and genes do not change in thirty years.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q14" data-a="2">
@@ -418,10 +414,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">Her conclusion joins the two halves of the lecture, the stratification half and the discrimination half.</div>
-    <div class="panel ans"><span class="lt">B.</span> Notice that the conclusion of the second half is the conclusion of the first half with gender added. Cumulative advantage explains elite productivity in general, and discrimination is one more thing that compounds.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q15" data-a="2">
@@ -439,10 +434,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">The claim concerns what a theory's working proves, and what it leaves open.</div>
-    <div class="panel ans"><span class="lt">B.</span> The claim is about what success proves. A working theory shows that this arrangement works, and not that no other arrangement would have. That is why a constructivist can accept every result of science and still refuse the inference from it works to it is the truth.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q16" data-a="2">
@@ -460,10 +454,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">One of these is the ordinary English sense of the word and the trap in the question.</div>
-    <div class="panel ans"><span class="lt">B.</span> Three parts: the world has a definite way it is, we can find it out, and we can represent it accurately. A constructivist can accept the first and still dispute the second and third.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q17" data-a="2">
@@ -481,10 +474,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">Her example was something with no law behind it that everyone still obeys.</div>
-    <div class="panel ans"><span class="lt">B.</span> The conditions listed: knowledge of a thing encourages behaviour that increases other people's tendency to act as though it exists, there is reasonably common knowledge of it, and that knowledge is transmitted. Politeness is a good test case, since there is no law requiring it and no building that houses it, and it still constrains everybody.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q18" data-a="3">
@@ -502,10 +494,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">The passage names one test for whether something is real, and it is about effects.</div>
-    <div class="panel ans"><span class="lt">C.</span> The test offered for reality is causal power: a thing is real if it makes a difference to what happens. The loop in the middle is the mechanism, since treating people as gendered produces gendered people, which then justifies the treatment. Historical research and differences between cultures show it is not simply given by nature.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q19" data-a="1">
@@ -523,10 +514,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">Contingent is the opposite of necessary. Ask whether it had to be this way.</div>
-    <div class="panel ans"><span class="lt">A.</span> Contingent means it could have been otherwise. The boundary between chemistry and physics is real, since it decides who gets hired into which department and whose paper gets reviewed by whom, and nothing in nature required the line to fall where it does.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q20" data-a="3">
@@ -544,10 +534,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">Picture what is physically on a laboratory bench, and ask how much of it you could find outdoors.</div>
-    <div class="panel ans"><span class="lt">C.</span> Think of what is actually on a bench: purified reagents, bred strains, filtered air, controlled temperature. Every one of those is nature with most of nature removed. So a result from a laboratory is a result about a highly artificial arrangement, and getting it to apply outside is extra work and never automatic.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q21" data-a="2">
@@ -565,10 +554,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">Picture a handful of dots on a page and ask how many curves pass through all of them.</div>
-    <div class="panel ans"><span class="lt">B.</span> Kevin's own gloss in his notes says it plainly: a theory is based on real observations, and the observations alone do not automatically tell you exactly what theory to create. Her image was geometrical, making patterns appear given the fixed points that practice produces, the way more than one curve passes through the same scatter of dots.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q22" data-a="2">
@@ -586,10 +574,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">The word heterogeneous points at the mixture of material things and social things in one network.</div>
-    <div class="panel ans"><span class="lt">B.</span> Neither half can usually be done on its own. The network is heterogeneous because it joins isolated parts of the material and the social world: equipment, established knowledge, patrons, money, institutions. And no single piece determines the shape of the whole, which is why a better device does not win by being better.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q23" data-a="2">
@@ -607,10 +594,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">The prefix co means the causation runs in both directions at once.</div>
-    <div class="panel ans"><span class="lt">B.</span> Both directions at once. Researchers need funding to study climate change, so the policy produces the science, and the science is then used to justify the policy. The ADHD case shows the same loop in a classification: the category decides who counts as ill, and who counts as ill is then evidence that the category tracks something.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q24" data-a="3">
@@ -628,10 +614,9 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">Both camps agree that classifying works. The disagreement is about what makes it work.</div>
-    <div class="panel ans"><span class="lt">C.</span> Kevin flagged this one as examinable while it was being taught. The nominalist's hard problem is that we agree on classifications so easily, which looks like evidence of tracking something real; the answer is that shared training explains the agreement. Behind it is Hacking: another theory could have been established, so success is not proof.</div>
+    <div class="verdict"></div>
   </li>
 
   <li class="q" id="q25" data-a="2">
@@ -649,16 +634,15 @@
     </ol>
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
-      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
     </div>
     <div class="panel hint">Her last line gives laboratories a positive role, which is a surprise after an hour of construction talk.</div>
-    <div class="panel ans"><span class="lt">B.</span> The second half is the one that answers the week. After a lecture arguing that laboratories exclude nature and that facts are constructed, she ends by saying those same laboratories produce objectivity. The construction claim is about how objective knowledge gets made, and not a denial that it exists.</div>
+    <div class="verdict"></div>
   </li>
 
   </ol>
 
   <div class="finish">
-    <button type="button" class="big" id="check">Check my answers</button>
+    <button type="button" class="big" id="check">Show my score</button>
     <div class="result" id="result">
       <div class="big-score" id="bigscore"></div>
       <p class="note" id="resnote"></p>
@@ -674,84 +658,91 @@
 
 <script>
 (function(){
-  var KEY='phi2394-practice-w4-v1';
+  var KEY='phi2394-practice-w4-v1', L='ABCD';
   var qs=[].slice.call(document.querySelectorAll('li.q'));
-  var picked={},checked=false;
+  var picked={};
   try{picked=JSON.parse(localStorage.getItem(KEY)||'{}')||{};}catch(e){picked={};}
-
   function save(){try{localStorage.setItem(KEY,JSON.stringify(picked));}catch(e){}}
-
   function answered(){var n=0;qs.forEach(function(q,i){if(picked[i]!=null)n++;});return n;}
   function correct(){var n=0;qs.forEach(function(q,i){if(picked[i]===+q.dataset.a)n++;});return n;}
-
   function tick(){
-    document.getElementById('tick').innerHTML=
-      answered()+' of '+qs.length+' answered'+(checked?' <i>&middot; '+correct()+' right</i>':'');
+    var n=answered();
+    document.getElementById('tick').innerHTML =
+      n ? n+' of '+qs.length+' answered <i>&middot; '+correct()+' right</i>'
+        : 'Pick an option to begin';
   }
-
+  function esc(x){return x;}
+  function verdict(q,i){
+    var p=picked[i], a=+q.dataset.a;
+    var whys=[].slice.call(q.querySelectorAll('p.why')).map(function(w){return w.innerHTML;});
+    var v=q.querySelector('.verdict');
+    if(p==null){v.innerHTML='';return;}
+    var html='';
+    if(p===a){
+      html += '<p class="head">Correct &middot; '+L[a-1]+'</p>';
+      html += '<p>'+esc(whys[a-1])+'</p>';
+    }else{
+      html += '<p class="head">Not quite &middot; the answer is '+L[a-1]+'</p>';
+      html += '<p><b>'+L[a-1]+'.</b> '+esc(whys[a-1])+'</p>';
+      html += '<p class="yours"><b>Why '+L[p-1]+' fails.</b> '+esc(whys[p-1])+'</p>';
+    }
+    v.innerHTML=html;
+  }
   function paint(q,i){
-    var p=picked[i],a=+q.dataset.a;
+    var p=picked[i], a=+q.dataset.a, done=p!=null;
     q.querySelectorAll('button.opt').forEach(function(b,k){
       b.classList.remove('sel','pick-right','pick-wrong');
-      b.disabled=checked;
-      if(!checked){ if(p===k+1) b.classList.add('sel'); return; }
+      b.disabled=done;
+      if(!done)return;
       if(k+1===a) b.classList.add('pick-right');
       else if(k+1===p) b.classList.add('pick-wrong');
     });
-    q.classList.toggle('checked',checked);
-    q.classList.toggle('ok',checked&&p===a);
-    q.classList.toggle('no',checked&&p!==a);
+    q.classList.toggle('done',done);
+    q.classList.toggle('ok',done&&p===a);
+    q.classList.toggle('no',done&&p!==a);
+    verdict(q,i);
   }
-
   qs.forEach(function(q,i){
     q.querySelectorAll('button.opt').forEach(function(b,k){
       b.addEventListener('click',function(){
-        if(checked)return;
-        picked[i]=k+1;save();paint(q,i);tick();
+        if(picked[i]!=null)return;
+        picked[i]=k+1; save(); paint(q,i); tick();
       });
     });
-    var h=q.querySelector('.hint'),an=q.querySelector('.ans');
+    var h=q.querySelector('.hint');
     q.querySelector('.t-hint').addEventListener('click',function(){
-      h.classList.toggle('open');this.classList.toggle('on',h.classList.contains('open'));
-    });
-    q.querySelector('.t-ans').addEventListener('click',function(){
-      an.classList.toggle('open');this.classList.toggle('on',an.classList.contains('open'));
-      q.classList.toggle('shown',an.classList.contains('open'));
+      h.classList.toggle('open'); this.classList.toggle('on',h.classList.contains('open'));
     });
     paint(q,i);
   });
   tick();
 
   document.getElementById('check').addEventListener('click',function(){
-    checked=true;
-    qs.forEach(paint);tick();
-    var n=correct(),un=qs.length-answered();
+    var n=correct(), un=qs.length-answered();
     document.getElementById('bigscore').textContent=n+' out of '+qs.length;
-    var pct=Math.round(n/qs.length*100);
-    var msg='That is '+pct+' per cent. ';
-    if(un>0) msg+=un+' question'+(un===1?' was':'s were')+' left blank and counted as wrong. ';
-    msg+=n===qs.length?'Nothing left to restudy here.'
-        :'Read the reasoning under every red question, including why the option you picked is wrong.';
+    var msg='That is '+Math.round(n/qs.length*100)+' per cent. ';
+    if(un>0) msg+=un+' question'+(un===1?' is':'s are')+' still unanswered and counted as wrong. ';
+    msg+= n===qs.length ? 'Nothing left to restudy here.'
+        : 'The jumps below go straight to the ones you missed.';
     document.getElementById('resnote').textContent=msg;
-    var j=document.getElementById('jump');j.innerHTML='';
+    var j=document.getElementById('jump'); j.innerHTML='';
     qs.forEach(function(q,i){
       if(picked[i]===+q.dataset.a)return;
-      var a=document.createElement('a');a.href='#q'+(i+1);a.textContent='Q'+(i+1);j.appendChild(a);
+      var a=document.createElement('a'); a.href='#q'+(i+1); a.textContent='Q'+(i+1); j.appendChild(a);
     });
     document.getElementById('result').classList.add('open');
     document.getElementById('result').scrollIntoView({behavior:'smooth',block:'center'});
   });
 
   document.getElementById('reset').addEventListener('click',function(){
-    picked={};checked=false;save();
+    picked={}; save();
     qs.forEach(function(q,i){
       paint(q,i);
-      q.classList.remove('shown');
-      q.querySelectorAll('.panel').forEach(function(p){p.classList.remove('open');});
+      q.querySelectorAll('.panel').forEach(function(x){x.classList.remove('open');});
       q.querySelectorAll('.tool').forEach(function(t){t.classList.remove('on');});
     });
     document.getElementById('result').classList.remove('open');
-    tick();window.scrollTo({top:0,behavior:'smooth'});
+    tick(); window.scrollTo({top:0,behavior:'smooth'});
   });
 })();
 </script>
