@@ -267,7 +267,7 @@ WEEK3 = [
  3, "Incommensurability means no shared yardstick. Ask what the unchanged detector is, if both sides go on trusting it."),
 
 ("Kuhn &middot; her conclusion",
- "If Kuhn is right that science has no fixed method and no secure foundation, something still has to explain why it works. What did she offer, and which philosopher did she attach it to?",
+ "Kuhn denies that science has a single fixed method, a secure foundation, or steady progress toward truth. Something still has to explain why it works as well as it does. What answer does the course give?",
  [("Science is unified by the scientific method.",
    "The view the whole course is written against."),
   ("Science is an ad hoc system that is disunified, and it does not need one abiding thread or foundational idea to be successful. She attached the point to Wittgenstein.",
