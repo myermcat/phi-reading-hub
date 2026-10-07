@@ -103,7 +103,13 @@
   button.tool:hover{color:var(--ink);border-color:var(--rule)}
   button.tool svg{width:14px;height:14px;flex:none}
   button.tool.on{color:var(--accent);border-color:var(--accent)}
-  .panel{display:none;font-size:15.5px;line-height:1.5;padding:12px 15px;max-width:70ch}
+  .panel{display:none;font-size:15.5px;line-height:1.5;padding:12px 15px;max-width:72ch}
+  .panel ul.terms{margin:0 0 9px;padding-left:17px;display:flex;flex-direction:column;gap:5px;
+                  font-size:15px}
+  .panel ul.terms li{line-height:1.4}
+  .panel ul.terms b{color:var(--ink)}
+  .panel .nudge{margin:0}
+  .panel ul.terms + .nudge{padding-top:9px;border-top:1px solid var(--rule)}
   .panel.open{display:block}
   .hint{background:var(--hot-wash);color:var(--ink-soft);border-left:3px solid var(--hot)}
   .ans{background:var(--sunk);color:var(--ink-soft);border-left:3px solid var(--accent)}
@@ -186,7 +192,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">Plato wrote twenty-six dialogues. This one is his long work about the ideal city.</div>
+    <div class="panel hint"><p class="nudge">Plato wrote twenty-six dialogues. This one is his long work about the ideal city.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -206,7 +212,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">If the eyes are not broken, what is the problem with them?</div>
+    <div class="panel hint"><p class="nudge">If the eyes are not broken, what is the problem with them?</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -226,7 +232,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint"><i>Kalli</i> is the Greek for beautiful. <i>Polis</i> is the Greek for city.</div>
+    <div class="panel hint"><ul class="terms"><li><b>kalliopolis</b>: Plato's beautiful city, ruled by philosopher kings</li></ul><p class="nudge"><i>Kalli</i> is the Greek for beautiful. <i>Polis</i> is the Greek for city.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -246,7 +252,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">One of the two could do biology. Which one, and why does that follow from where he puts form?</div>
+    <div class="panel hint"><p class="nudge">One of the two could do biology. Which one, and why does that follow from where he puts form?</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -266,7 +272,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint"><i>Physis</i> was defined in the lecture as implying one particular thing. What was it?</div>
+    <div class="panel hint"><ul class="terms"><li><b>telos</b>: the end or goal a thing is growing toward, in Aristotle</li></ul><p class="nudge"><i>Physis</i> was defined in the lecture as implying one particular thing. What was it?</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -286,7 +292,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">The word survives in English in <i>teleology</i>.</div>
+    <div class="panel hint"><ul class="terms"><li><b>telos</b>: the end or goal a thing is growing toward, in Aristotle</li></ul><p class="nudge">The word survives in English in <i>teleology</i>.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -306,7 +312,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">Two of these four describe Plato's life.</div>
+    <div class="panel hint"><p class="nudge">Two of these four describe Plato's life.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -326,7 +332,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">One of the two is where everything comes from. The other needs a person involved.</div>
+    <div class="panel hint"><ul class="terms"><li><b>physis</b>: nature, the creative origin everything grows out of</li><li><b>techne</b>: skill at making or doing something, which people produce</li></ul><p class="nudge">One of the two is where everything comes from. The other needs a person involved.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -346,7 +352,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">He praises the results in the same sentence as the complaint, so look for what got left out.</div>
+    <div class="panel hint"><p class="nudge">He praises the results in the same sentence as the complaint, so look for what got left out.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -366,7 +372,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">A dualism separates two things. Which two does he most want rejoined?</div>
+    <div class="panel hint"><ul class="terms"><li><b>dualism</b>: a split of one thing into two</li></ul><p class="nudge">A dualism separates two things. Which two does he most want rejoined?</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -386,7 +392,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">The word for his position comes from the Greek <i>empeiria</i>, experience.</div>
+    <div class="panel hint"><p class="nudge">The word for his position comes from the Greek <i>empeiria</i>, experience.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -406,7 +412,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">Where does a spider's web physically come from?</div>
+    <div class="panel hint"><p class="nudge">Where does a spider's web physically come from?</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -426,7 +432,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">Bacon was also critical of the alchemists. What do they and the Aristotelians share, in his eyes?</div>
+    <div class="panel hint"><p class="nudge">Bacon was also critical of the alchemists. What do they and the Aristotelians share, in his eyes?</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -446,7 +452,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">Which way does the causation run, from belief to tools or from tools to belief?</div>
+    <div class="panel hint"><p class="nudge">Which way does the causation run, from belief to tools or from tools to belief?</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -466,7 +472,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">He is the one in this week who looks backwards for his model.</div>
+    <div class="panel hint"><p class="nudge">He is the one in this week who looks backwards for his model.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -486,7 +492,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">Ask what he was famous for while he was alive, before Foucault wrote about him in 1975.</div>
+    <div class="panel hint"><ul class="terms"><li><b>panopticon</b>: Bentham's ring of cells round a central tower, where the inmate is always visible and can never check whether anyone is watching</li></ul><p class="nudge">Ask what he was famous for while he was alive, before Foucault wrote about him in 1975.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -506,7 +512,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">If the watching were genuinely constant, the building would be an ordinary efficient prison.</div>
+    <div class="panel hint"><p class="nudge">If the watching were genuinely constant, the building would be an ordinary efficient prison.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -526,7 +532,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">All the words in the wrong options are real Foucault terms. Only one list is the trio she wrote down.</div>
+    <div class="panel hint"><p class="nudge">All the words in the wrong options are real Foucault terms. Only one list is the trio she wrote down.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -546,7 +552,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">Her two examples were homosexuality and hysteria. What do those two have in common?</div>
+    <div class="panel hint"><p class="nudge">Her two examples were homosexuality and hysteria. What do those two have in common?</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -566,7 +572,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">One of the four died before the other three were born.</div>
+    <div class="panel hint"><p class="nudge">One of the four died before the other three were born.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -586,7 +592,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">Kuhn's word is puzzle, and he chose it over problem deliberately.</div>
+    <div class="panel hint"><ul class="terms"><li><b>normal science</b>: the long stable stretch when a field works inside one shared paradigm and solves puzzles</li></ul><p class="nudge">Kuhn's word is puzzle, and he chose it over problem deliberately.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -606,7 +612,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">Ask how wide it is. If only a theory changed, you could still compare the two.</div>
+    <div class="panel hint"><ul class="terms"><li><b>paradigm</b>: the whole shared kit a field works inside: its theories, instruments, values and assumptions about what exists</li></ul><p class="nudge">Ask how wide it is. If only a theory changed, you could still compare the two.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -626,7 +632,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">The word means without a shared measure. Her three reasons were about words, training and time.</div>
+    <div class="panel hint"><ul class="terms"><li><b>incommensurability</b>: no shared unit for comparing two paradigms, so neither can be measured against the other</li></ul><p class="nudge">The word means without a shared measure. Her three reasons were about words, training and time.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -646,7 +652,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">Named after a political party, from a 1931 book. The fault is about the direction the story runs.</div>
+    <div class="panel hint"><ul class="terms"><li><b>whig history</b>: history that builds the past into a series of steps leading to us</li></ul><p class="nudge">Named after a political party, from a 1931 book. The fault is about the direction the story runs.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -666,7 +672,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">Both sides agree classification works. They disagree about why it works.</div>
+    <div class="panel hint"><ul class="terms"><li><b>nominalist</b>: the view that kinds are human impositions, so the objects of classification are mental and linguistic</li></ul><p class="nudge">Both sides agree classification works. They disagree about why it works.</p></div>
     <div class="verdict"></div>
   </li>
 

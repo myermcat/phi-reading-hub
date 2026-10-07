@@ -169,7 +169,7 @@ WEEK4 = [
    "Her 2005 and 2006 figures are given to show it has not."),
   ("Women leave science by choice, so the distribution reflects preference.",
    "The argument is built against this reading.")],
- 2, "Her conclusion joins the two halves of the lecture, the stratification half and the discrimination half."),
+ 2, "One half showed advantage compounding for everyone. The other showed who it compounds against."),
 
 ("Social construction &middot; Hacking",
  "Ian Hacking wrote on constructivism in 1999. What is the core of constructivism set against realism, in her notes?",
@@ -301,5 +301,5 @@ WEEK4 = [
    "The lecture spends its length arguing that truth is not what explains the power here."),
   ("From public trust, which is why funding follows reputation.",
    "A point from the first half of the week, and not this conclusion.")],
- 2, "Her last line gives laboratories a positive role, which is a surprise after an hour of construction talk."),
+ 2, "The answer gives laboratories a positive role, which is a surprise after an hour spent arguing they shut nature out."),
 ]

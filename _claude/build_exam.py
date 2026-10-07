@@ -6,6 +6,8 @@ from bank_week2 import WEEK2
 from bank_week3 import WEEK3
 from bank_week4 import WEEK4
 from bank_mixed import MIXED
+from terms import GLOSS
+import re as _re
 
 LETTERS = "ABCD"
 
@@ -114,7 +116,13 @@ HEAD = """<!doctype html>
   button.tool:hover{color:var(--ink);border-color:var(--rule)}
   button.tool svg{width:14px;height:14px;flex:none}
   button.tool.on{color:var(--accent);border-color:var(--accent)}
-  .panel{display:none;font-size:15.5px;line-height:1.5;padding:12px 15px;max-width:70ch}
+  .panel{display:none;font-size:15.5px;line-height:1.5;padding:12px 15px;max-width:72ch}
+  .panel ul.terms{margin:0 0 9px;padding-left:17px;display:flex;flex-direction:column;gap:5px;
+                  font-size:15px}
+  .panel ul.terms li{line-height:1.4}
+  .panel ul.terms b{color:var(--ink)}
+  .panel .nudge{margin:0}
+  .panel ul.terms + .nudge{padding-top:9px;border-top:1px solid var(--rule)}
   .panel.open{display:block}
   .hint{background:var(--hot-wash);color:var(--ink-soft);border-left:3px solid var(--hot)}
   .ans{background:var(--sunk);color:var(--ink-soft);border-left:3px solid var(--accent)}
@@ -331,6 +339,24 @@ TAIL = """
 </html>
 """
 
+
+_TERMKEYS = sorted(GLOSS, key=len, reverse=True)
+
+def hint_block(stem, hint):
+    """Print, inside the hint, the meaning of every listed term the question uses."""
+    plain = _re.sub(r"<[^>]+>", " ", stem).lower()
+    seen, rows = set(), []
+    for k in _TERMKEYS:
+        if k in plain and not any(k in s2 for s2 in seen):
+            seen.add(k)
+            label = _re.search(r"\b" + _re.escape(k) + r"[a-z-]*", plain)
+            rows.append((label.group(0) if label else k, GLOSS[k]))
+    out = ""
+    if rows:
+        out += '<ul class="terms">' + "".join(
+            '<li><b>%s</b>: %s</li>' % (w, g) for w, g in rows) + "</ul>"
+    return out + '<p class="nudge">%s</p>' % hint
+
 def build(bank, out, title, crumb, eyebrow, h1, stand, key):
     body = []
     for n, (topic, stem, opts, a, hint) in enumerate(bank, 1):
@@ -340,7 +366,7 @@ def build(bank, out, title, crumb, eyebrow, h1, stand, key):
         body.append(Q_TMPL
             .replace("__N__", str(n)).replace("__A__", str(a))
             .replace("__TOPIC__", topic).replace("__STEM__", stem)
-            .replace("__OPTS__", o).replace("__HINT__", hint)
+            .replace("__OPTS__", o).replace("__HINT__", hint_block(stem, hint))
             .replace("__ALET__", LETTERS[a-1]).replace("__AWHY__", opts[a-1][1]))
     page = (HEAD.replace("__TITLE__", title).replace("__CRUMB__", crumb)
                 .replace("__EYEBROW__", eyebrow).replace("__H1__", h1).replace("__STAND__", stand)

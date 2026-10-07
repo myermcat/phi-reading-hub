@@ -264,7 +264,7 @@ WEEK3 = [
    "Incommensurability means there is no common yardstick. The detector is a common yardstick: both paradigms accept what it reads and both use it the same way. So at least one thing survived that either side can be held against, and the two are not sealed off from each other."),
   ("It shows that what an instrument reads depends on the theory behind it, so the same readings came to mean something different.",
    "That is the theory-ladenness of observation, and it is an argument <b>for</b> Kuhn. Her example was offered against him, so this one points the wrong way.")],
- 3, "Incommensurability means no shared yardstick. Ask what the unchanged detector is, if both sides go on trusting it."),
+ 3, "If both sides go on trusting the same detector, ask what that detector is to the two of them."),
 
 ("Kuhn &middot; her conclusion",
  "Kuhn denies that science has a single fixed method, a secure foundation, or steady progress toward truth. Something still has to explain why it works as well as it does. What answer does the course give?",
@@ -276,7 +276,7 @@ WEEK3 = [
    "Rejected under his view of progress."),
   ("Science is a social construction with no claim on truth.",
    "Stronger than anything she claimed, and week 4 is careful to avoid it.")],
- 2, "She named a philosopher alongside it, the one known for family resemblance."),
+ 2, "Ask what holds a set of things together when no single feature runs through all of them."),
 
 ("Kuhn &middot; the modernity of science",
  "Indoctrination is Kuhn's second reason for incommensurability: scientists are trained into a paradigm and cannot step outside it. Which group does that leave best placed to break one, and what becomes of the other group?",
@@ -291,7 +291,7 @@ WEEK3 = [
  1, "Which group has had the least time to be trained into the paradigm?"),
 
 ("Kuhn &middot; why revolutions are not progress",
- "Under normal science, progress is easy to talk about, because the achievements pile up and are plain to see. Why does Kuhn deny that a revolution is progress in the same sense?",
+ "In normal science, each new result adds to a pile that keeps growing, so it is easy to see the field moving forward. Kuhn refuses to call a revolution progress. Why?",
  [("Because they are too rare to count as a trend.",
    "Frequency is not the issue."),
   ("Because they both build and destroy paradigms.",
@@ -300,5 +300,5 @@ WEEK3 = [
    "Not his argument."),
   ("Because the new paradigm is usually less accurate at first.",
    "Often historically true, and not the reason she listed.")],
- 2, "Compare it with normal science, where she said progress is easy to talk about. What does a revolution do that puzzle solving does not?"),
+ 2, "A revolution does two things at the same time, and the second of them is what stops it counting."),
 ]

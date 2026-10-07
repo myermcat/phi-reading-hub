@@ -103,7 +103,13 @@
   button.tool:hover{color:var(--ink);border-color:var(--rule)}
   button.tool svg{width:14px;height:14px;flex:none}
   button.tool.on{color:var(--accent);border-color:var(--accent)}
-  .panel{display:none;font-size:15.5px;line-height:1.5;padding:12px 15px;max-width:70ch}
+  .panel{display:none;font-size:15.5px;line-height:1.5;padding:12px 15px;max-width:72ch}
+  .panel ul.terms{margin:0 0 9px;padding-left:17px;display:flex;flex-direction:column;gap:5px;
+                  font-size:15px}
+  .panel ul.terms li{line-height:1.4}
+  .panel ul.terms b{color:var(--ink)}
+  .panel .nudge{margin:0}
+  .panel ul.terms + .nudge{padding-top:9px;border-top:1px solid var(--rule)}
   .panel.open{display:block}
   .hint{background:var(--hot-wash);color:var(--ink-soft);border-left:3px solid var(--hot)}
   .ans{background:var(--sunk);color:var(--ink-soft);border-left:3px solid var(--accent)}
@@ -186,7 +192,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">The word gentler is in her note, and it is the thing he finds suspicious.</div>
+    <div class="panel hint"><ul class="terms"><li><b>genealogical</b>: a study of how a practice came to be, without assuming it was an improvement</li></ul><p class="nudge">The word gentler is in her note, and it is the thing he finds suspicious.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -206,7 +212,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">The phrase is three words long and it belongs to someone from week 2.</div>
+    <div class="panel hint"><ul class="terms"><li><b>hierarchical observation</b>: watching arranged in ranks, each level watched by the one above</li><li><b>power-knowledge</b>: Foucault's claim that knowing someone and controlling them are one act</li></ul><p class="nudge">The phrase is three words long and it belongs to someone from week 2.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -226,7 +232,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">Her list of examples had four items and only one of them was a prisoner.</div>
+    <div class="panel hint"><ul class="terms"><li><b>docile</b>: made useful and easier to control by discipline</li></ul><p class="nudge">Her list of examples had four items and only one of them was a prisoner.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -246,7 +252,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">Three verbs in sequence, and the same three an engineer would use on a mechanism.</div>
+    <div class="panel hint"><p class="nudge">Three verbs in sequence, and the same three an engineer would use on a mechanism.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -266,7 +272,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">She used one word for its status in the system, and that word was not technique.</div>
+    <div class="panel hint"><ul class="terms"><li><b>normalization</b>: setting a norm and measuring everyone against it, so people sort into normal and abnormal</li></ul><p class="nudge">She used one word for its status in the system, and that word was not technique.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -286,7 +292,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">Her examples were all places nobody is being punished.</div>
+    <div class="panel hint"><ul class="terms"><li><b>normalization</b>: setting a norm and measuring everyone against it, so people sort into normal and abnormal</li></ul><p class="nudge">Her examples were all places nobody is being punished.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -306,7 +312,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">His answer is a single word, and the surprise is what he says it produces.</div>
+    <div class="panel hint"><p class="nudge">His answer is a single word, and the surprise is what he says it produces.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -326,7 +332,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">This is the entry she annotated with Plato and the Kalliopolis.</div>
+    <div class="panel hint"><p class="nudge">This is the entry she annotated with Plato and the Kalliopolis.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -346,7 +352,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">Her example for it was an institution from the nineteenth century.</div>
+    <div class="panel hint"><p class="nudge">Her example for it was an institution from the nineteenth century.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -366,7 +372,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">One half is about what is taken away. The other is about what is written down.</div>
+    <div class="panel hint"><p class="nudge">One half is about what is taken away. The other is about what is written down.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -386,7 +392,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">Think about what you need behind a person for them to appear as a clear outline.</div>
+    <div class="panel hint"><p class="nudge">Think about what you need behind a person for them to appear as a clear outline.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -406,7 +412,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">A menagerie is a royal zoo. Ask what each of its three parts turns into.</div>
+    <div class="panel hint"><ul class="terms"><li><b>panopticon</b>: Bentham's ring of cells round a central tower, where the inmate is always visible and can never check whether anyone is watching</li></ul><p class="nudge">A menagerie is a royal zoo. Ask what each of its three parts turns into.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -426,7 +432,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">Positive here is about a kind of method, and the first of its three features is the one Kuhn destroys.</div>
+    <div class="panel hint"><ul class="terms"><li><b>positivist</b>: the doctrine that real knowledge comes only from what you can observe and measure</li><li><b>paradigm</b>: the whole shared kit a field works inside: its theories, instruments, values and assumptions about what exists</li></ul><p class="nudge">Positive here is about a kind of method, and the first of its three features is the one Kuhn destroys.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -446,7 +452,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">His central methodological objection is to a way of writing about the past.</div>
+    <div class="panel hint"><p class="nudge">His central methodological objection is to a way of writing about the past.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -466,7 +472,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">She flagged one of these as her framing and as the important one. It gives his motive. The conclusion is the familiar part.</div>
+    <div class="panel hint"><p class="nudge">She flagged one of these as her framing and as the important one. It gives his motive. The conclusion is the familiar part.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -486,7 +492,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">The same figure whose method Bacon attacks about eighty years later.</div>
+    <div class="panel hint"><p class="nudge">The same figure whose method Bacon attacks about eighty years later.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -506,7 +512,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">Ask what the people doing it were called before and after.</div>
+    <div class="panel hint"><p class="nudge">Ask what the people doing it were called before and after.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -526,7 +532,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">The metaphor is architectural, and the trouble is at the bottom.</div>
+    <div class="panel hint"><ul class="terms"><li><b>foundationalism</b>: the idea that every claim rests on a lower claim, down to a bottom layer that needs no reason under it</li></ul><p class="nudge">The metaphor is architectural, and the trouble is at the bottom.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -546,7 +552,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">One picture has the destination fixed in advance. The other has only a starting point.</div>
+    <div class="panel hint"><ul class="terms"><li><b>foundationalism</b>: the idea that every claim rests on a lower claim, down to a bottom layer that needs no reason under it</li></ul><p class="nudge">One picture has the destination fixed in advance. The other has only a starting point.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -566,7 +572,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">Two things happen, and one of them is to the shared equipment of the field.</div>
+    <div class="panel hint"><p class="nudge">Two things happen, and one of them is to the shared equipment of the field.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -586,7 +592,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">The critique attacks the first of his three reasons, the one about the meanings of terms.</div>
+    <div class="panel hint"><ul class="terms"><li><b>incommensurability</b>: no shared unit for comparing two paradigms, so neither can be measured against the other</li></ul><p class="nudge">The critique attacks the first of his three reasons, the one about the meanings of terms.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -606,7 +612,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">Incommensurability means no shared yardstick. Ask what the unchanged detector is, if both sides go on trusting it.</div>
+    <div class="panel hint"><ul class="terms"><li><b>paradigms</b>: the whole shared kit a field works inside: its theories, instruments, values and assumptions about what exists</li></ul><p class="nudge">If both sides go on trusting the same detector, ask what that detector is to the two of them.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -626,7 +632,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">She named a philosopher alongside it, the one known for family resemblance.</div>
+    <div class="panel hint"><p class="nudge">Ask what holds a set of things together when no single feature runs through all of them.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -646,13 +652,13 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">Which group has had the least time to be trained into the paradigm?</div>
+    <div class="panel hint"><ul class="terms"><li><b>incommensurability</b>: no shared unit for comparing two paradigms, so neither can be measured against the other</li><li><b>paradigm</b>: the whole shared kit a field works inside: its theories, instruments, values and assumptions about what exists</li></ul><p class="nudge">Which group has had the least time to be trained into the paradigm?</p></div>
     <div class="verdict"></div>
   </li>
 
   <li class="q" id="q25" data-a="2">
     <p class="topic">Kuhn &middot; why revolutions are not progress</p>
-    <p class="stem"><span class="n">25</span> Under normal science, progress is easy to talk about, because the achievements pile up and are plain to see. Why does Kuhn deny that a revolution is progress in the same sense?</p>
+    <p class="stem"><span class="n">25</span> In normal science, each new result adds to a pile that keeps growing, so it is easy to see the field moving forward. Kuhn refuses to call a revolution progress. Why?</p>
     <ol class="opts">
       <li><button type="button" class="opt"><span class="lt">A</span><span>Because they are too rare to count as a trend.</span></button>
         <p class="why">Frequency is not the issue.</p></li>
@@ -666,7 +672,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">Compare it with normal science, where she said progress is easy to talk about. What does a revolution do that puzzle solving does not?</div>
+    <div class="panel hint"><ul class="terms"><li><b>normal science</b>: the long stable stretch when a field works inside one shared paradigm and solves puzzles</li></ul><p class="nudge">A revolution does two things at the same time, and the second of them is what stops it counting.</p></div>
     <div class="verdict"></div>
   </li>
 
