@@ -18,6 +18,10 @@ BANNED = [
  r"\bwhat was (her|his) (notes?|wording|words|framing|formulation|conclusion|verdict|point|summary|examples?)\b",
  r"\b(the|this) (packet|lecture|class|slides?)\b", r"\b(the|this) course\b(?! of)", r"\bweek \d\b", r"\bthis (term|week's)\b",
  r"\bfirst-class slides\b", r"\bon the reading list\b",
+ # a stem may not point back at something it has not named
+ r"\bcarry (his|her|the|this|that) argument\b", r"\bwhat stayed the same\b",
+ r"\bthat detail\b", r"\bthis detail\b", r"\bwhy is that important\b",
+ r"\bwhat was the point\b", r"\bwhat is the point\b",
 ]
 def scan(stem):
     plain = re.sub(r"<[^>]+>", " ", stem)

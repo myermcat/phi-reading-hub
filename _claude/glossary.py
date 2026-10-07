@@ -64,6 +64,8 @@ GROUPS = [
   "He means power over the physical world, and he means it as a promise. Foucault later keeps the equation and turns it into an accusation."),
  ("Ant, spider, bee", "Bacon", "three ways of working, two of them wrong",
   "The alchemists are ants: they pile material up and do nothing with it. The Aristotelians are spiders: they spin systems out of themselves with no material coming in. The proper natural philosopher is a bee, who gathers and then digests. <i>Novum Organum</i> I.95."),
+ ("Lynn White Jr.", "", "religious worldviews decide which technologies get built",
+  "His chain, in order. God is a creator and an architect. Man is made in his image and told to rule the world as a creative cooperator. Judaeo-Christian history runs in one direction toward a goal, where most religions had time going round in a circle. So there is no time to lose, and manual work becomes an essential and pressing form of worship. The position he is arguing against is that economic need drives technology and religion follows along behind."),
  ("Deism", "Lynn White", "God as a clockmaker who set the world going and stepped back",
   "Developing around 1300. Once the world is a mechanism, taking it apart to see how it runs becomes a pious act."),
  ("Comte's three states", "", "explanation passes through three stages over history: theological, then metaphysical, then positive",
