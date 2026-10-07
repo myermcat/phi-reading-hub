@@ -103,7 +103,13 @@
   button.tool:hover{color:var(--ink);border-color:var(--rule)}
   button.tool svg{width:14px;height:14px;flex:none}
   button.tool.on{color:var(--accent);border-color:var(--accent)}
-  .panel{display:none;font-size:15.5px;line-height:1.5;padding:12px 15px;max-width:70ch}
+  .panel{display:none;font-size:15.5px;line-height:1.5;padding:12px 15px;max-width:72ch}
+  .panel ul.terms{margin:0 0 9px;padding-left:17px;display:flex;flex-direction:column;gap:5px;
+                  font-size:15px}
+  .panel ul.terms li{line-height:1.4}
+  .panel ul.terms b{color:var(--ink)}
+  .panel .nudge{margin:0}
+  .panel ul.terms + .nudge{padding-top:9px;border-top:1px solid var(--rule)}
   .panel.open{display:block}
   .hint{background:var(--hot-wash);color:var(--ink-soft);border-left:3px solid var(--hot)}
   .ans{background:var(--sunk);color:var(--ink-soft);border-left:3px solid var(--accent)}
@@ -186,7 +192,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">Her conclusion from the figure was that scientists form elite groupings. Which option supports that?</div>
+    <div class="panel hint"><p class="nudge">Her conclusion from the figure was that scientists form elite groupings. Which option supports that?</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -206,7 +212,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">Bacon's pitch was that a method anyone can follow makes a certain kind of person unnecessary. Which kind?</div>
+    <div class="panel hint"><ul class="terms"><li><b>inductive</b>: reasoning upward from particular cases to a general law, the way a thousand white swans suggest that all swans are white</li></ul><p class="nudge">Bacon's pitch was that a method anyone can follow makes a certain kind of person unnecessary. Which kind?</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -226,7 +232,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">The phrase in her notes about why some institutions are trusted is about duration.</div>
+    <div class="panel hint"><p class="nudge">The phrase in her notes about why some institutions are trusted is about duration.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -246,7 +252,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">The first item has nothing to do with ability, and the third is about manners.</div>
+    <div class="panel hint"><p class="nudge">The first item has nothing to do with ability, and the third is about manners.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -266,7 +272,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">She named an age and then declined to explain the decline.</div>
+    <div class="panel hint"><p class="nudge">She named an age and then declined to explain the decline.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -286,7 +292,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">One of these options ends with a claim that the place, by itself, changes what the work is worth.</div>
+    <div class="panel hint"><p class="nudge">One of these options ends with a claim that the place, by itself, changes what the work is worth.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -306,7 +312,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">Four words, and the second two are the same as the first two.</div>
+    <div class="panel hint"><ul class="terms"><li><b>cumulative advantage</b>: success breeding success, so early advantage compounds</li><li><b>meritocracy</b>: a system where who gets ahead tracks how good they are</li></ul><p class="nudge">Four words, and the second two are the same as the first two.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -326,7 +332,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">The study is about what happens to a field's reputation when the people in it change.</div>
+    <div class="panel hint"><p class="nudge">The study is about what happens to a field's reputation when the people in it change.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -346,7 +352,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">The phrase pairs a golden age for one group with its opposite for another.</div>
+    <div class="panel hint"><p class="nudge">The phrase pairs a golden age for one group with its opposite for another.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -366,7 +372,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">The quotation names a leak at every joint, which rules out any single-cause answer.</div>
+    <div class="panel hint"><p class="nudge">The quotation names a leak at every joint, which rules out any single-cause answer.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -386,7 +392,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">The finding is a number, and the number is what makes it quotable.</div>
+    <div class="panel hint"><p class="nudge">The finding is a number, and the number is what makes it quotable.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -406,7 +412,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">The answer has to connect to cumulative advantage from the first half of the lecture.</div>
+    <div class="panel hint"><p class="nudge">The answer has to connect to cumulative advantage from the first half of the lecture.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -426,7 +432,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">She gave one objection about what a gene can mean and one about what the test scores have been doing.</div>
+    <div class="panel hint"><ul class="terms"><li><b>propensity</b>: an inborn tendency</li></ul><p class="nudge">She gave one objection about what a gene can mean and one about what the test scores have been doing.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -446,7 +452,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">Her conclusion joins the two halves of the lecture, the stratification half and the discrimination half.</div>
+    <div class="panel hint"><ul class="terms"><li><b>stratification</b>: the layering of a field into a small advantaged group and everyone else</li></ul><p class="nudge">One half showed advantage compounding for everyone. The other showed who it compounds against.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -466,7 +472,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">The claim concerns what a theory's working proves, and what it leaves open.</div>
+    <div class="panel hint"><ul class="terms"><li><b>constructivism</b>: the view that our categories are human handiwork</li></ul><p class="nudge">The claim concerns what a theory's working proves, and what it leaves open.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -486,7 +492,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">One of these is the ordinary English sense of the word and the trap in the question.</div>
+    <div class="panel hint"><p class="nudge">One of these is the ordinary English sense of the word and the trap in the question.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -506,7 +512,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">Her example was something with no law behind it that everyone still obeys.</div>
+    <div class="panel hint"><p class="nudge">Her example was something with no law behind it that everyone still obeys.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -526,7 +532,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">The passage names one test for whether something is real, and it is about effects.</div>
+    <div class="panel hint"><p class="nudge">The passage names one test for whether something is real, and it is about effects.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -546,7 +552,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">Contingent is the opposite of necessary. Ask whether it had to be this way.</div>
+    <div class="panel hint"><ul class="terms"><li><b>epistemologies</b>: a view about what counts as knowledge and how you may get it</li><li><b>contingently</b>: it could have been otherwise, and nothing made it necessary</li></ul><p class="nudge">Contingent is the opposite of necessary. Ask whether it had to be this way.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -566,7 +572,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">Picture what is physically on a laboratory bench, and ask how much of it you could find outdoors.</div>
+    <div class="panel hint"><p class="nudge">Picture what is physically on a laboratory bench, and ask how much of it you could find outdoors.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -586,7 +592,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">Picture a handful of dots on a page and ask how many curves pass through all of them.</div>
+    <div class="panel hint"><p class="nudge">Picture a handful of dots on a page and ask how many curves pass through all of them.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -606,7 +612,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">The word heterogeneous points at the mixture of material things and social things in one network.</div>
+    <div class="panel hint"><ul class="terms"><li><b>heterogeneous</b>: mixing material things and social things in one network</li></ul><p class="nudge">The word heterogeneous points at the mixture of material things and social things in one network.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -626,7 +632,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">The prefix co means the causation runs in both directions at once.</div>
+    <div class="panel hint"><ul class="terms"><li><b>co-produced</b>: scientific knowledge and social arrangements making each other</li></ul><p class="nudge">The prefix co means the causation runs in both directions at once.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -646,7 +652,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">Both camps agree that classifying works. The disagreement is about what makes it work.</div>
+    <div class="panel hint"><ul class="terms"><li><b>nominalist</b>: the view that kinds are human impositions, so the objects of classification are mental and linguistic</li></ul><p class="nudge">Both camps agree that classifying works. The disagreement is about what makes it work.</p></div>
     <div class="verdict"></div>
   </li>
 
@@ -666,7 +672,7 @@
     <div class="tools">
       <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
     </div>
-    <div class="panel hint">Her last line gives laboratories a positive role, which is a surprise after an hour of construction talk.</div>
+    <div class="panel hint"><p class="nudge">The answer gives laboratories a positive role, which is a surprise after an hour spent arguing they shut nature out.</p></div>
     <div class="verdict"></div>
   </li>
 
