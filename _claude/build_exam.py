@@ -308,8 +308,8 @@ if __name__ == "__main__":
         (WEEK3, "exam-1/week-3.html", "PHI2394 Week 3 Practice",
          "Week 3", "PHI 2394 B00 &middot; exam 1 practice &middot; week 3",
          "Week 3: Foucault and Kuhn",
-         "Twenty-five questions on the panopticon, discipline and normalization, then paradigms, "
-         "revolutions and incommensurability.", "phi2394-practice-w3-v1"),
+         "Twenty-five questions on the circular prison and what discipline does to a body, then on "
+         "how Kuhn says a science changes shape.", "phi2394-practice-w3-v1"),
         (WEEK4, "exam-1/week-4.html", "PHI2394 Week 4 Practice",
          "Week 4", "PHI 2394 B00 &middot; exam 1 practice &middot; week 4",
          "Week 4: the social construction of scientific knowledge",
