@@ -6,7 +6,7 @@ from bank_week2 import WEEK2
 from bank_week3 import WEEK3
 from bank_week4 import WEEK4
 from bank_mixed import MIXED
-from terms import GLOSS
+from hint_terms import GLOSS
 import re as _re
 
 LETTERS = "ABCD"
@@ -343,14 +343,17 @@ TAIL = """
 _TERMKEYS = sorted(GLOSS, key=len, reverse=True)
 
 def hint_block(stem, hint):
-    """Print, inside the hint, the meaning of every listed term the question uses."""
+    """Print, inside the hint, the meaning of every glossary term the question uses."""
     plain = _re.sub(r"<[^>]+>", " ", stem).lower()
-    seen, rows = set(), []
+    rows, taken = [], []
     for k in _TERMKEYS:
-        if k in plain and not any(k in s2 for s2 in seen):
-            seen.add(k)
-            label = _re.search(r"\b" + _re.escape(k) + r"[a-z-]*", plain)
-            rows.append((label.group(0) if label else k, GLOSS[k]))
+        if k not in plain:
+            continue
+        label, gloss = GLOSS[k]
+        if label in taken:
+            continue
+        taken.append(label)
+        rows.append((label, gloss))
     out = ""
     if rows:
         out += '<ul class="terms">' + "".join(
