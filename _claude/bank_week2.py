@@ -88,7 +88,7 @@ WEEK2 = [
  2, '<i>Meta</i> here means after. After what, and in what sense of after?'),
 
 ('Which theory matches which philosopher',
- "In Bacon's simile, the ant, the spider and the bee stand for three ways of working. Who is the spider?",
+ "In a simile from Bacon's <i>Novum Organum</i>, the ant, the spider and the bee stand for three ways of working. Who is the spider?",
  [('The alchemists, who only store things up and use them.',
    'That is the ant. Bacon calls them the empirics: they collect, and nothing happens to what they collect.'),
   ('The proper natural philosopher, who gathers material and then digests it.',
