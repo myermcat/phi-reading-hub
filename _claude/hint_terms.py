@@ -22,7 +22,7 @@ MATCH = {
  "power-knowledge": "Power-knowledge", "hierarchical observation": "Three techniques of control",
  "docile": "Docile bodies", "utilitarian": "Utilitarianism", "panopticon": "Panopticon",
  "kalliopolis": "Kalliopolis", "ad hoc": "Ad hoc", "contingent": "Contingent",
- "nominalis": "Nominalist and realist about kinds", "constructivis": "Constructivism",
+ "nominalis": "Kinds: realist against nominalist", "constructivis": "Constructivism",
  "co-produc": "Co-production", "heterogeneous": "Heterogeneous engineering",
  "stratificat": "Stratification", "cumulative advantage": "Cumulative advantage",
  "meritocra": "Meritocracy", "epistemolog": "Epistemology",

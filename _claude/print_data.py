@@ -114,7 +114,7 @@ MAP = [
   "<b>Hacking:</b> any theory is not the only one that could have been established, so success is no evidence for it.",
   "Institutions are real because <b>enough people act as though they exist</b>. Politeness: no law, no building, constrains everybody.",
   "The test is <b>causal power</b>. Gender is real because treating people as gendered produces gendered people.",
-  "<b>Kinds.</b> Nominalist: human impositions, so the objects are mental and linguistic. Realist: real features of the world. Test case ADHD.",
+  "<b>Kinds</b>, meaning categories like gold or ADHD. <b>Realist:</b> the world comes divided and we find the lines. <b>Nominalist:</b> we draw them, so they live in our language. Test case ADHD.",
  ], "", True),
 ]
 
