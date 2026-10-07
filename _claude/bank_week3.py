@@ -211,7 +211,7 @@ WEEK3 = [
  [("The view that science rests on experiment, and the problem is cost.",
    "Not her definition and not her problem."),
   ("The idea that knowledge can be traced back to a firm foundation we keep building on, and the problem is induction.",
-   "The metaphor is a building. Every claim rests on a lower claim, down to something solid. The problem she named: the ground floor is reached by induction, meaning going from particular observations to a general law, and no number of observations guarantees the law. So the foundation is the least secure part."),
+   "The metaphor is a building, and a brick wall is exactly the right picture. Every claim rests on a lower claim the way every course of bricks rests on the one beneath it, down to a bottom course that sits on the ground and needs nothing under it. Her phrase <i>traced back</i> means traced downward through the reasons, and never traced backward through history. Ask why you believe something and you give a reason; ask why that reason holds and you give another; foundationalism says the chain stops somewhere solid. Whig history, later in the same lecture, is the one about telling a story about the past. The problem she named: that bottom course is laid by <b>induction</b>, meaning reasoning from particular cases up to a general law, and no number of cases makes the law safe. A thousand white swans did not stop Australia having black ones. So the part of the wall holding up everything else is the part nobody can secure."),
   ("The view that every field needs a founder, and the problem is credit.",
    "A pun on the word, and not the doctrine."),
   ("The claim that mathematics underlies all science, and the problem is that biology resists it.",
