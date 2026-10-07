@@ -1,0 +1,758 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PHI2394 Week 2 Practice</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%231F6B57'/%3E%3Cpath%20d='M22%2024a10%2010%200%200%201%2020%200c0%206-7%207-9%2012'%20fill='none'%20stroke='%23fff'%20stroke-width='6'%20stroke-linecap='round'/%3E%3Ccircle%20cx='32'%20cy='48'%20r='4'%20fill='%23fff'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;1,6..72,400&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root{--paper:#EDEFEC;--surface:#F6F7F4;--sunk:#E3E6E1;--ink:#191D1A;--ink-soft:#414944;
+    --muted:#6E766F;--rule:#D2D8D1;--rule-soft:#E1E5DF;--accent:#1F6B57;--accent-wash:#CFE3DA;
+    --good:#1F6B57;--good-wash:#D6E9E0;--bad:#9B2C2C;--bad-wash:#F2DCDC;--hot:#8E6318;--hot-wash:#F0E4CB;
+    --display:"Newsreader",Georgia,serif;--body:"Source Sans 3",-apple-system,"Segoe UI",sans-serif;
+    --mono:"IBM Plex Mono","SF Mono",Menlo,monospace;color-scheme:light}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    --paper:#141815;--surface:#1B201D;--sunk:#10130F;--ink:#E4E8E3;--ink-soft:#B4BCB6;--muted:#8B948D;
+    --rule:#2C332E;--rule-soft:#232925;--accent:#64BFA1;--accent-wash:#214136;--good:#64BFA1;
+    --good-wash:#1E3A30;--bad:#E08080;--bad-wash:#3B2222;--hot:#D9A957;--hot-wash:#352C1C;color-scheme:dark}}
+  :root[data-theme="dark"]{--paper:#141815;--surface:#1B201D;--sunk:#10130F;--ink:#E4E8E3;
+    --ink-soft:#B4BCB6;--muted:#8B948D;--rule:#2C332E;--rule-soft:#232925;--accent:#64BFA1;
+    --accent-wash:#214136;--good:#64BFA1;--good-wash:#1E3A30;--bad:#E08080;--bad-wash:#3B2222;
+    --hot:#D9A957;--hot-wash:#352C1C;color-scheme:dark}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;
+       line-height:1.55;-webkit-font-smoothing:antialiased;padding-bottom:72px}
+  .wrap{max-width:830px;margin:0 auto;padding:32px 24px 80px;display:flex;flex-direction:column;gap:28px}
+  a{color:var(--accent)}
+  .site{position:sticky;top:0;z-index:70;background:var(--paper);border-bottom:1px solid var(--rule)}
+  .site .in{max-width:830px;margin:0 auto;padding:0 24px;height:50px;display:flex;align-items:center;
+            justify-content:space-between;gap:14px}
+  .site a,.site .cur{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+  .site a{text-decoration:none;color:var(--accent)}
+  .site .cur{color:var(--muted)}
+  .eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+  h1{font-family:var(--display);font-weight:600;font-size:clamp(31px,5.2vw,44px);line-height:1.07;
+     letter-spacing:-.015em;margin:10px 0 0;text-wrap:balance}
+  .standfirst{font-family:var(--display);font-size:clamp(17px,2.3vw,19.5px);line-height:1.5;
+              color:var(--ink-soft);max-width:60ch;margin:13px 0 0}
+  p{margin:0;max-width:74ch}
+  .how{background:var(--sunk);padding:15px 19px;display:flex;flex-direction:column;gap:7px;
+       font-size:15.5px;color:var(--ink-soft)}
+  .how b{color:var(--ink)}
+
+  ol.quiz{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:1px;background:var(--rule)}
+  li.q{background:var(--surface);padding:21px 22px 17px;display:flex;flex-direction:column;gap:13px;
+       border-left:3px solid transparent}
+  li.q.ok{border-left-color:var(--good)}
+  li.q.no{border-left-color:var(--bad)}
+  .topic{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .stem{font-size:18px;line-height:1.45;max-width:68ch}
+  .stem .n{font-family:var(--mono);font-size:12px;color:var(--accent);margin-right:9px;font-weight:500}
+
+  ol.opts{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+  ol.opts>li{display:flex;flex-direction:column}
+  button.opt{display:flex;gap:11px;width:100%;text-align:left;font:inherit;font-size:16px;color:var(--ink);
+             background:var(--paper);border:1px solid var(--rule);padding:10px 13px;cursor:pointer;
+             line-height:1.4;align-items:flex-start}
+  button.opt:hover:not(:disabled){border-color:var(--accent)}
+  button.opt .lt{font-family:var(--mono);font-size:13px;color:var(--muted);flex:none;padding-top:1px}
+  button.opt.sel{background:var(--accent-wash);border-color:var(--accent)}
+  button.opt.sel .lt{color:var(--accent)}
+  li.q.checked button.opt{cursor:default}
+  li.q.checked button.opt.pick-right{background:var(--good-wash);border-color:var(--good)}
+  li.q.checked button.opt.pick-right .lt{color:var(--good)}
+  li.q.checked button.opt.pick-wrong{background:var(--bad-wash);border-color:var(--bad)}
+  li.q.checked button.opt.pick-wrong .lt{color:var(--bad)}
+  .why{display:none;font-size:15px;color:var(--ink-soft);padding:7px 13px 2px 36px;max-width:66ch}
+  li.q.checked .why,li.q.shown .why{display:block}
+  .why b{color:var(--ink)}
+  @media (max-width:560px){.why{padding-left:14px}}
+
+  .tools{display:flex;gap:8px;flex-wrap:wrap}
+  button.tool{display:inline-flex;align-items:center;gap:7px;font:inherit;font-family:var(--mono);
+              font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);
+              background:none;border:1px solid var(--rule);padding:6px 11px;cursor:pointer}
+  button.tool:hover{color:var(--ink);border-color:var(--rule)}
+  button.tool svg{width:14px;height:14px;flex:none}
+  button.tool.on{color:var(--accent);border-color:var(--accent)}
+  .panel{display:none;font-size:15.5px;line-height:1.5;padding:12px 15px;max-width:70ch}
+  .panel.open{display:block}
+  .hint{background:var(--hot-wash);color:var(--ink-soft);border-left:3px solid var(--hot)}
+  .ans{background:var(--sunk);color:var(--ink-soft);border-left:3px solid var(--accent)}
+  .ans .lt{font-family:var(--mono);color:var(--accent);font-weight:500}
+
+  .finish{display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+  button.big{font:inherit;font-size:16px;color:var(--paper);background:var(--accent);border:none;
+             padding:13px 26px;cursor:pointer;font-weight:600}
+  button.big:hover{opacity:.9}
+  .result{display:none;flex-direction:column;gap:9px;width:100%}
+  .result.open{display:flex}
+  .result .big-score{font-family:var(--display);font-size:38px;line-height:1.1;color:var(--ink)}
+  .result .note{font-size:15.5px;color:var(--ink-soft)}
+  .result .jump{display:flex;gap:8px;flex-wrap:wrap}
+  .result .jump a{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-decoration:none;
+                  color:var(--bad);border:1px solid var(--bad);padding:5px 9px}
+
+  .bar{position:fixed;left:0;right:0;bottom:0;z-index:80;background:var(--surface);
+       border-top:1px solid var(--rule);height:52px;display:flex;align-items:center}
+  .bar .in{max-width:830px;margin:0 auto;padding:0 24px;width:100%;display:flex;align-items:center;
+           justify-content:space-between;gap:16px}
+  .bar .tick{font-family:var(--mono);font-size:13px;color:var(--ink)}
+  .bar .tick i{font-style:normal;color:var(--muted)}
+  .bar button{font:inherit;font-family:var(--mono);font-size:11px;letter-spacing:.08em;
+              text-transform:uppercase;color:var(--accent);background:none;border:1px solid var(--rule);
+              padding:7px 13px;cursor:pointer}
+  .bar button:hover{border-color:var(--accent)}
+  @media (max-width:560px){.wrap{padding:24px 15px 70px}li.q{padding:17px 15px 14px}}
+</style>
+
+<header class="site"><div class="in">
+  <a href="./">All practice sets</a>
+  <span class="cur">Week 2</span>
+</div></header>
+
+<div class="wrap">
+  <div>
+    <div class="eyebrow">PHI 2394 B00 &middot; exam 1 practice &middot; week 2</div>
+    <h1>Week 2: the Greeks, Bacon and the Middle Ages</h1>
+    <p class="standfirst">Twenty-five questions on Plato, Aristotle, Schadewaldt, Bacon, Lynn White and Rousseau. Multiple choice, one best answer each.</p>
+  </div>
+
+  <div class="how">
+    <p><b>Answer every question before opening anything.</b> Guessing first and then being
+      corrected beats reading the answer first. That is the pretesting effect, and it is the
+      single largest free gain available tonight.</p>
+    <p><b>The hint tells you where to look without telling you the answer.</b> Use it when you are
+      stuck, and skip it when you are not.</p>
+    <p><b>Then press check my answers at the bottom.</b> Every option gets its reasoning, including
+      the ones you did not pick, because the wrong options are where the learning is.</p>
+  </div>
+
+  <ol class="quiz" id="quiz">
+
+  <li class="q" id="q1" data-a="2">
+    <p class="topic">Plato &middot; the text, the author, the dialogue</p>
+    <p class="stem"><span class="n">1</span> The allegory of the cave comes from which text, and who are the two speakers in it?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>The <i>Apology</i>, a conversation between Socrates and his accuser Meletus.</span></button>
+        <p class="why">The <i>Apology</i> is Socrates on trial. No cave in it.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>The <i>Republic</i>, a conversation between Glaucon and Socrates.</span></button>
+        <p class="why">Book seven of the <i>Republic</i>. Glaucon is the one being walked through the cave. She said there is a question on the text, the author and the name of the dialogue, so hold three facts: Plato wrote it, the dialogue is the <i>Republic</i>, and Plato never speaks in his own voice anywhere.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>The <i>Symposium</i>, a conversation between Socrates and Alcibiades.</span></button>
+        <p class="why">The <i>Symposium</i> is the drinking party about love.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>The <i>Timaeus</i>, a conversation between Socrates and Critias.</span></button>
+        <p class="why">The <i>Timaeus</i> is Plato's account of how the cosmos was made.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">Plato wrote twenty-six dialogues. This one is his long work about the ideal city.</div>
+    <div class="panel ans"><span class="lt">B.</span> Book seven of the <i>Republic</i>. Glaucon is the one being walked through the cave. She said there is a question on the text, the author and the name of the dialogue, so hold three facts: Plato wrote it, the dialogue is the <i>Republic</i>, and Plato never speaks in his own voice anywhere.</div>
+  </li>
+
+  <li class="q" id="q2" data-a="3">
+    <p class="topic">Plato &middot; what education is</p>
+    <p class="stem"><span class="n">2</span> Plato writes that education is not &ldquo;putting knowledge into souls that lack it, like putting sight into blind eyes&rdquo;. So what is it?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>Filling the student with the knowledge the teacher already has.</span></button>
+        <p class="why">This is the exact thing the quoted line rejects.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>Training in a craft, until the hands know what to do without being told.</span></button>
+        <p class="why">That is <i>techne</i>, and Plato ranks it below the knowledge he is after here.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>Turning the soul around, so that it looks toward the light.</span></button>
+        <p class="why">Her phrase on the slide was that education is turning around. The eyes already work. They are pointed at the wall. Sight is no good if you are not looking in the right place.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>Memorising the dialogues until the arguments can be reproduced.</span></button>
+        <p class="why">Nothing in the lecture supports this, and it is the opposite of a method of inquiry.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">If the eyes are not broken, what is the problem with them?</div>
+    <div class="panel ans"><span class="lt">C.</span> Her phrase on the slide was that education is turning around. The eyes already work. They are pointed at the wall. Sight is no good if you are not looking in the right place.</div>
+  </li>
+
+  <li class="q" id="q3" data-a="3">
+    <p class="topic">Plato &middot; the Kalliopolis</p>
+    <p class="stem"><span class="n">3</span> Beside Foucault's &ldquo;panoptic utopia, the utopia of a perfectly governed city&rdquo;, the professor wrote on her own slide: &ldquo;think Plato, <i>Republic</i>, the Kalliopolis&rdquo;. What is the Kalliopolis, and why is it there?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>The cave itself, because both Plato and Foucault describe people who cannot see their own confinement.</span></button>
+        <p class="why">Tempting, and the one to beware of. The Kalliopolis is a city, and the cave is a separate image.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>The Athenian democracy Plato lived under, which Foucault treats as the first disciplinary society.</span></button>
+        <p class="why">Plato's Kalliopolis is his own invention, and he is against Athenian democracy.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>Plato's ideal city, ruled by philosophers, where correct education is central, which is the same dream of a perfectly ordered city that Foucault finds in the plague town.</span></button>
+        <p class="why"><i>Kalli</i> means beautiful, so the most beautiful city. Foucault says the plague town has a political dream of strict division and regulation reaching into the smallest details of daily life. Plato wrote the attractive version of that dream.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>Plato's name for the realm of the Forms, which Foucault treats as the model for the inspector's tower.</span></button>
+        <p class="why">The realm of the Forms is transcendental, and it is not a city.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint"><i>Kalli</i> is the Greek for beautiful. <i>Polis</i> is the Greek for city.</div>
+    <div class="panel ans"><span class="lt">C.</span> <i>Kalli</i> means beautiful, so the most beautiful city. Foucault says the plague town has a political dream of strict division and regulation reaching into the smallest details of daily life. Plato wrote the attractive version of that dream.</div>
+  </li>
+
+  <li class="q" id="q4" data-a="2">
+    <p class="topic">Plato against Aristotle &middot; which theory matches which philosopher</p>
+    <p class="stem"><span class="n">4</span> Plato and Aristotle both use the word form. What is the difference?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>Plato puts form in the object; Aristotle puts it in a realm outside ours.</span></button>
+        <p class="why">The right distinction with the names swapped, and the commonest way to lose this mark.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>Plato puts the Forms in a transcendental realm outside ours; Aristotle puts form in the thing itself, together with the goal it is growing toward.</span></button>
+        <p class="why">The consequence is what to remember. Because Aristotle keeps form in the dog and the tree, he can go and dissect them, which is why she called him the first biologist. Plato's theory points away from the physical world.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>Plato means the shape of a physical object; Aristotle means the definition of a word.</span></button>
+        <p class="why">Neither of them means shape, and neither means a definition.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>They mean the same thing, and the disagreement is only about how we come to know it.</span></button>
+        <p class="why">The disagreement is about where the form is, which is a disagreement about what exists.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">One of the two could do biology. Which one, and why does that follow from where he puts form?</div>
+    <div class="panel ans"><span class="lt">B.</span> The consequence is what to remember. Because Aristotle keeps form in the dog and the tree, he can go and dissect them, which is why she called him the first biologist. Plato's theory points away from the physical world.</div>
+  </li>
+
+  <li class="q" id="q5" data-a="3">
+    <p class="topic">Aristotle &middot; what form answers</p>
+    <p class="stem"><span class="n">5</span> In the lecture, Aristotle's form and <i>telos</i> are offered as his answer to a question. Which question?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>How can we be sure our senses are telling us the truth?</span></button>
+        <p class="why">That is the question Bacon and the empiricists put at the centre, two thousand years later.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>What makes a city just?</span></button>
+        <p class="why">That is the <i>Republic</i>.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>What causes movement, and where do things come from?</span></button>
+        <p class="why">The question the whole Greek picture is organised around, and she said so twice. <i>Physis</i> implies movement. Plato answers with the Forms in a realm outside ours, Aristotle with form in the thing and a goal it moves toward.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>Is technology part of nature or separate from it?</span></button>
+        <p class="why">That is Schadewaldt's question about <i>physis</i> and <i>techne</i>.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint"><i>Physis</i> was defined in the lecture as implying one particular thing. What was it?</div>
+    <div class="panel ans"><span class="lt">C.</span> The question the whole Greek picture is organised around, and she said so twice. <i>Physis</i> implies movement. Plato answers with the Forms in a realm outside ours, Aristotle with form in the thing and a goal it moves toward.</div>
+  </li>
+
+  <li class="q" id="q6" data-a="1">
+    <p class="topic">Aristotle &middot; what is critical to him</p>
+    <p class="stem"><span class="n">6</span> <i>Telos</i> is the term she stressed as critical to Aristotle. What does it mean?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>The end or goal of each living thing, meaning that everything has an intended purpose it is growing toward.</span></button>
+        <p class="why">The word literally means end. Track it: Bacon attacks it as his central objection to Aristotle, Kuhn says history cannot be explained by what it led to, and she said explicitly that foundationalism is not like <i>telos</i>.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>The material a thing is made out of.</span></button>
+        <p class="why">That is matter, which is the thing form is contrasted with.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>The distance between an appearance and the reality behind it.</span></button>
+        <p class="why">Closer to Plato's cave, and not a term from it.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>The method of separating opinion from knowledge.</span></button>
+        <p class="why">That is dialectic, and it is Plato's.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">The word survives in English in <i>teleology</i>.</div>
+    <div class="panel ans"><span class="lt">A.</span> The word literally means end. Track it: Bacon attacks it as his central objection to Aristotle, Kuhn says history cannot be explained by what it led to, and she said explicitly that foundationalism is not like <i>telos</i>.</div>
+  </li>
+
+  <li class="q" id="q7" data-a="4">
+    <p class="topic">The era question that is really about the person</p>
+    <p class="stem"><span class="n">7</span> Which of these is true of Aristotle?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>He was born in Athens to an aristocratic family and founded a school called the Academy.</span></button>
+        <p class="why">Every word of this is Plato. She set the trap by giving both biographies together.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>He wrote twenty-six dialogues in which he never speaks in his own voice.</span></button>
+        <p class="why">Plato again.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>He lived roughly a century after Bacon and was influenced by the Scientific Revolution.</span></button>
+        <p class="why">Aristotle is 384 to 322 BCE and Bacon is 1561 to 1626 CE, so this is about two thousand years late.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>He was born in Stagira, was never an Athenian citizen, studied with Plato, and tutored Alexander the Great.</span></button>
+        <p class="why">384 to 322 BCE, and she called him the first biologist. The non-citizenship is why he had to leave Athens at the end of his life.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">Two of these four describe Plato's life.</div>
+    <div class="panel ans"><span class="lt">D.</span> 384 to 322 BCE, and she called him the first biologist. The non-citizenship is why he had to leave Athens at the end of his life.</div>
+  </li>
+
+  <li class="q" id="q8" data-a="2">
+    <p class="topic">Schadewaldt &middot; physis and techne</p>
+    <p class="stem"><span class="n">8</span> What is the difference between <i>physis</i> and <i>techne</i>?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span><i>Physis</i> is the study of nature and <i>techne</i> is the study of tools, so they are two branches of one subject.</span></button>
+        <p class="why">Neither word names a field of study. They name two kinds of thing in the world.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span><i>Physis</i> is nature, the creative origin that everything grows out of; <i>techne</i> is made by people, and is a combination of man and nature.</span></button>
+        <p class="why"><i>Physis</i> is the origin and centre of all activity and it implies movement, which is why it answers the question about what causes things to move. Schadewaldt's whole complaint is that modern science pulled the two apart.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span><i>Physis</i> is what can be measured and <i>techne</i> is what cannot.</span></button>
+        <p class="why">Reduction to the measurable is the modern move Schadewaldt attacks, so this puts his target into his own vocabulary.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span><i>Physis</i> is the body and <i>techne</i> is the soul.</span></button>
+        <p class="why">No part of the lecture maps them onto body and soul.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">One of the two is where everything comes from. The other needs a person involved.</div>
+    <div class="panel ans"><span class="lt">B.</span> <i>Physis</i> is the origin and centre of all activity and it implies movement, which is why it answers the question about what causes things to move. Schadewaldt's whole complaint is that modern science pulled the two apart.</div>
+  </li>
+
+  <li class="q" id="q9" data-a="2">
+    <p class="topic">Schadewaldt &middot; where techne belongs</p>
+    <p class="stem"><span class="n">9</span> Schadewaldt places <i>techne</i> between two other kinds of knowing. Which two, and what makes <i>techne</i> different from the higher one?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>Between <i>doxa</i> and <i>dialektike</i>. <i>Techne</i> differs because it can be taught.</span></button>
+        <p class="why"><i>Doxa</i> is opinion and dialectic is Plato's method. Neither is in the quoted passage.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>Between <i>empeiria</i>, mere experience or know-how, and <i>episteme</i>, theoretical knowledge. <i>Techne</i> differs because <i>episteme</i> concerns what is immutable and primary, while <i>techne</i> bears on what is mutable and in the process of becoming.</span></button>
+        <p class="why">The passage she quoted from page 29. <i>Techne</i> is productive knowledge, so it works on things that are still changing. That is what makes it lower than <i>episteme</i> and higher than raw experience.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>Between <i>physis</i> and <i>telos</i>. <i>Techne</i> differs because it has no goal of its own.</span></button>
+        <p class="why"><i>Physis</i> and <i>telos</i> are not kinds of knowing.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>Between craft and art. <i>Techne</i> differs because it produces useful things.</span></button>
+        <p class="why">Both English words translate <i>techne</i> itself, so this is circular.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">One Greek word means plain experience. The other is the root of the English word <i>epistemology</i>.</div>
+    <div class="panel ans"><span class="lt">B.</span> The passage she quoted from page 29. <i>Techne</i> is productive knowledge, so it works on things that are still changing. That is what makes it lower than <i>episteme</i> and higher than raw experience.</div>
+  </li>
+
+  <li class="q" id="q10" data-a="2">
+    <p class="topic">Schadewaldt &middot; atechnia</p>
+    <p class="stem"><span class="n">10</span> What is <i>atechnia</i>?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>The refusal to use technology at all.</span></button>
+        <p class="why">The word names a failure of knowledge. Nobody in it is refusing to act.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>Knowledge that is productive and rich, but which has a false idea of the thing itself: a blunder.</span></button>
+        <p class="why">Her gloss on the slide was that <i>atechnia</i> is a false idea of the thing, held confidently. Note that it can be rich and diverse and still be a blunder, which is the uncomfortable part.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>The loss of a craft when nobody is left who can practise it.</span></button>
+        <p class="why">Not a claim in the lecture.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>Nature acting without human involvement.</span></button>
+        <p class="why">That is <i>physis</i>.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">The prefix <i>a</i> means without. What is it without, given the knowledge in question still works?</div>
+    <div class="panel ans"><span class="lt">B.</span> Her gloss on the slide was that <i>atechnia</i> is a false idea of the thing, held confidently. Note that it can be rich and diverse and still be a blunder, which is the uncomfortable part.</div>
+  </li>
+
+  <li class="q" id="q11" data-a="3">
+    <p class="topic">Schadewaldt &middot; what Wolfgang said</p>
+    <p class="stem"><span class="n">11</span> Schadewaldt says the modern conception of nature has been &ldquo;extraordinarily successful&rdquo; and has cost us something. What is his complaint?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>That science has produced weapons, so the problem is what the knowledge gets used for.</span></button>
+        <p class="why">His argument is about the conception of nature itself, before anyone applies it.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>That scientists no longer read the Greeks, so the tradition has been forgotten.</span></button>
+        <p class="why">A plausible thing for a classicist to say, and not what he says. The loss he names is in the concept.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>That nature has been reduced to what is calculable, which splits thought from extension, nature from spirit, and subject from object, and leaves an impoverishment that is hard to estimate.</span></button>
+        <p class="why">His word is dualism, meaning a split into two things the Greeks held as one. <i>Physis</i> held form and motion, law and life, causality and purpose together. Keeping only the calculable half works extremely well and drops the rest.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>That modern science makes claims it cannot prove, because induction never justifies a general law.</span></button>
+        <p class="why">That is the problem of induction, which belongs to Bacon and to Kuhn's foundationalism.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">He praises the results in the same sentence as the complaint. So the complaint concerns what got left out.</div>
+    <div class="panel ans"><span class="lt">C.</span> His word is dualism, meaning a split into two things the Greeks held as one. <i>Physis</i> held form and motion, law and life, causality and purpose together. Keeping only the calculable half works extremely well and drops the rest.</div>
+  </li>
+
+  <li class="q" id="q12" data-a="4">
+    <p class="topic">Schadewaldt &middot; the solution</p>
+    <p class="stem"><span class="n">12</span> What does Schadewaldt propose as the way out of that dualism?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>Stop using mathematics to describe nature.</span></button>
+        <p class="why">He calls the calculable approach extraordinarily successful. He wants to add to it.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>Give the humanities authority over what the sciences are allowed to study.</span></button>
+        <p class="why">Nothing in the lecture proposes a change of authority.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>Replace <i>techne</i> with <i>episteme</i>, so that knowledge is theoretical again.</span></button>
+        <p class="why">The split he attacks runs between nature and <i>techne</i>, so swapping one Greek word for another does not close it.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>Return man, as the observing subject, back into the act of inquiring into nature.</span></button>
+        <p class="why">The dualism puts the observer outside what is observed, so the fix puts the observer back inside it. Carry this past the exam: weeks 5 and 6 make the same move under new names, situated knowledge and standpoint theory.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">A dualism separates two things. Which two does he most want rejoined, given he keeps praising the results?</div>
+    <div class="panel ans"><span class="lt">D.</span> The dualism puts the observer outside what is observed, so the fix puts the observer back inside it. Carry this past the exam: weeks 5 and 6 make the same move under new names, situated knowledge and standpoint theory.</div>
+  </li>
+
+  <li class="q" id="q13" data-a="1">
+    <p class="topic">The Greeks &middot; Heraclitus</p>
+    <p class="stem"><span class="n">13</span> She quoted Heraclitus, sixth century BCE: sound thinking is man's greatest power, and his highest aptitude is that he can say what is and &ldquo;fashion creatively by hearkening to nature&rdquo;. What was her one-line summary of him?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>Nature is in harmony.</span></button>
+        <p class="why">Her summary line, written under the quotation. It matters because it is the background assumption Plato and Aristotle are both working against: there is an order out there, and thinking well means listening to it.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>Everything is in flux.</span></button>
+        <p class="why">The famous Heraclitus line about stepping into the same river twice, and not the one she used here.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>Man is the measure of all things.</span></button>
+        <p class="why">Protagoras.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>The unexamined life is not worth living.</span></button>
+        <p class="why">Socrates, in the <i>Apology</i>.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">Hearkening means listening. What does the quotation assume is out there to be listened to?</div>
+    <div class="panel ans"><span class="lt">A.</span> Her summary line, written under the quotation. It matters because it is the background assumption Plato and Aristotle are both working against: there is an order out there, and thinking well means listening to it.</div>
+  </li>
+
+  <li class="q" id="q14" data-a="2">
+    <p class="topic">Plato &middot; who is speaking</p>
+    <p class="stem"><span class="n">14</span> She stressed one point about how to read the dialogues. Which?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>Socrates wrote nothing, so the dialogues are our only record of his real views.</span></button>
+        <p class="why">The opposite of her point. She said Socrates was a real person, and this is Plato's Socrates.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>Plato does not speak in his own texts. Socrates was a real person, but the Socrates in the dialogues is Plato's.</span></button>
+        <p class="why">Which means you can never quote a line as Plato's own opinion. It is a character's. She ran the Academy point alongside it: twenty-six dialogues, and a school.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>The dialogues were written down by students from memory.</span></button>
+        <p class="why">Not claimed anywhere in the lecture.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>Each dialogue is set in a different city, so the arguments are local.</span></button>
+        <p class="why">Not a claim she made.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">Count how many times Plato uses the word <i>I</i> in the <i>Republic</i>.</div>
+    <div class="panel ans"><span class="lt">B.</span> Which means you can never quote a line as Plato's own opinion. It is a character's. She ran the Academy point alongside it: twenty-six dialogues, and a school.</div>
+  </li>
+
+  <li class="q" id="q15" data-a="2">
+    <p class="topic">Plato &middot; dialectic</p>
+    <p class="stem"><span class="n">15</span> What is dialectic, in Plato?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>A debate in which two speakers argue opposite sides to entertain an audience.</span></button>
+        <p class="why">That is closer to the sophists, whom Plato is attacking.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>The Platonic method of inquiry, the best way to get to the truth, and the process of separating opinion from knowledge and understanding.</span></button>
+        <p class="why">Her definition. It is a method, which is why it belongs in a course on scientific method: Plato's answer to the question of how you find out anything at all. The cave is the picture of it, and dialectic is the procedure.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>The historical process by which one idea gives rise to its opposite.</span></button>
+        <p class="why">Hegel and Marx, and about two thousand years later.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>The ranking of the crafts below theoretical knowledge.</span></button>
+        <p class="why">A conclusion Plato reaches, and not the method he reaches it by.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">Two of these four are real meanings of the word from other centuries. Which one is the one she defined?</div>
+    <div class="panel ans"><span class="lt">B.</span> Her definition. It is a method, which is why it belongs in a course on scientific method: Plato's answer to the question of how you find out anything at all. The cave is the picture of it, and dialectic is the procedure.</div>
+  </li>
+
+  <li class="q" id="q16" data-a="2">
+    <p class="topic">Plato &middot; philosopher kings</p>
+    <p class="stem"><span class="n">16</span> Why should philosophers rule, and what does their education require?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>Because they are the only ones who want power, and their education requires rhetoric and law.</span></button>
+        <p class="why">Plato's point is close to the reverse: the people fit to rule are the ones not hungry for it.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>Because they are awake while everyone else is dreaming, and their education needs geometry and astronomy.</span></button>
+        <p class="why">Her quotation described them exactly that way. The geometry and astronomy matter: for Plato mathematics is a way to gain access to the abstract, which is the contrast she later drew with Bacon, for whom mathematics predicts what physical bodies will do.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>Because they are the wealthiest class and can afford to govern without payment.</span></button>
+        <p class="why">Not a claim in the lecture.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>Because they have left the cave and will not return to it.</span></button>
+        <p class="why">In the allegory the one who has left is made to go back down.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">The subjects are the two that deal in things you cannot touch.</div>
+    <div class="panel ans"><span class="lt">B.</span> Her quotation described them exactly that way. The geometry and astronomy matter: for Plato mathematics is a way to gain access to the abstract, which is the contrast she later drew with Bacon, for whom mathematics predicts what physical bodies will do.</div>
+  </li>
+
+  <li class="q" id="q17" data-a="2">
+    <p class="topic">Metaphysics &middot; where the word comes from</p>
+    <p class="stem"><span class="n">17</span> The lecture explained where the word metaphysics comes from. What is the explanation, and what does the field ask?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>From the Greek for beyond nature, because the subject deals with what is supernatural.</span></button>
+        <p class="why">The popular explanation, and she gave the other one. The supernatural never comes into it.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>From the title of Aristotle's book, which compilers placed after his <i>Physics</i> in the order of the works. The field asks what the origin and nature of all things in the cosmos are, and how we investigate them.</span></button>
+        <p class="why">A filing decision became the name of a discipline. Worth having, because it is a small concrete case of the course thesis: a category in science got its name from a filing accident. The subject's own nature had nothing to do with it.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>From Plato's Academy, where it named the final year of study.</span></button>
+        <p class="why">Not claimed anywhere.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>From the Latin for the study of first causes, coined in the Middle Ages.</span></button>
+        <p class="why">The word is Greek and predates the Middle Ages.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint"><i>Meta</i> here means after. After what, and in what sense of after?</div>
+    <div class="panel ans"><span class="lt">B.</span> A filing decision became the name of a discipline. Worth having, because it is a small concrete case of the course thesis: a category in science got its name from a filing accident. The subject's own nature had nothing to do with it.</div>
+  </li>
+
+  <li class="q" id="q18" data-a="1">
+    <p class="topic">Who Francis Bacon is</p>
+    <p class="stem"><span class="n">18</span> How did the professor introduce Francis Bacon?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>Early modern philosopher, 1561 to 1626, the father of empiricism, strongly influenced by the Scientific Revolution.</span></button>
+        <p class="why">Empiricism means the senses are the original source of knowledge, from the Greek <i>empeiria</i>, experience. Its opposite is the view that reason alone gets you there, which is Plato. Bacon's version has teeth because he adds experiment.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>The astronomer who found that the planets revolve around the sun.</span></button>
+        <p class="why">Galileo, 1564 to 1642, whom she used as her contrast to Bacon's complaint about Aristotle.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>The philosopher who argued that a return to Greek values was necessary for society and education.</span></button>
+        <p class="why">Rousseau, 1712 to 1778.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>The historian who argued that Christian ideas about work shaped Western technology.</span></button>
+        <p class="why">Lynn White Jr.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">The word for his position comes from the Greek <i>empeiria</i>, experience.</div>
+    <div class="panel ans"><span class="lt">A.</span> Empiricism means the senses are the original source of knowledge, from the Greek <i>empeiria</i>, experience. Its opposite is the view that reason alone gets you there, which is Plato. Bacon's version has teeth because he adds experiment.</div>
+  </li>
+
+  <li class="q" id="q19" data-a="3">
+    <p class="topic">Which theory matches which philosopher</p>
+    <p class="stem"><span class="n">19</span> In Bacon's simile, the ant, the spider and the bee stand for three ways of working. Who is the spider?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>The alchemists, who only store things up and use them.</span></button>
+        <p class="why">That is the ant. Bacon calls them the empirics: they collect and never convert.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>The proper natural philosopher, who gathers material and then digests it.</span></button>
+        <p class="why">That is the bee, and it is the one Bacon wants you to be.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>The Aristotelians, who spin webs out of their own entrails.</span></button>
+        <p class="why">The dogmatists, in Bacon's word. The insult is precise: they produce elaborate systems out of themselves and take nothing in from the world. Ant collects and does not think, spider thinks and does not collect, bee does both. From <i>Novum Organum</i> I.95, quoted in full on her slide.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>The Greeks, who let ethics and politics dominate philosophy.</span></button>
+        <p class="why">A real Bacon complaint, and a separate one.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">Where does a spider's web physically come from?</div>
+    <div class="panel ans"><span class="lt">C.</span> The dogmatists, in Bacon's word. The insult is precise: they produce elaborate systems out of themselves and take nothing in from the world. Ant collects and does not think, spider thinks and does not collect, bee does both. From <i>Novum Organum</i> I.95, quoted in full on her slide.</div>
+  </li>
+
+  <li class="q" id="q20" data-a="2">
+    <p class="topic">Bacon against Aristotle</p>
+    <p class="stem"><span class="n">20</span> What exactly was Bacon's problem with the Aristotelian worldview?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>That Aristotle relied on observation, and observation is unreliable.</span></button>
+        <p class="why">Backwards. Bacon is the one insisting on observation.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span><i>Telos</i>: a fundamental order that has to be understood, with the world revealing itself to the observer who waits for it.</span></button>
+        <p class="why">If everything already has a purpose built in, your job is to receive the order. Bacon wants you to go and get it, by experiment, which is why knowledge turns into power over the physical world.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>That Aristotle placed the Forms in a realm outside this one.</span></button>
+        <p class="why">Plato's position, and the standard mix-up.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>That Aristotle said nothing about method.</span></button>
+        <p class="why">His objection is to the method Aristotle has. An absence of method is a different charge.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">Bacon was also critical of the alchemists. What do the Aristotelians and the alchemists have in common, in his eyes?</div>
+    <div class="panel ans"><span class="lt">B.</span> If everything already has a purpose built in, your job is to receive the order. Bacon wants you to go and get it, by experiment, which is why knowledge turns into power over the physical world.</div>
+  </li>
+
+  <li class="q" id="q21" data-a="1">
+    <p class="topic">Bacon &middot; his complaint about the ancients</p>
+    <p class="stem"><span class="n">21</span> What did Bacon say had gone wrong with philosophy in Greece and Rome?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>Ethics and politics dominated philosophy, with the consequence that natural philosophy performed the role of a servant.</span></button>
+        <p class="why">Her wording. The charge is about rank: studying nature was treated as a junior subject that served the questions people really cared about. Bacon wants it at the centre, because it is the part that produces power over the physical world.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>They had no mathematics capable of describing motion.</span></button>
+        <p class="why">Not his complaint, and the Greeks had a great deal of mathematics.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>They wrote in dialogue form, which hides the author's own view.</span></button>
+        <p class="why">A fair observation about Plato and not a Bacon complaint.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>They relied on experiment without any theory to guide it.</span></button>
+        <p class="why">That is his charge against the alchemists, the ants.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">He is making a claim about which subject was treated as more important than which.</div>
+    <div class="panel ans"><span class="lt">A.</span> Her wording. The charge is about rank: studying nature was treated as a junior subject that served the questions people really cared about. Bacon wants it at the centre, because it is the part that produces power over the physical world.</div>
+  </li>
+
+  <li class="q" id="q22" data-a="4">
+    <p class="topic">The Middle Ages &middot; Lynn White Jr.</p>
+    <p class="stem"><span class="n">22</span> What is Lynn White's argument about technology in the Middle Ages?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>Technology advanced once the Church lost its authority over learning.</span></button>
+        <p class="why">He argues the opposite: the religious worldview is the engine.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>New tools arrived from outside Europe and changed how Europeans thought about God.</span></button>
+        <p class="why">The causal arrow in his argument runs from the worldview to the technology.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>Technological change is driven by economic need, and religion follows along behind it.</span></button>
+        <p class="why">The position his argument is written against.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>Religious worldviews shape which technologies get developed, and the Judaeo-Christian picture made work itself a form of worship.</span></button>
+        <p class="why">His chain: God is a creator and an architect, man is made in his image and told to rule the world as a creative cooperator, and Christian history runs in one direction toward a goal, so there is no time to lose. Therefore manual work is an essential and pressing form of worship.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">Which way does the causation run in his argument, from belief to tools or from tools to belief?</div>
+    <div class="panel ans"><span class="lt">D.</span> His chain: God is a creator and an architect, man is made in his image and told to rule the world as a creative cooperator, and Christian history runs in one direction toward a goal, so there is no time to lose. Therefore manual work is an essential and pressing form of worship.</div>
+  </li>
+
+  <li class="q" id="q23" data-a="1">
+    <p class="topic">The Middle Ages &middot; Deism</p>
+    <p class="stem"><span class="n">23</span> Around 1300, she said, the first ideas of Deism start to develop. What is the picture, and why does it matter for science?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>God as a clockmaker who set the world in motion, which makes studying the mechanism a pious act.</span></button>
+        <p class="why">Once God winds the world up and steps back, the world is a mechanism, and taking it apart to see how it runs becomes a way of admiring the maker. That is how a religious worldview ends up licensing mechanical science.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>God as a judge who intervenes constantly, which makes natural law impossible.</span></button>
+        <p class="why">This is the view Deism moves away from.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>The denial that God exists, which frees science from the Church.</span></button>
+        <p class="why">Deism is not atheism. There is a maker in the picture.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>The claim that the world is eternal and had no beginning.</span></button>
+        <p class="why">That is closer to Aristotle, and it is what Christian thought rejected.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">The usual image for it is a piece of machinery that keeps running after you wind it.</div>
+    <div class="panel ans"><span class="lt">A.</span> Once God winds the world up and steps back, the world is a mechanism, and taking it apart to see how it runs becomes a way of admiring the maker. That is how a religious worldview ends up licensing mechanical science.</div>
+  </li>
+
+  <li class="q" id="q24" data-a="1">
+    <p class="topic">Which theory matches which philosopher</p>
+    <p class="stem"><span class="n">24</span> Which claim is Rousseau's?</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>A return to Greek values is necessary for society and education, and progress is only possible through education.</span></button>
+        <p class="why">1712 to 1778, French, shaped by the Enlightenment and the French Revolution. He is the counter-current in the week: an Enlightenment figure doubting that progress in the sciences and arts improved anyone's morals. His line that barbarous people are those who lack virtue is tied straight back to Plato, Socrates and Aristotle.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>The senses are the original source of knowledge.</span></button>
+        <p class="why">Bacon.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>Explanation passes through three historical stages before it becomes scientific.</span></button>
+        <p class="why">Comte, from the week 2 packet.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>Power and knowledge are one thing, aimed at controlling what we know.</span></button>
+        <p class="why">Foucault.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">He is the one in this week who looks backwards for his model.</div>
+    <div class="panel ans"><span class="lt">A.</span> 1712 to 1778, French, shaped by the Enlightenment and the French Revolution. He is the counter-current in the week: an Enlightenment figure doubting that progress in the sciences and arts improved anyone's morals. His line that barbarous people are those who lack virtue is tied straight back to Plato, Socrates and Aristotle.</div>
+  </li>
+
+  <li class="q" id="q25" data-a="2">
+    <p class="topic">The era question</p>
+    <p class="stem"><span class="n">25</span> Put these four in the order they worked, earliest first: Bentham, Copernicus, Rousseau, Bacon.</p>
+    <ol class="opts">
+      <li><button type="button" class="opt"><span class="lt">A</span><span>Bacon, Copernicus, Rousseau, Bentham</span></button>
+        <p class="why">Copernicus dies in 1543, eighteen years before Bacon is born.</p></li>
+      <li><button type="button" class="opt"><span class="lt">B</span><span>Copernicus, Bacon, Rousseau, Bentham</span></button>
+        <p class="why">1473 to 1543, 1561 to 1626, 1712 to 1778, 1748 to 1832. Her detail standard means centuries are enough: Copernicus is late fifteenth into the sixteenth, Bacon straddles 1600, and Rousseau and Bentham overlap in the eighteenth.</p></li>
+      <li><button type="button" class="opt"><span class="lt">C</span><span>Copernicus, Rousseau, Bacon, Bentham</span></button>
+        <p class="why">Rousseau is born eighty-six years after Bacon dies.</p></li>
+      <li><button type="button" class="opt"><span class="lt">D</span><span>Bacon, Rousseau, Copernicus, Bentham</span></button>
+        <p class="why">Copernicus is the earliest of the four, and this puts him third.</p></li>
+    </ol>
+    <div class="tools">
+      <button type="button" class="tool t-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Hint</button>
+      <button type="button" class="tool t-ans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Answer</button>
+    </div>
+    <div class="panel hint">One of the four died before the other three were born.</div>
+    <div class="panel ans"><span class="lt">B.</span> 1473 to 1543, 1561 to 1626, 1712 to 1778, 1748 to 1832. Her detail standard means centuries are enough: Copernicus is late fifteenth into the sixteenth, Bacon straddles 1600, and Rousseau and Bentham overlap in the eighteenth.</div>
+  </li>
+
+  </ol>
+
+  <div class="finish">
+    <button type="button" class="big" id="check">Check my answers</button>
+    <div class="result" id="result">
+      <div class="big-score" id="bigscore"></div>
+      <p class="note" id="resnote"></p>
+      <div class="jump" id="jump"></div>
+    </div>
+  </div>
+</div>
+
+<div class="bar"><div class="in">
+  <span class="tick" id="tick"></span>
+  <button type="button" id="reset">Start over</button>
+</div></div>
+
+<script>
+(function(){
+  var KEY='phi2394-practice-w2-v1';
+  var qs=[].slice.call(document.querySelectorAll('li.q'));
+  var picked={},checked=false;
+  try{picked=JSON.parse(localStorage.getItem(KEY)||'{}')||{};}catch(e){picked={};}
+
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(picked));}catch(e){}}
+
+  function answered(){var n=0;qs.forEach(function(q,i){if(picked[i]!=null)n++;});return n;}
+  function correct(){var n=0;qs.forEach(function(q,i){if(picked[i]===+q.dataset.a)n++;});return n;}
+
+  function tick(){
+    document.getElementById('tick').innerHTML=
+      answered()+' of '+qs.length+' answered'+(checked?' <i>&middot; '+correct()+' right</i>':'');
+  }
+
+  function paint(q,i){
+    var p=picked[i],a=+q.dataset.a;
+    q.querySelectorAll('button.opt').forEach(function(b,k){
+      b.classList.remove('sel','pick-right','pick-wrong');
+      b.disabled=checked;
+      if(!checked){ if(p===k+1) b.classList.add('sel'); return; }
+      if(k+1===a) b.classList.add('pick-right');
+      else if(k+1===p) b.classList.add('pick-wrong');
+    });
+    q.classList.toggle('checked',checked);
+    q.classList.toggle('ok',checked&&p===a);
+    q.classList.toggle('no',checked&&p!==a);
+  }
+
+  qs.forEach(function(q,i){
+    q.querySelectorAll('button.opt').forEach(function(b,k){
+      b.addEventListener('click',function(){
+        if(checked)return;
+        picked[i]=k+1;save();paint(q,i);tick();
+      });
+    });
+    var h=q.querySelector('.hint'),an=q.querySelector('.ans');
+    q.querySelector('.t-hint').addEventListener('click',function(){
+      h.classList.toggle('open');this.classList.toggle('on',h.classList.contains('open'));
+    });
+    q.querySelector('.t-ans').addEventListener('click',function(){
+      an.classList.toggle('open');this.classList.toggle('on',an.classList.contains('open'));
+      q.classList.toggle('shown',an.classList.contains('open'));
+    });
+    paint(q,i);
+  });
+  tick();
+
+  document.getElementById('check').addEventListener('click',function(){
+    checked=true;
+    qs.forEach(paint);tick();
+    var n=correct(),un=qs.length-answered();
+    document.getElementById('bigscore').textContent=n+' out of '+qs.length;
+    var pct=Math.round(n/qs.length*100);
+    var msg='That is '+pct+' per cent. ';
+    if(un>0) msg+=un+' question'+(un===1?' was':'s were')+' left blank and counted as wrong. ';
+    msg+=n===qs.length?'Nothing left to restudy here.'
+        :'Read the reasoning under every red question, including why the option you picked is wrong.';
+    document.getElementById('resnote').textContent=msg;
+    var j=document.getElementById('jump');j.innerHTML='';
+    qs.forEach(function(q,i){
+      if(picked[i]===+q.dataset.a)return;
+      var a=document.createElement('a');a.href='#q'+(i+1);a.textContent='Q'+(i+1);j.appendChild(a);
+    });
+    document.getElementById('result').classList.add('open');
+    document.getElementById('result').scrollIntoView({behavior:'smooth',block:'center'});
+  });
+
+  document.getElementById('reset').addEventListener('click',function(){
+    picked={};checked=false;save();
+    qs.forEach(function(q,i){
+      paint(q,i);
+      q.classList.remove('shown');
+      q.querySelectorAll('.panel').forEach(function(p){p.classList.remove('open');});
+      q.querySelectorAll('.tool').forEach(function(t){t.classList.remove('on');});
+    });
+    document.getElementById('result').classList.remove('open');
+    tick();window.scrollTo({top:0,behavior:'smooth'});
+  });
+})();
+</script>
+</html>
