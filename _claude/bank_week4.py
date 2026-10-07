@@ -18,7 +18,7 @@ WEEK4 = [
 ("Stratification &middot; what Bacon expected",
  "Francis Bacon makes a second appearance in week 4. What did he expect from the inductive method, and how did it turn out?",
  [("He expected it to level the differences amongst intellectual abilities. In practice a small number of scientists dominate: 10 per cent of authors produce half of all papers, and 80 per cent of citations go to 20 per cent of papers.",
-   "Bacon's method works by piling up particular observations and reasoning upward to a general law, which is called <b>induction</b>. This is why he is in this lecture. His promise was that a method anyone can follow makes genius unnecessary, so ordinary people working carefully would do the work. The distribution of output says something else happened."),
+   "Bacon's method works by piling up particular cases and reasoning upward to a general law, which is called <b>induction</b>. This is why he is in this lecture. His promise was that a method anyone can follow makes genius unnecessary, so ordinary people working carefully would do the work. The distribution of output says something else happened."),
   ("He expected science to be the preserve of a gifted few, which is what occurred.",
    "The opposite of his claim. His whole pitch was that method replaces genius."),
   ("He expected it to make science profitable, which it did.",
