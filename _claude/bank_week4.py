@@ -16,7 +16,7 @@ WEEK4 = [
  2, "Her conclusion from the figure was that scientists form elite groupings. Which option supports that?"),
 
 ("Stratification &middot; what Bacon expected",
- "Francis Bacon makes a second appearance in week 4. What did he expect from the inductive method, and how did it turn out?",
+ "What did Francis Bacon expect the inductive method to do to the differences between people's intellectual abilities, and how did it turn out?",
  [("He expected it to level the differences amongst intellectual abilities. In practice a small number of scientists dominate: 10 per cent of authors produce half of all papers, and 80 per cent of citations go to 20 per cent of papers.",
    "Bacon's method works by piling up particular cases and reasoning upward to a general law, which is called <b>induction</b>. This is why he is in this lecture. His promise was that a method anyone can follow makes genius unnecessary, so ordinary people working carefully would do the work. The distribution of output says something else happened."),
   ("He expected science to be the preserve of a gifted few, which is what occurred.",
@@ -52,7 +52,7 @@ WEEK4 = [
  2, "The first item has nothing to do with ability, and the third is about manners."),
 
 ("Stratification &middot; age and output",
- "Scientific output peaks at one age and falls afterwards. What age, and what explanation did the lecture give for the fall?",
+ "Scientific output peaks at one age and falls afterwards. What age, and what explains the fall?",
  [("In their late twenties, and the decline is explained by family responsibilities.",
    "Neither the age nor the explanation given."),
   ("In their mid-forties, after which it decreases, and the reason for the decline is unclear.",
@@ -208,7 +208,7 @@ WEEK4 = [
  2, "Her example was something with no law behind it that everyone still obeys."),
 
 ("Social construction &middot; why gender counts as real",
- "Gender is called real in this week's reading. On what grounds?",
+ "Gender is argued to be real. On what grounds?",
  [("Because it is determined by biology.",
    "The passage says genders are undoubtedly not simply given by nature."),
   ("Because it is recognised in law.",

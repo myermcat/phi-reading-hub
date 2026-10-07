@@ -4,7 +4,7 @@
 
 MIXED = [
 ("The Greeks &middot; before Plato",
- "Homer, eighth century BCE, is the earliest writer this term reaches back to. What picture of the world does the <i>Odyssey</i> rely on?",
+ "Homer wrote in the eighth century BCE. What picture of the world does the <i>Odyssey</i> rely on?",
  [("A cosmos with an order and a place for everything in it.",
    "Eighth century BCE, and it sets up the background assumption everything later argues inside: there is an order out there. Heraclitus then says nature is in harmony, Plato puts the order in a realm outside ours, and Aristotle puts it in the things themselves."),
   ("A world of pure chance, where the gods intervene at random.",
@@ -49,7 +49,7 @@ MIXED = [
  2, "Thinking substance on one side, and everything that takes up space on the other."),
 
 ("Comte &middot; the three states",
- "Comte appears in the week 2 packet with a claim about how explanation changes over history. What is the sequence?",
+ "Auguste Comte claims that explanation passes through three stages over the course of history. What are the three, in order?",
  [("Observation, hypothesis, experiment.",
    "A description of method. The question asks for a sequence of historical stages."),
   ("Theological, then metaphysical, then positive.",
@@ -121,7 +121,7 @@ MIXED = [
  2, "The arrangement is close to the same in both. The attitude toward it is where they part."),
 
 ("Across weeks &middot; who doubts progress",
- "Three figures in this course doubt that things are getting better. Which three, and on what?",
+ "Three of the thinkers studied so far doubt that things are getting better. Which three, and on what?",
  [("Plato, Aristotle and Homer, on the decline from a golden age.",
    "None of the three makes that argument in these lectures."),
   ("Rousseau on whether science and the arts improved anyone's morals, Kuhn on whether a revolution counts as progress, and Foucault on whether the gentler prison is an improvement.",
@@ -253,7 +253,7 @@ MIXED = [
  1, "Two different claims about men and women appear in that lecture. One she rejects flatly, and one she reports as a live proposal."),
 
 ("The course thesis",
- "The first-class slides give the course a thesis. What is it?",
+ "PHI2394 is built around one claim about the scientific method. What is it?",
  [("Science progresses by accumulating facts.",
    "The view the whole term is built against."),
   ("The scientific method is not fixed, and it is socially constructed.",
@@ -265,7 +265,7 @@ MIXED = [
  2, "One sentence, in two halves, and the whole term is an argument for it."),
 
 ("Across weeks &middot; putting ideas in order",
- "Four claims from the course. Which of them was made first?",
+ "Four claims, from four different thinkers. Which was made first?",
  [("The claim that power and knowledge are one thing.",
    "Foucault, 1975."),
   ("The claim that knowing how a thing works gives you power over it.",
@@ -277,7 +277,7 @@ MIXED = [
  2, "Three of these four belong to the twentieth century."),
 
 ("Across weeks &middot; telos, three times",
- "<i>Telos</i> turns up in three different arguments in this course. Which set is right?",
+ "<i>Telos</i> turns up in three different arguments. Which set is right?",
  [("Aristotle proposes it, Bacon attacks it, and Kuhn says foundationalism works differently from it.",
    "Aristotle: everything has an end it grows toward. Bacon: that makes the world something you wait to receive, so he wants experiment instead. Kuhn: a foundation pushes up from below, while <i>telos</i> pulls from ahead. One Greek word doing work in three centuries that are two thousand years apart."),
   ("Plato proposes it, Aristotle attacks it, and Foucault revives it.",

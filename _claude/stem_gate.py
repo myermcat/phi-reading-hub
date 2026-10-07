@@ -16,6 +16,8 @@ BANNED = [
  r"\bin (her|his) (notes|wording|words|framing|formulation|terms|list|own)\b",
  r"\bon (her|his) (own )?slide\b", r"\b(her|his) (examples?|conclusion|verdict|framing|summary|point)\b",
  r"\bwhat was (her|his) (notes?|wording|words|framing|formulation|conclusion|verdict|point|summary|examples?)\b",
+ r"\b(the|this) (packet|lecture|class|slides?)\b", r"\b(the|this) course\b(?! of)", r"\bweek \d\b", r"\bthis (term|week's)\b",
+ r"\bfirst-class slides\b", r"\bon the reading list\b",
 ]
 def scan(stem):
     plain = re.sub(r"<[^>]+>", " ", stem)
