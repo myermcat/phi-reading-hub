@@ -27,6 +27,13 @@ BANNED = [
  # a year and a country do not identify a study
  r"\bwhat did the figures\b", r"\bwhat do the numbers\b", r"\bwhat was the pattern\b",
  r"\bwhat did it show\b", r"\bwhat was the finding\b",
+ # the stem must hand over the evidence and ask for the reading of it.
+ # "A student's colleagues never asked her which drying agent to use. What does that illustrate?"
+ # works. "An analysis found a pattern in the words. What was it?" is a memory test with the
+ # evidence removed.
+ r"found a pattern.{0,40}what was it", r"\bwhat was it\s*\?\s*$",
+ r"\bwhich three\s*\?\s*$", r"\bwhat are the three\s*\?\s*$",
+ r"\bwhat was on it\b", r"\bwhat were they\s*\?\s*$",
 ]
 def scan(stem):
     plain = re.sub(r"<[^>]+>", " ", stem)
