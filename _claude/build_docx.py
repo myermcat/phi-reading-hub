@@ -140,6 +140,22 @@ def build():
     doc.save(out)
     return out
 
+def to_pdf(docx_path):
+    """LibreOffice renders it. Two pages is the whole specification, so it is checked."""
+    import subprocess, re
+    out = os.path.dirname(docx_path)
+    subprocess.run(["soffice", "--headless", "--convert-to", "pdf", "--outdir", out, docx_path],
+                   check=True, capture_output=True)
+    pdf = docx_path[:-5] + ".pdf"
+    n = len(re.findall(rb"/Type\s*/Page[^s]", open(pdf, "rb").read()))
+    assert n == 2, "the sheet came out as %d pages" % n
+    return pdf, n
+
 if __name__ == "__main__":
     p = build()
     print("saved", os.path.basename(p), os.path.getsize(p), "bytes")
+    try:
+        pdf, n = to_pdf(p)
+        print("saved", os.path.basename(pdf), os.path.getsize(pdf), "bytes,", n, "pages")
+    except FileNotFoundError:
+        print("soffice not on this machine, so no PDF")
