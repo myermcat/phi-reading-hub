@@ -15,7 +15,7 @@ WEEK3 = [
  2, 'The word gentler is in her note, and it is the thing he finds suspicious.'),
 
 ('Foucault &middot; power-knowledge',
- 'Foucault says hierarchical observation leads to power-knowledge, which he glosses as &ldquo;the development of force and the establishment of truth&rdquo;. Whose slogan is he building on?',
+ 'Foucault says watching arranged in ranks leads to power-knowledge, and describes it as &ldquo;the development of force and the establishment of truth&rdquo;. He is reworking a three-word slogan from an earlier thinker. Whose?',
  [('Plato, that the philosopher should rule.',
    'Plato grounds power in knowledge of the Forms, which is a different relation: knowing comes first and earns the right to rule.'),
   ('Rousseau, that progress comes through education.',

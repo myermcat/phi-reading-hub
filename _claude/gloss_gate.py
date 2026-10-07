@@ -14,7 +14,7 @@ TERMS = ["induction","inductive","epistemolog","metaphysic","positivis","conting
  "atechnia","furtive","docile","ideological","propensity","anomal"]
 
 MARK = re.compile(
-    r"(is called|called|means|meaning|named|the name for|is Kuhn's|is what .{0,40} calls"
+    r"(is called|called|means|meaning|named|has a name|goes by|the name for|is Kuhn's|is what .{0,40} calls"
     r"|, which is|, the |, mere |, meaning|is an? <b>|is an? \w+ for|"
     r"<i>\w+</i>\s*,\s*[a-z]|<b>\w+</b>\s*,\s*[a-z]|\bis opinion\b)", re.I)
 
