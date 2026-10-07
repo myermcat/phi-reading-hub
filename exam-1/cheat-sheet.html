@@ -39,6 +39,10 @@
                 color:var(--muted);margin-bottom:11px}
     nav.rail a{display:block;font-size:14.5px;color:var(--ink-soft);text-decoration:none;
                padding:6px 0 6px 13px;border-left:2px solid var(--rule);line-height:1.3}
+    nav.rail a.sub{font-size:13px;padding:3.5px 0 3.5px 13px;color:var(--muted)}
+    nav.rail a.sub i{font-style:normal;font-family:var(--mono);font-size:10px;
+                     display:inline-block;width:17px;color:var(--rule-soft)}
+    nav.rail a.sub:hover i{color:var(--muted)}
     nav.rail a:hover{color:var(--ink);border-left-color:var(--muted)}
     nav.rail a.on{color:var(--accent);border-left-color:var(--accent)}
   }
@@ -106,6 +110,17 @@
   <nav class="rail" aria-label="On this page">
     <div class="k">On this page</div>
     <a href="#map">The map</a>
+    <a class="sub" href="#p-plato"><i>1</i>Plato</a>
+    <a class="sub" href="#p-aristotle"><i>2</i>Aristotle</a>
+    <a class="sub" href="#p-middle-ages"><i>3</i>The Middle Ages</a>
+    <a class="sub" href="#p-copernicus"><i>4</i>Copernicus</a>
+    <a class="sub" href="#p-bacon"><i>5</i>Bacon</a>
+    <a class="sub" href="#p-rousseau"><i>6</i>Rousseau</a>
+    <a class="sub" href="#p-bentham"><i>7</i>Bentham</a>
+    <a class="sub" href="#p-positivism"><i>8</i>Positivism</a>
+    <a class="sub" href="#p-kuhn"><i>9</i>Kuhn</a>
+    <a class="sub" href="#p-foucault"><i>10</i>Foucault</a>
+    <a class="sub" href="#p-construction"><i>11</i>Social construction</a>
     <a href="#twice">Who turns up twice</a>
     <a href="#general">General words</a>
     <a href="#greek">Greek terms</a>
@@ -114,6 +129,7 @@
     <a href="#foucault">Foucault</a>
     <a href="#week4">Week 4</a>
   </nav>
+
 
   <main>
     <div>
@@ -131,7 +147,7 @@
         back at everything above them and say what it was really doing.</p>
 
       <div class="chain">
-        <div class="step">
+        <div class="step" id="p-plato">
           <div class="hd"><span class="num">1</span><h3>Plato</h3><span class="yr">428 to 348 BCE</span></div>
           <p class="q">What is actually real, and how would we find out?</p>
           <dl class="inner">
@@ -143,7 +159,7 @@
         </div>
         <p class="leads">His own student keeps the word form and moves it out of that other realm.</p>
 
-        <div class="step">
+        <div class="step" id="p-aristotle">
           <div class="hd"><span class="num">2</span><h3>Aristotle</h3><span class="yr">384 to 322 BCE</span></div>
           <p class="q">What makes things move, and where do they come from?</p>
           <dl class="inner">
@@ -155,7 +171,7 @@
         </div>
         <p class="leads">His cosmos then holds for two thousand years, which is what makes the next break so large.</p>
 
-        <div class="step">
+        <div class="step" id="p-middle-ages">
           <div class="hd"><span class="num">3</span><h3>The Middle Ages</h3><span class="yr">read by Lynn White Jr.</span></div>
           <p class="q">Why did Western Europe build the technology it built?</p>
           <dl class="inner">
@@ -167,7 +183,7 @@
         </div>
         <p class="leads">That is the setting. Now the Greek picture itself starts to come apart, first in its content.</p>
 
-        <div class="step">
+        <div class="step" id="p-copernicus">
           <div class="hd"><span class="num">4</span><h3>Copernicus</h3><span class="yr">1473 to 1543</span></div>
           <p class="q">How do the planets actually move?</p>
           <dl class="inner">
@@ -179,7 +195,7 @@
         </div>
         <p class="leads">The content of the Greek picture has broken. Next the method breaks.</p>
 
-        <div class="step">
+        <div class="step" id="p-bacon">
           <div class="hd"><span class="num">5</span><h3>Bacon</h3><span class="yr">1561 to 1626 &middot; first of two appearances</span></div>
           <p class="q">How should anyone find anything out?</p>
           <dl class="inner">
@@ -192,7 +208,7 @@
         </div>
         <p class="leads">Not everyone is pleased about the new confidence in progress.</p>
 
-        <div class="step">
+        <div class="step" id="p-rousseau">
           <div class="hd"><span class="num">6</span><h3>Rousseau</h3><span class="yr">1712 to 1778</span></div>
           <p class="q">Has progress in the sciences and arts actually made us better people?</p>
           <dl class="inner">
@@ -203,7 +219,7 @@
         </div>
         <p class="leads">Meanwhile the practical question of how to run institutions is being answered by arithmetic.</p>
 
-        <div class="step">
+        <div class="step" id="p-bentham">
           <div class="hd"><span class="num">7</span><h3>Bentham</h3><span class="yr">1748 to 1832</span></div>
           <p class="q">How should an institution be arranged?</p>
           <dl class="inner">
@@ -215,7 +231,7 @@
         </div>
         <p class="leads">Bacon's confidence in method, meanwhile, hardens into a doctrine about what counts as knowledge at all.</p>
 
-        <div class="step">
+        <div class="step" id="p-positivism">
           <div class="hd"><span class="num">8</span><h3>Positivism</h3><span class="yr">Enlightenment onward, Comte and the Vienna Circle</span></div>
           <p class="q">What counts as real knowledge?</p>
           <dl class="inner">
@@ -226,18 +242,18 @@
         </div>
         <p class="leads">Which brings the course to its hinge.</p>
 
-        <div class="step crit">
+        <div class="step crit" id="p-kuhn">
           <div class="hd"><span class="num">9</span><h3>Kuhn</h3><span class="yr">1922 to 1996 &middot; <i>The Structure of Scientific Revolutions</i></span></div>
           <p class="q">Does science really accumulate steadily toward the truth?</p>
           <dl class="inner">
             <div><dt>His stand</dt><dd><b>No.</b> Science alternates between long stable stretches and revisionary breaks. He is against positivism and against the steady-progress story.</dd></div>
             <div><dt>His pieces</dt><dd>
               <ul>
-                <li><b>Paradigm.</b> The whole shared kit a field works inside: fixed theories, values, instruments, and assumptions about what exists. Her examples: Newton's mechanics, Lavoisier's chemistry, Mendel's genetics.</li>
-                <li><b>Normal science.</b> Puzzle solving inside that kit. A puzzle has a known shape and a guaranteed answer, so failing one means you failed, never that the paradigm did.</li>
-                <li><b>Anomaly.</b> A result the field cannot make fit however hard it tries. They pile up.</li>
-                <li><b>Revolution.</b> The kit gets revised and the anomalous problem gets solved.</li>
-                <li><b>Incommensurability.</b> Afterwards there may be no shared measure for comparing the old kit with the new. Three reasons: the meanings of terms change, indoctrination, and historical context changes.</li>
+                <li><b>Paradigm.</b> The shared picture a field works from, with the instruments, standards and assumptions that come with it. Her examples: Newton's mechanics, Lavoisier's chemistry, Mendel's genetics.</li>
+                <li><b>Normal science.</b> Solving puzzles where the final picture is already agreed, and every piece you place leads toward it. A puzzle has a guaranteed answer, so failing one means you failed and never that the picture was wrong.</li>
+                <li><b>Anomaly.</b> A result the field cannot make fit, however hard it tries. They pile up.</li>
+                <li><b>Revolution.</b> The shared picture gets replaced, and the result that would not fit is finally explained.</li>
+                <li><b>Incommensurability.</b> Afterwards there may be no shared unit for measuring the old picture against the new one. Three reasons: the meanings of terms change, indoctrination, and historical context changes.</li>
               </ul></dd></div>
             <div><dt>On history</dt><dd>He rejects <b>Whig history</b>, which builds the past into steps leading to us. Events must follow their causes, so a sequence cannot be explained by the fact that it ended up here.</dd></div>
             <div><dt>On progress</dt><dd>Normal science visibly accumulates. A <b>revolution is not progress</b>, because it builds and destroys paradigms at the same time, so there is no single direction to measure.</dd></div>
@@ -246,7 +262,7 @@
         </div>
         <p class="leads">If the shape of a science can shift like that, the next question is who benefits from the shape it has.</p>
 
-        <div class="step crit">
+        <div class="step crit" id="p-foucault">
           <div class="hd"><span class="num">10</span><h3>Foucault</h3><span class="yr">1926 to 1984</span></div>
           <p class="q">What are modern institutions actually doing to people?</p>
           <dl class="inner">
@@ -260,7 +276,7 @@
         </div>
         <p class="leads">Kuhn says the content of science could have gone differently. Foucault says knowing has a politics. Put those together and you get the last stop.</p>
 
-        <div class="step crit">
+        <div class="step crit" id="p-construction">
           <div class="hd"><span class="num">11</span><h3>Social construction</h3><span class="yr">Sismondo, and Hacking 1999</span></div>
           <p class="q">In what sense is a scientific fact made?</p>
           <dl class="inner">
@@ -288,12 +304,11 @@
 
     <section>
       <h2 id="general">General words</h2>
-      <p>These belong to no single thinker and turn up all term.</p>
       <dl>
-        <div><dt>Ad hoc</dt><dd>Put together for the particular case in hand, with no general rule behind it.
-          <b>Why it matters here.</b> Her conclusion about science was that it is an ad hoc system, disunified, and successful anyway. She attached that to Wittgenstein, and his example is games. Ask what all games have in common. Competition? Solitaire has none. Winning and losing? Ring-a-ring-a-roses has none. Skill? Snakes and ladders is pure luck. Two players? Solitaire again. Fun? Not professional sport. <b>There is no single feature present in every game.</b> What there is instead is a web of overlaps: chess and poker share competition, poker and solitaire share cards, solitaire and patience share a single player. He called that a <b>family resemblance</b>, because relatives look alike without any one feature running through all of them. Her claim is that science is like that: physics, taxonomy, epidemiology and geology share overlapping features and no one defining method, and the whole thing works. <b>So the course's title question gets a real answer: there is no scientific method, singular, and that is survivable.</b></dd></div>
-        <div><dt>Contingent</dt><dd>It could have been otherwise. Nothing made it necessary. <b>Contingently real</b> means a thing is genuinely real and still could have been built differently, which is how week 4 describes disciplinary boundaries.</dd></div>
-        <div><dt>Metaphysics</dt><dd>The study of what exists and what the things in the cosmos fundamentally are. The name is a filing accident: compilers put Aristotle's book after his <i>Physics</i>.</dd></div>
+        <div><dt>Ad hoc</dt><dd>Put together for the one case in hand, with no general rule behind it. <b>Why it matters here.</b> Her conclusion about science was that it is an ad hoc system, disunified, and successful anyway. She attached that to Wittgenstein, whose example is games. What do all games have in common? Competition? Solitaire has none. Winning and losing? Ring-a-ring-a-roses has none. Skill? Snakes and ladders is pure luck. Two players? Solitaire again. Fun? Not professional sport. <b>No single feature is present in every game.</b> What there is instead is a web of overlaps: chess and poker share competition, poker and solitaire share cards, solitaire and patience share a single player. He called that a <b>family resemblance</b>, because relatives look alike with no one feature running through all of them. Her claim is that physics, taxonomy, epidemiology and geology are like that, and the whole thing works. So the course title gets an answer: there is no scientific method, singular, and that is survivable.</dd></div>
+        <div><dt>Contingent</dt><dd>It could have been otherwise, and nothing made it necessary. <b>Contingently real</b> means a thing is genuinely real and could still have been built differently. Week 4 says that of knowledge, methods, disciplinary boundaries and styles of work.</dd></div>
+        <div><dt>Epistemology</dt><dd>A view about what counts as knowledge and how you are allowed to get it.</dd></div>
+        <div><dt>Metaphysics</dt><dd>The study of what exists, and of what things fundamentally are. The name is a filing accident. Compilers put Aristotle's book after his <i>Physics</i>.</dd></div>
         <div><dt>Dualism</dt><dd>A split of one thing into two. Schadewaldt's complaint is that modern thought split nature from spirit, thought from extension, and subject from object, where the Greeks had held them together.</dd></div>
       </dl>
     </section>
@@ -301,80 +316,79 @@
     <section>
       <h2 id="greek">Greek terms</h2>
       <dl>
-        <div><dt><span class="gk">physis</span><span class="who">Schadewaldt</span></dt><dd>Nature, meaning the creative origin that everything grows out of. It implies movement, which is why it answers the Greek question about what makes things move.</dd></div>
-        <div><dt><span class="gk">techne</span><span class="who">Schadewaldt</span></dt><dd>Skill at making or doing something. Produced by people, which makes it a combination of man and nature. On its own it is no part of nature.</dd></div>
-        <div><dt><span class="gk">episteme</span><span class="who">Schadewaldt</span></dt><dd>Theoretical knowledge, of what is immutable and primary. Ranked above <span class="gk">techne</span>, which deals with what is still changing.</dd></div>
-        <div><dt><span class="gk">empeiria</span><span class="who">Schadewaldt</span></dt><dd>Plain experience, know-how with no account behind it. <span class="gk">Techne</span> belongs between this and <span class="gk">episteme</span>.</dd></div>
-        <div><dt><span class="gk">atechnia</span><span class="who">Schadewaldt</span></dt><dd>Productive knowledge built on a false idea of the thing itself, held confidently. His word for a blunder. It can be rich and diverse and still be one.</dd></div>
-        <div><dt><span class="gk">telos</span><span class="who">Aristotle</span></dt><dd>The end or goal of a thing. Everything has a purpose it is growing toward, and knowing a thing means knowing its end. The root of the English <i>teleology</i>.</dd></div>
-        <div><dt>Form</dt><dd><b>Plato:</b> the Forms are perfect originals in a realm outside this one, and things here are copies. <b>Aristotle:</b> form is in the thing itself, together with its <span class="gk">telos</span>. That is why Aristotle could do biology.</dd></div>
-        <div><dt>Dialectic<span class="who">Plato</span></dt><dd>His method of inquiry, and the best route to truth: separating opinion from knowledge and understanding.</dd></div>
-        <div><dt>Kalliopolis<span class="who">Plato</span></dt><dd>The beautiful city. His ideal state, ruled by philosophers, where correct education is central. She paired it with Foucault's perfectly governed city.</dd></div>
-        <div><dt>Philosopher kings<span class="who">Plato</span></dt><dd>The rulers and guardians of the Kalliopolis. Awake while everyone else is dreaming. Their education needs geometry and astronomy.</dd></div>
-        </dl>
+        <div><dt><span class='gk'>physis</span><span class="who">Schadewaldt</span></dt><dd>Nature, meaning the source everything grows out of. It carries movement inside it, which is why the Greeks used it to answer what makes things move.</dd></div>
+        <div><dt><span class='gk'>techne</span><span class="who">Schadewaldt</span></dt><dd>Skill at making or doing something. A person has to be involved, so it is never a part of nature on its own.</dd></div>
+        <div><dt><span class='gk'>episteme</span><span class="who">Schadewaldt</span></dt><dd>Knowledge of what never changes. Ranked above <span class='gk'>techne</span>, which works on things still in the middle of becoming.</dd></div>
+        <div><dt><span class='gk'>empeiria</span><span class="who">Schadewaldt</span></dt><dd>Plain experience: you can do the thing and cannot say why it works.</dd></div>
+        <div><dt><span class='gk'>atechnia</span><span class="who">Schadewaldt</span></dt><dd>Making something confidently out of a false idea of how it works. His word for a blunder. It can be elaborate and productive and still be one.</dd></div>
+        <div><dt><span class='gk'>telos</span><span class="who">Aristotle</span></dt><dd>The end a thing is growing toward. An acorn is heading for oak. To know a thing is to know its end. The root of the English <i>teleology</i>.</dd></div>
+        <div><dt>Form<span class="who">Plato and Aristotle</span></dt><dd>What makes a thing the kind of thing it is. <b>Plato</b> puts the Forms in a realm outside this one and makes everything here a copy. <b>Aristotle</b> puts form inside the thing, together with its end. That is why Aristotle could do biology and Plato could not.</dd></div>
+        <div><dt>Dialectic<span class="who">Plato</span></dt><dd>Question and answer until opinion has been sorted out from knowledge.</dd></div>
+        <div><dt>Kalliopolis<span class="who">Plato</span></dt><dd>His beautiful city, run by philosopher kings, where the right education is what holds it together. She wrote on her own slide that Foucault's perfectly governed city should make you think of it.</dd></div>
+        <div><dt>Philosopher kings<span class="who">Plato</span></dt><dd>The rulers of his ideal city, described as awake while everyone else dreams. Their education needs geometry and astronomy, because mathematics is his route to what you cannot touch.</dd></div>
+      </dl>
     </section>
 
     <section>
       <h2 id="method">Method and knowledge</h2>
       <dl>
-        <div><dt>Empiricism<span class="who">Bacon</span></dt><dd>The senses are the original source of knowledge. From the Greek <span class="gk">empeiria</span>, experience. Its opposite is the view that reason alone gets you there, which is Plato.</dd></div>
-        <div><dt>Induction</dt><dd>Reasoning upward from particular cases to a general law. A thousand white swans, so all swans are white. The conclusion covers every swan there is and you checked a thousand, so the cases never make the law safe. Europeans held that one until 1697, when a Dutch expedition found black swans in Western Australia.</dd></div>
-        <div><dt>Foundationalism</dt><dd>Every claim rests on a lower claim, down to a bottom layer that needs no reason under it. Why will the kettle boil at 100? Because water does. Why believe that? Because every measurement came out that way. There the chain is meant to stop. The problem is that the bottom layer is laid by induction. The tracing runs downward through reasons, and never backward through time, which is <b>Whig history</b> and a separate idea.</dd></div>
-        <div><dt>Knowledge is power<span class="who">Bacon</span></dt><dd>Know how a thing works and you can make it do what you want. He meant power over the physical world and he meant it as a promise.</dd></div>
-        <div><dt>Ant, spider, bee<span class="who">Bacon</span></dt><dd>Ant: the alchemists, who collect and never think. Spider: the Aristotelians, spinning systems out of their own entrails. Bee: the proper natural philosopher, who gathers and then digests. <i>Novum Organum</i> I.95.</dd></div>
-        <div><dt>Deism<span class="who">Lynn White</span></dt><dd>God as a clockmaker who set the world going and stepped back. Developing around 1300. It makes studying the mechanism a pious act.</dd></div>
-        <div><dt>Positivism</dt><dd>Real knowledge comes only from what you can observe and measure. As she described it: non-contextual, formal and standardised research that separates distinct variables. Positive here has nothing to do with good.</dd></div>
-        <div><dt>Realism</dt><dd>Truths depend mostly on the natural world and only slightly on the people stating them. There is a way the world is, it can be discovered, and it can be represented accurately.</dd></div>
-        <div><dt>Instrumentalism</dt><dd>A theory is a useful tool and never a claim about what is really there. The opposite of realism.</dd></div>
-        <div><dt>Epistemology</dt><dd>A view about what counts as knowledge and how you are allowed to get it.</dd></div>
+        <div><dt>Empiricism<span class="who">Bacon</span></dt><dd>The view that the senses are where knowledge starts. From the Greek <span class='gk'>empeiria</span>, experience. Its opposite is the view that reason alone gets you there, which is Plato.</dd></div>
+        <div><dt>Induction</dt><dd>Reasoning up from the cases you have seen to a law covering all of them. A thousand swans, every one white, so all swans are white. The law covers every swan there is and you looked at a thousand, so the cases never make it safe. Europeans held that one until 1697, when a Dutch expedition found black swans in Western Australia.</dd></div>
+        <div><dt>Foundationalism</dt><dd>Every claim rests on a claim below it, down to a bottom layer that needs nothing under it. Why will the kettle boil at 100? Because water does. Why believe that? Because every measurement came out that way. There the chain is meant to stop. The problem is that the bottom layer is laid by induction. The tracing runs down through reasons and never back through time, which is <b>Whig history</b> and a separate idea.</dd></div>
+        <div><dt>Knowledge is power<span class="who">Bacon</span></dt><dd>Know how a thing works and you can make it do what you want. He means power over the physical world, and he means it as a promise. Foucault later keeps the equation and turns it into an accusation.</dd></div>
+        <div><dt>Ant, spider, bee<span class="who">Bacon</span></dt><dd>Three ways of working, two of them wrong. The alchemists are ants: they collect and never think. The Aristotelians are spiders: they spin systems out of themselves and take nothing in. The proper natural philosopher is a bee: gathers, then digests. <i>Novum Organum</i> I.95.</dd></div>
+        <div><dt>Deism<span class="who">Lynn White</span></dt><dd>God as a clockmaker who set the world going and stepped back. Developing around 1300. Once the world is a mechanism, taking it apart to see how it runs becomes a pious act.</dd></div>
+        <div><dt>Positivism</dt><dd>The doctrine that real knowledge comes only from what you can observe and measure. Positive here has nothing to do with good. Her description: research that is non-contextual, so where and when you did it should not matter; formal and standardised, so anyone following the procedure gets the same result; and analytic, so it separates variables and holds the rest still.</dd></div>
+        <div><dt>Realism</dt><dd>There is one way the world is, and we can find it out and describe it accurately. Truths depend mostly on the natural world and only slightly on the people stating them.</dd></div>
+        <div><dt>Instrumentalism</dt><dd>A theory is a tool that works, and makes no claim about what is really there. The opposite of realism.</dd></div>
       </dl>
     </section>
 
     <section>
       <h2 id="kuhn">Kuhn</h2>
       <dl>
-        <div><dt>Normal science</dt><dd>Puzzle solving inside a shared paradigm, during the long stable stretches between revolutions. A puzzle has a known shape and a guaranteed answer, so failing one means you failed, never that the paradigm did.</dd></div>
-        <div><dt>Paradigm</dt><dd>A pattern for others to follow, working as a theoretical and methodological tool. The whole shared kit: fixed theories, values, instruments and assumptions about what exists. Her examples: Newton's mechanics, Lavoisier's chemistry, Mendel's genetics.</dd></div>
+        <div><dt>Normal science</dt><dd>Solving puzzles where the final picture is already agreed, and every piece you place leads toward it. A puzzle has a guaranteed answer, so failing one means you failed and never that the picture was wrong. That asymmetry is what lets a field carry on through years of bad results.</dd></div>
+        <div><dt>Paradigm</dt><dd>The shared picture a field works from, with the instruments, standards and assumptions that come with it. Her examples: Newton's mechanics, Lavoisier's chemistry, Mendel's genetics. Note how wide it is, because that width is what makes incommensurability possible.</dd></div>
         <div><dt>Disciplinary matrix</dt><dd>Kuhn's later and more careful word for a paradigm.</dd></div>
-        <div><dt>Anomaly</dt><dd>A result a field cannot make fit, however hard it tries. A pile of them is what eventually breaks a paradigm.</dd></div>
-        <div><dt>Revolution</dt><dd>The disciplinary matrix is revised and an anomalous problem gets solved. Not progress, because a revolution builds and destroys paradigms at the same time.</dd></div>
-        <div><dt>Incommensurability</dt><dd>No shared unit for comparing two paradigms. From geometry: a square's side and its diagonal have no common unit that fits both exactly.<br><br><b>The case to carry.</b> In Newton, mass is a fixed property of an object, the same whatever the object is doing. In Einstein it changes with velocity. Same word, two different things, so "mass is conserved" is true in one theory and false in the other.<br><br><b>Her three reasons:</b> the meanings of terms change, indoctrination, and historical context changes. <b>Her counter-example:</b> particle detectors stayed in use unchanged across a theory change, so something survived that both sides trust.</dd></div>
-        <div><dt>Whig history</dt><dd>History that builds the past into a series of steps toward present views. Kuhn's objection: events must follow their causes, so a sequence cannot be explained by the fact that it represents progress.</dd></div>
-        <div><dt>Copernicus<span class="who">1473 to 1543</span></dt><dd>Sun stationary, earth moving, against Aristotle's earth-centred cosmos. Her framing: he held that the sun needed to be at the centre for circular motion to work.</dd></div>
+        <div><dt>Anomaly</dt><dd>A result the field cannot make fit, however hard it tries. They pile up, and a pile of them is what eventually breaks a paradigm.</dd></div>
+        <div><dt>Revolution</dt><dd>The shared picture gets replaced, and the result that would not fit is finally explained. Not progress, because it builds and destroys at the same time, so there is no single direction left to measure.</dd></div>
+        <div><dt>Incommensurability</dt><dd>No shared unit for measuring two paradigms against each other. From geometry: a square's side and its diagonal have no common unit that fits both exactly.<br><br><b>The case to carry.</b> In Newton, mass is a fixed property of an object, the same whatever the object is doing. In Einstein it changes with velocity. Same word, two different things, so "mass is conserved" is true in one theory and false in the other.<br><br><b>His three reasons:</b> the meanings of terms change, indoctrination, and historical context changes. <b>Her counter-example:</b> particle detectors stayed in use unchanged across a theory change, so something survived that both sides trust.</dd></div>
+        <div><dt>Whig history</dt><dd>Telling the past as a line of steps leading up to us. Kuhn's objection is logical: events have to follow their causes, so a sequence cannot be explained by the fact that it ended up here.</dd></div>
+        <div><dt>Copernicus<span class="who">1473 to 1543</span></dt><dd>He put the sun at the centre and set the earth moving. Her framing, and she called it the important one: he needed the sun at the centre for circular motion to work. He was protecting an old Greek commitment, and not following new data.</dd></div>
       </dl>
     </section>
 
     <section>
       <h2 id="foucault">Foucault</h2>
       <dl>
-        <div><dt>Panopticon<span class="who">Bentham</span></dt><dd>A ring of cells round a central tower, each cell with two windows so light crosses it and the occupant shows as a silhouette. The inmate is permanently visible and can never check whether the tower is occupied.</dd></div>
-        <div><dt>Bentham's three words</dt><dd>Visibility, unverifiability, and external power becoming non-corporeal. Non-corporeal means the power stops needing a body in the tower.</dd></div>
-        <div><dt>Utilitarianism<span class="who">Bentham</span></dt><dd>The right action is whichever produces the greatest happiness for the greatest number. What he was actually famous for, ahead of the panopticon.</dd></div>
-        <div><dt>Three techniques of control</dt><dd>Hierarchical observation, normalizing judgment, and the examination. Watch, rank, record. The examination is where the first two meet.</dd></div>
-        <div><dt>Power-knowledge</dt><dd>Power and knowledge as one thing with the same goal, which is controlling what we know. His gloss: the development of force and the establishment of truth. He builds it on Bacon's knowledge is power and turns a promise into an accusation.</dd></div>
-        <div><dt>Normalization</dt><dd>The goal of disciplinary power. It produces judicial systems sorting citizens into normal and abnormal. Her examples: standardized education, medical practices, industrial processes.</dd></div>
-        <div><dt>Docile bodies</dt><dd>Bodies made useful and easier to control by discipline: prisoners, soldiers, workers, schoolchildren. The body becomes a machine, broken into segments, analysed and recomposed for maximum effect.</dd></div>
-        <div><dt>Genealogy</dt><dd>Tracing how a practice came to be without assuming it was an improvement. The method of <i>Discipline and Punish</i>, 1975.</dd></div>
-        <div><dt>The plague town</dt><dd>How <i>Panopticism</i> opens. The plague is met with Order: sorting the disease, separating bodies, sorting evil, which increases fear and death. Its political dream is strict division and regulation reaching the smallest details of daily life.</dd></div>
-        <div><dt><i>History of Madness</i><span class="who">1961</span></dt><dd>The claimed scientific neutrality of modern treatment of insanity covers for controlling challenges to conventional bourgeois morality. Her examples: homosexuality and hysteria.</dd></div>
+        <div><dt>Panopticon<span class="who">Bentham</span></dt><dd>A ring of cells round a central tower, where the inmate is always visible and can never check whether anyone is watching. Two windows per cell, so light crosses it and the occupant shows as a silhouette. The architecture does the watching, which is why one person can replace many.</dd></div>
+        <div><dt>Bentham's three words</dt><dd>Visibility, unverifiability, and external power becoming non-corporeal. Non-corporeal means the power stops needing a body in the tower. Nobody has to be up there, so it costs almost nothing to run.</dd></div>
+        <div><dt>Utilitarianism<span class="who">Bentham</span></dt><dd>The right action is whichever produces the greatest happiness for the greatest number. What he was actually famous for in his lifetime, ahead of the panopticon. He also spent much of his life on prison reform.</dd></div>
+        <div><dt>Three techniques of control</dt><dd>Hierarchical observation, normalizing judgment, and the examination. Watch, rank, record. Hierarchical observation is watching arranged in ranks. Normalizing judgment measures you against a norm. The examination is where the two meet: it watches you and writes a verdict about you in one act.</dd></div>
+        <div><dt>Power-knowledge</dt><dd>Knowing someone and controlling them turn out to be a single act. His gloss: the development of force and the establishment of truth. A file written about a prisoner becomes the truth about him and decides whether he goes home. Built on Bacon's knowledge is power, with the verdict reversed.</dd></div>
+        <div><dt>Normalization</dt><dd>A norm gets set and everyone is measured against it, so people sort into normal and abnormal. She called it the goal of disciplinary power. Her examples are all places nobody is being punished: standardized education, medical practice, industrial production.</dd></div>
+        <div><dt>Docile bodies</dt><dd>Bodies made useful and easier to control by discipline. Prisoners, soldiers, workers, schoolchildren. The body is broken into segments, analysed in detail, and recomposed for maximum effect.</dd></div>
+        <div><dt>Genealogy</dt><dd>Studying how a practice came to be, without assuming it was an improvement. The method of <i>Discipline and Punish</i>, 1975. His puzzle: punishment really did get gentler, so what is the gentler method doing that the old one could not?</dd></div>
+        <div><dt>The plague town</dt><dd>How <i>Panopticism</i> opens: the plague is met with Order. Sorting the disease, separating bodies, sorting evil, which increases fear and death. Its political dream is strict division and regulation reaching into the smallest details of daily life.</dd></div>
+        <div><dt><i>History of Madness</i><span class="who">1961</span></dt><dd>Psychiatry's claimed neutrality covers for controlling people who break social rules. Her examples: homosexuality and hysteria. What was presented as objective discovery came out of questionable social and ethical commitments.</dd></div>
       </dl>
     </section>
 
     <section>
       <h2 id="week4">Week 4</h2>
       <dl>
-        <div><dt>Stratification</dt><dd>The layering of a field into a small advantaged group and everyone else. 10 per cent of authors produce half of all papers; 80 per cent of citations go to 20 per cent of papers.</dd></div>
-        <div><dt>Cumulative advantage</dt><dd>Success breeds success. A good first post means a bigger lab, more results, a stronger grant, a bigger lab again. It makes scientific success look elitist where it had looked merit based.</dd></div>
+        <div><dt>Stratification</dt><dd>A field layering into a small advantaged group and everyone else. Ten per cent of authors produce half of all papers. Eighty per cent of citations go to twenty per cent of papers.</dd></div>
+        <div><dt>Cumulative advantage</dt><dd>Success breeds success, so an early lead compounds into a large one. A good first post means a bigger lab, more results, a stronger grant, a bigger lab again. Nobody does anything unfair and the gap widens anyway.</dd></div>
         <div><dt>Meritocracy</dt><dd>A system where who gets ahead tracks how good they are. Her conclusion was that science looks much more like a boys' club than one of these.</dd></div>
-        <div><dt>Zuckerman 1977</dt><dd>34 of the 55 US Nobel laureates in 1963 had studied or collaborated with a previous winner. Those who had won at an average age of 44, against 53 for the others.</dd></div>
-        <div><dt>Rossiter</dt><dd>Feminisation lowers a field's status, masculinisation raises it. Women were pushed into the invisible sciences such as home economics and nutritional science.</dd></div>
-        <div><dt>Wenneras and Wold 2001</dt><dd>At the Swedish Medical Research Council a woman needed about three extra papers in <i>Nature</i> or <i>Science</i>, or 20 extra in a good specialist journal, to be scored as competent as a man.</dd></div>
-        <div><dt>Social construction</dt><dd>The construction of facts, knowledge, theories, phenomena, science, technologies and societies. Truth, rationality and the material world have limited value without interpretation or rhetorical work.</dd></div>
+        <div><dt>Zuckerman 1977</dt><dd>34 of the 55 US Nobel laureates in 1963 had worked with a previous winner. Those who had won at an average age of 44, against 53 for the others.</dd></div>
+        <div><dt>Rossiter</dt><dd>A field's status drops as women enter it and rises as men do. Women were pushed into the invisible sciences, such as home economics and nutritional science. In 1982 men perceived their own work as less masculine because women were present.</dd></div>
+        <div><dt>Wenneras and Wold 2001</dt><dd>A woman needed about three extra <i>Nature</i> papers to be scored as competent as a man. Or twenty extra in a good specialist journal. At the Swedish Medical Research Council, in peer review, which is the mechanism science uses to be fair.</dd></div>
+        <div><dt>Social construction</dt><dd>Facts, theories and technologies get built by people, and are not simply found lying there. Truth, rationality and the material world have limited value without interpretation or rhetorical work.</dd></div>
         <div><dt>Constructivism<span class="who">Hacking 1999</span></dt><dd>Our categories are human handiwork. Any given theory is not the only one that could have been established, so a theory's success is not by itself evidence for it.</dd></div>
-        <div><dt>Contingently real</dt><dd>Real, and it did not have to be this way. Knowledge, methods, epistemologies, disciplinary boundaries and styles of work are all real social objects of this kind.</dd></div>
-        <div><dt>Nominalist and realist about kinds</dt><dd><b>Nominalist:</b> kinds are human impositions, so the objects of classification are mental and linguistic. <b>Realist:</b> kinds are real features of the world. Her test case was ADHD.</dd></div>
+        <div><dt>How a thing gets to be real</dt><dd>Enough people act as though it exists, so it cannot be wished away. Her example is politeness: no law requires it, no building houses it, and it constrains everybody. The test offered for reality is causal power. Gender is real because treating people as gendered produces gendered people.</dd></div>
+        <div><dt>Nominalist and realist about kinds</dt><dd>Are our categories imposed by us, or found in the world?. <b>Nominalist:</b> kinds are human impositions, so the objects of classification are mental and linguistic. <b>Realist:</b> kinds are real features of the world. Her test case was ADHD.</dd></div>
         <div><dt>Knorr Cetina</dt><dd>Nature is not to be found in the laboratory. To an outside observer it is a site of action from which nature is as much as possible excluded: a space of prepared materials, intentionally shaped.</dd></div>
-        <div><dt>Heterogeneous engineering<span class="who">Law 1987</span></dt><dd>Building the artifact and the environment it can work in at the same time, by enrolling materials, skills, knowledge, capital and people. No one piece of the network determines the shape of the whole.</dd></div>
+        <div><dt>Heterogeneous engineering<span class="who">Law 1987</span></dt><dd>Building the device and the world it can work in at the same time. Enrolling materials, skills, knowledge, capital and people who may not fit together. No one piece of the network decides the shape of the whole.</dd></div>
         <div><dt>Co-production</dt><dd>Scientific knowledge and social arrangements make each other. Researchers need funding to study climate change, and the science then justifies the policy. ADHD can be framed as a disorder or as extreme procrastination.</dd></div>
       </dl>
     </section>

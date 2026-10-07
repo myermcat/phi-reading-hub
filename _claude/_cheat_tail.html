@@ -1,0 +1,16 @@
+  </main>
+</div>
+
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('nav.rail a'));
+  var heads=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1));});
+  function mark(){
+    var best=0;
+    heads.forEach(function(h,i){ if(h && h.getBoundingClientRect().top<=110) best=i; });
+    links.forEach(function(a,i){ a.classList.toggle('on', i===best); });
+  }
+  window.addEventListener('scroll',mark,{passive:true}); mark();
+})();
+</script>
+</html>
