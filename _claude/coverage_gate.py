@@ -23,7 +23,8 @@ Rome Kevin United States Weeks Standardized Genealogical Explanation Sensible In
 Enlightenment Ethics Novum Organum Science Nature Order Form Forms Chapter Claims Institutional
 Roughly Smaller Genders Feminisation Harvard Greece Kuhnian Platonic Second Gods Scientists Women
 Researchers Discipline Normal Puzzle Material Knowledge Truth Power Prisoners Education Hierarchical
-Watch Rank Record Both Half Where Into Over Many Some None With Without Within Mass Planet Burning""".split())
+Watch Rank Record Both Half Where Into Over Many Some None With Without Within Mass Planet Burning
+Plenty Each Either Neither Three Four Five Several Authorship Economic Fear Give Once Labour Compare""".split())
 NAME = re.compile(r"\b[A-Z][a-z]{3,}(?:\s+[A-Z][a-z]{3,})*\b")
 
 def names_in(text):

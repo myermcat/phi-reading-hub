@@ -328,12 +328,13 @@ TAIL = """
 
 _TERMKEYS = sorted(GLOSS, key=len, reverse=True)
 
-def hint_block(stem, opts, hint):
+def hint_block(topic, stem, opts, hint):
     """Print, inside the hint, the meaning of every glossary term the question uses.
 
-    The options count as part of the question, so they are scanned too.
+    The topic line and the options are both on screen with the stem, so all three
+    are scanned. A term a reader can see is a term she may need explained.
     """
-    text = stem + " " + " ".join(t for t, _ in opts)
+    text = topic + " " + stem + " " + " ".join(t for t, _ in opts)
     plain = _re.sub(r"<[^>]+>", " ", text).lower()
     rows, taken = [], []
     for k in _TERMKEYS:
@@ -377,7 +378,7 @@ def build(bank, out, title, crumb, eyebrow, h1, stand, key):
         body.append(Q_TMPL
             .replace("__N__", str(n)).replace("__A__", str(a))
             .replace("__TOPIC__", topic).replace("__STEM__", stem)
-            .replace("__OPTS__", o).replace("__HINT__", hint_block(stem, opts, hint))
+            .replace("__OPTS__", o).replace("__HINT__", hint_block(topic, stem, opts, hint))
             .replace("__ALET__", LETTERS[a-1]).replace("__AWHY__", opts[a-1][1]))
     page = (HEAD.replace("__TITLE__", title).replace("__CRUMB__", crumb)
                 .replace("__EYEBROW__", eyebrow).replace("__H1__", h1).replace("__STAND__", stand)
