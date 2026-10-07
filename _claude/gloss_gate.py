@@ -20,6 +20,11 @@ MARK = re.compile(
 
 def check(path):
     h = open(path, encoding="utf-8").read()
+    # a term printed in a hint's own definition list counts as explained on that page
+    defined = set()
+    for block in re.findall(r'<ul class="terms">(.*?)</ul>', h, re.S):
+        for lab in re.findall(r'<li><b>(.*?)</b>', block, re.S):
+            defined.add(re.sub(r"<[^>]+>", "", lab).strip().lower())
     h = re.sub(r"<style.*?</style>", "", h, flags=re.S)
     h = re.sub(r"<script.*?</script>", "", h, flags=re.S)
     text = re.sub(r"<[^>]+>", " ", h)
@@ -29,8 +34,12 @@ def check(path):
         m = re.search(t, text, re.I)
         if not m:
             continue
+        if any(t in d for d in defined):
+            continue
         window = text[max(0, m.start() - 220): m.start() + 620]
-        if not MARK.search(window):
+        # "the inductive method, reasoning upward from ..." is an appositive gloss
+        appositive = re.search(t + r"[a-z]*(?:\s+\w+){0,2},\s+[a-z]", window, re.I)
+        if not (MARK.search(window) or appositive):
             bad.append((t, re.sub(r"\s+", " ", window[120:290])))
     return bad
 

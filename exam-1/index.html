@@ -42,6 +42,13 @@
   a.set .n{font-family:var(--mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--accent)}
   a.set h3{margin:0;font-family:var(--display);font-size:23px;font-weight:600;line-height:1.18}
   a.set p{font-size:15.5px;color:var(--ink-soft);max-width:62ch}
+  a.set.dim{opacity:.62}
+  a.set.dim:hover{opacity:1}
+  a.set .n{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  a.set .done{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:none;
+              color:var(--muted);border:1px solid var(--rule);padding:2px 7px}
+  a.set .done.started{color:var(--accent);border-color:var(--accent)}
+  a.set .done:empty{display:none}
   .soon{background:var(--surface);padding:22px 24px;display:grid;gap:7px;border-left:3px solid transparent;opacity:.62}
   .soon .n{font-family:var(--mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--muted)}
   .soon h3{margin:0;font-family:var(--display);font-size:23px;font-weight:600;line-height:1.18}
@@ -64,9 +71,8 @@
   <div>
     <div class="eyebrow">PHI 2394 B00 &middot; exam 1 &middot; Wednesday 7 October</div>
     <h1>Practice for exam 1</h1>
-    <p class="standfirst">Multiple choice only, one best answer each. The course outline sets the
-      scope in one sentence: <b>material covers all readings and lectures thus far</b>. That is
-      everything up to and including Monday 5 October.</p>
+    <p class="standfirst">Multiple choice only, one best answer each. Weeks 2 and 3 are where every
+      example she gave in the exam prep came from, so they come first here.</p>
   </div>
 
   <section>
@@ -85,40 +91,32 @@
   <section>
     <h2>The sets</h2>
     <div class="sets">
-      <a class="set" href="week-2.html">
-        <div class="n">Week 2 &middot; 25 questions</div>
+      <a class="set" href="week-2.html" data-key="phi2394-practice-w2-v1">
+        <div class="n">Week 2 &middot; 25 questions<span class="done"></span></div>
         <h3>The Greeks, Bacon and the Middle Ages</h3>
         <p>Plato on the cave and on education, Aristotle on form and <i>telos</i>, Schadewaldt on
           <i>physis</i> and <i>techne</i>, Bacon on the ant and the spider and the bee, Lynn White
           on work as worship, and Rousseau.</p>
       </a>
-      <a class="set" href="week-3.html">
-        <div class="n">Week 3 &middot; 25 questions</div>
+      <a class="set" href="week-3.html" data-key="phi2394-practice-w3-v1">
+        <div class="n">Week 3 &middot; 25 questions<span class="done"></span></div>
         <h3>Foucault and Kuhn</h3>
         <p>The plague town, the panopticon, docile bodies and normalization. Then normal science,
           paradigms, incommensurability and why Kuhn says a revolution is not progress.</p>
       </a>
-      <a class="set" href="mixed.html">
-        <div class="n">Mixed &middot; 25 questions</div>
-        <h3>All four lectures at once</h3>
-        <p>The first set, built straight from the eleven topics the professor named in her exam
-          review. Use it last, as a dress rehearsal, because it jumps between weeks the way the
-          real paper will.</p>
-      </a>
-      <a class="set" href="week-4.html">
-        <div class="n">Week 4 &middot; 25 questions</div>
+      <a class="set dim" href="week-4.html" data-key="phi2394-practice-w4-v1">
+        <div class="n">Week 4 &middot; 25 questions &middot; may be out of scope<span class="done"></span></div>
         <h3>The social construction of scientific knowledge</h3>
-        <p>Who gets cited, who gets funded and who gets pushed out, then what it means to call a
-          fact constructed. Hacking on realism, Knorr Cetina on the laboratory, co-production, and
-          the construction of kinds.</p>
+        <p>Greyed because the exam prep said the last lecture on the paper is Kuhn, while the course
+          outline says all lectures so far. Citation and funding, discrimination, then what it means
+          to call a fact constructed. Worth a skim after the other two.</p>
       </a>
-      <div class="soon">
-        <div class="n">Week 5, Monday only &middot; not built yet</div>
-        <h3>Feminist epistemology and standpoint theory</h3>
-        <p>Monday 5 October is inside the scope, since the outline says all lectures thus far.
-          One lecture, on why the social features of a scientist might bear on what gets known,
-          with primatology as the worked case. The reading guide for week 5 covers it.</p>
-      </div>
+      <a class="set" href="mixed.html" data-key="phi2394-practice-mixed-v1">
+        <div class="n">Mixed &middot; 25 questions<span class="done"></span></div>
+        <h3>All weeks at once, none of them repeated</h3>
+        <p>Twenty-five questions that appear nowhere else, jumping between weeks the way the real
+          paper will. Use it last, once the week sets are done, as a dress rehearsal.</p>
+      </a>
     </div>
   </section>
 
@@ -153,4 +151,18 @@
       feedback is required, and Butterfield and Metcalfe on confident errors.</p>
   </section>
 </div>
+<script>
+(function(){
+  document.querySelectorAll('a.set[data-key]').forEach(function(card){
+    var picked = {};
+    try { picked = JSON.parse(localStorage.getItem(card.dataset.key) || '{}') || {}; } catch (e) { return; }
+    var n = Object.keys(picked).length;
+    var tag = card.querySelector('.done');
+    if (!tag) return;
+    if (!n) { tag.textContent = 'not started'; return; }
+    tag.textContent = n + ' of 25 answered';
+    tag.classList.add('started');
+  });
+})();
+</script>
 </html>
