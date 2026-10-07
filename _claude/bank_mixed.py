@@ -53,7 +53,7 @@ MIXED = [
  [("Observation, hypothesis, experiment.",
    "A description of method. The question asks for a sequence of historical stages."),
   ("Theological, then metaphysical, then positive.",
-   "Gods explain it, then abstract essences and forces explain it, then only what can be observed and measured counts. The third stage is where the word positivism comes from. Note that this is a progress story, which puts Comte on the opposite side from Kuhn."),
+   "Gods explain it, then abstract essences and forces explain it, then only what can be observed and measured counts. Holding that only the observable and measurable counts is the doctrine called positivism, and the name of that third stage is where the word comes from. Note that this is a progress story, which puts Comte on the opposite side from Kuhn."),
   ("Mythical, classical, modern.",
    "Not his terms."),
   ("Greek, Christian, scientific.",

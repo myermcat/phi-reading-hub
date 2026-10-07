@@ -1,8 +1,8 @@
-import sys, os, html
+import sys, os, html, random
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
-from bank_week2 import WEEK2, SEEN
+from bank_week2 import WEEK2
 from bank_week3 import WEEK3
 from bank_week4 import WEEK4
 from bank_mixed import MIXED
@@ -79,7 +79,6 @@ HEAD = """<!doctype html>
   li.q.ok{border-left-color:var(--good)}
   li.q.no{border-left-color:var(--bad)}
   .topic{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-  .topic .seen{color:var(--hot);border:1px solid var(--hot);padding:1px 6px;margin-left:8px;letter-spacing:.07em}
   .stem{font-size:18px;line-height:1.45;max-width:68ch}
   .stem .n{font-family:var(--mono);font-size:12px;color:var(--accent);margin-right:9px;font-weight:500}
 
@@ -365,16 +364,33 @@ def hint_block(stem, opts, hint):
             '<li><b>%s</b>: %s</li>' % (w, g) for w, g in rows) + "</ul>"
     return out + '<p class="nudge">%s</p>' % hint
 
-def build(bank, out, title, crumb, eyebrow, h1, stand, key, seen=()):
+def balance(bank, key):
+    """Rotate each question's options so the right answer is evenly spread over A to D.
+
+    Written by hand, nine of eleven new questions had B as the answer, and D was never
+    correct in ninety-six questions. A student who notices that learns the wrong lesson.
+    Rotation keeps every option with its own explanation and is deterministic per set,
+    so a rebuild does not reshuffle the page under somebody mid-practice.
+    """
+    targets = [i % 4 for i in range(len(bank))]
+    random.Random(key).shuffle(targets)
+    out = []
+    for (topic, stem, opts, a, hint), t in zip(bank, targets):
+        k = (t - (a - 1)) % 4
+        out.append((topic, stem, opts[-k:] + opts[:-k] if k else opts, t + 1, hint))
+    return out
+
+
+def build(bank, out, title, crumb, eyebrow, h1, stand, key):
+    bank = balance(bank, key)
     body = []
     for n, (topic, stem, opts, a, hint) in enumerate(bank, 1):
         o = "\n".join(
             OPT_TMPL.replace("__L__", LETTERS[k]).replace("__T__", t).replace("__W__", w)
             for k, (t, w) in enumerate(opts))
-        mark = ' <span class="seen">answered before</span>' if n in seen else ''
         body.append(Q_TMPL
             .replace("__N__", str(n)).replace("__A__", str(a))
-            .replace("__TOPIC__", topic + mark).replace("__STEM__", stem)
+            .replace("__TOPIC__", topic).replace("__STEM__", stem)
             .replace("__OPTS__", o).replace("__HINT__", hint_block(stem, opts, hint))
             .replace("__ALET__", LETTERS[a-1]).replace("__AWHY__", opts[a-1][1]))
     page = (HEAD.replace("__TITLE__", title).replace("__CRUMB__", crumb)
@@ -389,9 +405,8 @@ if __name__ == "__main__":
         (WEEK2, "exam-1/week-2.html", "PHI2394 Week 2 Practice",
          "Week 2", "PHI 2394 B00 &middot; exam 1 practice &middot; week 2",
          "Week 2: the Greeks, Bacon and the Middle Ages",
-         "Twenty-five questions on Plato, Aristotle, Schadewaldt, Bacon, Lynn White and Rousseau. "
-         "Multiple choice, one best answer each. Fifteen of these were in the first batch and are "
-         "flagged, so you can skip them or use them as a second pass.", "phi2394-practice-w2-v1", SEEN),
+         "Twenty-one questions on Plato, Aristotle, Schadewaldt, Bacon, Lynn White and Rousseau. "
+         "Multiple choice, one best answer each.", "phi2394-practice-w2-v1"),
         (WEEK3, "exam-1/week-3.html", "PHI2394 Week 3 Practice",
          "Week 3", "PHI 2394 B00 &middot; exam 1 practice &middot; week 3",
          "Week 3: Foucault and Kuhn",

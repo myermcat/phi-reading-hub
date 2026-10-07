@@ -91,27 +91,27 @@
   <section>
     <h2>The sets</h2>
     <div class="sets">
-      <a class="set" href="week-2.html" data-key="phi2394-practice-w2-v1">
-        <div class="n">Week 2 &middot; 25 questions<span class="done"></span></div>
+      <a class="set" href="week-2.html" data-key="phi2394-practice-w2-v1" data-total="21">
+        <div class="n">Week 2 &middot; 21 questions<span class="done"></span></div>
         <h3>The Greeks, Bacon and the Middle Ages</h3>
         <p>Plato on the cave and on education, Aristotle on form and <i>telos</i>, Schadewaldt on
           <i>physis</i> and <i>techne</i>, Bacon on the ant and the spider and the bee, Lynn White
           on work as worship, and Rousseau.</p>
       </a>
-      <a class="set" href="week-3.html" data-key="phi2394-practice-w3-v1">
+      <a class="set" href="week-3.html" data-key="phi2394-practice-w3-v1" data-total="25">
         <div class="n">Week 3 &middot; 25 questions<span class="done"></span></div>
         <h3>Foucault and Kuhn</h3>
         <p>The plague town, the panopticon, docile bodies and normalization. Then normal science,
           paradigms, incommensurability and why Kuhn says a revolution is not progress.</p>
       </a>
-      <a class="set dim" href="week-4.html" data-key="phi2394-practice-w4-v1">
+      <a class="set dim" href="week-4.html" data-key="phi2394-practice-w4-v1" data-total="25">
         <div class="n">Week 4 &middot; 25 questions &middot; may be out of scope<span class="done"></span></div>
         <h3>The social construction of scientific knowledge</h3>
         <p>Greyed because the exam prep said the last lecture on the paper is Kuhn, while the course
           outline says all lectures so far. Citation and funding, discrimination, then what it means
           to call a fact constructed. Worth a skim after the other two.</p>
       </a>
-      <a class="set" href="mixed.html" data-key="phi2394-practice-mixed-v1">
+      <a class="set" href="mixed.html" data-key="phi2394-practice-mixed-v1" data-total="25">
         <div class="n">Mixed &middot; 25 questions<span class="done"></span></div>
         <h3>All weeks at once, none of them repeated</h3>
         <p>Twenty-five questions that appear nowhere else, jumping between weeks the way the real
@@ -160,7 +160,7 @@
     var tag = card.querySelector('.done');
     if (!tag) return;
     if (!n) { tag.textContent = 'not started'; return; }
-    tag.textContent = n + ' of 25 answered';
+    tag.textContent = n + ' of ' + (card.dataset.total || 25) + ' answered';
     tag.classList.add('started');
   });
 })();
