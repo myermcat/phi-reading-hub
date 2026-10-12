@@ -1,0 +1,157 @@
+TAIL = """
+  </ol>
+
+  <div class="finish">
+    <button type="button" class="big" id="check">Show my score</button>
+    <div class="result" id="result">
+      <div class="big-score" id="bigscore"></div>
+      <p class="note" id="resnote"></p>
+      <div class="jump" id="jump"></div>
+    </div>
+  </div>
+  </main>
+</div>
+
+<div class="bar"><div class="in">
+  <span class="tick" id="tick"></span>
+  <button type="button" id="reset">Start over</button>
+</div></div>
+
+<script>
+(function(){
+  var KEY='__KEY__', L='ABCD';
+  var qs=[].slice.call(document.querySelectorAll('li.q'));
+  var picked={};
+  try{picked=JSON.parse(localStorage.getItem(KEY)||'{}')||{};}catch(e){picked={};}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(picked));}catch(e){}}
+  function answered(){var n=0;qs.forEach(function(q,i){if(picked[i]!=null)n++;});return n;}
+  function correct(){var n=0;qs.forEach(function(q,i){if(picked[i]===+q.dataset.a)n++;});return n;}
+  var railCells=[];
+  (function buildRail(){
+    var g=document.getElementById('qrail');
+    if(!g)return;
+    qs.forEach(function(q,i){
+      var a=document.createElement('a');
+      a.href='#q'+(i+1); a.textContent=String(i+1);
+      a.title='Question '+(i+1);
+      g.appendChild(a); railCells.push(a);
+    });
+  })();
+  function rail(){
+    railCells.forEach(function(a,i){
+      var p=picked[i], ans=+qs[i].dataset.a;
+      a.classList.toggle('ok', p!=null && p===ans);
+      a.classList.toggle('no', p!=null && p!==ans);
+    });
+  }
+  function tick(){
+    var n=answered();
+    document.getElementById('tick').innerHTML =
+      n ? n+' of '+qs.length+' answered <i>&middot; '+correct()+' right</i>'
+        : 'Pick an option to begin';
+    rail();
+  }
+  function esc(x){return x;}
+  function verdict(q,i){
+    var p=picked[i], a=+q.dataset.a;
+    var whys=[].slice.call(q.querySelectorAll('p.why')).map(function(w){return w.innerHTML;});
+    var v=q.querySelector('.verdict');
+    if(p==null){v.innerHTML='';return;}
+    var html='';
+    if(p===a){
+      html += '<p class="head">Correct &middot; '+L[a-1]+'</p>';
+      html += '<p>'+esc(whys[a-1])+'</p>';
+    }else{
+      html += '<p class="head">Not quite &middot; the answer is '+L[a-1]+'</p>';
+      html += '<p><b>'+L[a-1]+'.</b> '+esc(whys[a-1])+'</p>';
+      html += '<p class="yours"><b>Why '+L[p-1]+' fails.</b> '+esc(whys[p-1])+'</p>';
+    }
+    v.innerHTML=html;
+  }
+  function paint(q,i){
+    var p=picked[i], a=+q.dataset.a, done=p!=null;
+    q.querySelectorAll('button.opt').forEach(function(b,k){
+      b.classList.remove('sel','pick-right','pick-wrong');
+      b.disabled=done;
+      if(!done)return;
+      if(k+1===a) b.classList.add('pick-right');
+      else if(k+1===p) b.classList.add('pick-wrong');
+    });
+    q.classList.toggle('done',done);
+    q.classList.toggle('ok',done&&p===a);
+    q.classList.toggle('no',done&&p!==a);
+    verdict(q,i);
+  }
+  qs.forEach(function(q,i){
+    q.querySelectorAll('button.opt').forEach(function(b,k){
+      b.addEventListener('click',function(){
+        if(picked[i]!=null)return;
+        picked[i]=k+1; save(); paint(q,i); tick();
+      });
+    });
+    var h=q.querySelector('.hint');
+    q.querySelector('.t-hint').addEventListener('click',function(){
+      h.classList.toggle('open'); this.classList.toggle('on',h.classList.contains('open'));
+    });
+    paint(q,i);
+  });
+  tick();
+
+  document.getElementById('check').addEventListener('click',function(){
+    var n=correct(), un=qs.length-answered();
+    document.getElementById('bigscore').textContent=n+' out of '+qs.length;
+    var msg='That is '+Math.round(n/qs.length*100)+' per cent. ';
+    if(un>0) msg+=un+' question'+(un===1?' is':'s are')+' still unanswered and counted as wrong. ';
+    msg+= n===qs.length ? 'Nothing left to restudy here.'
+        : 'The jumps below go straight to the ones you missed.';
+    document.getElementById('resnote').textContent=msg;
+    var j=document.getElementById('jump'); j.innerHTML='';
+    qs.forEach(function(q,i){
+      if(picked[i]===+q.dataset.a)return;
+      var a=document.createElement('a'); a.href='#q'+(i+1); a.textContent='Q'+(i+1); j.appendChild(a);
+    });
+    document.getElementById('result').classList.add('open');
+    document.getElementById('result').scrollIntoView({behavior:'smooth',block:'center'});
+  });
+
+  document.getElementById('reset').addEventListener('click',function(){
+    picked={}; save();
+    qs.forEach(function(q,i){
+      paint(q,i);
+      q.querySelectorAll('.panel').forEach(function(x){x.classList.remove('open');});
+      q.querySelectorAll('.tool').forEach(function(t){t.classList.remove('on');});
+    });
+    document.getElementById('result').classList.remove('open');
+    tick(); window.scrollTo({top:0,behavior:'smooth'});
+  });
+})();
+</script>
+</html>
+"""
+
+
+_TERMKEYS = sorted(GLOSS, key=len, reverse=True)
+
+def hint_block(topic, stem, opts, hint):
+    """Print, inside the hint, the meaning of every glossary term the question uses.
+
+    The topic line and the options are both on screen with the stem, so all three
+    are scanned. A term a reader can see is a term she may need explained.
+    """
+    text = topic + " " + stem + " " + " ".join(t for t, _ in opts)
+    plain = _re.sub(r"<[^>]+>", " ", text).lower()
+    rows, taken = [], []
+    for k in _TERMKEYS:
+        if k not in plain:
+            continue
+        label, gloss = GLOSS[k]
+        if label in taken:
+            continue
+        taken.append(label)
+        rows.append((label, gloss))
+    out = ""
+    if rows:
+        out += '<ul class="terms">' + "".join(
+            '<li><b>%s</b>: %s</li>' % (w, g) for w, g in rows) + "</ul>"
+    return out + '<p class="nudge">%s</p>' % hint
+
