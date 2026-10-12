@@ -76,6 +76,8 @@
     :root:not([data-theme="light"]) .also a.prep:hover{color:#EFC579;border-color:#D9A957}}
   :root[data-theme="dark"] .also a.prep{color:#D9A957;border-color:#6B5520}
   :root[data-theme="dark"] .also a.prep:hover{color:#EFC579;border-color:#D9A957}
+  .also a.prep.done{opacity:.62}
+  .also a.prep.done:hover{opacity:1}
   /* The teaching page is not course material, so it carries its own accent and sits apart
      from the week cards, below them, after a rule. */
   .aside-card{position:relative;display:grid;gap:14px 22px;padding:28px 30px 24px;text-decoration:none;color:inherit;
@@ -159,7 +161,7 @@
 
   <section>
     <h2>Weeks</h2>
-    <div class="also"><a class="prep" href="exam-1/">Prep for midterm 1</a></div>
+    <div class="also"><a class="prep" href="exam-2/">Prep for midterm 2</a><a class="prep done" href="exam-1/">Midterm 1 practice</a></div>
     <div class="weeks">
       <a class="wk" href="week-7/">
         <div class="ghost" aria-hidden="true">07</div>
@@ -184,7 +186,7 @@
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"/></svg>
         </div>
       </a>
-      <div class="also"><a href="week-6/notes.html">Week 6 lecture notes</a></div>
+      <div class="also"><a href="exam-2/week-6.html">Week 6 practice</a> <a href="week-6/notes.html">Week 6 lecture notes</a></div>
       <a class="wk" href="week-5/">
         <div class="ghost" aria-hidden="true">05</div>
         <div class="t">
