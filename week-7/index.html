@@ -33,7 +33,7 @@
 
     --display: "Newsreader", Georgia, "Times New Roman", serif;
     --body:    "Source Sans 3", -apple-system, "Segoe UI", sans-serif;
-    --lh: 1.6; --measure: 82ch; --pgap: 20px;
+    --lh: 1.6; --measure: 62ch; --figw: 82ch; --pgap: 20px;
 
     --mono:    "IBM Plex Mono", "SF Mono", Menlo, monospace;
   }
@@ -50,7 +50,7 @@
       --lead: #93C2B2;
       --c-y: #E3BE57;
       --c-p: #FF97C6;
-      --ghost: #2C332E; --lh: 1.76; --measure: 68ch; --pgap: 25px;
+      --ghost: #2C332E; --lh: 1.76; --measure: 58ch; --figw: 80ch; --pgap: 25px;
     }
   }
   :root[data-theme="dark"] {
@@ -65,7 +65,7 @@
     --lead: #93C2B2;
     --c-y: #E3BE57;
     --c-p: #FF97C6;
-    --ghost: #2C332E; --lh: 1.76; --measure: 68ch; --pgap: 25px;
+    --ghost: #2C332E; --lh: 1.76; --measure: 58ch; --figw: 80ch; --pgap: 25px;
   }
 
   * { box-sizing: border-box; }
@@ -348,10 +348,10 @@
   .quo .src { font-family: var(--mono); font-size: 10.5px; letter-spacing: .07em; color: var(--muted); }
   figure { margin: 28px 0; display: flex; flex-direction: column; gap: 9px; }
   figure svg { max-width: 100%; height: auto; display: block; }
-  figcaption { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: .03em; line-height: 1.55; max-width: 70ch; }
+  figcaption { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: .03em; line-height: 1.55; max-width: var(--figw); }
 
   /* photographs, plates and maps */
-  figure.pic { margin: 24px 0; gap: 11px; max-width: var(--measure); }
+  figure.pic { margin: 24px 0; gap: 11px; max-width: var(--figw); }
   /* A picture sits inside the reading, so it is capped at a height that leaves the paragraphs
      on either side of it in view. At most of the window it filled the screen, the argument
      disappeared behind it, and scrolling past a figure took as long as reading a section.
@@ -390,7 +390,7 @@
   }
 
   /* drawings made for this guide, framed the way the photographs are */
-  figure.dia { margin: 24px 0; gap: 11px; max-width: var(--measure); }
+  figure.dia { margin: 24px 0; gap: 11px; max-width: var(--figw); }
   figure.dia .draw { max-width: 100%; overflow-x: auto; }
   /* A drawing that illustrates a point in the flow is capped the way a picture is, so the
      paragraph under it stays in view. A drawing that is a reference grid, like the nine authors
@@ -411,6 +411,7 @@
     figure.dia svg[aria-labelledby="dg-matt"] { min-width: 520px; }
     figure.dia svg[aria-labelledby="dg-seven"] { min-width: 560px; }
     figure.dia svg[aria-labelledby="dg-three7"] { min-width: 700px; }
+  figure.dia svg[aria-labelledby="dg-five7"] { min-width: 660px; }
   }
 
   /* inside the boxes, which already space their children */
@@ -749,9 +750,9 @@
   <a class="sb" data-of="ch19" href="#ch19-2"><b>19.2</b>Inclusion that changes nothing</a>
   <a class="sb" data-of="ch19" href="#ch19-3"><b>19.3</b>Illiteracy as resistance</a>
   <a class="sb" data-of="ch19" href="#ch19-4"><b>19.4</b>Who was already doing it</a>
-  <a class="sb" data-of="ch19" href="#ch19-5"><b>19.5</b>When it became fashionable</a>
+  <a class="sb" data-of="ch19" href="#ch19-5"><b>19.5</b>The DIY biology labs</a>
   <a class="core" href="#ch3" title="Detlefsen on Du Ch&acirc;telet &middot; read properly">Du Ch&acirc;telet<i>ch 3</i></a>
-  <a class="sb" data-of="ch3" href="#ch3-1"><b>3.1</b>The claim</a>
+  <a class="sb" data-of="ch3" href="#ch3-1"><b>3.1</b>Three steps</a>
   <a class="sb" data-of="ch3" href="#ch3-2"><b>3.2</b>Why women produced nothing</a>
   <a class="sb" data-of="ch3" href="#ch3-3"><b>3.3</b>Her rule</a>
   <a class="sb" data-of="ch3" href="#ch3-4"><b>3.4</b>The quarrel</a>
@@ -934,7 +935,7 @@
 
           <div class="why"><b>Why this chapter is set.</b> It is the summary of the whole term's argument, written by one of the authors of the book you read in weeks 5 and 6, and it has the two lists the exam will want: the five ways values enter, and the two models that replace the value-free ideal.</div>
 
-          <h4 id="ch15-1" data-n="15.1">The case the chapter opens on, and what it is doing there</h4>
+          <h4 id="ch15-1" data-n="15.1">Hormone replacement therapy, studied for sixty years by the rules</h4>
           <div class="qa">
               <b>The question</b>
               Can a treatment be studied for sixty years and still get the basic facts wrong, with nobody breaking any rules?
@@ -985,6 +986,58 @@
             <div class="body">
             <p><b>The answer is five places, and this is the list to be able to produce.</b> Each comes with a case, and the case is where the argument is.</p>
           </div>
+
+          <figure class="dia">
+            <div class="draw">
+            <svg viewBox="0 0 660 438" role="img" aria-labelledby="dg-five7" style="font-family:var(--body)">
+              <title id="dg-five7">The five places a value enters research, each with the case the chapter uses, set against the phases of the research chain from week 6.</title>
+              <text class="dg-m dg-dim" x="12" y="17" font-size="11">WHERE IT GETS IN</text>
+              <text class="dg-m dg-dim" x="214" y="17" font-size="11">THE CASE TO QUOTE</text>
+              <text class="dg-m dg-dim" x="478" y="17" font-size="11">WEEK 6&#8217;S CHAIN</text>
+              <rect class="dg-box" x="8" y="30" width="644" height="74" rx="3"/>
+              <text class="dg-t" x="18" y="54" font-size="13" font-weight="600">1 &nbsp;Framing the</text>
+              <text class="dg-t" x="18" y="72" font-size="13" font-weight="600">&nbsp; &nbsp; research problem</text>
+              <text class="dg-t" x="214" y="54" font-size="12.5">Contraceptive research</text>
+              <text class="dg-t" x="214" y="71" font-size="12.5">aimed at women, so women</text>
+              <text class="dg-t" x="214" y="88" font-size="12.5">carry the risk.</text>
+              <text class="dg-t" x="478" y="54" font-size="12.5" font-weight="600">Phases 1 and 2</text>
+              <text class="dg-t dg-dim" x="478" y="72" font-size="12">subject, question</text>
+              <rect class="dg-box" x="8" y="110" width="644" height="74" rx="3"/>
+              <text class="dg-t" x="18" y="134" font-size="13" font-weight="600">2 &nbsp;Observing and</text>
+              <text class="dg-t" x="18" y="152" font-size="13" font-weight="600">&nbsp; &nbsp; describing</text>
+              <text class="dg-t" x="214" y="134" font-size="12.5">The passive egg and the</text>
+              <text class="dg-t" x="214" y="151" font-size="12.5">burrowing sperm, in every</text>
+              <text class="dg-t" x="214" y="168" font-size="12.5">textbook.</text>
+              <text class="dg-t" x="478" y="134" font-size="12.5" font-weight="600">Phases 3 and 4</text>
+              <text class="dg-t dg-dim" x="478" y="152" font-size="12">what counts, collecting</text>
+              <rect class="dg-box dg-hi" x="8" y="190" width="644" height="74" rx="3"/>
+              <text class="dg-t" x="18" y="214" font-size="13" font-weight="600">3 &nbsp;A concept that</text>
+              <text class="dg-t" x="18" y="232" font-size="13" font-weight="600">&nbsp; &nbsp; carries a value</text>
+              <text class="dg-t" x="214" y="214" font-size="12.5">Harm to children of divorce.</text>
+              <text class="dg-t" x="214" y="231" font-size="12.5">Safety in home birth.</text>
+              <text class="dg-t" x="214" y="248" font-size="12.5">Male mice only.</text>
+              <text class="dg-t" x="478" y="214" font-size="12.5" font-weight="600">Phase 3</text>
+              <text class="dg-t dg-dim" x="478" y="232" font-size="12">what counts as data</text>
+              <rect class="dg-box" x="8" y="270" width="644" height="74" rx="3"/>
+              <text class="dg-t" x="18" y="294" font-size="13" font-weight="600">4 &nbsp;Choosing the</text>
+              <text class="dg-t" x="18" y="312" font-size="13" font-weight="600">&nbsp; &nbsp; model</text>
+              <text class="dg-t" x="214" y="294" font-size="12.5">A model keeps some features</text>
+              <text class="dg-t" x="214" y="311" font-size="12.5">and drops others, so building</text>
+              <text class="dg-t" x="214" y="328" font-size="12.5">one decides what matters.</text>
+              <text class="dg-t" x="478" y="294" font-size="12.5" font-weight="600">Phase 5</text>
+              <text class="dg-t dg-dim" x="478" y="312" font-size="12">interpreting</text>
+              <rect class="dg-box" x="8" y="350" width="644" height="74" rx="3"/>
+              <text class="dg-t" x="18" y="374" font-size="13" font-weight="600">5 &nbsp;Interpreting, and</text>
+              <text class="dg-t" x="18" y="392" font-size="13" font-weight="600">&nbsp; &nbsp; weighing alternatives</text>
+              <text class="dg-t" x="214" y="374" font-size="12.5">How much evidence is enough,</text>
+              <text class="dg-t" x="214" y="391" font-size="12.5">and which rival explanations</text>
+              <text class="dg-t" x="214" y="408" font-size="12.5">came to mind.</text>
+              <text class="dg-t" x="478" y="374" font-size="12.5" font-weight="600">Phases 6 to 8</text>
+              <text class="dg-t dg-dim" x="478" y="392" font-size="12">inductive risk</text>
+            </svg>
+            </div>
+            <figcaption><b>The same chain as last week, cut into five where week 6 cut it into nine.</b> Week 6 asked where in research a value can enter and answered with nine decision points. This chapter asks the same question of the same chain and groups it differently, which is why the right column is worth reading across: anything in it you already know. The third row is highlighted because it is the one with no equivalent in week 6, where the value is inside the concept being measured and no amount of care at later phases removes it. Harm, safety and a standard laboratory animal are all decided before any data exists.</figcaption>
+          </figure>
 
           <div class="exm">
             <b>Example &middot; one &middot; framing the research problem</b>
@@ -1180,7 +1233,7 @@
             <p><b>And why she picks that article, when worse ones exist.</b> It is the first article in the first journal of the field, so it set the terms. It also appeared alongside critical pieces in the same issue, which tells you the field was entangled with scientists and policy makers from the start.</p>
           </div>
 
-          <h4 id="ch19-2" data-n="19.2">The thing she is pointing at: inclusion that leaves the system intact</h4>
+          <h4 id="ch19-2" data-n="19.2">Inclusion that leaves the system intact</h4>
           <div class="qa">
               <b>The question</b>
               Why would more people being let in fail to fix anything?
@@ -1198,7 +1251,7 @@
             <p><b>What that means for science.</b> Calls to open science to everyone, made without correcting the inequality first, end up meaning <b>everyone who is already economically successful</b>. She calls this a colourblind and genderblind politics, and the objection is that we do not live in a raceless or genderless world, so a rule that ignores race and gender preserves whatever the existing distribution happens to be.</p>
           </div>
 
-          <h4 id="ch19-3" data-n="19.3">The argument you will want to argue with: illiteracy as resistance</h4>
+          <h4 id="ch19-3" data-n="19.3">Illiteracy as resistance, the argument you will want to argue with</h4>
           <div class="qa">
               <b>The question</b>
               Is somebody who rejects a scientific explanation necessarily ignorant of it?
@@ -1235,7 +1288,7 @@
             <figcaption><b>The Black Panther Party's Community Survival Conference, Oakland, March 1972.</b> Giordano names the party's health work as democratic science that was already happening while the journals were discussing how to reach the public. Fourth from the bottom in the speakers list: <b>Donald Williams, medical authority on sickle cell anaemia</b>. The party ran mass screening for sickle cell at a time when the disease was medically neglected, alongside free clinics and its own criticism of racist scientific data. <span class="cred">Black Panther Party, public domain, via Wikimedia Commons.</span></figcaption>
           </figure>
 
-          <h4 id="ch19-4" data-n="19.4">Who was already doing it</h4>
+          <h4 id="ch19-4" data-n="19.4">The Black Panthers, the health movement, and who else was already doing it</h4>
           <div class="qa">
               <b>The question</b>
               If the universities were asking how to reach the public, what was the public doing?
@@ -1259,7 +1312,7 @@
             <figcaption><b>ACT UP at the National Institutes of Health, 1990.</b> The placard is an argument about trial design: both approved antivirals were failing this protester and he is asking why the research agenda does not include him. AIDS activists learned the pharmacology, sat on the committees and <b>changed how clinical trials are run</b>, which is Giordano's case that knowledge production outside the academy is a fact, and never a proposal. <span class="cred">NIH History Office, public domain, via Wikimedia Commons.</span></figcaption>
           </figure>
 
-          <h4 id="ch19-5" data-n="19.5">What happened when democratic science became fashionable</h4>
+          <h4 id="ch19-5" data-n="19.5">The do-it-yourself biology labs, and who is actually in them</h4>
           <div class="qa">
               <b>The question</b>
               The do-it-yourself biology labs say they are opening science to everyone. Are they?
@@ -1342,7 +1395,7 @@
 
           <div class="why"><b>Why this chapter is set.</b> Everything else this term argues that the position of the knower affects the knowledge. This is the cleanest case of it anybody has: a woman shut out of the French academy noticed that beliefs about women were held without examination, turned that into a general rule about belief, applied the rule to a scientific quarrel she had no stake in, and got the right answer about scientific method a century and a half before anybody else.</div>
 
-          <h4 id="ch3-1" data-n="3.1">The claim the chapter is making, which is bigger than it first looks</h4>
+          <h4 id="ch3-1" data-n="3.1">Three steps from being shut out to getting hypotheses right</h4>
           <div class="qa">
               <b>The question</b>
               Did being a woman make any difference to Du Ch&acirc;telet's physics, or is she simply a woman who happened to do physics?
@@ -1365,7 +1418,7 @@
             <figcaption><b>&Eacute;milie Du Ch&acirc;telet, 1706 to 1749, painted by Marianne Loir.</b> Look at what she is holding: a pair of dividers, with an armillary sphere behind her and papers on the desk. Portraits of women of her rank did not usually carry instruments, and the painting is making the same argument she spent her life making. <span class="cred">Marianne Loir, public domain, via Wikimedia Commons.</span></figcaption>
           </figure>
 
-          <h4 id="ch3-2" data-n="3.2">Step one: what she noticed about beliefs concerning women</h4>
+          <h4 id="ch3-2" data-n="3.2">What she noticed about beliefs concerning women</h4>
           <div class="qa">
             <b>The question she asks in the preface to her translation of Mandeville</b>
             Why have women produced nothing?
@@ -1390,7 +1443,7 @@
             <dd>Her own definition, and the usable one: <b>an opinion accepted without examination, because it would be indefensible otherwise.</b></dd>
           </dl>
 
-          <h4 id="ch3-3" data-n="3.3">Step two: the rule, and the company it puts her in</h4>
+          <h4 id="ch3-3" data-n="3.3">Her rule, and the company it puts her in</h4>
           <div class="qa">
               <b>The question</b>
               What does it mean to say you have a duty about what you believe?
@@ -1408,7 +1461,7 @@
             <p><b>How she passes it on.</b> Her masterwork opens as a letter to her son. She tells him to accustom his mind early to think and to be <b>self-sufficient</b>, and then: whatever side you take in this dispute among philosophers, guard yourself against the obstinacy that the spirit of national partisanship produces, <b>which is dangerous everywhere in life and ridiculous in physics.</b></p>
           </div>
 
-          <h4 id="ch3-4" data-n="3.4">Step three: the quarrel, and why everybody was getting it wrong</h4>
+          <h4 id="ch3-4" data-n="3.4">The quarrel over hypotheses, and why both sides were getting it wrong</h4>
           <div class="qa">
               <b>The question</b>
               What was actually in dispute in European science in 1740?

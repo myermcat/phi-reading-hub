@@ -33,7 +33,7 @@
 
     --display: "Newsreader", Georgia, "Times New Roman", serif;
     --body:    "Source Sans 3", -apple-system, "Segoe UI", sans-serif;
-    --lh: 1.6; --measure: 82ch; --pgap: 20px;
+    --lh: 1.6; --measure: 62ch; --figw: 82ch; --pgap: 20px;
 
     --mono:    "IBM Plex Mono", "SF Mono", Menlo, monospace;
   }
@@ -50,7 +50,7 @@
       --lead: #93C2B2;
       --c-y: #E3BE57;
       --c-p: #FF97C6;
-      --ghost: #2C332E; --lh: 1.76; --measure: 68ch; --pgap: 25px;
+      --ghost: #2C332E; --lh: 1.76; --measure: 58ch; --figw: 80ch; --pgap: 25px;
     }
   }
   :root[data-theme="dark"] {
@@ -65,7 +65,7 @@
     --lead: #93C2B2;
     --c-y: #E3BE57;
     --c-p: #FF97C6;
-    --ghost: #2C332E; --lh: 1.76; --measure: 68ch; --pgap: 25px;
+    --ghost: #2C332E; --lh: 1.76; --measure: 58ch; --figw: 80ch; --pgap: 25px;
   }
 
   * { box-sizing: border-box; }
@@ -336,10 +336,10 @@
   .quo .src { font-family: var(--mono); font-size: 10.5px; letter-spacing: .07em; color: var(--muted); }
   figure { margin: 28px 0; display: flex; flex-direction: column; gap: 9px; }
   figure svg { max-width: 100%; height: auto; display: block; }
-  figcaption { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: .03em; line-height: 1.55; max-width: 70ch; }
+  figcaption { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: .03em; line-height: 1.55; max-width: var(--figw); }
 
   /* photographs, plates and maps */
-  figure.pic { margin: 24px 0; gap: 11px; max-width: var(--measure); }
+  figure.pic { margin: 24px 0; gap: 11px; max-width: var(--figw); }
   /* A picture sits inside the reading, so it is capped at a height that leaves the paragraphs
      on either side of it in view. At most of the window it filled the screen, the argument
      disappeared behind it, and scrolling past a figure took as long as reading a section.
@@ -378,7 +378,7 @@
   }
 
   /* drawings made for this guide, framed the way the photographs are */
-  figure.dia { margin: 24px 0; gap: 11px; max-width: var(--measure); }
+  figure.dia { margin: 24px 0; gap: 11px; max-width: var(--figw); }
   figure.dia .draw { max-width: 100%; overflow-x: auto; }
   /* A drawing that illustrates a point in the flow is capped the way a picture is, so the
      paragraph under it stays in view. A drawing that is a reference grid, like the nine authors
