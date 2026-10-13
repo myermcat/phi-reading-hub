@@ -178,7 +178,12 @@
 
   .qline { font-family: var(--display); font-size: 19.5px; line-height: 1.42; padding: 12px 0 12px 16px; border-left: 2px solid var(--accent); color: var(--ink); }
 
-  .rd h4 { margin: 8px 0 -7px; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+  .rd h4 { margin: 16px 0 -13px; font-family: var(--display); font-weight: 600;
+           font-size: 20px; line-height: 1.22; letter-spacing: -0.005em; color: var(--ink);
+           text-wrap: balance; scroll-margin-top: 78px; }
+  .rd h4::before { content: attr(data-n); display: block; margin-bottom: 6px;
+           font-family: var(--mono); font-size: 10.5px; font-weight: 500;
+           letter-spacing: 0.12em; color: var(--accent); }
   .rd ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 9px; max-width: var(--measure); }
   .rd li { padding-left: 2px; }
   .rd .body { display: flex; flex-direction: column; gap: 14px; }
@@ -496,7 +501,27 @@
   #nav .key i.a { color: var(--ink-soft); }
   #nav .key i.b { opacity: .68; }
   #nav .key i.c { opacity: .48; }
-  @media (min-width: 1180px) { #nav { display: flex; } }
+  /* the contents list used to need a 1180px window. It takes its own column now, so it
+     appears from 1000px up, and only goes back to floating beside a centred page when
+     there is room for that. */
+  @media (min-width: 1000px) {
+    #nav { display: flex; left: 16px; width: 150px; }
+    body { padding-left: 182px; }
+  }
+  @media (min-width: 1320px) {
+    #nav { left: max(16px, calc(50vw - 640px)); }
+    body { padding-left: 0; }
+  }
+  #nav { top: 84px; transform: none; max-height: calc(100vh - 160px);
+         overflow-y: auto; scrollbar-width: none; }
+  #nav::-webkit-scrollbar { display: none; }
+  #nav a.sb { display: none; font-size: 9.5px; letter-spacing: .02em; line-height: 1.32;
+              padding: 3px 0 3px 11px; margin-left: 9px; opacity: .9; }
+  #nav a.sb.show { display: block; }
+  #nav a.sb { white-space: normal; }
+  #nav a.sb b { font-weight: 500; font-style: normal; color: var(--muted);
+                margin-right: 5px; }
+  #nav a.sb:hover b, #nav a.sb.on b { color: var(--accent); }
 
   /* glossary. Closed by default: it is a reference list and not something to read through,
      and left open it makes the page look twice as long as it is. */
@@ -712,8 +737,23 @@
   <a class="grp" href="#s-arg">The argument</a>
   <a class="grp" href="#s-texts">The reading</a>
   <a class="core" href="#ch15" title="Intemann &middot; the central chapter, read properly">Values in science<i>ch 15</i></a>
+  <a class="sb" data-of="ch15" href="#ch15-1"><b>15.1</b>The case the chapter opens on, and what it is doing there</a>
+  <a class="sb" data-of="ch15" href="#ch15-2"><b>15.2</b>The five places a value gets in</a>
+  <a class="sb" data-of="ch15" href="#ch15-3"><b>15.3</b>What replaces the value-free ideal, and the test any replacement has to pass</a>
+  <a class="sb" data-of="ch15" href="#ch15-4"><b>15.4</b>Model one: value management</a>
+  <a class="sb" data-of="ch15" href="#ch15-5"><b>15.5</b>Model two: social justice</a>
   <a class="core" href="#ch19" title="Giordano &middot; read properly">Science for the people<i>ch 19</i></a>
+  <a class="sb" data-of="ch19" href="#ch19-1"><b>19.1</b>What &amp;#8220;public understanding of science&amp;#8221; turned out to mean</a>
+  <a class="sb" data-of="ch19" href="#ch19-2"><b>19.2</b>The thing she is pointing at: inclusion that leaves the system intact</a>
+  <a class="sb" data-of="ch19" href="#ch19-3"><b>19.3</b>The argument you will want to argue with: illiteracy as resistance</a>
+  <a class="sb" data-of="ch19" href="#ch19-4"><b>19.4</b>Who was already doing it</a>
+  <a class="sb" data-of="ch19" href="#ch19-5"><b>19.5</b>What happened when democratic science became fashionable</a>
   <a class="core" href="#ch3" title="Detlefsen on Du Ch&acirc;telet &middot; read properly">Du Ch&acirc;telet<i>ch 3</i></a>
+  <a class="sb" data-of="ch3" href="#ch3-1"><b>3.1</b>The claim the chapter is making, which is bigger than it first looks</a>
+  <a class="sb" data-of="ch3" href="#ch3-2"><b>3.2</b>Step one: what she noticed about beliefs concerning women</a>
+  <a class="sb" data-of="ch3" href="#ch3-3"><b>3.3</b>Step two: the rule, and the company it puts her in</a>
+  <a class="sb" data-of="ch3" href="#ch3-4"><b>3.4</b>Step three: the quarrel, and why everybody was getting it wrong</a>
+  <a class="sb" data-of="ch3" href="#ch3-5"><b>3.5</b>What she actually said about hypotheses</a>
   <a class="skim" href="#ch20" title="Nelson &middot; narrated in week 6">Biology<i>ch 20</i></a>
   <a class="grp" href="#s-gloss">Glossary</a>
   <div class="key"><em>Key</em><i class="a">solid = read properly</i><i class="b">faded = skim</i><i class="c">faintest = if time</i></div>
@@ -854,7 +894,7 @@
 
           <div class="why"><b>Why this chapter is set.</b> It is the summary of the whole term's argument, written by one of the authors of the book you read in weeks 5 and 6, and it has the two lists the exam will want: the five ways values enter, and the two models that replace the value-free ideal.</div>
 
-          <h4>The case the chapter opens on, and what it is doing there</h4>
+          <h4 id="ch15-1" data-n="15.1">The case the chapter opens on, and what it is doing there</h4>
           <div class="body">
             <p><b>The question: can a treatment be studied for sixty years and still get the basic facts wrong, with nobody breaking any rules?</b></p>
             <p><b>The answer is yes, and hormone replacement therapy is the case.</b> Here it is in order.</p>
@@ -872,7 +912,7 @@
             <p><b>Nobody in this story is a villain</b>, which is the point. The chapter's claim is that careful people following the rules produced this, so stricter rules are not the fix.</p>
           </div>
 
-          <h4>The five places a value gets in</h4>
+          <h4 id="ch15-2" data-n="15.2">The five places a value gets in</h4>
           <div class="body">
             <p><b>The question: if values are not confined to choosing topics, where else are they?</b></p>
             <p><b>The answer is five places, and this is the list to be able to produce.</b> Each comes with a case, and the cases are better revision than the headings.</p>
@@ -922,7 +962,7 @@
             <p><b>And the result that settles it.</b> When the experiment was altered to control for these variables, <b>the difference in performance disappeared.</b></p>
           </div>
 
-          <h4>What replaces the value-free ideal, and the test any replacement has to pass</h4>
+          <h4 id="ch15-3" data-n="15.3">What replaces the value-free ideal, and the test any replacement has to pass</h4>
           <div class="body">
             <p><b>The question: what has to be true of a replacement for it to satisfy feminists specifically?</b></p>
             <p><b>The answer is four conditions: a replacement has to do the three political jobs the VFI was doing, and protect the science as well.</b> A replacement has to answer:</p>
@@ -934,7 +974,7 @@
             </ol>
           </div>
 
-          <h4>Model one: value management</h4>
+          <h4 id="ch15-4" data-n="15.4">Model one: value management</h4>
           <div class="body">
             <p><b>The question: can you let all values in and still get objectivity out?</b></p>
             <p><b>The answer is yes, if the community is built right, and the building instructions are Longino's four norms.</b> Rolin's name for the arrangement is the <b>value-management model</b>.</p>
@@ -956,7 +996,7 @@
             <p><b>So the objection is not that the four norms are wrong.</b> It is that a model which depends on equal intellectual authority cannot deliver it in a world arranged like this one.</p>
           </div>
 
-          <h4>Model two: social justice</h4>
+          <h4 id="ch15-5" data-n="15.5">Model two: social justice</h4>
           <div class="body">
             <p><b>The question: what do you add once you accept the field is not level?</b></p>
             <p><b>The answer is an aim.</b> The <b>social justice model</b> starts from a commitment: a central purpose of publicly funded science is to achieve social justice, meaning <b>science should benefit everyone and particularly those who are worst off</b>. Intemann presents it as an addition to the first model, and never a rival to it.</p>
@@ -1013,7 +1053,7 @@
 
           <div class="why"><b>Why this chapter is set.</b> It is the one that refuses the question the others are asking. Chapters 4, 5 and 15 debate how scientists should behave. This asks who gets to be one, and whether the push to include more people has mostly served the institution doing the including. It is the most radical thing on the reading list and the most likely to annoy you, in either direction.</div>
 
-          <h4>What &#8220;public understanding of science&#8221; turned out to mean</h4>
+          <h4 id="ch19-1" data-n="19.1">What &#8220;public understanding of science&#8221; turned out to mean</h4>
           <div class="body">
             <p><b>The question: when institutions say the public needs to understand science better, what are they actually asking for?</b></p>
             <p><b>The answer, and it is the chapter's opening move: what is wanted is appreciation.</b> Giordano's claim is that the literature itself says so, and she goes to the first issue of the journal to show it.</p>
@@ -1027,7 +1067,7 @@
             <p><b>And why she picks that article, when worse ones exist.</b> It is the first article in the first journal of the field, so it set the terms. It also appeared alongside critical pieces in the same issue, which tells you the field was entangled with scientists and policy makers from the start.</p>
           </div>
 
-          <h4>The thing she is pointing at: inclusion that leaves the system intact</h4>
+          <h4 id="ch19-2" data-n="19.2">The thing she is pointing at: inclusion that leaves the system intact</h4>
           <div class="body">
             <p><b>The question: why would more people being let in fail to fix anything?</b></p>
             <p><b>The answer: because the movements of the 1960s and 1970s were not asking to be let into the existing arrangement, and the version that survived was the one that asked for exactly that.</b></p>
@@ -1036,7 +1076,7 @@
             <p><b>What that means for science.</b> Calls to open science to everyone, made without correcting the inequality first, end up meaning <b>everyone who is already economically successful</b>. She calls this a colourblind and genderblind politics, and the objection is that we do not live in a raceless or genderless world, so a rule that ignores race and gender preserves whatever the existing distribution happens to be.</p>
           </div>
 
-          <h4>The argument you will want to argue with: illiteracy as resistance</h4>
+          <h4 id="ch19-3" data-n="19.3">The argument you will want to argue with: illiteracy as resistance</h4>
           <div class="body">
             <p><b>The question: is somebody who rejects a scientific explanation necessarily ignorant of it?</b></p>
             <p><b>The answer the chapter defends: sometimes they know it and are refusing it, and that is a different thing.</b></p>
@@ -1054,7 +1094,7 @@
             <figcaption><b>The Black Panther Party's Community Survival Conference, Oakland, March 1972.</b> Giordano names the party's health work as democratic science that was already happening while the journals were discussing how to reach the public. Fourth from the bottom in the speakers list: <b>Donald Williams, medical authority on sickle cell anaemia</b>. The party ran mass screening for sickle cell at a time when the disease was medically neglected, alongside free clinics and its own criticism of racist scientific data. <span class="cred">Black Panther Party, public domain, via Wikimedia Commons.</span></figcaption>
           </figure>
 
-          <h4>Who was already doing it</h4>
+          <h4 id="ch19-4" data-n="19.4">Who was already doing it</h4>
           <div class="body">
             <p><b>The question: if the universities were asking how to reach the public, what was the public doing?</b></p>
             <p><b>The answer: producing knowledge, in four movements she names, none of which was invited.</b></p>
@@ -1074,7 +1114,7 @@
             <figcaption><b>ACT UP at the National Institutes of Health, 1990.</b> The placard is an argument about trial design: both approved antivirals were failing this protester and he is asking why the research agenda does not include him. AIDS activists learned the pharmacology, sat on the committees and <b>changed how clinical trials are run</b>, which is Giordano's case that knowledge production outside the academy is a fact, and never a proposal. <span class="cred">NIH History Office, public domain, via Wikimedia Commons.</span></figcaption>
           </figure>
 
-          <h4>What happened when democratic science became fashionable</h4>
+          <h4 id="ch19-5" data-n="19.5">What happened when democratic science became fashionable</h4>
           <div class="body">
             <p><b>The question: the do-it-yourself biology labs say they are opening science to everyone. Are they?</b></p>
             <p><b>The answer from her own fieldwork: no, and what surprised her is that the participants were untroubled by it.</b></p>
@@ -1137,7 +1177,7 @@
 
           <div class="why"><b>Why this chapter is set.</b> Everything else this term argues that the position of the knower affects the knowledge. This is the cleanest case of it anybody has: a woman shut out of the French academy noticed that beliefs about women were held without examination, turned that into a general rule about belief, applied the rule to a scientific quarrel she had no stake in, and got the right answer about scientific method a century and a half before anybody else.</div>
 
-          <h4>The claim the chapter is making, which is bigger than it first looks</h4>
+          <h4 id="ch3-1" data-n="3.1">The claim the chapter is making, which is bigger than it first looks</h4>
           <div class="body">
             <p><b>The question: did being a woman make any difference to Du Ch&acirc;telet's physics, or is she simply a woman who happened to do physics?</b></p>
             <p><b>Detlefsen's answer: it made the difference, and the path from one to the other is traceable in three steps.</b></p>
@@ -1156,7 +1196,7 @@
             <figcaption><b>&Eacute;milie Du Ch&acirc;telet, 1706 to 1749, painted by Marianne Loir.</b> Look at what she is holding: a pair of dividers, with an armillary sphere behind her and papers on the desk. Portraits of women of her rank did not usually carry instruments, and the painting is making the same argument she spent her life making. <span class="cred">Marianne Loir, public domain, via Wikimedia Commons.</span></figcaption>
           </figure>
 
-          <h4>Step one: what she noticed about beliefs concerning women</h4>
+          <h4 id="ch3-2" data-n="3.2">Step one: what she noticed about beliefs concerning women</h4>
           <div class="body">
             <p><b>The question she asks in the preface to her translation of Mandeville: why have women produced nothing?</b></p>
             <p><b>And her answer is that the question is the wrong way round.</b> She asks why, in so many centuries, no good tragedy, poem, history, painting or book of physics came from a woman, and says that these creatures, whose understanding appears in all things equal to that of men, seem to be <b>stopped by an invincible force on this side of a barrier</b>. She invites anybody to explain it.</p>
@@ -1165,7 +1205,7 @@
             <p><b>Then the generalisation, from her <em>Discourse on Happiness</em>.</b> A source of happiness is to be free of prejudice, and <b>the decision rests with us</b> to be rid of it. Her definition is the usable one: <b>prejudice is an opinion accepted without examination, because it would be indefensible otherwise.</b> We all have enough intelligence to examine what others want us to believe.</p>
           </div>
 
-          <h4>Step two: the rule, and the company it puts her in</h4>
+          <h4 id="ch3-3" data-n="3.3">Step two: the rule, and the company it puts her in</h4>
           <div class="body">
             <p><b>The question: what does it mean to say you have a duty about what you believe?</b></p>
             <p><b>The answer: that believing is something you do, so it can be done responsibly or not, and doing it badly is a fault, and never bad luck.</b> The name arrived in 1877 with W. K. Clifford, whose version is absolute: it is wrong always, everywhere, and for anyone, to believe anything on insufficient evidence.</p>
@@ -1179,7 +1219,7 @@
             <p><b>How she passes it on.</b> Her masterwork opens as a letter to her son. She tells him to accustom his mind early to think and to be <b>self-sufficient</b>, and then: whatever side you take in this dispute among philosophers, guard yourself against the obstinacy that the spirit of national partisanship produces, <b>which is dangerous everywhere in life and ridiculous in physics.</b></p>
           </div>
 
-          <h4>Step three: the quarrel, and why everybody was getting it wrong</h4>
+          <h4 id="ch3-4" data-n="3.4">Step three: the quarrel, and why everybody was getting it wrong</h4>
           <div class="body">
             <p><b>The question: what was actually in dispute in European science in 1740?</b></p>
             <p><b>The answer, in the framework Detlefsen uses: two camps, and the fight was about whether hypotheses are allowed at all.</b></p>
@@ -1196,7 +1236,7 @@
             <figcaption><b>The title page of <em>Institutions de Physique</em>, Paris, 1740.</b> Her name is not on it. The book was published anonymously, presented as a physics textbook for her thirteen-year-old son, and chapter 4 of it is the account of hypotheses that the field would take another century and a half to arrive at independently. <span class="cred">Public domain, via Wikimedia Commons.</span></figcaption>
           </figure>
 
-          <h4>What she actually said about hypotheses</h4>
+          <h4 id="ch3-5" data-n="3.5">What she actually said about hypotheses</h4>
           <div class="body">
             <p><b>The question: if a hypothesis is a guess, why should science be allowed them?</b></p>
             <p><b>Her answer: because there is no other way to reach a cause you cannot observe and cannot derive, and the fix is to constrain them, where everybody around her wanted them banned.</b> This is chapter 4 of the <em>Foundations</em>, and the four constraints she sets are, in substance, the modern ones.</p>
@@ -2105,7 +2145,22 @@
       if (t <= 0 && t > bestTop) { bestTop = t; best = i; }
     }
     links.forEach(function (a, i) { a.classList.toggle('on', i === best); });
+    // only the chapter you are inside opens its list of sections
+    var of = '';
+    if (best >= 0) {
+      var cur = links[best];
+      of = cur.classList.contains('sb') ? cur.getAttribute('data-of')
+                                        : cur.getAttribute('href').slice(1);
+    }
+    links.forEach(function (a) {
+      if (a.classList.contains('sb')) a.classList.toggle('show', a.getAttribute('data-of') === of);
+    });
+    if (best !== was && best >= 0 && nav.scrollHeight > nav.clientHeight) {
+      links[best].scrollIntoView({ block: 'nearest' });
+    }
+    was = best;
   }
+  var was = -1;
   // how far through the reading this is, drawn along the top edge of the dock
   var prog = document.getElementById('prog');
   function bar() {

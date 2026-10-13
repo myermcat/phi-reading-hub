@@ -178,7 +178,12 @@
 
   .qline { font-family: var(--display); font-size: 19.5px; line-height: 1.42; padding: 12px 0 12px 16px; border-left: 2px solid var(--accent); color: var(--ink); }
 
-  .rd h4 { margin: 8px 0 -7px; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+  .rd h4 { margin: 16px 0 -13px; font-family: var(--display); font-weight: 600;
+           font-size: 20px; line-height: 1.22; letter-spacing: -0.005em; color: var(--ink);
+           text-wrap: balance; scroll-margin-top: 78px; }
+  .rd h4::before { content: attr(data-n); display: block; margin-bottom: 6px;
+           font-family: var(--mono); font-size: 10.5px; font-weight: 500;
+           letter-spacing: 0.12em; color: var(--accent); }
   .rd ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 9px; max-width: var(--measure); }
   .rd li { padding-left: 2px; }
   .rd .body { display: flex; flex-direction: column; gap: 14px; }
@@ -502,7 +507,27 @@
   #nav .key i.a { color: var(--ink-soft); }
   #nav .key i.b { opacity: .68; }
   #nav .key i.c { opacity: .48; }
-  @media (min-width: 1180px) { #nav { display: flex; } }
+  /* the contents list used to need a 1180px window. It takes its own column now, so it
+     appears from 1000px up, and only goes back to floating beside a centred page when
+     there is room for that. */
+  @media (min-width: 1000px) {
+    #nav { display: flex; left: 16px; width: 150px; }
+    body { padding-left: 182px; }
+  }
+  @media (min-width: 1320px) {
+    #nav { left: max(16px, calc(50vw - 640px)); }
+    body { padding-left: 0; }
+  }
+  #nav { top: 84px; transform: none; max-height: calc(100vh - 160px);
+         overflow-y: auto; scrollbar-width: none; }
+  #nav::-webkit-scrollbar { display: none; }
+  #nav a.sb { display: none; font-size: 9.5px; letter-spacing: .02em; line-height: 1.32;
+              padding: 3px 0 3px 11px; margin-left: 9px; opacity: .9; }
+  #nav a.sb.show { display: block; }
+  #nav a.sb { white-space: normal; }
+  #nav a.sb b { font-weight: 500; font-style: normal; color: var(--muted);
+                margin-right: 5px; }
+  #nav a.sb:hover b, #nav a.sb.on b { color: var(--accent); }
 
   /* glossary. Closed by default: it is a reference list and not something to read through,
      and left open it makes the page look twice as long as it is. */
@@ -724,8 +749,24 @@
   <a class="grp" href="#s-arg">The argument</a>
   <a class="grp" href="#s-texts">The reading</a>
   <a class="core" href="#ch4" title="Crasnow and Intemann ch. 4 &middot; read properly">How do we know<i>23 pp</i></a>
+  <a class="sb" data-of="ch4" href="#ch4-1"><b>4.1</b>Two things called objectivity, and both are in trouble</a>
+  <a class="sb" data-of="ch4" href="#ch4-2"><b>4.2</b>The nine phases</a>
+  <a class="sb" data-of="ch4" href="#ch4-3"><b>4.3</b>Walking the case down the chain</a>
+  <a class="sb" data-of="ch4" href="#ch4-4"><b>4.4</b>So what could objectivity mean now?</a>
+  <a class="sb" data-of="ch4" href="#ch4-5"><b>4.5</b>Longino: objectivity is a property of a community</a>
+  <a class="sb" data-of="ch4" href="#ch4-6"><b>4.6</b>Harding: strong objectivity</a>
+  <a class="sb" data-of="ch4" href="#ch4-7"><b>4.7</b>Wylie: objectivity is a property of claims</a>
+  <a class="sb" data-of="ch4" href="#ch4-8"><b>4.8</b>The pragmatists, and the chapter&#x27;s own doubts</a>
   <a class="core" href="#ch5" title="Crasnow and Intemann ch. 5 &middot; read properly">What don&#8217;t we know<i>21 pp</i></a>
+  <a class="sb" data-of="ch5" href="#ch5-1"><b>5.1</b>Where it starts: MeToo</a>
+  <a class="sb" data-of="ch5" href="#ch5-2"><b>5.2</b>What ignorance is, and the thing most people get wrong about it</a>
+  <a class="sb" data-of="ch5" href="#ch5-3"><b>5.3</b>Tuana&amp;#8217;s five kinds of ignorance</a>
+  <a class="sb" data-of="ch5" href="#ch5-4"><b>5.4</b>The five ways ignorance gets made</a>
   <a class="core" href="#nelson" title="Routledge Handbook ch. 20 &middot; set for week 7, read early">Biology<i>week 7</i></a>
+  <a class="sb" data-of="nelson" href="#nelson-1"><b>20.1</b>Four faults to look for, which is the useful list</a>
+  <a class="sb" data-of="nelson" href="#nelson-2"><b>20.2</b>Case one: the peacock&amp;#8217;s tail, and what Darwin built to explain it</a>
+  <a class="sb" data-of="nelson" href="#nelson-3"><b>20.3</b>Case two: the baboons, and the primate pattern</a>
+  <a class="sb" data-of="nelson" href="#nelson-4"><b>20.4</b>The argument about what all this proves</a>
   <a class="grp" href="#s-gloss">Glossary</a>
   <div class="key"><em>Key</em><i class="a">solid = read properly</i><i class="b">faded = skim</i><i class="c">faintest = if time</i></div>
 </nav>
@@ -915,7 +956,7 @@
 
           <div class="why"><b>Why this chapter is set.</b> It is the one with the machinery in it. Last week's chapter said the knower's position matters and left it as a claim; this one shows the exact points at which it can matter, and then gives three serious attempts to save objectivity anyway. The nine phases and the three names are the most examinable content in the term so far.</div>
 
-          <h4>Two things called objectivity, and both are in trouble</h4>
+          <h4 id="ch4-1" data-n="4.1">Two things called objectivity, and both are in trouble</h4>
           <div class="body">
             <p><b>The chapter uses two terms from chapter 3 constantly, so they are worth fixing now.</b></p>
             <ul>
@@ -926,7 +967,7 @@
             <p><b>And the chapter opens on a story that makes the stakes concrete.</b> In 1912 the <em>New York Times</em> reported James Crichton-Browne, a prominent neuropsychologist who had worked with Darwin, on blood flow in male and female brains. Women came out with sensuous perception, rapid thought and emotional sensibility. Men came out with originality at the higher levels of intellectual work, calmer judgment and stronger will. <b>The blood-flow theory is long dead.</b> The thing it was used to prove, that cognitive differences between men and women are fixed by biology, has outlived every mechanism proposed for it: hormones, genes, brain structure. That survival is what the chapter wants explained.</p>
           </div>
 
-          <h4>The nine phases</h4>
+          <h4 id="ch4-2" data-n="4.2">The nine phases</h4>
           <div class="body">
             <p><b>You learn in school that the scientific method is: make a hypothesis, test it, conclude.</b> The chapter says that is not false so much as useless, because the interesting decisions are hidden inside the word <em>test</em>. So it cuts inquiry into nine phases, following Anderson and Brown:</p>
             <ol>
@@ -959,7 +1000,7 @@
             <figcaption><b>Anne Fausto-Sterling, a biologist, who asked what the apparatus was measuring.</b> Her objection is not that the researchers were sexist in any obvious sense. It is that the experiment put a social situation inside the measurement and nobody noticed, because the result came out the way everyone expected. <span class="cred">Rama, CC BY-SA 3.0 FR, via Wikimedia Commons.</span></figcaption>
           </figure>
 
-          <h4>Walking the case down the chain</h4>
+          <h4 id="ch4-3" data-n="4.3">Walking the case down the chain</h4>
           <div class="body">
             <p><b>Phase 3, which observations count.</b> Researchers assumed the rod and frame test is a measure of visual-spatial ability. That assumption is the whole experiment, and it was never argued for.</p>
             <p><b>Phase 4, collecting.</b> They collected that men aligned the rod correctly more often. Correct, as far as it goes.</p>
@@ -976,14 +1017,14 @@
             <p><b>The sentence that stops this being a story about bad scientists.</b> In hindsight it is tempting to call this bad science: sloppy design, preconceptions, hasty conclusions. The authors refuse. These were peer-reviewed studies that still shape a live research field, and the ways values entered, through inductive risk and through which alternatives come to mind, <b>look inherent to knowledge production, and not like faults anybody could correct</b>. That is why the chapter cannot end with a demand to try harder.</p>
           </div>
 
-          <h4>So what could objectivity mean now?</h4>
+          <h4 id="ch4-4" data-n="4.4">So what could objectivity mean now?</h4>
           <div class="body">
             <p><b>The move the whole chapter turns on.</b> The traditional question is <em>how does an individual know objectively</em>. Feminists replace it with <b>what conditions have to be met for knowing to be objective</b>. The property shifts off the person and onto the arrangement.</p>
             <p><b>The first answer, and the one most people start with.</b> <b>Spontaneous feminist empiricism</b> is Harding's name for the position that the standard methods are fine and the problem is that they were applied badly. Follow the procedures properly and the sexist values get filtered out. It keeps both traditional kinds of objectivity intact and treats bias as a failure of execution.</p>
             <p><b>Why the chapter thinks that is not enough.</b> Practices thought to be good science can carry values <em>inside</em> them, where nobody sees them, which is exactly the rod and frame test. And if values are unavoidable at some phases, the job is no longer to remove them. It is to tell the <b>legitimate uses from the illegitimate ones</b>, and the obvious line, values are fine in phases 1 and 2 and not after, does not hold, because the phases feed each other.</p>
           </div>
 
-          <h4>Longino: objectivity is a property of a community</h4>
+          <h4 id="ch4-5" data-n="4.5">Longino: objectivity is a property of a community</h4>
           <div class="body">
             <p><b>Her account of evidence first, because the objectivity follows from it.</b> Nothing is evidence on its own. A fact becomes evidence <em>for</em> a hypothesis only through <b>background assumptions</b> that connect the two. Change the assumptions and the same fact stops being evidence, or starts being evidence for something else. She calls this <b>contextual empiricism</b>: empiricist because only observable things count as evidence, contextual because what they are evidence of depends on the surrounding assumptions.</p>
           </div>
@@ -1054,7 +1095,7 @@
             <figcaption><b>Three answers to the same question, and they differ in what the word objective is attached to.</b> For Longino it describes a community and its habits. For Harding it describes an enquiry that has been examined from the outside, which is why the vantage point matters. For Wylie it describes the claim itself, which is the most conservative of the three and the reason hers sits closest to ordinary empiricism. Wylie is highlighted because her version is the one that does not require you to accept anything about social position before you can use it, so it is the easiest to defend in a seminar.</figcaption>
           </figure>
 
-          <h4>Harding: strong objectivity</h4>
+          <h4 id="ch4-6" data-n="4.6">Harding: strong objectivity</h4>
           <div class="body">
             <p><b>Her diagnosis, in her own words.</b> The problem was that good science <b>lacked the methodological resources to detect widely held sexist and androcentric assumptions</b>. <em>Androcentric</em> means centred on men, treating male behaviour as the standard case. Good science, following the traditional standards, did not catch these, so the standards are what need fixing.</p>
             <p><b>The engine of standpoint theory, which has a name.</b> The <b>inversion thesis</b>: people who are socially, politically and economically subordinated are, <em>because</em> of that position, better placed to notice the assumptions researchers in dominant positions are making. Harding's line is uncompromising: a maximally critical study of scientists and their communities can be done only from the perspective of those whose lives have been marginalised by those communities.</p>
@@ -1065,7 +1106,7 @@
             <p><b>And the definition to write down.</b> <b>Weak objectivity</b> means meeting the traditional empiricist standards of evidence, which covers phases 3 to 7. <b>Strong objectivity</b> means scrutinising <em>all</em> the phases, including whether the subject and the questions suit the goals of the research, and for Harding those goals include the liberatory aims of feminism. Her own summary: strong objectivity requires that scientists and their communities be integrated into democracy-advancing projects for scientific and epistemological reasons as well as moral and political ones.</p>
           </div>
 
-          <h4>Wylie: objectivity is a property of claims</h4>
+          <h4 id="ch4-7" data-n="4.7">Wylie: objectivity is a property of claims</h4>
           <div class="body">
             <p><b>She starts from a complaint about the word.</b> Ian Hacking called <em>objective</em> an <b>elevator word</b>, meaning a word that does no work of its own and only raises the standing of whatever it is attached to. Calling a result objective says it does not suffer from some failing, without saying what it has.</p>
             <p><b>So she makes it mean something.</b> Objectivity belongs to <b>knowledge claims</b> and not to researchers, and a claim is objective to the degree it shows the <b>epistemic virtues</b>, meaning the properties that make a claim good as knowledge. The standard list, from Kuhn and from Longino: <b>empirical adequacy</b> (it fits the data), <b>inferential robustness</b> (the conclusion survives changes in assumptions), <b>explanatory power</b>, <b>internal coherence</b>, and <b>consistency with other established knowledge</b>.</p>
@@ -1079,7 +1120,7 @@
             <p><b>And her status claim.</b> Standpoint theory is <b>a purpose-specific epistemic stance and not a full-service epistemology</b>: a tool to be used on particular problems, and never a replacement theory of knowledge. Harding's early work treated it as an alternative epistemology, Wylie rejects that, and Harding's later work has moved toward Wylie's view. Intemann calls the merged position <b>feminist standpoint empiricism</b>.</p>
           </div>
 
-          <h4>The pragmatists, and the chapter's own doubts</h4>
+          <h4 id="ch4-8" data-n="4.8">The pragmatists, and the chapter's own doubts</h4>
           <div class="body">
             <p><b>Miriam Solomon sorts feminist empiricism into two kinds by what values are allowed to do.</b></p>
             <ul>
@@ -1142,7 +1183,7 @@
 
           <div class="why"><b>Why this chapter is set.</b> It is the one with a genuinely new idea in it. Everything else this term has been about how knowledge gets made; this flips the question and asks how <em>not</em> knowing gets made. The field has a name, a five-part taxonomy and five production strategies, all of which are the kind of thing an examiner can ask you to list.</div>
 
-          <h4>Where it starts: MeToo</h4>
+          <h4 id="ch5-1" data-n="5.1">Where it starts: MeToo</h4>
           <div class="body">
             <p><b>The facts the chapter uses.</b> Tarana Burke began MeToo on social media in 2006, encouraging people to make their experiences of sexual assault and harassment public. It became enormous in 2017, when the actress Alyssa Milano pushed the hashtag during the accusations against the film producer Harvey Weinstein.</p>
             <p><b>What the authors say it did, which is more interesting than what it is usually credited with.</b> It made visible something most people had not known: how common sexual assault and harassment are, especially at work. And it did something sharper. <b>It gave survivors a way to see their own experience differently.</b> Women who had described an encounter with an employer as consensual, including Monica Lewinsky and several NBC employees who worked with Matt Lauer, later said the consent had come partly from fear of what refusing would do to their careers. The movement handed people a concept, and with it the encounter changed shape.</p>
@@ -1157,7 +1198,7 @@
             <figcaption><b>Tarana Burke, who began MeToo in 2006, eleven years before it became a hashtag.</b> The chapter uses the gap between the two dates deliberately. The facts did not change in 2017 and neither did the law. What changed was whose experience got taken up, which is the chapter's subject. <span class="cred">MIT Media Lab, CC BY 2.0, via Wikimedia Commons.</span></figcaption>
           </figure>
 
-          <h4>What ignorance is, and the thing most people get wrong about it</h4>
+          <h4 id="ch5-2" data-n="5.2">What ignorance is, and the thing most people get wrong about it</h4>
           <div class="body">
             <p><b>The field.</b> <b>Agnotology</b> is the study of ignorance: how it is produced and maintained. It got going in the 1990s with Robert Proctor, and feminists, critical race theorists and decolonial theorists developed a related line called <b>epistemologies of ignorance</b>. Sullivan and Tuana's definition: identifying the different forms of ignorance, examining how they are produced and sustained, and asking what role they play in knowledge practices.</p>
             <p><b>Ignorance is not automatically bad, and the chapter spends real time on this.</b> It is a tool as often as a failure.</p>
@@ -1171,7 +1212,7 @@
             <blockquote>ignorance is not something simple: it is not a simple lack, absence or emptiness, and it is not a passive state. Ignorance of this sort, the determined ignorance most white Americans have of American Indian tribes and clans, the ostrich-like ignorance most white Americans have of the histories of Asian peoples in this country, the impoverishing ignorance most white Americans have of Black language, ignorance of these sorts is a complex result of many acts and many negligences.<cite>Marilyn Frye, 1983, p. 118</cite></blockquote>
           </div>
 
-          <h4>Tuana&#8217;s five kinds of ignorance</h4>
+          <h4 id="ch5-3" data-n="5.3">Tuana&#8217;s five kinds of ignorance</h4>
           <div class="body">
             <p><b>Where it comes from.</b> Nancy Tuana built the taxonomy out of the women's health movement of the 1970s and 1980s, which she describes as a movement of <b>epistemological resistance</b>: getting women knowledge about their own bodies, and attacking the production of ignorance about them. The five are in the order she gives them, and the order matters because it runs from passive to active and then out the other side.</p>
           </div>
@@ -1255,7 +1296,7 @@
             <p><b>And Tuana's own caveat.</b> The list is not exhaustive, and one phenomenon can occupy several rows. White ignorance can be not caring to know, or blocked by current interests, or willful, or lovingly ignorant even in somebody actively anti-racist, because they can never fully know what it is to live as a Black person in a racist society.</p>
           </div>
 
-          <h4>The five ways ignorance gets made</h4>
+          <h4 id="ch5-4" data-n="5.4">The five ways ignorance gets made</h4>
           <div class="body">
             <p><b>Cutting across the five kinds, the chapter names five strategies.</b> These answer <em>how</em>, where the taxonomy answered <em>what</em>.</p>
             <p><b>1. Neglect.</b> Not studying something. Passive when a question never occurs to anyone, active when somebody chooses to look away. Adrienne Mayor's case is ancient Mediterranean knowledge of fossils, which the history of science ignored because scholars disregarded non-elite sources and filed the accounts as folklore, <b>so modern palaeontologists were ignorant of the earliest fossil discoveries</b>. Media choose which stories to cover, which is part of why people on different news diets believe different things. The chapter's longest case is the argument over which parts of United States history get taught: it notes that <b>neglect happens across the political spectrum</b>, and gives the Democratic Party's 2016 decision to concentrate on urban and suburban voters as an example that left its own officials systematically ignorant about rural conditions.</p>
@@ -1318,7 +1359,7 @@
 
           <div class="why"><b>This one is set for week 7, and it sits here because it is the worked example for the two chapters above.</b> The revised reading guide puts it in the 19 to 21 October week with three other handbook chapters. It is kept in this guide because it shows the nine phases and the production of ignorance happening to a single field across 150 years, and because its second case study is the full version of the primatology story week 5 opened with. The first three pages are a survey and can be read quickly. <b>The two case studies are the reason it is on the list.</b></div>
 
-          <h4>Four faults to look for, which is the useful list</h4>
+          <h4 id="nelson-1" data-n="20.1">Four faults to look for, which is the useful list</h4>
           <div class="body">
             <p><b>Nelson names the things feminists go looking for in biological research.</b> The first three are worth having as a checklist, because they turn up in every case the chapter discusses.</p>
             <ul>
@@ -1330,7 +1371,7 @@
             <p><b>One terminological note worth knowing.</b> Nelson writes <b>sex/gender</b> in place of gender for human cases, because the evidence is that neither is stable or unaffected by the other. The quotation she gives: it is impossible to disentangle the effects of sex from those of gender, since bodies, brains included, change in response to environments and experience.</p>
           </div>
 
-          <h4>Case one: the peacock&#8217;s tail, and what Darwin built to explain it</h4>
+          <h4 id="nelson-2" data-n="20.2">Case one: the peacock&#8217;s tail, and what Darwin built to explain it</h4>
           <div class="body">
             <p><b>Start with natural selection, because sexual selection was invented to patch a hole in it.</b> Darwin's argument: members of a species vary; there is a struggle for existence; so a variation that helps survival even slightly makes its holder likelier to survive and pass it on; and enough accumulated variations make a new species. He was clear about the consequence: <b>any trait that hurt survival would have to be selected against.</b></p>
             <p><b>The hole.</b> The peacock's tail is enormous, bright enough to attract predators, and heavy enough to stop the bird running or flying away. Peahens have small brown tails. More generally males of many species are brighter and bigger than females, which looks like a disadvantage in surviving. <b>So why has natural selection permitted it?</b></p>
@@ -1361,7 +1402,7 @@
             <figcaption><b>Darwin in 1881, the year before he died.</b> Nelson's case is not that he was a bad scientist. It is the opposite and it is harder to deal with: sexual selection is a real piece of theory solving a real problem, and the account of male and female temperament travelled inside it for a century because it arrived as part of the same package. <span class="cred">Herbert Rose Barraud, public domain, via Wikimedia Commons.</span></figcaption>
           </figure>
 
-          <h4>Case two: the baboons, and the primate pattern</h4>
+          <h4 id="nelson-3" data-n="20.3">Case two: the baboons, and the primate pattern</h4>
           <div class="body">
             <p><b>Why primates get studied for this at all.</b> Humans differ from each other in about 0.1 per cent of their DNA. Humans and chimpanzees differ by about 1.2 per cent, humans and gorillas by about 1.6 per cent, and the split from a common ancestor is put at around six million years ago. So it looks reasonable to study their evolution to learn about ours, and some researchers go further and treat them as showing <b>a basic human nature underneath the overlay of culture</b>.</p>
             <p><b>The 1960s and 1970s studies.</b> Groups of anthropologists ran long field studies of savannah baboons in the Serengeti. They proposed a <b>primate pattern</b>: the behaviour and social structure they saw in savannah baboons was taken to be typical of most primates, produced by selection pressures common to all of them.</p>
@@ -1384,7 +1425,7 @@
             <p><b>And Hrdy, which is week 5's opening told properly.</b> From her studies of hanuman langurs and rhesus monkeys: <b>a polyandrous component is at the core of the breeding systems of most troop-dwelling primates</b>, polyandrous meaning females who mate with more than one male. Females mate with many males, each of whom may contribute a little to the offspring's survival.</p>
           </div>
 
-          <h4>The argument about what all this proves</h4>
+          <h4 id="nelson-4" data-n="20.4">The argument about what all this proves</h4>
           <div class="body">
             <p><b>First debate: was the old research simply bad science?</b> If it was, feminist critique tells you nothing about how science works, only that these particular people were careless. <b>Nelson says no, and this is the most important sentence in the chapter.</b> The studies were in keeping with the accepted hypotheses, priorities, methods and norms of their fields. The scientists gave the evidence they recognised its due. The feminist claim is that <b>there was more and different evidence to be considered</b>.</p>
             <p><b>Second debate: did feminism actually cause the change?</b> Two rival explanations are on offer. That science simply <b>self-corrects</b>. Or that it was <b>coincidence</b> that women influenced by the women's movement arrived in these fields just as the thinking about gender changed.</p>
@@ -2268,7 +2309,22 @@
       if (t <= 0 && t > bestTop) { bestTop = t; best = i; }
     }
     links.forEach(function (a, i) { a.classList.toggle('on', i === best); });
+    // only the chapter you are inside opens its list of sections
+    var of = '';
+    if (best >= 0) {
+      var cur = links[best];
+      of = cur.classList.contains('sb') ? cur.getAttribute('data-of')
+                                        : cur.getAttribute('href').slice(1);
+    }
+    links.forEach(function (a) {
+      if (a.classList.contains('sb')) a.classList.toggle('show', a.getAttribute('data-of') === of);
+    });
+    if (best !== was && best >= 0 && nav.scrollHeight > nav.clientHeight) {
+      links[best].scrollIntoView({ block: 'nearest' });
+    }
+    was = best;
   }
+  var was = -1;
   // how far through the reading this is, drawn along the top edge of the dock
   var prog = document.getElementById('prog');
   function bar() {

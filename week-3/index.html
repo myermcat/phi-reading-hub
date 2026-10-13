@@ -178,7 +178,12 @@
 
   .qline { font-family: var(--display); font-size: 19.5px; line-height: 1.42; padding: 12px 0 12px 16px; border-left: 2px solid var(--accent); color: var(--ink); }
 
-  .rd h4 { margin: 8px 0 -7px; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+  .rd h4 { margin: 16px 0 -13px; font-family: var(--display); font-weight: 600;
+           font-size: 20px; line-height: 1.22; letter-spacing: -0.005em; color: var(--ink);
+           text-wrap: balance; scroll-margin-top: 78px; }
+  .rd h4::before { content: attr(data-n); display: block; margin-bottom: 6px;
+           font-family: var(--mono); font-size: 10.5px; font-weight: 500;
+           letter-spacing: 0.12em; color: var(--accent); }
   .rd ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 9px; max-width: var(--measure); }
   .rd li { padding-left: 2px; }
   .rd .body { display: flex; flex-direction: column; gap: 14px; }
@@ -488,7 +493,27 @@
   #nav .key i.a { color: var(--ink-soft); }
   #nav .key i.b { opacity: .68; }
   #nav .key i.c { opacity: .48; }
-  @media (min-width: 1180px) { #nav { display: flex; } }
+  /* the contents list used to need a 1180px window. It takes its own column now, so it
+     appears from 1000px up, and only goes back to floating beside a centred page when
+     there is room for that. */
+  @media (min-width: 1000px) {
+    #nav { display: flex; left: 16px; width: 150px; }
+    body { padding-left: 182px; }
+  }
+  @media (min-width: 1320px) {
+    #nav { left: max(16px, calc(50vw - 640px)); }
+    body { padding-left: 0; }
+  }
+  #nav { top: 84px; transform: none; max-height: calc(100vh - 160px);
+         overflow-y: auto; scrollbar-width: none; }
+  #nav::-webkit-scrollbar { display: none; }
+  #nav a.sb { display: none; font-size: 9.5px; letter-spacing: .02em; line-height: 1.32;
+              padding: 3px 0 3px 11px; margin-left: 9px; opacity: .9; }
+  #nav a.sb.show { display: block; }
+  #nav a.sb { white-space: normal; }
+  #nav a.sb b { font-weight: 500; font-style: normal; color: var(--muted);
+                margin-right: 5px; }
+  #nav a.sb:hover b, #nav a.sb.on b { color: var(--accent); }
 
   /* glossary. Closed by default: it is a reference list and not something to read through,
      and left open it makes the page look twice as long as it is. */
@@ -703,8 +728,29 @@
   <a class="grp" href="#s-notes">Notes by text</a>
   <a class="grp" href="#s-texts">The reading</a>
   <a class="core" href="#sismondo" title="Sismondo ch. 2 &middot; the assigned chapter">Sismondo<i>2010</i></a>
+  <a class="sb" data-of="sismondo" href="#sismondo-1"><b>2.1</b>Why the chapter is set, and what it is doing</a>
+  <a class="sb" data-of="sismondo" href="#sismondo-2"><b>2.2</b>The first target: Whig history</a>
+  <a class="sb" data-of="sismondo" href="#sismondo-3"><b>2.3</b>What a paradigm is, in this chapter&#x27;s words</a>
+  <a class="sb" data-of="sismondo" href="#sismondo-4"><b>2.4</b>Crisis, revolution, and the sentence that caused the trouble</a>
+  <a class="sb" data-of="sismondo" href="#sismondo-5"><b>2.5</b>Incommensurability, and its three roots</a>
+  <a class="sb" data-of="sismondo" href="#sismondo-6"><b>2.6</b>And then he takes it apart, which is the half that gets missed</a>
+  <a class="sb" data-of="sismondo" href="#sismondo-7"><b>2.7</b>So how do people across a boundary actually talk? Two answers</a>
+  <a class="sb" data-of="sismondo" href="#sismondo-8"><b>2.8</b>What the chapter says the book destroyed</a>
+  <a class="sb" data-of="sismondo" href="#sismondo-9"><b>2.9</b>The three boxes, which are examinable and easy to skip</a>
   <a class="skim" href="#kuhn" title="Background &middot; Kuhn himself">Kuhn<i>1962</i></a>
+  <a class="sb" data-of="kuhn" href="#kuhn-1"><b>?.1</b>The book, and the joke about where it was published</a>
+  <a class="sb" data-of="kuhn" href="#kuhn-2"><b>?.2</b>What people took from it, and what he wrote</a>
+  <a class="sb" data-of="kuhn" href="#kuhn-3"><b>?.3</b>Normal science: most scientists are not testing anything</a>
+  <a class="sb" data-of="kuhn" href="#kuhn-4"><b>?.4</b>Paradigm, and why the word is slippery</a>
+  <a class="sb" data-of="kuhn" href="#kuhn-5"><b>?.5</b>Anomaly, crisis, revolution</a>
+  <a class="sb" data-of="kuhn" href="#kuhn-6"><b>?.6</b>Incommensurability, the claim that causes all the trouble</a>
+  <a class="sb" data-of="kuhn" href="#kuhn-7"><b>?.7</b>Why the course sets this here</a>
   <a class="core" href="#r54" title="Anthology ch. 54 &middot; read properly">Foucault<i>1975</i></a>
+  <a class="sb" data-of="r54" href="#r54-1"><b>54.1</b>He begins with a plague town, and the detail is the argument</a>
+  <a class="sb" data-of="r54" href="#r54-2"><b>54.2</b>What he extracts from it: the definition of discipline</a>
+  <a class="sb" data-of="r54" href="#r54-3"><b>54.3</b>Bentham&#x27;s Panopticon, and why it works</a>
+  <a class="sb" data-of="r54" href="#r54-4"><b>54.4</b>The crucial move: it is a diagram</a>
+  <a class="sb" data-of="r54" href="#r54-5"><b>54.5</b>Why this belongs in a course about scientific method</a>
   <a class="grp" href="#s-gloss">Glossary</a>
   <div class="key"><em>Key</em><i class="a">solid = read properly</i><i class="b">faded = skim</i><i class="c">faintest = if time</i></div>
 </nav>
@@ -764,20 +810,20 @@
 
           <p class="qline">If paradigms cannot be measured against each other, how does anybody in science talk to anybody else?</p>
 
-          <h4>Why the chapter is set, and what it is doing</h4>
+          <h4 id="sismondo-1" data-n="2.1">Why the chapter is set, and what it is doing</h4>
           <div class="body">
             <p><b>This is a textbook chapter, and its subject is a field.</b> Sismondo is introducing science and technology studies, and chapter 2 is the origin story of that field: the moment philosophy stopped asking what makes a statement scientific and started asking what a community of scientists does. So the chapter spends its first half on Kuhn and its second half on what people built afterwards, and the second half is the part a reader expecting a summary of Kuhn will miss.</p>
             <p><b>His one-line version of Kuhn's move</b> is that Kuhn rejected the formalist view with its rules about what science ought to be and looked at the activities instead, so that <b>science is merely what scientists do</b>. Everything else in the chapter follows from taking that seriously.</p>
           </div>
 
-          <h4>The first target: Whig history</h4>
+          <h4 id="sismondo-2" data-n="2.2">The first target: Whig history</h4>
           <div class="body">
             <p><b>Whig history</b>, a phrase Sismondo credits to the historian Herbert Butterfield in 1931, is history written as a series of steps toward the present. In the history of science the temptation is to treat every move toward what we now believe as more rational, more natural, and less in need of explanation than the opposition to it. Copernicus gets no explanation because he turned out to be right; his opponents get explained away as stupid or frightened.</p>
             <p><b>Sismondo's objection is about causes, and it is short.</b> Events must follow their causes, so a sequence of events cannot be explained by where it ended up. Explaining 1543 by what happened in 1687 is explaining a thing by something that had not happened yet.</p>
             <p><b>Why it matters for the rest:</b> the story has been told as though history were aiming at its own ending all along, which is what <b>teleology</b> means. Take that out, and there is room for changes that are not improvements. That room is where the whole account of revolutions goes.</p>
           </div>
 
-          <h4>What a paradigm is, in this chapter's words</h4>
+          <h4 id="sismondo-3" data-n="2.3">What a paradigm is, in this chapter's words</h4>
           <div class="body">
             <p><b>Normal science is the science done when a field shares four things:</b> recognition of key past achievements, beliefs about which theories are right, an understanding of which problems matter, and methods for solving them. A group that shares those four shares a <b>paradigm</b>.</p>
             <p><b>The word came from grammar</b>, where a paradigm is the table of endings you learn and then copy, and Sismondo keeps that sense deliberately: it points at an achievement that serves as an example for others to follow. Newton's mechanics, Lavoisier's chemistry and Mendel's genetics each did that, structuring the research that came after them.</p>
@@ -790,7 +836,7 @@
             <p><b>Sismondo's explanation for why the paradigm is not questioned is training, and he is blunt about it.</b> The natural sciences are exceptionally good at socialising their practitioners: textbooks that present a standardised view of the field and its history, long apprenticeships, and years of being set problems that are well understood and already have known answers. A student is not taught to doubt the framework, because every exercise they are given presupposes it.</p>
           </div>
 
-          <h4>Crisis, revolution, and the sentence that caused the trouble</h4>
+          <h4 id="sismondo-4" data-n="2.4">Crisis, revolution, and the sentence that caused the trouble</h4>
           <div class="body">
             <p><b>Anomalies accumulate</b>, because a paradigm can only ever be a partial way of dealing with its subject. Some of them stop being puzzles and start being real problems, which produces discomfort with the terms of the framework itself. That is <b>crisis</b>.</p>
             <p><b>Then the generational part.</b> If an alternative appears that solves some of the central unsolved problems, the scientists who take it up first are the younger ones, the ones not yet fully indoctrinated into the way of life of the older paradigm. As the older and more conservative scientists become marginalised, the alternative becomes a paradigm itself and a new period of normal science begins.</p>
@@ -802,7 +848,7 @@
             <p><b>Read that carefully, because it is a report and not an endorsement.</b> Sismondo is saying what follows <em>if Kuhn is right</em>, and the next four pages are him arguing that this part of Kuhn is not right.</p>
           </div>
 
-          <h4>Incommensurability, and its three roots</h4>
+          <h4 id="sismondo-5" data-n="2.5">Incommensurability, and its three roots</h4>
           <div class="body">
             <p><b>The claim is that there is no shared ruler.</b> Two paradigms cannot be laid side by side and measured against each other, because there is no scale both of them accept, so asking which is better has no way of being settled. The word for that is <b>incommensurable</b>, which literally means having no common measure. Sismondo gives Kuhn three separate reasons for the claim, and keeping them apart is what lets him knock them down one at a time.</p>
             <ol>
@@ -816,7 +862,7 @@
             </div>
           </div>
 
-          <h4>And then he takes it apart, which is the half that gets missed</h4>
+          <h4 id="sismondo-6" data-n="2.6">And then he takes it apart, which is the half that gets missed</h4>
           <div class="body">
             <p><b>This is the pivot of the chapter, and a reader skimming for a summary of Kuhn will read straight past it.</b> Having set out the three roots, Sismondo argues that the strong claim fails on all of them.</p>
             <p><b>Meaning.</b> The case for semantic incommensurability has had a great deal of attention and almost all of it negative. Meanings do change. They do not change so much, or so systematically, that claims using them cannot be compared. Most philosophers and linguists who have worked on it have concluded the claim cannot be sustained, and Donald Davidson argued in 1974 that a change of meaning that radical cannot even be made sense of.</p>
@@ -834,7 +880,7 @@
             <p><b>That is the chapter's own best line and it is worth holding.</b> Science hangs together not through one continuous thing running through it but through overlap. It gets what Sismondo calls an <em>ad hoc unity</em> from the fact that its parts rarely change together.</p>
           </div>
 
-          <h4>So how do people across a boundary actually talk? Two answers</h4>
+          <h4 id="sismondo-7" data-n="2.7">So how do people across a boundary actually talk? Two answers</h4>
           <div class="body">
             <p><b>These are the two named concepts most likely to be asked for, and neither of them is Kuhn's.</b> They are what the field built once it accepted that different specialties really do work differently.</p>
             <p><b>Start with the ordinary case.</b> A molecular biologist's work is not obviously interesting or even comprehensible to an evolutionary ecologist, and with some translation it sometimes becomes so. Disciplines are what Karin Knorr Cetina calls <b>epistemic cultures</b>, with different orientations to their objects, different social units, different ways of interacting. Yet they interact anyway, and science gets some unity out of it. The question is how.</p>
@@ -900,7 +946,7 @@
             <p><b>His conclusion is the deflationary one.</b> The sheer number and variety of these bridges suggests that coordination and communication across boundaries are common, and that a good deal of it happens by plain translation: researchers learn what colleagues in other fields know and put things in terms those colleagues can follow. Trading zones and boundary objects may therefore <b>overstate the difficulty</b>. Incommensurability, as it turns up in practice, is often not a serious barrier at all.</p>
           </div>
 
-          <h4>What the chapter says the book destroyed</h4>
+          <h4 id="sismondo-8" data-n="2.8">What the chapter says the book destroyed</h4>
           <div class="body">
             <p><b>The conclusion lines Kuhn up against four positions</b>, three of which are in the week 2 packet, and this list is the most examinable paragraph in the chapter.</p>
             <ul>
@@ -913,7 +959,7 @@
             <p><b>And the verdict, which is oddly generous and oddly brutal at once.</b> Few of Kuhn's specific ideas have survived fully intact. The book profoundly affected everything that came after it anyway, because what it did was create a space for studying the practices of science locally, in their own terms, with no need to score them against progress or against an ideal.</p>
           </div>
 
-          <h4>The three boxes, which are examinable and easy to skip</h4>
+          <h4 id="sismondo-9" data-n="2.9">The three boxes, which are examinable and easy to skip</h4>
           <div class="body">
             <p><b>Sismondo's boxes are set apart from the text and carry named material.</b> All three are inside the assigned pages.</p>
             <details class="ctx"><summary><i>Box 2.1</i>The modernity of science, page 13</summary><div class="bq">
@@ -958,7 +1004,7 @@
 
           <p class="qline">Why does a scientific community change its mind, if not because the evidence made it?</p>
 
-          <h4>The book, and the joke about where it was published</h4>
+          <h4 id="kuhn-1" data-n="?.1">The book, and the joke about where it was published</h4>
           <div class="body">
             <p><b>Thomas Kuhn</b> was an American physicist who moved into the history of science, and in 1962 he published <em>The Structure of Scientific Revolutions</em>. It is short, it is the most cited book of its century in the humanities and social sciences, and it put the word <b>paradigm</b> into ordinary English, where it is now used by people selling software.</p>
             <p><b>Where it came out is the joke.</b> It was published as a monograph inside the <em>International Encyclopedia of Unified Science</em>, which was the Vienna Circle's own publishing project. Chapter 9 of last week's packet is the Vienna Circle manifesto, arguing that science is one unified structure built up from verified observation statements. Kuhn's book, which says science does not build up and observation statements are not neutral, came out as a volume of their encyclopedia. The people who commissioned it published the thing that undid it.</p>
@@ -969,7 +1015,7 @@
             </figure>
           </div>
 
-          <h4>What people took from it, and what he wrote</h4>
+          <h4 id="kuhn-2" data-n="?.2">What people took from it, and what he wrote</h4>
           <div class="body">
             <p><b>What the book was read as saying</b> was that science is not rational. That a paradigm wins by fashion, politics or the deaths of the people who disagree, that one is as good as another, and that there is no such thing as getting closer to the truth. That reading is why "paradigm shift" now means any change of mind at all, and it is the reading Kuhn spent the rest of his life denying.</p>
             <p><b>What he wrote is narrower.</b> There are real reasons for preferring one theory to another, and he named five: accuracy, consistency, breadth, simplicity and fruitfulness. His claim is that those five do not settle it, because two people can weigh them differently and neither is being stupid. One prefers the theory that fits the measurements better, the other the theory that covers more ground, and there is no further rule that says which of them is right. So the choice is reasoned and underdetermined at the same time, which is a long way from irrational.</p>
@@ -978,7 +1024,7 @@
             <p><b>Kuhn says bricks come out.</b> Newtonian mass is a fixed quantity that a body simply has; relativistic mass changes with speed and converts into energy. They are not the same quantity with a correction term, so the sentence "mass is conserved" is not a true claim that Einstein kept and refined. It was thrown away and something else was put in its place that happens to give nearly the same numbers when things move slowly. Phlogiston went out of the wall entirely. Caloric, the weightless fluid heat was made of, went out. The crystal spheres carrying the planets went out. A wall that loses courses is not a wall being built up, and that is the whole of what "science does not accumulate" means.</p>
           </div>
 
-          <h4>Normal science: most scientists are not testing anything</h4>
+          <h4 id="kuhn-3" data-n="?.3">Normal science: most scientists are not testing anything</h4>
           <div class="body">
             <p><b>Kuhn's first move is to describe what scientists actually do all day</b>, which is not what the textbook picture says. The textbook picture is that a scientist proposes a bold conjecture and tries to refute it. Kuhn looked at the historical record and found that almost nobody does this almost ever.</p>
             <p>What they do instead he calls <b>normal science</b>: solving puzzles inside a framework that is not itself in question. Measure this constant more precisely. Extend the theory to one more case. Build an instrument that gets at the quantity the theory says exists. The framework is the tool they work with.</p>
@@ -989,7 +1035,7 @@
             </div>
           </div>
 
-          <h4>Paradigm, and why the word is slippery</h4>
+          <h4 id="kuhn-4" data-n="?.4">Paradigm, and why the word is slippery</h4>
           <div class="body">
             <p><b>Kuhn used <em>paradigm</em> in more senses than he meant to.</b> A critic named Margaret Masterman went through the book and counted twenty-one distinct uses. Kuhn accepted the complaint and in a postscript split it in two, and those two are the ones to hold.</p>
             <ul>
@@ -999,7 +1045,7 @@
             <p><b>The exemplar sense is the interesting one</b>, because it says a scientist is trained less by learning rules than by copying worked examples. Nobody can state the rules of their own field completely. What they have is a stock of cases and a feel for which new problem resembles which old one. That is a craft, and it is learned the way crafts are learned, which puts Kuhn unexpectedly close to the Greek <em>technē</em> in last week's Schadewaldt chapter.</p>
           </div>
 
-          <h4>Anomaly, crisis, revolution</h4>
+          <h4 id="kuhn-5" data-n="?.5">Anomaly, crisis, revolution</h4>
           <div class="body">
             <p><b>Anomaly.</b> A result the framework cannot digest. Most anomalies get absorbed, adjusted for, or put on a shelf marked "not yet", and there is a good reason for it: a framework that collapsed at the first awkward result would never get any work done.</p>
             <p><b>Crisis.</b> Anomalies accumulate at a point the community cares about, the fixes start looking like patches, and confidence goes. Kuhn's claim is that this is a state of the <em>community</em>. The same anomalies could have been known for decades and the crisis arrives when confidence does.</p>
@@ -1033,7 +1079,7 @@
             </figure>
           </div>
 
-          <h4>Incommensurability, the claim that causes all the trouble</h4>
+          <h4 id="kuhn-6" data-n="?.6">Incommensurability, the claim that causes all the trouble</h4>
           <div class="body">
             <p><b>Incommensurable means there is no common measure.</b> Kuhn borrowed it from geometry, where the side and the diagonal of a square cannot both be counted in whole units of the same ruler. Applied to paradigms it means you cannot settle the contest by totalling the evidence, because three things move at once.</p>
             <ul>
@@ -1054,7 +1100,7 @@
             </div>
           </div>
 
-          <h4>Why the course sets this here</h4>
+          <h4 id="kuhn-7" data-n="?.7">Why the course sets this here</h4>
           <div class="body">
             <p><b>Kuhn moves the unit of analysis from the method to the community.</b> Before him, the question was what rule separates science from everything else, which is the Vienna Circle question. After him, the question is what a trained group of people accepts, why they accept it, and what would make them stop. That is a question about people, and people can be studied by sociologists.</p>
             <figure class="dia">
@@ -1156,7 +1202,7 @@
 
           <p class="qline">What kind of power works by making you watch yourself?</p>
 
-          <h4>He begins with a plague town, and the detail is the argument</h4>
+          <h4 id="r54-1" data-n="54.1">He begins with a plague town, and the detail is the argument</h4>
           <div class="body">
             <p>A seventeenth-century town under plague. It is closed and cut into quarters and streets, each under an official who may not leave for the duration. Everyone is shut in their house on pain of death.</p>
             <p>Every inhabitant is registered by name, age and sex regardless of station. Copies of the register go to three places: the quarter's intendant, the town hall, and the official who calls the roll daily at each window. Each person has to appear and answer to their name. Everything observed on the rounds is written down and passed up the chain: deaths, illnesses, complaints, irregularities. Magistrates control all medical treatment, and no other practitioner may treat, no apothecary prepare medicine and no confessor visit a sick person without written permission.</p>
@@ -1169,7 +1215,7 @@
             </div></details>
           </div>
 
-          <h4>What he extracts from it: the definition of discipline</h4>
+          <h4 id="r54-2" data-n="54.2">What he extracts from it: the definition of discipline</h4>
           <div class="body">
             <p>Foucault's summary is the sentence to underline. An enclosed, segmented space, observed at every point, every individual fixed in place, the slightest movement supervised, all events recorded, and an <b>uninterrupted work of writing</b> linking the centre to the edges. He calls it a compact model of the disciplinary mechanism.</p>
             <p><b>Discipline is a technical term for him</b>, and it names a way of exercising power that works by sorting: dividing a crowd into individuals, assigning each one a place, a timetable and a record, and then watching. Its characteristic operation is <em>analysis</em>, in the literal sense of breaking a thing into parts. The plague is a mixture, bodies and diseases and rumours confused together, and the answer to a mixture is to separate it into countable individuals.</p>
@@ -1177,7 +1223,7 @@
             <p><b>Two historical models, two techniques.</b> The <b>leper</b> was excluded, in one massive binary cut, exile, and then left to a mass in which telling one person from another was pointless. The <b>plague victim</b> was included and sorted: multiple separations, individualising distribution, surveillance in depth. Modern institutions inherit the second technique while still using the first's language of casting out.</p>
           </div>
 
-          <h4>Bentham's Panopticon, and why it works</h4>
+          <h4 id="r54-3" data-n="54.3">Bentham's Panopticon, and why it works</h4>
           <div class="body">
             <p>In 1787 Jeremy Bentham designed a building: a ring of cells around a central tower. Each cell runs the full depth of the building and has a window at the outer wall and one at the inner, so the occupant appears from the tower as a perfectly legible silhouette, backlit. The tower has blinds and angled partitions, so its interior stays dark.</p>
             <figure class="pic">
@@ -1194,14 +1240,14 @@
             </ul>
           </div>
 
-          <h4>The crucial move: it is a diagram</h4>
+          <h4 id="r54-4" data-n="54.4">The crucial move: it is a diagram</h4>
           <div class="body">
             <p>Foucault insists the Panopticon must not be read as a dream building. It is a <b>diagram</b>: a mechanism of power reduced to its ideal form, stripped of any particular use, a figure of political technology that can and must be detached from any specific application.</p>
             <p>Which is why he lists its uses in a single breath: reform prisoners, treat patients, instruct schoolchildren, confine the insane, supervise workers, put beggars to work. Wherever a task has to be imposed on a multiplicity of people, the schema applies. He also notes Bentham's own sales pitch, quoted for its enthusiasm: morals reformed, health preserved, industry invigorated, instruction diffused, public burdens lightened, economy set upon a rock, all by a simple idea in architecture. A reformer proposed this as reform.</p>
             <p>And the final point is the subtle one. This power is not a weight pressing from outside on a function it interferes with. It is woven into the function so intimately that it <b>increases that function's efficiency while multiplying its own points of contact</b>. The school teaches better because of it. That is what makes it hard to argue with.</p>
           </div>
 
-          <h4>Why this belongs in a course about scientific method</h4>
+          <h4 id="r54-5" data-n="54.5">Why this belongs in a course about scientific method</h4>
           <div class="body">
             <p>Look at what the plague town and the Panopticon are both made of: registers, roll calls, case notes, timetables, examinations, files. Every one of those is simultaneously an <b>instrument of knowledge</b> and an <b>instrument of control</b>. You find out what a person is like by the same act that fixes them in place.</p>
             <p>Foucault's historical claim is that the human sciences were born inside exactly these institutions: psychiatry, criminology, the study of childhood and education. Prisons, clinics, asylums and schools were the first places with captive populations that could be measured over time. So knowledge about people did not arrive from outside and get applied to institutions. It was produced by them. Once that is on the table, "whose knowledge counts" stops being a philosophical curiosity and becomes a political question, which is where Weeks 4 through 9 of the course begin.</p>
@@ -2073,7 +2119,22 @@
       if (t <= 0 && t > bestTop) { bestTop = t; best = i; }
     }
     links.forEach(function (a, i) { a.classList.toggle('on', i === best); });
+    // only the chapter you are inside opens its list of sections
+    var of = '';
+    if (best >= 0) {
+      var cur = links[best];
+      of = cur.classList.contains('sb') ? cur.getAttribute('data-of')
+                                        : cur.getAttribute('href').slice(1);
+    }
+    links.forEach(function (a) {
+      if (a.classList.contains('sb')) a.classList.toggle('show', a.getAttribute('data-of') === of);
+    });
+    if (best !== was && best >= 0 && nav.scrollHeight > nav.clientHeight) {
+      links[best].scrollIntoView({ block: 'nearest' });
+    }
+    was = best;
   }
+  var was = -1;
   // how far through the reading this is, drawn along the top edge of the dock
   var prog = document.getElementById('prog');
   function bar() {

@@ -178,7 +178,12 @@
 
   .qline { font-family: var(--display); font-size: 19.5px; line-height: 1.42; padding: 12px 0 12px 16px; border-left: 2px solid var(--accent); color: var(--ink); }
 
-  .rd h4 { margin: 8px 0 -7px; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+  .rd h4 { margin: 16px 0 -13px; font-family: var(--display); font-weight: 600;
+           font-size: 20px; line-height: 1.22; letter-spacing: -0.005em; color: var(--ink);
+           text-wrap: balance; scroll-margin-top: 78px; }
+  .rd h4::before { content: attr(data-n); display: block; margin-bottom: 6px;
+           font-family: var(--mono); font-size: 10.5px; font-weight: 500;
+           letter-spacing: 0.12em; color: var(--accent); }
   .rd ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 9px; max-width: var(--measure); }
   .rd li { padding-left: 2px; }
   .rd .body { display: flex; flex-direction: column; gap: 14px; }
@@ -495,7 +500,27 @@
   #nav .key i.a { color: var(--ink-soft); }
   #nav .key i.b { opacity: .68; }
   #nav .key i.c { opacity: .48; }
-  @media (min-width: 1180px) { #nav { display: flex; } }
+  /* the contents list used to need a 1180px window. It takes its own column now, so it
+     appears from 1000px up, and only goes back to floating beside a centred page when
+     there is room for that. */
+  @media (min-width: 1000px) {
+    #nav { display: flex; left: 16px; width: 150px; }
+    body { padding-left: 182px; }
+  }
+  @media (min-width: 1320px) {
+    #nav { left: max(16px, calc(50vw - 640px)); }
+    body { padding-left: 0; }
+  }
+  #nav { top: 84px; transform: none; max-height: calc(100vh - 160px);
+         overflow-y: auto; scrollbar-width: none; }
+  #nav::-webkit-scrollbar { display: none; }
+  #nav a.sb { display: none; font-size: 9.5px; letter-spacing: .02em; line-height: 1.32;
+              padding: 3px 0 3px 11px; margin-left: 9px; opacity: .9; }
+  #nav a.sb.show { display: block; }
+  #nav a.sb { white-space: normal; }
+  #nav a.sb b { font-weight: 500; font-style: normal; color: var(--muted);
+                margin-right: 5px; }
+  #nav a.sb:hover b, #nav a.sb.on b { color: var(--accent); }
 
   /* glossary. Closed by default: it is a reference list and not something to read through,
      and left open it makes the page look twice as long as it is. */
@@ -710,7 +735,30 @@
   <a class="grp" href="#s-notes">Notes by text</a>
   <a class="grp" href="#s-texts">The reading</a>
   <a class="core" href="#ch4" title="Sismondo ch. 4 &middot; read properly">Stratification<i>ch 4</i></a>
+  <a class="sb" data-of="ch4" href="#ch4-1"><b>4.1</b>The number the chapter opens on</a>
+  <a class="sb" data-of="ch4" href="#ch4-2"><b>4.2</b>A warning about the measuring instrument, which is Box 4.1</a>
+  <a class="sb" data-of="ch4" href="#ch4-3"><b>4.3</b>The same numbers, two opposite policies</a>
+  <a class="sb" data-of="ch4" href="#ch4-4"><b>4.4</b>What makes a scientist productive, and why the lists are useless</a>
+  <a class="sb" data-of="ch4" href="#ch4-5"><b>4.5</b>The Matthew Effect, which is the chapter&#x27;s engine</a>
+  <a class="sb" data-of="ch4" href="#ch4-6"><b>4.6</b>Discrimination, and the numbers he puts behind it</a>
+  <a class="sb" data-of="ch4" href="#ch4-7"><b>4.7</b>Box 4.2: the golden age that was a dark age</a>
+  <a class="sb" data-of="ch4" href="#ch4-8"><b>4.8</b>The pipeline, and why Sismondo half rejects it</a>
+  <a class="sb" data-of="ch4" href="#ch4-9"><b>4.9</b>Getting in</a>
+  <a class="sb" data-of="ch4" href="#ch4-10"><b>4.10</b>Staying in</a>
+  <a class="sb" data-of="ch4" href="#ch4-11"><b>4.11</b>Getting on</a>
+  <a class="sb" data-of="ch4" href="#ch4-12"><b>4.12</b>The maths gene, and what he says about it</a>
+  <a class="sb" data-of="ch4" href="#ch4-13"><b>4.13</b>The conclusion, and the question it leaves open</a>
   <a class="core" href="#ch6" title="Sismondo ch. 6 &middot; read properly">Construction<i>ch 6</i></a>
+  <a class="sb" data-of="ch6" href="#ch6-1"><b>6.1</b>What the chapter is doing, which is not what you expect</a>
+  <a class="sb" data-of="ch6" href="#ch6-2"><b>6.2</b>1. The construction of social reality</a>
+  <a class="sb" data-of="ch6" href="#ch6-3"><b>6.3</b>Box 6.1, which is the most memorable thing in the chapter</a>
+  <a class="sb" data-of="ch6" href="#ch6-4"><b>6.4</b>2. The construction of things and phenomena</a>
+  <a class="sb" data-of="ch6" href="#ch6-5"><b>6.5</b>3. The construction of material and social environments</a>
+  <a class="sb" data-of="ch6" href="#ch6-6"><b>6.6</b>4. The construction of theories</a>
+  <a class="sb" data-of="ch6" href="#ch6-7"><b>6.7</b>5. Heterogeneous construction</a>
+  <a class="sb" data-of="ch6" href="#ch6-8"><b>6.8</b>6. The construction of kinds</a>
+  <a class="sb" data-of="ch6" href="#ch6-9"><b>6.9</b>7. The construction of nature, which is the one everybody fights about</a>
+  <a class="sb" data-of="ch6" href="#ch6-10"><b>6.10</b>The conclusion, which is more conciliatory than the reputation of the phrase</a>
   <a class="grp" href="#s-gloss">Glossary</a>
   <div class="key"><em>Key</em><i class="a">solid = read properly</i><i class="b">faded = skim</i><i class="c">faintest = if time</i></div>
 </nav>
@@ -768,7 +816,7 @@
 
           <p class="qline">Does science reward the best work, or does work become the best by being rewarded?</p>
 
-          <h4>The number the chapter opens on</h4>
+          <h4 id="ch4-1" data-n="4.1">The number the chapter opens on</h4>
           <div class="body">
             <p><b>Of the 55 Nobel laureates working in the United States in 1963, 34 had studied or collaborated with one of 46 previous prize-winners.</b> And the ones who had worked with a laureate before doing their own important research collected their prizes at an average age of <b>44</b>, against <b>53</b> for everyone else.</p>
             <p><b>Then the question the whole chapter is built on, in Sismondo's own framing.</b> Are those clusters the tip of a merit-based iceberg, or artefacts of a prestige system gone wrong? Is the knowledge elites are recognised for intrinsically valuable, <em>or does it become valuable because of its association with elites</em>?</p>
@@ -777,7 +825,7 @@
             <p><b>The distributions say otherwise.</b> Roughly <b>10 per cent of scientific authors produce 50 per cent of all papers</b>. An estimated <b>80 per cent of citations go to 20 per cent of papers</b>. Science is not flat and it is not a machine that runs on interchangeable operators. Bacon and Ortega are both wrong about its structure.</p>
           </div>
 
-          <h4>A warning about the measuring instrument, which is Box 4.1</h4>
+          <h4 id="ch4-2" data-n="4.2">A warning about the measuring instrument, which is Box 4.1</h4>
           <div class="body">
             <p><b>Every number above is a citation count, so the chapter stops and asks what a citation count measures.</b> The hopeful answer: a citation records an influence. I read your paper, it shaped my work, I cite it, and adding up the citations tells us whose work shaped whose.</p>
             <p><b>Sismondo says that picture is wrong, and the reason is what a paper is for.</b> A paper reads like a report of what happened in the lab, but it is a <b>rational reconstruction</b>: the false starts are dropped, the order of events is rearranged, and the messy history is rewritten as a clean line from question to result. Nobody is lying. The genre simply is not a diary. It is an <b>argument</b> aimed at referees and at the handful of people who will decide whether to believe the result.</p>
@@ -792,7 +840,7 @@
             <p><b>And then he uses the numbers anyway.</b> The justification is size. If the true distribution were mildly uneven, a distorted instrument could easily manufacture the unevenness and you would learn nothing. But 20 per cent of papers holding 80 per cent of citations is not a mild effect, and no amount of rhetorical citing plausibly turns a flat field into that. The instrument is too crude to tell you who influenced whom; it is still good enough to tell you the field is steeply unequal. <b>Notice the move, because you will see it repeatedly in this course:</b> the measure is admitted to be bad, the effect is large enough to survive it, and the author carries on with the caveat on the record.</p>
           </div>
 
-          <h4>The same numbers, two opposite policies</h4>
+          <h4 id="ch4-3" data-n="4.3">The same numbers, two opposite policies</h4>
           <div class="body">
             <p><b>This is the most useful stretch of the chapter, because it shows one fact supporting two opposite recommendations.</b> The fact both sides accept: 20 per cent of the papers carry 80 per cent of the citations.</p>
             <p><b>Jonathan and Stephen Cole read that as efficiency, and call the lopsided shape a feature.</b> Their reasoning runs in three steps. First, a citation count is at least roughly a value measure, so the 20 per cent really are the papers that mattered. Second, a paper cited once or twice therefore contributed close to nothing, and the money and years that went into it bought close to nothing. Third, even that near-nothing is probably not lost, because important results tend to be found more than once. Calculus arrived twice, natural selection twice, oxygen twice, the telephone in two patent applications on one day. If a finding is ripe, somebody else reaches it within a few years. So the recommendation is <b>concentration</b>: stop spreading grants thinly across everyone and send them to the already-productive people and departments, because that is where the cited work comes from. <b>Funding should track the stratification.</b></p>
@@ -804,7 +852,7 @@
             </div>
           </div>
 
-          <h4>What makes a scientist productive, and why the lists are useless</h4>
+          <h4 id="ch4-4" data-n="4.4">What makes a scientist productive, and why the lists are useless</h4>
           <div class="body">
             <p><b>No single variable dominates.</b> One survey builds a portrait of the most productive scientist as someone who is driven, has a strong ego, acts autonomously, plays with ideas, tolerates ambiguity, is at home with abstractions, is detached from non-scientific social relations, reserves mornings for writing, works on routinised problems, is relatively young, went to a prestigious graduate school, had a prestigious mentor, is at a prestigious employer, has freedom to choose problems, has a history of success, and has been cited before.</p>
             <p>A later study offers shorter adjectives, in order of importance: <b>persistent, smart, civil, creative, entrepreneurial, aggressive, tasteful, confident, adaptable.</b></p>
@@ -814,7 +862,7 @@
             <p><b>So prestige is doing something.</b> Better facilities. Better networks. More intellectual stimulation. More internal pressure and reward. Or simply more visibility, and therefore more reward for the same work, which Sismondo states as a conclusion with an exclamation mark: <b>if that is right, then prestige by itself makes people's research valuable.</b></p>
           </div>
 
-          <h4>The Matthew Effect, which is the chapter's engine</h4>
+          <h4 id="ch4-5" data-n="4.5">The Matthew Effect, which is the chapter's engine</h4>
           <div class="body">
             <p><b>Robert Merton named it after a line in the Gospel of Matthew</b>: to whoever has, more shall be given, and from whoever has not, even what he has shall be taken away.</p>
             <p><b>The mechanism is a chain where each link is small and the compounding is not.</b> Somebody with the traits on those lists is more likely to get a famous mentor. A famous mentor makes a prestigious graduate school more likely. That makes a prestigious department more likely. That brings better facilities, better conversation, and above all more visibility. More visibility means more citations. <b>And citation is itself a reward</b>: people whose work is cited go on publishing. The sociologist Randall Collins calls citations sources of <em>emotional energy</em>.</p>
@@ -854,7 +902,7 @@
             </figure>
           </div>
 
-          <h4>Discrimination, and the numbers he puts behind it</h4>
+          <h4 id="ch4-6" data-n="4.6">Discrimination, and the numbers he puts behind it</h4>
           <div class="body">
             <p><b>His framing is that women are worse represented the more elite the grouping</b>, and the figures step down accordingly.</p>
             <ul>
@@ -867,7 +915,7 @@
             <p><b>The country variation is the part to think about.</b> Italy and Germany are both rich European countries with good universities, and the gap between 72 and 47 per cent has nothing to do with biology. Whatever is producing these numbers travels with the culture.</p>
           </div>
 
-          <h4>Box 4.2: the golden age that was a dark age</h4>
+          <h4 id="ch4-7" data-n="4.7">Box 4.2: the golden age that was a dark age</h4>
           <div class="body">
             <p><b>Margaret Rossiter's history of women scientists in America turns on one finding</b>, and it is counter-intuitive: <b>feminisation is linked to a fall in status, and masculinisation to a rise in it.</b> The direction of causation is from who holds the jobs to how the jobs are regarded.</p>
             <p><b>What that produced, twice.</b> When women began entering scientific fields in the 1860s and 1870s, the men already there perceived that their work was losing its masculine status, and pushed women into marginal positions where they would be <b>invisible</b>. In the twentieth century women found they could enter much more easily through <em>new</em> fields, home economics and nutritional science, where they could do sociology, economics, biology and chemistry under another name. The fields as a whole were then poorly regarded, because they were feminised.</p>
@@ -882,14 +930,14 @@
             <p><b>What changed it was not science.</b> The shift came in the 1960s, from outside: the National Organization for Women, Betty Friedan, and Alice Rossi's 1965 article in <em>Science</em> titled "Women in Science: Why So Few?", which made the case that science was no different from any other profession. Alongside that ran a legal revolution producing anti-discrimination law and affirmative action, which women then used as resources to get in.</p>
           </div>
 
-          <h4>The pipeline, and why Sismondo half rejects it</h4>
+          <h4 id="ch4-8" data-n="4.8">The pipeline, and why Sismondo half rejects it</h4>
           <div class="body">
             <p><b>The standard metaphor is Natalie Angier's.</b> Women flow through a pipe with leaks at every joint along its span, a pipe that begins with a high-pressure surge of young women at the source, a roiling Amazon of smart graduate students, and ends at the spigot with a trickle of women prominent enough to be deans or department heads or to win a Nobel Prize.</p>
             <p><b>His objection is that the picture makes the problem one of leakage</b>, which puts all the attention at the joints and none at either end. The metaphor only works if you also attend to <b>intake, blockage and filters</b>: processes of inclusion and exclusion. In many fields <em>there is no roiling Amazon at the source to begin with</em>, and the women who are there do not simply leak out, they are discouraged the whole way along.</p>
             <p><b>The framing he prefers is Sara Delamont's three problems</b>, and they are the three sub-headings of the rest of the chapter: <b>getting in, staying in, and getting on.</b></p>
           </div>
 
-          <h4>Getting in</h4>
+          <h4 id="ch4-9" data-n="4.9">Getting in</h4>
           <div class="body">
             <p><b>Science and engineering have masculine images and the stereotypical scientist is male</b>, and that shapes what girls believe about their own capacity. Quite young girls may find it hard to think of themselves as potential scientists, and in many environments they are actively discouraged by teachers, peers and parents. The consequence is structural and not merely attitudinal: <b>by the end of secondary school many girls who might have been interested already lack the background subjects</b> they would need to study science at university. The door closes before anybody applies.</p>
             <div class="exm">
@@ -898,7 +946,7 @@
             </div>
           </div>
 
-          <h4>Staying in</h4>
+          <h4 id="ch4-10" data-n="4.10">Staying in</h4>
           <div class="body">
             <p><b>The concept to take from this section is the unofficial PhD programme.</b> Alongside the official courses, exams and research there runs a second curriculum: study groups, pick-up basketball, informal mentoring, and simply the ongoing conversation and consultation of a department. Even a well-integrated student can be shut out of parts of it.</p>
             <div class="quo">
@@ -909,21 +957,21 @@
             <p><b>And a clash of clocks.</b> Shirley Tilghman, a molecular biologist and later president of Princeton, argues that the pressure at the start of a career falls hardest on women. Research productivity decides whether a senior graduate student or postdoc gets a permanent job, and new faculty then have about six years to clear an all-or-nothing tenure hurdle. <b>Those are exactly the years in which women are most likely to want to have children.</b></p>
           </div>
 
-          <h4>Getting on</h4>
+          <h4 id="ch4-11" data-n="4.11">Getting on</h4>
           <div class="body">
             <p><b>The discriminations at this stage are individually small enough to argue about.</b> Women hired at the same time as male peers tend to have smaller laboratories, and to have negotiated worse arrangements for start-up grants, for the overhead the university takes from their research money, for salary and for teaching load.</p>
             <p><b>And they remain outside the informal networks.</b> Inside their departments they tend not to have informal mentors to steer them through opaque processes. Outside them they do less collaborative research. And they are less well connected to the networks that carry <em>unpublished</em> work, which leaves them more dependent on the published literature and therefore always slightly behind. Sismondo quotes Jonathan Cole's formulation: <b>women have moved into science, but they are not of the community of science.</b></p>
             <p><b>Which is where the Matthew Effect returns and does the argument's real work.</b> In any individual case these differences look trivial, and a woman may well shrug them off. But if competition is strong enough, and if advantage compounds, <b>the small irritants are enough on their own to keep her from getting on.</b> No single act of discrimination has to be large.</p>
           </div>
 
-          <h4>The maths gene, and what he says about it</h4>
+          <h4 id="ch4-12" data-n="4.12">The maths gene, and what he says about it</h4>
           <div class="body">
             <p><b>One side claims a biological propensity.</b> Claims of a maths gene or something like it go back to 1980, and as recently as 2005 the president of Harvard, Lawrence Summers, invoked biology to explain differences in men's and women's success in science and engineering.</p>
             <p><b>Sismondo's reply is two lines and both are worth having.</b> First, <b>genes only act in environments</b>. A gene does nothing on its own. Whether it is switched on, and how strongly, depends on what surrounds it: food, hormones, how a child is taught, what a child is praised for trying. So there is no way to measure what a gene does apart from a setting, and saying a difference is genetic is a way of calling it fixed without having shown it is. Second, the scores are moving. Boys' and girls' mathematics results have been getting closer, and genes have not changed in thirty years, so whatever was making the gap was in the setting.</p>
             <p><b>The other side claims a difference in style, and he reports it without endorsing it.</b> A number of feminists and non-feminists have argued that women tend to think in more concrete terms, are better served by problem-centred learning, think more relationally, and produce more holistic pictures. <b>He parks the whole question for chapter 7</b>, which is weeks 5 to 7 of this course. The question there is whether who is doing the knowing changes what gets known. The name for that field is <b>feminist epistemology</b>, and <b>epistemology</b> on its own means the study of knowledge: what knowing is, and what makes one claim better than another.</p>
           </div>
 
-          <h4>The conclusion, and the question it leaves open</h4>
+          <h4 id="ch4-13" data-n="4.13">The conclusion, and the question it leaves open</h4>
           <div class="body">
             <p><b>Cumulative advantage is what makes the argument work.</b> Point at any single thing on the list, a smaller lab, a worse starting salary, being left out of the conversation about the drying agent, and it looks too small to end a career. None of them on its own pushes a woman out. The claim is that they add up: a smaller lab means fewer results, fewer results mean a weaker grant, a weaker grant means a smaller lab again. Five years of that is a gap nobody can close. <b>It also explains why two women can describe completely different careers and still be describing the same pattern</b>, because the list is long and each person meets a different few items on it.</p>
             <p><b>Then the sentence the chapter title has been leading to.</b> Once you add the discrimination section to the funding section, it is hard to call science efficient at all, because it is throwing away the work of half the people it trained. <b>It looks less like an efficient meritocracy and more like an inefficient old boys' network</b>, in which people and ideas become important partly because of where they sit in a social network.</p>
@@ -986,7 +1034,7 @@
 
           <p class="qline">When somebody says a scientific fact is socially constructed, which of seven quite different things are they saying?</p>
 
-          <h4>What the chapter is doing, which is not what you expect</h4>
+          <h4 id="ch6-1" data-n="6.1">What the chapter is doing, which is not what you expect</h4>
           <div class="body">
             <p><b>Start with the problem, because the chapter does not.</b> People say <b>that is socially constructed</b> about money, about gender, about quarks and about the number of planets, and they mean wildly different things by it. Sometimes it means something nobody would argue with: a twenty dollar bill is worth twenty dollars because we all treat it that way, and if we stopped it would be paper. Sometimes it means something enormous: that there is no fact about whether atoms exist apart from what scientists agreed to say. <b>Same three words, and the two claims have almost nothing in common.</b></p>
             <p><b>So arguments about social construction mostly go nowhere.</b> One person defends the twenty dollar bill version. The other attacks the atoms version. They both leave convinced the other is an idiot. Sismondo's job in this chapter is to stop that from happening: he takes the phrase apart into <b>seven separate claims</b>, arranged from the one nobody can deny to the one he himself rejects, so that you can point at a sentence and say which claim is actually being made.</p>
@@ -1081,7 +1129,7 @@
 
           </div>
 
-          <h4>1. The construction of social reality</h4>
+          <h4 id="ch6-2" data-n="6.2">1. The construction of social reality</h4>
           <div class="body">
             <p><b>Where the phrase came from.</b> STS took it from Peter Berger and Thomas Luckmann's <em>The Social Construction of Reality</em> of 1966, a book about the sociology of knowledge. Their subject is <b>social</b> reality: the institutions and structures that exist because enough people behave as though they do.</p>
             <p><b>Their conditions are worth having exactly</b>, because they are a recipe. To construct an X you need only three things. That knowledge of X encourages behaviour which makes other people more or less likely to act as though X exists. That knowledge of X is reasonably common. And that knowledge of X gets passed on. Given those, <b>X cannot be wished away, and so it exists.</b></p>
@@ -1099,7 +1147,7 @@
             <p><b>The active version.</b> Latour and Woolgar tracked one statement about a hormone through the literature as it moved from near-nonsense, to possible, to false, to possibly true, to a solid fact, and catalogued what can be done to a paper along the way: ignore it, cite it approvingly, cite it dismissively, question it strongly or weakly, and finally ignore it again because everyone accepts it. <b>Facts are constructed by scientists, one operation at a time, and never by science in the abstract.</b></p>
           </div>
 
-          <h4>Box 6.1, which is the most memorable thing in the chapter</h4>
+          <h4 id="ch6-3" data-n="6.3">Box 6.1, which is the most memorable thing in the chapter</h4>
           <div class="body">
             <p><b>The general problem: it is hard to say when a discovery happened.</b> Was oxygen discovered when Priestley made a pure sample of it, when Lavoisier explained what it was, or later still when somebody gave an account that matches ours? Augustine Brannigan's answer is an <b>attributional model</b>: discoveries are not events in themselves, they are <b>events retrospectively recognised as origins</b>.</p>
             <figure class="pic">
@@ -1120,7 +1168,7 @@
             <p><b>And Sismondo's line.</b> Had Correns read one or two generations further back, the title could have gone to any of several people. <b>Mendel discovered his laws in 1866, but only as a result of the events of 1900.</b></p>
           </div>
 
-          <h4>2. The construction of things and phenomena</h4>
+          <h4 id="ch6-4" data-n="6.4">2. The construction of things and phenomena</h4>
           <div class="body">
             <p><b>This is the sense he calls the most novel, and its subject is objects.</b> Many of the things scientists study are not natural things.</p>
             <p><b>Karin Knorr Cetina's formulation:</b> nature is not to be found in the laboratory. To an outside observer the laboratory shows itself as a place from which nature has been <em>excluded</em> as far as possible.</p>
@@ -1129,7 +1177,7 @@
             <p><b>And the asymmetry he points out is worth keeping.</b> For technology none of this is the least bit surprising. Technology is expected to give new shape to old materials and leave nature behind. The claim only sounds radical when it is made about science, because science is presumed to display the forms of nature exactly as they are.</p>
           </div>
 
-          <h4>3. The construction of material and social environments</h4>
+          <h4 id="ch6-5" data-n="6.5">3. The construction of material and social environments</h4>
           <div class="body">
             <p><b>The easiest of the seven: science and technology change the world, and changing the world is building it.</b></p>
             <p><b>Technology, intended and not.</b> The success of the petrol car helped create the suburb and the suburban way of living, and to the extent that manufacturers worked to grow the suburban market, that was deliberate. Computers, programs and networks are designed with their social effects in view: dispersed work, control at a distance, or straight military power.</p>
@@ -1137,7 +1185,7 @@
             <p><b>And policy.</b> Government action is increasingly held accountable to scientific evidence, to the point where almost nothing in health, the economy, the environment or defence can be done unless it can be claimed that a study supports it. Studies shape policies, and policies shape the material and social world.</p>
           </div>
 
-          <h4>4. The construction of theories</h4>
+          <h4 id="ch6-6" data-n="6.6">4. The construction of theories</h4>
           <div class="body">
             <p><b>The claim in one line: the data never picks the theory for you.</b></p>
             <p><b>Think of points on a graph.</b> You have twenty measurements plotted. How many curves pass through all twenty points? Infinitely many. Drawing one of them is a choice, and the points did not make it. That is what Sismondo means by calling science <b>constructive in a geometrical sense</b>: you build a shape that fits the fixed points, and the fixed points are never enough to fix the shape.</p>
@@ -1163,7 +1211,7 @@
             </div>
           </div>
 
-          <h4>5. Heterogeneous construction</h4>
+          <h4 id="ch6-7" data-n="6.7">5. Heterogeneous construction</h4>
           <div class="body">
             <p><b>The term to learn here is heterogeneous engineering</b>, from John Law. An entrepreneurial engineer faces technical, social and economic problems at once and has to bind the solutions into a configuration that works. So they are simultaneously producing knowledge, social realities, and material things, and <b>the constructions can be separated on paper and not in practice.</b></p>
             <p><b>The strong version of the claim:</b> builders of technology have to build the artefact <em>and</em> build the environment in which the artefact can function, and neither job can usually be done alone. They must combine raw materials, skills, knowledge and capital, which means enrolling a lot of actors who are not all immediately compatible.</p>
@@ -1187,7 +1235,7 @@
             </div>
           </div>
 
-          <h4>6. The construction of kinds</h4>
+          <h4 id="ch6-8" data-n="6.8">6. The construction of kinds</h4>
           <div class="body">
             <p><b>An old philosophical fight, imported.</b> Are natural kinds part of the world, or only part of our classifying? The traditional version is about universals, the abstractions that range over individual things, like redness.</p>
             <ul>
@@ -1198,7 +1246,7 @@
             <p><b>And then the sentence that earns the chapter its place in this course.</b> Since science is the most influential institution that classifies things, <b>science is central to the social construction of reality.</b> Deciding what counts as a species, a disease, a planet or a race is deciding what there is.</p>
           </div>
 
-          <h4>7. The construction of nature, which is the one everybody fights about</h4>
+          <h4 id="ch6-9" data-n="6.9">7. The construction of nature, which is the one everybody fights about</h4>
           <div class="body">
             <p><b>It is a short step from nominalism to the strongest claim in the field, and Sismondo takes the step and then refuses it.</b> On this version, representations directly shape their objects: <b>when scientists agree on a claim, they literally make it true.</b> The world comes to match the agreement, with the arrow of dependence pointing that way. When engineers agree on the most efficient solution, that makes it the most efficient one.</p>
             <p><b>He calls it neo-Kantian constructivism</b>, because Kant held that human beings impose some structures on the world, and this is that with a social mind in place of an individual one.</p>
@@ -1223,7 +1271,7 @@
             </div>
           </div>
 
-          <h4>The conclusion, which is more conciliatory than the reputation of the phrase</h4>
+          <h4 id="ch6-10" data-n="6.10">The conclusion, which is more conciliatory than the reputation of the phrase</h4>
           <div class="body">
             <p><b>The phrase escaped the field.</b> Construction talk is now used in psychology, geography, environmental studies, education, management, cultural studies and even accounting, and STS is partly responsible: because scientific knowledge is normally taken to reflect the natural world with scientists as passive conduits, saying that scientific realities are constructed was a genuinely radical claim, and radical claims travel.</p>
             <p><b>But the diversity means there is no neat theory there.</b> What survives is the three reminders: science and technology are social, they are active, and they do not take nature as it comes.</p>
@@ -2093,7 +2141,22 @@
       if (t <= 0 && t > bestTop) { bestTop = t; best = i; }
     }
     links.forEach(function (a, i) { a.classList.toggle('on', i === best); });
+    // only the chapter you are inside opens its list of sections
+    var of = '';
+    if (best >= 0) {
+      var cur = links[best];
+      of = cur.classList.contains('sb') ? cur.getAttribute('data-of')
+                                        : cur.getAttribute('href').slice(1);
+    }
+    links.forEach(function (a) {
+      if (a.classList.contains('sb')) a.classList.toggle('show', a.getAttribute('data-of') === of);
+    });
+    if (best !== was && best >= 0 && nav.scrollHeight > nav.clientHeight) {
+      links[best].scrollIntoView({ block: 'nearest' });
+    }
+    was = best;
   }
+  var was = -1;
   // how far through the reading this is, drawn along the top edge of the dock
   var prog = document.getElementById('prog');
   function bar() {

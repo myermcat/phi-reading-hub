@@ -178,7 +178,12 @@
 
   .qline { font-family: var(--display); font-size: 19.5px; line-height: 1.42; padding: 12px 0 12px 16px; border-left: 2px solid var(--accent); color: var(--ink); }
 
-  .rd h4 { margin: 8px 0 -7px; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+  .rd h4 { margin: 16px 0 -13px; font-family: var(--display); font-weight: 600;
+           font-size: 20px; line-height: 1.22; letter-spacing: -0.005em; color: var(--ink);
+           text-wrap: balance; scroll-margin-top: 78px; }
+  .rd h4::before { content: attr(data-n); display: block; margin-bottom: 6px;
+           font-family: var(--mono); font-size: 10.5px; font-weight: 500;
+           letter-spacing: 0.12em; color: var(--accent); }
   .rd ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 9px; max-width: var(--measure); }
   .rd li { padding-left: 2px; }
   .rd .body { display: flex; flex-direction: column; gap: 14px; }
@@ -499,7 +504,27 @@
   #nav .key i.a { color: var(--ink-soft); }
   #nav .key i.b { opacity: .68; }
   #nav .key i.c { opacity: .48; }
-  @media (min-width: 1180px) { #nav { display: flex; } }
+  /* the contents list used to need a 1180px window. It takes its own column now, so it
+     appears from 1000px up, and only goes back to floating beside a centred page when
+     there is room for that. */
+  @media (min-width: 1000px) {
+    #nav { display: flex; left: 16px; width: 150px; }
+    body { padding-left: 182px; }
+  }
+  @media (min-width: 1320px) {
+    #nav { left: max(16px, calc(50vw - 640px)); }
+    body { padding-left: 0; }
+  }
+  #nav { top: 84px; transform: none; max-height: calc(100vh - 160px);
+         overflow-y: auto; scrollbar-width: none; }
+  #nav::-webkit-scrollbar { display: none; }
+  #nav a.sb { display: none; font-size: 9.5px; letter-spacing: .02em; line-height: 1.32;
+              padding: 3px 0 3px 11px; margin-left: 9px; opacity: .9; }
+  #nav a.sb.show { display: block; }
+  #nav a.sb { white-space: normal; }
+  #nav a.sb b { font-weight: 500; font-style: normal; color: var(--muted);
+                margin-right: 5px; }
+  #nav a.sb:hover b, #nav a.sb.on b { color: var(--accent); }
 
   /* glossary. Closed by default: it is a reference list and not something to read through,
      and left open it makes the page look twice as long as it is. */
@@ -896,7 +921,7 @@
 
           <div class="why"><b>Why this chapter is set.</b> It is the hinge of the course. Weeks 2 to 4 built up the claim that knowledge is made by people in a society, which Sismondo argues at you from the outside, as a sociologist describing scientists. From here the course is inside the argument, asking what follows for how knowledge should be made. This chapter is the handover, and it is also the only place the six questions are listed together, which makes it the one to revise from.</div>
 
-          <h4 id="opening">Where it starts, which is a fight about monkeys</h4>
+          <h4 id="opening" data-n="1.1">Where it starts, which is a fight about monkeys</h4>
           <div class="body">
             <p><b>The chapter opens on primatology in the 1970s and 1980s.</b> Primatology is the study of monkeys and apes, and it was one of the fields women entered in numbers as the doors opened.</p>
             <p><b>The settled view of primate sex lives before they arrived.</b> Males are <b>promiscuous</b>, meaning they mate with many partners. Females are <b>coy</b>, meaning picky and tending to stick with one. And there was a tidy double explanation for it. The biological half: a female can carry one offspring at a time while a male can father many at once, so a male gains by spreading himself around and a female gains nothing. The evolutionary half: a male who fathers many offspring is likelier to have some survive, while a female gets one shot and so must pick a male who will stay and protect what she produces.</p>
@@ -935,7 +960,7 @@
             <p>Which is week 3 turning up again: <b>observation is theory-laden</b>, meaning what you count as data depends on what you already expect. The new observers did not have better eyes. They had a different idea of what counted as a thing happening.</p>
           </div>
 
-          <h4 id="feminism">What they mean by feminism, which is narrower than you expect</h4>
+          <h4 id="feminism" data-n="1.2">What they mean by feminism, which is narrower than you expect</h4>
           <div class="body">
             <p><b>They know the word carries a hundred meanings, so they pick one and say so.</b> Their definition, which is worth having close to the words they use:</p>
             <blockquote>Feminism is an emancipatory political movement with the aim of ending oppressive structures based on gender ideologies and norms that divide the world into two classes of people with distinct social roles, men and women, that tend to systematically empower men and disempower women.<cite>Crasnow and Intemann, p. 3</cite></blockquote>
@@ -975,7 +1000,7 @@
             <figcaption><b>The definition is small and the commitments are not.</b> The authors call their definition minimalist to make it easy to accept, and then show that accepting it already puts you somewhere: looking at institutions where you might have looked at individuals, taking a political side, and refusing to treat sexism as separable from racism and class. The fourth box is the one that shapes the rest of the course, because it is why chapters on disability and on colonial science belong in a book about feminism.</figcaption>
           </figure>
 
-          <h4 id="episteme">The other half of the title, which needs unpacking too</h4>
+          <h4 id="episteme" data-n="1.3">The other half of the title, which needs unpacking too</h4>
           <div class="body">
             <p><b>Two fields, overlapping.</b> The study of knowledge is called <b>epistemology</b>: what knowing is, how it differs from merely believing, and what makes one claim better supported than another. <b>Philosophy of science</b> takes science as its subject, and since science is usually treated as the best example of knowledge anybody has, the two overlap heavily.</p>
             <p><b>What philosophy of science does that epistemology does not.</b> It works on the concepts a particular science uses, such as what a species is in biology or what spacetime is in physics. It works on the moves scientists make: what counts as evidence, what confirms a theory, what makes an explanation a good one. It argues about what science is <em>for</em>. And it deals with science in the world: expert advice to governments, and the ethics of doing the research and of using the results.</p>
@@ -1014,7 +1039,7 @@
             <figcaption><b>Why the objection felt obvious at the time.</b> Ethics and policy sit in the right-hand column, where everyone agrees politics belongs, and nobody minded feminists working there. Evidence, confirmation and objectivity sit in the middle, shared by both fields, and the middle was supposed to be the part no political movement could have anything to say about. The authors are not asking for a corner of the field. They are arguing that the middle column looks different once you stop pretending the knower is nobody in particular.</figcaption>
           </figure>
 
-          <h4 id="history">How this became a field at all</h4>
+          <h4 id="history" data-n="1.4">How this became a field at all</h4>
           <div class="body">
             <p><b>Their short answer:</b> in the second half of the twentieth century the understanding of knowledge shifted, and the shift was the recognition that social, cultural and historical setting affects what gets produced. Once that is granted, the obvious next question is <em>which</em> social things matter. Gender is one candidate, and feminist epistemology is what you get by following it.</p>
             <p><b>And the shift came from two directions at once, which is the part worth remembering.</b></p>
@@ -1042,7 +1067,7 @@
             <p><b>Plus one that is about the knowledge and not about the people.</b> If social factors decide who can fully take part in a field, that limits those people's lives, <b>and it may also limit what the field manages to find out, which is a loss to everybody.</b> That sentence is the thesis of chapter 7 and it is the one the course keeps returning to.</p>
           </div>
 
-          <h4 id="six">The six questions</h4>
+          <h4 id="six" data-n="1.5">The six questions</h4>
           <div class="body">
             <p><b>The rest of the chapter walks through them, one per chapter of the book.</b> Each follows the same shape: here is what the tradition assumed, often without noticing it was assuming anything, and here is what changes when you stop.</p>
           </div>
