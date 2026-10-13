@@ -438,7 +438,7 @@
   mark.hl.hl-b::after { content: ''; display: inline-block; width: 7px; height: 9px; margin-left: 4px;
                         vertical-align: 0; background: var(--accent);
                         clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 72%, 0 100%); }
-  @media (max-width: 820px) { .site .disc { display: none; } }
+  @media (max-width: 1120px) { .site .disc { display: none; } }
   @media (max-width: 560px) { .site .in { padding: 0 16px; height: 48px; gap: 12px; } .site nav .cur { display: none; } }
   @media (max-width: 400px) { .site .in { gap: 10px; } }
 
@@ -577,8 +577,9 @@
                  padding: 0 0 1px; cursor: pointer; }
   #save button:hover { color: var(--ink); border-bottom-color: var(--ink); }
   :root[data-theme="dark"] #save.bad, :root:not([data-theme="light"]) #save.bad { color: #F09B9B; border-color: #F09B9B; }
-  .storenote { background: var(--sunk); padding: 14px 18px; font-size: 15px; color: var(--ink-soft); }
-  .storenote b { color: var(--ink); }
+    .sidenote { font-size: 13.5px; line-height: 1.45; color: var(--muted); max-width: 64ch;
+      padding-left: 12px; border-left: 1px solid var(--rule); margin: -2px 0 4px; }
+    .sidenote b { color: var(--ink-soft); font-weight: 600; }
 
   /* highlights list */
   .bm { display: flex; flex-direction: column; gap: 22px; }
@@ -704,8 +705,7 @@
     <div class="eyebrow">PHI 2394 B00 · reading for Monday 14 September</div>
     <h1>The Scientific Method, and the Argument About It</h1>
     <p class="standfirst">Nine texts written across 2,400 years, all disagreeing about the same thing. Written so that someone who never opens the PDF still understands every argument in it.</p>
-    <div class="storenote"><b>Everything you write here stays in this browser.</b> Highlights, comments and notes are saved on the device you are using, and they survive a reload and a closed tab. They do not travel to another computer, they are not sent anywhere, and clearing your browsing data removes them. Nobody else can see them.</div>
-  </header>
+      </header>
 
   <div class="strip-block">
     <div class="strip" role="img" aria-label="The 98 pages of the PDF drawn to scale, split into nine readings. Solid blocks are body text; pale blocks are endnotes.">
@@ -736,6 +736,7 @@
 
   <section id="s-notes">
     <h2>My notes</h2>
+      <p class="sidenote"><b>These stay in this browser.</b> Your notes, highlights and bookmark are saved on the device you are using and survive a reload. They do not travel to another computer, they are not sent anywhere, and clearing your browsing data removes them.</p>
     <div class="nbgrid">
       <div class="nbwrap wide">
         <div class="nbhead"><b>The argument overall</b><span>all nine</span></div>

@@ -461,7 +461,7 @@
   mark.hl.hl-b::after { content: ''; display: inline-block; width: 7px; height: 9px; margin-left: 4px;
                         vertical-align: 0; background: var(--accent);
                         clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 72%, 0 100%); }
-  @media (max-width: 820px) { .site .disc { display: none; } }
+  @media (max-width: 1120px) { .site .disc { display: none; } }
   @media (max-width: 560px) { .site .in { padding: 0 16px; height: 48px; gap: 12px; } .site nav .cur { display: none; } }
   @media (max-width: 400px) { .site .in { gap: 10px; } }
 
@@ -600,8 +600,9 @@
                  padding: 0 0 1px; cursor: pointer; }
   #save button:hover { color: var(--ink); border-bottom-color: var(--ink); }
   :root[data-theme="dark"] #save.bad, :root:not([data-theme="light"]) #save.bad { color: #F09B9B; border-color: #F09B9B; }
-  .storenote { background: var(--sunk); padding: 14px 18px; font-size: 15px; color: var(--ink-soft); }
-  .storenote b { color: var(--ink); }
+    .sidenote { font-size: 13.5px; line-height: 1.45; color: var(--muted); max-width: 64ch;
+      padding-left: 12px; border-left: 1px solid var(--rule); margin: -2px 0 4px; }
+    .sidenote b { color: var(--ink-soft); font-weight: 600; }
 
   /* highlights list */
   .bm { display: flex; flex-direction: column; gap: 22px; }
@@ -722,8 +723,7 @@
     <div class="eyebrow">PHI 2394 B00 &middot; reading for Monday 5 October</div>
     <h1>What Feminism Has To Do With Knowing Anything</h1>
     <p class="standfirst">One chapter, and it is a map. A group of women went to watch monkeys and came back with observations nobody else had made, which turned out to be a problem for three hundred years of philosophy about how knowing works. The chapter sets out the six questions the rest of the book answers.</p>
-    <div class="storenote"><b>Everything you write here stays in this browser.</b> Highlights, comments and notes are saved on the device you are using, and they survive a reload and a closed tab. They do not travel to another computer, they are not sent anywhere, and clearing your browsing data removes them. Nobody else can see them.</div>
-  </header>
+      </header>
 
   <div class="strip-block">
     <div class="tally">
@@ -736,6 +736,7 @@
 
   <section id="s-notes">
     <h2>My notes</h2>
+      <p class="sidenote"><b>These stay in this browser.</b> Your notes, highlights and bookmark are saved on the device you are using and survive a reload. They do not travel to another computer, they are not sent anywhere, and clearing your browsing data removes them.</p>
     <div class="nbgrid">
       <div class="nbwrap wide">
         <div class="nbhead"><b>The chapter overall</b><span>Crasnow and Intemann, ch. 1</span></div>
