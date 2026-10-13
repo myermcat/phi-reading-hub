@@ -29,6 +29,8 @@
     --c-p:        #AE2F73;
     --ghost:      #DADFD9;
 
+    --navpad: 0px;
+
     --display: "Newsreader", Georgia, "Times New Roman", serif;
     --body:    "Source Sans 3", -apple-system, "Segoe UI", sans-serif;
     --lh: 1.6; --measure: 82ch; --pgap: 20px;
@@ -485,14 +487,13 @@
   /* the contents list used to need a 1180px window. It takes its own column now, so it
      appears from 1000px up, and only goes back to floating beside a centred page when
      there is room for that. */
-  @media (min-width: 1000px) {
-    #nav { display: flex; left: 16px; width: 150px; }
-    body { padding-left: 182px; }
-  }
-  @media (min-width: 1320px) {
-    #nav { left: max(16px, calc(50vw - 640px)); }
-    body { padding-left: 0; }
-  }
+  @media (min-width: 1000px) { :root { --navpad: 182px; } #nav { display: flex; left: 16px; width: 150px; } }
+  @media (min-width: 1320px) { :root { --navpad: 0px; } #nav { left: max(16px, calc(50vw - 640px)); } }
+  body { margin: 0; padding-left: var(--navpad); }
+  /* a full-bleed band that keeps its contents on the page column: the negative margin
+     widens the box to the window edge, the padding puts the content back where it was */
+  .site, .sitefoot { margin-left: calc(0px - var(--navpad)); padding-left: var(--navpad); }
+  .dock { padding-left: var(--navpad); }
   #nav { top: 78px; transform: none; max-height: calc(100vh - 126px);
          overflow-y: auto; scrollbar-width: none; }
   #nav::-webkit-scrollbar { display: none; }
