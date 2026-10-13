@@ -480,16 +480,16 @@
   /* vertical nav */
   .wrap { position: relative; }
   #nav { position: fixed; top: calc(50% + 26px); transform: translateY(-50%); left: max(10px, calc(50vw - 598px));
-         width: 132px; display: none; flex-direction: column; gap: 2px; z-index: 40; }
+         width: 132px; display: none; flex-direction: column; gap: 1px; z-index: 40; }
   #nav a { display: block; font-family: var(--mono); font-size: 10.5px; letter-spacing: .03em;
-           color: var(--muted); text-decoration: none; padding: 4px 0 4px 11px; border-left: 2px solid var(--rule-soft);
+           color: var(--muted); line-height: 1.3; text-decoration: none; padding: 3px 0 3px 11px; border-left: 2px solid var(--rule-soft);
            white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   /* The year each text was written, so the rail is also a timeline. The gaps are the point:
      Plato to Bacon is two thousand years and Rousseau to Comte is eighty. */
   #nav a i { font-style: normal; font-size: 9px; letter-spacing: .05em; opacity: .62; margin-left: 6px; }
   #nav a:hover { color: var(--ink); border-left-color: var(--muted); }
   #nav a.on { color: var(--accent); border-left-color: var(--accent); }
-  #nav a.grp { margin-top: 9px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .1em; border-left-color: transparent; padding-left: 0; }
+  #nav a.grp { margin-top: 13px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .1em; border-left-color: transparent; padding-left: 0; }
   #nav a.grp:first-child { margin-top: 0; }
   #nav a.grp.on { color: var(--accent); border-left-color: transparent; }
   #nav a.core { color: var(--ink-soft); border-left-color: var(--rule); }
@@ -504,13 +504,13 @@
     #nav { left: max(16px, calc(50vw - 640px)); }
     body { padding-left: 0; }
   }
-  #nav { top: 84px; transform: none; max-height: calc(100vh - 160px);
+  #nav { top: 78px; transform: none; max-height: calc(100vh - 126px);
          overflow-y: auto; scrollbar-width: none; }
   #nav::-webkit-scrollbar { display: none; }
   #nav > * { flex: 0 0 auto; }
   #nav a.grp, #nav a.core { white-space: normal; overflow: visible; text-overflow: clip; }
   #nav a.sb { display: none; font-family: var(--body); font-size: 11.5px; letter-spacing: 0;
-              line-height: 1.32; padding: 4px 0 4px 11px; margin-left: 9px;
+              line-height: 1.3; padding: 2.5px 0 2.5px 11px; margin-left: 9px;
               white-space: normal; overflow: visible; text-overflow: clip; }
   #nav a.sb.show { display: block; }
   #nav a.sb b { font-family: var(--mono); font-size: 9.5px; font-weight: 500;
@@ -641,6 +641,8 @@
   .bmi .dot { width: 9px; height: 9px; border-radius: 2px; flex: none; }
   .bmi .dot.y { background: rgba(255,206,0,.85); }
   .bmi .dot.p { background: rgba(255,92,168,.7); }
+  .bmi .dot.uy { background: none; box-shadow: inset 0 -3px 0 rgba(255,206,0,.85); }
+  .bmi .dot.up { background: none; box-shadow: inset 0 -3px 0 rgba(255,92,168,.7); }
   .bmi .dot.n { background: none; border: 1px dashed var(--accent); }
   .bmi .dot.b { background: var(--accent); clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 70%, 0 100%); border-radius: 0; height: 11px; width: 8px; }
   .bmi .bt { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
@@ -687,6 +689,8 @@
   mark.hl-y { background: rgba(255,206,0,.42); }
   mark.hl-p { background: rgba(255,92,168,.34); }
   mark.hl-n { background: rgba(31,107,87,.10); border-bottom: 1px dashed var(--accent); }
+  mark.hl-uy { background: none; border-radius: 0; box-shadow: inset 0 -2px 0 rgba(255,206,0,.95); }
+  mark.hl-up { background: none; border-radius: 0; box-shadow: inset 0 -2px 0 rgba(255,92,168,.9); }
   mark.hl-n.act { background: rgba(31,107,87,.22); }
   @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) mark.hl-y { background: rgba(255,206,0,.30); } :root:not([data-theme="light"]) mark.hl-p { background: rgba(255,92,168,.30); } :root:not([data-theme="light"]) mark.hl-n { background: rgba(100,191,161,.12); } }
   :root[data-theme="dark"] mark.hl-y { background: rgba(255,206,0,.30); }
@@ -697,6 +701,8 @@
   #hl-bar button { width: 17px; height: 17px; border: 1px solid var(--rule); border-radius: 3px; cursor: pointer; padding: 0; }
   #hl-bar button[data-c="y"] { background: rgba(255,206,0,.55); }
   #hl-bar button[data-c="p"] { background: rgba(255,92,168,.45); }
+  #hl-bar button[data-c="uy"] { background: var(--paper); box-shadow: inset 0 -4px 0 rgba(255,206,0,.85); }
+  #hl-bar button[data-c="up"] { background: var(--paper); box-shadow: inset 0 -4px 0 rgba(255,92,168,.7); }
   #hl-bar button[data-c="n"] { background: var(--paper); display: flex; align-items: center; justify-content: center; color: var(--ink-soft); }
   #hl-bar button[data-c="n"] svg { width: 11px; height: 11px; display: block; }
   #hl-bar button[data-c="b"] { background: var(--paper); display: flex; align-items: center; justify-content: center; color: var(--accent); }
@@ -1168,7 +1174,7 @@
 
           <h5>4 &middot; What don&#8217;t we know?</h5>
           <div class="body">
-            <p><b>The field this belongs to has a name you will not have met, and it is almost certainly examinable.</b> <b>Agnotology</b> is the study of ignorance: what we do not know, and why we do not know it. Set beside epistemology, the study of knowledge, which has had the whole field to itself for two thousand years.</p>
+            <p><b>The field this belongs to has a name you will not have met.</b> <b>Agnotology</b> is the study of ignorance: what we do not know, and why we do not know it. Set beside epistemology, the study of knowledge, which has had the whole field to itself for two thousand years.</p>
             <p><b>The obvious answer to the question is the wrong one.</b> Asked what we do not know, the natural reply is everything we have not got round to yet. The claim of the field is that <b>ignorance is often not an empty space, it is something produced</b>, by social and institutional arrangements, sometimes on purpose and sometimes not.</p>
             <p><b>The case they give is the clearest one there is, and it needs one word defined first.</b> A <b>think tank</b> is an organisation that employs researchers to produce reports and policy arguments and publishes them to influence governments and the public. It has no students and no obligation to be peer reviewed, and it is funded by whoever chose to fund it: donors, companies, a political movement. <b>It looks like a research institute and its reports look like scholarship</b>, which is the whole of its usefulness here.</p>
             <p><b>What Oreskes and Conway found, in <em>Merchants of Doubt</em>, 2011.</b> The tobacco industry worked out in the 1950s that it did not have to show smoking was safe. It only had to make the science look unsettled, because a public that thinks the experts disagree will not support regulation yet. Industry money then funded institutes that published reports, recruited a small number of credentialed scientists to appear as the public voice, and pressed journalists to give the other side equal space.</p>
@@ -1257,10 +1263,10 @@
   </section>
 
   <section id="s-exam">
-    <h2>Exam 1, this Wednesday</h2>
-    <p class="lede">Wednesday 7 October, in class, 30 per cent. No readings set for that day. Mostly multiple choice with some short answers, and a two-page cheat sheet is allowed.</p>
+    <h2>Exam 1, which was on 7 October</h2>
+    <p class="lede">Wednesday 7 October, in class, 30 per cent, with a two-page cheat sheet allowed. Kept here as the record of what it covered.</p>
     <div class="body">
-      <p><b>What it covers is weeks 1 to 4</b>, which is the Monday 5 October class and everything before it. This chapter is being read the day before, so it sits at the edge: the safe assumption is that the exam is the Sismondo and week 2 packet material, and that this chapter is context and will not be examined.</p>
+      <p><b>What it covers is weeks 1 to 4</b>, which is the Monday 5 October class and everything before it. This chapter was read the day before, so it sat at the edge, and the working assumption was that it was context.</p>
       <p><b>The guides for the examinable weeks are</b> <a href="../week-2/">week 2</a>, the scientific method packet, <a href="../week-3/">week 3</a>, Kuhn and Foucault, and <a href="../week-4/">week 4</a>, stratification and construction. Each has its professor's posted notes in the third tab of its notes page, which is the best guide there is to what she thinks is worth knowing.</p>
       <p><b>The thing worth doing with the two pages</b> is names and the term attached to each one, the numbered lists that have to come out in order, and the handful of figures: 10 per cent of authors produce 50 per cent of papers, 80 per cent of citations go to 20 per cent of papers, three extra <em>Nature</em> papers for the same competence score.</p>
     </div>
@@ -1910,6 +1916,8 @@
     bar.id = 'hl-bar'; bar.hidden = true;
     bar.innerHTML = '<button type="button" data-c="y" title="Highlight yellow" aria-label="Highlight yellow"></button>' +
       '<button type="button" data-c="p" title="Highlight pink" aria-label="Highlight pink"></button>' +
+      '<button type="button" data-c="uy" title="Underline yellow" aria-label="Underline yellow"></button>' +
+      '<button type="button" data-c="up" title="Underline pink" aria-label="Underline pink"></button>' +
       '<button type="button" data-c="n" title="Add a comment" aria-label="Add a comment"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 9.5A1.5 1.5 0 0 1 12.5 11H6l-3 3V4.5A1.5 1.5 0 0 1 4.5 3h8A1.5 1.5 0 0 1 14 4.5z"/></svg></button>' +
       '<button type="button" data-c="b" title="Set your bookmark here" aria-label="Set your bookmark here"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M4 2.6h8v11.2L8 10.9l-4 2.9z"/></svg></button>';
     document.body.appendChild(bar);

@@ -457,16 +457,16 @@
   /* vertical nav */
   .wrap { position: relative; }
   #nav { position: fixed; top: calc(50% + 26px); transform: translateY(-50%); left: max(10px, calc(50vw - 598px));
-         width: 132px; display: none; flex-direction: column; gap: 2px; z-index: 40; }
+         width: 132px; display: none; flex-direction: column; gap: 1px; z-index: 40; }
   #nav a { display: block; font-family: var(--mono); font-size: 10.5px; letter-spacing: .03em;
-           color: var(--muted); text-decoration: none; padding: 4px 0 4px 11px; border-left: 2px solid var(--rule-soft);
+           color: var(--muted); line-height: 1.3; text-decoration: none; padding: 3px 0 3px 11px; border-left: 2px solid var(--rule-soft);
            white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   /* The year each text was written, so the rail is also a timeline. The gaps are the point:
      Plato to Bacon is two thousand years and Rousseau to Comte is eighty. */
   #nav a i { font-style: normal; font-size: 9px; letter-spacing: .05em; opacity: .62; margin-left: 6px; }
   #nav a:hover { color: var(--ink); border-left-color: var(--muted); }
   #nav a.on { color: var(--accent); border-left-color: var(--accent); }
-  #nav a.grp { margin-top: 9px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .1em; border-left-color: transparent; padding-left: 0; }
+  #nav a.grp { margin-top: 13px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .1em; border-left-color: transparent; padding-left: 0; }
   #nav a.grp:first-child { margin-top: 0; }
   #nav a.grp.on { color: var(--accent); border-left-color: transparent; }
   #nav a.core { color: var(--ink-soft); border-left-color: var(--rule); }
@@ -481,13 +481,13 @@
     #nav { left: max(16px, calc(50vw - 640px)); }
     body { padding-left: 0; }
   }
-  #nav { top: 84px; transform: none; max-height: calc(100vh - 160px);
+  #nav { top: 78px; transform: none; max-height: calc(100vh - 126px);
          overflow-y: auto; scrollbar-width: none; }
   #nav::-webkit-scrollbar { display: none; }
   #nav > * { flex: 0 0 auto; }
   #nav a.grp, #nav a.core { white-space: normal; overflow: visible; text-overflow: clip; }
   #nav a.sb { display: none; font-family: var(--body); font-size: 11.5px; letter-spacing: 0;
-              line-height: 1.32; padding: 4px 0 4px 11px; margin-left: 9px;
+              line-height: 1.3; padding: 2.5px 0 2.5px 11px; margin-left: 9px;
               white-space: normal; overflow: visible; text-overflow: clip; }
   #nav a.sb.show { display: block; }
   #nav a.sb b { font-family: var(--mono); font-size: 9.5px; font-weight: 500;
@@ -618,6 +618,8 @@
   .bmi .dot { width: 9px; height: 9px; border-radius: 2px; flex: none; }
   .bmi .dot.y { background: rgba(255,206,0,.85); }
   .bmi .dot.p { background: rgba(255,92,168,.7); }
+  .bmi .dot.uy { background: none; box-shadow: inset 0 -3px 0 rgba(255,206,0,.85); }
+  .bmi .dot.up { background: none; box-shadow: inset 0 -3px 0 rgba(255,92,168,.7); }
   .bmi .dot.n { background: none; border: 1px dashed var(--accent); }
   .bmi .dot.b { background: var(--accent); clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 70%, 0 100%); border-radius: 0; height: 11px; width: 8px; }
   .bmi .bt { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
@@ -664,6 +666,8 @@
   mark.hl-y { background: rgba(255,206,0,.42); }
   mark.hl-p { background: rgba(255,92,168,.34); }
   mark.hl-n { background: rgba(31,107,87,.10); border-bottom: 1px dashed var(--accent); }
+  mark.hl-uy { background: none; border-radius: 0; box-shadow: inset 0 -2px 0 rgba(255,206,0,.95); }
+  mark.hl-up { background: none; border-radius: 0; box-shadow: inset 0 -2px 0 rgba(255,92,168,.9); }
   mark.hl-n.act { background: rgba(31,107,87,.22); }
   @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) mark.hl-y { background: rgba(255,206,0,.30); } :root:not([data-theme="light"]) mark.hl-p { background: rgba(255,92,168,.30); } :root:not([data-theme="light"]) mark.hl-n { background: rgba(100,191,161,.12); } }
   :root[data-theme="dark"] mark.hl-y { background: rgba(255,206,0,.30); }
@@ -674,6 +678,8 @@
   #hl-bar button { width: 17px; height: 17px; border: 1px solid var(--rule); border-radius: 3px; cursor: pointer; padding: 0; }
   #hl-bar button[data-c="y"] { background: rgba(255,206,0,.55); }
   #hl-bar button[data-c="p"] { background: rgba(255,92,168,.45); }
+  #hl-bar button[data-c="uy"] { background: var(--paper); box-shadow: inset 0 -4px 0 rgba(255,206,0,.85); }
+  #hl-bar button[data-c="up"] { background: var(--paper); box-shadow: inset 0 -4px 0 rgba(255,92,168,.7); }
   #hl-bar button[data-c="n"] { background: var(--paper); display: flex; align-items: center; justify-content: center; color: var(--ink-soft); }
   #hl-bar button[data-c="n"] svg { width: 11px; height: 11px; display: block; }
   #hl-bar button[data-c="b"] { background: var(--paper); display: flex; align-items: center; justify-content: center; color: var(--accent); }
@@ -710,52 +716,52 @@
   <a class="grp" href="#s-texts">The nine texts</a>
   <a class="core" href="#r1" title="Chapter 1 · read properly">Plato<i>c. 375 BCE</i></a>
   <a class="sb" data-of="r1" href="#r1-1"><b>1.1</b>The story</a>
-  <a class="sb" data-of="r1" href="#r1-2"><b>1.2</b>What the parts stand for</a>
-  <a class="sb" data-of="r1" href="#r1-3"><b>1.3</b>Which makes it an argument about education</a>
-  <a class="sb" data-of="r1" href="#r1-4"><b>1.4</b>What counts as knowing, and what counts as opinion</a>
-  <a class="sb" data-of="r1" href="#r1-5"><b>1.5</b>Why the crafts and mathematics fall short</a>
-  <a class="sb" data-of="r1" href="#r1-6"><b>1.6</b>The return: laughter for one thing, killing for another</a>
-  <a class="sb" data-of="r1" href="#r1-7"><b>1.7</b>Why the city forces him to go back down</a>
-  <a class="sb" data-of="r1" href="#r1-8"><b>1.8</b>Who attacks the placement, and how</a>
+  <a class="sb" data-of="r1" href="#r1-2"><b>1.2</b>What the parts mean</a>
+  <a class="sb" data-of="r1" href="#r1-3"><b>1.3</b>An argument about education</a>
+  <a class="sb" data-of="r1" href="#r1-4"><b>1.4</b>Knowing and opinion</a>
+  <a class="sb" data-of="r1" href="#r1-5"><b>1.5</b>Crafts and mathematics</a>
+  <a class="sb" data-of="r1" href="#r1-6"><b>1.6</b>The return</a>
+  <a class="sb" data-of="r1" href="#r1-7"><b>1.7</b>Going back down</a>
+  <a class="sb" data-of="r1" href="#r1-8"><b>1.8</b>Who attacks the ranking</a>
   <a class="core" href="#r3" title="Chapter 3 · read properly">Schadewaldt<i>1959</i></a>
-  <a class="sb" data-of="r3" href="#r3-1"><b>3.1</b>Why this text is in the reading at all</a>
-  <a class="sb" data-of="r3" href="#r3-2"><b>3.2</b>First word: physis, which we translate as "nature"</a>
-  <a class="sb" data-of="r3" href="#r3-3"><b>3.3</b>Second word: technē, which we translate as "technique"</a>
-  <a class="sb" data-of="r3" href="#r3-4"><b>3.4</b>How technē relates to nature: it copies, and it finishes</a>
-  <a class="sb" data-of="r3" href="#r3-5"><b>3.5</b>What the Greeks could therefore never think</a>
-  <a class="sb" data-of="r3" href="#r3-6"><b>3.6</b>The ending: the Greeks already knew technique was dangerous</a>
+  <a class="sb" data-of="r3" href="#r3-1"><b>3.1</b>Why this text</a>
+  <a class="sb" data-of="r3" href="#r3-2"><b>3.2</b>Physis</a>
+  <a class="sb" data-of="r3" href="#r3-3"><b>3.3</b>Techn&#275;</a>
+  <a class="sb" data-of="r3" href="#r3-4"><b>3.4</b>Copying and finishing</a>
+  <a class="sb" data-of="r3" href="#r3-5"><b>3.5</b>What they could not think</a>
+  <a class="sb" data-of="r3" href="#r3-6"><b>3.6</b>Technique as danger</a>
   <a class="core" href="#r4" title="Chapter 4 · read properly">Bacon<i>1620</i></a>
-  <a class="sb" data-of="r4" href="#r4-1"><b>4.1</b>What Bacon thought had gone wrong</a>
-  <a class="sb" data-of="r4" href="#r4-2"><b>4.2</b>"Knowledge and power are the same thing" is a claim about what understanding is</a>
-  <a class="sb" data-of="r4" href="#r4-3"><b>4.3</b>But the instrument is bent before you start</a>
-  <a class="sb" data-of="r4" href="#r4-4"><b>4.4</b>The cure is induction, and his version is not the usual one</a>
+  <a class="sb" data-of="r4" href="#r4-1"><b>4.1</b>What went wrong</a>
+  <a class="sb" data-of="r4" href="#r4-2"><b>4.2</b>Knowledge and power</a>
+  <a class="sb" data-of="r4" href="#r4-3"><b>4.3</b>The bent instrument</a>
+  <a class="sb" data-of="r4" href="#r4-4"><b>4.4</b>His induction</a>
   <a class="skim" href="#r6" title="Chapter 6 · skim for the one idea">Comte<i>1830</i></a>
-  <a class="sb" data-of="r6" href="#r6-1"><b>6.1</b>The claim, with one question run through it</a>
-  <a class="sb" data-of="r6" href="#r6-2"><b>6.2</b>Two arguments that the law is real</a>
-  <a class="sb" data-of="r6" href="#r6-3"><b>6.3</b>The best argument in the text, and the one people skip</a>
-  <a class="sb" data-of="r6" href="#r6-4"><b>6.4</b>The hierarchy of the sciences</a>
-  <a class="sb" data-of="r6" href="#r6-5"><b>6.5</b>Does this contradict Plato? Yes, deliberately</a>
+  <a class="sb" data-of="r6" href="#r6-1"><b>6.1</b>The claim</a>
+  <a class="sb" data-of="r6" href="#r6-2"><b>6.2</b>Two arguments for the law</a>
+  <a class="sb" data-of="r6" href="#r6-3"><b>6.3</b>The best argument</a>
+  <a class="sb" data-of="r6" href="#r6-4"><b>6.4</b>Hierarchy of the sciences</a>
+  <a class="sb" data-of="r6" href="#r6-5"><b>6.5</b>Against Plato</a>
   <a class="core" href="#r7" title="Chapter 7 · read properly">Rousseau<i>1752</i></a>
-  <a class="sb" data-of="r7" href="#r7-1"><b>7.1</b>What he concedes first, which is why he is hard to dismiss</a>
-  <a class="sb" data-of="r7" href="#r7-2"><b>7.2</b>The argument, in three steps</a>
+  <a class="sb" data-of="r7" href="#r7-1"><b>7.1</b>What he concedes</a>
+  <a class="sb" data-of="r7" href="#r7-2"><b>7.2</b>The argument in three steps</a>
   <a class="skim" href="#r9" title="Chapter 9 · skim for the one idea">Vienna Circle<i>1929</i></a>
-  <a class="sb" data-of="r9" href="#r9-1"><b>9.1</b>The test, worked through</a>
-  <a class="sb" data-of="r9" href="#r9-2"><b>9.2</b>Two kinds of legitimate sentence, and only two</a>
-  <a class="sb" data-of="r9" href="#r9-3"><b>9.3</b>What this kills, which is the heart of the position</a>
-  <a class="sb" data-of="r9" href="#r9-4"><b>9.4</b>Why metaphysics keeps happening anyway</a>
-  <a class="sb" data-of="r9" href="#r9-5"><b>9.5</b>Two objections worth having ready</a>
-  <a class="sb" data-of="r9" href="#r9-6"><b>9.6</b>§4, the part people skip and the course cares about</a>
+  <a class="sb" data-of="r9" href="#r9-1"><b>9.1</b>The test</a>
+  <a class="sb" data-of="r9" href="#r9-2"><b>9.2</b>Two legitimate sentences</a>
+  <a class="sb" data-of="r9" href="#r9-3"><b>9.3</b>What this kills</a>
+  <a class="sb" data-of="r9" href="#r9-4"><b>9.4</b>Why metaphysics persists</a>
+  <a class="sb" data-of="r9" href="#r9-5"><b>9.5</b>Two objections</a>
+  <a class="sb" data-of="r9" href="#r9-6"><b>9.6</b>Section 4</a>
   <a class="skim" href="#r44" title="Chapter 44 · skim for the one idea">Lynn White<i>1971</i></a>
-  <a class="sb" data-of="r44" href="#r44-1"><b>44.1</b>Why this is in a philosophy course at all</a>
-  <a class="sb" data-of="r44" href="#r44-2"><b>44.2</b>The fact to be explained</a>
-  <a class="sb" data-of="r44" href="#r44-3"><b>44.3</b>The decisive change: the invention of invention</a>
-  <a class="sb" data-of="r44" href="#r44-4"><b>44.4</b>Where the appetite came from: three religious habits</a>
+  <a class="sb" data-of="r44" href="#r44-1"><b>44.1</b>Why it is here</a>
+  <a class="sb" data-of="r44" href="#r44-2"><b>44.2</b>The fact to explain</a>
+  <a class="sb" data-of="r44" href="#r44-3"><b>44.3</b>Invention of invention</a>
+  <a class="sb" data-of="r44" href="#r44-4"><b>44.4</b>Three religious habits</a>
   <a class="last" href="#r49" title="Chapter 49 · last, if time">Dennett<i>1994</i></a>
-  <a class="sb" data-of="r49" href="#r49-1"><b>49.1</b>What he is doing, and why it belongs in this packet</a>
-  <a class="sb" data-of="r49" href="#r49-2"><b>49.2</b>Objection one: dualism</a>
-  <a class="sb" data-of="r49" href="#r49-3"><b>49.3</b>Objection two: consciousness needs an organic brain</a>
-  <a class="sb" data-of="r49" href="#r49-4"><b>49.4</b>Objection three, the interesting one: robots are artefacts</a>
-  <a class="sb" data-of="r49" href="#r49-5"><b>49.5</b>Then the positive half: Cog</a>
+  <a class="sb" data-of="r49" href="#r49-1"><b>49.1</b>What he is doing</a>
+  <a class="sb" data-of="r49" href="#r49-2"><b>49.2</b>Dualism</a>
+  <a class="sb" data-of="r49" href="#r49-3"><b>49.3</b>An organic brain</a>
+  <a class="sb" data-of="r49" href="#r49-4"><b>49.4</b>Robots as artefacts</a>
+  <a class="sb" data-of="r49" href="#r49-5"><b>49.5</b>Cog</a>
   <a class="core" href="#r54" title="Chapter 54 · set for week 3">Foucault<i>1975</i></a>
   <a class="grp" href="#s-gloss">Glossary</a>
   <a class="grp" href="#s-plan">Reading plan</a>
@@ -2039,7 +2045,7 @@
             <h5>Where Plato gets his revenge</h5>
             <p><b>Without a theory of what the thing is, you cannot tell a real law from a coincidence.</b> Snow's map did not convince people at the time, and the reason is that the miasma camp had correlations too: cholera really did cluster in poor districts, in low-lying ground, near bad smells. Correlations were available on both sides, and the tie was broken by Koch finding the organism. The essence arrived late and did the deciding.</p>
             <p>Two more cases in this guide make the same point. The London sewers built on the false theory <em>worked</em>, so a reliable result does not tell you your reasons were right. And the skin-cancer classifier had a beautiful invariable relation, photograph contains a ruler and therefore malignant, which was entirely fake. Only an account of <em>why</em> catches that one.</p>
-            <p><b>The settlement modern science actually reached</b> is neither man's: act on the reliable relation when lives are at stake, keep hunting the mechanism, and never mistake the first for the second. Saying that, with Snow and Koch as the example, is a strong exam paragraph on the week's whole theme.</p>
+            <p><b>The settlement modern science actually reached</b> is neither man's: act on the reliable relation when lives are at stake, keep hunting the mechanism, and never mistake the first for the second.</p>
           </div>
 
           <dl class="links">
@@ -3240,6 +3246,8 @@
     bar.id = 'hl-bar'; bar.hidden = true;
     bar.innerHTML = '<button type="button" data-c="y" title="Highlight yellow" aria-label="Highlight yellow"></button>' +
       '<button type="button" data-c="p" title="Highlight pink" aria-label="Highlight pink"></button>' +
+      '<button type="button" data-c="uy" title="Underline yellow" aria-label="Underline yellow"></button>' +
+      '<button type="button" data-c="up" title="Underline pink" aria-label="Underline pink"></button>' +
       '<button type="button" data-c="n" title="Add a comment" aria-label="Add a comment"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 9.5A1.5 1.5 0 0 1 12.5 11H6l-3 3V4.5A1.5 1.5 0 0 1 4.5 3h8A1.5 1.5 0 0 1 14 4.5z"/></svg></button>' +
       '<button type="button" data-c="b" title="Set your bookmark here" aria-label="Set your bookmark here"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M4 2.6h8v11.2L8 10.9l-4 2.9z"/></svg></button>';
     document.body.appendChild(bar);

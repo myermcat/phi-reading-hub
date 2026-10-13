@@ -469,16 +469,16 @@
   /* vertical nav */
   .wrap { position: relative; }
   #nav { position: fixed; top: calc(50% + 26px); transform: translateY(-50%); left: max(10px, calc(50vw - 598px));
-         width: 132px; display: none; flex-direction: column; gap: 2px; z-index: 40; }
+         width: 132px; display: none; flex-direction: column; gap: 1px; z-index: 40; }
   #nav a { display: block; font-family: var(--mono); font-size: 10.5px; letter-spacing: .03em;
-           color: var(--muted); text-decoration: none; padding: 4px 0 4px 11px; border-left: 2px solid var(--rule-soft);
+           color: var(--muted); line-height: 1.3; text-decoration: none; padding: 3px 0 3px 11px; border-left: 2px solid var(--rule-soft);
            white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   /* The year each text was written, so the rail is also a timeline. The gaps are the point:
      Plato to Bacon is two thousand years and Rousseau to Comte is eighty. */
   #nav a i { font-style: normal; font-size: 9px; letter-spacing: .05em; opacity: .62; margin-left: 6px; }
   #nav a:hover { color: var(--ink); border-left-color: var(--muted); }
   #nav a.on { color: var(--accent); border-left-color: var(--accent); }
-  #nav a.grp { margin-top: 9px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .1em; border-left-color: transparent; padding-left: 0; }
+  #nav a.grp { margin-top: 13px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .1em; border-left-color: transparent; padding-left: 0; }
   #nav a.grp:first-child { margin-top: 0; }
   #nav a.grp.on { color: var(--accent); border-left-color: transparent; }
   #nav a.core { color: var(--ink-soft); border-left-color: var(--rule); }
@@ -493,13 +493,13 @@
     #nav { left: max(16px, calc(50vw - 640px)); }
     body { padding-left: 0; }
   }
-  #nav { top: 84px; transform: none; max-height: calc(100vh - 160px);
+  #nav { top: 78px; transform: none; max-height: calc(100vh - 126px);
          overflow-y: auto; scrollbar-width: none; }
   #nav::-webkit-scrollbar { display: none; }
   #nav > * { flex: 0 0 auto; }
   #nav a.grp, #nav a.core { white-space: normal; overflow: visible; text-overflow: clip; }
   #nav a.sb { display: none; font-family: var(--body); font-size: 11.5px; letter-spacing: 0;
-              line-height: 1.32; padding: 4px 0 4px 11px; margin-left: 9px;
+              line-height: 1.3; padding: 2.5px 0 2.5px 11px; margin-left: 9px;
               white-space: normal; overflow: visible; text-overflow: clip; }
   #nav a.sb.show { display: block; }
   #nav a.sb b { font-family: var(--mono); font-size: 9.5px; font-weight: 500;
@@ -630,6 +630,8 @@
   .bmi .dot { width: 9px; height: 9px; border-radius: 2px; flex: none; }
   .bmi .dot.y { background: rgba(255,206,0,.85); }
   .bmi .dot.p { background: rgba(255,92,168,.7); }
+  .bmi .dot.uy { background: none; box-shadow: inset 0 -3px 0 rgba(255,206,0,.85); }
+  .bmi .dot.up { background: none; box-shadow: inset 0 -3px 0 rgba(255,92,168,.7); }
   .bmi .dot.n { background: none; border: 1px dashed var(--accent); }
   .bmi .dot.b { background: var(--accent); clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 70%, 0 100%); border-radius: 0; height: 11px; width: 8px; }
   .bmi .bt { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
@@ -676,6 +678,8 @@
   mark.hl-y { background: rgba(255,206,0,.42); }
   mark.hl-p { background: rgba(255,92,168,.34); }
   mark.hl-n { background: rgba(31,107,87,.10); border-bottom: 1px dashed var(--accent); }
+  mark.hl-uy { background: none; border-radius: 0; box-shadow: inset 0 -2px 0 rgba(255,206,0,.95); }
+  mark.hl-up { background: none; border-radius: 0; box-shadow: inset 0 -2px 0 rgba(255,92,168,.9); }
   mark.hl-n.act { background: rgba(31,107,87,.22); }
   @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) mark.hl-y { background: rgba(255,206,0,.30); } :root:not([data-theme="light"]) mark.hl-p { background: rgba(255,92,168,.30); } :root:not([data-theme="light"]) mark.hl-n { background: rgba(100,191,161,.12); } }
   :root[data-theme="dark"] mark.hl-y { background: rgba(255,206,0,.30); }
@@ -686,6 +690,8 @@
   #hl-bar button { width: 17px; height: 17px; border: 1px solid var(--rule); border-radius: 3px; cursor: pointer; padding: 0; }
   #hl-bar button[data-c="y"] { background: rgba(255,206,0,.55); }
   #hl-bar button[data-c="p"] { background: rgba(255,92,168,.45); }
+  #hl-bar button[data-c="uy"] { background: var(--paper); box-shadow: inset 0 -4px 0 rgba(255,206,0,.85); }
+  #hl-bar button[data-c="up"] { background: var(--paper); box-shadow: inset 0 -4px 0 rgba(255,92,168,.7); }
   #hl-bar button[data-c="n"] { background: var(--paper); display: flex; align-items: center; justify-content: center; color: var(--ink-soft); }
   #hl-bar button[data-c="n"] svg { width: 11px; height: 11px; display: block; }
   #hl-bar button[data-c="b"] { background: var(--paper); display: flex; align-items: center; justify-content: center; color: var(--accent); }
@@ -719,29 +725,29 @@
   <a class="grp" href="#s-notes">Notes by text</a>
   <a class="grp" href="#s-texts">The reading</a>
   <a class="core" href="#sismondo" title="Sismondo ch. 2 &middot; the assigned chapter">Sismondo<i>2010</i></a>
-  <a class="sb" data-of="sismondo" href="#sismondo-1"><b>2.1</b>Why the chapter is set, and what it is doing</a>
-  <a class="sb" data-of="sismondo" href="#sismondo-2"><b>2.2</b>The first target: Whig history</a>
-  <a class="sb" data-of="sismondo" href="#sismondo-3"><b>2.3</b>What a paradigm is, in this chapter's words</a>
-  <a class="sb" data-of="sismondo" href="#sismondo-4"><b>2.4</b>Crisis, revolution, and the sentence that caused the trouble</a>
-  <a class="sb" data-of="sismondo" href="#sismondo-5"><b>2.5</b>Incommensurability, and its three roots</a>
-  <a class="sb" data-of="sismondo" href="#sismondo-6"><b>2.6</b>And then he takes it apart, which is the half that gets missed</a>
-  <a class="sb" data-of="sismondo" href="#sismondo-7"><b>2.7</b>So how do people across a boundary actually talk? Two answers</a>
-  <a class="sb" data-of="sismondo" href="#sismondo-8"><b>2.8</b>What the chapter says the book destroyed</a>
-  <a class="sb" data-of="sismondo" href="#sismondo-9"><b>2.9</b>The three boxes, which are examinable and easy to skip</a>
+  <a class="sb" data-of="sismondo" href="#sismondo-1"><b>2.1</b>Why the chapter is set</a>
+  <a class="sb" data-of="sismondo" href="#sismondo-2"><b>2.2</b>Whig history</a>
+  <a class="sb" data-of="sismondo" href="#sismondo-3"><b>2.3</b>What a paradigm is</a>
+  <a class="sb" data-of="sismondo" href="#sismondo-4"><b>2.4</b>Crisis and revolution</a>
+  <a class="sb" data-of="sismondo" href="#sismondo-5"><b>2.5</b>Incommensurability</a>
+  <a class="sb" data-of="sismondo" href="#sismondo-6"><b>2.6</b>Taking it apart</a>
+  <a class="sb" data-of="sismondo" href="#sismondo-7"><b>2.7</b>Talking across a boundary</a>
+  <a class="sb" data-of="sismondo" href="#sismondo-8"><b>2.8</b>What the book destroyed</a>
+  <a class="sb" data-of="sismondo" href="#sismondo-9"><b>2.9</b>The three boxes</a>
   <a class="skim" href="#kuhn" title="Background &middot; Kuhn himself">Kuhn<i>1962</i></a>
-  <a class="sb" data-of="kuhn" href="#kuhn-1"><b>?.1</b>The book, and the joke about where it was published</a>
-  <a class="sb" data-of="kuhn" href="#kuhn-2"><b>?.2</b>What people took from it, and what he wrote</a>
-  <a class="sb" data-of="kuhn" href="#kuhn-3"><b>?.3</b>Normal science: most scientists are not testing anything</a>
-  <a class="sb" data-of="kuhn" href="#kuhn-4"><b>?.4</b>Paradigm, and why the word is slippery</a>
-  <a class="sb" data-of="kuhn" href="#kuhn-5"><b>?.5</b>Anomaly, crisis, revolution</a>
-  <a class="sb" data-of="kuhn" href="#kuhn-6"><b>?.6</b>Incommensurability, the claim that causes all the trouble</a>
-  <a class="sb" data-of="kuhn" href="#kuhn-7"><b>?.7</b>Why the course sets this here</a>
+  <a class="sb" data-of="kuhn" href="#kuhn-1"><b>1</b>The book</a>
+  <a class="sb" data-of="kuhn" href="#kuhn-2"><b>2</b>What people took from it</a>
+  <a class="sb" data-of="kuhn" href="#kuhn-3"><b>3</b>Normal science</a>
+  <a class="sb" data-of="kuhn" href="#kuhn-4"><b>4</b>Paradigm</a>
+  <a class="sb" data-of="kuhn" href="#kuhn-5"><b>5</b>Anomaly to revolution</a>
+  <a class="sb" data-of="kuhn" href="#kuhn-6"><b>6</b>Incommensurability</a>
+  <a class="sb" data-of="kuhn" href="#kuhn-7"><b>7</b>Why it is set here</a>
   <a class="core" href="#r54" title="Anthology ch. 54 &middot; read properly">Foucault<i>1975</i></a>
-  <a class="sb" data-of="r54" href="#r54-1"><b>54.1</b>He begins with a plague town, and the detail is the argument</a>
-  <a class="sb" data-of="r54" href="#r54-2"><b>54.2</b>What he extracts from it: the definition of discipline</a>
-  <a class="sb" data-of="r54" href="#r54-3"><b>54.3</b>Bentham's Panopticon, and why it works</a>
-  <a class="sb" data-of="r54" href="#r54-4"><b>54.4</b>The crucial move: it is a diagram</a>
-  <a class="sb" data-of="r54" href="#r54-5"><b>54.5</b>Why this belongs in a course about scientific method</a>
+  <a class="sb" data-of="r54" href="#r54-1"><b>54.1</b>The plague town</a>
+  <a class="sb" data-of="r54" href="#r54-2"><b>54.2</b>Defining discipline</a>
+  <a class="sb" data-of="r54" href="#r54-3"><b>54.3</b>The Panopticon</a>
+  <a class="sb" data-of="r54" href="#r54-4"><b>54.4</b>It is a diagram</a>
+  <a class="sb" data-of="r54" href="#r54-5"><b>54.5</b>Why it is in this course</a>
   <a class="grp" href="#s-gloss">Glossary</a>
 </nav>
 
@@ -938,7 +944,7 @@
 
           <h4 id="sismondo-8" data-n="2.8">What the chapter says the book destroyed</h4>
           <div class="body">
-            <p><b>The conclusion lines Kuhn up against four positions</b>, three of which are in the week 2 packet, and this list is the most examinable paragraph in the chapter.</p>
+            <p><b>The conclusion lines Kuhn up against four positions</b>, three of which are in the week 2 packet.</p>
             <ul>
               <li><b>Against functionalism.</b> Scientific communities are organised around ideas and practices, from the bottom up. Functionalism had them organised around ideals of behaviour, serving an overarching goal.</li>
               <li><b>Against positivism.</b> Changes in theory are driven by changes of vision. Data follows: if a worldview is a theory, then data sits under theory, which is the reverse of what positivism said.</li>
@@ -994,7 +1000,7 @@
 
           <p class="qline">Why does a scientific community change its mind, if not because the evidence made it?</p>
 
-          <h4 id="kuhn-1" data-n="?.1">The book, and the joke about where it was published</h4>
+          <h4 id="kuhn-1" data-n="1">The book, and the joke about where it was published</h4>
           <div class="body">
             <p><b>Thomas Kuhn</b> was an American physicist who moved into the history of science, and in 1962 he published <em>The Structure of Scientific Revolutions</em>. It is short, it is the most cited book of its century in the humanities and social sciences, and it put the word <b>paradigm</b> into ordinary English, where it is now used by people selling software.</p>
             <p><b>Where it came out is the joke.</b> It was published as a monograph inside the <em>International Encyclopedia of Unified Science</em>, which was the Vienna Circle's own publishing project. Chapter 9 of last week's packet is the Vienna Circle manifesto, arguing that science is one unified structure built up from verified observation statements. Kuhn's book, which says science does not build up and observation statements are not neutral, came out as a volume of their encyclopedia. The people who commissioned it published the thing that undid it.</p>
@@ -1005,7 +1011,7 @@
             </figure>
           </div>
 
-          <h4 id="kuhn-2" data-n="?.2">What people took from it, and what he wrote</h4>
+          <h4 id="kuhn-2" data-n="2">What people took from it, and what he wrote</h4>
           <div class="body">
             <p><b>What the book was read as saying</b> was that science is not rational. That a paradigm wins by fashion, politics or the deaths of the people who disagree, that one is as good as another, and that there is no such thing as getting closer to the truth. That reading is why "paradigm shift" now means any change of mind at all, and it is the reading Kuhn spent the rest of his life denying.</p>
             <p><b>What he wrote is narrower.</b> There are real reasons for preferring one theory to another, and he named five: accuracy, consistency, breadth, simplicity and fruitfulness. His claim is that those five do not settle it, because two people can weigh them differently and neither is being stupid. One prefers the theory that fits the measurements better, the other the theory that covers more ground, and there is no further rule that says which of them is right. So the choice is reasoned and underdetermined at the same time, which is a long way from irrational.</p>
@@ -1014,7 +1020,7 @@
             <p><b>Kuhn says bricks come out.</b> Newtonian mass is a fixed quantity that a body simply has; relativistic mass changes with speed and converts into energy. They are not the same quantity with a correction term, so the sentence "mass is conserved" is not a true claim that Einstein kept and refined. It was thrown away and something else was put in its place that happens to give nearly the same numbers when things move slowly. Phlogiston went out of the wall entirely. Caloric, the weightless fluid heat was made of, went out. The crystal spheres carrying the planets went out. A wall that loses courses is not a wall being built up, and that is the whole of what "science does not accumulate" means.</p>
           </div>
 
-          <h4 id="kuhn-3" data-n="?.3">Normal science: most scientists are not testing anything</h4>
+          <h4 id="kuhn-3" data-n="3">Normal science: most scientists are not testing anything</h4>
           <div class="body">
             <p><b>Kuhn's first move is to describe what scientists actually do all day</b>, which is not what the textbook picture says. The textbook picture is that a scientist proposes a bold conjecture and tries to refute it. Kuhn looked at the historical record and found that almost nobody does this almost ever.</p>
             <p>What they do instead he calls <b>normal science</b>: solving puzzles inside a framework that is not itself in question. Measure this constant more precisely. Extend the theory to one more case. Build an instrument that gets at the quantity the theory says exists. The framework is the tool they work with.</p>
@@ -1025,7 +1031,7 @@
             </div>
           </div>
 
-          <h4 id="kuhn-4" data-n="?.4">Paradigm, and why the word is slippery</h4>
+          <h4 id="kuhn-4" data-n="4">Paradigm, and why the word is slippery</h4>
           <div class="body">
             <p><b>Kuhn used <em>paradigm</em> in more senses than he meant to.</b> A critic named Margaret Masterman went through the book and counted twenty-one distinct uses. Kuhn accepted the complaint and in a postscript split it in two, and those two are the ones to hold.</p>
             <ul>
@@ -1035,7 +1041,7 @@
             <p><b>The exemplar sense is the interesting one</b>, because it says a scientist is trained less by learning rules than by copying worked examples. Nobody can state the rules of their own field completely. What they have is a stock of cases and a feel for which new problem resembles which old one. That is a craft, and it is learned the way crafts are learned, which puts Kuhn unexpectedly close to the Greek <em>technē</em> in last week's Schadewaldt chapter.</p>
           </div>
 
-          <h4 id="kuhn-5" data-n="?.5">Anomaly, crisis, revolution</h4>
+          <h4 id="kuhn-5" data-n="5">Anomaly, crisis, revolution</h4>
           <div class="body">
             <p><b>Anomaly.</b> A result the framework cannot digest. Most anomalies get absorbed, adjusted for, or put on a shelf marked "not yet", and there is a good reason for it: a framework that collapsed at the first awkward result would never get any work done.</p>
             <p><b>Crisis.</b> Anomalies accumulate at a point the community cares about, the fixes start looking like patches, and confidence goes. Kuhn's claim is that this is a state of the <em>community</em>. The same anomalies could have been known for decades and the crisis arrives when confidence does.</p>
@@ -1069,7 +1075,7 @@
             </figure>
           </div>
 
-          <h4 id="kuhn-6" data-n="?.6">Incommensurability, the claim that causes all the trouble</h4>
+          <h4 id="kuhn-6" data-n="6">Incommensurability, the claim that causes all the trouble</h4>
           <div class="body">
             <p><b>Incommensurable means there is no common measure.</b> Kuhn borrowed it from geometry, where the side and the diagonal of a square cannot both be counted in whole units of the same ruler. Applied to paradigms it means you cannot settle the contest by totalling the evidence, because three things move at once.</p>
             <ul>
@@ -1090,7 +1096,7 @@
             </div>
           </div>
 
-          <h4 id="kuhn-7" data-n="?.7">Why the course sets this here</h4>
+          <h4 id="kuhn-7" data-n="7">Why the course sets this here</h4>
           <div class="body">
             <p><b>Kuhn moves the unit of analysis from the method to the community.</b> Before him, the question was what rule separates science from everything else, which is the Vienna Circle question. After him, the question is what a trained group of people accepts, why they accept it, and what would make them stop. That is a question about people, and people can be studied by sociologists.</p>
             <figure class="dia">
@@ -1926,6 +1932,8 @@
     bar.id = 'hl-bar'; bar.hidden = true;
     bar.innerHTML = '<button type="button" data-c="y" title="Highlight yellow" aria-label="Highlight yellow"></button>' +
       '<button type="button" data-c="p" title="Highlight pink" aria-label="Highlight pink"></button>' +
+      '<button type="button" data-c="uy" title="Underline yellow" aria-label="Underline yellow"></button>' +
+      '<button type="button" data-c="up" title="Underline pink" aria-label="Underline pink"></button>' +
       '<button type="button" data-c="n" title="Add a comment" aria-label="Add a comment"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 9.5A1.5 1.5 0 0 1 12.5 11H6l-3 3V4.5A1.5 1.5 0 0 1 4.5 3h8A1.5 1.5 0 0 1 14 4.5z"/></svg></button>' +
       '<button type="button" data-c="b" title="Set your bookmark here" aria-label="Set your bookmark here"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M4 2.6h8v11.2L8 10.9l-4 2.9z"/></svg></button>';
     document.body.appendChild(bar);
