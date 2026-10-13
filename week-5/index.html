@@ -493,17 +493,6 @@
   #nav a.grp:first-child { margin-top: 0; }
   #nav a.grp.on { color: var(--accent); border-left-color: transparent; }
   #nav a.core { color: var(--ink-soft); border-left-color: var(--rule); }
-  #nav a.skim { opacity: .68; }
-  #nav a.last { opacity: .48; }
-  #nav a.on { opacity: 1; }
-  #nav .key { font-family: var(--mono); font-size: 9px; letter-spacing: .06em; color: var(--muted);
-              margin-top: 22px; padding-top: 14px; border-top: 1px solid var(--rule); line-height: 1.8; }
-  #nav .key em { font-style: normal; display: block; letter-spacing: .12em; text-transform: uppercase;
-                 color: var(--muted); opacity: .75; margin-bottom: 5px; }
-  #nav .key i { font-style: normal; display: block; }
-  #nav .key i.a { color: var(--ink-soft); }
-  #nav .key i.b { opacity: .68; }
-  #nav .key i.c { opacity: .48; }
   /* the contents list used to need a 1180px window. It takes its own column now, so it
      appears from 1000px up, and only goes back to floating beside a centred page when
      there is room for that. */
@@ -518,12 +507,14 @@
   #nav { top: 84px; transform: none; max-height: calc(100vh - 160px);
          overflow-y: auto; scrollbar-width: none; }
   #nav::-webkit-scrollbar { display: none; }
-  #nav a.sb { display: none; font-size: 9.5px; letter-spacing: .02em; line-height: 1.32;
-              padding: 3px 0 3px 11px; margin-left: 9px; opacity: .9; }
+  #nav > * { flex: 0 0 auto; }
+  #nav a.grp, #nav a.core { white-space: normal; overflow: visible; text-overflow: clip; }
+  #nav a.sb { display: none; font-family: var(--body); font-size: 11.5px; letter-spacing: 0;
+              line-height: 1.32; padding: 4px 0 4px 11px; margin-left: 9px;
+              white-space: normal; overflow: visible; text-overflow: clip; }
   #nav a.sb.show { display: block; }
-  #nav a.sb { white-space: normal; }
-  #nav a.sb b { font-weight: 500; font-style: normal; color: var(--muted);
-                margin-right: 5px; }
+  #nav a.sb b { font-family: var(--mono); font-size: 9.5px; font-weight: 500;
+                font-style: normal; color: var(--muted); margin-right: 5px; }
   #nav a.sb:hover b, #nav a.sb.on b { color: var(--accent); }
 
   /* glossary. Closed by default: it is a reference list and not something to read through,
@@ -746,7 +737,6 @@
   <a class="core" href="#six" title="The map of the book &middot; read properly">The six questions<i>pp 7 to 15</i></a>
   <a class="grp" href="#s-exam">Exam 1</a>
   <a class="grp" href="#s-gloss">Glossary</a>
-  <div class="key"><em>Key</em><i class="a">solid = read properly</i><i class="b">faded = skim</i><i class="c">faintest = if time</i></div>
 </nav>
 
 <div class="wrap">
