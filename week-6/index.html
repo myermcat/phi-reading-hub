@@ -35,6 +35,7 @@
     --hl-n-act: rgba(31,107,87,.22);
     --ul-y:     rgba(196,152,0,.55);
     --ul-p:     rgba(208,62,130,.48);
+    --ul-g:     rgba(58,98,84,.34);
 
     --navpad: 0px;
 
@@ -60,7 +61,8 @@
       --ghost: #2C332E;
       --hl-y: rgba(255,206,0,.24); --hl-p: rgba(255,92,168,.24);
       --hl-n: rgba(100,191,161,.12); --hl-n-act: rgba(100,191,161,.22);
-      --ul-y: rgba(217,169,87,.48); --ul-p: rgba(255,151,198,.38); --lh: 1.76; --measure: 58ch; --figw: 80ch; --pgap: 25px;
+      --ul-y: rgba(217,169,87,.48); --ul-p: rgba(255,151,198,.38);
+      --ul-g: rgba(116,166,148,.30); --lh: 1.76; --measure: 58ch; --figw: 80ch; --pgap: 25px;
     }
   }
   :root[data-theme="dark"] {
@@ -78,7 +80,8 @@
     --ghost: #2C332E;
       --hl-y: rgba(255,206,0,.24); --hl-p: rgba(255,92,168,.24);
       --hl-n: rgba(100,191,161,.12); --hl-n-act: rgba(100,191,161,.22);
-      --ul-y: rgba(217,169,87,.48); --ul-p: rgba(255,151,198,.38); --lh: 1.76; --measure: 58ch; --figw: 80ch; --pgap: 25px;
+      --ul-y: rgba(217,169,87,.48); --ul-p: rgba(255,151,198,.38);
+    --ul-g: rgba(116,166,148,.30); --lh: 1.76; --measure: 58ch; --figw: 80ch; --pgap: 25px;
   }
 
   * { box-sizing: border-box; }
@@ -426,6 +429,7 @@
     figure.dia svg[aria-labelledby="dg-nine"] { min-width: 700px; }
     figure.dia svg[aria-labelledby="dg-three"] { min-width: 640px; }
     figure.dia svg[aria-labelledby="dg-five"] { min-width: 660px; }
+  figure.dia svg[aria-labelledby="dg-faults"] { min-width: 660px; }
   }
 
   /* inside the boxes, which already space their children */
@@ -520,7 +524,10 @@
   /* a full-bleed band that keeps its contents on the page column: the negative margin
      widens the box to the window edge, the padding puts the content back where it was */
   .site, .sitefoot { margin-left: calc(0px - var(--navpad)); padding-left: var(--navpad); }
-  .dock { padding-left: var(--navpad); }
+  /* the buttons move onto the page column. The progress line is taken out of the flow so it
+     keeps measuring the whole window, since the column starts a long way in */
+  .dock { padding-left: var(--navpad); padding-top: 2px; }
+  .dock .prog { position: absolute; top: 0; left: 0; }
   #nav { top: 78px; transform: none; max-height: calc(100vh - 126px);
          overflow-y: auto; scrollbar-width: none; }
   #nav::-webkit-scrollbar { display: none; }
@@ -660,6 +667,7 @@
   .bmi .dot.p { background: rgba(255,92,168,.7); }
   .bmi .dot.uy { background: none; box-shadow: inset 0 -3px 0 var(--ul-y); }
   .bmi .dot.up { background: none; box-shadow: inset 0 -3px 0 var(--ul-p); }
+  .bmi .dot.ug { background: none; box-shadow: inset 0 -3px 0 var(--ul-g); }
   .bmi .dot.n { background: none; border: 1px dashed var(--accent); }
   .bmi .dot.b { background: var(--accent); clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 70%, 0 100%); border-radius: 0; height: 11px; width: 8px; }
   .bmi .bt { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
@@ -708,6 +716,7 @@
   mark.hl-n { background: var(--hl-n); border-bottom: 1px dashed var(--accent); }
   mark.hl-uy { background: none; border-radius: 0; box-shadow: inset 0 -1.5px 0 var(--ul-y); }
   mark.hl-up { background: none; border-radius: 0; box-shadow: inset 0 -1.5px 0 var(--ul-p); }
+  mark.hl-ug { background: none; border-radius: 0; box-shadow: inset 0 -1.5px 0 var(--ul-g); }
   mark.hl-n.act { background: var(--hl-n-act); }
   @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) mark.hl-y { background: rgba(255,206,0,.30); } :root:not([data-theme="light"]) mark.hl-p { background: rgba(255,92,168,.30); } :root:not([data-theme="light"]) mark.hl-n { background: rgba(100,191,161,.12); } }
   #hl-bar[hidden] { display: none !important; }
@@ -716,6 +725,7 @@
   #hl-bar button[data-c="y"] { background: var(--hl-y); }
   #hl-bar button[data-c="p"] { background: var(--hl-p); }
   #hl-bar button[data-c="uy"] { background: var(--paper); box-shadow: inset 0 -4px 0 var(--ul-y); }
+  #hl-bar button[data-c="ug"] { background: var(--paper); box-shadow: inset 0 -4px 0 var(--ul-g); }
   #hl-bar button[data-c="up"] { background: var(--paper); box-shadow: inset 0 -4px 0 var(--ul-p); }
   #hl-bar button[data-c="n"] { background: var(--paper); display: flex; align-items: center; justify-content: center; color: var(--ink-soft); }
   #hl-bar button[data-c="n"] svg { width: 11px; height: 11px; display: block; }
@@ -1007,7 +1017,7 @@
             <figcaption><b>Anne Fausto-Sterling, a biologist, who asked what the apparatus was measuring.</b> Her objection is not that the researchers were sexist in any obvious sense. It is that the experiment put a social situation inside the measurement and nobody noticed, because the result came out the way everyone expected. <span class="cred">Rama, CC BY-SA 3.0 FR, via Wikimedia Commons.</span></figcaption>
           </figure>
 
-          <h4 id="ch4-3" data-n="4.3">Walking the case down the chain</h4>
+          <h4 id="ch4-3" data-n="4.3">The rod and frame test, walked down the chain</h4>
           <div class="body">
             <p><b>Run the rod and frame test down the nine phases and you can watch the conclusion being assembled.</b> Phases 1 and 2 were chapter 3's business. These are the six the authors say people fight about.</p>
             <ol>
@@ -1021,7 +1031,7 @@
             </ol>
           </div>
 
-          <h5>Phase 6 in detail, because the term here is the one to know</h5>
+          <h5>Phase 6 in detail, where inductive risk lives</h5>
           <div class="body">
             <p><b>Deciding you have enough evidence is a judgment about the risk of being wrong, and that is called <b>inductive risk</b>.</b> How much evidence is enough depends on the probability the hypothesis is true <em>and</em> on what it would cost if you got it wrong. The second half is a value judgment. The authors run it both ways, which is what keeps it an argument:</p>
             <ul>
@@ -1259,7 +1269,7 @@
 
           <div class="why"><b>Why this chapter is set.</b> It is the one with a genuinely new idea in it. Everything else this term has been about how knowledge gets made; this flips the question and asks how <em>not</em> knowing gets made. The field has a name, a five-part taxonomy and five production strategies.</div>
 
-          <h4 id="ch5-1" data-n="5.1">Where it starts: MeToo</h4>
+          <h4 id="ch5-1" data-n="5.1">MeToo, and the question it opens</h4>
           <div class="body">
             <p><b>The facts the chapter uses.</b> Tarana Burke began MeToo on social media in 2006, encouraging people to make their experiences of sexual assault and harassment public. It became enormous in 2017, when the actress Alyssa Milano pushed the hashtag during the accusations against the film producer Harvey Weinstein.</p>
             <p><b>What the authors say it did, which is more interesting than what it is usually credited with.</b> It made visible something most people had not known: how common sexual assault and harassment are, especially at work.</p>
@@ -1284,7 +1294,7 @@
             people at once?
           </div>
 
-                    <h4 id="ch5-2" data-n="5.2">What ignorance is, and the thing most people get wrong about it</h4>
+                    <h4 id="ch5-2" data-n="5.2">Agnotology, and what most people get wrong about ignorance</h4>
           <div class="body">
             <p><b>The field.</b> <b>Agnotology</b> is the study of ignorance: how it is produced and maintained. It got going in the 1990s with Robert Proctor, and feminists, critical race theorists and decolonial theorists developed a related line called <b>epistemologies of ignorance</b>. Sullivan and Tuana's definition: identifying the different forms of ignorance, examining how they are produced and sustained, and asking what role they play in knowledge practices.</p>
             <p><b>Ignorance is not automatically bad, and the chapter spends real time on this.</b> It is a tool as often as a failure.</p>
@@ -1356,7 +1366,7 @@
             </ol>
           </div>
 
-          <h5>Kind 4, willful ignorance, which the chapter spends most of its length on</h5>
+          <h5>Willful ignorance, kind 4, which the chapter spends most of its length on</h5>
           <div class="body">
             <p><b>What we do not know and do not want to.</b> This is the only one of the five where the ignorant person is <b>doing something</b>, namely employing active strategies to avoid knowing, including neglecting evidence that would force the knowledge on them.</p>
           </div>
@@ -1383,7 +1393,7 @@
             <p><b>What the authors draw from it.</b> Neither is prepared to say the allegations are false, <b>because that would mean weighing Dylan Farrow's testimony</b>, which in the other context they said should be believed. They have no interest in its being true, since that would cost a career opportunity or make them complicit. So the comfortable position is <b>not knowing</b>: actively ignoring the evidence and reaching no conclusion in either direction.</p>
           </div>
 
-          <h5>Kind 5, and the one that asks something of the reader</h5>
+          <h5>Loving ignorance, kind 5, which asks something of the reader</h5>
           <div class="body">
             <p><b>What we cannot know.</b> The one kind that is no failing at all. There are limits on what humans can perceive, limits of time and money, and limits on understanding experiences you have not had. <b>Maria Lugones and Mariana Ortega call the right response loving ignorance</b>: accepting that some experience cannot be fully shared, while refusing to ignore, dismiss or stereotype the people whose it is. Lugones calls for a loving perception of those who have been marginalised. Ortega sharpens it: many white feminists think reading about the experiences of women of colour is enough, and that reading <b>produces its own arrogance</b>, a confidence that you now understand. What she asks for instead is sustained engagement and real relationships.</p>
             </div>
@@ -1515,7 +1525,7 @@
 
           <div class="why"><b>This one is set for week 7, and it sits here because it is the worked example for the two chapters above.</b> The revised reading guide puts it in the 19 to 21 October week with three other handbook chapters. It is kept in this guide because it shows the nine phases and the production of ignorance happening to a single field across 150 years, and because its second case study is the full version of the primatology story week 5 opened with. The first three pages are a survey and can be read quickly. <b>The two case studies are the reason it is on the list.</b></div>
 
-          <h4 id="nelson-1" data-n="20.1">Four faults to look for, which is the useful list</h4>
+          <h4 id="nelson-1" data-n="20.1">Four faults to look for in a piece of biology</h4>
           <div class="body">
             <p><b>Nelson names the things feminists go looking for in biological research.</b> The first three are worth having as a checklist, because they turn up in every case the chapter discusses.</p>
             <ul>
@@ -1527,7 +1537,52 @@
             <p><b>One terminological note worth knowing.</b> Nelson writes <b>sex/gender</b> in place of gender for human cases, because the evidence is that neither is stable or unaffected by the other. The quotation she gives: it is impossible to disentangle the effects of sex from those of gender, since bodies, brains included, change in response to environments and experience.</p>
           </div>
 
-          <h4 id="nelson-2" data-n="20.2">Case one: the peacock&#8217;s tail, and what Darwin built to explain it</h4>
+          
+          <figure class="dia">
+            <div class="draw">
+            <svg viewBox="0 0 660 358" role="img" aria-labelledby="dg-faults" style="font-family:var(--body)">
+              <title id="dg-faults">Nelson's four faults to look for in biological research, each with what it means and the place in her own chapter where it turns up.</title>
+              <text class="dg-m dg-dim" x="12" y="17" font-size="11">THE FAULT</text>
+              <text class="dg-m dg-dim" x="186" y="17" font-size="11">WHAT IT IS</text>
+              <text class="dg-m dg-dim" x="446" y="17" font-size="11">WHERE IT SHOWS UP HERE</text>
+              <rect class="dg-box" x="8" y="30" width="644" height="74" rx="3"/>
+              <text class="dg-t" x="18" y="56" font-size="13" font-weight="600">1 &nbsp;Androcentrism</text>
+              <text class="dg-t" x="186" y="54" font-size="12.5">Male-centredness. Research takes</text>
+              <text class="dg-t" x="186" y="71" font-size="12.5">what males do as the main thing</text>
+              <text class="dg-t" x="186" y="88" font-size="12.5">to study and lets the rest go.</text>
+              <text class="dg-t" x="446" y="54" font-size="12.5">The baboon reports, built on</text>
+              <text class="dg-t" x="446" y="71" font-size="12.5">male dominance, with what the</text>
+              <text class="dg-t" x="446" y="88" font-size="12.5">females did never recorded.</text>
+              <rect class="dg-box" x="8" y="110" width="644" height="74" rx="3"/>
+              <text class="dg-t" x="18" y="136" font-size="13" font-weight="600">2 &nbsp;Gender stereotypes</text>
+              <text class="dg-t" x="186" y="134" font-size="12.5">A characteristic attributed to</text>
+              <text class="dg-t" x="186" y="151" font-size="12.5">every member of a group when it</text>
+              <text class="dg-t" x="186" y="168" font-size="12.5">is untrue of many of them.</text>
+              <text class="dg-t" x="446" y="134" font-size="12.5">Darwin&#8217;s eager males and coy</text>
+              <text class="dg-t" x="446" y="151" font-size="12.5">females. Females tied to</text>
+              <text class="dg-t" x="446" y="168" font-size="12.5">reproduction, so left unstudied.</text>
+              <rect class="dg-box" x="8" y="190" width="644" height="74" rx="3"/>
+              <text class="dg-t" x="18" y="216" font-size="13" font-weight="600">3 &nbsp;Gendered metaphors</text>
+              <text class="dg-t" x="186" y="214" font-size="12.5">Fine while everybody remembers</text>
+              <text class="dg-t" x="186" y="231" font-size="12.5">they are metaphors. The fault is</text>
+              <text class="dg-t" x="186" y="248" font-size="12.5">letting one do the arguing.</text>
+              <text class="dg-t" x="446" y="214" font-size="12.5">Sperm is cheap and eggs are</text>
+              <text class="dg-t" x="446" y="231" font-size="12.5">expensive, which settles the</text>
+              <text class="dg-t" x="446" y="248" font-size="12.5">question it was meant to raise.</text>
+              <rect class="dg-box dg-hi" x="8" y="270" width="644" height="74" rx="3"/>
+              <text class="dg-t" x="18" y="296" font-size="13" font-weight="600">4 &nbsp;Background assumptions</text>
+              <text class="dg-t" x="186" y="294" font-size="12.5">Longino&#8217;s, and not originally</text>
+              <text class="dg-t" x="186" y="311" font-size="12.5">feminist: Hempel said in the 1960s</text>
+              <text class="dg-t" x="186" y="328" font-size="12.5">that unexamined ones mislead.</text>
+              <text class="dg-t" x="446" y="294" font-size="12.5">That a female and her young</text>
+              <text class="dg-t" x="446" y="311" font-size="12.5">need help from a male, which</text>
+              <text class="dg-t" x="446" y="328" font-size="12.5">fieldwork keeps contradicting.</text>
+            </svg>
+            </div>
+            <figcaption><b>The checklist, and the chapter using it on itself.</b> The first three are the ones to carry into any piece of research, and the right column shows that the two case studies below are the same four faults twice over. The fourth is highlighted because it is the one that is not feminist in origin and the one the other three reduce to: a male-centred question, a stereotype and a metaphor are all background assumptions that nobody examined. Hempel was making the argument in the 1960s with no feminism in it at all, which is the reply to anybody who says the critique is political before it is epistemic.</figcaption>
+          </figure>
+
+          <h4 id="nelson-2" data-n="20.2">The peacock&#8217;s tail, and what Darwin built to explain it</h4>
           <div class="body">
             <p><b>Start with natural selection, because sexual selection was invented to patch a hole in it.</b> Darwin's argument: members of a species vary; there is a struggle for existence; so a variation that helps survival even slightly makes its holder likelier to survive and pass it on; and enough accumulated variations make a new species. He was clear about the consequence: <b>any trait that hurt survival would have to be selected against.</b></p>
             <p><b>The hole.</b> The peacock's tail is enormous, bright enough to attract predators, and heavy enough to stop the bird running or flying away. Peahens have small brown tails. More generally males of many species are brighter and bigger than females, which looks like a disadvantage in surviving. <b>So why has natural selection permitted it?</b></p>
@@ -1576,7 +1631,7 @@
             <figcaption><b>Darwin in 1881, the year before he died.</b> Nelson's case is not that he was a bad scientist. It is the opposite and it is harder to deal with: sexual selection is a real piece of theory solving a real problem, and the account of male and female temperament travelled inside it for a century because it arrived as part of the same package. <span class="cred">Herbert Rose Barraud, public domain, via Wikimedia Commons.</span></figcaption>
           </figure>
 
-          <h4 id="nelson-3" data-n="20.3">Case two: the baboons, and the primate pattern</h4>
+          <h4 id="nelson-3" data-n="20.3">The baboons, and the primate pattern that came off them</h4>
           <div class="body">
             <p><b>Why primates get studied for this at all.</b> Humans differ from each other in about 0.1 per cent of their DNA. Humans and chimpanzees differ by about 1.2 per cent, humans and gorillas by about 1.6 per cent, and the split from a common ancestor is put at around six million years ago. So it looks reasonable to study their evolution to learn about ours, and some researchers go further and treat them as showing <b>a basic human nature underneath the overlay of culture</b>.</p>
             <p><b>The 1960s and 1970s studies.</b> Groups of anthropologists ran long field studies of savannah baboons in the Serengeti. They proposed a <b>primate pattern</b>: the behaviour and social structure they saw in savannah baboons was taken to be typical of most primates, produced by selection pressures common to all of them.</p>
@@ -1620,7 +1675,7 @@
             <p><b>And Hrdy, which is week 5's opening told properly.</b> From her studies of hanuman langurs and rhesus monkeys: <b>a polyandrous component is at the core of the breeding systems of most troop-dwelling primates</b>, polyandrous meaning females who mate with more than one male. Females mate with many males, each of whom may contribute a little to the offspring's survival.</p>
           </div>
 
-          <h4 id="nelson-4" data-n="20.4">The argument about what all this proves</h4>
+          <h4 id="nelson-4" data-n="20.4">What all this proves, and the two debates about it</h4>
 
           <h5>First debate: was the old research simply bad science?</h5>
           <div class="body">
@@ -2345,6 +2400,7 @@
     bar.id = 'hl-bar'; bar.hidden = true;
     bar.innerHTML = '<button type="button" data-c="y" title="Highlight yellow" aria-label="Highlight yellow"></button>' +
       '<button type="button" data-c="p" title="Highlight pink" aria-label="Highlight pink"></button>' +
+      '<button type="button" data-c="ug" title="Underline, the everyday one" aria-label="Underline, the everyday one"></button>' +
       '<button type="button" data-c="uy" title="Underline yellow" aria-label="Underline yellow"></button>' +
       '<button type="button" data-c="up" title="Underline pink" aria-label="Underline pink"></button>' +
       '<button type="button" data-c="n" title="Add a comment" aria-label="Add a comment"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 9.5A1.5 1.5 0 0 1 12.5 11H6l-3 3V4.5A1.5 1.5 0 0 1 4.5 3h8A1.5 1.5 0 0 1 14 4.5z"/></svg></button>' +
