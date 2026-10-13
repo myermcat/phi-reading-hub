@@ -1,0 +1,9 @@
+"""Two sentences that named a position and explained none of it."""
+f = 'week-6/index.html'; h = open(f, encoding='utf-8').read()
+OLD = '''<p><b>And the objection that matters most for this course.</b> <b>Kristen Intemann</b>, one of this book's own authors, argues that Longino asks for diversity of <em>values</em> and not diversity of <em>identity</em>, which leaves the power differences between social groups untouched. Her fix is to merge Longino with standpoint theory, giving <b>feminist standpoint empiricism</b>.</p>'''
+NEW = '''<p><b>And the objection that matters most for this course.</b> <b>Kristen Intemann</b>, one of this book's own authors, points out that the four norms ask a community to hold a range of <em>values</em> and say nothing about who is in it. So a department can satisfy all four while every member occupies the same social position, and the assumptions that come with that position never get raised by anybody, because there is nobody there who does not share them. The norms are silent about the thing that decides which criticisms turn up.</p>
+            <p><b>What her fix adds, in one line: who is in the room becomes an epistemic question.</b> She keeps Longino, so a claim still answers to evidence and objectivity still belongs to a community working under the four norms. She adds standpoint theory's claim that people differently placed have access to different evidence, which supplies the answer Longino lacks to <em>diverse in what respect</em>. Diversity of social position stops being only a matter of fairness and becomes a condition on the evidence the community can reach. Intemann calls the result <b>feminist standpoint empiricism</b>: empiricist because evidence decides, standpoint because who is looking decides what evidence there is.</p>'''
+assert OLD in h
+h = h.replace(OLD, NEW, 1)
+open(f, 'w', encoding='utf-8').write(h)
+print('rewritten')
