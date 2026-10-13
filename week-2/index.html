@@ -178,7 +178,12 @@
 
   .qline { font-family: var(--display); font-size: 19.5px; line-height: 1.42; padding: 12px 0 12px 16px; border-left: 2px solid var(--accent); color: var(--ink); }
 
-  .rd h4 { margin: 8px 0 -7px; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+  .rd h4 { margin: 16px 0 -13px; font-family: var(--display); font-weight: 600;
+           font-size: 20px; line-height: 1.22; letter-spacing: -0.005em; color: var(--ink);
+           text-wrap: balance; scroll-margin-top: 78px; }
+  .rd h4::before { content: attr(data-n); display: block; margin-bottom: 6px;
+           font-family: var(--mono); font-size: 10.5px; font-weight: 500;
+           letter-spacing: 0.12em; color: var(--accent); }
   .rd ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 9px; max-width: var(--measure); }
   .rd li { padding-left: 2px; }
   .rd .body { display: flex; flex-direction: column; gap: 14px; }
@@ -192,7 +197,7 @@
   .rd .body > * + * { margin-top: 0; }
   .body > .keep { margin-top: calc(var(--pgap) + 8px); }
   .body > .keep + * { margin-top: calc(var(--pgap) + 12px); }
-  .rd .body h5 {
+  .rd h5 {
     margin: 12px 0 -4px; font-family: var(--display); font-weight: 600;
     font-size: 18.5px; line-height: 1.25; color: var(--ink); letter-spacing: -.005em;
   }
@@ -476,7 +481,27 @@
   #nav .key i.a { color: var(--ink-soft); }
   #nav .key i.b { opacity: .68; }
   #nav .key i.c { opacity: .48; }
-  @media (min-width: 1180px) { #nav { display: flex; } }
+  /* the contents list used to need a 1180px window. It takes its own column now, so it
+     appears from 1000px up, and only goes back to floating beside a centred page when
+     there is room for that. */
+  @media (min-width: 1000px) {
+    #nav { display: flex; left: 16px; width: 150px; }
+    body { padding-left: 182px; }
+  }
+  @media (min-width: 1320px) {
+    #nav { left: max(16px, calc(50vw - 640px)); }
+    body { padding-left: 0; }
+  }
+  #nav { top: 84px; transform: none; max-height: calc(100vh - 160px);
+         overflow-y: auto; scrollbar-width: none; }
+  #nav::-webkit-scrollbar { display: none; }
+  #nav a.sb { display: none; font-size: 9.5px; letter-spacing: .02em; line-height: 1.32;
+              padding: 3px 0 3px 11px; margin-left: 9px; opacity: .9; }
+  #nav a.sb.show { display: block; }
+  #nav a.sb { white-space: normal; }
+  #nav a.sb b { font-weight: 500; font-style: normal; color: var(--muted);
+                margin-right: 5px; }
+  #nav a.sb:hover b, #nav a.sb.on b { color: var(--accent); }
 
   /* glossary. Closed by default: it is a reference list and not something to read through,
      and left open it makes the page look twice as long as it is. */
@@ -693,13 +718,53 @@
   <a class="grp" href="#s-arg">The argument</a>
   <a class="grp" href="#s-texts">The nine texts</a>
   <a class="core" href="#r1" title="Chapter 1 · read properly">Plato<i>c. 375 BCE</i></a>
+  <a class="sb" data-of="r1" href="#r1-1"><b>1.1</b>The story</a>
+  <a class="sb" data-of="r1" href="#r1-2"><b>1.2</b>What the parts stand for</a>
+  <a class="sb" data-of="r1" href="#r1-3"><b>1.3</b>Which makes it an argument about education</a>
+  <a class="sb" data-of="r1" href="#r1-4"><b>1.4</b>What counts as knowing, and what counts as opinion</a>
+  <a class="sb" data-of="r1" href="#r1-5"><b>1.5</b>Why the crafts and mathematics fall short</a>
+  <a class="sb" data-of="r1" href="#r1-6"><b>1.6</b>The return: laughter for one thing, killing for another</a>
+  <a class="sb" data-of="r1" href="#r1-7"><b>1.7</b>Why the city forces him to go back down</a>
+  <a class="sb" data-of="r1" href="#r1-8"><b>1.8</b>Who attacks the placement, and how</a>
   <a class="core" href="#r3" title="Chapter 3 · read properly">Schadewaldt<i>1959</i></a>
+  <a class="sb" data-of="r3" href="#r3-1"><b>3.1</b>Why this text is in the reading at all</a>
+  <a class="sb" data-of="r3" href="#r3-2"><b>3.2</b>First word: physis, which we translate as "nature"</a>
+  <a class="sb" data-of="r3" href="#r3-3"><b>3.3</b>Second word: technē, which we translate as "technique"</a>
+  <a class="sb" data-of="r3" href="#r3-4"><b>3.4</b>How technē relates to nature: it copies, and it finishes</a>
+  <a class="sb" data-of="r3" href="#r3-5"><b>3.5</b>What the Greeks could therefore never think</a>
+  <a class="sb" data-of="r3" href="#r3-6"><b>3.6</b>The ending: the Greeks already knew technique was dangerous</a>
   <a class="core" href="#r4" title="Chapter 4 · read properly">Bacon<i>1620</i></a>
+  <a class="sb" data-of="r4" href="#r4-1"><b>4.1</b>What Bacon thought had gone wrong</a>
+  <a class="sb" data-of="r4" href="#r4-2"><b>4.2</b>"Knowledge and power are the same thing" is a claim about what understanding is</a>
+  <a class="sb" data-of="r4" href="#r4-3"><b>4.3</b>But the instrument is bent before you start</a>
+  <a class="sb" data-of="r4" href="#r4-4"><b>4.4</b>The cure is induction, and his version is not the usual one</a>
   <a class="skim" href="#r6" title="Chapter 6 · skim for the one idea">Comte<i>1830</i></a>
+  <a class="sb" data-of="r6" href="#r6-1"><b>6.1</b>The claim, with one question run through it</a>
+  <a class="sb" data-of="r6" href="#r6-2"><b>6.2</b>Two arguments that the law is real</a>
+  <a class="sb" data-of="r6" href="#r6-3"><b>6.3</b>The best argument in the text, and the one people skip</a>
+  <a class="sb" data-of="r6" href="#r6-4"><b>6.4</b>The hierarchy of the sciences</a>
+  <a class="sb" data-of="r6" href="#r6-5"><b>6.5</b>Does this contradict Plato? Yes, deliberately</a>
   <a class="core" href="#r7" title="Chapter 7 · read properly">Rousseau<i>1752</i></a>
+  <a class="sb" data-of="r7" href="#r7-1"><b>7.1</b>What he concedes first, which is why he is hard to dismiss</a>
+  <a class="sb" data-of="r7" href="#r7-2"><b>7.2</b>The argument, in three steps</a>
   <a class="skim" href="#r9" title="Chapter 9 · skim for the one idea">Vienna Circle<i>1929</i></a>
+  <a class="sb" data-of="r9" href="#r9-1"><b>9.1</b>The test, worked through</a>
+  <a class="sb" data-of="r9" href="#r9-2"><b>9.2</b>Two kinds of legitimate sentence, and only two</a>
+  <a class="sb" data-of="r9" href="#r9-3"><b>9.3</b>What this kills, which is the heart of the position</a>
+  <a class="sb" data-of="r9" href="#r9-4"><b>9.4</b>Why metaphysics keeps happening anyway</a>
+  <a class="sb" data-of="r9" href="#r9-5"><b>9.5</b>Two objections worth having ready</a>
+  <a class="sb" data-of="r9" href="#r9-6"><b>9.6</b>§4, the part people skip and the course cares about</a>
   <a class="skim" href="#r44" title="Chapter 44 · skim for the one idea">Lynn White<i>1971</i></a>
+  <a class="sb" data-of="r44" href="#r44-1"><b>44.1</b>Why this is in a philosophy course at all</a>
+  <a class="sb" data-of="r44" href="#r44-2"><b>44.2</b>The fact to be explained</a>
+  <a class="sb" data-of="r44" href="#r44-3"><b>44.3</b>The decisive change: the invention of invention</a>
+  <a class="sb" data-of="r44" href="#r44-4"><b>44.4</b>Where the appetite came from: three religious habits</a>
   <a class="last" href="#r49" title="Chapter 49 · last, if time">Dennett<i>1994</i></a>
+  <a class="sb" data-of="r49" href="#r49-1"><b>49.1</b>What he is doing, and why it belongs in this packet</a>
+  <a class="sb" data-of="r49" href="#r49-2"><b>49.2</b>Objection one: dualism</a>
+  <a class="sb" data-of="r49" href="#r49-3"><b>49.3</b>Objection two: consciousness needs an organic brain</a>
+  <a class="sb" data-of="r49" href="#r49-4"><b>49.4</b>Objection three, the interesting one: robots are artefacts</a>
+  <a class="sb" data-of="r49" href="#r49-5"><b>49.5</b>Then the positive half: Cog</a>
   <a class="core" href="#r54" title="Chapter 54 · set for week 3">Foucault<i>1975</i></a>
   <a class="grp" href="#s-gloss">Glossary</a>
   <a class="grp" href="#s-plan">Reading plan</a>
@@ -1171,7 +1236,7 @@
 
           <p class="qline">Is knowing <em>how to make something</em> the same kind of knowing as knowing <em>what is true</em>?</p>
 
-          <h4>The story</h4>
+          <h4 id="r1-1" data-n="1.1">The story</h4>
           <div class="body">
             <p>People have been chained in a cave since childhood, facing a blank wall, unable to turn their heads. Behind and above them a fire burns. Between the fire and their backs runs a low walkway with a screen along it, like the screen a puppeteer works behind. People walk that path carrying carved figures of humans and animals, held up above the screen.</p>
             <figure class="pic">
@@ -1354,7 +1419,7 @@
             <p>Now he understands the shadow game from outside, and understands it as a game. He pities the men still down there and says he would rather endure anything than go back to competing for their prizes. Plato has him quote Homer here. In the <em>Odyssey</em>, the ghost of Achilles tells Odysseus that he would rather be alive as a hired hand working for a landless man, the lowest position there was, than reign as king over all the dead. Plato borrows the line to say the freed man would accept any humiliation before going back to the prizes.</p>
           </div>
 
-          <h4>What the parts stand for</h4>
+          <h4 id="r1-2" data-n="1.2">What the parts stand for</h4>
           <div class="body">
             <p>Plato spells the allegory out himself, so none of this is guesswork.</p>
             <ul>
@@ -1365,13 +1430,13 @@
             </ul>
           </div>
 
-          <h4>Which makes it an argument about education</h4>
+          <h4 id="r1-3" data-n="1.3">Which makes it an argument about education</h4>
           <div class="body">
             <p>Notice that the man's eyes worked the whole time, so nothing was added to him. What changed is the direction he was facing.</p>
             <p>So Plato concludes that education cannot be putting knowledge into a mind that lacks it, the way you might put sight into blind eyes. The power to learn is already in everybody. The problem is where it points, and since an eye cannot turn on its own, the whole body has to turn with it. <b>Education is the craft of turning the whole soul around.</b> That is why the story is full of pain and force: turning hurts, and nobody does it voluntarily.</p>
           </div>
 
-          <h4>What counts as knowing, and what counts as opinion</h4>
+          <h4 id="r1-4" data-n="1.4">What counts as knowing, and what counts as opinion</h4>
           <div class="body">
             <p>Two words carry the rest of the argument, and they are worth having in plain English.</p>
             <ul>
@@ -1417,7 +1482,7 @@
             </figure>
           </div>
 
-          <h4>Why the crafts and mathematics fall short</h4>
+          <h4 id="r1-5" data-n="1.5">Why the crafts and mathematics fall short</h4>
           <div class="body">
             <p>A geometer proves his results correctly. He also helps himself to definitions and postulates he never examines, and if you ask what makes them true he has nothing to say. He is reasoning well from a foundation he has never looked at. That is why Plato says the mathematical sciences only <em>dream</em> about what is real.</p>
             <p>The same goes for a craftsman. A shipwright builds a good ship and cannot tell you what "good" is. Plato's word for this practical, productive know-how is <b><em>technē</em></b>, and his complaint about it is precise: it works, and it cannot give an account of itself.</p>
@@ -1429,14 +1494,14 @@
             </div>
           </div>
 
-          <h4>The return: laughter for one thing, killing for another</h4>
+          <h4 id="r1-6" data-n="1.6">The return: laughter for one thing, killing for another</h4>
           <div class="body">
             <p>Plato imagines the man going back down, and describes two different reactions to two different acts. They are easy to run together and they are not the same.</p>
             <p><b>If he comes back and talks, they laugh at him.</b> His eyes are used to daylight, so in the dark he is worse at the shadow game than men who never left, and he loses to them. Plato says the prisoners would conclude that going up ruined his eyesight, and that the journey is not worth attempting. Plato also pictures him forced to argue in the law courts about what he calls the shadows of justice, against people who have never seen justice itself, where he performs badly and looks ridiculous.</p>
             <p><b>If he tries to unchain them, they kill him.</b> Plato's sentence is specifically about anyone who tried to free them and lead them upward, which is a different act from talking. Three things make it lethal. The cave's honours, and the power that comes with them, exist because the shadow game is treated as the real thing. A man unchaining people is dismantling the basis of everyone's standing, and above all the standing of whoever is currently winning. He is simultaneously, by their own measure, incompetent, since he cannot see. And he is taking away the one thing the prisoners have. Plato did not invent the reaction. Athens had executed his teacher Socrates about twenty years before he wrote this.</p>
           </div>
 
-          <h4>Why the city forces him to go back down</h4>
+          <h4 id="r1-7" data-n="1.7">Why the city forces him to go back down</h4>
           <div class="body">
             <p>Here is the context that makes the question make sense. The cave appears in a book whose subject is the design of a just city, and at this moment in the conversation Socrates and Glaucon are inventing one from scratch. Glaucon objects that the philosopher would be happier left in the sunlight, so forcing him back down looks like an injustice done to him.</p>
             <p>Socrates answers that it is not unjust, and gives two reasons. Both are answers to <em>why compel him</em>.</p>
@@ -1453,7 +1518,7 @@
             <dt>Inverted by</dt><dd>Foucault. Plato says the man who sees clearly should govern. Foucault says the machinery of seeing people clearly <em>is</em> the machinery of governing them.</dd>
           </dl>
 
-          <h4>Who attacks the placement, and how</h4>
+          <h4 id="r1-8" data-n="1.8">Who attacks the placement, and how</h4>
           <div class="body">
             <ul>
               <li><b>Bacon</b> turns it upside down. For him, being able to build the ship is the only proof that anybody understood anything. So the craftsman moves from the bottom of the ladder to the top, and the contemplative philosopher becomes the man who produced nothing in two thousand years.</li>
@@ -1545,14 +1610,14 @@
 
           <p class="qline">What did the Greeks mean by <em>physis</em> and <em>technē</em>, and how far is that from what we mean by "nature" and "technology"?</p>
 
-          <h4>Why this text is in the reading at all</h4>
+          <h4 id="r3-1" data-n="3.1">Why this text is in the reading at all</h4>
           <div class="body">
             <p>The other eight authors argue about method. This one looks like a dictionary entry, and it is here for two reasons.</p>
             <p><b>The practical reason.</b> The whole argument in this reading runs on two Greek words, <em>physis</em> and <em>technē</em>, which English translates as "nature" and "technology". Both translations are wrong enough to make Plato and Aristotle unreadable. Schadewaldt recovers what the words actually did.</p>
             <p><b>The reason it is an argument and not a glossary.</b> His claim is that <b>the Greek way of joining those two words made it impossible to think about technology the way we now do</b>, and that their version showed something ours hides: where technique stops. The essay ends by saying the Greeks already knew that technical power puts a person at a fork between good and evil, and that this is still our problem. So the payoff is a claim about us.</p>
           </div>
 
-          <h4>First word: <em>physis</em>, which we translate as "nature"</h4>
+          <h4 id="r3-2" data-n="3.2">First word: <em>physis</em>, which we translate as "nature"</h4>
           <div class="body">
             <p><b><em>Physis</em> is the ancient Greek word that comes into English as "nature".</b> That is the whole connection between the two words, and it is where the trouble starts, because the English word carries a picture the Greek one never had. Say "nature" and most people see scenery: a place you go for a walk, trees and animals sitting there being looked at.</p>
             <p><em>Physis</em> points somewhere else. It comes from the verb <em>phyō</em>, meaning to bring forth, put forth, make grow, and the Greeks used it for a tree putting out leaves and for animals putting out hair, wings and horns. The <em>-sis</em> ending turns a verb into a process word, the way English turns "grow" into "growing". So <em>physis</em> names <b>a growing, an activity, a coming-to-pass</b>. It is a verb wearing a noun's clothes, and it never means a collection of objects.</p>
@@ -1580,7 +1645,7 @@
             </figure>
           </div>
 
-          <h4>Second word: <em>technē</em>, which we translate as "technique"</h4>
+          <h4 id="r3-3" data-n="3.3">Second word: <em>technē</em>, which we translate as "technique"</h4>
           <div class="body">
             <div class="quo">
               <blockquote><b><em>Technē</em> means the knowledge a maker has.</b> It covers everything a person does on purpose to produce a result: building a ship, setting a broken arm, navigating by stars, playing a flute, farming. It is a kind of <em>knowing</em>, and not a kind of doing, which is the part that surprises people.</blockquote>
@@ -1632,14 +1697,14 @@
             <p>One level above all three sits <b><em>epistēmē</em></b>, theoretical knowledge: knowledge of what never changes, such as the fact that the angles of a triangle add to two right angles. It produces nothing, and Greek thought ranked it highest. <em>Technē</em> leans toward it, which is the whole of its dignity.</p>
           </div>
 
-          <h4>How <em>technē</em> relates to nature: it copies, and it finishes</h4>
+          <h4 id="r3-4" data-n="3.4">How <em>technē</em> relates to nature: it copies, and it finishes</h4>
           <div class="body">
             <p><b>First, <em>technē</em> imitates nature.</b> Building a house and growing a tree have the same shape: out of some material, by some agency, a form gets realised. The only difference is where the push comes from. In nature the form unfolds by itself. In making, the finished form exists first in somebody's head, so the work runs plan, then design, then construction, then choice of materials, and only then the building itself.</p>
             <p><b>Second, <em>technē</em> completes what nature cannot finish.</b> Nature left alone goes one way and repeats itself, while what people need varies as much as people do. So technique invents devices that turn nature's own forces to human purposes. The example the essay gives is the lever, which lets a person shift a load far heavier than themselves. In the line Schadewaldt quotes from a tragic poet, by technique we master the things we are subject to by nature.</p>
             <p>Those two pull against each other, and the Greeks held both. Technique works the way nature works, and it exists to get nature to do things it would never do on its own.</p>
           </div>
 
-          <h4>What the Greeks could therefore never think</h4>
+          <h4 id="r3-5" data-n="3.5">What the Greeks could therefore never think</h4>
           <div class="body">
             <p>Because they kept technique tied to theoretical knowledge, two moves were closed to them.</p>
             <h5>One: technique could never set its own goals</h5>
@@ -1662,7 +1727,7 @@
             <p>One complication worth holding on to, because it cuts against Plato. In Plato's own dialogues, Socrates goes round Athens looking for someone who genuinely knows something, is disappointed by the politicians and the poets, and finds real knowledge <b>among the craftsmen</b>. His one complaint about them is that knowing one thing properly made them think they could judge everything. So the culture that produced Plato's ranking also produced the observation that makers were the only people in the city who knew anything.</p>
           </div>
 
-          <h4>The ending: the Greeks already knew technique was dangerous</h4>
+          <h4 id="r3-6" data-n="3.6">The ending: the Greeks already knew technique was dangerous</h4>
           <div class="body">
             <p>The essay closes on two Greek plays, and the closing is the point of the whole chapter. The essay assumes you know both stories, so here they are.</p>
             <details class="ctx"><summary><i>Context</i>The Prometheus story</summary><div class="bq">
@@ -1759,7 +1824,7 @@
 
           <p class="qline">What systematically stops human beings from seeing nature as it is, and what would you have to rebuild to fix it?</p>
 
-          <h4>What Bacon thought had gone wrong</h4>
+          <h4 id="r4-1" data-n="4.1">What Bacon thought had gone wrong</h4>
           <div class="body">
             <p>By 1620 the learned world had been arguing about Aristotle for roughly nineteen centuries and had produced, by Bacon's reckoning, almost nothing anyone could use. Meanwhile three inventions had reshaped the world, the compass, gunpowder and printing, and all three had been stumbled on by people whose names nobody recorded.</p>
             <p>His diagnosis is that knowledge had been organised as a <b>debating competition</b>, in which the winner is whoever argues most skilfully from what everyone already accepts. A contest like that can never produce anything new, because it only rearranges existing beliefs. He calls his book the <em>Novum Organum</em>, the new instrument, as a direct replacement for Aristotle's works on logic, which were called the <em>Organon</em>.</p>
@@ -1770,7 +1835,7 @@
             </figure>
           </div>
 
-          <h4>"Knowledge and power are the same thing" is a claim about what understanding is</h4>
+          <h4 id="r4-2" data-n="4.2">"Knowledge and power are the same thing" is a claim about what understanding is</h4>
           <div class="body">
             <p>He is not saying knowledge turns out to be useful. He is saying that <b>knowing the cause of a thing just is knowing what would have to be arranged for it to happen</b>. The understanding and the recipe are the same item.</p>
             <p>Turn that round and you get a <b>test</b>: arrange the conditions, and if the effect does not follow, you had not identified the cause. Which is why he says the failures of technology come from ignorance of causes, and why he says nature is commanded only by being obeyed. You get your way with the world by finding out how it already works and then setting up those conditions on purpose.</p>
@@ -1781,7 +1846,7 @@
             </div></details>
           </div>
 
-          <h4>But the instrument is bent before you start</h4>
+          <h4 id="r4-3" data-n="4.3">But the instrument is bent before you start</h4>
           <div class="body">
             <p>Bacon's image is that the mind is not a flat mirror. It is an uneven one, so it distorts what it reflects and mixes something of its own into everything. Before any method can work, the distortions have to be identified. He calls them <b>Idols</b>, false images lodged in the understanding, borrowing the Greek <em>eidōlon</em>, a phantom or image, from the same family of words Plato uses for the shadows on the cave wall.</p>
             <ol>
@@ -1801,7 +1866,7 @@
               <p><b>Market-place.</b> In ordinary speech a theory is a hunch. In science a theory is a tested framework that has survived attempts to break it. Entire public arguments about evolution and about climate run on the gap between those two meanings, with neither side lying. The word does the damage, which is exactly Bacon's claim.</p>
               <p><b>Theatre.</b> The models used to price mortgage-backed securities before 2008 assumed that house prices in different American regions would not all fall at once, because they never had. The model was coherent, elegant, taught in universities and performed with confidence. It was a stage-play, and millions of people arranged their lives around the performance.</p>
             </div>
-          <h4>The cure is induction, and his version is not the usual one</h4>
+          <h4 id="r4-4" data-n="4.4">The cure is induction, and his version is not the usual one</h4>
           <div class="body">
             <p>The induction people already practised was: notice a few cases, jump to a general rule. Bacon says that is a machine for producing confident nonsense. His version is deliberately slow.</p>
             <ul>
@@ -1868,7 +1933,7 @@
 
           <p class="qline">Does knowledge itself have a history, and has it now arrived somewhere final?</p>
 
-          <h4>The claim, with one question run through it</h4>
+          <h4 id="r6-1" data-n="6.1">The claim, with one question run through it</h4>
           <div class="body">
             <p>Comte's claim is that human knowledge has a shape over time, that the shape is the same in every field, and that it has three stages. He calls it the <b>law of three states</b>. Take one question, why does it rain, and push it through all three.</p>
             <ol>
@@ -1952,25 +2017,25 @@
             </div>
           </div>
 
-          <h4>Two arguments that the law is real</h4>
+          <h4 id="r6-2" data-n="6.2">Two arguments that the law is real</h4>
           <div class="body">
             <p><b>The historical one.</b> No science is in the positive stage today that was not metaphysical before it and theological before that, and even the most developed sciences still carry traces of both.</p>
             <p><b>The one people remember.</b> Each of us repeats the sequence individually: a theologian in childhood, a metaphysician in youth, a natural philosopher in maturity. Check your own memory, Comte says, and you will find it there.</p>
           </div>
 
-          <h4>The best argument in the text, and the one people skip</h4>
+          <h4 id="r6-3" data-n="6.3">The best argument in the text, and the one people skip</h4>
           <div class="body">
             <p>Comte asks the obvious objection to himself. If the positive stage runs on observation, why could the mind not have started with observation and skipped the errors?</p>
             <p>His answer is a <b>vicious circle</b>. You cannot observe usefully without a theory, because facts with nothing to connect them stay isolated, and he says you would not even be able to remember them. But a theory grounded in observation requires that you have already observed. The first humans were inside that loop with no way out of it.</p>
             <p><b>Theology broke the loop.</b> Its explanations were wrong, and they gave thought something to hold on to and a reason to keep looking. So the earliest error was not a failure of intelligence. It was the only available way in. Which is the move to remember, because it lets Comte agree with Bacon that knowledge rests on observed facts while denying that anybody could have begun there.</p>
           </div>
 
-          <h4>The hierarchy of the sciences</h4>
+          <h4 id="r6-4" data-n="6.4">The hierarchy of the sciences</h4>
           <div class="body">
             <p>Comte orders the sciences by how complex their subject is and how general their laws are: mathematics, astronomy, physics, chemistry, biology, and then the science of society. Each one depends on the ones before it and cannot be done first. Society comes last because it is the most complex and the least general, which is also why it was the last to reach the positive stage. That last science is the one he is really writing the whole course for.</p>
           </div>
 
-          <h4>Does this contradict Plato? Yes, deliberately</h4>
+          <h4 id="r6-5" data-n="6.5">Does this contradict Plato? Yes, deliberately</h4>
           <div class="body">
             <p><b>Plato said the thing that makes knowledge real is being able to say <em>why</em>, and Comte's final stage is the decision to stop asking.</b> They are the two ends of this whole reading, and the cholera case lets you watch the disagreement settle a real question.</p>
             <p>First a correction worth making, because the easy version of this is wrong. <b>The people who failed at cholera were not sitting around contemplating.</b> Miasma was a causal theory and they acted on it hard, closing cesspits and rebuilding drains across a city. Their mistake was to let a theory about what the disease <em>is</em> outrank what the numbers said about where it <em>came from</em>. Snow's move was to trust the measured relation over the theory of the essence.</p>
@@ -2043,7 +2108,7 @@
 
           <p class="qline">Grant that the sciences are genuine achievements. Do they make us <em>better</em>?</p>
 
-          <h4>What he concedes first, which is why he is hard to dismiss</h4>
+          <h4 id="r7-1" data-n="7.1">What he concedes first, which is why he is hard to dismiss</h4>
           <div class="body">
             <p>The sciences are the masterpiece of genius and reason. The spirit of imitation produced the fine arts and experience perfected them. We are indebted to the mechanical arts for a great many useful inventions that genuinely added to the pleasures and conveniences of life. Rousseau says he agrees with all of it wholeheartedly, and he means it.</p>
             <p>Then he changes what is being measured: <em>now let us consider all this knowledge in relation to morals.</em></p>
@@ -2054,7 +2119,7 @@
                  alt="An engraving: a bearded man wrapped in drapery kneels on a bank of cloud at the upper left and reaches down with a flaming brand to the head of a slender nude youth standing on a low stone block, while at the right a horned satyr with shaggy goat legs recoils with one arm flung up, and a plume of smoke rises behind them." style="aspect-ratio:591/899"></a>
             <figcaption><b>The frontispiece of Rousseau&rsquo;s <em>Discourse on the Sciences and Arts</em>, engraved by Jean-Charles Baquoy for the first edition of 1750, the essay the Final Reply defends.</b> Prometheus leans down from the cloud and touches his torch to the head of the figure on the plinth, and the satyr at the right throws up an arm and backs away from the fire. Rousseau explained the plate in print after a critic misread it: the torch is the sciences, made to animate great minds, the satyr is the ordinary man who sees fire for the first time and runs to embrace it, and the Prometheus shouting the warning is Rousseau himself. That is the first step of the argument below drawn as a picture, and the line cut along the foot puts it in six words: <em>Satyre, tu ne le connois pas</em>, satyr, you do not know what it is. <span class="cred">Engraved by Jean-Charles Baquoy, from the Biblioth&egrave;que nationale de France copy. Public domain, via Wikimedia Commons.</span></figcaption>
           </figure>
-          <h4>The argument, in three steps</h4>
+          <h4 id="r7-2" data-n="7.2">The argument, in three steps</h4>
           <div class="body">
             <ol>
               <li><b>Knowledge is distributed among actual people.</b> If celestial intellects cultivated the sciences, only good would come of it, and the same holds for great men, who are made to guide others. But the vices of ordinary men poison even the most sublime knowledge and make it harmful to nations. The wicked derive a great deal from it. The good derive very little more.</li>
@@ -2118,7 +2183,7 @@
                  alt="A sepia studio portrait of a middle-aged man in round rimless spectacles, shown from the chest up in a tweed jacket, white shirt and patterned dark tie, turned slightly away from the camera against a plain backdrop." style="aspect-ratio:484/703"></a>
             <figcaption><b>Moritz Schlick, photographed in Vienna in March 1927, two years before the manifesto appeared.</b> Schlick held the University of Vienna chair in the philosophy of the inductive sciences, the post Ernst Mach had held before him, and the group that met around him on Thursday evenings in a seminar room on the Boltzmanngasse is what the text means by the Circle. Carnap, Hahn and Neurath wrote the manifesto and dedicated it to him, which puts a professor of philosophy on the first page of a document arguing that his subject holds no truths of its own and survives as the clarification of what the sciences say. <span class="cred">Photograph by Georg Fayer, March 1927, from the Austrian National Library picture archive. Public domain, via Wikimedia Commons.</span></figcaption>
           </figure>
-          <h4>The test, worked through</h4>
+          <h4 id="r9-1" data-n="9.1">The test, worked through</h4>
           <div class="body">
             <p>Take any sentence and ask what would have to be observed for it to come out true, and what would have to be observed for it to come out false. If you can answer, the sentence means something, and <b>its meaning is that set of observations</b>. If you cannot answer even in principle, the sentence is empty and only looks like a statement.</p>
             <ul>
@@ -2129,7 +2194,7 @@
             <p>So metaphysics is not false. It is <b>meaningless</b>, in the strict sense of having no content. On this account the metaphysician misunderstands himself: he believes his sentences assert something, when analysis shows they express a mood.</p>
           </div>
 
-          <h4>Two kinds of legitimate sentence, and only two</h4>
+          <h4 id="r9-2" data-n="9.2">Two kinds of legitimate sentence, and only two</h4>
           <div class="body">
             <ol>
               <li><b>Empirical statements.</b> About the world, checkable against experience, and always capable of turning out wrong.</li>
@@ -2137,14 +2202,14 @@
             </ol>
           </div>
 
-          <h4>What this kills, which is the heart of the position</h4>
+          <h4 id="r9-3" data-n="9.3">What this kills, which is the heart of the position</h4>
           <div class="body">
             <p>Kant had argued for a third category: statements that are informative about the world <em>and</em> knowable in advance of any experience. He called them <b>synthetic a priori</b>, and his examples included the claim that every event has a cause, that space is Euclidean, and that arithmetic tells you something real.</p>
             <p>The Circle denies that the category exists, and gives a reason. Every inference is a <b>tautological transformation</b>, meaning the conclusion never contains anything the premises did not already contain. So thinking on its own cannot generate a new fact about the world. That closes the only road by which a philosopher could reach conclusions about reality from an armchair.</p>
             <p>Realism and idealism both go the same way. The dispute about whether the external world is "really" out there cannot be settled by any observation, so it is metaphysics. For the Circle, something counts as real by being incorporated into the total structure of experience, and there is nothing further to ask.</p>
           </div>
 
-          <h4>Why metaphysics keeps happening anyway</h4>
+          <h4 id="r9-4" data-n="9.4">Why metaphysics keeps happening anyway</h4>
           <div class="body">
             <p>They give two diagnoses, and the first is the one to remember.</p>
             <ol>
@@ -2161,7 +2226,7 @@
             </ul>
           </div>
 
-          <h4>Two objections worth having ready</h4>
+          <h4 id="r9-5" data-n="9.5">Two objections worth having ready</h4>
           <div class="body">
             <details class="ctx"><summary><i>Objection</i>Stephen Hawking calculated from an armchair</summary><div class="bq">
               <p>Hawking radiation was worked out on paper. No experiment, no observation, and it is a claim about black holes. That looks like exactly the road the Circle says does not exist.</p>
@@ -2177,7 +2242,7 @@
             <p>They are not hostile to feeling or to intuition. A mystic may have an experience beyond all concepts, and the Circle does not deny it, and points out that he cannot then talk about it, because talking means capturing it in concepts. Expressing a mood is a real thing worth doing, and the medium for it is art: lyric poetry, or music.</p>
           </div>
 
-          <h4>§4, the part people skip and the course cares about</h4>
+          <h4 id="r9-6" data-n="9.6">§4, the part people skip and the course cares about</h4>
           <div class="body">
             <p>There is no such thing as philosophy as a basic or universal science standing above or alongside the empirical sciences. Philosophy stops being a source of truths and becomes an activity, the clarification of what the sciences say.</p>
             <p>And the Circle ties itself openly to social reform: reorganising economic and social relations, reforming schools and education. It reads the revival of metaphysics in its own day as a symptom of social struggle, with one camp holding to traditional forms and another taking its stand on empirical science. A manifesto about meaning turns out to be a manifesto about Vienna in 1929.</p>
@@ -2241,19 +2306,19 @@
 
           <p class="qline">Why did medieval Europe, poorer and cruder than Byzantium, Islam or China, out-invent all of them?</p>
 
-          <h4>Why this is in a philosophy course at all</h4>
+          <h4 id="r44-1" data-n="44.1">Why this is in a philosophy course at all</h4>
           <div class="body">
             <p>Bacon, Comte and the Vienna Circle all talk about <em>the</em> scientific method, as though it were a single thing that was eventually discovered, the way America was. White is a historian, and his contribution is to give that method a birthplace, a date and a set of causes. If the method grew out of one culture's particular beliefs, it could have failed to grow at all, which is the course's thesis arriving from the archive.</p>
           </div>
 
-          <h4>The fact to be explained</h4>
+          <h4 id="r44-2" data-n="44.2">The fact to be explained</h4>
           <div class="body">
             <p>He opens by admitting that his own earlier book failed. It described the unprecedented technological activity of the medieval West and could not explain it, and he says he was surer of the <em>what</em> than the <em>why</em>. This essay is the second attempt.</p>
             <p>The <em>what</em> is large. From the sixth century northern peasants built probably the most productive agricultural system in the world for the human labour spent. The Franks reorganised warfare in the eighth. From about 1000 the West produced labour-saving machinery and new applications of power, and from 1200 it led in ship design. By 1492 Europe had the agriculture, the industry, the weapons and the seamanship to go and take the rest of the planet. White says flatly that the imperial age of 1500 to 1950 was set up by the Middle Ages.</p>
             <p>Meanwhile Byzantium, Islam and the Latin West were closely related societies, all built from the same Greek inheritance. Thirteenth-century theologians in Cairo, Constantinople and Paris were all commenting on the same Aristotle. In the time of Thomas Aquinas, labour-saving machinery was little developed in the Near East and concern for invention was slight, while in the West a new kind of engineering was being pursued with something close to passion. So wealth and learning do not explain it, because the others had more of both.</p>
           </div>
 
-          <h4>The decisive change: the invention of invention</h4>
+          <h4 id="r44-3" data-n="44.3">The decisive change: the invention of invention</h4>
           <div class="body">
             <p>His answer is that no single machine matters. What changed is that <b>invention became a coherent project</b>, something people deliberately went looking for. Before that it had been a slow accumulation of lucky finds. His evidence is concrete and is the part worth reading:</p>
             <ul>
@@ -2281,7 +2346,7 @@
             </div></details>
           </div>
 
-          <h4>Where the appetite came from: three religious habits</h4>
+          <h4 id="r44-4" data-n="44.4">Where the appetite came from: three religious habits</h4>
           <div class="body">
             <ul>
               <li><b>God as engineer.</b> Western art shows the Creator holding a pair of compasses. <em>Machina mundi</em>, the world-machine, had once been rejected on religious grounds and by the thirteenth century was used approvingly by Latin clerical scientists. Nicole Oresme, who died bishop of Lisieux in 1382, imagined God fitting the heavens with the equivalent of a clock's escapement to stop the spheres accelerating. Once the universe is itself a made mechanism, building mechanisms is a respectable thing for a serious person to do.</li>
@@ -2355,30 +2420,30 @@
 
           <p class="qline">Is there any <em>principled</em> reason a robot could not be conscious, or only practical ones?</p>
 
-          <h4>What he is doing, and why it belongs in this packet</h4>
+          <h4 id="r49-1" data-n="49.1">What he is doing, and why it belongs in this packet</h4>
           <div class="body">
             <p>Dennett takes the reasons people give for saying machine consciousness is impossible and separates the ones that state a principle from the ones that state a practical difficulty. His claim is that all of them turn out to be practical. The exercise matters for this course because it is the same operation the whole term performs: somebody is being excluded from the category of knowers, and the question is what the grounds are.</p>
           </div>
 
-          <h4>Objection one: dualism</h4>
+          <h4 id="r49-2" data-n="49.2">Objection one: dualism</h4>
           <div class="body">
             <p>Dualism says the mind is made of a different kind of stuff from the body. Dennett's reply is that nothing coherent can be said about the place where the two meet. If the mind is non-physical, then every time it moves your arm something non-physical pushes something physical, which breaks the physics, and no dualist has ever managed to describe that transaction. An argument that leads to an absurdity like this is called a <em>reductio</em>, short for reduction to absurdity. He adds a diagnosis: dualism would never have been taken seriously without a strong undercurrent of desire to protect the mind from science by making it out of a stuff science cannot investigate.</p>
           </div>
 
-          <h4>Objection two: consciousness needs an organic brain</h4>
+          <h4 id="r49-3" data-n="49.3">Objection two: consciousness needs an organic brain</h4>
           <div class="body">
             <p>He looks for the respectable version of this. The crude version is vitalism, the nineteenth-century claim that living matter contains a special life-force that non-living matter lacks. Vitalism is dead, because biochemistry took the compounds living things are made of and showed that their powers come from ordinary chemistry, which means those powers could in principle be reproduced in other materials.</p>
             <p>What survives is an <b>engineering worry</b>: perhaps the sheer speed and compactness of biochemical processes in the brain cannot be matched in any other medium. Dennett makes this concrete by imagining conscious-robot-building as a sporting event with officials and rules. If one team wants artificially constructed organic polymer "muscles" because electric motors make too much noise for the robot's artificial ears, is that cheating? If muscles are allowed, what about organic rods and cones in the retina in place of clumsy colour-TV cameras? His verdict: no serious scientific or philosophical thesis depends on the robot being protein-free.</p>
           </div>
 
-          <h4>Objection three, the interesting one: robots are artefacts</h4>
+          <h4 id="r49-4" data-n="49.4">Objection three, the interesting one: robots are artefacts</h4>
           <div class="body">
             <p>The claim is that consciousness abhors an artefact, and only something born could really be conscious. Dennett gives the underlying creed a name, <b>origin essentialism</b>. Only wine made under the direction of the actual proprietors counts as that estate's wine. Only a canvas every blotch of which was caused by Cezanne's hand is a genuine Cezanne. Only someone with the right blood counts as really belonging to a people.</p>
             <p>He concedes that such distinctions can be perfectly respectable, and defensible in court, <b>so long as they are understood as protections of rights growing out of historical processes</b>. A wine appellation protects a region's producers. An attribution protects an artist's estate.</p>
             <p>Taken instead as claims about <b>intrinsic properties</b>, marking a real difference between two things nobody can tell apart, they are pernicious nonsense, and that version he names <b>origin chauvinism</b>. A perfect imitation is exactly as good a wine as the original, counterfeit though it is.</p>
           </div>
 
-          <h4>Then the positive half: Cog</h4>
+          <h4 id="r49-5" data-n="49.5">Then the positive half: Cog</h4>
           <div class="body">
             <p>Cog was a humanoid robot then being built at MIT, and Dennett was working with the team. The design principle was that intelligence needs a body and constant contact with the world, and that a machine should learn by interacting with people, and should never be handed a model of the world in advance. Which is why the chapter is full of hardware detail: noisy motors, artificial ears, artificial retinas. The philosophy is being argued through the engineering constraints.</p>
             <figure class="pic">
@@ -3368,7 +3433,22 @@
       if (t <= 0 && t > bestTop) { bestTop = t; best = i; }
     }
     links.forEach(function (a, i) { a.classList.toggle('on', i === best); });
+    // only the chapter you are inside opens its list of sections
+    var of = '';
+    if (best >= 0) {
+      var cur = links[best];
+      of = cur.classList.contains('sb') ? cur.getAttribute('data-of')
+                                        : cur.getAttribute('href').slice(1);
+    }
+    links.forEach(function (a) {
+      if (a.classList.contains('sb')) a.classList.toggle('show', a.getAttribute('data-of') === of);
+    });
+    if (best !== was && best >= 0 && nav.scrollHeight > nav.clientHeight) {
+      links[best].scrollIntoView({ block: 'nearest' });
+    }
+    was = best;
   }
+  var was = -1;
   // how far through the reading this is, drawn along the top edge of the dock
   var prog = document.getElementById('prog');
   function bar() {

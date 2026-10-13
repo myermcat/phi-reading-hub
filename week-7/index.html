@@ -178,7 +178,12 @@
 
   .qline { font-family: var(--display); font-size: 19.5px; line-height: 1.42; padding: 12px 0 12px 16px; border-left: 2px solid var(--accent); color: var(--ink); }
 
-  .rd h4 { margin: 8px 0 -7px; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+  .rd h4 { margin: 16px 0 -13px; font-family: var(--display); font-weight: 600;
+           font-size: 20px; line-height: 1.22; letter-spacing: -0.005em; color: var(--ink);
+           text-wrap: balance; scroll-margin-top: 78px; }
+  .rd h4::before { content: attr(data-n); display: block; margin-bottom: 6px;
+           font-family: var(--mono); font-size: 10.5px; font-weight: 500;
+           letter-spacing: 0.12em; color: var(--accent); }
   .rd ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 9px; max-width: var(--measure); }
   .rd li { padding-left: 2px; }
   .rd .body { display: flex; flex-direction: column; gap: 14px; }
@@ -188,11 +193,15 @@
   .rd .body > p > b:first-child, .rd .body > ul > li > b:first-child,
   .rd .body > ol > li > b:first-child { color: var(--lead); }
   .body > p > b:first-child { color: var(--lead); }
+  .qa { border-left: 2px solid var(--accent); padding: 4px 0 4px 18px; max-width: var(--measure);
+        font-family: var(--display); font-size: 19px; line-height: 1.38; color: var(--ink); }
+  .qa b { display: block; margin-bottom: 6px; font-family: var(--mono); font-size: 10.5px;
+          font-weight: 500; letter-spacing: 0.11em; text-transform: uppercase; color: var(--accent); }
   .body > * + * { margin-top: var(--pgap); }
   .rd .body > * + * { margin-top: 0; }
   .body > .keep { margin-top: calc(var(--pgap) + 8px); }
   .body > .keep + * { margin-top: calc(var(--pgap) + 12px); }
-  .rd .body h5 {
+  .rd h5 {
     margin: 12px 0 -4px; font-family: var(--display); font-weight: 600;
     font-size: 18.5px; line-height: 1.25; color: var(--ink); letter-spacing: -.005em;
   }
@@ -496,7 +505,27 @@
   #nav .key i.a { color: var(--ink-soft); }
   #nav .key i.b { opacity: .68; }
   #nav .key i.c { opacity: .48; }
-  @media (min-width: 1180px) { #nav { display: flex; } }
+  /* the contents list used to need a 1180px window. It takes its own column now, so it
+     appears from 1000px up, and only goes back to floating beside a centred page when
+     there is room for that. */
+  @media (min-width: 1000px) {
+    #nav { display: flex; left: 16px; width: 150px; }
+    body { padding-left: 182px; }
+  }
+  @media (min-width: 1320px) {
+    #nav { left: max(16px, calc(50vw - 640px)); }
+    body { padding-left: 0; }
+  }
+  #nav { top: 84px; transform: none; max-height: calc(100vh - 160px);
+         overflow-y: auto; scrollbar-width: none; }
+  #nav::-webkit-scrollbar { display: none; }
+  #nav a.sb { display: none; font-size: 9.5px; letter-spacing: .02em; line-height: 1.32;
+              padding: 3px 0 3px 11px; margin-left: 9px; opacity: .9; }
+  #nav a.sb.show { display: block; }
+  #nav a.sb { white-space: normal; }
+  #nav a.sb b { font-weight: 500; font-style: normal; color: var(--muted);
+                margin-right: 5px; }
+  #nav a.sb:hover b, #nav a.sb.on b { color: var(--accent); }
 
   /* glossary. Closed by default: it is a reference list and not something to read through,
      and left open it makes the page look twice as long as it is. */
@@ -712,8 +741,23 @@
   <a class="grp" href="#s-arg">The argument</a>
   <a class="grp" href="#s-texts">The reading</a>
   <a class="core" href="#ch15" title="Intemann &middot; the central chapter, read properly">Values in science<i>ch 15</i></a>
+  <a class="sb" data-of="ch15" href="#ch15-1"><b>15.1</b>The case the chapter opens on, and what it is doing there</a>
+  <a class="sb" data-of="ch15" href="#ch15-2"><b>15.2</b>The five places a value gets in</a>
+  <a class="sb" data-of="ch15" href="#ch15-3"><b>15.3</b>What replaces the value-free ideal, and the test any replacement has to pass</a>
+  <a class="sb" data-of="ch15" href="#ch15-4"><b>15.4</b>Model one: value management</a>
+  <a class="sb" data-of="ch15" href="#ch15-5"><b>15.5</b>Model two: social justice</a>
   <a class="core" href="#ch19" title="Giordano &middot; read properly">Science for the people<i>ch 19</i></a>
+  <a class="sb" data-of="ch19" href="#ch19-1"><b>19.1</b>What “public understanding of science” turned out to mean</a>
+  <a class="sb" data-of="ch19" href="#ch19-2"><b>19.2</b>The thing she is pointing at: inclusion that leaves the system intact</a>
+  <a class="sb" data-of="ch19" href="#ch19-3"><b>19.3</b>The argument you will want to argue with: illiteracy as resistance</a>
+  <a class="sb" data-of="ch19" href="#ch19-4"><b>19.4</b>Who was already doing it</a>
+  <a class="sb" data-of="ch19" href="#ch19-5"><b>19.5</b>What happened when democratic science became fashionable</a>
   <a class="core" href="#ch3" title="Detlefsen on Du Ch&acirc;telet &middot; read properly">Du Ch&acirc;telet<i>ch 3</i></a>
+  <a class="sb" data-of="ch3" href="#ch3-1"><b>3.1</b>The claim the chapter is making, which is bigger than it first looks</a>
+  <a class="sb" data-of="ch3" href="#ch3-2"><b>3.2</b>Step one: what she noticed about beliefs concerning women</a>
+  <a class="sb" data-of="ch3" href="#ch3-3"><b>3.3</b>Step two: the rule, and the company it puts her in</a>
+  <a class="sb" data-of="ch3" href="#ch3-4"><b>3.4</b>Step three: the quarrel, and why everybody was getting it wrong</a>
+  <a class="sb" data-of="ch3" href="#ch3-5"><b>3.5</b>What she actually said about hypotheses</a>
   <a class="skim" href="#ch20" title="Nelson &middot; narrated in week 6">Biology<i>ch 20</i></a>
   <a class="grp" href="#s-gloss">Glossary</a>
   <div class="key"><em>Key</em><i class="a">solid = read properly</i><i class="b">faded = skim</i><i class="c">faintest = if time</i></div>
@@ -763,9 +807,41 @@
     <h2>The argument</h2>
     <p class="lede">The question this week settles: once you admit that values are inside science and cannot be removed, what stops it being a free-for-all?</p>
 
+    <h3 class="sub">Four readings, one question</h3>
+    <p class="lede">Three of them answer it and disagree about how much to demand. The fourth asks who was ever allowed to answer.</p>
+    <div class="scroller">
+      <table class="nine">
+        <thead><tr><th>The reading</th><th>What it contributes</th><th>The case it runs on</th></tr></thead>
+        <tbody>
+          <tr><td><b class="tag t1">Chapter 15</b><span>Intemann</span></td>
+            <td>Names the five places a value enters, and sets out the two models that could replace the value-free ideal.</td>
+            <td>Sixty years of hormone replacement therapy</td></tr>
+          <tr><td><b class="tag t2">Chapter 19</b><span>Giordano</span></td>
+            <td>Says both models are academics arguing about academics, and asks who counts as a scientist at all.</td>
+            <td>Black Panther clinics, and the do-it-yourself biology labs</td></tr>
+          <tr><td><b class="tag t3">Chapter 3</b><span>Du Ch&acirc;telet</span></td>
+            <td>A worked historical case: a woman gets the account of hypotheses right in 1740 and is read as derivative for two centuries.</td>
+            <td>The quarrel over whether hypotheses are allowed</td></tr>
+          <tr><td><b class="tag t3">Chapter 20</b><span>Nelson</span></td>
+            <td>Already in the week 6 guide. One field running both of week 6's questions for 150 years.</td>
+            <td>Darwin's peacock, and the baboons</td></tr>
+        </tbody>
+      </table>
+    </div>
+
     <div class="body">
-      <p><b>The answer the week gives: you replace the rule that values must be absent with rules about which values are allowed and who gets to argue about them. Two such rules are on offer and they disagree about how much to demand.</b></p>
-      <p><b>Start with what is being given up, because it has a name and it is the thing every chapter attacks.</b> The <b>value-free ideal</b>, which this week abbreviates <b>VFI</b>, says that social, moral and political values must play no part in the <em>core</em> of science. Nobody ever claimed values are absent entirely: of course they decide what gets funded and what you may do to a research subject. The claim is narrower and tougher. Heather Douglas calls the protected part the <b>heart</b> of scientific reasoning: deciding what counts as evidence, which theory the evidence supports, and what to accept. There, values are supposed to be out.</p>
+      <p><b>The answer the week gives.</b> You replace the rule that values must be absent with rules about <em>which</em> values are allowed and who gets to argue about them. Two such rules are on offer, and they disagree about how much to demand.</p>
+      <p><b>Start with what is being given up, because it has a name and every chapter attacks it.</b> Nobody ever claimed values are absent from science entirely: of course they decide what gets funded and what you may do to a research subject. The claim being made is narrower and tougher.</p>
+    </div>
+
+    <dl class="facts">
+      <dt>The value-free ideal</dt>
+      <dd>Abbreviated <b>VFI</b> all week. Social, moral and political values must play no part in the <em>core</em> of science.</dd>
+      <dt>The core, or the heart</dt>
+      <dd>Heather Douglas's name for the protected part: <b>deciding what counts as evidence, which theory the evidence supports, and what to accept</b>. There, values are supposed to be out.</dd>
+    </dl>
+
+    <div class="body">
       <p><b>Week 6 showed that is not how research works.</b> This week's chapter 15 names <b>five</b> places a value enters and gives a case for each, and the conclusion is the same: the VFI describes nothing anybody does.</p>
       <p><b>So why does anybody still defend it, and why does it matter that they do?</b> Because it has been doing a job. Intemann is sharp about this, and it is the thing that makes her chapter different from an ordinary philosophy-of-science complaint. <b>The VFI was used to shut three arguments down.</b></p>
       <ol>
@@ -774,10 +850,7 @@
         <li><b>It made who benefits from science somebody else's problem.</b> If a scientist's job is only to check whether data support a theory, then the fact that 90 per cent of biomedical research money goes to diseases affecting 10 per cent of the world is not a scientific question at all.</li>
       </ol>
       <p><b>That is why feminists went after the VFI, where noting it was inaccurate would have been enough for anybody else.</b> Non-feminist philosophers attacked it too, and for good reasons, mostly that it is unattainable. The feminist complaint is different: <b>the VFI was an obstacle that could be used to dismiss three specific arguments without answering them.</b></p>
-      <p><b>Then the problem the week actually has to solve.</b> Take away the VFI and you owe an account of what replaces it, or the objection from week 5 comes straight back: if any values are allowed, anybody can claim their own, and there is nothing left to argue with. The two answers in chapter 15 are both attempts to pay that debt.</p>
-      <p><b>Answer one, the value-management model.</b> Any values may enter, provided the community is diverse enough and critical enough to catch the ones doing damage. Values get <em>managed</em>, and never chosen. This is Longino's four norms from week 6, now used as a political proposal.</p>
-      <p><b>Answer two, the social justice model.</b> That is not enough, because it assumes a level field that does not exist. Publicly funded science should have an aim, and the aim is to benefit everyone and especially the worst off. This one <b>picks</b> values, where the first only manages them.</p>
-      <p><b>And the third chapter asks a question neither of them asks.</b> Giordano points out that both answers are arguments conducted among academics about how academics should behave. If you look instead at people outside universities who have produced real knowledge, Black Panther clinics, the women's health movement, the AIDS activists who rewrote how drug trials run, then the question stops being which values scientists should hold and becomes <b>who counts as a scientist at all.</b></p>
+      <p><b>Then the problem the week actually has to solve.</b> Take away the VFI and you owe an account of what replaces it, or the objection from week 5 comes straight back: if any values are allowed, anybody can claim their own, and there is nothing left to argue with.</p>
     </div>
 
     <figure class="dia">
@@ -835,7 +908,17 @@
       </div>
       <figcaption><b>One rule removed and two offered in its place.</b> The left column is what the whole term has been dismantling, and the bottom row of it is the part this chapter adds: it was useful to somebody. The two on the right differ in one thing, which is worth getting straight before the exam. <b>Management lets all values in and relies on argument between people who hold different ones. Social justice picks a value first</b>, declares what science is for, and judges the rest against it. Intemann prefers the second as an addition to the first, and is open that it leaves hard questions unanswered, which is the last row.</figcaption>
     </figure>
-  </section>
+
+    <div class="body">
+      <p><b>Three attempts to pay that debt, and the third one changes the subject.</b></p>
+      <ol>
+        <li><b>The value-management model.</b> Any values may enter, provided the community is diverse enough and critical enough to catch the ones doing damage. Values get <em>managed</em>. This is Longino's four norms from week 6, now used as a political proposal.</li>
+        <li><b>The social justice model.</b> Management alone assumes a level field that does not exist. Publicly funded science should have an aim, and the aim is to benefit everyone and especially the worst off. This one <b>picks</b> values where the first only manages them.</li>
+        <li><b>Giordano's question, which neither of the other two asks.</b> Both answers are arguments conducted among academics about how academics should behave. Look instead at people outside universities who have produced real knowledge, the Black Panther clinics, the women's health movement, the AIDS activists who rewrote how drug trials run, and the question stops being which values scientists should hold and becomes <b>who counts as a scientist at all.</b></li>
+      </ol>
+    </div>
+
+      </section>
 
   <section>
     <h2 id="s-texts">The reading</h2>
@@ -854,14 +937,33 @@
 
           <div class="why"><b>Why this chapter is set.</b> It is the summary of the whole term's argument, written by one of the authors of the book you read in weeks 5 and 6, and it has the two lists the exam will want: the five ways values enter, and the two models that replace the value-free ideal.</div>
 
-          <h4>The case the chapter opens on, and what it is doing there</h4>
-          <div class="body">
-            <p><b>The question: can a treatment be studied for sixty years and still get the basic facts wrong, with nobody breaking any rules?</b></p>
+          <h4 id="ch15-1" data-n="15.1">The case the chapter opens on, and what it is doing there</h4>
+          <div class="qa">
+              <b>The question</b>
+              Can a treatment be studied for sixty years and still get the basic facts wrong, with nobody breaking any rules?
+            </div>
+
+            <div class="body">
             <p><b>The answer is yes, and hormone replacement therapy is the case.</b> Here it is in order.</p>
-            <p><b>From the 1940s, HRT became the standard treatment</b> for the symptoms of menopause: hot flushes, night sweats, broken sleep. Uncontroversial so far.</p>
-            <p><b>In 1966 a physician named Robert Wilson published a bestseller called <em>Feminine Forever</em></b>, and prescriptions jumped. His claim was larger than symptom relief. HRT would <b>reverse or prevent</b> menopause and <b>preserve femininity</b>: more sexual drive, less vaginal dryness, and skin that did not age or droop.</p>
-            <p><b>By the 1980s and 1990s the claims had grown again.</b> HRT was being described as safe, effective, and protective against cardiovascular disease, osteoporosis and some cancers.</p>
-            <p><b>In 2002 one of the largest randomised trials ever run reported.</b> The Women's Health Initiative found that HRT, in some forms and in some women, <b>raised</b> the risk of breast cancer, heart disease, stroke and clots.</p>
+          </div>
+
+          <div class="scroller">
+            <table class="nine">
+              <thead><tr><th>When</th><th>What was claimed</th></tr></thead>
+              <tbody>
+                <tr><td>From the 1940s</td>
+                  <td>HRT becomes the standard treatment for the symptoms of menopause: hot flushes, night sweats, broken sleep. Uncontroversial so far.</td></tr>
+                <tr><td>1966<span>the book</span></td>
+                  <td>A physician named Robert Wilson publishes a bestseller, <em>Feminine Forever</em>, and prescriptions jump. His claim is larger than symptom relief: HRT would <b>reverse or prevent</b> menopause and <b>preserve femininity</b>, meaning more sexual drive, less vaginal dryness, and skin that did not age or droop.</td></tr>
+                <tr><td>1980s and 1990s</td>
+                  <td>The claims grow again. HRT is described as safe, effective, and protective against cardiovascular disease, osteoporosis and some cancers.</td></tr>
+                <tr><td>2002<span>the trial</span></td>
+                  <td>One of the largest randomised trials ever run reports. The Women's Health Initiative finds that HRT, in some forms and in some women, <b>raised</b> the risk of breast cancer, heart disease, stroke and clots.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="body">
             <p><b>And the sentence that makes it a philosophy case.</b> Some argued the result should have surprised nobody, because there had been warnings for decades that the evidence for the benefits was thin and that evidence of risk existed.</p>
             <p><b>So where exactly did the value judgments get in?</b> Intemann names three, and they are three different kinds.</p>
             <ul>
@@ -869,12 +971,21 @@
               <li><b>What counts as an acceptable risk.</b> Saying the benefits outweigh the risks is not arithmetic. It depends on how good you think the benefits are and how bad the outcomes would be, and both are judgments.</li>
               <li><b>How much evidence is enough, and of what kind.</b> Whether observational studies suffice, or whether you require a randomised trial, is a decision somebody made long before the 2002 trial existed.</li>
             </ul>
-            <p><b>Nobody in this story is a villain</b>, which is the point. The chapter's claim is that careful people following the rules produced this, so stricter rules are not the fix.</p>
+            </div>
+
+          <div class="keep">
+            <b>Nobody in this story is a villain</b>
+            That is the point of telling it. Careful people following the rules produced sixty years
+            of this, so stricter rules cannot be the fix.
           </div>
 
-          <h4>The five places a value gets in</h4>
-          <div class="body">
-            <p><b>The question: if values are not confined to choosing topics, where else are they?</b></p>
+          <h4 id="ch15-2" data-n="15.2">The five places a value gets in</h4>
+          <div class="qa">
+              <b>The question</b>
+              If values are not confined to choosing topics, where else are they?
+            </div>
+
+            <div class="body">
             <p><b>The answer is five places, and this is the list to be able to produce.</b> Each comes with a case, and the cases are better revision than the headings.</p>
           </div>
 
@@ -922,9 +1033,13 @@
             <p><b>And the result that settles it.</b> When the experiment was altered to control for these variables, <b>the difference in performance disappeared.</b></p>
           </div>
 
-          <h4>What replaces the value-free ideal, and the test any replacement has to pass</h4>
-          <div class="body">
-            <p><b>The question: what has to be true of a replacement for it to satisfy feminists specifically?</b></p>
+          <h4 id="ch15-3" data-n="15.3">What replaces the value-free ideal, and the test any replacement has to pass</h4>
+          <div class="qa">
+              <b>The question</b>
+              What has to be true of a replacement for it to satisfy feminists specifically?
+            </div>
+
+            <div class="body">
             <p><b>The answer is four conditions: a replacement has to do the three political jobs the VFI was doing, and protect the science as well.</b> A replacement has to answer:</p>
             <ol>
               <li><b>Does it matter who participates in science, and if so why?</b> An epistemic reason, on top of a fair one.</li>
@@ -934,9 +1049,13 @@
             </ol>
           </div>
 
-          <h4>Model one: value management</h4>
-          <div class="body">
-            <p><b>The question: can you let all values in and still get objectivity out?</b></p>
+          <h4 id="ch15-4" data-n="15.4">Model one: value management</h4>
+          <div class="qa">
+              <b>The question</b>
+              Can you let all values in and still get objectivity out?
+            </div>
+
+            <div class="body">
             <p><b>The answer is yes, if the community is built right, and the building instructions are Longino's four norms.</b> Rolin's name for the arrangement is the <b>value-management model</b>.</p>
             <ol>
               <li>There must be recognised avenues for criticism of evidence, methods, assumptions and reasoning.</li>
@@ -956,14 +1075,30 @@
             <p><b>So the objection is not that the four norms are wrong.</b> It is that a model which depends on equal intellectual authority cannot deliver it in a world arranged like this one.</p>
           </div>
 
-          <h4>Model two: social justice</h4>
-          <div class="body">
-            <p><b>The question: what do you add once you accept the field is not level?</b></p>
-            <p><b>The answer is an aim.</b> The <b>social justice model</b> starts from a commitment: a central purpose of publicly funded science is to achieve social justice, meaning <b>science should benefit everyone and particularly those who are worst off</b>. Intemann presents it as an addition to the first model, and never a rival to it.</p>
+          <h4 id="ch15-5" data-n="15.5">Model two: social justice</h4>
+          <div class="qa">
+              <b>The question</b>
+              What do you add once you accept the field is not level?
+            </div>
+
+            <div class="body">
+            <p><b>The answer is an aim.</b> The <b>social justice model</b> starts from a commitment: a central purpose of publicly funded science is to achieve social justice, meaning <b>science should benefit everyone and particularly those who are worst off</b>. Intemann presents it as an addition built on top of the first model.</p>
             <p><b>What makes it different in one line:</b> the management model is <b>pluralist</b>, letting all values compete. <b>The social justice model prioritises some values over others before the competition starts.</b></p>
-            <p><b>The method attached to it has a name you should keep.</b> <b>Studying up</b>, or studying from the margins out. In practice that means working with members of the affected group to frame the problem, identifying everyone affected, asking whether the usual concepts serve all of them, investigating how the problem shows up differently for different groups, and asking how systems of power contribute to it.</p>
+            <p><b>The method attached to it has a name you should keep: studying up</b>, or studying from the margins out. Five things it asks of a researcher:</p>
+            <ol>
+              <li>Work with members of the affected group to <b>frame the problem</b>.</li>
+              <li>Identify everyone the problem affects.</li>
+              <li>Ask whether the field's usual concepts serve all of them.</li>
+              <li>Investigate how the problem shows up differently for different groups.</li>
+              <li>Ask how systems of power contribute to it.</li>
+            </ol>
             <p><b>Why it answers question one better.</b> People in marginalised positions are likelier to have evidence about how arrangements disadvantage them, and the line Intemann uses is the memorable one: <b>privilege is easier to identify by those who do not have it.</b></p>
-            <p><b>And she does not pretend it is finished.</b> Three questions she poses and leaves open: are there competing conceptions of justice, and what if they conflict? Should <em>all</em> research aim at it, or can research be worth doing without advancing it? And how is it applied to a concrete decision?</p>
+            <p><b>And she does not pretend it is finished.</b> Three questions she poses and leaves open:</p>
+            <ol>
+              <li>Are there competing conceptions of justice, and what happens when they conflict?</li>
+              <li>Should <em>all</em> research aim at it, or can research be worth doing without advancing it?</li>
+              <li>How is any of it applied to a concrete decision?</li>
+            </ol>
           </div>
 
           <div class="kone"><b>If you keep one thing.</b> The value-free ideal was never only a mistaken description of science. It was doing work: it made diversity a question with no scientific stake, turned every documented bias into one team's lapse, and made who benefits somebody else's department. That is why removing it is a political act as well as a philosophical one, and why what replaces it has to answer <b>who participates, whose values, who benefits, and what protects the science</b> all at once.</div>
@@ -1013,12 +1148,33 @@
 
           <div class="why"><b>Why this chapter is set.</b> It is the one that refuses the question the others are asking. Chapters 4, 5 and 15 debate how scientists should behave. This asks who gets to be one, and whether the push to include more people has mostly served the institution doing the including. It is the most radical thing on the reading list and the most likely to annoy you, in either direction.</div>
 
-          <h4>What &#8220;public understanding of science&#8221; turned out to mean</h4>
-          <div class="body">
-            <p><b>The question: when institutions say the public needs to understand science better, what are they actually asking for?</b></p>
+          <h4 id="ch19-1" data-n="19.1">What &#8220;public understanding of science&#8221; turned out to mean</h4>
+          <div class="qa">
+              <b>The question</b>
+              When institutions say the public needs to understand science better, what are they actually asking for?
+            </div>
+
+            <div class="body">
             <p><b>The answer, and it is the chapter's opening move: what is wanted is appreciation.</b> Giordano's claim is that the literature itself says so, and she goes to the first issue of the journal to show it.</p>
-            <p><b>The assumption underneath, which has a name.</b> The <b>deficit model</b>: the public has a hole where knowledge should be, and filling it will produce support for science. Science studies has pushed against it for decades, which is where calls for <b>democratic science</b> come from.</p>
-            <p><b>Where the demand came from historically, and this is the part worth holding on to.</b> It takes root after the Second World War, and it is tangled with <b>nationalism</b>. An assumption that science is good in itself did not survive the war. <b>Who controlled it mattered.</b> Giordano puts the asymmetry plainly: Germany could be condemned for unethical experimentation that harmed and killed millions, while the United States had to defend its use of the atomic bomb on hundreds of thousands. So the push for a scientifically literate public was about national pride and national security, and the worry about science in the <em>wrong hands</em> runs from Cold War politics into the war on terror and into bioethics today.</p>
+            </div>
+
+          <dl class="facts">
+            <dt>The deficit model</dt>
+            <dd>The public has <b>a hole where knowledge should be</b>, and filling it will produce support for science. Science studies has pushed against this for decades, which is where calls for <b>democratic science</b> come from.</dd>
+          </dl>
+
+          <div class="body">
+            <p><b>Where the demand came from historically, and this is the part worth holding on to.</b> It takes root after the Second World War, and it is tangled with <b>nationalism</b>. An assumption that science is good in itself did not survive the war. <b>Who controlled it mattered.</b></p>
+          </div>
+
+          <div class="keep">
+            <b>The asymmetry Giordano puts plainly</b>
+            Germany could be condemned for unethical experimentation that harmed and killed millions,
+            while the United States had to defend its use of the atomic bomb on hundreds of thousands.
+          </div>
+
+          <div class="body">
+            <p><b>So the push for a scientifically literate public was about national pride and national security</b>, and the worry about science in the <em>wrong hands</em> runs from Cold War politics into the war on terror and into bioethics today.</p>
             <p><b>Then the close reading she builds the section on.</b> The first article in the first issue of <em>Public Understanding of Science</em>, 1992, by two policy advocates at a cancer research fund, argues scientists should get involved so the public will see them as normal people and trust them. It identifies two threats.</p>
             <ul>
               <li><b>Unskilled working women</b>, named as the hardest group to reach, who the authors assume get their information from television game shows and tabloids. The suggested remedy is putting a scientist into a soap opera.</li>
@@ -1027,24 +1183,52 @@
             <p><b>And why she picks that article, when worse ones exist.</b> It is the first article in the first journal of the field, so it set the terms. It also appeared alongside critical pieces in the same issue, which tells you the field was entangled with scientists and policy makers from the start.</p>
           </div>
 
-          <h4>The thing she is pointing at: inclusion that leaves the system intact</h4>
-          <div class="body">
-            <p><b>The question: why would more people being let in fail to fix anything?</b></p>
+          <h4 id="ch19-2" data-n="19.2">The thing she is pointing at: inclusion that leaves the system intact</h4>
+          <div class="qa">
+              <b>The question</b>
+              Why would more people being let in fail to fix anything?
+            </div>
+
+            <div class="body">
             <p><b>The answer: because the movements of the 1960s and 1970s were not asking to be let into the existing arrangement, and the version that survived was the one that asked for exactly that.</b></p>
             <p><b>The reasoning in order.</b> Those movements held that categories of race, gender, sexuality and ability were <b>not inevitable</b> but were doing work for the economic and political system. So the goal was to change the system, and not to admit a few people to it. What happened instead was that admitting some people from excluded groups <b>let the system carry on</b> and redrew the lines somewhere else.</p>
-            <p><b>Her two cases.</b> A politics of <b>respectability</b>, meaning conformity to white, heterosexual, middle-class norms about how a woman behaves and what family she lives in, was used to justify withholding state support from poor Black women by blaming individuals or culture. And the campaign for same-sex marriage won healthcare benefits for couples with jobs that provide healthcare <b>while leaving marriage itself unquestioned</b>, so people without jobs or insurance stayed outside. The pattern both share: the boundary moved, and the people on the far side of the new one became harder to see.</p>
+            <p><b>Her two cases, and they share a pattern.</b></p>
+            <ol>
+              <li><b>Respectability.</b> Conformity to white, heterosexual, middle-class norms about how a woman behaves and what family she lives in. It was used to justify withholding state support from poor Black women, by blaming individuals or culture.</li>
+              <li><b>Same-sex marriage.</b> The campaign won healthcare benefits for couples with jobs that provide healthcare, <b>while leaving marriage itself unquestioned</b>, so people without jobs or insurance stayed outside.</li>
+            </ol>
+            <p><b>In both, the boundary moved</b>, and the people on the far side of the new one became harder to see.</p>
             <p><b>What that means for science.</b> Calls to open science to everyone, made without correcting the inequality first, end up meaning <b>everyone who is already economically successful</b>. She calls this a colourblind and genderblind politics, and the objection is that we do not live in a raceless or genderless world, so a rule that ignores race and gender preserves whatever the existing distribution happens to be.</p>
           </div>
 
-          <h4>The argument you will want to argue with: illiteracy as resistance</h4>
-          <div class="body">
-            <p><b>The question: is somebody who rejects a scientific explanation necessarily ignorant of it?</b></p>
+          <h4 id="ch19-3" data-n="19.3">The argument you will want to argue with: illiteracy as resistance</h4>
+          <div class="qa">
+              <b>The question</b>
+              Is somebody who rejects a scientific explanation necessarily ignorant of it?
+            </div>
+
+            <div class="body">
             <p><b>The answer the chapter defends: sometimes they know it and are refusing it, and that is a different thing.</b></p>
             <p><b>The evidence she cites.</b> Barr and Birke interviewed women about adult science education and found that some <b>knew the scientific answers and chose other explanations</b>. Emily Martin found that what looked like scientific illiteracy among working-class women was resistance to medical authority on menstruation. So the category <em>ignorant</em> was being applied to people making a choice.</p>
             <p><b>Then the stronger version, which is where most readers get off.</b> Lucía Egaña Rojas writes that a transfeminist technology <b>will value illiteracy</b>, for being unproductive for industry, as a way of finding paths that speed and productivity never imagine. The underlying observation: tying epistemic authority to literacy devalues the knowledge of most of the world's poorest people.</p>
-            <p><b>Her example of what happens to anybody who says this out loud.</b> During the Fees Must Fall protests in South Africa in 2016, a student suggested that science is a colonial project and should be abandoned before something new is built. The video went round under <b>#ScienceMustFall</b>. Giordano's point is about the response: the suggestion was <b>not argued with but used as evidence of ignorance</b>, and then used to discredit the whole movement.</p>
-            <p><b>And the sentence that makes the argument serious.</b> The people making the decisions that reproduce an unequal society every day <b>are the best educated people in it.</b> So more education cannot be the whole answer, and the alternatives she gathers are unlearning, rewriting, unschooling, failure and illiteracy.</p>
-            <p><b>What to do with this if you think it is wrong.</b> Her own footnote concedes the obvious objection: this is not a purist stance, and nobody is giving up medicine or phones. The claim is narrower, that in specific cases refusing the scientific framing is a legitimate move, and never a deficit. That narrow claim is the one to argue against if you want to, and <b>the broad version is one she does not make.</b></p>
+            </div>
+
+          <div class="exm">
+            <b>Example &middot; what happens to anybody who says this out loud</b>
+            <p><b>The event.</b> During the Fees Must Fall protests in South Africa in 2016, a student suggested that science is a colonial project and should be abandoned before something new is built. The video went round under <b>#ScienceMustFall</b>.</p>
+            <p><b>Giordano's point is about the response.</b> Nobody argued with the suggestion. It was treated as evidence of ignorance, and then used to discredit the whole movement.</p>
+          </div>
+
+          <div class="body">
+            <p><b>And the sentence that makes the argument serious.</b> The people making the decisions that reproduce an unequal society every day <b>are the best educated people in it.</b> So more education cannot be the whole answer. She gathers five alternatives, each a way of working the deficit model has no room for.</p>
+            <ol>
+              <li>Unlearning</li>
+              <li>Rewriting</li>
+              <li>Unschooling</li>
+              <li>Failure</li>
+              <li>Illiteracy</li>
+            </ol>
+            <p><b>What to do with this if you think it is wrong.</b> Her own footnote concedes the obvious objection: this is no purist stance, and nobody is giving up medicine or phones. The narrow claim is that in specific cases refusing the scientific framing is a legitimate move. That narrow claim is the one to argue against if you want to, and <b>the broad version is one she does not make.</b></p>
           </div>
 
           <figure class="pic">
@@ -1054,9 +1238,13 @@
             <figcaption><b>The Black Panther Party's Community Survival Conference, Oakland, March 1972.</b> Giordano names the party's health work as democratic science that was already happening while the journals were discussing how to reach the public. Fourth from the bottom in the speakers list: <b>Donald Williams, medical authority on sickle cell anaemia</b>. The party ran mass screening for sickle cell at a time when the disease was medically neglected, alongside free clinics and its own criticism of racist scientific data. <span class="cred">Black Panther Party, public domain, via Wikimedia Commons.</span></figcaption>
           </figure>
 
-          <h4>Who was already doing it</h4>
-          <div class="body">
-            <p><b>The question: if the universities were asking how to reach the public, what was the public doing?</b></p>
+          <h4 id="ch19-4" data-n="19.4">Who was already doing it</h4>
+          <div class="qa">
+              <b>The question</b>
+              If the universities were asking how to reach the public, what was the public doing?
+            </div>
+
+            <div class="body">
             <p><b>The answer: producing knowledge, in four movements she names, none of which was invited.</b></p>
             <ul>
               <li><b>The feminist women's health movement</b>, which made its own medical knowledge and distributed it, <em>Our Bodies, Ourselves</em> being the best-known product.</li>
@@ -1074,14 +1262,34 @@
             <figcaption><b>ACT UP at the National Institutes of Health, 1990.</b> The placard is an argument about trial design: both approved antivirals were failing this protester and he is asking why the research agenda does not include him. AIDS activists learned the pharmacology, sat on the committees and <b>changed how clinical trials are run</b>, which is Giordano's case that knowledge production outside the academy is a fact, and never a proposal. <span class="cred">NIH History Office, public domain, via Wikimedia Commons.</span></figcaption>
           </figure>
 
-          <h4>What happened when democratic science became fashionable</h4>
-          <div class="body">
-            <p><b>The question: the do-it-yourself biology labs say they are opening science to everyone. Are they?</b></p>
+          <h4 id="ch19-5" data-n="19.5">What happened when democratic science became fashionable</h4>
+          <div class="qa">
+              <b>The question</b>
+              The do-it-yourself biology labs say they are opening science to everyone. Are they?
+            </div>
+
+            <div class="body">
             <p><b>The answer from her own fieldwork: no, and what surprised her is that the participants were untroubled by it.</b></p>
             <p><b>What she found.</b> The rhetoric of open science for all is used to build support for these spaces. The people actually in them are <b>overwhelmingly already scientifically trained</b>, many holding academic posts or having worked in large biotechnology companies. Most are there to become <b>biological entrepreneurs</b>. The aim is freedom from the constraints of traditional research, and not a wider membership.</p>
             <p><b>The detail that bothered her.</b> The successes they highlighted were the ones that <b>made a profit</b>, and she had expected collective spaces that shared results and profits. Her word for her own reaction is puzzlement, and she traces it to a difference in what people mean by democratic.</p>
-            <p><b>Then a correction she makes to her own side.</b> Harding defines democratising science as making sure that those who bear the consequences of science policy have a proportionate share in making it, so that <b>women's interests and values count</b>. Giordano accepts the sentiment and rejects the category: <b>treating women as a single group with shared interests has stood in for the interests of white middle-class women.</b></p>
-            <p><b>And the argument she uses to make that stick.</b> Harriet Washington's <b>medical apartheid</b>: it is not that all women need including, it is that <b>some women, primarily Black women, have been used for the benefit of other women's health.</b> The separation was neither unfortunate nor accidental. Some bodies are undervalued so they can be used for the benefit of others. If that is right, then democratising science means counting the people whose bodies have been most subjected to the medical gaze, and not women in general.</p>
+            </div>
+
+          <div class="keep">
+            <b>A correction she makes to her own side</b>
+            Harding defines democratising science as making sure that those who bear the consequences
+            of science policy have a proportionate share in making it, so that women's interests and
+            values count. Giordano accepts the sentiment and rejects the category: treating women as a
+            single group with shared interests has stood in for the interests of white middle-class
+            women.
+          </div>
+
+          <dl class="facts">
+            <dt>Medical apartheid</dt>
+            <dd>Harriet Washington's term, and the argument Giordano uses to make her correction stick. <b>Some women, primarily Black women, have been used for the benefit of other women's health.</b> The separation was neither unfortunate nor accidental: some bodies are undervalued so they can be used for the benefit of others.</dd>
+          </dl>
+
+          <div class="body">
+            <p><b>What follows from that.</b> Democratising science means counting the people whose bodies have been most subjected to the medical gaze, where counting women in general would leave the arrangement exactly as it is.</p>
             <p><b>Her three worked models, briefly, since she gives them a paragraph each.</b></p>
             <ul>
               <li><b>The science shop</b>, from the Netherlands in the 1970s: a desk where community members bring research questions for graduate students to answer. It has drifted into a service for businesses, and feminists argue it could be run from a feminist studies department with an explicit commitment to justice.</li>
@@ -1137,9 +1345,13 @@
 
           <div class="why"><b>Why this chapter is set.</b> Everything else this term argues that the position of the knower affects the knowledge. This is the cleanest case of it anybody has: a woman shut out of the French academy noticed that beliefs about women were held without examination, turned that into a general rule about belief, applied the rule to a scientific quarrel she had no stake in, and got the right answer about scientific method a century and a half before anybody else.</div>
 
-          <h4>The claim the chapter is making, which is bigger than it first looks</h4>
-          <div class="body">
-            <p><b>The question: did being a woman make any difference to Du Ch&acirc;telet's physics, or is she simply a woman who happened to do physics?</b></p>
+          <h4 id="ch3-1" data-n="3.1">The claim the chapter is making, which is bigger than it first looks</h4>
+          <div class="qa">
+              <b>The question</b>
+              Did being a woman make any difference to Du Ch&acirc;telet's physics, or is she simply a woman who happened to do physics?
+            </div>
+
+            <div class="body">
             <p><b>Detlefsen's answer: it made the difference, and the path from one to the other is traceable in three steps.</b></p>
             <ol>
               <li>She noticed that beliefs about women were held <b>without ever being examined</b>, and that she had suffered from it.</li>
@@ -1156,18 +1368,38 @@
             <figcaption><b>&Eacute;milie Du Ch&acirc;telet, 1706 to 1749, painted by Marianne Loir.</b> Look at what she is holding: a pair of dividers, with an armillary sphere behind her and papers on the desk. Portraits of women of her rank did not usually carry instruments, and the painting is making the same argument she spent her life making. <span class="cred">Marianne Loir, public domain, via Wikimedia Commons.</span></figcaption>
           </figure>
 
-          <h4>Step one: what she noticed about beliefs concerning women</h4>
-          <div class="body">
-            <p><b>The question she asks in the preface to her translation of Mandeville: why have women produced nothing?</b></p>
-            <p><b>And her answer is that the question is the wrong way round.</b> She asks why, in so many centuries, no good tragedy, poem, history, painting or book of physics came from a woman, and says that these creatures, whose understanding appears in all things equal to that of men, seem to be <b>stopped by an invincible force on this side of a barrier</b>. She invites anybody to explain it.</p>
-            <p><b>Then she explains it.</b> If she were king, she says, she would let women share in all the rights of humanity and <b>most of all those of the mind</b>. Women seem born to deceive, and their souls are scarcely allowed any other exercise. Many are either ignorant of their own talents, through flaws in their education, or <b>bury them out of prejudice and for lack of a bold spirit.</b> And she says that what she has experienced herself confirms it.</p>
-            <p><b>What makes this more than a complaint.</b> She identifies a loop. The belief that women are naturally frivolous produces institutions that give women nothing to do with their minds, which produces women who have done nothing, which confirms the belief. <b>And she names the part done from inside</b>, where women take the prejudice on themselves and bury what they have.</p>
-            <p><b>Then the generalisation, from her <em>Discourse on Happiness</em>.</b> A source of happiness is to be free of prejudice, and <b>the decision rests with us</b> to be rid of it. Her definition is the usable one: <b>prejudice is an opinion accepted without examination, because it would be indefensible otherwise.</b> We all have enough intelligence to examine what others want us to believe.</p>
+          <h4 id="ch3-2" data-n="3.2">Step one: what she noticed about beliefs concerning women</h4>
+          <div class="qa">
+            <b>The question she asks in the preface to her translation of Mandeville</b>
+            Why have women produced nothing?
           </div>
 
-          <h4>Step two: the rule, and the company it puts her in</h4>
           <div class="body">
-            <p><b>The question: what does it mean to say you have a duty about what you believe?</b></p>
+            <p><b>And her answer is that the question is the wrong way round.</b> She asks why, in so many centuries, no good tragedy, poem, history, painting or book of physics came from a woman, and says that these creatures, whose understanding appears in all things equal to that of men, seem to be <b>stopped by an invincible force on this side of a barrier</b>. She invites anybody to explain it.</p>
+            <p><b>Then she explains it.</b> If she were king, she says, she would let women share in all the rights of humanity and <b>most of all those of the mind</b>. Women seem born to deceive, and their souls are scarcely allowed any other exercise. Many are either ignorant of their own talents, through flaws in their education, or <b>bury them out of prejudice and for lack of a bold spirit.</b> And she says that what she has experienced herself confirms it.</p>
+            <p><b>What makes this more than a complaint: she identifies a loop, and it closes.</b></p>
+            <ol>
+              <li>The belief that women are naturally frivolous</li>
+              <li>produces institutions that give women nothing to do with their minds,</li>
+              <li>which produces women who have done nothing,</li>
+              <li>which confirms the belief.</li>
+            </ol>
+            <p><b>And she names the part done from inside</b>, where women take the prejudice on themselves and bury what they have.</p>
+            <p><b>Then the generalisation, from her <em>Discourse on Happiness</em>.</b> A source of happiness is to be free of prejudice, and <b>the decision rests with us</b> to be rid of it. We all have enough intelligence to examine what others want us to believe.</p>
+          </div>
+
+          <dl class="facts">
+            <dt>Prejudice</dt>
+            <dd>Her own definition, and the usable one: <b>an opinion accepted without examination, because it would be indefensible otherwise.</b></dd>
+          </dl>
+
+          <h4 id="ch3-3" data-n="3.3">Step two: the rule, and the company it puts her in</h4>
+          <div class="qa">
+              <b>The question</b>
+              What does it mean to say you have a duty about what you believe?
+            </div>
+
+            <div class="body">
             <p><b>The answer: that believing is something you do, so it can be done responsibly or not, and doing it badly is a fault, and never bad luck.</b> The name arrived in 1877 with W. K. Clifford, whose version is absolute: it is wrong always, everywhere, and for anyone, to believe anything on insufficient evidence.</p>
             <p><b>Du Ch&acirc;telet is a century and a half earlier and in good company.</b> Detlefsen sets three thinkers beside each other, and the useful observation is that each has <b>a different authority in view</b>.</p>
             <ul>
@@ -1179,11 +1411,24 @@
             <p><b>How she passes it on.</b> Her masterwork opens as a letter to her son. She tells him to accustom his mind early to think and to be <b>self-sufficient</b>, and then: whatever side you take in this dispute among philosophers, guard yourself against the obstinacy that the spirit of national partisanship produces, <b>which is dangerous everywhere in life and ridiculous in physics.</b></p>
           </div>
 
-          <h4>Step three: the quarrel, and why everybody was getting it wrong</h4>
-          <div class="body">
-            <p><b>The question: what was actually in dispute in European science in 1740?</b></p>
+          <h4 id="ch3-4" data-n="3.4">Step three: the quarrel, and why everybody was getting it wrong</h4>
+          <div class="qa">
+              <b>The question</b>
+              What was actually in dispute in European science in 1740?
+            </div>
+
+            <div class="body">
             <p><b>The answer, in the framework Detlefsen uses: two camps, and the fight was about whether hypotheses are allowed at all.</b></p>
-            <p><b>Speculative natural philosophy</b> reasons from principles about how things must be. <b>Experimental natural philosophy</b> builds from experiment and observation. By the 1690s the experimental side had hardened into <b>opposition to hypotheses</b>, which is the part a modern reader finds strange.</p>
+            </div>
+
+          <dl class="facts">
+            <dt>Speculative natural philosophy</dt>
+            <dd>Reasons from <b>principles about how things must be</b>.</dd>
+            <dt>Experimental natural philosophy</dt>
+            <dd>Builds from <b>experiment and observation</b>. By the 1690s this side had hardened into opposition to hypotheses altogether, which is the part a modern reader finds strange.</dd>
+          </dl>
+
+          <div class="body">
             <p><b>What they meant by the charge.</b> Newton: experimental philosophy reduces phenomena to general rules, while hypothetical philosophy consists in <b>imaginary explications of things and imaginary arguments</b> for or against them, and he follows the first while Descartes and Leibniz follow the second too much. A contemporary dismisses the systems of Descartes, Gassendi and Hobbes as possibly <b>chimeras and amusing notions, fit to entertain working heads.</b></p>
             <p><b>And the nationalism riding on top of it, which is why her rule is relevant.</b> Voltaire's <em>Elements of Newton's Philosophy</em> draws a bright line between the old French way of hypotheses and the new British hard-headed experimentalism, and tells the French to catch up. <b>So the scientific question had an English answer and a French answer</b>, which is exactly the situation her letter to her son is about.</p>
             <p><b>One piece of context worth having, because it changes who she is.</b> For decades her thought was treated as derivative of Voltaire's, with whom she lived and worked. Detlefsen calls that claim evidence-free, and says close examination of her work has debunked it. Her treatment of hypotheses is the example: <b>she does not agree with him.</b></p>
@@ -1196,12 +1441,25 @@
             <figcaption><b>The title page of <em>Institutions de Physique</em>, Paris, 1740.</b> Her name is not on it. The book was published anonymously, presented as a physics textbook for her thirteen-year-old son, and chapter 4 of it is the account of hypotheses that the field would take another century and a half to arrive at independently. <span class="cred">Public domain, via Wikimedia Commons.</span></figcaption>
           </figure>
 
-          <h4>What she actually said about hypotheses</h4>
-          <div class="body">
-            <p><b>The question: if a hypothesis is a guess, why should science be allowed them?</b></p>
+          <h4 id="ch3-5" data-n="3.5">What she actually said about hypotheses</h4>
+          <div class="qa">
+              <b>The question</b>
+              If a hypothesis is a guess, why should science be allowed them?
+            </div>
+
+            <div class="body">
             <p><b>Her answer: because there is no other way to reach a cause you cannot observe and cannot derive, and the fix is to constrain them, where everybody around her wanted them banned.</b> This is chapter 4 of the <em>Foundations</em>, and the four constraints she sets are, in substance, the modern ones.</p>
-            <p><b>First, why they are necessary.</b> Hypotheses are needed in all cases where the true reason for a phenomenon cannot be discovered <b>either in advance, from truths already known, or afterwards, from experiment.</b> That gap is permanent, so the tool is permanent. Her flat version: without hypotheses there would be no astronomy now.</p>
-            <p><b>And the argument from who used them.</b> Copernicus, Kepler, Huygens, Descartes, Leibniz <b>and Newton himself</b> all devised useful hypotheses to explain difficult phenomena, so those who want to ban them from philosophy <b>intend harm to the interests of science.</b> The target is anybody leaning too hard on Newton's famous line that he feigns no hypotheses.</p>
+            <p><b>First, why they are necessary.</b> Hypotheses are needed in all cases where the true reason for a phenomenon cannot be discovered <b>either in advance, from truths already known, or afterwards, from experiment.</b> That gap is permanent, so the tool is permanent.</p>
+          </div>
+
+          <div class="keep">
+            <b>Her flat version of it</b>
+            Without hypotheses there would be no astronomy now.
+          </div>
+
+          <div class="body">
+            <p><b>And the argument from who used them.</b> Copernicus, Kepler, Huygens, Descartes, Leibniz <b>and Newton himself</b> all devised useful hypotheses to explain difficult phenomena.</p>
+            <p><b>So, she says, those who want to ban them from philosophy intend harm to the interests of science.</b> Her target is anybody leaning too hard on Newton's famous line that he feigns no hypotheses.</p>
             <p><b>Then the constraints, which are what make the account modern.</b></p>
             <ol>
               <li><b>Test them.</b> Once a hypothesis is posed, experiments get done to find out whether it is a good one, <b>experiments which would never have been thought of without it.</b> That is the hypothesis earning its place by generating work.</li>
@@ -2105,7 +2363,22 @@
       if (t <= 0 && t > bestTop) { bestTop = t; best = i; }
     }
     links.forEach(function (a, i) { a.classList.toggle('on', i === best); });
+    // only the chapter you are inside opens its list of sections
+    var of = '';
+    if (best >= 0) {
+      var cur = links[best];
+      of = cur.classList.contains('sb') ? cur.getAttribute('data-of')
+                                        : cur.getAttribute('href').slice(1);
+    }
+    links.forEach(function (a) {
+      if (a.classList.contains('sb')) a.classList.toggle('show', a.getAttribute('data-of') === of);
+    });
+    if (best !== was && best >= 0 && nav.scrollHeight > nav.clientHeight) {
+      links[best].scrollIntoView({ block: 'nearest' });
+    }
+    was = best;
   }
+  var was = -1;
   // how far through the reading this is, drawn along the top edge of the dock
   var prog = document.getElementById('prog');
   function bar() {
