@@ -35,7 +35,7 @@
     --hl-n-act: rgba(31,107,87,.22);
     --ul-y:     rgba(196,152,0,.55);
     --ul-p:     rgba(208,62,130,.48);
-    --ul-g:     rgba(58,98,84,.34);
+    --ul-g:     rgba(58,98,84,.46);
     --gl-line:  rgba(110,118,111,.42);
 
     --navpad: 0px;
@@ -63,7 +63,7 @@
       --hl-y: rgba(255,206,0,.24); --hl-p: rgba(255,92,168,.24);
       --hl-n: rgba(100,191,161,.12); --hl-n-act: rgba(100,191,161,.22);
       --ul-y: rgba(217,169,87,.48); --ul-p: rgba(255,151,198,.38);
-      --ul-g: rgba(116,166,148,.30); --gl-line: rgba(132,141,134,.45); --lh: 1.76; --measure: 58ch; --figw: 80ch; --pgap: 25px;
+      --ul-g: rgba(126,172,154,.42); --gl-line: rgba(132,141,134,.45); --lh: 1.76; --measure: 58ch; --figw: 80ch; --pgap: 25px;
     }
   }
   :root[data-theme="dark"] {
@@ -82,7 +82,7 @@
       --hl-y: rgba(255,206,0,.24); --hl-p: rgba(255,92,168,.24);
       --hl-n: rgba(100,191,161,.12); --hl-n-act: rgba(100,191,161,.22);
       --ul-y: rgba(217,169,87,.48); --ul-p: rgba(255,151,198,.38);
-    --ul-g: rgba(116,166,148,.30); --gl-line: rgba(132,141,134,.45); --lh: 1.76; --measure: 58ch; --figw: 80ch; --pgap: 25px;
+    --ul-g: rgba(126,172,154,.42); --gl-line: rgba(132,141,134,.45); --lh: 1.76; --measure: 58ch; --figw: 80ch; --pgap: 25px;
   }
 
   * { box-sizing: border-box; }
@@ -688,9 +688,9 @@
   mark.hl-y { background: var(--hl-y); }
   mark.hl-p { background: var(--hl-p); }
   mark.hl-n { background: var(--hl-n); border-bottom: 1px dashed var(--accent); }
-  mark.hl-uy { background: none; border-radius: 0; box-shadow: inset 0 -1.5px 0 var(--ul-y); }
-  mark.hl-up { background: none; border-radius: 0; box-shadow: inset 0 -1.5px 0 var(--ul-p); }
-  mark.hl-ug { background: none; border-radius: 0; box-shadow: inset 0 -1.5px 0 var(--ul-g); }
+  mark.hl-uy { background: none; border-radius: 0; box-shadow: inset 0 -2px 0 var(--ul-y); }
+  mark.hl-up { background: none; border-radius: 0; box-shadow: inset 0 -2px 0 var(--ul-p); }
+  mark.hl-ug { background: none; border-radius: 0; box-shadow: inset 0 -2px 0 var(--ul-g); }
   mark.hl-n.act { background: var(--hl-n-act); }
   @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) mark.hl-y { background: rgba(255,206,0,.30); } :root:not([data-theme="light"]) mark.hl-p { background: rgba(255,92,168,.30); } :root:not([data-theme="light"]) mark.hl-n { background: rgba(100,191,161,.12); } }
   #hl-bar[hidden] { display: none !important; }
@@ -2788,7 +2788,9 @@
 <script src="../shared/editor.js"></script>
 <script>
 (function () {
-  var SEL = 'p,li,h4,h5,blockquote,td,dd,figcaption';
+  // The callouts hold their text directly in the div, with no paragraph inside, so a block
+  // list of p and li had nothing to attach a mark to and highlighting them did nothing.
+  var SEL = 'p,li,h4,h5,blockquote,td,dd,figcaption,.keep,.qa,.why,.kone,.mynote span';
   var LS = 'phi2394-week2-guide-v1', WIDE = 1400;
   var root, bar, rail, items = [], notes = {}, ref = null, saveT = null;
   var drawer = null;
