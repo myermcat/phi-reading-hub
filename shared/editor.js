@@ -96,12 +96,46 @@
     caretStart(p);
   }
 
+  function unwrapHeadings(root) {
+    /* A heading that has a list, a paragraph or a rule inside it. Chrome builds these when a
+       line is outdented into the heading above, and then every line typed afterwards is a
+       heading too and nothing pasted in comes back as plain text. Take the heading apart:
+       the words it starts with stay a heading, the blocks come out beside it, and anything
+       trailing becomes a paragraph. Notes written before the keystrokes were fixed are
+       repaired the next time they load. */
+    var BLOCK = /^(UL|OL|P|DIV|HR|BLOCKQUOTE|H[1-6]|LI)$/;
+    for (var pass = 0; pass < 6; pass++) {
+      var bad = Array.prototype.filter.call(root.querySelectorAll('h1,h2,h3,h4,h5,h6'),
+        function (hd) {
+          return Array.prototype.some.call(hd.children, function (c) { return BLOCK.test(c.tagName); });
+        });
+      if (!bad.length) return;
+      bad.forEach(function (hd) {
+        var out = [], lead = null, par = hd.parentNode;
+        Array.prototype.slice.call(hd.childNodes).forEach(function (n) {
+          if (n.nodeType === 1 && BLOCK.test(n.tagName)) { out.push(n); lead = null; return; }
+          if (!lead) {
+            lead = document.createElement(out.length ? 'p' : hd.tagName.toLowerCase());
+            out.push(lead);
+          }
+          lead.appendChild(n);
+        });
+        out.forEach(function (n) {
+          if (n.tagName === 'P' && !n.firstChild) return;
+          par.insertBefore(n, hd);
+        });
+        par.removeChild(hd);
+      });
+    }
+  }
+
   function clean(html) {
     var d = document.createElement('div');
     d.innerHTML = String(html == null ? '' : html);
     Array.prototype.forEach.call(d.querySelectorAll('script,style,iframe,object,embed,link'),
       function (n) { n.remove(); });
     Array.prototype.forEach.call(d.querySelectorAll('hr[id]'), function (n) { n.removeAttribute('id'); });
+    unwrapHeadings(d);
     Array.prototype.forEach.call(d.querySelectorAll('*'), function (n) {
       Array.prototype.slice.call(n.attributes).forEach(function (a) {
         if (/^on/i.test(a.name) || (a.name === 'href' && /^\s*javascript:/i.test(a.value))) n.removeAttribute(a.name);
@@ -695,6 +729,7 @@
     nbbar.innerHTML = '<button type="button" data-a="bold" title="Bold"><b>B</b></button>' +
       '<button type="button" class="i" data-a="italic" title="Italic">I</button>' +
       '<button type="button" class="l" data-a="insertUnorderedList" title="Bullet list">&bull; list</button>' +
+      '<button type="button" class="l" data-b="p" title="Back to plain text">text</button>' +
       '<div class="sep"></div>' +
       '<button type="button" class="sw y" data-p="c-y" title="Yellow text"></button>' +
       '<button type="button" class="sw p" data-p="c-p" title="Pink text"></button>' +
@@ -716,7 +751,8 @@
          written as one is on the screen until the next load and gone after it. Asked for here
          rather than trusted, because foreColor turns this on and the browser keeps it on. */
       try { document.execCommand('styleWithCSS', false, false); } catch (err) {}
-      document.execCommand(b.getAttribute('data-a'), false, null);
+      if (b.hasAttribute('data-b')) document.execCommand('formatBlock', false, b.getAttribute('data-b'));
+      else document.execCommand(b.getAttribute('data-a'), false, null);
       var el = document.activeElement;
       if (isEditor(el) && cfg.save) cfg.save(el);
     });
