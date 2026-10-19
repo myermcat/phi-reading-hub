@@ -262,7 +262,7 @@
     var cw = document.createTreeWalker(d, NodeFilter.SHOW_COMMENT, null), cs = [], cn;
     while ((cn = cw.nextNode())) cs.push(cn);
     cs.forEach(function (c) { c.parentNode.removeChild(c); });
-    var OK = /^(B|STRONG|I|EM|U|S|BR|P|DIV|UL|OL|LI|H3|H4|H5|BLOCKQUOTE|SPAN)$/;
+    var OK = /^(B|STRONG|I|EM|U|S|BR|P|DIV|UL|OL|LI|H3|H4|H5|HR|BLOCKQUOTE|SPAN)$/;
     var all = Array.prototype.slice.call(d.querySelectorAll('*'));
     for (var i = all.length - 1; i >= 0; i--) {
       var n = all[i], keep = OK.test(n.tagName);
@@ -448,7 +448,25 @@
          paragraph, the guard below misses, and `# ` builds a heading inside the bullet. */
       var inLi = !!(blk && blk !== el && blk.closest && blk.closest('li'));
       if (e.key === ' ') {
-        if (inLi) return;
+        if (inLi) {
+          /* `1. ` typed at the head of a bullet used to be swallowed, so the line stayed a
+             bullet with the digits sitting in it. Switch the list instead, which is what
+             anybody typing a number at the start of a list item is asking for. */
+          var swap = null;
+          if (head.match(/^\s*\d+[.)]$/)) swap = 'insertOrderedList';
+          else if (head.match(/^\s*[-*+]$/)) swap = 'insertUnorderedList';
+          if (!swap) return;
+          var li0 = blk.closest('li'), lst = li0 && li0.parentElement;
+          if (!lst || (lst.tagName !== 'UL' && lst.tagName !== 'OL')) return;
+          if ((swap === 'insertOrderedList') === (lst.tagName === 'OL')) return;
+          e.preventDefault();
+          sel.removeAllRanges(); sel.addRange(pre);
+          document.execCommand('delete', false, null);
+          document.execCommand(swap, false, null);
+          markEmpty(el);
+          if (onChange) onChange();
+          return;
+        }
         if (head.match(/^\s*[-*+]$/)) cmd = 'ul';
         else if (head.match(/^\s*\d+[.)]$/)) cmd = 'ol';
         else if ((m = head.match(/^\s*(#{1,3})$/))) { cmd = 'block'; arg = 'h' + (m[1].length + 2); }
