@@ -64,6 +64,8 @@ def forms(term):
             out |= {w[:-3] + 'ist', w[:-3] + 'ists'}
         elif w.endswith('logy'):
             out.add(w[:-1] + 'ical')
+        elif w.endswith('is') and len(w) > 5:
+            out.add(w[:-2] + 'es')
         elif w.endswith('y') and len(w) > 4:
             out.add(w[:-1] + 'ies')
         elif not w.endswith('s'):
@@ -121,7 +123,16 @@ for e in entries:
 entries = merged
 
 entries.sort(key=lambda e: -len(e['f'][0]))
-open('glossary.js', 'w', encoding='utf-8').write(
-    '/* Built by _claude/build_glossary.py from every week\'s glossary. Do not edit by hand. */\n'
-    'window.PHI_GLOSSARY = ' + json.dumps(entries, ensure_ascii=False) + ';\n')
-print('%d entries, %d word forms' % (len(entries), sum(len(e['f']) for e in entries)))
+text = ('/* Built by _claude/build_glossary.py from every week\'s glossary. Do not edit by hand. */\n'
+        'window.PHI_GLOSSARY = ' + json.dumps(entries, ensure_ascii=False) + ';\n')
+open('glossary.js', 'w', encoding='utf-8').write(text)
+
+import hashlib
+tag = hashlib.sha1(text.encode()).hexdigest()[:8]
+for page in sorted(glob.glob('week-*/index.html')):
+    p = open(page, encoding='utf-8').read()
+    q = re.sub(r'<script src="\.\./glossary\.js(?:\?v=[0-9a-f]+)?"></script>',
+               '<script src="../glossary.js?v=%s"></script>' % tag, p)
+    if q != p:
+        open(page, 'w', encoding='utf-8').write(q)
+print('%d entries, %d word forms, tag %s' % (len(entries), sum(len(e['f']) for e in entries), tag))
