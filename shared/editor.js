@@ -73,6 +73,29 @@
      every attribute that could carry code, is dropped, so a value written by something other
      than a page of hers cannot reach the document. The five colour classes are the only classes
      kept, because they are the only ones this editor writes. */
+  function unbullet(li) {
+    /* Take one item out of its list and leave it as a paragraph in the same place. The
+       browser's own outdent merges the line into whatever is above it, which moves the caret
+       off the line being edited, and it can hand the words back as loose text with no block
+       around them, which later headings and lists then cannot act on. */
+    var list = li.parentNode;
+    if (!list || (list.tagName !== 'UL' && list.tagName !== 'OL')) return;
+    var p = document.createElement('p');
+    while (li.firstChild) p.appendChild(li.firstChild);
+    if (!p.firstChild) p.appendChild(document.createElement('br'));
+    var after = null, n = li.nextElementSibling;
+    if (n) {
+      after = document.createElement(list.tagName);
+      while (n) { var nx = n.nextElementSibling; after.appendChild(n); n = nx; }
+    }
+    list.removeChild(li);
+    var host = list.parentNode;
+    host.insertBefore(p, list.nextSibling);
+    if (after) host.insertBefore(after, p.nextSibling);
+    if (!list.firstElementChild) host.removeChild(list);
+    caretStart(p);
+  }
+
   function clean(html) {
     var d = document.createElement('div');
     d.innerHTML = String(html == null ? '' : html);
@@ -423,9 +446,13 @@
         try { bpre.setEnd(br_.startContainer, br_.startOffset); } catch (err) { return; }
         if (bpre.toString().length) return;
         var bli = bblk.closest && bblk.closest('li');
-        if (bli && !bli.previousElementSibling) {
+        if (bli) {
+          /* Any item, not only the first. Backspace on a bullet takes the bullet off and
+             leaves the words where they were. Merging the line into the one above is what
+             the browser does and it moves the caret off the line being edited, which is
+             how a line ended up inside the heading above it. */
           e.preventDefault();
-          document.execCommand('outdent', false, null);
+          unbullet(bli);
           markEmpty(el);
           if (onChange) onChange();
           return;
@@ -438,6 +465,26 @@
       var sel = window.getSelection();
       if (!sel || !sel.rangeCount || !sel.isCollapsed) return;
       var r = sel.getRangeAt(0);
+      if (e.key === 'Enter') {
+        /* Enter at the end of a heading gives a paragraph. Chrome clones the heading
+           instead, so every line typed after one came out as a heading as well. */
+        var hblk = blockOf(el, r.startContainer);
+        if (hblk && /^H[1-6]$/.test(hblk.tagName)) {
+          var tail = document.createRange();
+          tail.selectNodeContents(hblk);
+          try { tail.setStart(r.startContainer, r.startOffset); } catch (err2) { tail = null; }
+          if (tail && !tail.toString().length) {
+            e.preventDefault();
+            var np = document.createElement('p');
+            np.appendChild(document.createElement('br'));
+            hblk.parentNode.insertBefore(np, hblk.nextSibling);
+            caretStart(np);
+            markEmpty(el);
+            if (onChange) onChange();
+            return;
+          }
+        }
+      }
       var blk = blockOf(el, r.startContainer) || el;
       var pre = document.createRange();
       pre.selectNodeContents(blk);
