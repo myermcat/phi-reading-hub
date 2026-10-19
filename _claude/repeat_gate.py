@@ -14,7 +14,7 @@ STOP = set('the a an of to in is are and or that this it for on as be was with b
 def words(s):
     return [w for w in re.findall(r"[a-z']+", s.lower()) if w not in STOP and len(w) > 2]
 
-def blocks(path):
+def blocks(path, wide=False):
     h = open(path, encoding='utf-8').read()
     body = h[h.find('<div class="wrap">'):h.find('<footer')]
     body = re.sub(r'<svg.*?</svg>', '', body, flags=re.S)
@@ -32,17 +32,20 @@ def blocks(path):
         t = re.sub(r'\s+', ' ', H.unescape(re.sub(r'<[^>]+>', ' ', m.group(2)))).strip()
         if len(t) < 25:
             continue
-        if kind in ('h2', 'h3', 'h4'):
+        if kind in (('h2', 'h3') if wide else ('h2', 'h3', 'h4')):
             section = t[:52]
         out.append((section, kind, t))
     return out
 
 def main():
     show = '--list' in sys.argv
+    # --wide compares across a whole chapter, which catches an overview restating a section it
+    # points at, and also flags the overview relationships that are meant to be there
+    wide = '--wide' in sys.argv
     files = [a for a in sys.argv[1:] if not a.startswith('--')] or sorted(glob.glob('week-*/index.html'))
     bad = 0
     for f in files:
-        bs = blocks(f)
+        bs = blocks(f, wide)
         if show:
             print('===', f)
             for sec, kind, t in bs:
