@@ -19,15 +19,17 @@ SHAPE = re.compile(
     r'|and so was free to\b'
     r'|which neither side could\b'
     r'|the thing that makes it\b'
-    r'|something (?:about|like) that\b)', re.I)
+    r'|something (?:about|like) that\b'
+    r'|the same (?:argument|point|claim|thing) (?:she|he|they|it) \w+'
+    r'|making the same \w+\b)', re.I)
 
 bad = 0
 for f in (sys.argv[1:] or sorted(glob.glob('week-*/index.html'))):
     h = open(f, encoding='utf-8').read()
     body = re.sub(r'<svg.*?</svg>', '', h[h.find('<div class="wrap">'):h.find('<footer')], flags=re.S)
     hits = []
-    for m in re.finditer(r'<(p|li|dd|div class="(?:keep|qa|kone)")[^>]*>(.*?)'
-                         r'</(?:p|li|dd|div)>', body, re.S):
+    for m in re.finditer(r'<(p|li|dd|figcaption|div class="(?:keep|qa|kone|why)")[^>]*>(.*?)'
+                         r'</(?:p|li|dd|figcaption|div)>', body, re.S):
         t = re.sub(r'\s+', ' ', H.unescape(re.sub(r'<[^>]+>', '', m.group(2)))).strip()
         for s in re.split(r'(?<=[.?!]) ', t):
             if SHAPE.search(s):
