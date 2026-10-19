@@ -512,6 +512,9 @@
   #nav a.on { color: var(--accent); border-left-color: var(--accent); }
   #nav a.grp { margin-top: 13px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .1em; border-left-color: transparent; padding-left: 0; }
   #nav a.grp:first-child { margin-top: 0; }
+  #nav a.grp.day { margin-top: 15px; padding-top: 11px; border-top: 1px solid var(--rule);
+                   color: var(--accent); }
+  #nav a.grp.day:first-child { margin-top: 0; }
   #nav a.grp.on { color: var(--accent); border-left-color: transparent; }
   #nav a.core { color: var(--ink-soft); border-left-color: var(--rule); }
   /* the contents list used to need a 1180px window. It takes its own column now, so it
@@ -769,9 +772,20 @@
 <header class="site"><div class="in"><a class="hubmark" href="https://myermcat.github.io/course-hub/" title="Course hub" aria-label="Course hub, the front page"><svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#22282E"/><rect x="13" y="13" width="16" height="16" rx="4" fill="#7C5CB8"/><rect x="35" y="13" width="16" height="16" rx="4" fill="#3E9E82"/><rect x="13" y="35" width="16" height="16" rx="4" fill="#4E90C8"/><rect x="35" y="35" width="16" height="16" rx="4" fill="#C08A3E"/></svg></a><a class="home" href="../"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 8H2M7 3 2 8l5 5"/></svg>PHI2394</a><a class="disc" href="../#about" title="How these guides were written">Written with Claude<i>|</i>AI can make mistakes</a><nav aria-label="This week"><span class="cur">Week 7</span><a href="notes.html">Lecture notes</a></nav></div></header>
 
 <nav id="nav" aria-label="Contents">
-  <a class="grp" href="#s-days">Monday &amp; Wednesday</a>
-  <a class="grp" href="#s-arg">Values are in, now what</a>
-  <a class="grp" href="#s-texts">The reading</a>
+  <a class="grp" href="#s-arg">Which values, and who picks</a>
+  <a class="grp day" href="#s-days">Monday 19 Oct</a>
+  <a class="core" href="#ch3" title="Detlefsen on Du Ch&acirc;telet &middot; read properly">Du Ch&acirc;telet<i>ch 3</i></a>
+  <a class="sb" data-of="ch3" href="#ch3-1"><b>3.1</b>Three steps</a>
+  <a class="sb" data-of="ch3" href="#ch3-2"><b>3.2</b>Why women produced nothing</a>
+  <a class="sb" data-of="ch3" href="#ch3-3"><b>3.3</b>Her rule</a>
+  <a class="sb" data-of="ch3" href="#ch3-4"><b>3.4</b>The quarrel</a>
+  <a class="sb" data-of="ch3" href="#ch3-5"><b>3.5</b>On hypotheses</a>
+  <a class="core" href="#ch20" title="Routledge Handbook ch. 20 &middot; read properly">Biology<i>12 pp</i></a>
+  <a class="sb" data-of="ch20" href="#ch20-1"><b>20.1</b>Four faults</a>
+  <a class="sb" data-of="ch20" href="#ch20-2"><b>20.2</b>The peacock&#8217;s tail</a>
+  <a class="sb" data-of="ch20" href="#ch20-3"><b>20.3</b>The baboons</a>
+  <a class="sb" data-of="ch20" href="#ch20-4"><b>20.4</b>What it proves</a>
+  <a class="grp day" href="#s-days">Wednesday 21 Oct</a>
   <a class="core" href="#ch15" title="Intemann &middot; the central chapter, read properly">Values in science<i>ch 15</i></a>
   <a class="sb" data-of="ch15" href="#ch15-1"><b>15.1</b>The HRT case</a>
   <a class="sb" data-of="ch15" href="#ch15-2"><b>15.2</b>Five places a value gets in</a>
@@ -784,17 +798,6 @@
   <a class="sb" data-of="ch19" href="#ch19-3"><b>19.3</b>Illiteracy as resistance</a>
   <a class="sb" data-of="ch19" href="#ch19-4"><b>19.4</b>Who was already doing it</a>
   <a class="sb" data-of="ch19" href="#ch19-5"><b>19.5</b>The DIY biology labs</a>
-  <a class="core" href="#ch3" title="Detlefsen on Du Ch&acirc;telet &middot; read properly">Du Ch&acirc;telet<i>ch 3</i></a>
-  <a class="sb" data-of="ch3" href="#ch3-1"><b>3.1</b>Three steps</a>
-  <a class="sb" data-of="ch3" href="#ch3-2"><b>3.2</b>Why women produced nothing</a>
-  <a class="sb" data-of="ch3" href="#ch3-3"><b>3.3</b>Her rule</a>
-  <a class="sb" data-of="ch3" href="#ch3-4"><b>3.4</b>The quarrel</a>
-  <a class="sb" data-of="ch3" href="#ch3-5"><b>3.5</b>On hypotheses</a>
-  <a class="core" href="#ch20" title="Routledge Handbook ch. 20 &middot; read properly">Biology<i>12 pp</i></a>
-  <a class="sb" data-of="ch20" href="#ch20-1"><b>20.1</b>Four faults</a>
-  <a class="sb" data-of="ch20" href="#ch20-2"><b>20.2</b>The peacock&#8217;s tail</a>
-  <a class="sb" data-of="ch20" href="#ch20-3"><b>20.3</b>The baboons</a>
-  <a class="sb" data-of="ch20" href="#ch20-4"><b>20.4</b>What it proves</a>
   <a class="grp" href="#s-gloss">Glossary</a>
 </nav>
 
@@ -843,12 +846,12 @@
   </section>
 
   <section id="s-arg">
-    <h2>Values are in. So what stops anybody calling their politics science?</h2>
+    <h2>Values are in. What stops anyone picking the ones that suit them?</h2>
     <div class="keep">
       <b>The value-free ideal, the rule all four chapters reject</b>
-      The value-free ideal, VFI for short. Social, moral and political values play no part in the
+      VFI for short. Social, moral and political values play no part in the
       core of science, meaning the part where you decide what counts as evidence, which theory the
-      evidence supports, and what to accept. Heather Douglas calls that part the heart.
+      evidence supports, and what to accept.
     </div>
 
     <div class="body">
@@ -933,18 +936,18 @@
       <table class="nine">
         <thead><tr><th>The reading</th><th>What it contributes</th><th>The case it runs on</th></tr></thead>
         <tbody>
-          <tr><td><b class="tag t1">Chapter 15</b><span>Intemann</span></td>
-            <td>Names the five places a value enters, and sets out the two models that could replace the value-free ideal.</td>
-            <td>Sixty years of hormone replacement therapy</td></tr>
-          <tr><td><b class="tag t2">Chapter 19</b><span>Giordano</span></td>
-            <td>Says both models are academics arguing about academics, and asks who counts as a scientist at all.</td>
-            <td>Black Panther clinics, and the do-it-yourself biology labs</td></tr>
           <tr><td><b class="tag t3">Chapter 3</b><span>Du Ch&acirc;telet</span></td>
             <td>A worked historical case: a woman gets the account of hypotheses right in 1740 and is read as derivative for two centuries.</td>
             <td>The quarrel over whether hypotheses are allowed</td></tr>
           <tr><td><b class="tag t3">Chapter 20</b><span>Nelson</span></td>
             <td>One field running both of week 6's questions for 150 years, which makes it the worked example for last week.</td>
             <td>Darwin's peacock, and the baboons</td></tr>
+          <tr><td><b class="tag t1">Chapter 15</b><span>Intemann</span></td>
+            <td>Names the five places a value enters, and sets out the two models that could replace the value-free ideal.</td>
+            <td>Sixty years of hormone replacement therapy</td></tr>
+          <tr><td><b class="tag t2">Chapter 19</b><span>Giordano</span></td>
+            <td>Says both models are academics arguing about academics, and asks who counts as a scientist at all.</td>
+            <td>Black Panther clinics, and the do-it-yourself biology labs</td></tr>
         </tbody>
       </table>
     </div>
@@ -972,6 +975,425 @@
     <p class="lede">Three chapters to read, from the same handbook, plus one that was narrated in week 6 and belongs to this week on the revised reading guide. Chapter 15 carries the week's argument. Chapter 19 is the hardest and the most interesting. Chapter 3 is a historical case and the easiest reading of the term.</p>
 
     <div class="readings">
+
+      <article class="rd p-close" id="ch3">
+        <div class="stripe"></div>
+        <div class="main">
+          <div class="head">
+            <h3><span class="ch">CH 3</span>&Eacute;milie Du Ch&acirc;telet: Feminism, Epistemology and Natural Philosophy</h3>
+            <div class="who">Karen Detlefsen, in Crasnow and Intemann (eds), <em>The Routledge Handbook of Feminist Philosophy of Science</em>, Routledge, 2020</div>
+            <div class="meta"><span class="tag">Read properly</span><span>12 pp, printed pages 41 to 52</span></div>
+          </div>
+
+          <div class="why"><b>Why this chapter is set.</b> Everything else this term argues that the position of the knower affects the knowledge. This is the cleanest case of it anybody has. &Eacute;milie Du Ch&acirc;telet was shut out of the French academy, noticed that beliefs about women were held without anybody ever examining them, and turned that into a rule: <b>examine a belief before you hold it</b>. She applied it to the question of whether science may use hypotheses at all, where the British and the French were each defending their own, and answered that hypotheses are necessary and have to obey four rules. The field took another century and a half to agree.</div>
+
+          <h4 id="ch3-1" data-n="3.1">Three steps from being shut out to getting hypotheses right</h4>
+          <div class="qa">
+              <b>The question</b>
+              Did being a woman make any difference to Du Ch&acirc;telet's physics, or is she simply a woman who happened to do physics?
+            </div>
+
+            <div class="body">
+            <p><b>Detlefsen's answer: it made the difference, and the path from one to the other is traceable in three steps.</b></p>
+            <ol>
+              <li>She noticed that beliefs about women were held <b>without ever being examined</b>, and that she had suffered from it.</li>
+              <li>She generalised that into a position about belief itself, which modern philosophy calls <b>the ethics of belief</b>: you have a duty to examine what you believe before believing it.</li>
+              <li>She applied that rule to the scientific dispute Europe was having at the time, which was whether a scientist may use a hypothesis at all. The British read Newton as saying no, and Voltaire was telling the French to drop Descartes and follow them. She saw that each side was holding its position because of <b>where it lived</b>, with the evidence doing no work, and that left her free to say what neither of them could: hypotheses are necessary wherever no other route to the cause exists, and the job is to set rules they have to obey. She set four.</li>
+            </ol>
+            <p><b>And the position she reached is the one you were taught in school: hypotheses are central to science.</b> In 1740 that was close to heresy.</p>
+          </div>
+
+          <figure class="pic">
+            <a class="zoom" style="width:238px" href="img/duchatelet.jpg" target="_blank" rel="noopener" title="Open this picture at full size">
+              <img src="img/duchatelet.jpg" width="812" height="1024" loading="lazy" alt="An eighteenth-century oil portrait of a woman in a blue silk dress with lace cuffs, seated at a desk holding a pair of dividers, with an armillary sphere and papers behind her.">
+            </a>
+            <figcaption><b>&Eacute;milie Du Ch&acirc;telet, 1706 to 1749, painted by Marianne Loir.</b> Look at what she is holding: a pair of dividers, with an armillary sphere behind her and papers on the desk. Portraits of women of her rank did not usually carry instruments, and the painting is making the same argument she spent her life making. <span class="cred">Marianne Loir, public domain, via Wikimedia Commons.</span></figcaption>
+          </figure>
+
+          <h4 id="ch3-2" data-n="3.2">What she noticed about beliefs concerning women</h4>
+          <div class="qa">
+            <b>The question she asks in the preface to her translation of Mandeville</b>
+            Why have women produced nothing?
+          </div>
+
+          <div class="body">
+            <p><b>And her answer is that the question is the wrong way round.</b> She asks why, in so many centuries, no good tragedy, poem, history, painting or book of physics came from a woman, and says that these creatures, whose understanding appears in all things equal to that of men, seem to be <b>stopped by an invincible force on this side of a barrier</b>. She invites anybody to explain it.</p>
+            <p><b>Then she explains it.</b> If she were king, she says, she would let women share in all the rights of humanity and <b>most of all those of the mind</b>. Women seem born to deceive, and their souls are scarcely allowed any other exercise. Many are either ignorant of their own talents, through flaws in their education, or <b>bury them out of prejudice and for lack of a bold spirit.</b> And she says that what she has experienced herself confirms it.</p>
+            <p><b>What makes this more than a complaint: she identifies a loop, and it closes.</b></p>
+            <ol>
+              <li>The belief that women are naturally frivolous</li>
+              <li>produces institutions that give women nothing to do with their minds,</li>
+              <li>which produces women who have done nothing,</li>
+              <li>which confirms the belief.</li>
+            </ol>
+            <p><b>And she names the part done from inside</b>, where women take the prejudice on themselves and bury what they have.</p>
+            <p><b>Then the generalisation, from her <em>Discourse on Happiness</em>.</b> A source of happiness is to be free of prejudice, and <b>the decision rests with us</b> to be rid of it. We all have enough intelligence to examine what others want us to believe.</p>
+          </div>
+
+          <dl class="facts">
+            <dt>Prejudice</dt>
+            <dd>Her own definition, and the usable one: <b>an opinion accepted without examination, because it would be indefensible otherwise.</b></dd>
+          </dl>
+
+          <h4 id="ch3-3" data-n="3.3">Her rule, and the company it puts her in</h4>
+          <div class="qa">
+              <b>The question</b>
+              What does it mean to say you have a duty about what you believe?
+            </div>
+
+            <div class="body">
+            <p><b>The answer: that believing is something you do, so it can be done responsibly or not, and doing it badly is a fault, and never bad luck.</b> The name arrived in 1877 with W. K. Clifford, whose version is absolute: it is wrong always, everywhere, and for anyone, to believe anything on insufficient evidence.</p>
+            <p><b>Du Ch&acirc;telet is a century and a half earlier and in good company.</b> Detlefsen sets three thinkers beside each other, and the useful observation is that each has <b>a different authority in view</b>.</p>
+            <ul>
+              <li><b>Descartes</b> aims at the Scholastics, arguing that human error is our own fault for assenting to what we have not examined clearly, which rots the foundations of the sciences.</li>
+              <li><b>Hume</b> aims at religious authority, arguing in <em>On Miracles</em> that people set aside countless regularities of nature on the strength of one reported exception. A marble statue said to bleed outweighs every piece of marble that has never bled.</li>
+              <li><b>Du Ch&acirc;telet</b> aims at <b>prejudice about women</b>, and at <b>national partisanship in science</b>.</li>
+            </ul>
+            <p><b>And what all three share, which is the sentence to take.</b> A commitment to education for everyone, as the source both of evidence and of <b>self-ownership of the mind</b>, which is the best guard against authorities who use the gullible to spread untruths, whether about the natural world or about the social one.</p>
+            <p><b>How she passes it on.</b> Her masterwork opens as a letter to her son. She tells him to accustom his mind early to think and to be <b>self-sufficient</b>, and then: whatever side you take in this dispute among philosophers, guard yourself against the obstinacy that the spirit of national partisanship produces, <b>which is dangerous everywhere in life and ridiculous in physics.</b></p>
+          </div>
+
+          <h4 id="ch3-4" data-n="3.4">The quarrel over hypotheses, and why both sides were getting it wrong</h4>
+          <div class="qa">
+              <b>The question</b>
+              What was actually in dispute in European science in 1740?
+            </div>
+
+            <div class="body">
+            <p><b>The answer, in the framework Detlefsen uses: two camps, and the dispute was about whether hypotheses are allowed at all.</b></p>
+            </div>
+
+          <dl class="facts">
+            <dt>Speculative natural philosophy</dt>
+            <dd>Reasons from <b>principles about how things must be</b>.</dd>
+            <dt>Experimental natural philosophy</dt>
+            <dd>Builds from <b>experiment and observation</b>. By the 1690s this side had hardened into opposition to hypotheses altogether, which is the part a modern reader finds strange.</dd>
+          </dl>
+
+          <div class="body">
+            <p><b>What they meant by the charge.</b> Newton: experimental philosophy reduces phenomena to general rules, while hypothetical philosophy consists in <b>imaginary explications of things and imaginary arguments</b> for or against them, and he follows the first while Descartes and Leibniz follow the second too much. A contemporary dismisses the systems of Descartes, Gassendi and Hobbes as possibly <b>chimeras and amusing notions, fit to entertain working heads.</b></p>
+            <p><b>And the nationalism riding on top of it, which is why her rule is relevant.</b> Voltaire's <em>Elements of Newton's Philosophy</em> draws a bright line between the old French way of hypotheses and the new British hard-headed experimentalism, and tells the French to catch up. <b>So the scientific question had an English answer and a French answer</b>, which is exactly the situation her letter to her son is about.</p>
+            <p><b>One piece of context worth having, because it changes who she is.</b> For decades her thought was treated as derivative of Voltaire's, with whom she lived and worked. Detlefsen calls that claim evidence-free, and says close examination of her work has debunked it. Her treatment of hypotheses is the example: <b>she does not agree with him.</b></p>
+          </div>
+
+          <figure class="pic">
+            <a class="zoom" style="width:217px" href="img/institutions.jpg" target="_blank" rel="noopener" title="Open this picture at full size">
+              <img src="img/institutions.jpg" width="960" height="1327" loading="lazy" alt="The 1740 title page of Institutions de Physique, printed in French with a decorative engraved headpiece, giving the place of publication as Paris and the date MDCCXL.">
+            </a>
+            <figcaption><b>The title page of <em>Institutions de Physique</em>, Paris, 1740.</b> Her name is not on it. The book was published anonymously, presented as a physics textbook for her thirteen-year-old son, and chapter 4 of it is the account of hypotheses that the field would take another century and a half to arrive at independently. <span class="cred">Public domain, via Wikimedia Commons.</span></figcaption>
+          </figure>
+
+          <h4 id="ch3-5" data-n="3.5">What she actually said about hypotheses</h4>
+          <div class="qa">
+              <b>The question</b>
+              If a hypothesis is a guess, why should science be allowed them?
+            </div>
+
+            <div class="body">
+            <p><b>Her answer: because there is no other way to reach a cause you cannot observe and cannot derive, and the fix is to constrain them, where everybody around her wanted them banned.</b> This is chapter 4 of the <em>Foundations</em>, and the four constraints she sets are, in substance, the modern ones.</p>
+            <p><b>First, why they are necessary.</b> Hypotheses are needed in all cases where the true reason for a phenomenon cannot be discovered <b>either in advance, from truths already known, or afterwards, from experiment.</b> That gap is permanent, so the tool is permanent.</p>
+          </div>
+
+          <div class="keep">
+            <b>Without hypotheses there would be no astronomy</b>
+            Without hypotheses there would be no astronomy now.
+          </div>
+
+          <div class="body">
+            <p><b>And the argument from who used them.</b> Copernicus, Kepler, Huygens, Descartes, Leibniz <b>and Newton himself</b> all devised useful hypotheses to explain difficult phenomena.</p>
+            <p><b>So, she says, those who want to ban them from philosophy intend harm to the interests of science.</b> Her target is anybody leaning too hard on Newton's famous line that he feigns no hypotheses.</p>
+            <p><b>Then the constraints, which are what make the account modern.</b></p>
+            <ol>
+              <li><b>Test them.</b> Once a hypothesis is posed, experiments get done to find out whether it is a good one, <b>experiments which would never have been thought of without it.</b> That is the hypothesis earning its place by generating work.</li>
+              <li><b>One contrary observation is enough to rule it out.</b> A hypothesis becomes false when it is found to contradict a well-established observation. That is falsification, stated plainly, two centuries before Popper gave it a name.</li>
+              <li><b>Fruitfulness counts.</b> A good hypothesis explains the phenomenon it was built for <b>and</b> its further consequences agree with observation.</li>
+              <li><b>Be modest, and take it apart before throwing it out.</b> A hypothesis can be <b>true in one of its parts and false in another.</b></li>
+            </ol>
+            <p><b>Her fourth constraint has teeth, because she uses it against the winning side.</b> Descartes explained gravity with vortices, and by her time the idea was held in contempt because Newton's account had won. She will not have the wholesale rejection: it cannot legitimately be concluded that a vortex, or several vortices conceived differently, <b>cannot</b> be the cause of these movements. That is the ethics of belief applied to an opinion everybody around her held.</p>
+            <p><b>And her conclusion, which is the passage to know.</b> Hypotheses are <b>only probable propositions</b>, more or less probable according to how many of the attendant circumstances they account for. A very high degree of probability has nearly the effect on us of certainty, so hypotheses <b>eventually become truths for us</b> when the probability rises far enough. A hypothesis becomes improbable in proportion to the circumstances it fails to explain, and <b>false when it contradicts a well-established observation.</b></p>
+            <p><b>What is remarkable about that is not the content but the date.</b> Degrees of probability, falsification by a single result, and theories that are accepted without being proved. That is roughly the twentieth-century account, written in 1740 by somebody the Acad&eacute;mie would not admit.</p>
+          </div>
+
+          <div class="kone"><b>If you keep one thing.</b> Du Ch&acirc;telet got the right answer about hypotheses because she was the only person in the room with no stake in the fight. Both camps were defending national positions; she was excluded from the institutions that made those positions worth defending, so she could ask which parts of each were true. <b>That is the standpoint argument of weeks 5 and 6, demonstrated in 1740 by somebody who arrived at it herself</b>, starting from noticing that nobody had ever examined what they believed about women.</div>
+
+          <div class="quar">
+            <b>Where it belongs in the quarrel</b>
+            <ul>
+              <li><b>It is week 6's standpoint theory as a historical case.</b> Harding's inversion thesis says the excluded see the assumptions of the included. This is a worked example with a date on it.</li>
+              <li><b>It answers week 2.</b> That packet argued about what the scientific method is. She settles the part about hypotheses, and settles it correctly.</li>
+              <li><b>It answers week 3.</b> Her falsification rule is Popper's, long before Popper, and her modesty about vortices is the anti-dogmatism Kuhn said paradigms prevent.</li>
+              <li><b>It is answered by the suspicion that this is hindsight</b>, picking the one eighteenth-century figure who agrees with us. Detlefsen's defence is that her method was explicit and general, and that she applied it against her own circle's consensus.</li>
+            </ul>
+          </div>
+
+          <div class="mynote"><b>My note</b><span>The easiest reading of the term and the best value for revision time. Four things: <b>the ethics of belief</b> and her definition of prejudice as an opinion accepted without examination; <b>the speculative against experimental divide</b> and the strange fact that the experimental side opposed hypotheses; <b>her four constraints</b>, of which falsification is the one to name; and <b>the loop she identifies</b>, where a belief about women produces the conditions that confirm it. If an exam asks for an example of standpoint theory, she is a better answer than the primatologists, because the mechanism is visible: excluded from the institutions, therefore free of their loyalties.</span></div>
+
+          <div class="curious">
+            <div class="label"><b>For the curious</b><span>none of this is on the exam</span></div>
+
+            <details class="bit"><summary>She translated Newton and it is still the French edition in print</summary><div class="bq">
+              <p>Her translation of the <em>Principia</em> into French, with a commentary that rewrites Newton's geometry into the calculus of Leibniz and adds the results of the intervening fifty years, was finished in 1749 and published in 1759. <b>It is still the standard French translation.</b></p>
+              <p>She was working against a deadline she knew about: she was pregnant at forty-two, believed she would not survive the birth, and wrote through the nights to finish. She died of an infection six days after the delivery. The commentary that makes the translation important was the part she was racing to complete.</p>
+            </div></details>
+
+            <details class="bit"><summary>She published her prize essay on fire anonymously, and so did Voltaire, against each other</summary><div class="bq">
+              <p>In 1737 the Acad&eacute;mie Royale des Sciences set a prize on the nature of fire. Voltaire entered. Du Ch&acirc;telet entered separately and in secret, without telling him, after concluding his approach was wrong.</p>
+              <p>Neither won, and the Acad&eacute;mie published both essays, which made her the first woman to have a paper published by it. Her essay suggested that heat and light might be forms of the same thing and that different coloured lights would carry different heating power, which is a guess in the right direction about infrared radiation, found experimentally by Herschel in 1800.</p>
+            </div></details>
+
+            <details class="bit"><summary>She was barred from the caf&eacute; where the physicists met, so she dressed as a man</summary><div class="bq">
+              <p>The Caf&eacute; Gradot in Paris was where the mathematicians and natural philosophers gathered, and it did not admit women. The story, from contemporaries, is that she was turned away, went to a tailor, had men's clothes made, and walked back in. The staff let her sit.</p>
+              <p>Ancient gossip levels of reliability apply to the details. The underlying fact does not: the institutions where the arguments happened, the caf&eacute;s and the Acad&eacute;mie, were closed to her, which is Detlefsen's whole point about why she could see what the men in them could not.</p>
+            </div></details>
+          </div>
+
+        </div>
+      </article>
+
+      <article class="rd p-skim" id="ch20">
+        <div class="stripe"></div>
+        <div class="main">
+          <div class="head">
+            <h3><span class="ch">CH 20</span>Feminist Philosophy of Biology</h3>
+            <div class="who">Lynn Hankinson Nelson, in Crasnow and Intemann (eds), <em>The Routledge Handbook of Feminist Philosophy of Science</em>, Routledge, 2020</div>
+            <div class="meta"><span class="tag">Read properly</span><span>12 pp, printed pages 263 to 274</span></div>
+          </div>
+
+          <div class="why"><b>Why this chapter is set.</b> It is the worked example for the whole of last week. Chapter 4 asked where a value can enter a piece of research and chapter 5 asked how ignorance gets produced, and this is both of them happening to one science across 150 years. Its second case study is the full version of the primatology story week 5 opened with. The first three pages are a survey and can be read quickly. <b>The two case studies are the reason it is on the list.</b></div>
+
+          <h4 id="ch20-1" data-n="20.1">Four faults to look for in a piece of biology</h4>
+          <div class="body">
+            <p><b>Nelson names the things feminists go looking for in biological research.</b> The first three are worth having as a checklist, because they turn up in every case the chapter discusses.</p>
+            <ul>
+              <li><b>Androcentrism</b>, meaning male-centredness. Research that takes the activities and dispositions associated with males as the main thing to study, and does not properly attend to those associated with females.</li>
+              <li><b>Gender stereotypes.</b> A generalisation that attributes a characteristic to every member of a group when it is untrue of many or most. Her example: females associated with reproduction, which gets treated as natural and therefore as not needing study, while males are associated with providing, protecting and dominating.</li>
+              <li><b>Gendered metaphors.</b> Metaphors are fine in science so long as everybody remembers they are metaphors. The problem is when the metaphor gets taken literally and starts doing argumentative work.</li>
+              <li><b>Background assumptions</b>, which is Longino again, and Nelson points out the idea is not originally feminist: Carl Hempel argued in the 1960s that unexamined background assumptions can lead good reasoning to unwarranted conclusions.</li>
+            </ul>
+            <p><b>One terminological note worth knowing.</b> Nelson writes <b>sex/gender</b> in place of gender for human cases, because the evidence is that neither is stable or unaffected by the other. The quotation she gives: it is impossible to disentangle the effects of sex from those of gender, since bodies, brains included, change in response to environments and experience.</p>
+          </div>
+
+          
+          <figure class="dia">
+            <div class="draw">
+            <svg viewBox="0 0 660 358" role="img" aria-labelledby="dg-faults" style="font-family:var(--body)">
+              <title id="dg-faults">Nelson's four faults to look for in biological research, each with what it means and the place in her own chapter where it turns up.</title>
+              <text class="dg-m dg-dim" x="12" y="17" font-size="11">THE FAULT</text>
+              <text class="dg-m dg-dim" x="186" y="17" font-size="11">WHAT IT IS</text>
+              <text class="dg-m dg-dim" x="446" y="17" font-size="11">WHERE IT SHOWS UP HERE</text>
+              <rect class="dg-box" x="8" y="30" width="644" height="74" rx="3"/>
+              <text class="dg-t" x="18" y="56" font-size="13" font-weight="600">1 &nbsp;Androcentrism</text>
+              <text class="dg-t" x="186" y="54" font-size="12.5">Male-centredness. Research takes</text>
+              <text class="dg-t" x="186" y="71" font-size="12.5">what males do as the main thing</text>
+              <text class="dg-t" x="186" y="88" font-size="12.5">to study and lets the rest go.</text>
+              <text class="dg-t" x="446" y="54" font-size="12.5">The baboon reports, built on</text>
+              <text class="dg-t" x="446" y="71" font-size="12.5">male dominance, with what the</text>
+              <text class="dg-t" x="446" y="88" font-size="12.5">females did never recorded.</text>
+              <rect class="dg-box" x="8" y="110" width="644" height="74" rx="3"/>
+              <text class="dg-t" x="18" y="136" font-size="13" font-weight="600">2 &nbsp;Gender stereotypes</text>
+              <text class="dg-t" x="186" y="134" font-size="12.5">A characteristic attributed to</text>
+              <text class="dg-t" x="186" y="151" font-size="12.5">every member of a group when it</text>
+              <text class="dg-t" x="186" y="168" font-size="12.5">is untrue of many of them.</text>
+              <text class="dg-t" x="446" y="134" font-size="12.5">Darwin&#8217;s eager males and coy</text>
+              <text class="dg-t" x="446" y="151" font-size="12.5">females. Females tied to</text>
+              <text class="dg-t" x="446" y="168" font-size="12.5">reproduction, so left unstudied.</text>
+              <rect class="dg-box" x="8" y="190" width="644" height="74" rx="3"/>
+              <text class="dg-t" x="18" y="216" font-size="13" font-weight="600">3 &nbsp;Gendered metaphors</text>
+              <text class="dg-t" x="186" y="214" font-size="12.5">Fine while everybody remembers</text>
+              <text class="dg-t" x="186" y="231" font-size="12.5">they are metaphors. The fault is</text>
+              <text class="dg-t" x="186" y="248" font-size="12.5">letting one do the arguing.</text>
+              <text class="dg-t" x="446" y="214" font-size="12.5">Sperm is cheap and eggs are</text>
+              <text class="dg-t" x="446" y="231" font-size="12.5">expensive, which settles the</text>
+              <text class="dg-t" x="446" y="248" font-size="12.5">question it was meant to raise.</text>
+              <rect class="dg-box dg-hi" x="8" y="270" width="644" height="74" rx="3"/>
+              <text class="dg-t" x="18" y="296" font-size="13" font-weight="600">4 &nbsp;Background assumptions</text>
+              <text class="dg-t" x="186" y="294" font-size="12.5">Longino&#8217;s, and not originally</text>
+              <text class="dg-t" x="186" y="311" font-size="12.5">feminist: Hempel said in the 1960s</text>
+              <text class="dg-t" x="186" y="328" font-size="12.5">that unexamined ones mislead.</text>
+              <text class="dg-t" x="446" y="294" font-size="12.5">That a female and her young</text>
+              <text class="dg-t" x="446" y="311" font-size="12.5">need help from a male, which</text>
+              <text class="dg-t" x="446" y="328" font-size="12.5">fieldwork keeps contradicting.</text>
+            </svg>
+            </div>
+            <figcaption><b>The checklist, and the chapter using it on itself.</b> The first three are the ones to carry into any piece of research, and the right column shows that the two case studies below are the same four faults twice over. The fourth is highlighted because it is the one that is not feminist in origin and the one the other three reduce to: a male-centred question, a stereotype and a metaphor are all background assumptions that nobody examined. Hempel was making the argument in the 1960s with no feminism in it at all, which is the reply to anybody who says the critique is political before it is epistemic.</figcaption>
+          </figure>
+
+          <h4 id="ch20-2" data-n="20.2">The peacock&#8217;s tail, and what Darwin built to explain it</h4>
+          <div class="body">
+            <p><b>Start with natural selection, because sexual selection was invented to patch a hole in it.</b> Darwin's argument: members of a species vary; there is a struggle for existence; so a variation that helps survival even slightly makes its holder likelier to survive and pass it on; and enough accumulated variations make a new species. He was clear about the consequence: <b>any trait that hurt survival would have to be selected against.</b></p>
+            <p><b>The hole.</b> The peacock's tail is enormous, bright enough to attract predators, and heavy enough to stop the bird running or flying away. Peahens have small brown tails. More generally males of many species are brighter and bigger than females, which looks like a disadvantage in surviving. <b>So why has natural selection permitted it?</b></p>
+          </div>
+
+          <figure class="pic">
+            <a class="zoom" style="width:346px" href="img/peacock.jpg" target="_blank" rel="noopener" title="Open this picture at full size">
+              <img src="img/peacock.jpg" width="700" height="606" loading="lazy" alt="A peacock seen from the side with its long iridescent blue and green train of tail feathers trailing behind it on grass.">
+            </a>
+            <figcaption><b>The problem Darwin could not leave alone.</b> A train this size is visible to predators and makes escape harder, so on his own account of natural selection it should have been eliminated. Sexual selection was built to explain this one kind of thing, and the picture of eager males and reluctant females came in with it as part of the same theory. <span class="cred">Memurubu, CC BY-SA 4.0, via Wikimedia Commons.</span></figcaption>
+          </figure>
+
+          <div class="body">
+            <p><b>Darwin's patch: sexual selection.</b> These traits are about <b>reproducing</b> where natural selection was about surviving, and survival is necessary for evolution without being sufficient. His definition from <em>The Descent of Man</em>, 1871: the advantage which certain individuals have over others of the same sex and species, in exclusive relation to reproduction. It works by two processes:</p>
+            <ol>
+              <li><b>Males compete with each other</b> for access to females. Large size helps here.</li>
+              <li><b>Females choose.</b> Bright colour helps here, and the tail is explained.</li>
+            </ol>
+            <p><b>Then the part that has nothing to do with tails.</b> Darwin did not give human females mate choice, saying men make those choices, and Nelson traces the reasoning to Victorian England and to views about the sexes going back to Aristotle. He also claimed sex differences in behaviour and psychology: males <b>generally eager to mate with any female</b>, females less eager and, in the <em>Descent</em>, <b>coy</b>.</p>
+            <p><b>And a list of male advantages with a cause attached.</b> Stronger passions, higher intelligence, greater strength, better senses and better movement, all caused by the selection pressures he thought males alone faced: competing for mates, providing and protecting, defending the community. Women have some of these qualities, he allowed, to a far lesser degree, <b>and only because they inherit them from men</b>.</p>
+          </div>
+
+          <div class="keep">
+            <b>Women got a free evolutionary ride on the backs of men</b>
+            On Darwin's account women have enjoyed a free evolutionary ride on the backs of their male
+            conspecifics.
+          </div>
+
+                    <div class="body">
+            <p><b>What feminists did to it.</b> Nelson is precise about the targets. That a female's survival and her offspring's depend on help from males is an unwarranted stereotype, and field biologists give counter-examples from the species they watch. The claims about differences in intelligence and reason were not needed to solve the peacock problem at all, and <b>they track the social views of the time far more closely than they track the biology</b>. And females of many primate species are nothing like coy or passive.</p>
+            <p><b>The 1972 reinforcement, and the current target.</b> Robert Trivers proposed <b>parental investment theory</b> and argued it explained and supported Darwin. The claim: the sex that invests more in offspring will be choosier. He argued that in most species the male's only contribution to his offspring's survival is his sex cells, while female contributions exceed male by a large ratio, because of <b>gametic dimorphism</b>, the difference in size and number between sperm and eggs, plus gestation, lactation and egg-sitting. The slogan version is that <b>sperm is cheap and eggs are expensive</b>.</p>
+            <p><b>Three objections Nelson reports, and the first two are empirical.</b></p>
+            <ol>
+              <li><b>Males contribute more than sperm.</b> Males of many species produce accessory secretions as well, and <b>a proper accounting of investment would have to count them</b>.</li>
+              <li><b>Sperm is not cheap in bulk.</b> High sperm production is generally needed for insemination to work at all, and in humans and others males produce millions of sperm per egg.</li>
+              <li><b>The words are doing the arguing.</b> This is the gendered-metaphor fault from her own list: <b>investment</b>, <b>cheap</b> and <b>expensive</b> are economic terms applied to biology, and they smuggle a conclusion in with the vocabulary.</li>
+            </ol>
+          </div>
+
+          <figure class="dia">
+            <div class="draw">
+            <svg viewBox="0 0 520 206" role="img" aria-labelledby="dg-gametes" style="font-family:var(--body)">
+              <title id="dg-gametes">A human egg cell and a human sperm drawn to the same scale, the egg about a hundred and twenty micrometres across and the sperm head about five.</title>
+              <rect class="dg-box" x="8" y="24" width="504" height="150" rx="3"/>
+              <text class="dg-m dg-dim" x="12" y="16" font-size="11">DRAWN TO THE SAME SCALE</text>
+              <circle cx="118" cy="99" r="58" style="fill:var(--close-wash); stroke:var(--close); stroke-width:1.6"/>
+              <circle cx="118" cy="99" r="40" style="fill:none; stroke:var(--close); stroke-width:1; stroke-dasharray:3 4; opacity:.6"/>
+              <text class="dg-t" x="118" y="103" font-size="12.5" text-anchor="middle" font-weight="600">egg</text>
+              <text class="dg-t dg-dim" x="118" y="178" font-size="11.5" text-anchor="middle">about 120 micrometres across</text>
+              <ellipse cx="318" cy="99" rx="2.4" ry="1.6" style="fill:var(--close); stroke:none"/>
+              <path class="dg-ln" d="M320 99 q 14 -7 28 0 q 14 7 28 0 q 14 -7 28 0" stroke-width="1.2" style="stroke:var(--close)"/>
+              <path class="dg-ln dg-dim" d="M318 112 L318 140 M404 112 L404 140" stroke-width="1" stroke-dasharray="3 4"/>
+              <text class="dg-t dg-dim" x="262" y="155" font-size="11.5">head about 5 micrometres, whole cell about 55</text>
+              <path class="dg-ln dg-dim" d="M300 92 L312 97" stroke-width="1"/>
+              <text class="dg-t" x="244" y="90" font-size="12.5" font-weight="600">sperm</text>
+            </svg>
+            </div>
+            <figcaption><b>Sperm is cheap and eggs are expensive, drawn.</b> The size difference is real and it is what parental investment theory is built on: the sex that invests more will be the choosier one. Nelson's objection is not that the picture is false. It is that three economic words, <b>investment</b>, <b>cheap</b> and <b>expensive</b>, were laid over it, and those words answer the question the measurement was supposed to raise. A male produces millions of these per egg, and whether that adds up to less investment is the thing in dispute, which the vocabulary settles before anybody counts.</figcaption>
+          </figure>
+
+          <div class="body">
+            <blockquote>Uncritical acceptance of [sexual selection's] ubiquitous occurrence does no service to evolutionary theory. Heritable variance in reproductive success, based on characters that are not favored by natural selection, must be demonstrable before sexual selection may be invoked unequivocally.<cite>Spencer and Masters, 1992, p. 301</cite></blockquote>
+            <p><b>And a point that stops this being only a feminist complaint.</b> Ernst Mayr, one of the major evolutionary biologists of the century, thought sexual selection did very little and that the traits it covered could be explained by natural selection anyway. The objection is not uniquely political.</p>
+          </div>
+
+                    <h4 id="ch20-3" data-n="20.3">The baboons, and the primate pattern that came off them</h4>
+          <div class="body">
+            <p><b>Why primates get studied for this at all.</b> Humans differ from each other in about 0.1 per cent of their DNA. Humans and chimpanzees differ by about 1.2 per cent, humans and gorillas by about 1.6 per cent, and the split from a common ancestor is put at around six million years ago. So it looks reasonable to study their evolution to learn about ours, and some researchers go further and treat them as showing <b>a basic human nature underneath the overlay of culture</b>.</p>
+            <p><b>The 1960s and 1970s studies.</b> Groups of anthropologists ran long field studies of savannah baboons in the Serengeti. They proposed a <b>primate pattern</b>: the behaviour and social structure they saw in savannah baboons was taken to be typical of most primates, produced by selection pressures common to all of them.</p>
+            </div>
+
+          <figure class="pic">
+            <a class="zoom" style="width:300px" href="img/baboon.jpg" target="_blank" rel="noopener" title="Open this picture at full size">
+              <img src="img/baboon.jpg" width="900" height="900" loading="lazy" alt="A large male yellow baboon sitting upright on a boulder in front of green scrub, facing the camera.">
+            </a>
+            <figcaption><b>A male yellow baboon in Amboseli National Park, Kenya, where Jeanne Altmann worked.</b> This is what the first generation of fieldworkers spent their time watching, and the drama between males is what their reports were built around. Altmann's argument was that it is the less visible business of the females that actually drives the group. <span class="cred">Diego Delso, CC BY-SA 4.0, via Wikimedia Commons.</span></figcaption>
+          </figure>
+
+          <div class="body">
+            <p><b>Three things Irven DeVore and Sherwood Washburn said were in the pattern.</b></p>
+            <ol>
+              <li><b>Male dominance</b>, which they called the most important feature of baboon social structure, organising and controlling the group the way political leadership does in human societies.</li>
+              <li><b>A division of labour by sex.</b> Males provide, protect and maintain the structure that benefits everyone, while females take primary responsibility for the young.</li>
+              <li><b>Male aggression</b>, recorded as a trait of the species and attributed to men as well.</li>
+            </ol>
+            <p><b>And the loop closes.</b> Because early humans were thought to have evolved in the African savannah under similar conditions, similarities between the two species were taken to be likely, so the baboon findings were read straight across to human behaviour. Male dominance in baboon troops was set beside men's dominance over women.</p>
+          </div>
+
+                    <div class="body">
+            <p><b>Jeanne Altmann, and what happened when somebody watched the females.</b> She worked for years on the Amboseli baboons in Kenya. Asked by Donna Haraway why she focused on females, her answer was that her self-identity as a scientist, a feminist and a mother led her there, and then: <b>it was screaming at me. These are the most interesting individuals, interactions between baboon mothers and offspring have the most evolutionary impact, this is where the ecological pressures are.</b></p>
+            <p><b>Three findings, and the third undoes the original picture.</b></p>
+            <ol>
+              <li><b>Mothers run several things at once.</b> Altmann described them <b>juggling</b> competing priorities and <b>budgeting</b> their time, and their dealings with juveniles and with other adults turned out to be key to the group's social dynamics.</li>
+              <li><b>Adult males deal with infants a great deal.</b> The first generation of fieldworkers had recorded almost none of this.</li>
+              <li><b>Females build special relationships with particular males</b>, who then protect them from other baboons. Hrdy's summary: infants are often the focal point of elaborate male, female and infant relationships, <b>relationships often initiated by the females themselves</b>.</li>
+            </ol>
+          </div>
+
+          <div class="keep">
+            <b>What the females do drives the group, and the male drama does not</b>
+            The high drama of encounters between male baboons matters far less to the social dynamics
+            of the group than the micro-practices of the females.
+          </div>
+
+          <div class="body">
+            <p><b>A methodological detail worth noticing.</b> Altmann told Haraway that her reports on the females contained no category called <b>child care</b>, because she could not find a way of separating the females' activities that would produce one. The category was imported from human arrangements and the animals did not have it.</p>
+            <p><b>And Hrdy, which is week 5's opening told properly.</b> From her studies of hanuman langurs and rhesus monkeys: <b>a polyandrous component is at the core of the breeding systems of most troop-dwelling primates</b>, polyandrous meaning females who mate with more than one male. Females mate with many males, each of whom may contribute a little to the offspring's survival.</p>
+          </div>
+
+          <h4 id="ch20-4" data-n="20.4">What all this proves, and the two debates about it</h4>
+
+          <h5>First debate: was the old research simply bad science?</h5>
+          <div class="body">
+            <p><b>What hangs on the answer.</b> If it was bad science, feminist critique tells you nothing about how science works, only that these particular people were careless. The studies were in keeping with the accepted hypotheses, priorities, methods and norms of their fields, and the scientists gave the evidence they recognised its due.</p>
+          </div>
+
+          <div class="keep">
+            <b>The work was not careless, and there was other evidence to be had</b>
+            The work was not careless. There was more evidence, and different evidence, to be
+            considered.
+          </div>
+
+          <h5>Second debate: did feminism actually cause the change?</h5>
+          <div class="body">
+            <p><b>Two rival explanations are on offer, and both deny feminism any credit.</b></p>
+            <ol>
+              <li><b>Science self-corrects.</b> New evidence would have overturned the androcentric hypotheses sooner or later, whoever was in the room.</li>
+              <li><b>Coincidence.</b> Women influenced by the women's movement happened to arrive in these fields just as the thinking about gender was changing anyway.</li>
+            </ol>
+            <p><b>Hrdy on the coincidence story, and it is a good line.</b> She seriously questions whether chance or sequence caused a small group of primatologists in the 1960s, who happened to be mostly male, to focus on male competition and on how many matings a male achieved, while a later group including many women, from the 1970s, shifted the focus to female behaviours with long-term consequences for infants.</p>
+            <p><b>And the serious reply to the self-correction story.</b> Theories do change in the face of new evidence, so the mechanism is real. In these cases, though, the people who built the androcentric hypotheses were never the ones who saw the problem. The new arrivals were. And biologists including Altmann and Hrdy say in their own words that feminism is what let them see it.</p>
+          </div>
+
+          <div class="keep">
+            <b>Women in these fields who deny feminism had any part in the change</b>
+            There are women in evolutionary biology, developmental biology and primatology who accept
+            that their fields changed and reject any role for feminism in it. Linda Fedigan's
+            explanation is that many primatologists, women included, see feminism as something outside
+            science, and treat it as a purely political perspective incompatible with doing science
+            well.
+          </div>
+
+          <div class="kone"><b>If you keep one thing.</b> The baboon studies were not bad science by the standards of their time: respected work, proper methods, peer reviewed. What they had was a short list of things worth watching, and male dominance was on it while what the females did was not. Then women arrived, watched the females, and the central finding reversed. <b>That is why the question is not whether scientists are careful but who they are</b>, because care cannot recover evidence nobody went looking for.</div>
+
+          <div class="quar">
+            <b>Where it belongs in the quarrel</b>
+            <ul>
+              <li><b>It is chapter 4 in one field.</b> Phase 3, which observations count, is exactly what DeVore and Washburn got wrong, and phase 8, the alternatives nobody considered, is exactly what Altmann supplied.</li>
+              <li><b>It is chapter 5 in one field.</b> What female baboons were doing was unknown for decades, and the ignorance was produced by neglect, which is strategy one.</li>
+              <li><b>It finishes week 5's opening.</b> The langur anecdote at the start of chapter 1 is this, with the evidence attached.</li>
+              <li><b>It is answered by the self-correction argument</b>, which says science would have got there anyway, and Hrdy's reply is the chapter's best paragraph.</li>
+            </ul>
+          </div>
+
+          <div class="mynote"><b>My note</b><span>Skim the first three pages and the last two, and read the two case studies properly. The exam-usable material is: <b>the four faults</b> (androcentrism, gender stereotypes, gendered metaphors, background assumptions), <b>why sexual selection was invented</b>, which needs the peacock, <b>parental investment theory and the sperm is cheap objection</b>, and <b>the Altmann and Hrdy findings against the primate pattern</b>. The one philosophical claim to take out of it is Nelson's refusal to call the old work bad science, because that is what makes the case bear on how science works at all, over and above how these particular people worked.</span></div>
+
+          <div class="curious">
+            <div class="label"><b>For the curious</b><span>none of this is on the exam</span></div>
+
+            <details class="bit"><summary>Altmann&#8217;s real revolution was a sampling method</summary><div class="bq">
+              <p>Her 1974 paper "Observational Study of Behavior: Sampling Methods" is one of the most cited papers in animal behaviour, and it is about bookkeeping. Fieldworkers had been recording whatever caught their attention, which systematically over-records rare dramatic events and under-records the constant undramatic ones. She set out <b>focal animal sampling</b>: pick one animal, watch it for a fixed period, record everything it does whether or not it is interesting.</p>
+              <p>That is the method that made the females visible, because fights are noticeable and a mother budgeting her afternoon is not. It is a clean example of chapter 4's phase 4: changing how the data is collected changes what there is to interpret, and no amount of care at phase 5 could have recovered it.</p>
+            </div></details>
+            <details class="bit"><summary>The peacock's tail stayed a problem for a long time</summary><div class="bq">
+              <p>Darwin's explanation needed peahens to prefer the biggest trains, which was not tested properly until the 1990s. Marion Petrie's work then found that peahens do prefer males with more eyespots and that their chicks survive better, which supported him.</p>
+              <p>A seven-year Japanese study published in 2008 then found no evidence that peahens preferred more elaborate trains at all, and the authors suggested the train may be an obsolete signal. The argument is not settled. Which is worth knowing, because the textbook example of sexual selection is less secure than the textbooks make it sound.</p>
+            </div></details>
+            <details class="bit"><summary>Haraway wrote the book on all of this</summary><div class="bq">
+              <p>The Altmann interview Nelson quotes is from <em>Primate Visions</em>, 1989, Donna Haraway's history of twentieth-century primatology. Its argument is that primatology is a field where scientists have repeatedly gone looking for the origins of human nature and found whatever their own society was arguing about: the baboon troops of the 1960s look remarkably like the family and workplace arrangements of the 1950s.</p>
+              <p>The book was attacked on publication for implying that primatology is only politics. Haraway's reply is the position from the week 5 guide: saying knowledge comes from somewhere is not saying it is worthless, it is saying you should be able to name where.</p>
+            </div></details>
+          </div>
+
+        </div>
+      </article>
 
       <article class="rd p-close" id="ch15">
         <div class="stripe"></div>
@@ -1427,425 +1849,6 @@
             <details class="bit"><summary>Science for the People was an actual organisation</summary><div class="bq">
               <p>The chapter's title is borrowed. Science for the People was a radical scientists' group founded in 1969 out of a walkout at a physics conference, which ran a magazine of the same name until 1989 and campaigned against military research funding, against sociobiology, and for community control of technology.</p>
               <p>It was revived in 2014 and still publishes. Several people in the original group were working scientists at elite institutions, which complicates the inside and outside distinction the chapter draws.</p>
-            </div></details>
-          </div>
-
-        </div>
-      </article>
-
-      <article class="rd p-close" id="ch3">
-        <div class="stripe"></div>
-        <div class="main">
-          <div class="head">
-            <h3><span class="ch">CH 3</span>&Eacute;milie Du Ch&acirc;telet: Feminism, Epistemology and Natural Philosophy</h3>
-            <div class="who">Karen Detlefsen, in Crasnow and Intemann (eds), <em>The Routledge Handbook of Feminist Philosophy of Science</em>, Routledge, 2020</div>
-            <div class="meta"><span class="tag">Read properly</span><span>12 pp, printed pages 41 to 52</span></div>
-          </div>
-
-          <div class="why"><b>Why this chapter is set.</b> Everything else this term argues that the position of the knower affects the knowledge. This is the cleanest case of it anybody has: a woman shut out of the French academy noticed that beliefs about women were held without examination, turned that into a general rule about belief, applied the rule to a scientific quarrel she had no stake in, and got the right answer about scientific method a century and a half before anybody else.</div>
-
-          <h4 id="ch3-1" data-n="3.1">Three steps from being shut out to getting hypotheses right</h4>
-          <div class="qa">
-              <b>The question</b>
-              Did being a woman make any difference to Du Ch&acirc;telet's physics, or is she simply a woman who happened to do physics?
-            </div>
-
-            <div class="body">
-            <p><b>Detlefsen's answer: it made the difference, and the path from one to the other is traceable in three steps.</b></p>
-            <ol>
-              <li>She noticed that beliefs about women were held <b>without ever being examined</b>, and that she had suffered from it.</li>
-              <li>She generalised that into a position about belief itself, which modern philosophy calls <b>the ethics of belief</b>: you have a duty to examine what you believe before believing it.</li>
-              <li>She applied that rule to the scientific dispute Europe was having at the time, which was whether a scientist may use a hypothesis at all. The British read Newton as saying no, and Voltaire was telling the French to drop Descartes and follow them. She saw that each side was holding its position because of <b>where it lived</b>, with the evidence doing no work, and that left her free to say what neither of them could: hypotheses are necessary wherever no other route to the cause exists, and the job is to set rules they have to obey. She set four.</li>
-            </ol>
-            <p><b>And the position she reached is the one you were taught in school: hypotheses are central to science.</b> In 1740 that was close to heresy.</p>
-          </div>
-
-          <figure class="pic">
-            <a class="zoom" style="width:238px" href="img/duchatelet.jpg" target="_blank" rel="noopener" title="Open this picture at full size">
-              <img src="img/duchatelet.jpg" width="812" height="1024" loading="lazy" alt="An eighteenth-century oil portrait of a woman in a blue silk dress with lace cuffs, seated at a desk holding a pair of dividers, with an armillary sphere and papers behind her.">
-            </a>
-            <figcaption><b>&Eacute;milie Du Ch&acirc;telet, 1706 to 1749, painted by Marianne Loir.</b> Look at what she is holding: a pair of dividers, with an armillary sphere behind her and papers on the desk. Portraits of women of her rank did not usually carry instruments, and the painting is making the same argument she spent her life making. <span class="cred">Marianne Loir, public domain, via Wikimedia Commons.</span></figcaption>
-          </figure>
-
-          <h4 id="ch3-2" data-n="3.2">What she noticed about beliefs concerning women</h4>
-          <div class="qa">
-            <b>The question she asks in the preface to her translation of Mandeville</b>
-            Why have women produced nothing?
-          </div>
-
-          <div class="body">
-            <p><b>And her answer is that the question is the wrong way round.</b> She asks why, in so many centuries, no good tragedy, poem, history, painting or book of physics came from a woman, and says that these creatures, whose understanding appears in all things equal to that of men, seem to be <b>stopped by an invincible force on this side of a barrier</b>. She invites anybody to explain it.</p>
-            <p><b>Then she explains it.</b> If she were king, she says, she would let women share in all the rights of humanity and <b>most of all those of the mind</b>. Women seem born to deceive, and their souls are scarcely allowed any other exercise. Many are either ignorant of their own talents, through flaws in their education, or <b>bury them out of prejudice and for lack of a bold spirit.</b> And she says that what she has experienced herself confirms it.</p>
-            <p><b>What makes this more than a complaint: she identifies a loop, and it closes.</b></p>
-            <ol>
-              <li>The belief that women are naturally frivolous</li>
-              <li>produces institutions that give women nothing to do with their minds,</li>
-              <li>which produces women who have done nothing,</li>
-              <li>which confirms the belief.</li>
-            </ol>
-            <p><b>And she names the part done from inside</b>, where women take the prejudice on themselves and bury what they have.</p>
-            <p><b>Then the generalisation, from her <em>Discourse on Happiness</em>.</b> A source of happiness is to be free of prejudice, and <b>the decision rests with us</b> to be rid of it. We all have enough intelligence to examine what others want us to believe.</p>
-          </div>
-
-          <dl class="facts">
-            <dt>Prejudice</dt>
-            <dd>Her own definition, and the usable one: <b>an opinion accepted without examination, because it would be indefensible otherwise.</b></dd>
-          </dl>
-
-          <h4 id="ch3-3" data-n="3.3">Her rule, and the company it puts her in</h4>
-          <div class="qa">
-              <b>The question</b>
-              What does it mean to say you have a duty about what you believe?
-            </div>
-
-            <div class="body">
-            <p><b>The answer: that believing is something you do, so it can be done responsibly or not, and doing it badly is a fault, and never bad luck.</b> The name arrived in 1877 with W. K. Clifford, whose version is absolute: it is wrong always, everywhere, and for anyone, to believe anything on insufficient evidence.</p>
-            <p><b>Du Ch&acirc;telet is a century and a half earlier and in good company.</b> Detlefsen sets three thinkers beside each other, and the useful observation is that each has <b>a different authority in view</b>.</p>
-            <ul>
-              <li><b>Descartes</b> aims at the Scholastics, arguing that human error is our own fault for assenting to what we have not examined clearly, which rots the foundations of the sciences.</li>
-              <li><b>Hume</b> aims at religious authority, arguing in <em>On Miracles</em> that people set aside countless regularities of nature on the strength of one reported exception. A marble statue said to bleed outweighs every piece of marble that has never bled.</li>
-              <li><b>Du Ch&acirc;telet</b> aims at <b>prejudice about women</b>, and at <b>national partisanship in science</b>.</li>
-            </ul>
-            <p><b>And what all three share, which is the sentence to take.</b> A commitment to education for everyone, as the source both of evidence and of <b>self-ownership of the mind</b>, which is the best guard against authorities who use the gullible to spread untruths, whether about the natural world or about the social one.</p>
-            <p><b>How she passes it on.</b> Her masterwork opens as a letter to her son. She tells him to accustom his mind early to think and to be <b>self-sufficient</b>, and then: whatever side you take in this dispute among philosophers, guard yourself against the obstinacy that the spirit of national partisanship produces, <b>which is dangerous everywhere in life and ridiculous in physics.</b></p>
-          </div>
-
-          <h4 id="ch3-4" data-n="3.4">The quarrel over hypotheses, and why both sides were getting it wrong</h4>
-          <div class="qa">
-              <b>The question</b>
-              What was actually in dispute in European science in 1740?
-            </div>
-
-            <div class="body">
-            <p><b>The answer, in the framework Detlefsen uses: two camps, and the dispute was about whether hypotheses are allowed at all.</b></p>
-            </div>
-
-          <dl class="facts">
-            <dt>Speculative natural philosophy</dt>
-            <dd>Reasons from <b>principles about how things must be</b>.</dd>
-            <dt>Experimental natural philosophy</dt>
-            <dd>Builds from <b>experiment and observation</b>. By the 1690s this side had hardened into opposition to hypotheses altogether, which is the part a modern reader finds strange.</dd>
-          </dl>
-
-          <div class="body">
-            <p><b>What they meant by the charge.</b> Newton: experimental philosophy reduces phenomena to general rules, while hypothetical philosophy consists in <b>imaginary explications of things and imaginary arguments</b> for or against them, and he follows the first while Descartes and Leibniz follow the second too much. A contemporary dismisses the systems of Descartes, Gassendi and Hobbes as possibly <b>chimeras and amusing notions, fit to entertain working heads.</b></p>
-            <p><b>And the nationalism riding on top of it, which is why her rule is relevant.</b> Voltaire's <em>Elements of Newton's Philosophy</em> draws a bright line between the old French way of hypotheses and the new British hard-headed experimentalism, and tells the French to catch up. <b>So the scientific question had an English answer and a French answer</b>, which is exactly the situation her letter to her son is about.</p>
-            <p><b>One piece of context worth having, because it changes who she is.</b> For decades her thought was treated as derivative of Voltaire's, with whom she lived and worked. Detlefsen calls that claim evidence-free, and says close examination of her work has debunked it. Her treatment of hypotheses is the example: <b>she does not agree with him.</b></p>
-          </div>
-
-          <figure class="pic">
-            <a class="zoom" style="width:217px" href="img/institutions.jpg" target="_blank" rel="noopener" title="Open this picture at full size">
-              <img src="img/institutions.jpg" width="960" height="1327" loading="lazy" alt="The 1740 title page of Institutions de Physique, printed in French with a decorative engraved headpiece, giving the place of publication as Paris and the date MDCCXL.">
-            </a>
-            <figcaption><b>The title page of <em>Institutions de Physique</em>, Paris, 1740.</b> Her name is not on it. The book was published anonymously, presented as a physics textbook for her thirteen-year-old son, and chapter 4 of it is the account of hypotheses that the field would take another century and a half to arrive at independently. <span class="cred">Public domain, via Wikimedia Commons.</span></figcaption>
-          </figure>
-
-          <h4 id="ch3-5" data-n="3.5">What she actually said about hypotheses</h4>
-          <div class="qa">
-              <b>The question</b>
-              If a hypothesis is a guess, why should science be allowed them?
-            </div>
-
-            <div class="body">
-            <p><b>Her answer: because there is no other way to reach a cause you cannot observe and cannot derive, and the fix is to constrain them, where everybody around her wanted them banned.</b> This is chapter 4 of the <em>Foundations</em>, and the four constraints she sets are, in substance, the modern ones.</p>
-            <p><b>First, why they are necessary.</b> Hypotheses are needed in all cases where the true reason for a phenomenon cannot be discovered <b>either in advance, from truths already known, or afterwards, from experiment.</b> That gap is permanent, so the tool is permanent.</p>
-          </div>
-
-          <div class="keep">
-            <b>Without hypotheses there would be no astronomy</b>
-            Without hypotheses there would be no astronomy now.
-          </div>
-
-          <div class="body">
-            <p><b>And the argument from who used them.</b> Copernicus, Kepler, Huygens, Descartes, Leibniz <b>and Newton himself</b> all devised useful hypotheses to explain difficult phenomena.</p>
-            <p><b>So, she says, those who want to ban them from philosophy intend harm to the interests of science.</b> Her target is anybody leaning too hard on Newton's famous line that he feigns no hypotheses.</p>
-            <p><b>Then the constraints, which are what make the account modern.</b></p>
-            <ol>
-              <li><b>Test them.</b> Once a hypothesis is posed, experiments get done to find out whether it is a good one, <b>experiments which would never have been thought of without it.</b> That is the hypothesis earning its place by generating work.</li>
-              <li><b>One contrary observation is enough to rule it out.</b> A hypothesis becomes false when it is found to contradict a well-established observation. That is falsification, stated plainly, two centuries before Popper gave it a name.</li>
-              <li><b>Fruitfulness counts.</b> A good hypothesis explains the phenomenon it was built for <b>and</b> its further consequences agree with observation.</li>
-              <li><b>Be modest, and take it apart before throwing it out.</b> A hypothesis can be <b>true in one of its parts and false in another.</b></li>
-            </ol>
-            <p><b>Her fourth constraint has teeth, because she uses it against the winning side.</b> Descartes explained gravity with vortices, and by her time the idea was held in contempt because Newton's account had won. She will not have the wholesale rejection: it cannot legitimately be concluded that a vortex, or several vortices conceived differently, <b>cannot</b> be the cause of these movements. That is the ethics of belief applied to an opinion everybody around her held.</p>
-            <p><b>And her conclusion, which is the passage to know.</b> Hypotheses are <b>only probable propositions</b>, more or less probable according to how many of the attendant circumstances they account for. A very high degree of probability has nearly the effect on us of certainty, so hypotheses <b>eventually become truths for us</b> when the probability rises far enough. A hypothesis becomes improbable in proportion to the circumstances it fails to explain, and <b>false when it contradicts a well-established observation.</b></p>
-            <p><b>What is remarkable about that is not the content but the date.</b> Degrees of probability, falsification by a single result, and theories that are accepted without being proved. That is roughly the twentieth-century account, written in 1740 by somebody the Acad&eacute;mie would not admit.</p>
-          </div>
-
-          <div class="kone"><b>If you keep one thing.</b> Du Ch&acirc;telet got the right answer about hypotheses because she was the only person in the room with no stake in the fight. Both camps were defending national positions; she was excluded from the institutions that made those positions worth defending, so she could ask which parts of each were true. <b>That is the standpoint argument of weeks 5 and 6, demonstrated in 1740 by somebody who arrived at it herself</b>, starting from noticing that nobody had ever examined what they believed about women.</div>
-
-          <div class="quar">
-            <b>Where it belongs in the quarrel</b>
-            <ul>
-              <li><b>It is week 6's standpoint theory as a historical case.</b> Harding's inversion thesis says the excluded see the assumptions of the included. This is a worked example with a date on it.</li>
-              <li><b>It answers week 2.</b> That packet argued about what the scientific method is. She settles the part about hypotheses, and settles it correctly.</li>
-              <li><b>It answers week 3.</b> Her falsification rule is Popper's, long before Popper, and her modesty about vortices is the anti-dogmatism Kuhn said paradigms prevent.</li>
-              <li><b>It is answered by the suspicion that this is hindsight</b>, picking the one eighteenth-century figure who agrees with us. Detlefsen's defence is that her method was explicit and general, and that she applied it against her own circle's consensus.</li>
-            </ul>
-          </div>
-
-          <div class="mynote"><b>My note</b><span>The easiest reading of the term and the best value for revision time. Four things: <b>the ethics of belief</b> and her definition of prejudice as an opinion accepted without examination; <b>the speculative against experimental divide</b> and the strange fact that the experimental side opposed hypotheses; <b>her four constraints</b>, of which falsification is the one to name; and <b>the loop she identifies</b>, where a belief about women produces the conditions that confirm it. If an exam asks for an example of standpoint theory, she is a better answer than the primatologists, because the mechanism is visible: excluded from the institutions, therefore free of their loyalties.</span></div>
-
-          <div class="curious">
-            <div class="label"><b>For the curious</b><span>none of this is on the exam</span></div>
-
-            <details class="bit"><summary>She translated Newton and it is still the French edition in print</summary><div class="bq">
-              <p>Her translation of the <em>Principia</em> into French, with a commentary that rewrites Newton's geometry into the calculus of Leibniz and adds the results of the intervening fifty years, was finished in 1749 and published in 1759. <b>It is still the standard French translation.</b></p>
-              <p>She was working against a deadline she knew about: she was pregnant at forty-two, believed she would not survive the birth, and wrote through the nights to finish. She died of an infection six days after the delivery. The commentary that makes the translation important was the part she was racing to complete.</p>
-            </div></details>
-
-            <details class="bit"><summary>She published her prize essay on fire anonymously, and so did Voltaire, against each other</summary><div class="bq">
-              <p>In 1737 the Acad&eacute;mie Royale des Sciences set a prize on the nature of fire. Voltaire entered. Du Ch&acirc;telet entered separately and in secret, without telling him, after concluding his approach was wrong.</p>
-              <p>Neither won, and the Acad&eacute;mie published both essays, which made her the first woman to have a paper published by it. Her essay suggested that heat and light might be forms of the same thing and that different coloured lights would carry different heating power, which is a guess in the right direction about infrared radiation, found experimentally by Herschel in 1800.</p>
-            </div></details>
-
-            <details class="bit"><summary>She was barred from the caf&eacute; where the physicists met, so she dressed as a man</summary><div class="bq">
-              <p>The Caf&eacute; Gradot in Paris was where the mathematicians and natural philosophers gathered, and it did not admit women. The story, from contemporaries, is that she was turned away, went to a tailor, had men's clothes made, and walked back in. The staff let her sit.</p>
-              <p>Ancient gossip levels of reliability apply to the details. The underlying fact does not: the institutions where the arguments happened, the caf&eacute;s and the Acad&eacute;mie, were closed to her, which is Detlefsen's whole point about why she could see what the men in them could not.</p>
-            </div></details>
-          </div>
-
-        </div>
-      </article>
-
-      <article class="rd p-skim" id="ch20">
-        <div class="stripe"></div>
-        <div class="main">
-          <div class="head">
-            <h3><span class="ch">CH 20</span>Feminist Philosophy of Biology</h3>
-            <div class="who">Lynn Hankinson Nelson, in Crasnow and Intemann (eds), <em>The Routledge Handbook of Feminist Philosophy of Science</em>, Routledge, 2020</div>
-            <div class="meta"><span class="tag">Read properly</span><span>12 pp, printed pages 263 to 274</span></div>
-          </div>
-
-          <div class="why"><b>Why this chapter is set.</b> It is the worked example for the whole of last week. Chapter 4 asked where a value can enter a piece of research and chapter 5 asked how ignorance gets produced, and this is both of them happening to one science across 150 years. Its second case study is the full version of the primatology story week 5 opened with. The first three pages are a survey and can be read quickly. <b>The two case studies are the reason it is on the list.</b></div>
-
-          <h4 id="ch20-1" data-n="20.1">Four faults to look for in a piece of biology</h4>
-          <div class="body">
-            <p><b>Nelson names the things feminists go looking for in biological research.</b> The first three are worth having as a checklist, because they turn up in every case the chapter discusses.</p>
-            <ul>
-              <li><b>Androcentrism</b>, meaning male-centredness. Research that takes the activities and dispositions associated with males as the main thing to study, and does not properly attend to those associated with females.</li>
-              <li><b>Gender stereotypes.</b> A generalisation that attributes a characteristic to every member of a group when it is untrue of many or most. Her example: females associated with reproduction, which gets treated as natural and therefore as not needing study, while males are associated with providing, protecting and dominating.</li>
-              <li><b>Gendered metaphors.</b> Metaphors are fine in science so long as everybody remembers they are metaphors. The problem is when the metaphor gets taken literally and starts doing argumentative work.</li>
-              <li><b>Background assumptions</b>, which is Longino again, and Nelson points out the idea is not originally feminist: Carl Hempel argued in the 1960s that unexamined background assumptions can lead good reasoning to unwarranted conclusions.</li>
-            </ul>
-            <p><b>One terminological note worth knowing.</b> Nelson writes <b>sex/gender</b> in place of gender for human cases, because the evidence is that neither is stable or unaffected by the other. The quotation she gives: it is impossible to disentangle the effects of sex from those of gender, since bodies, brains included, change in response to environments and experience.</p>
-          </div>
-
-          
-          <figure class="dia">
-            <div class="draw">
-            <svg viewBox="0 0 660 358" role="img" aria-labelledby="dg-faults" style="font-family:var(--body)">
-              <title id="dg-faults">Nelson's four faults to look for in biological research, each with what it means and the place in her own chapter where it turns up.</title>
-              <text class="dg-m dg-dim" x="12" y="17" font-size="11">THE FAULT</text>
-              <text class="dg-m dg-dim" x="186" y="17" font-size="11">WHAT IT IS</text>
-              <text class="dg-m dg-dim" x="446" y="17" font-size="11">WHERE IT SHOWS UP HERE</text>
-              <rect class="dg-box" x="8" y="30" width="644" height="74" rx="3"/>
-              <text class="dg-t" x="18" y="56" font-size="13" font-weight="600">1 &nbsp;Androcentrism</text>
-              <text class="dg-t" x="186" y="54" font-size="12.5">Male-centredness. Research takes</text>
-              <text class="dg-t" x="186" y="71" font-size="12.5">what males do as the main thing</text>
-              <text class="dg-t" x="186" y="88" font-size="12.5">to study and lets the rest go.</text>
-              <text class="dg-t" x="446" y="54" font-size="12.5">The baboon reports, built on</text>
-              <text class="dg-t" x="446" y="71" font-size="12.5">male dominance, with what the</text>
-              <text class="dg-t" x="446" y="88" font-size="12.5">females did never recorded.</text>
-              <rect class="dg-box" x="8" y="110" width="644" height="74" rx="3"/>
-              <text class="dg-t" x="18" y="136" font-size="13" font-weight="600">2 &nbsp;Gender stereotypes</text>
-              <text class="dg-t" x="186" y="134" font-size="12.5">A characteristic attributed to</text>
-              <text class="dg-t" x="186" y="151" font-size="12.5">every member of a group when it</text>
-              <text class="dg-t" x="186" y="168" font-size="12.5">is untrue of many of them.</text>
-              <text class="dg-t" x="446" y="134" font-size="12.5">Darwin&#8217;s eager males and coy</text>
-              <text class="dg-t" x="446" y="151" font-size="12.5">females. Females tied to</text>
-              <text class="dg-t" x="446" y="168" font-size="12.5">reproduction, so left unstudied.</text>
-              <rect class="dg-box" x="8" y="190" width="644" height="74" rx="3"/>
-              <text class="dg-t" x="18" y="216" font-size="13" font-weight="600">3 &nbsp;Gendered metaphors</text>
-              <text class="dg-t" x="186" y="214" font-size="12.5">Fine while everybody remembers</text>
-              <text class="dg-t" x="186" y="231" font-size="12.5">they are metaphors. The fault is</text>
-              <text class="dg-t" x="186" y="248" font-size="12.5">letting one do the arguing.</text>
-              <text class="dg-t" x="446" y="214" font-size="12.5">Sperm is cheap and eggs are</text>
-              <text class="dg-t" x="446" y="231" font-size="12.5">expensive, which settles the</text>
-              <text class="dg-t" x="446" y="248" font-size="12.5">question it was meant to raise.</text>
-              <rect class="dg-box dg-hi" x="8" y="270" width="644" height="74" rx="3"/>
-              <text class="dg-t" x="18" y="296" font-size="13" font-weight="600">4 &nbsp;Background assumptions</text>
-              <text class="dg-t" x="186" y="294" font-size="12.5">Longino&#8217;s, and not originally</text>
-              <text class="dg-t" x="186" y="311" font-size="12.5">feminist: Hempel said in the 1960s</text>
-              <text class="dg-t" x="186" y="328" font-size="12.5">that unexamined ones mislead.</text>
-              <text class="dg-t" x="446" y="294" font-size="12.5">That a female and her young</text>
-              <text class="dg-t" x="446" y="311" font-size="12.5">need help from a male, which</text>
-              <text class="dg-t" x="446" y="328" font-size="12.5">fieldwork keeps contradicting.</text>
-            </svg>
-            </div>
-            <figcaption><b>The checklist, and the chapter using it on itself.</b> The first three are the ones to carry into any piece of research, and the right column shows that the two case studies below are the same four faults twice over. The fourth is highlighted because it is the one that is not feminist in origin and the one the other three reduce to: a male-centred question, a stereotype and a metaphor are all background assumptions that nobody examined. Hempel was making the argument in the 1960s with no feminism in it at all, which is the reply to anybody who says the critique is political before it is epistemic.</figcaption>
-          </figure>
-
-          <h4 id="ch20-2" data-n="20.2">The peacock&#8217;s tail, and what Darwin built to explain it</h4>
-          <div class="body">
-            <p><b>Start with natural selection, because sexual selection was invented to patch a hole in it.</b> Darwin's argument: members of a species vary; there is a struggle for existence; so a variation that helps survival even slightly makes its holder likelier to survive and pass it on; and enough accumulated variations make a new species. He was clear about the consequence: <b>any trait that hurt survival would have to be selected against.</b></p>
-            <p><b>The hole.</b> The peacock's tail is enormous, bright enough to attract predators, and heavy enough to stop the bird running or flying away. Peahens have small brown tails. More generally males of many species are brighter and bigger than females, which looks like a disadvantage in surviving. <b>So why has natural selection permitted it?</b></p>
-          </div>
-
-          <figure class="pic">
-            <a class="zoom" style="width:346px" href="img/peacock.jpg" target="_blank" rel="noopener" title="Open this picture at full size">
-              <img src="img/peacock.jpg" width="700" height="606" loading="lazy" alt="A peacock seen from the side with its long iridescent blue and green train of tail feathers trailing behind it on grass.">
-            </a>
-            <figcaption><b>The problem Darwin could not leave alone.</b> A train this size is visible to predators and makes escape harder, so on his own account of natural selection it should have been eliminated. Sexual selection was built to explain this one kind of thing, and the picture of eager males and reluctant females came in with it as part of the same theory. <span class="cred">Memurubu, CC BY-SA 4.0, via Wikimedia Commons.</span></figcaption>
-          </figure>
-
-          <div class="body">
-            <p><b>Darwin's patch: sexual selection.</b> These traits are about <b>reproducing</b> where natural selection was about surviving, and survival is necessary for evolution without being sufficient. His definition from <em>The Descent of Man</em>, 1871: the advantage which certain individuals have over others of the same sex and species, in exclusive relation to reproduction. It works by two processes:</p>
-            <ol>
-              <li><b>Males compete with each other</b> for access to females. Large size helps here.</li>
-              <li><b>Females choose.</b> Bright colour helps here, and the tail is explained.</li>
-            </ol>
-            <p><b>Then the part that has nothing to do with tails.</b> Darwin did not give human females mate choice, saying men make those choices, and Nelson traces the reasoning to Victorian England and to views about the sexes going back to Aristotle. He also claimed sex differences in behaviour and psychology: males <b>generally eager to mate with any female</b>, females less eager and, in the <em>Descent</em>, <b>coy</b>.</p>
-            <p><b>And a list of male advantages with a cause attached.</b> Stronger passions, higher intelligence, greater strength, better senses and better movement, all caused by the selection pressures he thought males alone faced: competing for mates, providing and protecting, defending the community. Women have some of these qualities, he allowed, to a far lesser degree, <b>and only because they inherit them from men</b>.</p>
-          </div>
-
-          <div class="keep">
-            <b>Women got a free evolutionary ride on the backs of men</b>
-            On Darwin's account women have enjoyed a free evolutionary ride on the backs of their male
-            conspecifics.
-          </div>
-
-                    <div class="body">
-            <p><b>What feminists did to it.</b> Nelson is precise about the targets. That a female's survival and her offspring's depend on help from males is an unwarranted stereotype, and field biologists give counter-examples from the species they watch. The claims about differences in intelligence and reason were not needed to solve the peacock problem at all, and <b>they track the social views of the time far more closely than they track the biology</b>. And females of many primate species are nothing like coy or passive.</p>
-            <p><b>The 1972 reinforcement, and the current target.</b> Robert Trivers proposed <b>parental investment theory</b> and argued it explained and supported Darwin. The claim: the sex that invests more in offspring will be choosier. He argued that in most species the male's only contribution to his offspring's survival is his sex cells, while female contributions exceed male by a large ratio, because of <b>gametic dimorphism</b>, the difference in size and number between sperm and eggs, plus gestation, lactation and egg-sitting. The slogan version is that <b>sperm is cheap and eggs are expensive</b>.</p>
-            <p><b>Three objections Nelson reports, and the first two are empirical.</b></p>
-            <ol>
-              <li><b>Males contribute more than sperm.</b> Males of many species produce accessory secretions as well, and <b>a proper accounting of investment would have to count them</b>.</li>
-              <li><b>Sperm is not cheap in bulk.</b> High sperm production is generally needed for insemination to work at all, and in humans and others males produce millions of sperm per egg.</li>
-              <li><b>The words are doing the arguing.</b> This is the gendered-metaphor fault from her own list: <b>investment</b>, <b>cheap</b> and <b>expensive</b> are economic terms applied to biology, and they smuggle a conclusion in with the vocabulary.</li>
-            </ol>
-          </div>
-
-          <figure class="dia">
-            <div class="draw">
-            <svg viewBox="0 0 520 206" role="img" aria-labelledby="dg-gametes" style="font-family:var(--body)">
-              <title id="dg-gametes">A human egg cell and a human sperm drawn to the same scale, the egg about a hundred and twenty micrometres across and the sperm head about five.</title>
-              <rect class="dg-box" x="8" y="24" width="504" height="150" rx="3"/>
-              <text class="dg-m dg-dim" x="12" y="16" font-size="11">DRAWN TO THE SAME SCALE</text>
-              <circle cx="118" cy="99" r="58" style="fill:var(--close-wash); stroke:var(--close); stroke-width:1.6"/>
-              <circle cx="118" cy="99" r="40" style="fill:none; stroke:var(--close); stroke-width:1; stroke-dasharray:3 4; opacity:.6"/>
-              <text class="dg-t" x="118" y="103" font-size="12.5" text-anchor="middle" font-weight="600">egg</text>
-              <text class="dg-t dg-dim" x="118" y="178" font-size="11.5" text-anchor="middle">about 120 micrometres across</text>
-              <ellipse cx="318" cy="99" rx="2.4" ry="1.6" style="fill:var(--close); stroke:none"/>
-              <path class="dg-ln" d="M320 99 q 14 -7 28 0 q 14 7 28 0 q 14 -7 28 0" stroke-width="1.2" style="stroke:var(--close)"/>
-              <path class="dg-ln dg-dim" d="M318 112 L318 140 M404 112 L404 140" stroke-width="1" stroke-dasharray="3 4"/>
-              <text class="dg-t dg-dim" x="262" y="155" font-size="11.5">head about 5 micrometres, whole cell about 55</text>
-              <path class="dg-ln dg-dim" d="M300 92 L312 97" stroke-width="1"/>
-              <text class="dg-t" x="244" y="90" font-size="12.5" font-weight="600">sperm</text>
-            </svg>
-            </div>
-            <figcaption><b>Sperm is cheap and eggs are expensive, drawn.</b> The size difference is real and it is what parental investment theory is built on: the sex that invests more will be the choosier one. Nelson's objection is not that the picture is false. It is that three economic words, <b>investment</b>, <b>cheap</b> and <b>expensive</b>, were laid over it, and those words answer the question the measurement was supposed to raise. A male produces millions of these per egg, and whether that adds up to less investment is the thing in dispute, which the vocabulary settles before anybody counts.</figcaption>
-          </figure>
-
-          <div class="body">
-            <blockquote>Uncritical acceptance of [sexual selection's] ubiquitous occurrence does no service to evolutionary theory. Heritable variance in reproductive success, based on characters that are not favored by natural selection, must be demonstrable before sexual selection may be invoked unequivocally.<cite>Spencer and Masters, 1992, p. 301</cite></blockquote>
-            <p><b>And a point that stops this being only a feminist complaint.</b> Ernst Mayr, one of the major evolutionary biologists of the century, thought sexual selection did very little and that the traits it covered could be explained by natural selection anyway. The objection is not uniquely political.</p>
-          </div>
-
-                    <h4 id="ch20-3" data-n="20.3">The baboons, and the primate pattern that came off them</h4>
-          <div class="body">
-            <p><b>Why primates get studied for this at all.</b> Humans differ from each other in about 0.1 per cent of their DNA. Humans and chimpanzees differ by about 1.2 per cent, humans and gorillas by about 1.6 per cent, and the split from a common ancestor is put at around six million years ago. So it looks reasonable to study their evolution to learn about ours, and some researchers go further and treat them as showing <b>a basic human nature underneath the overlay of culture</b>.</p>
-            <p><b>The 1960s and 1970s studies.</b> Groups of anthropologists ran long field studies of savannah baboons in the Serengeti. They proposed a <b>primate pattern</b>: the behaviour and social structure they saw in savannah baboons was taken to be typical of most primates, produced by selection pressures common to all of them.</p>
-            </div>
-
-          <figure class="pic">
-            <a class="zoom" style="width:300px" href="img/baboon.jpg" target="_blank" rel="noopener" title="Open this picture at full size">
-              <img src="img/baboon.jpg" width="900" height="900" loading="lazy" alt="A large male yellow baboon sitting upright on a boulder in front of green scrub, facing the camera.">
-            </a>
-            <figcaption><b>A male yellow baboon in Amboseli National Park, Kenya, where Jeanne Altmann worked.</b> This is what the first generation of fieldworkers spent their time watching, and the drama between males is what their reports were built around. Altmann's argument was that it is the less visible business of the females that actually drives the group. <span class="cred">Diego Delso, CC BY-SA 4.0, via Wikimedia Commons.</span></figcaption>
-          </figure>
-
-          <div class="body">
-            <p><b>Three things Irven DeVore and Sherwood Washburn said were in the pattern.</b></p>
-            <ol>
-              <li><b>Male dominance</b>, which they called the most important feature of baboon social structure, organising and controlling the group the way political leadership does in human societies.</li>
-              <li><b>A division of labour by sex.</b> Males provide, protect and maintain the structure that benefits everyone, while females take primary responsibility for the young.</li>
-              <li><b>Male aggression</b>, recorded as a trait of the species and attributed to men as well.</li>
-            </ol>
-            <p><b>And the loop closes.</b> Because early humans were thought to have evolved in the African savannah under similar conditions, similarities between the two species were taken to be likely, so the baboon findings were read straight across to human behaviour. Male dominance in baboon troops was set beside men's dominance over women.</p>
-          </div>
-
-                    <div class="body">
-            <p><b>Jeanne Altmann, and what happened when somebody watched the females.</b> She worked for years on the Amboseli baboons in Kenya. Asked by Donna Haraway why she focused on females, her answer was that her self-identity as a scientist, a feminist and a mother led her there, and then: <b>it was screaming at me. These are the most interesting individuals, interactions between baboon mothers and offspring have the most evolutionary impact, this is where the ecological pressures are.</b></p>
-            <p><b>Three findings, and the third undoes the original picture.</b></p>
-            <ol>
-              <li><b>Mothers run several things at once.</b> Altmann described them <b>juggling</b> competing priorities and <b>budgeting</b> their time, and their dealings with juveniles and with other adults turned out to be key to the group's social dynamics.</li>
-              <li><b>Adult males deal with infants a great deal.</b> The first generation of fieldworkers had recorded almost none of this.</li>
-              <li><b>Females build special relationships with particular males</b>, who then protect them from other baboons. Hrdy's summary: infants are often the focal point of elaborate male, female and infant relationships, <b>relationships often initiated by the females themselves</b>.</li>
-            </ol>
-          </div>
-
-          <div class="keep">
-            <b>What the females do drives the group, and the male drama does not</b>
-            The high drama of encounters between male baboons matters far less to the social dynamics
-            of the group than the micro-practices of the females.
-          </div>
-
-          <div class="body">
-            <p><b>A methodological detail worth noticing.</b> Altmann told Haraway that her reports on the females contained no category called <b>child care</b>, because she could not find a way of separating the females' activities that would produce one. The category was imported from human arrangements and the animals did not have it.</p>
-            <p><b>And Hrdy, which is week 5's opening told properly.</b> From her studies of hanuman langurs and rhesus monkeys: <b>a polyandrous component is at the core of the breeding systems of most troop-dwelling primates</b>, polyandrous meaning females who mate with more than one male. Females mate with many males, each of whom may contribute a little to the offspring's survival.</p>
-          </div>
-
-          <h4 id="ch20-4" data-n="20.4">What all this proves, and the two debates about it</h4>
-
-          <h5>First debate: was the old research simply bad science?</h5>
-          <div class="body">
-            <p><b>What hangs on the answer.</b> If it was bad science, feminist critique tells you nothing about how science works, only that these particular people were careless. The studies were in keeping with the accepted hypotheses, priorities, methods and norms of their fields, and the scientists gave the evidence they recognised its due.</p>
-          </div>
-
-          <div class="keep">
-            <b>The work was not careless, and there was other evidence to be had</b>
-            The work was not careless. There was more evidence, and different evidence, to be
-            considered.
-          </div>
-
-          <h5>Second debate: did feminism actually cause the change?</h5>
-          <div class="body">
-            <p><b>Two rival explanations are on offer, and both deny feminism any credit.</b></p>
-            <ol>
-              <li><b>Science self-corrects.</b> New evidence would have overturned the androcentric hypotheses sooner or later, whoever was in the room.</li>
-              <li><b>Coincidence.</b> Women influenced by the women's movement happened to arrive in these fields just as the thinking about gender was changing anyway.</li>
-            </ol>
-            <p><b>Hrdy on the coincidence story, and it is a good line.</b> She seriously questions whether chance or sequence caused a small group of primatologists in the 1960s, who happened to be mostly male, to focus on male competition and on how many matings a male achieved, while a later group including many women, from the 1970s, shifted the focus to female behaviours with long-term consequences for infants.</p>
-            <p><b>And the serious reply to the self-correction story.</b> Theories do change in the face of new evidence, so the mechanism is real. In these cases, though, the people who built the androcentric hypotheses were never the ones who saw the problem. The new arrivals were. And biologists including Altmann and Hrdy say in their own words that feminism is what let them see it.</p>
-          </div>
-
-          <div class="keep">
-            <b>Women in these fields who deny feminism had any part in the change</b>
-            There are women in evolutionary biology, developmental biology and primatology who accept
-            that their fields changed and reject any role for feminism in it. Linda Fedigan's
-            explanation is that many primatologists, women included, see feminism as something outside
-            science, and treat it as a purely political perspective incompatible with doing science
-            well.
-          </div>
-
-          <div class="kone"><b>If you keep one thing.</b> The baboon studies were not bad science by the standards of their time: respected work, proper methods, peer reviewed. What they had was a short list of things worth watching, and male dominance was on it while what the females did was not. Then women arrived, watched the females, and the central finding reversed. <b>That is why the question is not whether scientists are careful but who they are</b>, because care cannot recover evidence nobody went looking for.</div>
-
-          <div class="quar">
-            <b>Where it belongs in the quarrel</b>
-            <ul>
-              <li><b>It is chapter 4 in one field.</b> Phase 3, which observations count, is exactly what DeVore and Washburn got wrong, and phase 8, the alternatives nobody considered, is exactly what Altmann supplied.</li>
-              <li><b>It is chapter 5 in one field.</b> What female baboons were doing was unknown for decades, and the ignorance was produced by neglect, which is strategy one.</li>
-              <li><b>It finishes week 5's opening.</b> The langur anecdote at the start of chapter 1 is this, with the evidence attached.</li>
-              <li><b>It is answered by the self-correction argument</b>, which says science would have got there anyway, and Hrdy's reply is the chapter's best paragraph.</li>
-            </ul>
-          </div>
-
-          <div class="mynote"><b>My note</b><span>Skim the first three pages and the last two, and read the two case studies properly. The exam-usable material is: <b>the four faults</b> (androcentrism, gender stereotypes, gendered metaphors, background assumptions), <b>why sexual selection was invented</b>, which needs the peacock, <b>parental investment theory and the sperm is cheap objection</b>, and <b>the Altmann and Hrdy findings against the primate pattern</b>. The one philosophical claim to take out of it is Nelson's refusal to call the old work bad science, because that is what makes the case bear on how science works at all, over and above how these particular people worked.</span></div>
-
-          <div class="curious">
-            <div class="label"><b>For the curious</b><span>none of this is on the exam</span></div>
-
-            <details class="bit"><summary>Altmann&#8217;s real revolution was a sampling method</summary><div class="bq">
-              <p>Her 1974 paper "Observational Study of Behavior: Sampling Methods" is one of the most cited papers in animal behaviour, and it is about bookkeeping. Fieldworkers had been recording whatever caught their attention, which systematically over-records rare dramatic events and under-records the constant undramatic ones. She set out <b>focal animal sampling</b>: pick one animal, watch it for a fixed period, record everything it does whether or not it is interesting.</p>
-              <p>That is the method that made the females visible, because fights are noticeable and a mother budgeting her afternoon is not. It is a clean example of chapter 4's phase 4: changing how the data is collected changes what there is to interpret, and no amount of care at phase 5 could have recovered it.</p>
-            </div></details>
-            <details class="bit"><summary>The peacock's tail stayed a problem for a long time</summary><div class="bq">
-              <p>Darwin's explanation needed peahens to prefer the biggest trains, which was not tested properly until the 1990s. Marion Petrie's work then found that peahens do prefer males with more eyespots and that their chicks survive better, which supported him.</p>
-              <p>A seven-year Japanese study published in 2008 then found no evidence that peahens preferred more elaborate trains at all, and the authors suggested the train may be an obsolete signal. The argument is not settled. Which is worth knowing, because the textbook example of sexual selection is less secure than the textbooks make it sound.</p>
-            </div></details>
-            <details class="bit"><summary>Haraway wrote the book on all of this</summary><div class="bq">
-              <p>The Altmann interview Nelson quotes is from <em>Primate Visions</em>, 1989, Donna Haraway's history of twentieth-century primatology. Its argument is that primatology is a field where scientists have repeatedly gone looking for the origins of human nature and found whatever their own society was arguing about: the baboon troops of the 1960s look remarkably like the family and workplace arrangements of the 1950s.</p>
-              <p>The book was attacked on publication for implying that primatology is only politics. Haraway's reply is the position from the week 5 guide: saying knowledge comes from somewhere is not saying it is worthless, it is saying you should be able to name where.</p>
             </div></details>
           </div>
 
