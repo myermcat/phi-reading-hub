@@ -408,6 +408,32 @@
         if (onChange) onChange();
         return;
       }
+      /* Backspace at the very start of a block. Chrome merges it into whatever is above, and
+         when that is a horizontal rule the rule is what disappears, which is never what the
+         keystroke was for. The first item of a list loses its bullet instead, which is what
+         every other editor does, and a rule above anything else is left alone. */
+      if (e.key === 'Backspace') {
+        var bs = window.getSelection();
+        if (!bs || !bs.rangeCount || !bs.isCollapsed) return;
+        var br_ = bs.getRangeAt(0);
+        var bblk = blockOf(el, br_.startContainer);
+        if (!bblk || bblk === el) return;
+        var bpre = document.createRange();
+        bpre.selectNodeContents(bblk);
+        try { bpre.setEnd(br_.startContainer, br_.startOffset); } catch (err) { return; }
+        if (bpre.toString().length) return;
+        var bli = bblk.closest && bblk.closest('li');
+        if (bli && !bli.previousElementSibling) {
+          e.preventDefault();
+          document.execCommand('outdent', false, null);
+          markEmpty(el);
+          if (onChange) onChange();
+          return;
+        }
+        var above = (bli || bblk).previousElementSibling;
+        if (above && above.tagName === 'HR') e.preventDefault();
+        return;
+      }
       if (e.key !== ' ' && e.key !== 'Enter' && e.key !== '-') return;
       var sel = window.getSelection();
       if (!sel || !sel.rangeCount || !sel.isCollapsed) return;
@@ -417,7 +443,10 @@
       pre.selectNodeContents(blk);
       try { pre.setEnd(r.startContainer, r.startOffset); } catch (err) { return; }
       var head = pre.toString(), cmd = null, arg = null, m;
-      var inLi = blk && blk.tagName === 'LI';
+      /* Anywhere inside a list item, not only when the item is the block itself. A long note
+         ends up with paragraphs inside its list items, and then blockOf stops at the
+         paragraph, the guard below misses, and `# ` builds a heading inside the bullet. */
+      var inLi = !!(blk && blk !== el && blk.closest && blk.closest('li'));
       if (e.key === ' ') {
         if (inLi) return;
         if (head.match(/^\s*[-*+]$/)) cmd = 'ul';
