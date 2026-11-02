@@ -1,0 +1,2481 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PHI2394 Week 8 Reading Guide</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%232E8E74'/%3E%3Cellipse%20cx='32'%20cy='33'%20rx='12.5'%20ry='15'%20fill='none'%20stroke='%23fff'%20stroke-width='7'/%3E%3Crect%20x='28.5'%20y='7'%20width='7'%20height='50'%20rx='3.5'%20fill='%23fff'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,600&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --paper:      #EDEFEC;
+    --surface:    #F6F7F4;
+    --sunk:       #E3E6E1;
+    --ink:        #191D1A;
+    --ink-soft:   #414944;
+    --muted:      #6E766F;
+    --rule:       #D2D8D1;
+    --rule-soft:  #E1E5DF;
+    --close:      #1F6B57;
+    --close-wash: #CFE3DA;
+    --skim:       #8E6318;
+    --skim-wash:  #ECDDC2;
+    --skip:       #7E867F;
+    --skip-wash:  #D9DDD8;
+    --accent:     #1F6B57;
+    --curious:    #6B4372;
+    --curious-bg: #F2EEF3;
+    --lead:       #2E574A;
+    --c-y:        #8A6A0B;
+    --c-p:        #AE2F73;
+    --ghost:      #DADFD9;
+
+    --hl-y:     rgba(255,206,0,.42);
+    --hl-p:     rgba(255,92,168,.34);
+    --hl-n:     rgba(31,107,87,.10);
+    --hl-n-act: rgba(31,107,87,.22);
+    --ul-y:     rgba(196,152,0,.55);
+    --ul-p:     rgba(208,62,130,.48);
+    --ul-g:     rgba(58,98,84,.46);
+    --gl-line:  rgba(110,118,111,.42);
+
+    --navpad: 0px;
+
+    --display: "Newsreader", Georgia, "Times New Roman", serif;
+    --body:    "Source Sans 3", -apple-system, "Segoe UI", sans-serif;
+    --lh: 1.6; --measure: 62ch; --figw: 82ch; --pgap: 20px;
+
+    --mono:    "IBM Plex Mono", "SF Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #191E1B; --surface: #232924; --sunk: #141916;
+      --ink: #D3DAD4; --ink-soft: #A9B2AB; --muted: #848D86;
+      --rule: #333A35; --rule-soft: #2A302C;
+      --close: #64BFA1; --close-wash: #24463A;
+      --skim: #D9A957; --skim-wash: #413725;
+      --skip: #79827B; --skip-wash: #2D332F;
+      --accent: #64BFA1;
+      --curious: #C4A0CB; --curious-bg: #272029;
+      --lead: #93C2B2;
+      --c-y: #E3BE57;
+      --c-p: #FF97C6;
+      --ghost: #2C332E;
+      --hl-y: rgba(255,206,0,.24); --hl-p: rgba(255,92,168,.24);
+      --hl-n: rgba(100,191,161,.12); --hl-n-act: rgba(100,191,161,.22);
+      --ul-y: rgba(217,169,87,.48); --ul-p: rgba(255,151,198,.38);
+      --ul-g: rgba(126,172,154,.42); --gl-line: rgba(132,141,134,.45); --lh: 1.76; --measure: 58ch; --figw: 80ch; --pgap: 25px;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #191E1B; --surface: #232924; --sunk: #141916;
+    --ink: #D3DAD4; --ink-soft: #A9B2AB; --muted: #848D86;
+    --rule: #333A35; --rule-soft: #2A302C;
+    --close: #64BFA1; --close-wash: #24463A;
+    --skim: #D9A957; --skim-wash: #413725;
+    --skip: #79827B; --skip-wash: #2D332F;
+    --accent: #64BFA1;
+    --curious: #C4A0CB; --curious-bg: #272029;
+    --lead: #93C2B2;
+    --c-y: #E3BE57;
+    --c-p: #FF97C6;
+    --ghost: #2C332E;
+      --hl-y: rgba(255,206,0,.24); --hl-p: rgba(255,92,168,.24);
+      --hl-n: rgba(100,191,161,.12); --hl-n-act: rgba(100,191,161,.22);
+      --ul-y: rgba(217,169,87,.48); --ul-p: rgba(255,151,198,.38);
+    --ul-g: rgba(126,172,154,.42); --gl-line: rgba(132,141,134,.45); --lh: 1.76; --measure: 58ch; --figw: 80ch; --pgap: 25px;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--paper); color: var(--ink); font-family: var(--body);
+    font-size: 17.5px; line-height: var(--lh); -webkit-font-smoothing: antialiased;
+    padding-bottom: 47px;
+  }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 40px 26px 90px; display: flex; flex-direction: column; gap: 48px; }
+  .eyebrow { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted); }
+  h1 {
+    font-family: var(--display); font-weight: 600; font-size: clamp(34px, 5.6vw, 50px);
+    line-height: 1.06; letter-spacing: -0.015em; margin: 10px 0 0; text-wrap: balance;
+  }
+  .standfirst {
+    font-family: var(--display); font-size: clamp(18px, 2.4vw, 21.5px); line-height: 1.5;
+    color: var(--ink-soft); max-width: 62ch; margin: 14px 0 0;
+  }
+  p { margin: 0; max-width: var(--measure); }
+  .lede { color: var(--ink-soft); }
+
+  .strip-block { display: flex; flex-direction: column; gap: 11px; }
+  .strip { display: flex; width: 100%; height: 52px; border: 1px solid var(--rule); overflow: hidden; }
+  .seg { display: flex; min-width: 0; }
+  .seg + .seg { border-left: 1px solid var(--paper); }
+  .seg .txt, .seg .nts {
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--mono); font-size: 11px; color: #fff; min-width: 0; overflow: hidden;
+  }
+  .seg .nts { background: var(--skip-wash); }
+  .p-close .txt { background: var(--close); }
+  .p-skim  .txt { background: var(--skim); }
+  .p-skip  .txt { background: var(--skip); }
+  .strip-key { display: flex; flex-wrap: wrap; gap: 6px 18px; font-family: var(--mono); font-size: 11px; color: var(--muted); }
+  .strip-key i { font-style: normal; display: inline-flex; align-items: center; gap: 7px; }
+  .strip-key i::before { content: ""; width: 13px; height: 13px; display: inline-block; border: 1px solid var(--rule); }
+  .k-close::before { background: var(--close); }
+  .k-skim::before  { background: var(--skim); }
+  .k-skip::before  { background: var(--skip); }
+  .k-notes::before { background: var(--skip-wash); }
+
+  .tally { display: flex; flex-wrap: wrap; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  .tally > div { flex: 1 1 140px; padding: 14px 18px 14px 0; display: flex; flex-direction: column; gap: 2px; }
+  .tally > div + div { padding-left: 18px; border-left: 1px solid var(--rule-soft); }
+  .tally b { font-family: var(--mono); font-weight: 500; font-size: 24px; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+  .tally span { font-size: 13px; color: var(--muted); line-height: 1.35; }
+  .t-a b { color: var(--close); }
+  .t-b b { color: var(--skim); }
+
+  section { display: flex; flex-direction: column; gap: 20px; }
+  h2 { font-family: var(--display); font-weight: 600; font-size: 28px; letter-spacing: -0.01em; margin: 0; text-wrap: balance; }
+  h2 + p { margin-top: -8px; }
+  section > .ctx, section > .exm, section > .scroller, section > figure { margin: 26px 0; }
+  h3.sub { font-family: var(--display); font-weight: 600; font-size: 21px; margin: 14px 0 -8px; letter-spacing: -0.005em; }
+  .minihead { margin: 10px 0 -10px; font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+
+  .facts {
+    background: var(--surface); border-left: 3px solid var(--close);
+    padding: 20px 24px; display: grid; grid-template-columns: 150px 1fr; gap: 10px 18px; font-size: 16px;
+  }
+  .facts dt { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); padding-top: 4px; }
+  .facts dd { margin: 0; color: var(--ink-soft); }
+  .facts dd b { color: var(--ink); font-weight: 600; }
+
+  ul.plain { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 10px; max-width: var(--measure); color: var(--ink-soft); }
+  ul.plain b { color: var(--ink); }
+
+  .nine { width: 100%; border-collapse: collapse; font-size: 15.5px; }
+  .nine th {
+    text-align: left; font-family: var(--mono); font-size: 10px; letter-spacing: 0.09em;
+    text-transform: uppercase; color: var(--muted); font-weight: 500;
+    padding: 0 14px 9px 0; border-bottom: 1px solid var(--rule); vertical-align: bottom;
+  }
+  .nine td { padding: 12px 14px 12px 0; border-bottom: 1px solid var(--rule-soft); vertical-align: top; color: var(--ink-soft); }
+  .nine td:first-child { color: var(--ink); font-weight: 600; white-space: nowrap; padding-right: 18px; }
+  .nine td:first-child span { display: block; font-family: var(--mono); font-size: 10px; font-weight: 400; color: var(--muted); letter-spacing: 0.04em; }
+  .scroller { overflow-x: auto; margin: 30px 0; }
+
+  .convo { display: flex; flex-direction: column; }
+  .turn { display: grid; grid-template-columns: 128px 1fr; gap: 0 22px; padding: 16px 0; border-top: 1px solid var(--rule-soft); }
+  .turn:first-child { border-top: 1px solid var(--rule); }
+  .turn .who { display: flex; flex-direction: column; gap: 1px; padding-top: 2px; }
+  .turn .who b { font-family: var(--body); font-size: 15px; font-weight: 600; }
+  .turn .who span { font-family: var(--mono); font-size: 10.5px; color: var(--muted); }
+  .turn p { font-size: 16.5px; }
+
+  .readings { display: flex; flex-direction: column; }
+  .rd { display: grid; grid-template-columns: 4px 1fr; gap: 0 22px; padding: 36px 0; border-top: 1px solid var(--rule); }
+  .rd .stripe { background: var(--skip); }
+  .rd.p-close .stripe { background: var(--close); }
+  .rd.p-skim  .stripe { background: var(--skim); }
+  .rd .main { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
+
+  .rd .head { display: flex; flex-direction: column; gap: 7px; }
+  .rd h3 { margin: 0; font-family: var(--display); font-size: 25px; font-weight: 600; line-height: 1.16; text-wrap: balance; }
+  .rd h3 .ch { font-family: var(--mono); font-size: 14px; font-weight: 500; color: var(--muted); letter-spacing: 0.02em; margin-right: 10px; vertical-align: 3px; }
+  .rd .who { font-family: var(--display); font-style: italic; font-size: 18px; color: var(--ink-soft); }
+  .rd .meta { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.03em; }
+  .tag { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.09em; text-transform: uppercase; padding: 2.5px 8px; }
+  .p-close .tag { background: var(--close-wash); color: var(--close); }
+  .p-skim  .tag { background: var(--skim-wash);  color: var(--skim); }
+  .p-skip  .tag { background: var(--skip-wash);  color: var(--skip); }
+
+  .span { display: flex; flex-direction: column; gap: 5px; }
+  .span .bar { display: flex; height: 14px; width: 100%; border: 1px solid var(--rule); overflow: hidden; }
+  .span .bar i { display: block; background: var(--ghost); }
+  .span .bar i.here-txt { background: var(--close); }
+  .p-skim .span .bar i.here-txt { background: var(--skim); }
+  .p-skip .span .bar i.here-txt { background: var(--skip); }
+  .span .bar i.here-nts { background: var(--skip-wash); }
+  .span .cap { font-family: var(--mono); font-size: 10.5px; color: var(--muted); letter-spacing: 0.03em; }
+
+  .qline { font-family: var(--display); font-size: 19.5px; line-height: 1.42; padding: 12px 0 12px 16px; border-left: 2px solid var(--accent); color: var(--ink); }
+
+  .rd h4 { margin: 16px 0 -13px; font-family: var(--display); font-weight: 600;
+           font-size: 20px; line-height: 1.22; letter-spacing: -0.005em; color: var(--ink);
+           text-wrap: balance; scroll-margin-top: 78px; }
+  .rd h4::before { content: attr(data-n); display: block; margin-bottom: 6px;
+           font-family: var(--mono); font-size: 10.5px; font-weight: 500;
+           letter-spacing: 0.12em; color: var(--accent); }
+  .rd ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 9px; max-width: var(--measure); }
+  .rd li { padding-left: 2px; }
+  .rd .body { display: flex; flex-direction: column; gap: 14px; }
+  .rd .body > .scroller, .rd .body > figure, .rd .body > .quo,
+  .rd .body > .ctx, .rd .body > .exm { margin: 16px 0; }
+  .rd .body > ul, .rd .body > ol { margin: 4px 0 6px; }
+  .rd .body > p > b:first-child, .rd .body > ul > li > b:first-child,
+  .rd .body > ol > li > b:first-child { color: var(--lead); }
+  .body > p > b:first-child { color: var(--lead); }
+  .qa { border-left: 2px solid var(--accent); padding: 4px 0 4px 18px; max-width: var(--measure);
+        font-family: var(--display); font-size: 19px; line-height: 1.38; color: var(--ink); }
+  .qa b { display: block; margin-bottom: 6px; font-family: var(--mono); font-size: 10.5px;
+          font-weight: 500; letter-spacing: 0.11em; text-transform: uppercase; color: var(--accent); }
+  .body > * + * { margin-top: var(--pgap); }
+  .rd .body > * + * { margin-top: 0; }
+  .body > .keep { margin-top: calc(var(--pgap) + 8px); }
+  .body > .keep + * { margin-top: calc(var(--pgap) + 12px); }
+  .rd h5 {
+    margin: 12px 0 -4px; font-family: var(--display); font-weight: 600;
+    font-size: 18.5px; line-height: 1.25; color: var(--ink); letter-spacing: -.005em;
+  }
+
+  .links { display: grid; grid-template-columns: 84px 1fr; gap: 8px 14px; font-size: 16px; border-top: 1px solid var(--rule-soft); border-bottom: 1px solid var(--rule-soft); padding: 13px 0; }
+  .links dt { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); padding-top: 4px; }
+  .links dd { margin: 0; color: var(--ink-soft); }
+
+  .mynote { background: var(--sunk); padding: 16px 20px; font-size: 16.5px; color: var(--ink-soft); display: flex; flex-direction: column; gap: 6px; }
+  .mynote b { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+
+  .keep { font-family: var(--display); font-size: 18.5px; line-height: 1.45; font-style: italic; color: var(--ink); border-left: 2px solid var(--muted); padding: 4px 0 4px 18px; }
+  .keep b { font-family: var(--mono); font-style: normal; font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 5px; font-weight: 500; }
+
+  .curious { background: var(--curious-bg); padding: 22px 24px 24px; display: flex; flex-direction: column; gap: 16px; margin-top: 6px; }
+  .curious > .label { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .curious > .label b { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--curious); font-weight: 500; }
+  .curious > .label span { font-family: var(--mono); font-size: 10.5px; color: var(--muted); }
+  /* Every curious item and every side note is a toggle, closed until it is asked for,
+     and its summary says what is inside, so the line alone is enough to decide on. */
+  details.bit > summary, details.ctx > summary {
+    display: flex; align-items: baseline; gap: 10px; cursor: pointer; list-style: none;
+    padding: 4px 0; margin: 0; border-radius: 3px;
+  }
+  details.bit > summary::-webkit-details-marker,
+  details.ctx > summary::-webkit-details-marker { display: none; }
+  details.bit > summary::after, details.ctx > summary::after {
+    content: ''; width: 6px; height: 6px; flex: none; margin-left: auto; align-self: center;
+    border-right: 1.6px solid currentColor; border-bottom: 1.6px solid currentColor;
+    transform: translateY(-2px) rotate(45deg); opacity: .45; transition: transform .18s ease, opacity .18s ease;
+  }
+  details[open].bit > summary::after, details[open].ctx > summary::after {
+    transform: translateY(1px) rotate(225deg); opacity: .75;
+  }
+  details.bit > summary:hover::after, details.ctx > summary:hover::after { opacity: .9; }
+  details.bit > summary:focus-visible, details.ctx > summary:focus-visible {
+    outline: 2px solid var(--accent); outline-offset: 3px;
+  }
+  .bq { display: flex; flex-direction: column; gap: 9px; padding-top: 9px; }
+  .curious > details.bit + details.bit { border-top: 1px solid var(--rule); padding-top: 16px; }
+
+  .bit { display: block; }
+  .bit > summary {
+    font-family: var(--display); font-weight: 600; font-size: 20.5px;
+    line-height: 1.2; color: var(--curious); letter-spacing: -0.005em; text-wrap: balance;
+  }
+  .bit p { font-size: 16.5px; color: var(--ink-soft); }
+  .bit p b { color: var(--ink); font-weight: 600; }
+
+  .plan { display: flex; flex-direction: column; }
+  .ses { display: grid; grid-template-columns: 118px 1fr; gap: 0 24px; padding: 22px 0; border-top: 1px solid var(--rule); }
+  .ses .when { display: flex; flex-direction: column; gap: 3px; padding-top: 3px; }
+  .ses .when b { font-family: var(--mono); font-size: 11px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--accent); font-weight: 500; }
+  .ses .when span { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+  .ses .what { display: flex; flex-direction: column; gap: 8px; }
+  .ses h3 { margin: 0; font-family: var(--display); font-size: 21px; font-weight: 600; line-height: 1.2; }
+  .ses p { font-size: 16.5px; color: var(--ink-soft); }
+
+  .endmatter { border-top: 1px solid var(--rule); padding-top: 24px; font-size: 14.5px; color: var(--muted); display: flex; flex-direction: column; gap: 12px; }
+  .endmatter b { color: var(--ink-soft); font-weight: 600; }
+  .endmatter .weeks { display: grid; grid-template-columns: 96px 1fr; gap: 6px 16px; }
+  .endmatter .weeks dt { font-family: var(--mono); font-size: 11px; color: var(--muted); padding-top: 3px; }
+  .endmatter .weeks dd { margin: 0; color: var(--ink-soft); }
+
+  /* site footer */
+  .sitefoot { border-top: 1px solid var(--rule); background: var(--surface); margin-top: 20px; }
+  .sitefoot .in { max-width: 900px; margin: 0 auto; padding: 40px 26px 30px;
+                  display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 32px; }
+  .sitefoot .col { display: flex; flex-direction: column; gap: 9px; align-items: flex-start; }
+  .sitefoot h2 { margin: 0 0 2px; font-family: var(--mono); font-size: 10.5px; letter-spacing: .13em;
+                 text-transform: uppercase; color: var(--muted); font-weight: 500; }
+  .sitefoot a, .sitefoot button { font-family: var(--body); font-size: 14.5px; color: var(--ink-soft);
+                                  text-decoration: none; background: none; border: 0; padding: 0;
+                                  cursor: pointer; text-align: left; border-bottom: 1px solid transparent; }
+  .sitefoot a:hover, .sitefoot button:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .sitefoot .brand a { font-family: var(--mono); font-size: 11.5px; letter-spacing: .08em;
+                       text-transform: uppercase; color: var(--ink); }
+  .sitefoot .brand p { margin: 0; font-size: 14px; color: var(--muted); max-width: 30ch; }
+  .sitefoot .colophon { max-width: 900px; margin: 0 auto; padding: 16px 26px 34px;
+                        border-top: 1px solid var(--rule); display: flex; flex-wrap: wrap; gap: 6px 28px;
+                        font-size: 12.5px; color: var(--muted); }
+  @media (max-width: 700px) { .sitefoot .in { grid-template-columns: 1fr; gap: 26px; padding: 30px 16px 22px; }
+                              .sitefoot .colophon { padding: 14px 16px 26px; flex-direction: column; } }
+
+  /* the dock: pinned to the bottom, carrying the things used while reading */
+  .dock { position: fixed; left: 0; right: 0; bottom: 0; z-index: 75; background: var(--paper);
+          border-top: 1px solid var(--rule); }
+  .dock .prog { height: 2px; width: 0; background: var(--accent); transition: width .1s linear; }
+  .dock .in { max-width: 900px; margin: 0 auto; padding: 0 20px; height: 45px;
+              display: flex; align-items: center; gap: 2px; }
+  .dock button, .dock a { display: flex; align-items: center; gap: 7px; background: none; border: 0;
+              padding: 8px 10px; border-radius: 5px; cursor: pointer; text-decoration: none;
+              font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+              color: var(--muted); }
+  .dock button:hover, .dock a:hover { color: var(--ink); background: var(--surface); }
+  .dock button:focus-visible, .dock a:focus-visible { outline: 2px solid var(--accent); outline-offset: -1px; }
+  .dock svg { width: 13px; height: 14px; flex: none; }
+  .dock .end { margin-left: auto; }
+  .dock .n { font-family: var(--mono); font-size: 10px; line-height: 1.6; background: var(--sunk);
+             color: var(--ink-soft); border-radius: 9px; padding: 0 6px; min-width: 18px; text-align: center; }
+  .dock .n:empty { display: none; }
+  .dock #bmgo[data-set="1"] { color: var(--accent); }
+  .dock #bmgo[data-set="1"] svg { fill: currentColor; }
+  @media (max-width: 620px) { .dock .in { padding: 0 8px; } .dock .lab { display: none; } }
+
+  /* the highlights drawer, kept out of the reading */
+  .drawer[hidden] { display: none !important; }
+  .drawer { position: fixed; inset: 0; z-index: 90; }
+  .drawer .dback { position: absolute; inset: 0; background: rgba(0,0,0,.34); }
+  .dpanel { position: absolute; top: 0; right: 0; bottom: 0; width: min(460px, 100%);
+            background: var(--paper); border-left: 1px solid var(--rule); box-shadow: -8px 0 28px rgba(0,0,0,.16);
+            display: flex; flex-direction: column; gap: 4px; padding: 22px 26px 30px; overflow-y: auto; }
+  .dhead { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .dhead h2 { margin: 0; font-family: var(--display); font-size: 25px; font-weight: 600; }
+  .dclose { background: none; border: 0; font-size: 26px; line-height: 1; color: var(--muted);
+            cursor: pointer; padding: 0 4px; }
+  .dclose:hover { color: var(--ink); }
+  .dsub { margin: 0 0 14px; font-size: 14px; color: var(--muted); }
+
+
+
+  .ctx { border-left: 2px solid var(--rule); padding: 2px 0 2px 18px; display: block; margin: 26px 0; }
+  .ctx > summary { font-family: var(--display); font-size: 17.5px; font-weight: 600; color: var(--ink-soft); line-height: 1.25; }
+  .ctx > summary i { font-family: var(--mono); font-style: normal; font-size: 10.5px; letter-spacing: .1em;
+                     text-transform: uppercase; color: var(--muted); font-weight: 500; flex: none; padding-top: 3px; }
+  .ctx[open] > summary { color: var(--ink); }
+  .ctx p { font-size: 16.5px; color: var(--ink-soft); }
+  .seven { margin: 28px 0; display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--rule); }
+  .seven > div { border-bottom: 1px solid var(--rule); padding: 14px 0; display: grid; grid-template-columns: 30px 1fr; gap: 0 14px; }
+  .seven .n { font-family: var(--mono); font-size: 12px; color: var(--skim); padding-top: 3px; }
+  .seven .w { font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); }
+  .seven .cl { font-size: 16.5px; color: var(--ink); margin: 5px 0 0; }
+  .seven .rp { font-size: 15px; color: var(--ink-soft); margin: 6px 0 0; }
+  .seven .rp b { font-family: var(--mono); font-size: 10.5px; letter-spacing: .09em; text-transform: uppercase; color: var(--ink-soft); font-weight: 500; }
+  @media (max-width: 420px) { .seven > div { grid-template-columns: 1fr; gap: 0; } .seven .n { padding: 0 0 2px; } }
+  .exm { background: var(--skim-wash); border-left: 3px solid var(--skim); padding: 16px 20px; display: flex; flex-direction: column; gap: 10px; margin: 28px 0; }
+  .exm > b { font-family: var(--mono); font-size: 10.5px; letter-spacing: .11em; text-transform: uppercase; color: var(--skim); font-weight: 500; }
+  .exm p { font-size: 16.5px; color: var(--ink); }
+  .exm p b { color: var(--ink); }
+  .quo { border-left: 3px solid var(--accent); background: var(--surface); padding: 16px 20px; display: flex; flex-direction: column; gap: 10px; margin: 26px 0; }
+  .quo blockquote { margin: 0; font-family: var(--display); font-size: 18.5px; line-height: 1.5; color: var(--ink); }
+  .quo .src { font-family: var(--mono); font-size: 10.5px; letter-spacing: .07em; color: var(--muted); }
+  figure { margin: 28px 0; display: flex; flex-direction: column; gap: 9px; }
+  figure svg { max-width: 100%; height: auto; display: block; }
+  figcaption { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: .03em; line-height: 1.55; max-width: var(--figw); }
+
+  /* photographs, plates and maps */
+  figure.pic { margin: 24px 0; gap: 11px; max-width: var(--figw); }
+  /* A picture sits inside the reading, so it is capped at a height that leaves the paragraphs
+     on either side of it in view. At most of the window it filled the screen, the argument
+     disappeared behind it, and scrolling past a figure took as long as reading a section.
+     Detail is not lost: the image is a link to the file at full size. */
+  /* The box is sized on the link, in pixels worked out from the picture's own proportions for a
+     300px tall picture, and the image fills it. Sizing the image instead does not work: an image
+     that has not loaded yet has no size of its own, so with both axes auto it collapses to
+     nothing and the page jumps as it scrolls past, and clamping only the height leaves the width
+     where it was and squashes the picture. */
+  figure.pic a.zoom { display: block; align-self: flex-start; max-width: 100%; cursor: zoom-in; }
+  figure.pic img {
+    display: block; width: 100%; height: auto;
+    /* figure.pic is a column flexbox, whose align-items defaults to stretch. That stretched the
+       image to the full width of the measure and max-height then squashed it, so every portrait
+       picture came out distorted. align-self keeps the image at its own width. */
+    align-self: flex-start;
+    border: 1px solid var(--rule); border-radius: 6px; background: var(--surface);
+    transition: border-color .15s;
+  }
+  figure.pic a.zoom:hover img { border-color: var(--accent); }
+  figure.pic a.zoom:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  /* A line drawing with a transparent background is black ink on nothing, which in the dark
+     theme is black ink on a dark page and reads as an empty box. Give that kind of picture the
+     paper it was printed on. */
+  figure.pic img.ink { background: #fff; padding: 14px; }
+  @media (max-width: 700px) { figure.pic a.zoom { width: 100% !important; } }
+  figure.pic figcaption, figure.dia figcaption {
+    font-family: var(--body); font-size: 15px; line-height: 1.5;
+    letter-spacing: 0; color: var(--ink-soft); max-width: 74ch;
+  }
+  figure.pic figcaption b, figure.dia figcaption b { color: var(--ink); font-weight: 600; }
+  figure.pic .cred, figure.dia .cred {
+    display: block; margin-top: 6px;
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: .05em;
+    line-height: 1.5; color: var(--muted);
+  }
+
+  /* drawings made for this guide, framed the way the photographs are */
+  figure.dia { margin: 24px 0; gap: 11px; max-width: var(--figw); }
+  figure.dia .draw { max-width: 100%; overflow-x: auto; }
+  /* A drawing that illustrates a point in the flow is capped the way a picture is, so the
+     paragraph under it stays in view. A drawing that is a reference grid, like the nine authors
+     against three questions, is a thing to study and keeps its size. */
+  figure.dia svg[aria-labelledby="dg-matt"] { max-width: 470px; }
+  figure.dia svg[aria-labelledby="dg-seven"] { max-width: 560px; }
+  figure.dia svg {
+    display: block; width: 100%; height: auto;
+    border: 1px solid var(--rule); border-radius: 6px; background: var(--surface);
+  }
+  @media (max-width: 700px) {
+    /* On a phone the wider drawings would shrink their labels to about 5px, so each one keeps a
+       floor and its frame scrolls sideways, the way the table of nine texts already does. The
+       caption stays outside the frame and wraps to the screen. */
+    figure.dia svg[aria-labelledby="cvg-ttl"] { min-width: 660px; }
+    figure.dia svg[aria-labelledby="dg-comte-3s"] { min-width: 560px; }
+    figure.dia svg#dia-spine { min-width: 380px; }
+    figure.dia svg[aria-labelledby="dg-matt"] { min-width: 520px; }
+    figure.dia svg[aria-labelledby="dg-seven"] { min-width: 560px; }
+    figure.dia svg[aria-labelledby="dg-three7"] { min-width: 700px; }
+  figure.dia svg[aria-labelledby="dg-five7"] { min-width: 660px; }
+  }
+
+  /* inside the boxes, which already space their children */
+  .bq > figure.pic, .exm > figure.pic, .rd .body > figure.pic,
+  .bq > figure.dia, .exm > figure.dia, .rd .body > figure.dia { margin: 6px 0; }
+
+  .dg-box { fill: var(--surface); stroke: currentColor; stroke-opacity: .22; }
+  .dg-hi { fill: var(--close-wash); stroke: var(--close); stroke-opacity: 1; }
+  .dg-t { fill: currentColor; font-family: "Source Sans 3", -apple-system, sans-serif; }
+  .dg-m { fill: currentColor; font-family: "IBM Plex Mono", monospace; letter-spacing: .08em; }
+  .dg-dim { opacity: .62; }
+  .dg-ln { stroke: currentColor; fill: none; }
+
+
+  /* site header */
+  .site { position: sticky; top: 0; z-index: 70; background: var(--paper);
+          border-bottom: 1px solid var(--rule); }
+  .site .in { max-width: 900px; margin: 0 auto; padding: 0 26px; height: 52px;
+              display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+  .site a { text-decoration: none; }
+  /* The mark goes to the true left edge of the window. The bar already spans the window; only
+     its contents were penned into the 900px column, which left the mark floating in from the
+     edge with empty bar beside it. Everything else stays aligned with the body text.
+     Below the width where the column meets the edges there is no room, so it rejoins the row. */
+  /* display:block with no leading makes the anchor box exactly the size of the mark.
+     As an inline anchor its box carries line-height leading, so centring the anchor
+     left the mark itself 4.25px high. */
+  .site .hubmark { margin-right: 13px; display: block; line-height: 0; }
+  .site .hubmark svg { width: 28px; height: 28px; border-radius: 7px; }
+  @media (min-width: 1020px) {
+    .site .hubmark { position: absolute; left: 22px; top: 50%; transform: translateY(-50%);
+                     margin-right: 0; }
+  }
+  .site .hubmark:hover { opacity: .78; }
+  .site .hubmark:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px;
+                                 border-radius: 6px; }
+
+  .site .home { display: flex; align-items: center; gap: 9px; font-family: var(--mono);
+                font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); }
+  .site .home:hover { color: var(--ink); }
+  .site .home svg { width: 13px; height: 13px; flex: none; }
+  .site nav { display: flex; align-items: center; gap: 16px; }
+  .site nav .cur { font-family: var(--mono); font-size: 11px; letter-spacing: .08em;
+                   text-transform: uppercase; color: var(--muted); }
+  .site nav a { font-family: var(--mono); font-size: 11px; letter-spacing: .08em;
+                text-transform: uppercase; color: var(--accent); border-bottom: 1px solid transparent; }
+  .site nav a:hover { border-bottom-color: var(--accent); }
+  .site .disc { font-family: var(--body); font-size: 12px; font-weight: 400; color: var(--muted);
+                opacity: .8; letter-spacing: 0; text-decoration: none; white-space: nowrap;
+                border-bottom: 1px solid transparent; }
+  .site .disc:hover { opacity: 1; border-bottom-color: var(--rule); }
+  .site .disc i { font-style: normal; opacity: .5; padding: 0 6px; }
+  /* Four things share this row, so it tightens the spacing and holds each one on one line. */
+  .site .in { gap: 14px; }
+  .site .home, .site nav .cur, .site nav a { white-space: nowrap; }
+  /* The header is sticky, so a jump target has to reserve its height or it lands underneath it. */
+  [id] { scroll-margin-top: 74px; }
+  @media (max-width: 560px) { [id] { scroll-margin-top: 66px; } }
+
+  /* the bookmark: one per guide, the place reading stopped */
+  mark.hl.hl-b { background: none; padding: 0; box-shadow: inset 0 -2px 0 var(--accent); border-radius: 0; }
+  /* an inline ribbon after the words, so it cannot land on the line above it */
+  mark.hl.hl-b::after { content: ''; display: inline-block; width: 7px; height: 9px; margin-left: 4px;
+                        vertical-align: 0; background: var(--accent);
+                        clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 72%, 0 100%); }
+  @media (max-width: 1120px) { .site .disc { display: none; } }
+  @media (max-width: 560px) { .site .in { padding: 0 16px; height: 48px; gap: 12px; } .site nav .cur { display: none; } }
+  @media (max-width: 400px) { .site .in { gap: 10px; } }
+
+  /* vertical nav */
+  .wrap { position: relative; }
+  #nav { position: fixed; top: calc(50% + 26px); transform: translateY(-50%); left: max(10px, calc(50vw - 598px));
+         width: 132px; display: none; flex-direction: column; gap: 1px; z-index: 40; }
+  #nav a { display: block; font-family: var(--mono); font-size: 10.5px; letter-spacing: .03em;
+           color: var(--muted); line-height: 1.3; text-decoration: none; padding: 3px 0 3px 11px; border-left: 2px solid var(--rule-soft);
+           white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  /* The year each text was written, so the rail is also a timeline. The gaps are the point:
+     Plato to Bacon is two thousand years and Rousseau to Comte is eighty. */
+  #nav a i { font-style: normal; font-size: 9px; letter-spacing: .05em; opacity: .62; margin-left: 6px; }
+  #nav a:hover { color: var(--ink); border-left-color: var(--muted); }
+  #nav a.on { color: var(--accent); border-left-color: var(--accent); }
+  #nav a.grp { margin-top: 13px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .1em; border-left-color: transparent; padding-left: 0; }
+  #nav a.grp:first-child { margin-top: 0; }
+  #nav a.grp.day { margin-top: 15px; padding-top: 11px; border-top: 1px solid var(--rule);
+                   color: var(--accent); }
+  #nav a.grp.day:first-child { margin-top: 0; }
+  #nav a.grp.on { color: var(--accent); border-left-color: transparent; }
+  #nav a.core { color: var(--ink-soft); border-left-color: var(--rule); }
+  /* the contents list used to need a 1180px window. It takes its own column now, so it
+     appears from 1000px up, and only goes back to floating beside a centred page when
+     there is room for that. */
+  @media (min-width: 1000px) { :root { --navpad: 182px; } #nav { display: flex; left: 16px; width: 150px; } }
+  @media (min-width: 1320px) { :root { --navpad: 0px; } #nav { left: max(16px, calc(50vw - 640px)); } }
+  body { margin: 0; padding-left: var(--navpad); }
+  /* a full-bleed band that keeps its contents on the page column: the negative margin
+     widens the box to the window edge, the padding puts the content back where it was */
+  .site, .sitefoot { margin-left: calc(0px - var(--navpad)); padding-left: var(--navpad); }
+  /* the buttons move onto the page column. The progress line is taken out of the flow so it
+     keeps measuring the whole window, since the column starts a long way in */
+  .dock { padding-left: var(--navpad); padding-top: 2px; }
+  .dock .prog { position: absolute; top: 0; left: 0; }
+  #nav { top: 78px; transform: none; max-height: calc(100vh - 126px);
+         overflow-y: auto; scrollbar-width: none; }
+  #nav::-webkit-scrollbar { display: none; }
+  #nav > * { flex: 0 0 auto; }
+  #nav a.grp, #nav a.core { white-space: normal; overflow: visible; text-overflow: clip; }
+  #nav a.sb { display: none; font-family: var(--body); font-size: 11.5px; letter-spacing: 0;
+              line-height: 1.3; padding: 2.5px 0 2.5px 11px; margin-left: 9px;
+              white-space: normal; overflow: visible; text-overflow: clip; }
+  #nav a.sb.show { display: block; }
+  #nav a.sb b { font-family: var(--mono); font-size: 9.5px; font-weight: 500;
+                font-style: normal; color: var(--muted); margin-right: 5px; }
+  #nav a.sb:hover b, #nav a.sb.on b { color: var(--accent); }
+
+  /* glossary. Closed by default: it is a reference list and not something to read through,
+     and left open it makes the page look twice as long as it is. */
+  .glbox { border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); margin: 22px 0 0; }
+  .glbox > summary { list-style: none; cursor: pointer; padding: 15px 0; display: flex; align-items: baseline; gap: 12px;
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); }
+  .glbox > summary::-webkit-details-marker { display: none; }
+  .glbox > summary::after { content: 'show'; margin-left: auto; font-size: 11px; color: var(--muted); }
+  .glbox[open] > summary::after { content: 'hide'; }
+  .glbox > summary:hover { color: var(--ink); }
+  .glbox > summary b { font-family: var(--display); font-size: 16px; letter-spacing: 0; text-transform: none; font-weight: 600; color: var(--ink); }
+  .glbox > .gl { padding: 4px 0 26px; }
+  .gl { display: flex; flex-direction: column; gap: 26px; }
+  .gl-grp { display: flex; flex-direction: column; gap: 10px; }
+  .gl-grp > h3 { margin: 0; font-family: var(--display); font-size: 19px; font-weight: 600; }
+  .gl-grp > h3 span { font-family: var(--mono); font-size: 11px; color: var(--muted); font-weight: 400; letter-spacing: .05em; margin-left: 9px; }
+  .gl dl { margin: 0; display: grid; grid-template-columns: 186px 1fr; gap: 10px 18px; font-size: 16px; }
+  .gl dt { font-family: var(--display); font-style: italic; font-size: 16.5px; color: var(--ink); }
+  .gl dd { margin: 0; color: var(--ink-soft); }
+  @media (max-width: 680px) { .gl dl { grid-template-columns: 1fr; gap: 3px 0; } .gl dt { padding-top: 9px; } }
+
+  /* notes you write.
+     .nbpad is the well. It is recessed, because a recessed surface reads as somewhere to put
+     something in and a raised one reads as something to read, and a long note in a raised card
+     was reading as more of the guide's own prose. The label is drawn directly above the well,
+     close to it and aligned with its left edge, so a page of blocks stays scannable.
+     The left edge holds --rule while a block is empty and --accent once it holds something, from
+     the `has` class the editor already sets on .nbwrap.
+     Nothing in here touches .nb: the note text keeps the face, size, colour, line height and
+     spacing it has always had. */
+  .nbgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(298px, 1fr)); gap: 18px; }
+  .nbwrap { display: flex; flex-direction: column; gap: 6px; }
+  .nbwrap.wide { grid-column: 1 / -1; }
+  .nbhead { display: flex; align-items: baseline; justify-content: space-between; gap: 10px;
+            padding: 0 2px 0 3px; }
+  .nbhead b { font-family: var(--display); font-size: 16.5px; font-weight: 600; color: var(--ink); }
+  .nbhead span { font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .nbpad { position: relative; padding: 14px 16px 16px; background: var(--sunk);
+           border: 1px solid var(--rule); border-left: 3px solid var(--rule); border-radius: 8px;
+           box-shadow: inset 0 1px 0 rgba(0,0,0,.06);
+           transition: border-color .15s, box-shadow .15s; }
+  .nbwrap.has .nbpad { border-left-color: var(--accent); }
+  .nbwrap:focus-within .nbpad { border-color: var(--accent);
+           box-shadow: inset 0 1px 0 rgba(0,0,0,.06), 0 0 0 3px var(--close-wash); }
+  .nb { position: relative; font-size: 15.5px; line-height: 1.6; color: var(--ink); min-height: 46px; outline: none; }
+  .nb.is-empty::before, .cbody.is-empty::before {
+    content: attr(data-ph); position: absolute; left: 0; top: 0; color: var(--muted);
+    font-style: italic; pointer-events: none; }
+  .nb p { margin: 0 0 8px; max-width: none; }
+  .nb p:last-child { margin-bottom: 0; }
+  .nb ul, .nb ol { margin: 5px 0 8px; padding-left: 27px; }
+  .nb li { margin-bottom: 4px; }
+  .nb b, .nb strong { font-weight: 600; }
+  .nb h3, .nb h4, .nb h5 { margin: 12px 0 5px; font-family: var(--display); font-weight: 600; line-height: 1.25; color: var(--ink); }
+  .nb h3 { font-size: 19px; } .nb h4 { font-size: 17px; } .nb h5 { font-size: 15.5px; }
+  .nb > :first-child { margin-top: 0; }
+  .nb hr { border: 0; border-top: 1px solid var(--rule); margin: 12px 0; }
+  .nb blockquote { margin: 8px 0; padding-left: 12px; border-left: 2px solid var(--rule); color: var(--ink-soft); }
+  .c-y { color: var(--c-y); }
+  .c-p { color: var(--c-p); }
+  .c-m { color: var(--muted); }
+  .c-g { color: var(--accent); }
+  /* normal text, spelled out. Needed where a colour is inherited from an enclosing span
+     and stripping that span would recolour words the writer meant to keep. */
+  .c-n { color: var(--ink); }
+  #nb-bar { position: absolute; z-index: 50; display: flex; gap: 2px; padding: 3px; background: var(--surface); border: 1px solid var(--rule); border-radius: 5px; box-shadow: 0 2px 8px rgba(0,0,0,.12); }
+  #nb-bar[hidden] { display: none !important; }
+  #nb-bar button { min-width: 24px; height: 22px; border: 0; border-radius: 3px; background: none; cursor: pointer; color: var(--ink-soft); font-family: var(--display); font-size: 14px; padding: 0 5px; }
+  #nb-bar button:hover { background: var(--sunk); color: var(--ink); }
+  #nb-bar button.i { font-style: italic; }
+  #nb-bar button.l { font-family: var(--mono); font-size: 11px; }
+  #nb-bar .sep { width: 1px; background: var(--rule); margin: 3px 2px; }
+  #nb-bar button.sw { width: 18px; min-width: 18px; height: 18px; border-radius: 3px; align-self: center;
+                      border: 1px solid var(--rule); font-size: 0; }
+  #nb-bar button.sw.y { background: var(--c-y); }
+  #nb-bar button.sw.p { background: var(--c-p); }
+  #nb-bar button.sw.g { background: var(--accent); }
+  #nb-bar button.sw.m { background: var(--muted); }
+  #nb-bar button.sw.x { background: none; font-size: 12px; color: var(--muted); border-color: transparent; }
+  .nbhint { font-family: var(--mono); font-size: 10.5px; color: var(--muted); letter-spacing: .03em; }
+  /* The standing explanation, closed and below the blocks, drawn the same way as the one on
+     the lecture notes page. */
+  details.about { margin-top: 6px; border-top: 1px solid var(--rule); padding-top: 12px; }
+  details.about summary { cursor: pointer; font-family: var(--mono); font-size: 11px;
+    letter-spacing: .1em; text-transform: uppercase; color: var(--muted); list-style: none;
+    display: flex; align-items: center; gap: 8px; }
+  details.about summary::-webkit-details-marker { display: none; }
+  details.about summary::before { content: ""; width: 0; height: 0; border-left: 5px solid currentColor;
+    border-top: 4px solid transparent; border-bottom: 4px solid transparent; transition: transform .15s; }
+  details.about[open] summary::before { transform: rotate(90deg); }
+  details.about summary:hover { color: var(--accent); }
+  details.about summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  details.about .aboutin { display: flex; flex-direction: column; gap: 11px; padding: 14px 0 4px; }
+  /* The pinned bar is z-index 75 and its top edge reaches 635, so an undo offered at the
+     foot of the window sat under it and could not be clicked. The pill clears the bar and
+     stacks above it, because it holds a control with a few seconds to live. */
+  #save { position: fixed; right: 16px; bottom: 64px; z-index: 80; font-family: var(--mono); font-size: 10.5px;
+          letter-spacing: .04em; padding: 6px 10px; border-radius: 4px; background: var(--surface);
+          border: 1px solid var(--rule); color: var(--muted); opacity: 0; transition: opacity .25s; pointer-events: none; }
+  #save.on { opacity: 1; }
+  #save.bad { color: #9B2C2C; border-color: #9B2C2C; opacity: 1; pointer-events: auto; }
+  #save.act { opacity: 1; pointer-events: auto; display: flex; align-items: center; gap: 10px; }
+  #save button { font-family: var(--mono); font-size: 10.5px; letter-spacing: .07em; text-transform: uppercase;
+                 color: var(--accent); background: none; border: 0; border-bottom: 1px solid var(--accent);
+                 padding: 0 0 1px; cursor: pointer; }
+  #save button:hover { color: var(--ink); border-bottom-color: var(--ink); }
+  :root[data-theme="dark"] #save.bad, :root:not([data-theme="light"]) #save.bad { color: #F09B9B; border-color: #F09B9B; }
+    .sidenote { font-size: 13.5px; line-height: 1.45; color: var(--muted); max-width: 64ch;
+      padding-left: 12px; border-left: 1px solid var(--rule); margin: -2px 0 4px; }
+    .sidenote b { color: var(--ink-soft); font-weight: 600; }
+
+  /* highlights list */
+  .bm { display: flex; flex-direction: column; gap: 22px; }
+  .bmg { display: flex; flex-direction: column; gap: 2px; }
+  .bmg > h3 { margin: 0 0 6px; font-family: var(--display); font-size: 18px; font-weight: 600; }
+  .bmg > h3 span { font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-left: 9px; }
+  .bmi { display: grid; grid-template-columns: 12px 1fr; gap: 0 11px; align-items: start;
+         padding: 8px 10px 8px 0; border-top: 1px solid var(--rule-soft); text-align: left;
+         background: none; border-left: 0; border-right: 0; border-bottom: 0; cursor: pointer; width: 100%; font: inherit; color: inherit; }
+  .bmi:hover { background: var(--surface); }
+  .bmi:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+  .bmi .dots { display: flex; flex-direction: column; gap: 4px; padding-top: 7px; }
+  .bmi .dot { width: 9px; height: 9px; border-radius: 2px; flex: none; }
+  .bmi .dot.y { background: rgba(255,206,0,.85); }
+  .bmi .dot.p { background: rgba(255,92,168,.7); }
+  .bmi .dot.uy { background: none; box-shadow: inset 0 -3px 0 var(--ul-y); }
+  .bmi .dot.up { background: none; box-shadow: inset 0 -3px 0 var(--ul-p); }
+  .bmi .dot.ug { background: none; box-shadow: inset 0 -3px 0 var(--ul-g); }
+  .bmi .dot.n { background: none; border: 1px dashed var(--accent); }
+  .bmi .dot.b { background: var(--accent); clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 70%, 0 100%); border-radius: 0; height: 11px; width: 8px; }
+  .bmi .bt { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+  .bmi .where { font-family: var(--mono); font-size: 10px; letter-spacing: .07em; text-transform: uppercase;
+                color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .bmi .q { font-size: 15px; line-height: 1.5; color: var(--ink); }
+  .bmi .q .dim { color: var(--muted); }
+  /* the list reuses the page's own highlight colours, so a row looks like what it points at */
+  .bmi .q mark.hl { cursor: inherit; }
+  .bmi .cm { display: block; font-size: 13.5px; color: var(--muted); margin-top: 2px;
+             border-left: 2px solid var(--rule); padding-left: 9px; }
+  .bmg-b { padding: 14px 16px 12px; background: var(--surface); border-left: 2px solid var(--accent); margin-bottom: 10px; }
+  .bmg-b > h3 { color: var(--accent); }
+  .bmg-b .bmi { border-top: 0; padding-top: 0; }
+  .bmg-b .bmi:hover { background: none; text-decoration: underline; text-decoration-color: var(--rule); }
+  .bmclear { align-self: flex-start; margin-top: 6px; background: none; border: 0; padding: 2px 0; cursor: pointer;
+             font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase;
+             color: var(--muted); border-bottom: 1px solid var(--rule); }
+  .bmclear:hover { color: var(--ink); }
+  .bmempty { font-size: 16px; color: var(--muted); }
+  mark.hl.flash { animation: fl 1.4s ease-out; }
+  @keyframes fl { 0%,55% { box-shadow: 0 0 0 4px var(--close-wash); } 100% { box-shadow: 0 0 0 0 transparent; } }
+
+  /* comment rail */
+  #cmts { position: absolute; top: 0; left: 100%; margin-left: 18px; width: 202px; display: none; }
+  #cmts.on { display: block; }
+  .cmt { position: absolute; width: 202px; background: transparent; border-left: 2px solid var(--rule); padding: 2px 0 2px 9px; display: flex; flex-direction: column; gap: 3px; }
+  .cmt.inline { position: static; width: auto; max-width: 420px; margin: 10px 0 10px 16px; }
+  .cmt .q { font-family: var(--mono); font-size: 9px; letter-spacing: .02em; color: var(--muted); line-height: 1.4; opacity: .8; overflow: hidden; }
+  .cmt .cbody { position: relative; font-family: var(--body); font-size: 12.5px; line-height: 1.45; color: var(--ink-soft); outline: none; min-height: 17px; }
+  .cmt .cbody p { margin: 0 0 5px; max-width: none; }
+  .cmt .cbody p:last-child { margin-bottom: 0; }
+  .cmt .cbody ul, .cmt .cbody ol { margin: 4px 0 5px; padding-left: 17px; }
+  .cmt .cbody li { margin-bottom: 2px; }
+  .cmt .cbody hr { border: 0; border-top: 1px solid var(--rule); margin: 7px 0; }
+  .cmt .row { display: none; justify-content: flex-end; }
+  .cmt:hover .row, .cmt:focus-within .row { display: flex; }
+  .cmt button { font-family: var(--mono); font-size: 9px; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); background: none; border: 0; cursor: pointer; padding: 1px 0; }
+  .cmt button:hover { color: var(--ink); }
+  .cmt:hover, .cmt:focus-within { border-left-color: var(--muted); }
+  .cmt.act { border-left-color: var(--ink-soft); }
+
+  mark.hl { background: transparent; color: inherit; padding: .1em 0; border-radius: 2px; cursor: pointer; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+  mark.hl-y { background: var(--hl-y); }
+  mark.hl-p { background: var(--hl-p); }
+  mark.hl-n { background: var(--hl-n); border-bottom: 1px dashed var(--accent); }
+  mark.hl-uy { background: none; border-radius: 0; box-shadow: inset 0 -2px 0 var(--ul-y); }
+  mark.hl-up { background: none; border-radius: 0; box-shadow: inset 0 -2px 0 var(--ul-p); }
+  mark.hl-ug { background: none; border-radius: 0; box-shadow: inset 0 -2px 0 var(--ul-g); }
+  mark.hl-n.act { background: var(--hl-n-act); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) mark.hl-y { background: rgba(255,206,0,.30); } :root:not([data-theme="light"]) mark.hl-p { background: rgba(255,92,168,.30); } :root:not([data-theme="light"]) mark.hl-n { background: rgba(100,191,161,.12); } }
+  #hl-bar[hidden] { display: none !important; }
+  #hl-bar { position: absolute; z-index: 50; display: flex; gap: 3px; padding: 3px; background: var(--surface); border: 1px solid var(--rule); border-radius: 5px; box-shadow: 0 2px 8px rgba(0,0,0,.12); }
+  #hl-bar button { width: 17px; height: 17px; border: 1px solid var(--rule); border-radius: 3px; cursor: pointer; padding: 0; }
+  #hl-bar button[data-c="y"] { background: var(--hl-y); }
+  #hl-bar button[data-c="p"] { background: var(--hl-p); }
+  #hl-bar button[data-c="uy"] { background: var(--paper); box-shadow: inset 0 -4px 0 var(--ul-y); }
+  #hl-bar button[data-c="ug"] { background: var(--paper); box-shadow: inset 0 -4px 0 var(--ul-g); }
+  #hl-bar button[data-c="up"] { background: var(--paper); box-shadow: inset 0 -4px 0 var(--ul-p); }
+  #hl-bar button[data-c="n"] { background: var(--paper); display: flex; align-items: center; justify-content: center; color: var(--ink-soft); }
+  #hl-bar button[data-c="n"] svg { width: 11px; height: 11px; display: block; }
+  #hl-bar button[data-c="b"] { background: var(--paper); display: flex; align-items: center; justify-content: center; color: var(--accent); }
+  #hl-bar button[data-c="b"] svg { width: 11px; height: 11px; display: block; }
+  #hl-bar button:hover { border-color: var(--muted); }
+  #hl-bar button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .hl-hint { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: .03em; margin-top: 12px; }
+
+  @media (max-width: 680px) {
+    .wrap { padding: 34px 16px 60px; gap: 38px; }
+    .facts, footer .weeks, .links { grid-template-columns: 1fr; gap: 3px 0; }
+    .facts dt, footer .weeks dt, .links dt { padding-top: 9px; }
+    .ses, .turn { grid-template-columns: 1fr; gap: 8px; }
+    .turn .who { flex-direction: row; align-items: baseline; gap: 9px; }
+    .rd { gap: 0 16px; }
+    .nine { min-width: 620px; }
+  }
+  /* A word defined in any week's glossary. The line is meant to be ignorable until wanted. */
+  .gl-w { border-bottom: 1px dashed var(--gl-line); cursor: pointer; }
+  .gl-w:hover { border-bottom-color: var(--accent); }
+  #gl-pop[hidden] { display: none !important; }
+  #gl-pop { position: absolute; z-index: 80; width: 330px; max-width: calc(100vw - 24px);
+            background: var(--surface); border: 1px solid var(--rule); border-radius: 6px;
+            box-shadow: 0 6px 22px rgba(0,0,0,.28); padding: 13px 15px 14px; }
+  #gl-pop .t { font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em;
+               text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+  #gl-pop .d { font-family: var(--body); font-size: 14.5px; line-height: 1.5; color: var(--ink-soft); }
+  #gl-pop .d b { color: var(--ink); font-weight: 600; }
+  #gl-pop .w { margin-top: 9px; font-family: var(--mono); font-size: 10px; color: var(--muted); }
+  @media print { .gl-w { border-bottom: 0; } #gl-pop { display: none !important; } }
+  @media print {
+    .site, #nav, #hl-bar, #nb-bar, #save, #cmts, .drawer, .sitefoot, .dock { display: none !important; }
+    body { padding-bottom: 0; }
+    body { background: #fff; font-size: 11.5px; }
+    .wrap { max-width: none; padding: 0; gap: 26px; }
+    .rd, section, figure, .exm, .ctx, .quo { break-inside: avoid; }
+    mark.hl { background: none; border-bottom: 1.5px solid #888; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+<header class="site"><div class="in"><a class="hubmark" href="https://myermcat.github.io/course-hub/" title="Course hub" aria-label="Course hub, the front page"><svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#22282E"/><rect x="13" y="13" width="16" height="16" rx="4" fill="#7C5CB8"/><rect x="35" y="13" width="16" height="16" rx="4" fill="#3E9E82"/><rect x="13" y="35" width="16" height="16" rx="4" fill="#4E90C8"/><rect x="35" y="35" width="16" height="16" rx="4" fill="#C08A3E"/></svg></a><a class="home" href="../"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 8H2M7 3 2 8l5 5"/></svg>PHI2394</a><a class="disc" href="../#about" title="How these guides were written">Written with Claude<i>|</i>AI can make mistakes</a><nav aria-label="This week"><span class="cur">Week 8</span><a href="notes.html">Lecture notes</a></nav></div></header>
+
+<nav id="nav" aria-label="Contents">
+  <a class="grp" href="#s-arg">What the week argues</a>
+  <a class="grp day" href="#s-days">Monday 2 Nov</a>
+  <a class="core" href="#ch1" title="Tremain ch. 1 &middot; read properly">Groundwork<i>ch 1</i></a>
+  <a class="sb" data-of="ch1" href="#ch1-1"><b>1.1</b>What philosophy assumes</a>
+  <a class="sb" data-of="ch1" href="#ch1-2"><b>1.2</b>Phineas Gage</a>
+  <a class="sb" data-of="ch1" href="#ch1-3"><b>1.3</b>The three accounts of disability</a>
+  <a class="sb" data-of="ch1" href="#ch1-4"><b>1.4</b>Disability as an apparatus</a>
+  <a class="sb" data-of="ch1" href="#ch1-5"><b>1.5</b>Who is in the profession</a>
+  <a class="sb" data-of="ch1" href="#ch1-6"><b>1.6</b>Justice is blind</a>
+  <a class="sb" data-of="ch1" href="#ch1-7"><b>1.7</b>Fricker&#8217;s two cases</a>
+  <a class="sb" data-of="ch1" href="#ch1-8"><b>1.8</b>Why she drops ignorance</a>
+  <a class="grp day" href="#s-days">Wednesday 4 Nov</a>
+  <a class="core" href="#ch2" title="Tremain ch. 2 &middot; read properly">Power and Normalization<i>ch 2</i></a>
+  <a class="sb" data-of="ch2" href="#ch2-1"><b>2.1</b>Discourse is not language</a>
+  <a class="sb" data-of="ch2" href="#ch2-2"><b>2.2</b>Biopower</a>
+  <a class="sb" data-of="ch2" href="#ch2-3"><b>2.3</b>The five things normalization does</a>
+  <a class="sb" data-of="ch2" href="#ch2-4"><b>2.4</b>Where normal came from</a>
+  <a class="sb" data-of="ch2" href="#ch2-5"><b>2.5</b>The Normalization Movement</a>
+  <a class="sb" data-of="ch2" href="#ch2-6"><b>2.6</b>Racism against the abnormal</a>
+  <a class="sb" data-of="ch2" href="#ch2-7"><b>2.7</b>Government, meaning conduct</a>
+  <a class="sb" data-of="ch2" href="#ch2-8"><b>2.8</b>Totalizing and individualizing</a>
+  <a class="grp" href="#s-gloss">Glossary</a>
+</nav>
+
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">PHI 2394 B00 &middot; reading for Monday 2 November</div>
+    <h1>Is Disability a Fact About Bodies, or Something Power Made?</h1>
+    <p class="standfirst">Philosophy has treated disability as a plain biological disadvantage, too obvious to be worth a philosopher&#8217;s time. Tremain argues that this is false, that it was produced by a specific machinery of power from the eighteenth century on, and that philosophy helped build it. Her evidence for the last part is the profession itself: disabled philosophers are about two per cent of it.</p>
+  </header>
+
+  <div class="strip-block">
+    <div class="tally">
+      <div><b>45</b><span>pages of ch. 1, printed 1 to 45</span></div>
+      <div><b>34</b><span>pages of ch. 2, printed 47 to 80</span></div>
+      <div class="t-a"><b>2</b><span>chapters, one book, one author</span></div>
+      <div class="t-b"><b>79</b><span>pages in all, the longest week of the term</span></div>
+    </div>
+  </div>
+
+  <section id="s-days">
+    <h2>Monday and Wednesday</h2>
+    <p class="sidenote">The reading guide lists both chapters together under November 2 to 4 and does
+    not say which class takes which. This splits them in the order she gives, one chapter each,
+    which is uneven: 45 pages and 34.</p>
+    <div class="plan">
+      <div class="ses">
+        <div class="when"><b>Monday</b><span>2 November</span></div>
+        <div class="what">
+          <h3>Chapter 1, the groundwork</h3>
+          <p><b>Ch. 1</b>, printed pages 1 to 45. Forty-five pages, and the longer of the two. It
+          sets out her position and spends its second half on the demographics of professional
+          philosophy. The numbers are quick to read.</p>
+        </div>
+      </div>
+      <div class="ses">
+        <div class="when"><b>Wednesday</b><span>4 November</span></div>
+        <div class="what">
+          <h3>Chapter 2, the Foucault</h3>
+          <p><b>Ch. 2</b>, printed pages 47 to 80. Thirty-four pages, and the harder of the two,
+          because it is almost entirely Foucault's apparatus explained. Read it slowly, and read
+          the glossary on this page first.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="s-arg">
+    <h2>If disability is a natural fact, philosophy has nothing to say about it. Tremain says it is not a natural fact.</h2>
+
+    <div class="keep">
+      <b>The claim that does all the work</b>
+      There is no such thing as an impairment lying under a disability, waiting to be discovered.
+      Impairment was <b>produced</b> by the same machinery that produced disability, and produced
+      as a bad thing, a defect, something to be corrected.
+    </div>
+
+    <div class="body">
+      <p><b>What philosophy has been doing, and why she calls it a problem.</b> Open any mainstream
+      philosophy paper on disability and the questions run like this. What does society owe
+      disabled people? How should it compensate them for their natural disadvantage and their bad
+      luck? When is euthanasia permissible? Every one of those questions takes for granted that
+      disability is a known quantity: a biological fact that medicine can describe accurately,
+      the same in every century and every country, and a disadvantage. On that assumption there is
+      nothing for a philosopher to investigate about what disability <em>is</em>. There is only the
+      ethics of what to do about it.</p>
+
+      <p><b>Her reply is that the assumption is itself the thing to investigate.</b> She argues
+      that disability is an <b>apparatus</b>, a word she takes from Foucault, meaning a loose
+      machine made of laws, clinics, statistics, school rules, census categories, research
+      programmes and philosophy papers, which came together in Europe from about the eighteenth
+      century and sorts people. On that account nobody <em>has</em> a disability, the way nobody
+      has a race. People are placed, by the machine, on one side of a line it drew.</p>
+
+    </div>
+
+    <div class="body">
+      <p><b>And then the part that makes the book unusual.</b> Most philosophers writing about
+      power stop at the argument. Tremain goes and counts. Disabled philosophers are about two per
+      cent of the profession, against twenty-two per cent of the general population, and she
+      argues the two facts are connected: a discipline that teaches disability as a natural defect
+      will not see a disabled person as a colleague.</p>
+    </div>
+
+    <div class="body">
+      <p><b>Three accounts of disability, and the week turns on telling them apart.</b> The guide
+      uses her names for them throughout.</p>
+      <ol>
+        <li><b>The medical or individualist account.</b> Disability is a functional limitation of a
+        particular person. The response is to adjust the environment a little so that person can be
+        accommodated into it, with the environment otherwise left as it was.</li>
+        <li><b>The British social model</b>, from the United Kingdom in the 1970s. Impairment is a
+        neutral fact about a body. <b>Disability</b> is the oppression society imposes on people who
+        have one. The response is to change society.</li>
+        <li><b>Disability as an apparatus</b>, which is hers. Impairment is not neutral and not
+        prior. The machine produced it, and produced it as a defect, so there is no untouched
+        biological layer underneath for the other two accounts to stand on.</li>
+      </ol>
+      <p><b>What she is attacking in the second one</b>, which is the live argument of the week:
+      the British social model keeps a natural fact at the bottom. Her charge is that putting a
+      natural fact at the bottom is what lets philosophy go on treating the whole subject as
+      settled biology.</p>
+    </div>
+
+    <div class="body">
+      <p><b>Two readings, one question.</b> Chapter 1 states the position and counts the
+      profession. Chapter 2 supplies the Foucault that the position rests on, which is why it
+      reads as a different kind of writing.</p>
+      <table class="rt">
+        <thead><tr><th>The reading</th><th>What it contributes</th><th>The case it runs on</th></tr></thead>
+        <tbody>
+          <tr><td><b>Chapter 1</b><span>Groundwork</span></td>
+              <td>The three accounts of disability, the apparatus, and the data on who is in professional philosophy.</td>
+              <td>Phineas Gage, and Fricker on epistemic injustice</td></tr>
+          <tr><td><b>Chapter 2</b><span>Power and Normalization</span></td>
+              <td>Where the category <em>normal</em> came from, and the machinery that uses it: biopower, discipline, security, government.</td>
+              <td>The Normalization Movement&#8217;s sex education, and Foucault on racism</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="body">
+      <p><b>How this follows from the last three weeks</b>, since the course has been building to
+      it without saying so.</p>
+      <ol>
+        <li><b>Week 5 said the knower's position affects the knowledge.</b> Tremain applies it to
+        a group the course has not mentioned, and finds the argument has never been applied there.</li>
+        <li><b>Week 6 gave standpoint theory and the inversion thesis</b>, that people an
+        arrangement costs something are placed to see how it works. Tremain quotes Alison Wylie on
+        exactly that, and then points out that feminist philosophy has run the argument for gender,
+        race and class and stopped.</li>
+        <li><b>Week 7 asked who gets counted as a scientist.</b> This week asks who gets counted as
+        a philosopher, with numbers.</li>
+      </ol>
+      <p><b>And one piece of unfinished business from week 6.</b> Miranda Fricker's
+      <em>Epistemic Injustice</em> was the book behind the idea that a person can be wronged
+      specifically as a knower. Tremain takes two of Fricker's own examples and argues they are the
+      same case, which Fricker treats as different. Section 1.7 has it.</p>
+    </div>
+  </section>
+
+  <section>
+      <article class="rd p-close" id="ch1">
+        <div class="stripe"></div>
+        <div class="main">
+          <div class="head">
+            <h3><span class="ch">CH 1</span>Groundwork for a Feminist Philosophy of Disability</h3>
+            <div class="who">Shelley L. Tremain, <em>Foucault and Feminist Philosophy of Disability</em>, University of Michigan Press, 2017</div>
+            <div class="meta"><span class="tag">Read properly</span><span>45 pp, printed pages 1 to 45</span></div>
+          </div>
+
+          <div class="why"><b>What you get out of this chapter.</b> The three accounts of disability with the difference between them stated, which the field itself keeps confusing. A worked example of a famous case being embellished for a century and a half, Phineas Gage. Hard numbers on who is employed in philosophy, which are the most citable thing on the reading list. And an argument against Miranda Fricker that you can use on any question about epistemic injustice, since Fricker is the standard reference and this is a published objection to her.</div>
+
+          <h4 id="ch1-1" data-n="1.1">What philosophy assumes before it starts</h4>
+          <div class="qa">
+            <b>The question</b>
+            What is already decided by the time a philosopher asks what society owes disabled people?
+          </div>
+
+          <div class="body">
+            <p><b>The answer: that disability is a defect, that medicine can describe it accurately, and that it is the same thing everywhere.</b> Tremain lists the questions mainstream philosophy actually asks. What does society owe disabled people? How should it compensate them for their <b>natural disadvantage</b> and their <b>brute bad luck</b>? On what grounds is euthanasia justifiable? Is experimenting on cognitively disabled subjects permissible?</p>
+            <p><b>Read the nouns in them.</b> Natural disadvantage. Bad luck. Each one answers in advance the question of what disability is: a property of a person, non-accidental, biological, and bad. Nothing in the list asks whether that is true.</p>
+            <p><b>Her name for what this does.</b> It casts disability as <b>self-evident and therefore philosophically uninteresting</b>, something science and medicine represent accurately and philosophy need only respond to ethically. And if the inequalities disabled people face follow from a biological fact, then they belong to medicine, and a philosophy department has no business with them.</p>
+          </div>
+
+          <div class="body">
+            <p><b>Old and new biosocial science, which is the cleanest way into her position.</b> She takes the pair from Dorothy E. Roberts.</p>
+            <table class="rt">
+              <thead><tr><th></th><th>What it says</th><th>What follows</th></tr></thead>
+              <tbody>
+                <tr><td><b>The old biosocial science</b></td>
+                    <td>Biological differences produce social inequality</td>
+                    <td>Fix the bodies. Social problems come from oppressed people's biology, so intervene on the biology</td></tr>
+                <tr><td><b>The new biosocial science</b></td>
+                    <td>Social inequality produces biological differences</td>
+                    <td>There is no natural body. Every cell and everything that happens to it is affected by society, and genes determine nothing on their own</td></tr>
+              </tbody>
+            </table>
+            <p><b>The claim she takes from the second row</b>, in Roberts's words: all of life is at once biological and social, and biology is constituted by its interactions with the environment, where the older picture had it as a separate thing that then meets one. Brains are plastic. A plastic brain is a situated brain.</p>
+          </div>
+
+          <h4 id="ch1-2" data-n="1.2">Phineas Gage, and what a hundred and seventy years did to him</h4>
+          <div class="qa">
+            <b>The question</b>
+            Why spend four pages of a philosophy book on a railway worker from 1848?
+          </div>
+
+          <div class="body">
+            <p><b>What happened.</b> In 1848 Phineas Gage, a railway construction supervisor in Vermont, was setting an explosive charge when it went off. A tamping iron, a metre-long rod, entered his left cheek and came out through the top of his skull. He survived, and he lived twelve more years.</p>
+            <p><b>What the textbooks say happened next.</b> Gage became a different man: foul-mouthed, unable to hold a plan, with no respect for anybody, a shiftless drunk. Two-thirds of introductory psychology textbooks mention him. A neurologist at Harvard calls the case <b>ground zero</b> for the relationship between damage to a specific part of the brain and a change in behaviour, and says it helped establish brain science as a field. Philosophers of mind use him to argue about personal identity and the true self.</p>
+            <p><b>What the record actually supports.</b> The doctor everybody cites, John Martyn Harlow, treated Gage for a few months and reported that his friends found him <b>no longer Gage</b>. That is close to the whole of the contemporary evidence. The drunk, the brute and the shiftless wanderer were added over the following century by people who never met him. Malcolm Macmillan, who wrote the book on Gage, allows that there was a personality change and says it lasted two or three years. Gage then went to Chile and worked as a long-distance stagecoach driver, a job that needs skill, concentration and the ability to get on with passengers.</p>
+          </div>
+
+          <div class="body">
+            <p><b>Why she puts it first.</b> Because it is a case where you can watch the thing being made. Science, medicine and philosophy are practices people carry out, and an ableist assumption went into this one and came out the other side as a fact in a textbook. Her questions to the field: in what ways has this story about Gage confirmed what philosophers already believed about disabled people, and what has repeating it done to who feels welcome in a philosophy department?</p>
+          </div>
+
+
+          <figure class="pic">
+            <a class="zoom" style="width:252px" href="img/gage.jpg" target="_blank" rel="noopener" title="Open this picture at full size">
+              <img src="img/gage.jpg" width="1200" height="1409" loading="lazy" alt="A nineteenth-century daguerreotype in an ornate gilt case. A young man in a dark coat, patterned waistcoat, white shirt and bow tie sits facing the camera, holding a long tapering iron rod diagonally across his body with both hands. His left eye is closed. His expression is calm.">
+            </a>
+            <figcaption><b>Phineas Gage, photographed some years after the accident, holding the tamping iron.</b> This is the evidence the textbooks do not print. He has dressed for a studio portrait, he is composed, and he is holding the rod across his body the way other men of his time posed with a tool of their trade. The daguerreotype was identified as Gage only in 2009, more than a century after the ill-tempered shiftless drunk had become the standard account of him. <span class="cred">Photograph by Jack and Beverly Wilgus of a daguerreotype in their collection, CC BY-SA 3.0, via Wikimedia Commons.</span></figcaption>
+          </figure>
+
+          <h4 id="ch1-3" data-n="1.3">Three accounts of disability, and why the field keeps mixing them up</h4>
+          <div class="qa">
+            <b>The question</b>
+            When two authors both say they hold &#8220;the social model&#8221;, what might each of them mean?
+          </div>
+
+          <div class="body">
+            <p><b>The answer: two different things, and the confusion between them is why a lot of the literature does not add up.</b> Tremain says the term <b>social model</b> gets used at two levels at once.</p>
+            <ol>
+              <li><b>Broadly</b>, to mean any account of disability that is not the medical one. That is a whole family of positions.</li>
+              <li><b>Narrowly</b>, to mean one particular member of that family: the <b>British social model</b>, which came out of the United Kingdom in the 1970s.</li>
+            </ol>
+            <p><b>The technical name for the mistake.</b> Confusing a <b>type</b> with a <b>token</b> of that type, which is the distinction between a kind of thing and a particular instance of it. Saying &#8220;I drive a Toyota&#8221; and &#8220;I drive a car&#8221; are claims at different levels, and an argument that slides between them proves nothing.</p>
+          </div>
+
+          <div class="body">
+            <p><b>The British social model, set out properly</b>, because it is the position the week is arguing against.</p>
+            <ul>
+              <li><b>Impairment</b> is a neutral fact about a body. A missing limb, a condition, a difference. Neutral means it carries no judgment on its own.</li>
+              <li><b>Disability</b> is the oppression that society imposes on people who have one: steps with no ramp, employers who will not hire, benefits withheld.</li>
+              <li><b>It is built on a parallel with sex and gender.</b> Impairment is to disability what sex is to gender: the body underneath, and the social arrangement built on top.</li>
+              <li><b>Its politics is systemic.</b> Grounded in historical materialism, it says improving disabled people's circumstances needs social, political and economic change, and never adjustments made one person at a time.</li>
+            </ul>
+            <p><b>The individualist, or medical, account.</b> Disability is a functional limitation that a particular person has. The response is <b>accommodation</b>: adjust the workplace a little so this person fits into it, and leave the workplace otherwise as it was. Tremain's objection is that it fits liberal individualism exactly and does not escape the eugenic push of the medical model it claims to replace.</p>
+            <p><b>Why the mixing matters for a sentence you will meet.</b> When an author uses <em>disabled people</em> and <em>people with disabilities</em> as though they were interchangeable, they have run two incompatible positions together. The first phrase belongs to the social model, where people are disabled by an arrangement. The second belongs to the individualist one, where a person carries a disability around.</p>
+          </div>
+
+
+          <figure class="dia">
+            <div class="draw">
+            <svg viewBox="0 -9 700 318" role="img" aria-labelledby="dg-three8" style="font-family:var(--body)">
+            <title id="dg-three8">The three accounts of disability set out as three columns, giving what each says disability is, what it says about impairment, and what it asks somebody to change.</title>
+            <text class="dg-m dg-dim" x="12" y="15" font-size="11" style="font-family:var(--mono)">MEDICAL, INDIVIDUALIST</text>
+            <text class="dg-m dg-dim" x="248" y="15" font-size="11" style="font-family:var(--mono)">BRITISH SOCIAL MODEL</text>
+            <text class="dg-m dg-dim" x="484" y="15" font-size="11" style="font-family:var(--mono)">APPARATUS, HERS</text>
+            <rect class="dg-box" x="8" y="24" width="220" height="269" rx="3"/>
+            <rect class="dg-box" x="244" y="24" width="220" height="269" rx="3"/>
+            <rect class="dg-box dg-hi" x="480" y="24" width="212" height="269" rx="3"/>
+
+            <text class="dg-t dg-dim" x="20" y="48" font-size="11" style="font-family:var(--mono)">DISABILITY IS</text>
+            <text class="dg-t dg-dim" x="256" y="48" font-size="11" style="font-family:var(--mono)">DISABILITY IS</text>
+            <text class="dg-t dg-dim" x="492" y="48" font-size="11" style="font-family:var(--mono)">DISABILITY IS</text>
+            <text class="dg-t" x="20" y="72" font-size="12.5">A functional limitation</text>
+            <text class="dg-t" x="20" y="89" font-size="12.5">of a particular person.</text>
+            <text class="dg-t" x="256" y="72" font-size="12.5">Oppression imposed</text>
+            <text class="dg-t" x="256" y="89" font-size="12.5">on people who have</text>
+            <text class="dg-t" x="256" y="106" font-size="12.5">an impairment.</text>
+            <text class="dg-t" x="492" y="72" font-size="12.5">A position the machine</text>
+            <text class="dg-t" x="492" y="89" font-size="12.5">puts you in. Nobody</text>
+            <text class="dg-t" x="492" y="106" font-size="12.5">has one.</text>
+
+            <text class="dg-t dg-dim" x="20" y="144" font-size="11" style="font-family:var(--mono)">IMPAIRMENT IS</text>
+            <text class="dg-t dg-dim" x="256" y="144" font-size="11" style="font-family:var(--mono)">IMPAIRMENT IS</text>
+            <text class="dg-t dg-dim" x="492" y="144" font-size="11" style="font-family:var(--mono)">IMPAIRMENT IS</text>
+            <text class="dg-t" x="20" y="168" font-size="12.5">The same thing as</text>
+            <text class="dg-t" x="20" y="185" font-size="12.5">disability. The words</text>
+            <text class="dg-t" x="20" y="202" font-size="12.5">are used together.</text>
+            <text class="dg-t" x="256" y="168" font-size="12.5">A neutral fact about</text>
+            <text class="dg-t" x="256" y="185" font-size="12.5">a body, carrying no</text>
+            <text class="dg-t" x="256" y="202" font-size="12.5">judgment of its own.</text>
+            <text class="dg-t" x="492" y="168" font-size="12.5">Produced by the same</text>
+            <text class="dg-t" x="492" y="185" font-size="12.5">machine, and produced</text>
+            <text class="dg-t" x="492" y="202" font-size="12.5">as a defect.</text>
+
+            <text class="dg-t dg-dim" x="20" y="240" font-size="11" style="font-family:var(--mono)">SO CHANGE</text>
+            <text class="dg-t dg-dim" x="256" y="240" font-size="11" style="font-family:var(--mono)">SO CHANGE</text>
+            <text class="dg-t dg-dim" x="492" y="240" font-size="11" style="font-family:var(--mono)">SO CHANGE</text>
+            <text class="dg-t" x="20" y="264" font-size="12.5">The person, or adjust</text>
+            <text class="dg-t" x="20" y="281" font-size="12.5">one workplace a little.</text>
+            <text class="dg-t" x="256" y="264" font-size="12.5">Society: its economy,</text>
+            <text class="dg-t" x="256" y="281" font-size="12.5">politics and structures.</text>
+            <text class="dg-t" x="492" y="264" font-size="12.5">What counts as normal,</text>
+            <text class="dg-t" x="492" y="281" font-size="12.5">philosophy included.</text>
+            </svg>
+            </div>
+            <figcaption><b>Where the three accounts put the body, and what each one leaves standing.</b> Read the middle row across. The first column never separates impairment from disability, so there is nothing to argue about. The second makes impairment neutral, which is what gives the model its politics and what Tremain attacks. The third denies there is a neutral layer, which is why it has to take philosophy itself as part of what needs changing.</figcaption>
+          </figure>
+
+          <h4 id="ch1-4" data-n="1.4">Her own position: disability is an apparatus</h4>
+          <div class="qa">
+            <b>The question</b>
+            If impairment is not the natural thing underneath disability, what is it?
+          </div>
+
+          <div class="body">
+            <p><b>The answer: a product of the same machinery, made to look like the thing underneath.</b> This is the sentence the whole book rests on, and it is worth reading twice. Impairment is both <b>an effect of</b> the apparatus of disability and <b>a mechanism of</b> it. The machine produced impairment, produced it as a defect, and then points at it as the natural fact that justifies everything the machine does.</p>
+            <p><b>What an apparatus is</b>, in Foucault's own definition from 1980, which chapter 2 unpacks properly. A thoroughly mixed and interconnected collection of discourses, institutions, buildings, regulations, laws, scientific statements, administrative measures and moral propositions, which comes together in response to an urgent need at a particular moment in history.</p>
+            <p><b>What belongs to this one.</b> Medical and scientific research, government policy, administrative decisions, academic work, activism, art, literature, popular culture. Parts of it contradict each other and it still holds together.</p>
+          </div>
+
+          <div class="keep">
+            <b>Nobody has a disability, and saying somebody does is a category mistake</b>
+            Her parallel: people are racialised by the apparatus of race, and nobody <em>has</em> a
+            race. People are sexed by the apparatus of sex, and nobody <em>has</em> a sex. So
+            people are disabled or not disabled by the apparatus of disability, and nobody has a
+            disability. On this account the phrase <b>a person with a disability</b> names
+            something that does not exist. The terms are <b>disabled people</b> and
+            <b>nondisabled people</b>, and both are positions the machine puts you in.
+          </div>
+
+          <div class="body">
+            <p><b>And nobody is outside it.</b> That males are also sexed, and white people also racialised, is the point of the parallel. Not being subjected as disabled does not put you outside the apparatus; it puts you in its other position.</p>
+            <p><b>Which classifications she treats as products of the machine</b>, and this is a list to have, because each one sounds like a plain description: visible against invisible disabilities, mental against psychological, physical against cognitive, severe against moderate against mild, high functioning against low functioning. Her claim is that every one of those pairs puts disability back inside the individual as a personal attribute.</p>
+          </div>
+
+          <h4 id="ch1-5" data-n="1.5">What the profession actually looks like</h4>
+          <div class="qa">
+            <b>The question</b>
+            What happens to a discipline's membership when it teaches that one kind of person is naturally defective?
+          </div>
+
+          <div class="body">
+            <p><b>Her answer is a set of numbers, and they are the most usable thing in the chapter.</b> Philosophy, she says, is the most homogeneous discipline in the humanities and social sciences, rivalled only by the sciences and engineering.</p>
+            <table class="rt">
+              <thead><tr><th>Group</th><th>Share of full-time philosophy faculty</th></tr></thead>
+              <tbody>
+                <tr><td>Women</td><td>About 25 per cent in the United States, 30 to 35 per cent in Canada, about 25 per cent in Australia</td></tr>
+                <tr><td>Black philosophers</td><td>About 2 per cent in North America</td></tr>
+                <tr><td>Philosophers of colour</td><td>An estimated 10 per cent or less</td></tr>
+                <tr><td>Disabled philosophers</td><td>About 2 per cent, by an American Philosophical Association survey. Under 1 per cent in Canada, by the Canadian Philosophical Association in 2013</td></tr>
+                <tr><td>Disabled people, general population</td><td>About 22 per cent of North America</td></tr>
+              </tbody>
+            </table>
+            <p><b>The comparison to hold.</b> Twenty-two per cent of the population, two per cent of the profession.</p>
+          </div>
+
+          <div class="body">
+            <p><b>And the same pattern across the university.</b> A freedom of information request at the University of California at Berkeley found 24 of 1,552 full-time faculty were disabled, about 1.5 per cent.</p>
+            <p><b>The experiment, which is the piece of evidence to cite.</b> Researchers at Rutgers and Syracuse sent out identical r&eacute;sum&eacute;s and cover letters for accounting jobs. The only difference was that some cover letters said the applicant was disabled. Employers expressed interest <b>26 per cent less often</b> in the disabled applicants. For experienced candidates the gap was 34 per cent; for candidates at the start of their careers, 15 per cent.</p>
+            <p><b>What that produces outside the university.</b> Thirty-four per cent of working-age disabled people are employed, against 74 per cent of nondisabled people. Most of those employed are in low-paying work. In 2014, 28.2 per cent of disabled people in the United States lived in poverty, against 13 per cent of nondisabled people, and the gap widens once the extra housing and transport costs many disabled people carry are counted.</p>
+          </div>
+
+          <div class="body">
+            <p><b>Her argument about accommodation, which applies to every university including this one.</b> Most campuses run an <b>accommodationist</b> policy: the building and the timetable are designed for one group, whose requirements count as standard and whose costs are invisible because nobody calls them costs. Anybody else has <b>special needs</b>, which are extra, which are granted on request, and which almost always need a doctor's certificate first.</p>
+            <p><b>So the effort is unequal</b>, and that is the whole of the objection. One group gets what it needs by the building existing. The other has to medicalise its situation and work through an administration to get the equivalent.</p>
+            <p><b>Two things she connects it to.</b> Rawls set the claims of disabled people aside in <em>A Theory of Justice</em>, to be dealt with after the basic structure had been settled for <b>normal and cooperating</b> people. And the <b>reasonable accommodation</b> standard that the Americans with Disabilities Act of 1990 is built around is, on her reading, a limiting device: it fixes how far anybody is allowed to ask.</p>
+          </div>
+
+
+          <figure class="dia">
+            <div class="draw">
+            <svg viewBox="0 -9 700 206" role="img" aria-labelledby="dg-bars8" style="font-family:var(--body)">
+            <title id="dg-bars8">Four bars comparing the share of disabled people in the North American population with their share of philosophy faculty in the United States and Canada, and the share of faculty at one university.</title>
+            <text class="dg-m dg-dim" x="12" y="14" font-size="11" style="font-family:var(--mono)">SHARE OF THE GROUP, PER CENT</text>
+
+            <text class="dg-t" x="12" y="48" font-size="12.5">Disabled people, North America</text>
+            <rect class="dg-box dg-hi" x="300" y="35" width="286" height="17" rx="2"/>
+            <text class="dg-t" x="596" y="48" font-size="12.5" font-weight="600">22</text>
+
+            <text class="dg-t" x="12" y="88" font-size="12.5">Disabled philosophers, United States</text>
+            <rect class="dg-box" x="300" y="75" width="26" height="17" rx="2"/>
+            <text class="dg-t" x="336" y="88" font-size="12.5" font-weight="600">2</text>
+
+            <text class="dg-t" x="12" y="128" font-size="12.5">Disabled philosophers, Canada</text>
+            <rect class="dg-box" x="300" y="115" width="13" height="17" rx="2"/>
+            <text class="dg-t" x="323" y="128" font-size="12.5" font-weight="600">under 1</text>
+
+            <text class="dg-t" x="12" y="168" font-size="12.5">Disabled faculty, Berkeley, all subjects</text>
+            <rect class="dg-box" x="300" y="155" width="20" height="17" rx="2"/>
+            <text class="dg-t" x="330" y="168" font-size="12.5" font-weight="600">1.5</text>
+
+            <path class="dg-ln dg-dim" d="M300 28 L300 186" stroke-width="1" stroke-dasharray="3 4"/>
+            </svg>
+            </div>
+            <figcaption><b>Twenty-two per cent of the population, two per cent of the profession.</b> The top bar is the share of North Americans who are disabled. The three below it are what philosophy employs, with a whole university added for comparison. Tremain's argument is that the gap is produced by the subject matter: a discipline that teaches disability as a natural defect does not see a disabled person as a colleague. <span class="cred">American Philosophical Association membership survey 2016, Canadian Philosophical Association 2013, Centers for Disease Control 2015, and a freedom of information request reported in the Chronicle of Higher Education.</span></figcaption>
+          </figure>
+
+          <h4 id="ch1-6" data-n="1.6">Justice is blind, and why she will not let it pass</h4>
+          <div class="qa">
+            <b>The question</b>
+            Some ableist metaphors are plainly insults. Is <em>justice is blind</em> one of them?
+          </div>
+
+          <div class="body">
+            <p><b>The defence she is answering.</b> Philosophers who concede that <em>blind to the implications</em> and <em>morally blind</em> are ableist still want to keep <b>justice is blind</b> and <b>blind review</b>, on the grounds that these associate blindness with something good. Justice is a virtue. So the metaphor is a compliment.</p>
+            <p><b>Her answer, in one step.</b> The phrase does not describe how good justice is. It describes <b>how justice works</b>: by not knowing who the parties are. Personal characteristics and circumstances are treated as irrelevant and withheld from the people deciding.</p>
+            <p><b>So the association is between blindness and not knowing</b>, which is the thing being praised. Same for blind review, where what is praised is that the reviewer does not know whose paper it is.</p>
+          </div>
+
+          <div class="body">
+            <p><b>The test she offers.</b> If <em>justice is blind</em> were a statement about how good justice is, then saying &#8220;justice is blind, and that is a bad thing&#8221; would be a contradiction. It is not a contradiction. Legal theorists including Martha Minow and Martha Fineman have argued precisely that, that a justice which refuses to see people's circumstances goes wrong.</p>
+          </div>
+
+          <div class="body">
+            <p><b>Ableist exceptionism</b>, which is her coinage and worth having for an exam. It names the following: philosophers who argue at length that language constructs social reality, and that sexist and racist speech helps produce inequality, then treat disability metaphors as politically neutral figures of speech.</p>
+            <p><b>Why she calls it a decision somebody makes.</b> It would be very strange if linguistic practices built every other social inequality and somehow left this one alone. The exception has to be made, which means somebody is making it.</p>
+            <p><b>The same shape, in the research.</b> Philosophers have produced a large literature on <b>implicit bias</b>, meaning unconscious attitudes that affect hiring and grading, measured by a test called the Implicit Association Test, and on <b>stereotype threat</b>, the idea that knowing you belong to a stigmatised group worsens your performance. Tremain raises two problems. The test's reliability has been attacked by philosophers of science, and stereotype threat is one of the claims in social psychology's replication crisis. And every one of those studies looks at gender, or race, or the two together. The Rutgers-Syracuse experiment on disabled applicants exists, and the philosophical literature on bias does not cite it.</p>
+          </div>
+
+          <h4 id="ch1-7" data-n="1.7">Fricker's two cases, which Tremain says are the same case</h4>
+          <div class="qa">
+            <b>The question</b>
+            When is not having the words for your own situation an injustice, and when is it just bad luck?
+          </div>
+
+          <div class="body">
+            <p><b>Start with Fricker's term.</b> <b>Hermeneutical injustice</b> means being wronged because the shared stock of concepts has no name for something that happens to you, and has none because people like you had no hand in making that stock.</p>
+            <p><b>Fricker's case for it.</b> A woman with postpartum depression in the mid twentieth century. She and her husband both treat her state as a personal failing, because there is no other available description. Then she joins a consciousness-raising group and hears, over forty-five minutes, that it is a mix of physiological facts and isolation. Fricker's verdict: she was wronged in her capacity as a knower, because women were shut out of making the concepts.</p>
+            <p><b>Fricker's contrasting case, three pages later.</b> Somebody has a medical condition that affects their social behaviour, at a time when the condition is undiagnosed and not understood. They cannot explain themselves, they are in the dark, and other people's failure to understand them does them real harm. Fricker's verdict: not an injustice. <b>A poignant case of circumstantial bad luck.</b></p>
+          </div>
+
+          <div class="body">
+            <p><b>What Fricker says separates them.</b> In the first case there were <b>background social conditions</b> that produced the gap: women were powerless relative to men, so they had unequal say in making the concepts. In the second case, on her account, there were no such conditions. Nobody made the concept missing. It just was.</p>
+          </div>
+
+          <div class="keep">
+            <b>Tremain&#8217;s objection, which is that the background conditions are there in both</b>
+            The norms that decide what counts as acceptable behaviour, acceptable communication,
+            rationality and emotional self-control are produced, and produced by the apparatus of
+            disability. A person whose behaviour falls outside them is discredited, ignored and
+            stigmatised by a machine, and never by chance. Until the mad pride movement and its
+            relatives, the concepts those people needed in order to see their situation as
+            political were unavailable to them, for the same kind of reason women lacked the
+            concepts for postpartum depression.
+          </div>
+
+          <div class="body">
+            <p><b>So the charge is specific.</b> Fricker has put the disability case in the bad-luck box because she assumes disability is outside power to begin with, which is the assumption the whole book is attacking. And putting it there, in a book about epistemic injustice, is itself an instance of the thing the book is about.</p>
+            <p><b>What makes this worth having for an exam.</b> Fricker is the standard reference on epistemic injustice, and this is a published objection to her on her own ground, by somebody who otherwise thinks her work is useful.</p>
+          </div>
+
+          <h4 id="ch1-8" data-n="1.8">Why she refuses the phrase &#8220;epistemology of ignorance&#8221;</h4>
+          <div class="qa">
+            <b>The question</b>
+            Week 6 gave us a term for actively produced not-knowing. Why does Tremain drop it?
+          </div>
+
+          <div class="body">
+            <p><b>The term, and where it comes from.</b> Charles Mills, in <em>The Racial Contract</em> of 1997, writes that the agreement among white people produces an <b>inverted epistemology, an epistemology of ignorance</b>, with the result that white people are in general unable to understand the world they themselves made. Philosophers of race and feminist philosophers built a field on it, and week 6 used it.</p>
+            <p><b>Tremain's first objection: the term is ableist.</b> Its users insist they mean large structural forces and never a gap in anybody's head, and then they cannot describe it without reaching for cognitive failure. Her list of the words that turn up: obliviousness, delusion, collective amnesia, blindness, moral blindness, cognitive dysfunction. The vocabulary says the structure is a defective mind.</p>
+            <p><b>And the sentence she quotes to finish it</b>, from Stacy Clifford Simplican, on what the term implies once you line it up with its opposite: <b>Better politics demands smarter people.</b> If ignorance marks the morally inferior, then the cognitively superior come out morally superior, which is the opposite of what anybody wanted the term for.</p>
+          </div>
+
+          <div class="body">
+            <p><b>Her second objection: it is classist.</b> How much somebody knows depends on literacy, schooling, technology, mobility, food and shelter. An epistemology that scores people on knowledge without counting any of that is scoring them on their circumstances.</p>
+            <p><b>Her replacement: the epistemology of domination.</b> Same job, and the name points at the structure.</p>
+          </div>
+
+          <div class="kone"><b>If you keep one thing.</b> Impairment is <b>both an effect of and a mechanism of</b> the apparatus of disability. That one clause is the difference between Tremain and the British social model, and the British social model is what most of the field holds. Everything else in the chapter follows from it: if there is no neutral biological layer, then philosophy cannot hand disability over to medicine, and the two per cent figure stops being a coincidence.</div>
+
+          <div class="mynote"><b>My note</b><span>The long middle section on the profession reads quickly and is full of numbers, so it is cheap marks. Have the <b>2 per cent against 22 per cent</b> comparison, the <b>26 per cent</b> r&eacute;sum&eacute; result, and the <b>24 of 1,552</b> at Berkeley. The three accounts of disability in 1.3 are the thing an essay question will most likely want, because the whole field turns on them. <b>Ableist exceptionism</b> and <b>epistemology of domination</b> are her two coinages and both are one-line definitions. If a question invites a criticism of a named philosopher, use 1.7 on Fricker.</span></div>
+
+          <div class="quar">
+            <b>Where it belongs in the quarrel</b>
+            <ul>
+              <li><b>It answers week 5 and 6.</b> Those weeks argued that the knower's position affects the knowledge. This runs the argument for a group the course never mentioned and finds nobody had run it.</li>
+              <li><b>It answers week 7.</b> Giordano asked who is allowed to be a scientist. Tremain asks who is allowed to be a philosopher, and puts numbers on the answer.</li>
+              <li><b>It is answered by anybody holding the British social model</b>, who will say that denying a neutral impairment underneath leaves nothing for disability politics to stand on, since you can no longer point at a body and say society failed it.</li>
+              <li><b>It is answered by Fricker</b>, who would say the medical case has no background conditions because nobody designed the concept to be missing.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+  </section>
+
+  <section>
+      <article class="rd p-close" id="ch2">
+        <div class="stripe"></div>
+        <div class="main">
+          <div class="head">
+            <h3><span class="ch">CH 2</span>Power and Normalization</h3>
+            <div class="who">Shelley L. Tremain, <em>Foucault and Feminist Philosophy of Disability</em>, University of Michigan Press, 2017</div>
+            <div class="meta"><span class="tag">Read properly</span><span>34 pp, printed pages 47 to 80</span></div>
+          </div>
+
+          <div class="why"><b>What you get out of this chapter.</b> The Foucault vocabulary, explained by somebody using it for something. Biopower, discipline, normalization, government, genealogy, dispositif: six terms that turn up across philosophy and that the course has so far used without defining. It also gives you a dated account of where the word <b>normal</b> came from, which is late-eighteenth-century medicine, and one worked case of a reforming movement producing exactly what it set out to end.</div>
+
+
+          <figure class="pic">
+            <a class="zoom" style="width:168px" href="img/foucault.jpg" target="_blank" rel="noopener" title="Open this picture at full size">
+              <img src="img/foucault.jpg" width="515" height="912" loading="lazy" alt="A coarse newspaper halftone photograph of a bald man in his forties wearing heavy dark-framed glasses, a jacket, white shirt and dark tie, looking slightly to one side.">
+            </a>
+            <figcaption><b>Michel Foucault, 1926 to 1984, in a Lisbon newspaper in April 1968.</b> He held the Chair in the History of Systems of Thought at the Coll&egrave;ge de France from 1971 until his death, and lectured there every week from January to June on whatever he was researching. Those lecture courses, published in English decades later, are where most of the material in this chapter comes from. <span class="cred">Di&aacute;rio de Lisboa, 25 April 1968, public domain, via Wikimedia Commons.</span></figcaption>
+          </figure>
+
+          <h4 id="ch2-1" data-n="2.1">Discourse, which does not mean language</h4>
+          <div class="qa">
+            <b>The question</b>
+            Foucault says discourse produces its objects. What is a discourse, if words are only part of it?
+          </div>
+
+          <div class="body">
+            <p><b>The answer: the conditions that decide what can count as a statement at all.</b> Tremain says plainly that philosophers and disability theorists get this wrong, taking discourse to mean language and communication. It is wider. A discourse covers what gets said, how, in which settings, why, <b>whose saying it carries authority</b>, and what historical conditions made the topic sayable in the first place.</p>
+            <p><b>Karen Barad's version, which is the clearest.</b> Discourses are not signifying systems or grammars or speech acts. They are the historically specific material conditions that enable and constrain what can be known, and they are actual social conditions, and nothing transcendental.</p>
+            <p><b>So the claim that follows.</b> Discursive practices produce the subjects and objects of knowledge, where you might have thought they merely describe them.</p>
+          </div>
+
+          <div class="body">
+            <p><b>Nominalism, which is the metaphysics underneath.</b> The world does not arrive divided into categories waiting to be discovered. People do the dividing, construct facts, and then verify statements about them. There are no natural kinds and no natural order.</p>
+            <p><b>Foucault's own statement of it</b>, from 1972: what he wants is to dispense with things, and to put in place of the supposed treasure of things existing before discourse the regular formation of objects that emerge only within it.</p>
+            <p><b>What she does and does not claim.</b> She sets aside stars, photons and horses: whether <em>those</em> have identities before anyone names them is not her fight. Her only ontological commitments are about human history and practice.</p>
+          </div>
+
+          <h4 id="ch2-2" data-n="2.2">Biopower, and the century it came from</h4>
+          <div class="qa">
+            <b>The question</b>
+            What changed about government in Europe in the eighteenth century?
+          </div>
+
+          <div class="body">
+            <p><b>The answer: government stopped being mainly a collector of taxes and became a manager of populations.</b> People moved into Western European cities, or were brought there by force under slavery, in numbers that had no precedent. That concentration created new problems for whoever was in charge: sanitation, overcrowding, hunger, infant mortality, the balance between how many people there were and what there was to feed them.</p>
+            <p><b>Population is the new object</b>, and Foucault stresses it is a modern idea. Before the eighteenth century there was no such thing to govern.</p>
+            <p><b>Biopower</b> is his name for the set of techniques that emerged to manage it. His own definition, from the 1977 lectures: the set of mechanisms through which the basic biological features of the human species became the object of a political strategy. Or, in the shortest form, the moment when Western societies took on board the fact that human beings are a species.</p>
+          </div>
+
+          <div class="body">
+            <p><b>What the old picture of power got wrong, on Foucault's account.</b> From Aristotle through Locke and Rousseau to Rawls, political philosophy asked about legitimacy and sovereignty: what makes rule legitimate, what grounds rights. Those accounts treat power as a thing an individual holds, like a possession, in the form of inherent rights, which can then be handed over to make a sovereign.</p>
+            <p><b>His counterclaims, and they are the part to remember.</b></p>
+            <ol>
+              <li><b>Power is not held, it is exercised.</b> It exists only in action.</li>
+              <li><b>Power is not fundamentally repressive.</b> Violence and consent are instruments or results of it, and neither is what it is.</li>
+              <li><b>Power works best through productive constraints.</b> It makes things, including the categories of person it then governs.</li>
+              <li><b>So the question to ask is how.</b> By what means is it exercised?</li>
+            </ol>
+          </div>
+
+          <div class="body">
+            <p><b>Why sex is at the centre of it.</b> A form of power aimed at the biological features of a species has to take an interest in how the species reproduces. From the eighteenth century the state needed to know about age at marriage, legitimacy of births, frequency of sexual relations, the effect of contraception.</p>
+            <p><b>And this is where Foucault contradicts the usual story.</b> The period is normally described as one of repression and silence about sex. His claim is the opposite: an explosion of discourse about sex, because the state needed to know.</p>
+            <p><b>What biopower built.</b> Public hygiene medicine with centralised institutions. Campaigns to medicalise the new thing called a population. The idea of a <b>health risk</b>, and from it mass interventions such as immunisation and sewers. Insurance and savings schemes against accident and illness. Censuses and statistics to produce forecasts and averages. And security mechanisms that separate out parts of a population, in Foucault's own list blind people, lepers, witches and perverts, so as to maximise the conditions for life.</p>
+          </div>
+
+          <div class="body">
+            <p><b>Tremain's line about disability's place in this.</b> The methods for watching and classifying disability were not a by-product of biopower. They were instrumental in bringing it into being.</p>
+          </div>
+
+          <h4 id="ch2-3" data-n="2.3">Normalization, and the five things it does</h4>
+          <div class="qa">
+            <b>The question</b>
+            How does a form of power that claims to be improving life end up excluding people?
+          </div>
+
+          <div class="body">
+            <p><b>The answer: by averaging.</b> The modern idea of <b>normal</b> consolidated alongside the new statistics, and Fran&ccedil;ois Ewald's formulation is the useful one: the norm let a power aimed at producing and ordering social strength take over the work that seizure and repression used to do. It turned the negative restraints of law into the positive controls of normalization.</p>
+            <p><b>What technologies of normalization do.</b> They isolate what gets called an anomaly in a population so that corrective techniques can act on it. Tremain's warning: they are not neutral responses to anomalies that were already there. They systematically produce the perception of an anomaly in the first place, impairment among them.</p>
+            <p><b>Dividing practices</b>, Foucault's term: ways of combining a scientific discourse with segregation, so that an undifferentiated mass of people gets sorted into mad and sane, sick and healthy, criminal and law-abiding. Through them a person becomes attached to an identity and comes to understand themselves in scientific terms.</p>
+          </div>
+
+          <div class="body">
+            <p><b>The five operations, which is the list to memorise.</b> Normalization works as a punishment, and it:</p>
+            <ol>
+              <li><b>Compares.</b> Every action is referred to a whole that is at once a field of comparison and a rule to follow.</li>
+              <li><b>Differentiates.</b> Individuals are separated from each other by their distance from that rule, which functions as a floor, an average or a target.</li>
+              <li><b>Hierarchises.</b> Natures, grades, levels and abilities are ranked and given numbers.</li>
+              <li><b>Homogenises.</b> The ranking introduces a conformity that has to be reached.</li>
+              <li><b>Excludes.</b> The far side of the line, the abnormal, is codified and enforced by a penalty: correction, segregation.</li>
+            </ol>
+            <p><b>Why it is phrased as a punishment.</b> Foucault found normalization first in eighteenth-century military schools, orphanages and boarding schools, where it worked as <b>a perpetual penalty</b>. The aim is a <b>docile body</b>, meaning one that can be used, transformed and improved.</p>
+          </div>
+
+          <div class="keep">
+            <b>Discipline enables subjects to act in order to constrain them</b>
+            That sentence is Tremain's summary of modern discipline and it is worth holding, because
+            it is the thing that separates this account of power from the one where power says no.
+            You are given more to do, more finely specified, and the specification is the control.
+          </div>
+
+          <div class="body">
+            <p><b>Discipline and security, and why the distinction matters.</b> Foucault separates two ways normalization runs, and insists the second did not replace the first. Sovereign power, discipline and security all operate at once; what changes is the emphasis.</p>
+            <table class="rt">
+              <thead><tr><th></th><th>How it works</th><th>Which comes first</th></tr></thead>
+              <tbody>
+                <tr><td><b>Discipline</b></td>
+                    <td>Encloses a space and trains within it. School, barracks, prison</td>
+                    <td>The <b>norm</b> is set, and the normal is derived from it. Foucault suggests calling this <b>normation</b></td></tr>
+                <tr><td><b>Security</b></td>
+                    <td>Expands outward, taking in production, behaviour, markets, consumers</td>
+                    <td>The <b>normal</b> is plotted first, from the distributions, and the norm is derived from it. This is normalization in the strict sense</td></tr>
+              </tbody>
+            </table>
+            <p><b>What security does with the curves.</b> It plots the normal and the abnormal together, and then works to bring the less favourable distributions towards the more favourable ones, gradually.</p>
+          </div>
+
+
+          <figure class="dia">
+            <div class="draw">
+            <svg viewBox="0 -9 700 232" role="img" aria-labelledby="dg-five8" style="font-family:var(--body)">
+            <title id="dg-five8">The five operations of normalization set out as five steps in order, each with what it does to a person.</title>
+            <text class="dg-m dg-dim" x="12" y="14" font-size="11" style="font-family:var(--mono)">WHAT NORMALIZATION DOES, IN ORDER</text>
+            <rect class="dg-box" x="8" y="26" width="132" height="76" rx="3"/>
+            <rect class="dg-box" x="148" y="26" width="132" height="76" rx="3"/>
+            <rect class="dg-box" x="288" y="26" width="132" height="76" rx="3"/>
+            <rect class="dg-box" x="428" y="26" width="132" height="76" rx="3"/>
+            <rect class="dg-box dg-hi" x="568" y="26" width="124" height="76" rx="3"/>
+            <text class="dg-t" x="20" y="50" font-size="13" font-weight="600">1 Compare</text>
+            <text class="dg-t" x="160" y="50" font-size="13" font-weight="600">2 Differentiate</text>
+            <text class="dg-t" x="300" y="50" font-size="13" font-weight="600">3 Hierarchise</text>
+            <text class="dg-t" x="440" y="50" font-size="13" font-weight="600">4 Homogenise</text>
+            <text class="dg-t" x="580" y="50" font-size="13" font-weight="600">5 Exclude</text>
+            <text class="dg-t dg-dim" x="20" y="72" font-size="11.5">Refer every act to</text>
+            <text class="dg-t dg-dim" x="20" y="88" font-size="11.5">one rule</text>
+            <text class="dg-t dg-dim" x="160" y="72" font-size="11.5">Rank people by</text>
+            <text class="dg-t dg-dim" x="160" y="88" font-size="11.5">distance from it</text>
+            <text class="dg-t dg-dim" x="300" y="72" font-size="11.5">Put numbers on</text>
+            <text class="dg-t dg-dim" x="300" y="88" font-size="11.5">the differences</text>
+            <text class="dg-t dg-dim" x="440" y="72" font-size="11.5">Make the rule a</text>
+            <text class="dg-t dg-dim" x="440" y="88" font-size="11.5">thing to reach</text>
+            <text class="dg-t dg-dim" x="580" y="72" font-size="11.5">Penalise the far</text>
+            <text class="dg-t dg-dim" x="580" y="88" font-size="11.5">side of the line</text>
+            <path class="dg-ln" d="M140 64 L148 64 M280 64 L288 64 M420 64 L428 64 M560 64 L568 64" stroke-width="1.2"/>
+            <path class="dg-ln dg-dim" d="M74 110 L74 140 L630 140 L630 110" stroke-width="1" stroke-dasharray="3 4"/>
+            <text class="dg-t dg-dim" x="200" y="164" font-size="12">And the output is a population homogeneous enough to be used and modified,</text>
+            <text class="dg-t dg-dim" x="200" y="181" font-size="12">which is what the whole sequence was for.</text>
+            <text class="dg-t dg-dim" x="200" y="206" font-size="12">Foucault found it first in military schools, orphanages and boarding schools.</text>
+            </svg>
+            </div>
+            <figcaption><b>Nothing in the sequence requires anybody to be hostile.</b> Each step is an ordinary administrative act, and the fifth follows from the first four. That is Foucault's claim about why this form of power is hard to argue with: there is no moment where somebody decides to exclude. The decision is made by the measuring.</figcaption>
+          </figure>
+
+          <h4 id="ch2-4" data-n="2.4">Where the word <em>normal</em> came from, which is medicine</h4>
+          <div class="qa">
+            <b>The question</b>
+            Is <em>normal</em> a plain descriptive word?
+          </div>
+
+          <div class="body">
+            <p><b>The answer: it is a nineteenth-century invention that carries a judgment inside a description.</b> Ian Hacking supplies the history. The sense of <b>normal</b> meaning usual, regular, common or typical becomes current after 1840, with a first citation of <em>normal, or typical</em> in 1828. It came out of the study of life, and specifically out of medicine.</p>
+            <p><b>The sequence of ideas, in the late 1700s.</b></p>
+            <ol>
+              <li><b>Disease moves into the organ.</b> It stops being a condition of a whole body and becomes an attribute of a particular organ, investigable through the fluids an organ secretes.</li>
+              <li><b>The normal is defined as the leftover.</b> A state is normal if it is not associated with a pathological organ. So the normal is secondary to and derived from the pathological.</li>
+              <li><b>Then Broussais inverts it.</b> On his principle, disease is irritation of the tissue of an organ, and the pathological becomes defined as <b>deviation from the normal</b>. Variation becomes variation from a normal state, and the pathological stops being different in kind and becomes continuous with the normal.</li>
+            </ol>
+            <p><b>Why that matters for statistics.</b> Broussais, whom Auguste Comte credits with the modern sense of the normal, was connected with the first use of statistical data to evaluate a medical treatment.</p>
+          </div>
+
+          <div class="keep">
+            <b>Hacking&#8217;s sentence about what the word does</b>
+            The word <em>normal</em> uses a power as old as Aristotle to bridge the gap between
+            fact and value, whispering in your ear that what is normal is also all right. It stands
+            at once for what is typical, which is an unenthusiastic average, and for good health
+            and our chosen destiny. That is why he calls this benign and sterile-sounding word one
+            of the most powerful ideological tools of the twentieth century.
+          </div>
+
+          <div class="body">
+            <p><b>And here is the move Tremain makes with it.</b> If the category of the normal is a historical artefact, then anything whose identity is established by its distance from that category must be a historical artefact too. Disability is defined by departure from the normal. So disability is an artefact, and so is impairment.</p>
+            <p><b>That is the argument of the week in two sentences</b>, and it is why chapter 2 exists.</p>
+          </div>
+
+
+          <figure class="pic">
+            <a class="zoom" style="width:208px" href="img/quetelet.jpg" target="_blank" rel="noopener" title="Open this picture at full size">
+              <img src="img/quetelet.jpg" width="1200" height="1484" loading="lazy" alt="A lithograph portrait in an oval frame of a middle-aged man with wavy hair and side whiskers, in a dark coat and high white stock collar, facing the viewer. His signature is printed underneath.">
+            </a>
+            <figcaption><b>Adolphe Quetelet, 1796 to 1874, lithographed in 1856.</b> He is not named in the chapter and he is the person the chapter is about. An astronomer, he took the error curve astronomers used for repeated measurements of a star and applied it to measurements of people, producing <b>l'homme moyen</b>, the average man, in 1835. That is the step that lets a population have a normal, and everything Foucault describes about measuring and ranking people runs on it. <span class="cred">Library of Congress, public domain, via Wikimedia Commons.</span></figcaption>
+          </figure>
+
+          <h4 id="ch2-5" data-n="2.5">The Normalization Movement, and what it did to sex</h4>
+          <div class="qa">
+            <b>The question</b>
+            Can a movement run by the people it is for still be an instrument of the thing it opposes?
+          </div>
+
+          <div class="body">
+            <p><b>What the movement was.</b> In the last decades of the twentieth century, Wolf Wolfensberger built a social movement on a <b>normalization principle</b> that denounced the forced institutionalisation of cognitively impaired people. It was made largely of those people and their allies, and it wanted them out of institutions and living in communities. Michael Oliver's summary of the principle: normalization theory offers disabled people the chance to be given valued social roles in an unequal society that values some roles more than others.</p>
+            <p><b>The renaming, and why it did not fix anything.</b> The principle was later called <b>social role valorization</b>, to stress that normalization is about what gets valued. Chris Drinkwater's objection is that the renaming left untouched the power that decides what a normal life is. The assumption underneath stayed: that these people should learn valued behaviour in order to get a valued life.</p>
+          </div>
+
+          <div class="body">
+            <p><b>The case, from Lindsay Williams and Melanie Nind.</b> Leaving institutions raised a question for the movement's leaders about sex, since people who had been institutionalised for years were assumed to be inexperienced. So the movement produced sex-education texts through the 1970s.</p>
+            <p><b>What those texts did well.</b> They were a real step in self-advocacy. They set out how this group had been denied sexual self-determination, and the part forced sterilisation and gender segregation had played in it.</p>
+            <p><b>And what they also did.</b></p>
+            <ul>
+              <li>They assumed love, sex and fulfilment would and should come together, in that order.</li>
+              <li>They left out same-gender love and sex completely, into the 1990s.</li>
+              <li>Some of them described same-gender relationships as <b>deviant and inappropriate</b>, which is to say, as not among the valued roles.</li>
+              <li>Some distinguished between <b>true homosexuals</b> and cognitively impaired people who, these authors said, had turned to same-gender sex only because normal heterosexual sex was unavailable to them.</li>
+            </ul>
+          </div>
+
+          <div class="body">
+            <p><b>Tremain's verdict.</b> The literature reproduced the apparatuses of gender and heterosexism while expanding the apparatus of disability, and it is an exemplary product of modern power for exactly the reason given above: it was enabling and constraining at the same time.</p>
+          </div>
+
+          <div class="body">
+            <p><b>The implantation thesis, which generalises the point.</b> Foucault argued that sexual perversions were not conditions medicine discovered. They are artefacts of expert discourse, <b>implanted</b> in the people said to have them, and the more psychiatrists looked for deviants the more they found.</p>
+            <p><b>Barry Allen's extension to disability</b>, which is the sentence to take: there can be no notion of impairment without reference to a statistically normal case, just as there can be no criminal without a law. A discourse about biomedical norms, however scientific, is no more true to nature than a discourse about criminals. Any norm is an artefact of the discipline that measures it.</p>
+          </div>
+
+          <h4 id="ch2-6" data-n="2.6">Racism against the abnormal</h4>
+          <div class="qa">
+            <b>The question</b>
+            What has Foucault's account of racism got to do with disability?
+          </div>
+
+          <div class="body">
+            <p><b>The answer: on his account they are the same machinery, and the dividing line is normal against abnormal.</b> Foucault's thesis, which Ladelle McWhorter develops, is that modern racism is <b>racism against the abnormal</b>. What is at issue in a modern racist regime is not religion, culture or skin colour as such, but whether a person falls on the normal side.</p>
+            <p><b>What that widens it to include.</b> Nonwhite skin and non-Christian affiliation are marked abnormal, and so are low scores on an intelligence test, seizures, cleft palates, intersex, being trans and same-gender coupling. Racism, on this account, is preoccupied with protecting the boundaries of the one race that matters, the human race in its highest representatives.</p>
+            <p><b>A case showing the two categories being made together.</b> In 1921 the physician Pearce Bailey told the American Neurological Association that Black and Native American people could not reach the average intelligence of the cultured races, and that <b>the existence of a mental disease implies a developed intelligence</b>. So on his reasoning they suffered less madness <em>because</em> they were inferior. Sander Gilman and James Thomas point out such links were used to claim certain races were suited to certain occupations, sharecropping among them.</p>
+          </div>
+
+          <div class="body">
+            <p><b>Why a power devoted to life needs racism, which is the hardest claim in the chapter.</b> Foucault's argument, and his sentence: <b>if the power of normalization wished to exercise the old sovereign right to kill, it must become racist.</b></p>
+            <p><b>The reasoning in steps.</b> Biopower justifies itself by improving and extending life. A power so justified cannot straightforwardly kill. Racism supplies the connection that lets it: it establishes a relation between my life and another's death, with biology as the reference point, so that the other's death makes life in general healthier and purer.</p>
+            <p><b>And killing here is wider than killing.</b> Foucault is explicit that it includes indirect forms: exposing somebody to death, increasing the risk of death for some people, political death, expulsion.</p>
+          </div>
+
+          <div class="body">
+            <p><b>Where evolutionary language comes in.</b> Not Darwin's theory as such, but a bundle of ideas taken from it, the hierarchy of species, the struggle for existence, selection eliminating the less fit, which by the mid nineteenth century had become a way of thinking about colonisation, war, criminality, madness and the classes of a society.</p>
+          </div>
+
+          <h4 id="ch2-7" data-n="2.7">Government, which means the conduct of conduct</h4>
+          <div class="qa">
+            <b>The question</b>
+            If power is not repression, what is a government doing?
+          </div>
+
+          <div class="body">
+            <p><b>The answer: acting on what people do, by shaping what they can do.</b> Foucault takes <b>government</b> in a sixteenth-century sense, broader than states: any activity that aims to shape, guide or affect conduct, your own or somebody else's. His definition is <b>the conduct of conduct</b>.</p>
+            <p><b>What that pulls into view.</b> Your relation to yourself. Relations with other people that involve guidance or control. Relations inside institutions. And then things nobody had counted as power at all: weight-loss programmes, fitness regimes, assertiveness training, cosmetic surgery, psychotherapy, rehabilitation. Tremain calls these <b>technologies of the self</b>, alongside the technologies of normalization that sort people as deaf, criminal or mad.</p>
+            <p><b>Foucault's own formulation</b>, which is the most quoted sentence in the chapter: a relationship of power is a mode of action that does not act directly on others but <b>acts upon their actions</b>. It incites, induces, seduces, makes easier or more difficult, and at the limit constrains or forbids. It is always a way of acting on a subject who is capable of acting.</p>
+          </div>
+
+          <div class="body">
+            <p><b>Why liberalism is the setting for all of this.</b> Foucault treats liberalism as an art of government, where others call it an ideology: a way of rationalising government based on legal subjects who have rights and freedoms. Because its subjects are held to have those freedoms, liberalism can always criticise and remake itself, which is why it survives its own critics.</p>
+            <p><b>The trick that makes it efficient.</b> A power that manages people through their freedom costs the state less than one that coerces them. Wendy Brown's line: liberal government produced, organised, managed and consumed individual freedom, all without touching the subject.</p>
+            <p><b>And where it went after the 1950s.</b> Neoliberalism, which Brown describes as the whole social field being turned into an economy, and subjects being made <b>responsible</b> for their own outcomes within it. Management at a distance, through norms and standards that people freely try to meet.</p>
+          </div>
+
+          <h4 id="ch2-8" data-n="2.8">Totalizing and individualizing, which happen together</h4>
+          <div class="qa">
+            <b>The question</b>
+            Why does a state that treats everyone as a case also produce ever finer labels for individuals?
+          </div>
+
+          <div class="body">
+            <p><b>The answer: those are one process, and this is the chapter's most useful idea for the course.</b> Foucault's phrase is <b>omnes et singulatim</b>, of all and of each. To be an individual in the modern sense is to be attached to a totality.</p>
+            <p><b>How the two feed each other.</b> The state's reach over everybody grows exactly as its descriptions of each person get finer. Distinguishing people, ranking them, classifying them against a set of normalising criteria makes them into recognisable kinds, and recognisable kinds are interchangeable, which is what makes a population governable.</p>
+          </div>
+
+          <div class="keep">
+            <b>Which is how to read the growing list of kinds of disability</b>
+            Physical against cognitive. Severe against moderate. Attention deficit disorder against
+            attention deficit hyperactivity disorder. Tremain reads each new distinction as a
+            product of biopower doing both things at once: a finer description of an individual,
+            and a longer reach for the machine that describes.
+          </div>
+
+          <div class="body">
+            <p><b>Foucault on the individual, in the sentence she quotes.</b> The individual is no doubt a fictitious atom of an ideological representation of society; but he is also <b>a reality fabricated by this specific technology of power that I have called discipline</b>.</p>
+            <p><b>Genealogy, since it is the method behind all of this.</b> Foucault took the word from Nietzsche and called his own versions <b>histories of the present</b>. A genealogy asks how our current ways of thinking came to be possible, and refuses to ask why we think as we do, because a why-question takes the thinking subject as given and starts from there.</p>
+            <p><b>What a genealogy is for</b>, in his words: the insurrection of knowledges. It digs up <b>subjugated knowledges</b>, meaning ones ruled inadequate or insufficiently scientific, such as the knowledge of the psychiatrised person, the delinquent, the nurse, so that what we take as self-evident can be seen as contingent.</p>
+          </div>
+
+          <div class="body">
+            <p><b>And the sentence that states the point of the whole method</b>, from Foucault: that which exists did not always exist, things that give us the impression of being the most obvious were formed through a fragile and precarious history, and since these things were made, they can, provided one knows how they were made, be unmade.</p>
+          </div>
+
+          <div class="kone"><b>If you keep one thing.</b> <b>Normal</b> is a word from the 1820s that came out of medicine, and it works by smuggling a judgment into a description: what is typical, and therefore all right. Everything else in this chapter is machinery for producing and enforcing that word. Say that, and you can derive the rest.</div>
+
+          <div class="mynote"><b>My note</b><span>This chapter is vocabulary, so revise it as a glossary and never as an argument. The four terms worth being able to define cold are <b>biopower</b>, <b>normalization</b> and its five operations, <b>government as the conduct of conduct</b>, and <b>genealogy</b>. The <b>discipline against security</b> table is the kind of distinction an exam likes, because it has a clean one-line difference: discipline sets the norm first, security reads the normal off the distribution first. The Normalization Movement in 2.5 is the only worked case in the chapter, so it is the example to use for any question about reform reproducing what it opposes.</span></div>
+
+          <div class="quar">
+            <b>Where it belongs in the quarrel</b>
+            <ul>
+              <li><b>It supplies what chapter 1 assumed.</b> Chapter 1 says disability is an apparatus. This says what an apparatus is and where this one came from.</li>
+              <li><b>It answers week 3.</b> Kuhn said science runs on shared commitments. Foucault's styles of reasoning, taken from Ian Hacking here, make the stronger claim that a style brings into being the very sentences that can be true or false within it.</li>
+              <li><b>It is answered by anybody who wants a politics.</b> If the subject is an effect of power all the way down, critics ask what is left to do the resisting. Tremain says chapter 3 answers this, which is next week's reading.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+  </section>
+
+  <section id="s-gloss">
+    <h2>Glossary</h2>
+    <dl class="gl">
+      <dt>apparatus, dispositif</dt><dd>Foucault's term, and the one the book is built on. A mixed, interconnected collection of discourses, institutions, buildings, regulations, laws, scientific statements, administrative measures and moral propositions, which comes together in response to an urgent need at a particular moment. The apparatus of disability is one; so, on this account, are race and sex.</dd>
+      <dt>impairment</dt><dd>On the British social model, a neutral fact about a body on which disability is then imposed. On Tremain's account there is no such neutral fact: impairment is <b>both an effect of and a mechanism of</b> the apparatus of disability.</dd>
+      <dt>the British social model, BSM</dt><dd>From the United Kingdom in the 1970s. Impairment is a neutral characteristic; disability is the social oppression imposed on people who have one. Built on a parallel with sex and gender, and grounded in historical materialism, so its politics is systemic.</dd>
+      <dt>the individualist or medical account</dt><dd>Disability is a functional limitation of a particular person, answered by accommodating that person into an environment that stays as it was. Tremain's objection is that it keeps the eugenic push of the medical model it claims to replace.</dd>
+      <dt>biopower</dt><dd>The set of mechanisms through which the biological features of the human species became the object of political strategy, from the eighteenth century. Its object is the <b>population</b>, which is itself a modern idea.</dd>
+      <dt>population</dt><dd>A group of living beings treated as a single thing to be managed, with its own birth rates, death rates and risks. Foucault's point is that it is an idea that did not exist before the eighteenth century.</dd>
+      <dt>normalization</dt><dd>The work of isolating anomalies in a population so that corrective techniques can act on them. Five operations: comparison, differentiation, hierarchy, homogeneity, exclusion.</dd>
+      <dt>normation</dt><dd>Foucault's suggested name for how discipline works, as against normalization proper. Under discipline the <b>norm</b> is set first and the normal is derived from it. Under security the <b>normal</b> is plotted first, from the distributions, and the norm derived from that.</dd>
+      <dt>discipline</dt><dd>A type of power and a way of exercising it, which encloses a space and trains within it: schools, barracks, hospitals, prisons. Its aim is a <b>docile body</b>, one that can be used, transformed and improved. Tremain's summary: discipline enables subjects to act in order to constrain them.</dd>
+      <dt>security</dt><dd>The later emphasis, which expands outward where discipline encloses, taking in production, behaviour and markets, and works by shifting distributions gradually. It did not replace discipline; the three forms, sovereignty, discipline and security, run at once.</dd>
+      <dt>dividing practices</dt><dd>Modes of manipulation that combine a scientific discourse with segregation, sorting an undifferentiated mass of people into mad and sane, sick and healthy, criminal and law-abiding, so that a person becomes tied to an identity.</dd>
+      <dt>government, the conduct of conduct</dt><dd>Foucault's broad sixteenth-century sense: any activity that aims to shape, guide or affect conduct, one's own or anybody else's. It brings weight-loss programmes and psychotherapy into the analysis of power alongside prisons.</dd>
+      <dt>governmentality</dt><dd>A rationality of government: a system of thinking about the practice of governing that makes it thinkable and acceptable both to those who do it and those it is done to.</dd>
+      <dt>technologies of the self</dt><dd>Techniques by which a person acts on themselves: fitness regimes, assertiveness training, cosmetic surgery, rehabilitation. On this account they belong to the analysis of power, since power works by guiding conduct.</dd>
+      <dt>genealogy</dt><dd>Foucault's method, taken from Nietzsche, which he also called a <b>history of the present</b>. It asks how our current ways of thinking became possible, and refuses the question of why we think as we do, because that takes the thinking subject as given.</dd>
+      <dt>subjugated knowledges</dt><dd>Knowledges disqualified as inadequate or insufficiently scientific, low on the hierarchy: the knowledge of the psychiatrised person, the delinquent, the nurse. Genealogy digs them up.</dd>
+      <dt>styles of reasoning</dt><dd>Ian Hacking's idea, which Tremain extends with her own <b>diagnostic style</b>. A style brings into being new kinds of objects and new candidates for truth and falsehood, so a sentence of that kind can only be true or false within the style. Styles are self-authenticating, which is why they are stable.</dd>
+      <dt>implantation thesis</dt><dd>Foucault on perversions: they were not conditions medicine discovered but artefacts of expert discourse, implanted in the people said to have them. Barry Allen extends it to impairment, since there is no impairment without a statistically normal case, as there is no criminal without a law.</dd>
+      <dt>nominalism</dt><dd>The position that the world does not arrive divided into categories waiting to be discovered. There are no natural kinds and no natural order; people classify, construct facts and then verify statements about them.</dd>
+      <dt>ableist exceptionism</dt><dd>Tremain's coinage. The phenomenon of disability being singled out for exemption: a theorist argues that language constructs social reality and produces inequality, and then treats disability metaphors as neutral figures of speech.</dd>
+      <dt>epistemology of ignorance</dt><dd>Charles Mills's term, from <em>The Racial Contract</em>: an inverted epistemology produced by white supremacy, with the result that white people cannot understand the world they made. Week 6 used it.</dd>
+      <dt>epistemology of domination</dt><dd>Tremain's replacement for it, on the grounds that the first is ableist, since it cannot be described without reaching for cognitive failure, and classist, since how much a person knows depends on literacy, schooling and money.</dd>
+      <dt>hermeneutical injustice</dt><dd>Miranda Fricker's term: being wronged because the shared stock of concepts has no name for something that happens to you, and has none because people like you had no hand in making it.</dd>
+      <dt>racism against the abnormal</dt><dd>Foucault's thesis, developed by Ladelle McWhorter. What is at issue in a modern racist regime is not religion, culture or skin colour as such but whether a person falls on the normal side of the line, which is why the same machinery marks seizures, intersex and same-gender coupling.</dd>
+      <dt>omnes et singulatim</dt><dd>Of all and of each. Foucault's name for the double movement by which modern states totalise and individualise at once: the finer the description of each person, the longer the reach over everybody.</dd>
+      <dt>old and new biosocial science</dt><dd>Dorothy Roberts's pair. The old says biological difference produces social inequality, so fix the bodies. The new says social inequality produces biological difference, so there is no natural body.</dd>
+      <dt>accommodationism</dt><dd>The policy by which one group's requirements are built into a place as standard, and everybody else makes a documented, medically certified request for the equivalent. Tremain's objection is the unequal effort, and never the provision itself.</dd>
+    </dl>
+  </section>
+
+  <div class="endmatter">
+    <div><b>Where this goes.</b> Week 8 of thirteen, and the first of two weeks on disability:</div>
+    <dl class="weeks">
+      <dt>Week 9</dt><dd>Nov 9 to 11. Same book, ch. 5, bioethics as a technology of government, printed 159 to 202 &middot; <b>Exam 2, Wednesday 11 November</b></dd>
+      <dt>Weeks 10 to 12</dt><dd>Nov 16 to Dec 1. Animal minds, human and non-human. Strings, <em>Fearing the Black Body</em>, and Andrews, <em>The Animal Mind</em></dd>
+      <dt>Week 13</dt><dd>Dec 7 to 9. Review and exam prep &middot; <b>Final, 40%, date set by the Registrar</b></dd>
+    </dl>
+    <div><b>Source.</b> Both chapters from Shelley L. Tremain, <em>Foucault and Feminist Philosophy of Disability</em>, University of Michigan Press, 2017, read through the uOttawa library's Michigan Press subscription. Page numbers are the printed ones. The reading guide of 27 October sets chapters 1 and 2 for November 2 to 4, and chapter 5 for the week after.</div>
+  </div>
+<div class="dock">
+  <div class="prog" id="prog"></div>
+  <div class="in">
+    <button type="button" id="bmgo" data-set="0" title="Go to your bookmark">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 2.2h8.8v12.1L8 11.1l-4.4 3.2z"/></svg>
+      <span class="lab">Bookmark</span></button>
+    <button type="button" data-marks title="Everything you have marked">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M2.5 3.5h11M2.5 8h11M2.5 12.5h7"/></svg>
+      <span class="lab">Highlights</span><span class="n" id="mcount"></span></button>
+    <a href="notes.html" title="Your notes for each lecture">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.2 2.3 13.7 4.8 5.6 12.9 2.4 13.6l.7-3.2z"/></svg>
+      <span class="lab">Lecture notes</span></a>
+    <button type="button" id="totop" class="end" title="Back to the top">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 13V3M3.5 7.5 8 3l4.5 4.5"/></svg>
+      <span class="lab">Top</span></button>
+  </div>
+</div>
+
+<div id="marks" class="drawer" hidden>
+  <div class="dback" data-close></div>
+  <aside class="dpanel" role="dialog" aria-modal="true" aria-labelledby="marks-h">
+    <div class="dhead">
+      <h2 id="marks-h">My highlights</h2>
+      <button type="button" class="dclose" data-close aria-label="Close">&times;</button>
+    </div>
+    <p class="dsub">Grouped by the text it sits in. Click one to jump to it.</p>
+    <div class="bm" id="bmlist"><p class="bmempty">Nothing marked yet. Select any text in the guide, then pick yellow, pink, a comment or the ribbon that sets your bookmark.</p></div>
+  </aside>
+</div></div>
+
+<footer class="sitefoot">
+  <div class="in">
+    <div class="col brand">
+      <a href="../">PHI2394 Reading Hub</a>
+      <p>Reading guides for Scientific Thought and Social Values, University of Ottawa.</p>
+    </div>
+    <nav class="col" aria-label="This week">
+      <h2>Week 8</h2>
+      <a href="./">Reading guide</a>
+      <a href="notes.html">My notes</a>
+      <button type="button" data-marks>My highlights</button>
+    </nav>
+    <nav class="col" aria-label="The hub">
+      <h2>The hub</h2>
+      <a href="../">All weeks</a>
+      <a href="../#about">How these were written</a>
+      <a href="https://github.com/myermcat/phi-reading-hub">Source on GitHub</a>
+    </nav>
+  </div>
+  <div class="colophon">
+    <span>Written with Claude. AI can make mistakes, and compression is where it makes them.</span>
+    <span>Your notes, highlights and bookmark are kept in this browser only.</span>
+  </div>
+</footer>
+
+
+<script>
+/* One curious item open at a time. A dozen of them open at once turns the panel into a wall,
+   which is what collapsing them was for. Closing happens per panel, so a side note somewhere
+   else on the page is left alone. */
+(function () {
+  document.addEventListener('toggle', function (e) {
+    var d = e.target;
+    if (!d.open || !d.matches || !d.matches('.curious > details.bit')) return;
+    Array.prototype.forEach.call(d.parentElement.children, function (s) {
+      if (s !== d && s.tagName === 'DETAILS' && s.open) s.open = false;
+    });
+  }, true);
+})();
+</script>
+<script src="../shared/editor.js?v=686e7cd1"></script>
+<script>
+(function () {
+  // The callouts hold their text directly in the div, with no paragraph inside, so a block
+  // list of p and li had nothing to attach a mark to and highlighting them did nothing.
+  var SEL = 'p,li,h4,h5,blockquote,td,dd,figcaption,.keep,.qa,.why,.kone,.mynote span';
+  var LS = 'phi2394-week8-guide-v1', WIDE = 1400;
+  var root, bar, rail, items = [], notes = {}, ref = null, saveT = null;
+  var drawer = null;
+  function openMarks() {
+    if (!drawer) return;
+    drawer.hidden = false; document.body.style.overflow = 'hidden';
+    var c = drawer.querySelector('.dclose'); if (c) c.focus();
+  }
+  function closeMarks() {
+    if (!drawer || drawer.hidden) return;
+    drawer.hidden = true; document.body.style.overflow = '';
+  }
+
+  function blocks() {
+    return Array.prototype.filter.call(root.querySelectorAll(SEL), function (el) {
+      return !el.querySelector(SEL) && !el.closest('.cmt') && !el.closest('.nb') && el.textContent.trim().length > 0;
+    });
+  }
+  function textNodes(el) {
+    var w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null), a = [], n;
+    while ((n = w.nextNode())) a.push(n);
+    return a;
+  }
+  function offsetIn(el, node, off) {
+    var ns = textNodes(el), t = 0;
+    for (var i = 0; i < ns.length; i++) { if (ns[i] === node) return t + off; t += ns[i].nodeValue.length; }
+    return t;
+  }
+  function strip() {
+    Array.prototype.forEach.call(root.querySelectorAll('mark.hl'), function (m) {
+      var p = m.parentNode;
+      while (m.firstChild) p.insertBefore(m.firstChild, m);
+      p.removeChild(m); p.normalize();
+    });
+    Array.prototype.forEach.call(root.querySelectorAll('.cmt'), function (c) { c.remove(); });
+  }
+  function paint(el, start, end, cls, id) {
+    var ns = textNodes(el), pos = 0, jobs = [];
+    for (var i = 0; i < ns.length; i++) {
+      var len = ns[i].nodeValue.length, s = Math.max(start, pos), e = Math.min(end, pos + len);
+      if (e > s) jobs.push([ns[i], s - pos, e - pos]);
+      pos += len; if (pos >= end) break;
+    }
+    for (var j = jobs.length - 1; j >= 0; j--) {
+      var n = jobs[j][0], a = jobs[j][1], b = jobs[j][2];
+      if (b < n.nodeValue.length) n.splitText(b);
+      var target = a > 0 ? n.splitText(a) : n;
+      var m = document.createElement('mark');
+      m.className = 'hl ' + cls;
+      m.setAttribute('data-id', id);
+      target.parentNode.insertBefore(m, target);
+      m.appendChild(target);
+    }
+  }
+  function card(it) {
+    var c = document.createElement('div');
+    c.className = 'cmt'; c.setAttribute('data-id', it.id);
+    var q = document.createElement('div'); q.className = 'q';
+    q.textContent = '“' + (it.text.length > 70 ? it.text.slice(0, 70) + '…' : it.text) + '”';
+    var ta = document.createElement('div');
+    ta.className = 'cbody'; ta.contentEditable = 'true';
+    ta.setAttribute('data-ph', 'Comment…');
+    ta.innerHTML = Notes.clean(it.body || '');
+    Notes.rich(ta, function () { it.body = ta.innerHTML; save(); });
+    ta.addEventListener('input', function () { it.body = ta.innerHTML; save(); });
+    ta.addEventListener('blur', function () {
+      if (!ta.textContent.trim()) { remove(it.id); return; }
+      it.body = ta.innerHTML; save(); place_notes();
+    });
+    ta.addEventListener('keydown', function (e) { if (e.key === 'Escape') ta.blur(); });
+    var row = document.createElement('div'); row.className = 'row';
+    var del = document.createElement('button'); del.type = 'button'; del.textContent = 'Delete';
+    del.addEventListener('mousedown', function (e) { e.preventDefault(); remove(it.id); });
+    row.appendChild(del);
+    c.appendChild(q); c.appendChild(ta); c.appendChild(row);
+    return c;
+  }
+  function place_notes() {
+    var wide = window.innerWidth >= WIDE;
+    rail.classList.toggle('on', wide);
+    var last = -1e9;
+    items.forEach(function (it) {
+      if (it.kind !== 'note') return;
+      var c = root.querySelector('.cmt[data-id="' + it.id + '"]');
+      var m = root.querySelector('mark[data-id="' + it.id + '"]');
+      if (!c || !m) return;
+      if (!m.getClientRects().length) { c.style.display = 'none'; return; }
+      c.style.display = '';
+
+      if (wide) {
+        if (c.parentNode !== rail) rail.appendChild(c);
+        c.classList.remove('inline');
+        var top = m.getBoundingClientRect().top + window.scrollY - (root.getBoundingClientRect().top + window.scrollY);
+        if (top < last) top = last;
+        c.style.top = top + 'px';
+        last = top + c.offsetHeight + 14;
+      } else {
+        c.classList.add('inline'); c.style.top = '';
+        var host = m.closest(SEL);
+        if (host && c.previousSibling !== host) host.parentNode.insertBefore(c, host.nextSibling);
+      }
+    });
+  }
+  function render() {
+    strip();
+    var bs = blocks();
+    items.forEach(function (it) {
+      if (!it || !it.text) return;
+      var probe = (it.before || '') + it.text + (it.after || '');
+      var order = [], i;
+      // the block this mark was made in comes first, by its opening text, then by its index
+      if (it.head) for (i = 0; i < bs.length; i++) if (bs[i].textContent.slice(0, 90) === it.head) order.push(i);
+      if (typeof it.idx === 'number' && it.idx >= 0 && it.idx < bs.length && order.indexOf(it.idx) < 0) order.push(it.idx);
+      for (i = 0; i < bs.length; i++) if (order.indexOf(i) < 0) order.push(i);
+      for (var j = 0; j < order.length; j++) {
+        var el = bs[order[j]], t = el.textContent, k = -1, st;
+        if (probe !== it.text) k = t.indexOf(probe);
+        if (k >= 0) { st = k + (it.before || '').length; }
+        else if (j < 2 && typeof it.at === 'number' && t.substr(it.at, it.text.length) === it.text) { st = it.at; }
+        else if (j < 2) { k = t.indexOf(it.text); if (k < 0) continue; st = k; }
+        else { continue; }
+        paint(el, st, st + it.text.length,
+          it.kind === 'note' ? 'hl-n' : it.kind === 'bm' ? 'hl-b' : 'hl-' + it.color, it.id);
+        if (it.kind === 'note') rail.appendChild(card(it));
+        return;
+      }
+    });
+    place_notes();
+    listMarks();
+  }
+  // Opening a mark that sits inside a closed toggle has to open the toggle first,
+  // or the scroll lands on a collapsed summary and the mark is nowhere on screen.
+  function goTo(el) {
+    if (!el) return;
+    var d = el.closest('details');
+    while (d) { d.open = true; d = d.parentElement && d.parentElement.closest('details'); }
+    var se = document.scrollingElement || document.documentElement, was = se.scrollTop;
+    try { el.scrollIntoView({ block: 'center', behavior: 'smooth' }); }
+    catch (e) { el.scrollIntoView(true); }
+    // Smooth scrolling is refused in some contexts and silently does nothing, so check
+    // that it actually moved and jump outright when it did not.
+    setTimeout(function () {
+      if (Math.abs((document.scrollingElement || document.documentElement).scrollTop - was) < 4) {
+        el.scrollIntoView({ block: 'center' });
+      }
+    }, 380);
+    el.classList.add('flash');
+    setTimeout(function () { el.classList.remove('flash'); }, 1600);
+  }
+  function bookmark() { return items.filter(function (x) { return x.kind === 'bm'; })[0] || null; }
+  function bmState() {
+    var b = document.getElementById('bmgo');
+    if (!b) return;
+    var it = bookmark();
+    b.setAttribute('data-set', it ? '1' : '0');
+    b.title = it ? 'Go to your bookmark: “' + it.text.slice(0, 60) + '”'
+                 : 'No bookmark yet. Select a word and pick the ribbon.';
+  }
+  // The excerpt shown in the list: the marked words in their own colour with the words
+  // around them left in, because a bare quotation out of context says nothing.
+  function excerpt(el, ids) {
+    var w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null), n, pos = 0, full = '', runs = [];
+    while ((n = w.nextNode())) {
+      var mk = n.parentElement && n.parentElement.closest('mark.hl');
+      var len = n.nodeValue.length;
+      if (mk && ids.indexOf(mk.getAttribute('data-id')) >= 0) {
+        var last = runs[runs.length - 1];
+        if (last && last.e === pos && last.k === mk.className) last.e = pos + len;
+        else runs.push({ s: pos, e: pos + len, k: mk.className });
+      }
+      full += n.nodeValue; pos += len;
+    }
+    var out = document.createElement('span');
+    out.className = 'q';
+    if (!runs.length) { out.textContent = full.slice(0, 160); return out; }
+    var a = Math.max(0, runs[0].s - 75), b = Math.min(full.length, runs[runs.length - 1].e + 75);
+    if (a > 0) { var sp = full.indexOf(' ', a); if (sp > 0 && sp < runs[0].s) a = sp + 1; }
+    if (b < full.length) { var sp2 = full.lastIndexOf(' ', b); if (sp2 > runs[runs.length - 1].e) b = sp2; }
+    function txt(str, dim) {
+      if (!str) return;
+      var e = document.createElement('span');
+      if (dim) e.className = 'dim';
+      e.textContent = str; out.appendChild(e);
+    }
+    if (a > 0) txt('… ', 1);
+    var cur = a;
+    runs.forEach(function (r) {
+      txt(full.slice(cur, r.s), 1);
+      var m = document.createElement('mark');
+      m.className = r.k;
+      m.textContent = full.slice(r.s, r.e);
+      out.appendChild(m); cur = r.e;
+    });
+    txt(full.slice(cur, b), 1);
+    if (b < full.length) txt(' …', 1);
+    return out;
+  }
+  // The highlights list. One row per paragraph, so two marks in the same paragraph read as
+  // one entry, grouped by the text each paragraph sits in. Click a row and go there.
+  function listMarks() {
+    var box = document.getElementById('bmlist');
+    bmState();
+    var n = document.getElementById('mcount');
+    if (n) n.textContent = items.length ? String(items.length) : '';
+    if (!box) return;
+    box.innerHTML = '';
+
+    function where(el) {
+      var art = el.closest('article.rd'), name = 'The argument', ch = '';
+      if (art) {
+        var h = art.querySelector('h3'), chip = h && h.querySelector('.ch'), who = art.querySelector('.who');
+        ch = chip ? chip.textContent.trim().toLowerCase() : '';
+        name = who ? who.textContent.split(',')[0].trim() : (h ? h.textContent : name);
+      } else {
+        var sec = el.closest('section'), sh = sec && sec.querySelector('h2');
+        if (sh) name = sh.textContent.trim();
+      }
+      var node = el, sub = '';
+      while (node && node !== root && !sub) {
+        var sib = node.previousElementSibling;
+        while (sib && !sub) {
+          if (/^H[2-6]$/.test(sib.tagName)) sub = sib.textContent.trim();
+          else if (sib.tagName === 'SUMMARY') sub = sib.textContent.trim();
+          sib = sib.previousElementSibling;
+        }
+        if (!sub && node.parentElement && node.parentElement.tagName === 'DETAILS') {
+          var sm = node.parentElement.querySelector('summary');
+          if (sm) sub = sm.textContent.trim();
+        }
+        node = node.parentElement;
+      }
+      return { name: name, ch: ch, sub: sub };
+    }
+    function row(el, list, cls) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'bmi' + (cls ? ' ' + cls : '');
+      var dots = document.createElement('span'); dots.className = 'dots';
+      var seenC = {};
+      list.forEach(function (it) {
+        var k = it.kind === 'note' ? 'n' : (it.kind === 'bm' ? 'b' : it.color);
+        if (seenC[k]) return; seenC[k] = 1;
+        var d = document.createElement('span'); d.className = 'dot ' + k; dots.appendChild(d);
+      });
+      var txt = document.createElement('span'); txt.className = 'bt';
+      var w = where(el);
+      if (w.sub) {
+        var cap = document.createElement('span'); cap.className = 'where'; cap.textContent = w.sub;
+        txt.appendChild(cap);
+      }
+      txt.appendChild(excerpt(el, list.map(function (x) { return x.id; })));
+      list.forEach(function (it) {
+        if (it.kind !== 'note' || !it.body) return;
+        var cm = document.createElement('span'); cm.className = 'cm';
+        cm.textContent = it.body.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 180);
+        txt.appendChild(cm);
+      });
+      b.appendChild(dots); b.appendChild(txt);
+      b.addEventListener('click', function () {
+        closeMarks();
+        goTo(root.querySelector('mark[data-id="' + list[0].id + '"]'));
+      });
+      return b;
+    }
+
+    // the bookmark first, on its own, because there is only ever one
+    var bm = bookmark(), bmMark = bm && root.querySelector('mark[data-id="' + bm.id + '"]');
+    if (bm && bmMark) {
+      var wrapB = document.createElement('div'); wrapB.className = 'bmg bmg-b';
+      var h3b = document.createElement('h3');
+      h3b.textContent = 'Bookmark';
+      var spb = document.createElement('span'); spb.textContent = 'where you stopped';
+      h3b.appendChild(spb); wrapB.appendChild(h3b);
+      wrapB.appendChild(row(bmMark.closest(SEL) || bmMark.parentElement, [bm], 'isbm'));
+      var clr = document.createElement('button');
+      clr.type = 'button'; clr.className = 'bmclear'; clr.textContent = 'Clear bookmark';
+      clr.addEventListener('click', function () { remove(bm.id); });
+      wrapB.appendChild(clr);
+      box.appendChild(wrapB);
+    }
+
+    // then the highlights and comments, one row per paragraph
+    var groups = [], byName = {}, seen = {}, order = [], perBlock = {};
+    Array.prototype.forEach.call(root.querySelectorAll('mark.hl'), function (m) {
+      var id = m.getAttribute('data-id');
+      if (seen[id]) return;
+      var it = items.filter(function (x) { return x.id === id; })[0];
+      if (!it || it.kind === 'bm') return;
+      seen[id] = 1;
+      var host = m.closest(SEL) || m.parentElement;
+      var k = order.indexOf(host);
+      if (k < 0) { k = order.length; order.push(host); perBlock[k] = []; }
+      perBlock[k].push(it);
+    });
+    order.forEach(function (host, k) {
+      var w = where(host), g = byName[w.name];
+      if (!g) { g = { name: w.name, ch: w.ch, rows: [] }; byName[w.name] = g; groups.push(g); }
+      g.rows.push([host, perBlock[k]]);
+    });
+    if (!groups.length && !bm) {
+      var e = document.createElement('p');
+      e.className = 'bmempty';
+      e.textContent = 'Nothing marked yet. Select any text in the guide, then pick yellow, pink, a comment or the ribbon that sets your bookmark.';
+      box.appendChild(e);
+      return;
+    }
+    groups.forEach(function (g) {
+      var wrap = document.createElement('div'); wrap.className = 'bmg';
+      var h3 = document.createElement('h3');
+      h3.textContent = g.name;
+      if (g.ch) { var sp = document.createElement('span'); sp.textContent = g.ch; h3.appendChild(sp); }
+      wrap.appendChild(h3);
+      g.rows.forEach(function (r) { wrap.appendChild(row(r[0], r[1])); });
+      box.appendChild(wrap);
+    });
+  }
+  var pill = null, pillT = null;
+  function flag(txt, bad) {
+    if (!pill) {
+      pill = document.createElement('div'); pill.id = 'save';
+      pill.setAttribute('role', 'status'); document.body.appendChild(pill);
+    }
+    pill.textContent = txt;
+    pill.className = bad ? 'bad' : (txt ? 'on' : '');
+    if (pillT) clearTimeout(pillT);
+    if (!bad) pillT = setTimeout(function () { pill.className = ''; }, 1400);
+  }
+  // notes.html writes lec1, lec2 and their dates into this same stored object, under this same
+  // key. Both pages therefore read what is stored, change only the keys they own, and write the
+  // whole thing back. A page that writes an object built from its own memory erases whatever the
+  // other page saved since it loaded.
+  var OWN = null;
+  function owned() {
+    if (!OWN) {
+      OWN = {};
+      Array.prototype.forEach.call(document.querySelectorAll('.nb[data-k]'), function (el) {
+        OWN[el.getAttribute('data-k')] = 1;
+      });
+    }
+    return OWN;
+  }
+  function stored() {
+    var v = null;
+    try { v = JSON.parse(localStorage.getItem(LS) || 'null'); } catch (e) {}
+    if (Array.isArray(v)) v = { items: v, notes: {} };
+    if (!v || typeof v !== 'object') v = { items: [], notes: {} };
+    if (!Array.isArray(v.items)) v.items = [];
+    if (!v.notes || typeof v.notes !== 'object') v.notes = {};
+    return v;
+  }
+  function queueRef() {
+    if (saveT) clearTimeout(saveT);
+    saveT = setTimeout(function () {
+      if (ref) ref.set({ items: items, notes: notes }).catch(function () {});
+    }, 400);
+  }
+  // The one write into localStorage: read what is stored, overwrite only the keys named, and
+  // put the whole object back. `extra` carries keys that arrived from the shared database and
+  // belong to no page in particular.
+  function writeStore(extra) {
+    var keep = stored().notes, own = owned(), k;
+    for (k in own) if (Object.prototype.hasOwnProperty.call(own, k) && notes[k] !== undefined) keep[k] = notes[k];
+    if (extra) for (k in extra) if (Object.prototype.hasOwnProperty.call(extra, k)) keep[k] = extra[k];
+    localStorage.setItem(LS, JSON.stringify({ items: items, notes: keep }));
+  }
+  function save() {
+    try {
+      writeStore(null);
+      flag('Saved in this browser', false);
+    } catch (e) {
+      // A private window, or site data turned off. Saying nothing here is how somebody
+      // loses an evening of notes believing they were kept.
+      flag('This browser is not saving. Copy anything you need.', true);
+    }
+    queueRef();
+  }
+  function paintNotes() {
+    Array.prototype.forEach.call(document.querySelectorAll('.nb'), function (el) {
+      if (el !== document.activeElement) {
+        var v = notes[el.getAttribute('data-k')] || '';
+        if (el.innerHTML !== v) el.innerHTML = Notes.clean(v);
+      }
+      Notes.markEmpty(el);
+      var card = el.closest('.nbwrap');
+      if (card) card.classList.toggle('has', !!el.textContent.trim());
+    });
+  }
+
+  /* ---- the editor ---- */
+  /* The editor itself is shared/editor.js, one file for every note she writes in either
+     course. Two kinds of box on this page go through it: the note card under a reading, and
+     the body of a comment on a highlight. Both are named to Notes.bar(), which raises the
+     floating toolbar over a selection in either one. */
+
+  /* Where a change the toolbar or the colour key made belongs. A note card writes into
+     `notes` under its own key, and a comment body writes into the item its card stands for. */
+  function saveBox(el) {
+    if (el.classList.contains('nb')) notes[el.getAttribute('data-k')] = el.innerHTML;
+    else {
+      var c = el.closest('.cmt');
+      var it = c && items.filter(function (x) { return x.id === c.getAttribute('data-id'); })[0];
+      if (it) it.body = el.innerHTML;
+    }
+    save();
+  }
+  function wireNotes() {
+    Notes.bar({ sel: '.nb, .cbody', accent: 'Green text', save: saveBox });
+    Array.prototype.forEach.call(document.querySelectorAll('.nb'), function (el) {
+      el.addEventListener('input', function () {
+        // ahead of rich()'s own listener, so the arrow is in the DOM before it is stored
+        Notes.swapAsTyped();
+        notes[el.getAttribute('data-k')] = el.innerHTML;
+        var card = el.closest('.nbwrap');
+        if (card) card.classList.toggle('has', !!el.textContent.trim());
+        save();
+      });
+      el.addEventListener('blur', function () { Notes.hideBar(); notes[el.getAttribute('data-k')] = el.innerHTML; save(); });
+      Notes.rich(el, function () { notes[el.getAttribute('data-k')] = el.innerHTML; save(); });
+    });
+  }
+  function remove(id) {
+    var gone = items.filter(function (x) { return x.id === id; })[0];
+    items = items.filter(function (x) { return x.id !== id; });
+    save(); render();
+    if (gone) offerUndo(gone);
+  }
+  // One click removes a mark, so one click has to put it back. Without this, a misplaced
+  // click destroys a highlight with no way out of it.
+  function offerUndo(gone) {
+    if (!pill) flag('', false);
+    if (pillT) clearTimeout(pillT);
+    pill.textContent = gone.kind === 'note' ? 'Comment removed' : 'Highlight removed';
+    var b = document.createElement('button');
+    b.type = 'button'; b.textContent = 'Undo';
+    b.addEventListener('click', function () {
+      items.push(gone); save(); render();
+      pill.className = ''; pill.textContent = '';
+    });
+    pill.appendChild(b);
+    pill.className = 'act';
+    pillT = setTimeout(function () { pill.className = ''; pill.textContent = ''; }, 9000);
+  }
+  function capture(kind, color) {
+    var sel = window.getSelection();
+    if (!sel || sel.isCollapsed || sel.rangeCount === 0) return null;
+    var r = sel.getRangeAt(0), made = null, bs = blocks();
+    // There is only ever one bookmark, because there is only ever one place reading stopped.
+    if (kind === 'bm') items = items.filter(function (x) { return x.kind !== 'bm'; });
+    bs.forEach(function (el) {
+      if (!r.intersectsNode(el)) return;
+      var t = el.textContent;
+      var s = el.contains(r.startContainer) ? offsetIn(el, r.startContainer, r.startOffset) : 0;
+      var e = el.contains(r.endContainer) ? offsetIn(el, r.endContainer, r.endOffset) : t.length;
+      if (e <= s) return;
+      var text = t.slice(s, e);
+      if (!text.trim()) return;
+      if ((kind === 'note' || kind === 'bm') && made) return;
+      var it = {
+        id: String(Date.now()) + '-' + Math.random().toString(36).slice(2, 7),
+        text: text, before: t.slice(Math.max(0, s - 40), s), after: t.slice(e, e + 40),
+        head: t.slice(0, 90), idx: bs.indexOf(el), at: s,
+        kind: kind, color: color || 'y', body: ''
+      };
+      items.push(it); made = it;
+    });
+    if (made) { sel.removeAllRanges(); if (kind !== 'note') save(); render(); }
+    return made;
+  }
+  function hide() { bar.hidden = true; }
+  function show() {
+    var sel = window.getSelection();
+    if (!sel || sel.isCollapsed || sel.rangeCount === 0) return hide();
+    if (!sel.toString().trim()) return hide();
+    if (!root.contains(sel.anchorNode) || !root.contains(sel.focusNode)) return hide();
+    var a = document.activeElement;
+    if (a && (a.tagName === 'TEXTAREA' || a.isContentEditable)) return hide();
+    if (sel.anchorNode && sel.anchorNode.parentElement && sel.anchorNode.parentElement.closest('.cmt, .nb')) return hide();
+    var r = sel.getRangeAt(0).getBoundingClientRect();
+    if (!r.width && !r.height) return hide();
+    bar.hidden = false;
+    bar.style.top = (window.scrollY + r.top - bar.offsetHeight - 8) + 'px';
+    bar.style.left = (window.scrollX + r.left) + 'px';
+  }
+  function start() {
+    root = document.querySelector('.wrap');
+    if (!root) return;
+    rail = document.createElement('div'); rail.id = 'cmts';
+    root.appendChild(rail);
+    bar = document.createElement('div');
+    bar.id = 'hl-bar'; bar.hidden = true;
+    bar.innerHTML = '<button type="button" data-c="y" title="Highlight yellow" aria-label="Highlight yellow"></button>' +
+      '<button type="button" data-c="p" title="Highlight pink" aria-label="Highlight pink"></button>' +
+      '<button type="button" data-c="ug" title="Underline, the everyday one" aria-label="Underline, the everyday one"></button>' +
+      '<button type="button" data-c="uy" title="Underline yellow" aria-label="Underline yellow"></button>' +
+      '<button type="button" data-c="up" title="Underline pink" aria-label="Underline pink"></button>' +
+      '<button type="button" data-c="n" title="Add a comment" aria-label="Add a comment"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 9.5A1.5 1.5 0 0 1 12.5 11H6l-3 3V4.5A1.5 1.5 0 0 1 4.5 3h8A1.5 1.5 0 0 1 14 4.5z"/></svg></button>' +
+      '<button type="button" data-c="b" title="Set your bookmark here" aria-label="Set your bookmark here"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M4 2.6h8v11.2L8 10.9l-4 2.9z"/></svg></button>';
+    document.body.appendChild(bar);
+    bar.addEventListener('mousedown', function (e) { e.preventDefault(); });
+    bar.addEventListener('click', function (e) {
+      var b = e.target.closest('button');
+      if (!b) return;
+      var c = b.getAttribute('data-c');
+      bar.hidden = true;
+      if (c === 'n') {
+        var it = capture('note');
+        if (it) {
+          var ta = root.querySelector('.cmt[data-id="' + it.id + '"] .cbody');
+          if (ta) { ta.focus(); }
+        }
+      } else if (c === 'b') { capture('bm'); }
+      else { capture('hl', c); }
+    });
+    // A click on empty space does not clear the selection, so a bare mouseup must never
+    // re-show the bar: only a gesture that actually dragged, or actually changed the
+    // selection, counts as a new selection.
+    var downX = 0, downY = 0, downSel = '';
+    ['mousedown', 'pointerdown', 'touchstart'].forEach(function (ev) {
+      document.addEventListener(ev, function (e) {
+        if (bar.contains(e.target)) return;
+        hide();
+        downX = e.clientX || 0; downY = e.clientY || 0;
+        downSel = String(window.getSelection() || '');
+      }, true);
+    });
+    ['mouseup', 'touchend'].forEach(function (ev) {
+      document.addEventListener(ev, function (e) {
+        if (bar.contains(e.target)) return;
+        var moved = Math.abs((e.clientX || 0) - downX) > 3 || Math.abs((e.clientY || 0) - downY) > 3;
+        var was = downSel;
+        setTimeout(function () {
+          var now = String(window.getSelection() || '');
+          if (!now.trim()) return hide();
+          if (!moved && now === was) return hide();
+          show();
+        }, 0);
+      });
+    });
+    document.addEventListener('keyup', function (e) {
+      if (e.key !== 'Shift' && !(e.shiftKey && e.key.indexOf('Arrow') === 0)) return;
+      var a = document.activeElement;
+      if (a && (a.tagName === 'TEXTAREA' || a.isContentEditable)) return;
+      setTimeout(show, 0);
+    });
+    document.addEventListener('keydown', function (e) { if (e.key !== 'Shift') hide(); });
+    document.addEventListener('selectionchange', function () {
+      var sel = window.getSelection();
+      if (!sel || sel.isCollapsed || !String(sel).trim()) hide();
+    });
+    document.addEventListener('visibilitychange', hide);
+    window.addEventListener('scroll', hide, { passive: true });
+    window.addEventListener('wheel', hide, { passive: true });
+    window.addEventListener('blur', hide);
+    window.addEventListener('resize', function () { hide(); place_notes(); });
+    root.addEventListener('click', function (e) {
+      var m = e.target.closest && e.target.closest('mark.hl');
+      if (!m) return;
+      var id = m.getAttribute('data-id');
+      var it = items.filter(function (x) { return x.id === id; })[0];
+      if (!it) return;
+      if (it.kind === 'note') {
+        var c = root.querySelector('.cmt[data-id="' + id + '"]');
+        Array.prototype.forEach.call(root.querySelectorAll('.cmt.act'), function (x) { x.classList.remove('act'); });
+        Array.prototype.forEach.call(root.querySelectorAll('mark.hl-n.act'), function (x) { x.classList.remove('act'); });
+        if (c) { c.classList.add('act'); m.classList.add('act'); c.scrollIntoView({ block: 'nearest' }); c.querySelector('.cbody').focus(); }
+      } else if (it.kind === 'bm') {
+        goTo(m);
+      } else { remove(id); }
+    });
+    drawer = document.getElementById('marks');
+    Array.prototype.forEach.call(document.querySelectorAll('[data-marks]'), function (b) {
+      b.addEventListener('click', function (e) { e.preventDefault(); openMarks(); });
+    });
+    if (drawer) drawer.addEventListener('click', function (e) {
+      if (e.target.closest('[data-close]')) closeMarks();
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMarks(); });
+    var top = document.getElementById('totop');
+    if (top) top.addEventListener('click', function () {
+      try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch (e) { window.scrollTo(0, 0); }
+    });
+    var go = document.getElementById('bmgo');
+    if (go) go.addEventListener('click', function () {
+      var it = bookmark();
+      var m = it && root.querySelector('mark[data-id="' + it.id + '"]');
+      if (m) { goTo(m); return; }
+      flag('No bookmark yet. Select a word, then pick the ribbon.', true);
+      setTimeout(function () { flag(''); }, 3200);
+    });
+    // A closed toggle prints as a heading with nothing under it, so open everything to print
+    // and put it back afterwards.
+    var reopen = [];
+    window.addEventListener('beforeprint', function () {
+      reopen = [];
+      Array.prototype.forEach.call(document.querySelectorAll('details:not([open])'), function (d) {
+        reopen.push(d); d.open = true;
+      });
+    });
+    window.addEventListener('afterprint', function () {
+      reopen.forEach(function (d) { d.open = false; });
+      reopen = [];
+    });
+    document.addEventListener('toggle', function () { place_notes(); }, true);
+    try {
+      var v = JSON.parse(localStorage.getItem(LS) || 'null');
+      if (Array.isArray(v)) { items = v; }
+      else if (v && typeof v === 'object') { items = v.items || []; notes = v.notes || {}; }
+    } catch (e) {}
+    items.forEach(function (x) { if (!x.kind) x.kind = 'hl'; });
+    wireNotes();
+    paintNotes();
+    render();
+    // A second copy of this page, open in another tab, writes the same key. Pick up what it
+    // saved, so the next save here is built on what is stored. A stale list of highlights in
+    // memory erases the highlight made over there as soon as a note is typed here. Whatever
+    // is being edited here at the moment is left alone.
+    window.addEventListener('storage', function (e) {
+      if (e.key && e.key !== LS) return;
+      var a = document.activeElement;
+      if (a && a.classList && a.classList.contains('cbody')) return;
+      var boxes = {}, fresh = stored(), k;
+      Array.prototype.forEach.call(document.querySelectorAll('.nb[data-k]'), function (el) {
+        boxes[el.getAttribute('data-k')] = el;
+      });
+      for (k in fresh.notes) {
+        if (!Object.prototype.hasOwnProperty.call(fresh.notes, k)) continue;
+        if (boxes[k] && boxes[k] === a) continue;
+        notes[k] = fresh.notes[k];
+      }
+      items = fresh.items;
+      items.forEach(function (x) { if (!x.kind) x.kind = 'hl'; });
+      paintNotes();
+      render();
+    });
+    if (window.claude && typeof claude.use === 'function') {
+      claude.use('db').then(function (db) {
+        if (!db) return;
+        ref = db.doc('highlights/v1');
+        ref.onSnapshot(function (snap) {
+          var d = snap.exists ? snap.data() : null;
+          if (!d) return;
+          if (root.querySelector('.cmt .cbody:focus')) return;
+          // Merged, so a snapshot taken before the lecture notes existed cannot drop them.
+          if (d.notes && typeof d.notes === 'object') {
+            Object.keys(d.notes).forEach(function (k) { notes[k] = d.notes[k]; });
+            paintNotes();
+          }
+          if (Array.isArray(d.items)) {
+            items = d.items.slice();
+            items.forEach(function (x) { if (!x.kind) x.kind = 'hl'; });
+            render();
+          }
+          // Merged the same way a save is, so the lecture notes written on notes.html since
+          // this page loaded survive a snapshot that predates them.
+          try { writeStore(d.notes && typeof d.notes === 'object' ? d.notes : null); } catch (e) {}
+        }, function () {});
+      }).catch(function () {});
+    }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
+  else start();
+})();
+</script>
+
+<script>
+(function () {
+  var nav = document.getElementById('nav');
+  if (!nav) return;
+  var links = Array.prototype.slice.call(nav.querySelectorAll('a'));
+  var targets = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+  function mark() {
+    var best = -1, bestTop = -1e9;
+    for (var i = 0; i < targets.length; i++) {
+      if (!targets[i]) continue;
+      var t = targets[i].getBoundingClientRect().top - 120;
+      if (t <= 0 && t > bestTop) { bestTop = t; best = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle('on', i === best); });
+    // only the chapter you are inside opens its list of sections
+    var of = '';
+    if (best >= 0) {
+      var cur = links[best];
+      of = cur.classList.contains('sb') ? cur.getAttribute('data-of')
+                                        : cur.getAttribute('href').slice(1);
+    }
+    links.forEach(function (a) {
+      if (a.classList.contains('sb')) a.classList.toggle('show', a.getAttribute('data-of') === of);
+    });
+    if (best !== was && best >= 0 && nav.scrollHeight > nav.clientHeight) {
+      links[best].scrollIntoView({ block: 'nearest' });
+    }
+    was = best;
+  }
+  var was = -1;
+  // how far through the reading this is, drawn along the top edge of the dock
+  var prog = document.getElementById('prog');
+  function bar() {
+    if (!prog) return;
+    var se = document.scrollingElement || document.documentElement;
+    var run = se.scrollHeight - window.innerHeight;
+    prog.style.width = (run > 0 ? Math.min(100, Math.max(0, se.scrollTop / run * 100)) : 0) + '%';
+  }
+  window.addEventListener('scroll', function () { mark(); bar(); }, { passive: true });
+  window.addEventListener('resize', function () { mark(); bar(); });
+  mark(); bar();
+})();
+</script>
+<script src="../glossary.js?v=a4b8e322"></script>
+<script>
+/* Every term defined in any week's glossary gets a faint dashed underline here, and its
+   definition on click. This runs after the highlighter has restored, and skips anything inside
+   a mark, so the two never fight over the same text nodes. */
+(function () {
+  var G = window.PHI_GLOSSARY;
+  var root = document.querySelector('.wrap');
+  if (!G || !G.length || !root) return;
+
+  var SKIP = '.gl, .nb, .cmt, #nav, .site, .sitefoot, .dock, a, h1, h2, h3, h4, h5, summary, .cred, mark, code, .gl-w, .dg-t, .mynote, .nbhint';
+  var BLOCK = 'p, li, td, th, dd, figcaption, blockquote, .keep, .qa, .why, .kone, .bq';
+
+  var pairs = [];
+  G.forEach(function (e, i) { e.f.forEach(function (w) { pairs.push([w, i]); }); });
+  pairs.sort(function (a, b) { return b[0].length - a[0].length; });
+  var idx = {};
+  pairs.forEach(function (p) { if (!(p[0].toLowerCase() in idx)) idx[p[0].toLowerCase()] = p[1]; });
+  function esc(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+  var rx;
+  try {
+    rx = new RegExp('(?<![\\w-])(' + pairs.map(function (p) { return esc(p[0]); }).join('|') + ')(?![\\w-])', 'gi');
+  } catch (e) { return; }   // a browser without lookbehind simply gets no underlines
+
+  var nodes = [], w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null), n;
+  while ((n = w.nextNode())) {
+    if (!n.nodeValue || n.nodeValue.length < 4) continue;
+    var p = n.parentElement;
+    if (!p || p.closest(SKIP)) continue;
+    nodes.push(n);
+  }
+
+  var seen = new Map();          // one mark per term per block, so a page is not all dashes
+  nodes.forEach(function (node) {
+    var block = node.parentElement.closest(BLOCK) || node.parentElement;
+    var done = seen.get(block);
+    if (!done) { done = new Set(); seen.set(block, done); }
+    var text = node.nodeValue, m, hits = [];
+    rx.lastIndex = 0;
+    while ((m = rx.exec(text))) {
+      var i = idx[m[1].toLowerCase()];
+      if (i === undefined || done.has(i)) continue;
+      done.add(i);
+      hits.push([m.index, m.index + m[1].length, i]);
+    }
+    for (var k = hits.length - 1; k >= 0; k--) {
+      var a = hits[k][0], b = hits[k][1];
+      var tail = node.splitText(a);
+      if (b - a < tail.nodeValue.length) tail.splitText(b - a);
+      var s = document.createElement('span');
+      s.className = 'gl-w';
+      s.setAttribute('data-g', hits[k][2]);
+      tail.parentNode.insertBefore(s, tail);
+      s.appendChild(tail);
+    }
+  });
+
+  var pop = document.createElement('div');
+  pop.id = 'gl-pop'; pop.hidden = true;
+  document.body.appendChild(pop);
+
+  function hide() { pop.hidden = true; }
+  function show(el) {
+    var e = G[+el.getAttribute('data-g')];
+    if (!e) return;
+    pop.innerHTML = '';
+    var t = document.createElement('div'); t.className = 't'; t.textContent = e.t;
+    var d = document.createElement('div'); d.className = 'd'; d.innerHTML = e.d;
+    var k = document.createElement('div'); k.className = 'w'; k.textContent = 'Glossary, week ' + e.w;
+    pop.appendChild(t); pop.appendChild(d); pop.appendChild(k);
+    pop.hidden = false;
+    var r = el.getBoundingClientRect();
+    var left = Math.min(window.scrollX + r.left, window.scrollX + document.documentElement.clientWidth - pop.offsetWidth - 12);
+    var top = window.scrollY + r.bottom + 7;
+    if (r.bottom + pop.offsetHeight + 16 > window.innerHeight && r.top > pop.offsetHeight + 16) {
+      top = window.scrollY + r.top - pop.offsetHeight - 7;
+    }
+    pop.style.left = Math.max(window.scrollX + 10, left) + 'px';
+    pop.style.top = top + 'px';
+  }
+
+  document.addEventListener('click', function (ev) {
+    var hit = ev.target.closest && ev.target.closest('.gl-w');
+    if (hit) { ev.preventDefault(); ev.stopPropagation(); show(hit); return; }
+    if (!pop.contains(ev.target)) hide();
+  }, true);
+  document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape') hide(); });
+  window.addEventListener('scroll', hide, { passive: true });
+  window.addEventListener('resize', hide);
+})();
+</script>
+</html>
