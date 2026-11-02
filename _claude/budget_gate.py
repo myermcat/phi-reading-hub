@@ -3,8 +3,9 @@
 The budget has two parts. Prose about the chapters is capped per page of assigned reading, since
 a printed page of these books runs about 450 words and 200 is under half of it. The week's own
 framing, meaning the argument section and the front matter, gets a flat allowance instead, because
-it answers the week's question and that does not get longer when the chapters do. The glossary and
-the for-the-curious blocks are excluded, since neither is read straight through.
+it answers the week's question and that does not get longer when the chapters do. The glossary, the
+for-the-curious blocks and anything inside a closed toggle are excluded, since none of them is
+read straight through and the reader decides whether to open one.
 
 The rule that keeps it there: an edit that adds prose takes at least as much out. Every guide
 drifted over by addition, one clarification at a time, with nothing ever removed.
@@ -26,7 +27,8 @@ class Count(HTMLParser):
         self.n, self.skip, self.stack = 0, 0, []
     def handle_starttag(self, t, attrs):
         cls = (dict(attrs).get('class') or '').split()
-        hit = t in self.SKIP_TAGS or any(c in self.SKIP_CLASS for c in cls)
+        shut = t == 'details' and 'open' not in dict(attrs)
+        hit = shut or t in self.SKIP_TAGS or any(c in self.SKIP_CLASS for c in cls)
         self.stack.append(hit)
         if hit:
             self.skip += 1
