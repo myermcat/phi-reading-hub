@@ -1,0 +1,2300 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PHI2394 Week 10 Reading Guide</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='10'%20fill='%232E8E74'/%3E%3Cellipse%20cx='32'%20cy='33'%20rx='16'%20ry='19'%20fill='none'%20stroke='%23fff'%20stroke-width='11'/%3E%3Crect%20x='26.5'%20y='2'%20width='11'%20height='60'%20rx='5.5'%20fill='%23fff'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,600&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --paper:      #EDEFEC;
+    --surface:    #F6F7F4;
+    --sunk:       #E3E6E1;
+    --ink:        #191D1A;
+    --ink-soft:   #414944;
+    --muted:      #6E766F;
+    --rule:       #D2D8D1;
+    --rule-soft:  #E1E5DF;
+    --close:      #1F6B57;
+    --close-wash: #CFE3DA;
+    --skim:       #8E6318;
+    --skim-wash:  #ECDDC2;
+    --skip:       #7E867F;
+    --skip-wash:  #D9DDD8;
+    --accent:     #1F6B57;
+    --curious:    #6B4372;
+    --curious-bg: #F2EEF3;
+    --lead:       #2E574A;
+    --c-y:        #8A6A0B;
+    --c-p:        #AE2F73;
+    --ghost:      #DADFD9;
+
+    --hl-y:     rgba(255,206,0,.42);
+    --hl-p:     rgba(255,92,168,.34);
+    --hl-n:     rgba(31,107,87,.10);
+    --hl-n-act: rgba(31,107,87,.22);
+    --ul-y:     rgba(196,152,0,.55);
+    --ul-p:     rgba(208,62,130,.48);
+    --ul-g:     rgba(58,98,84,.46);
+    --gl-line:  rgba(110,118,111,.42);
+
+    --navpad: 0px;
+
+    --display: "Newsreader", Georgia, "Times New Roman", serif;
+    --body:    "Source Sans 3", -apple-system, "Segoe UI", sans-serif;
+    --lh: 1.6; --measure: 62ch; --figw: 82ch; --pgap: 20px;
+
+    --mono:    "IBM Plex Mono", "SF Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #191E1B; --surface: #232924; --sunk: #141916;
+      --ink: #D3DAD4; --ink-soft: #A9B2AB; --muted: #848D86;
+      --rule: #333A35; --rule-soft: #2A302C;
+      --close: #64BFA1; --close-wash: #24463A;
+      --skim: #D9A957; --skim-wash: #413725;
+      --skip: #79827B; --skip-wash: #2D332F;
+      --accent: #64BFA1;
+      --curious: #C4A0CB; --curious-bg: #272029;
+      --lead: #93C2B2;
+      --c-y: #E3BE57;
+      --c-p: #FF97C6;
+      --ghost: #2C332E;
+      --hl-y: rgba(255,206,0,.24); --hl-p: rgba(255,92,168,.24);
+      --hl-n: rgba(100,191,161,.12); --hl-n-act: rgba(100,191,161,.22);
+      --ul-y: rgba(217,169,87,.48); --ul-p: rgba(255,151,198,.38);
+      --ul-g: rgba(126,172,154,.42); --gl-line: rgba(132,141,134,.45); --lh: 1.76; --measure: 58ch; --figw: 80ch; --pgap: 25px;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #191E1B; --surface: #232924; --sunk: #141916;
+    --ink: #D3DAD4; --ink-soft: #A9B2AB; --muted: #848D86;
+    --rule: #333A35; --rule-soft: #2A302C;
+    --close: #64BFA1; --close-wash: #24463A;
+    --skim: #D9A957; --skim-wash: #413725;
+    --skip: #79827B; --skip-wash: #2D332F;
+    --accent: #64BFA1;
+    --curious: #C4A0CB; --curious-bg: #272029;
+    --lead: #93C2B2;
+    --c-y: #E3BE57;
+    --c-p: #FF97C6;
+    --ghost: #2C332E;
+      --hl-y: rgba(255,206,0,.24); --hl-p: rgba(255,92,168,.24);
+      --hl-n: rgba(100,191,161,.12); --hl-n-act: rgba(100,191,161,.22);
+      --ul-y: rgba(217,169,87,.48); --ul-p: rgba(255,151,198,.38);
+    --ul-g: rgba(126,172,154,.42); --gl-line: rgba(132,141,134,.45); --lh: 1.76; --measure: 58ch; --figw: 80ch; --pgap: 25px;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--paper); color: var(--ink); font-family: var(--body);
+    font-size: 17.5px; line-height: var(--lh); -webkit-font-smoothing: antialiased;
+    padding-bottom: 47px;
+  }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 40px 26px 90px; display: flex; flex-direction: column; gap: 48px; }
+  .eyebrow { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted); }
+  h1 {
+    font-family: var(--display); font-weight: 600; font-size: clamp(34px, 5.6vw, 50px);
+    line-height: 1.06; letter-spacing: -0.015em; margin: 10px 0 0; text-wrap: balance;
+  }
+  .standfirst {
+    font-family: var(--display); font-size: clamp(18px, 2.4vw, 21.5px); line-height: 1.5;
+    color: var(--ink-soft); max-width: 62ch; margin: 14px 0 0;
+  }
+  p { margin: 0; max-width: var(--measure); }
+  .lede { color: var(--ink-soft); }
+
+  .strip-block { display: flex; flex-direction: column; gap: 11px; }
+  .strip { display: flex; width: 100%; height: 52px; border: 1px solid var(--rule); overflow: hidden; }
+  .seg { display: flex; min-width: 0; }
+  .seg + .seg { border-left: 1px solid var(--paper); }
+  .seg .txt, .seg .nts {
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--mono); font-size: 11px; color: #fff; min-width: 0; overflow: hidden;
+  }
+  .seg .nts { background: var(--skip-wash); }
+  .p-close .txt { background: var(--close); }
+  .p-skim  .txt { background: var(--skim); }
+  .p-skip  .txt { background: var(--skip); }
+  .strip-key { display: flex; flex-wrap: wrap; gap: 6px 18px; font-family: var(--mono); font-size: 11px; color: var(--muted); }
+  .strip-key i { font-style: normal; display: inline-flex; align-items: center; gap: 7px; }
+  .strip-key i::before { content: ""; width: 13px; height: 13px; display: inline-block; border: 1px solid var(--rule); }
+  .k-close::before { background: var(--close); }
+  .k-skim::before  { background: var(--skim); }
+  .k-skip::before  { background: var(--skip); }
+  .k-notes::before { background: var(--skip-wash); }
+
+  .tally { display: flex; flex-wrap: wrap; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  .tally > div { flex: 1 1 140px; padding: 14px 18px 14px 0; display: flex; flex-direction: column; gap: 2px; }
+  .tally > div + div { padding-left: 18px; border-left: 1px solid var(--rule-soft); }
+  .tally b { font-family: var(--mono); font-weight: 500; font-size: 24px; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+  .tally span { font-size: 13px; color: var(--muted); line-height: 1.35; }
+  .t-a b { color: var(--close); }
+  .t-b b { color: var(--skim); }
+
+  section { display: flex; flex-direction: column; gap: 20px; }
+  h2 { font-family: var(--display); font-weight: 600; font-size: 28px; letter-spacing: -0.01em; margin: 0; text-wrap: balance; }
+  h2 + p { margin-top: -8px; }
+  section > .ctx, section > .exm, section > .scroller, section > figure { margin: 26px 0; }
+  h3.sub { font-family: var(--display); font-weight: 600; font-size: 21px; margin: 14px 0 -8px; letter-spacing: -0.005em; }
+  .minihead { margin: 10px 0 -10px; font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+
+  .facts {
+    background: var(--surface); border-left: 3px solid var(--close);
+    padding: 20px 24px; display: grid; grid-template-columns: 150px 1fr; gap: 10px 18px; font-size: 16px;
+  }
+  .facts dt { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); padding-top: 4px; }
+  .facts dd { margin: 0; color: var(--ink-soft); }
+  .facts dd b { color: var(--ink); font-weight: 600; }
+
+  ul.plain { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 10px; max-width: var(--measure); color: var(--ink-soft); }
+  ul.plain b { color: var(--ink); }
+
+  .nine { width: 100%; border-collapse: collapse; font-size: 15.5px; }
+  .nine th {
+    text-align: left; font-family: var(--mono); font-size: 10px; letter-spacing: 0.09em;
+    text-transform: uppercase; color: var(--muted); font-weight: 500;
+    padding: 0 14px 9px 0; border-bottom: 1px solid var(--rule); vertical-align: bottom;
+  }
+  .nine td { padding: 12px 14px 12px 0; border-bottom: 1px solid var(--rule-soft); vertical-align: top; color: var(--ink-soft); }
+  .nine td:first-child { color: var(--ink); font-weight: 600; white-space: nowrap; padding-right: 18px; }
+  .nine td:first-child span { display: block; font-family: var(--mono); font-size: 10px; font-weight: 400; color: var(--muted); letter-spacing: 0.04em; }
+  .scroller { overflow-x: auto; margin: 30px 0; }
+
+  .convo { display: flex; flex-direction: column; }
+  .turn { display: grid; grid-template-columns: 128px 1fr; gap: 0 22px; padding: 16px 0; border-top: 1px solid var(--rule-soft); }
+  .turn:first-child { border-top: 1px solid var(--rule); }
+  .turn .who { display: flex; flex-direction: column; gap: 1px; padding-top: 2px; }
+  .turn .who b { font-family: var(--body); font-size: 15px; font-weight: 600; }
+  .turn .who span { font-family: var(--mono); font-size: 10.5px; color: var(--muted); }
+  .turn p { font-size: 16.5px; }
+
+  .readings { display: flex; flex-direction: column; }
+  .rd { display: grid; grid-template-columns: 4px 1fr; gap: 0 22px; padding: 36px 0; border-top: 1px solid var(--rule); }
+  .rd .stripe { background: var(--skip); }
+  .rd.p-close .stripe { background: var(--close); }
+  .rd.p-skim  .stripe { background: var(--skim); }
+  .rd .main { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
+
+  .rd .head { display: flex; flex-direction: column; gap: 7px; }
+  .rd h3 { margin: 0; font-family: var(--display); font-size: 25px; font-weight: 600; line-height: 1.16; text-wrap: balance; }
+  .rd h3 .ch { font-family: var(--mono); font-size: 14px; font-weight: 500; color: var(--muted); letter-spacing: 0.02em; margin-right: 10px; vertical-align: 3px; }
+  .rd .who { font-family: var(--display); font-style: italic; font-size: 18px; color: var(--ink-soft); }
+  .rd .meta { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.03em; }
+  .tag { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.09em; text-transform: uppercase; padding: 2.5px 8px; }
+  .p-close .tag { background: var(--close-wash); color: var(--close); }
+  .p-skim  .tag { background: var(--skim-wash);  color: var(--skim); }
+  .p-skip  .tag { background: var(--skip-wash);  color: var(--skip); }
+
+  .span { display: flex; flex-direction: column; gap: 5px; }
+  .span .bar { display: flex; height: 14px; width: 100%; border: 1px solid var(--rule); overflow: hidden; }
+  .span .bar i { display: block; background: var(--ghost); }
+  .span .bar i.here-txt { background: var(--close); }
+  .p-skim .span .bar i.here-txt { background: var(--skim); }
+  .p-skip .span .bar i.here-txt { background: var(--skip); }
+  .span .bar i.here-nts { background: var(--skip-wash); }
+  .span .cap { font-family: var(--mono); font-size: 10.5px; color: var(--muted); letter-spacing: 0.03em; }
+
+  .qline { font-family: var(--display); font-size: 19.5px; line-height: 1.42; padding: 12px 0 12px 16px; border-left: 2px solid var(--accent); color: var(--ink); }
+
+  .rd h4 { margin: 16px 0 -13px; font-family: var(--display); font-weight: 600;
+           font-size: 20px; line-height: 1.22; letter-spacing: -0.005em; color: var(--ink);
+           text-wrap: balance; scroll-margin-top: 78px; }
+  .rd h4::before { content: attr(data-n); display: block; margin-bottom: 6px;
+           font-family: var(--mono); font-size: 10.5px; font-weight: 500;
+           letter-spacing: 0.12em; color: var(--accent); }
+  .rd ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 9px; max-width: var(--measure); }
+  .rd li { padding-left: 2px; }
+  .rd .body { display: flex; flex-direction: column; gap: 14px; }
+  .rd .body > .scroller, .rd .body > figure, .rd .body > .quo,
+  .rd .body > .ctx, .rd .body > .exm { margin: 16px 0; }
+  .rd .body > ul, .rd .body > ol { margin: 4px 0 6px; }
+  .rd .body > p > b:first-child, .rd .body > ul > li > b:first-child,
+  .rd .body > ol > li > b:first-child { color: var(--lead); }
+  .body > p > b:first-child { color: var(--lead); }
+  .qa { border-left: 2px solid var(--accent); padding: 4px 0 4px 18px; max-width: var(--measure);
+        font-family: var(--display); font-size: 19px; line-height: 1.38; color: var(--ink); }
+  .qa b { display: block; margin-bottom: 6px; font-family: var(--mono); font-size: 10.5px;
+          font-weight: 500; letter-spacing: 0.11em; text-transform: uppercase; color: var(--accent); }
+  .body > * + * { margin-top: var(--pgap); }
+  .rd .body > * + * { margin-top: 0; }
+  .body > .keep { margin-top: calc(var(--pgap) + 8px); }
+  .body > .keep + * { margin-top: calc(var(--pgap) + 12px); }
+  .rd h5 {
+    margin: 12px 0 -4px; font-family: var(--display); font-weight: 600;
+    font-size: 18.5px; line-height: 1.25; color: var(--ink); letter-spacing: -.005em;
+  }
+
+  .links { display: grid; grid-template-columns: 84px 1fr; gap: 8px 14px; font-size: 16px; border-top: 1px solid var(--rule-soft); border-bottom: 1px solid var(--rule-soft); padding: 13px 0; }
+  .links dt { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); padding-top: 4px; }
+  .links dd { margin: 0; color: var(--ink-soft); }
+
+  .mynote { background: var(--sunk); padding: 16px 20px; font-size: 16.5px; color: var(--ink-soft); display: flex; flex-direction: column; gap: 6px; }
+  .mynote b { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+
+  .keep { font-family: var(--display); font-size: 18.5px; line-height: 1.45; font-style: italic; color: var(--ink); border-left: 2px solid var(--muted); padding: 4px 0 4px 18px; }
+  .keep b { font-family: var(--mono); font-style: normal; font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 5px; font-weight: 500; }
+
+  .curious { background: var(--curious-bg); padding: 22px 24px 24px; display: flex; flex-direction: column; gap: 16px; margin-top: 6px; }
+  .curious > .label { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .curious > .label b { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--curious); font-weight: 500; }
+  .curious > .label span { font-family: var(--mono); font-size: 10.5px; color: var(--muted); }
+  /* Every curious item and every side note is a toggle, closed until it is asked for,
+     and its summary says what is inside, so the line alone is enough to decide on. */
+  details.bit > summary, details.ctx > summary {
+    display: flex; align-items: baseline; gap: 10px; cursor: pointer; list-style: none;
+    padding: 4px 0; margin: 0; border-radius: 3px;
+  }
+  details.bit > summary::-webkit-details-marker,
+  details.ctx > summary::-webkit-details-marker { display: none; }
+  details.bit > summary::after, details.ctx > summary::after {
+    content: ''; width: 6px; height: 6px; flex: none; margin-left: auto; align-self: center;
+    border-right: 1.6px solid currentColor; border-bottom: 1.6px solid currentColor;
+    transform: translateY(-2px) rotate(45deg); opacity: .45; transition: transform .18s ease, opacity .18s ease;
+  }
+  details[open].bit > summary::after, details[open].ctx > summary::after {
+    transform: translateY(1px) rotate(225deg); opacity: .75;
+  }
+  details.bit > summary:hover::after, details.ctx > summary:hover::after { opacity: .9; }
+  details.bit > summary:focus-visible, details.ctx > summary:focus-visible {
+    outline: 2px solid var(--accent); outline-offset: 3px;
+  }
+  .bq { display: flex; flex-direction: column; gap: 9px; padding-top: 9px; }
+  .curious > details.bit + details.bit { border-top: 1px solid var(--rule); padding-top: 16px; }
+
+  .bit { display: block; }
+  .bit > summary {
+    font-family: var(--display); font-weight: 600; font-size: 20.5px;
+    line-height: 1.2; color: var(--curious); letter-spacing: -0.005em; text-wrap: balance;
+  }
+  .bit p { font-size: 16.5px; color: var(--ink-soft); }
+  .bit p b { color: var(--ink); font-weight: 600; }
+
+  .plan { display: flex; flex-direction: column; }
+  .ses { display: grid; grid-template-columns: 118px 1fr; gap: 0 24px; padding: 22px 0; border-top: 1px solid var(--rule); }
+  .ses .when { display: flex; flex-direction: column; gap: 3px; padding-top: 3px; }
+  .ses .when b { font-family: var(--mono); font-size: 11px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--accent); font-weight: 500; }
+  .ses .when span { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+  .ses .what { display: flex; flex-direction: column; gap: 8px; }
+  .ses h3 { margin: 0; font-family: var(--display); font-size: 21px; font-weight: 600; line-height: 1.2; }
+  .ses p { font-size: 16.5px; color: var(--ink-soft); }
+
+  .endmatter { border-top: 1px solid var(--rule); padding-top: 24px; font-size: 14.5px; color: var(--muted); display: flex; flex-direction: column; gap: 12px; }
+  .endmatter b { color: var(--ink-soft); font-weight: 600; }
+  .endmatter .weeks { display: grid; grid-template-columns: 96px 1fr; gap: 6px 16px; }
+  .endmatter .weeks dt { font-family: var(--mono); font-size: 11px; color: var(--muted); padding-top: 3px; }
+  .endmatter .weeks dd { margin: 0; color: var(--ink-soft); }
+
+  /* site footer */
+  .sitefoot { border-top: 1px solid var(--rule); background: var(--surface); margin-top: 20px; }
+  .sitefoot .in { max-width: 900px; margin: 0 auto; padding: 40px 26px 30px;
+                  display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 32px; }
+  .sitefoot .col { display: flex; flex-direction: column; gap: 9px; align-items: flex-start; }
+  .sitefoot h2 { margin: 0 0 2px; font-family: var(--mono); font-size: 10.5px; letter-spacing: .13em;
+                 text-transform: uppercase; color: var(--muted); font-weight: 500; }
+  .sitefoot a, .sitefoot button { font-family: var(--body); font-size: 14.5px; color: var(--ink-soft);
+                                  text-decoration: none; background: none; border: 0; padding: 0;
+                                  cursor: pointer; text-align: left; border-bottom: 1px solid transparent; }
+  .sitefoot a:hover, .sitefoot button:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .sitefoot .brand a { font-family: var(--mono); font-size: 11.5px; letter-spacing: .08em;
+                       text-transform: uppercase; color: var(--ink); }
+  .sitefoot .brand p { margin: 0; font-size: 14px; color: var(--muted); max-width: 30ch; }
+  .sitefoot .colophon { max-width: 900px; margin: 0 auto; padding: 16px 26px 34px;
+                        border-top: 1px solid var(--rule); display: flex; flex-wrap: wrap; gap: 6px 28px;
+                        font-size: 12.5px; color: var(--muted); }
+  @media (max-width: 700px) { .sitefoot .in { grid-template-columns: 1fr; gap: 26px; padding: 30px 16px 22px; }
+                              .sitefoot .colophon { padding: 14px 16px 26px; flex-direction: column; } }
+
+  /* the dock: pinned to the bottom, carrying the things used while reading */
+  .dock { position: fixed; left: 0; right: 0; bottom: 0; z-index: 75; background: var(--paper);
+          border-top: 1px solid var(--rule); }
+  .dock .prog { height: 2px; width: 0; background: var(--accent); transition: width .1s linear; }
+  .dock .in { max-width: 900px; margin: 0 auto; padding: 0 20px; height: 45px;
+              display: flex; align-items: center; gap: 2px; }
+  .dock button, .dock a { display: flex; align-items: center; gap: 7px; background: none; border: 0;
+              padding: 8px 10px; border-radius: 5px; cursor: pointer; text-decoration: none;
+              font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+              color: var(--muted); }
+  .dock button:hover, .dock a:hover { color: var(--ink); background: var(--surface); }
+  .dock button:focus-visible, .dock a:focus-visible { outline: 2px solid var(--accent); outline-offset: -1px; }
+  .dock svg { width: 13px; height: 14px; flex: none; }
+  .dock .end { margin-left: auto; }
+  .dock .n { font-family: var(--mono); font-size: 10px; line-height: 1.6; background: var(--sunk);
+             color: var(--ink-soft); border-radius: 9px; padding: 0 6px; min-width: 18px; text-align: center; }
+  .dock .n:empty { display: none; }
+  .dock #bmgo[data-set="1"] { color: var(--accent); }
+  .dock #bmgo[data-set="1"] svg { fill: currentColor; }
+  @media (max-width: 620px) { .dock .in { padding: 0 8px; } .dock .lab { display: none; } }
+
+  /* the highlights drawer, kept out of the reading */
+  .drawer[hidden] { display: none !important; }
+  .drawer { position: fixed; inset: 0; z-index: 90; }
+  .drawer .dback { position: absolute; inset: 0; background: rgba(0,0,0,.34); }
+  .dpanel { position: absolute; top: 0; right: 0; bottom: 0; width: min(460px, 100%);
+            background: var(--paper); border-left: 1px solid var(--rule); box-shadow: -8px 0 28px rgba(0,0,0,.16);
+            display: flex; flex-direction: column; gap: 4px; padding: 22px 26px 30px; overflow-y: auto; }
+  .dhead { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .dhead h2 { margin: 0; font-family: var(--display); font-size: 25px; font-weight: 600; }
+  .dclose { background: none; border: 0; font-size: 26px; line-height: 1; color: var(--muted);
+            cursor: pointer; padding: 0 4px; }
+  .dclose:hover { color: var(--ink); }
+  .dsub { margin: 0 0 14px; font-size: 14px; color: var(--muted); }
+
+
+
+  .ctx { border-left: 2px solid var(--rule); padding: 2px 0 2px 18px; display: block; margin: 26px 0; }
+  .ctx > summary { font-family: var(--display); font-size: 17.5px; font-weight: 600; color: var(--ink-soft); line-height: 1.25; }
+  .ctx > summary i { font-family: var(--mono); font-style: normal; font-size: 10.5px; letter-spacing: .1em;
+                     text-transform: uppercase; color: var(--muted); font-weight: 500; flex: none; padding-top: 3px; }
+  .ctx[open] > summary { color: var(--ink); }
+  .ctx p { font-size: 16.5px; color: var(--ink-soft); }
+  .seven { margin: 28px 0; display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--rule); }
+  .seven > div { border-bottom: 1px solid var(--rule); padding: 14px 0; display: grid; grid-template-columns: 30px 1fr; gap: 0 14px; }
+  .seven .n { font-family: var(--mono); font-size: 12px; color: var(--skim); padding-top: 3px; }
+  .seven .w { font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); }
+  .seven .cl { font-size: 16.5px; color: var(--ink); margin: 5px 0 0; }
+  .seven .rp { font-size: 15px; color: var(--ink-soft); margin: 6px 0 0; }
+  .seven .rp b { font-family: var(--mono); font-size: 10.5px; letter-spacing: .09em; text-transform: uppercase; color: var(--ink-soft); font-weight: 500; }
+  @media (max-width: 420px) { .seven > div { grid-template-columns: 1fr; gap: 0; } .seven .n { padding: 0 0 2px; } }
+  .exm { background: var(--skim-wash); border-left: 3px solid var(--skim); padding: 16px 20px; display: flex; flex-direction: column; gap: 10px; margin: 28px 0; }
+  .exm > b { font-family: var(--mono); font-size: 10.5px; letter-spacing: .11em; text-transform: uppercase; color: var(--skim); font-weight: 500; }
+  .exm p { font-size: 16.5px; color: var(--ink); }
+  .exm p b { color: var(--ink); }
+  .quo { border-left: 3px solid var(--accent); background: var(--surface); padding: 16px 20px; display: flex; flex-direction: column; gap: 10px; margin: 26px 0; }
+  .quo blockquote { margin: 0; font-family: var(--display); font-size: 18.5px; line-height: 1.5; color: var(--ink); }
+  .quo .src { font-family: var(--mono); font-size: 10.5px; letter-spacing: .07em; color: var(--muted); }
+  figure { margin: 28px 0; display: flex; flex-direction: column; gap: 9px; }
+  figure svg { max-width: 100%; height: auto; display: block; }
+  figcaption { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: .03em; line-height: 1.55; max-width: var(--figw); }
+
+  /* photographs, plates and maps */
+  figure.pic { margin: 24px 0; gap: 11px; max-width: var(--figw); }
+  /* A picture sits inside the reading, so it is capped at a height that leaves the paragraphs
+     on either side of it in view. At most of the window it filled the screen, the argument
+     disappeared behind it, and scrolling past a figure took as long as reading a section.
+     Detail is not lost: the image is a link to the file at full size. */
+  /* The box is sized on the link, in pixels worked out from the picture's own proportions for a
+     300px tall picture, and the image fills it. Sizing the image instead does not work: an image
+     that has not loaded yet has no size of its own, so with both axes auto it collapses to
+     nothing and the page jumps as it scrolls past, and clamping only the height leaves the width
+     where it was and squashes the picture. */
+  figure.pic a.zoom { display: block; align-self: flex-start; max-width: 100%; cursor: zoom-in; }
+  figure.pic img {
+    display: block; width: 100%; height: auto;
+    /* figure.pic is a column flexbox, whose align-items defaults to stretch. That stretched the
+       image to the full width of the measure and max-height then squashed it, so every portrait
+       picture came out distorted. align-self keeps the image at its own width. */
+    align-self: flex-start;
+    border: 1px solid var(--rule); border-radius: 6px; background: var(--surface);
+    transition: border-color .15s;
+  }
+  figure.pic a.zoom:hover img { border-color: var(--accent); }
+  figure.pic a.zoom:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  /* A line drawing with a transparent background is black ink on nothing, which in the dark
+     theme is black ink on a dark page and reads as an empty box. Give that kind of picture the
+     paper it was printed on. */
+  figure.pic img.ink { background: #fff; padding: 14px; }
+  @media (max-width: 700px) { figure.pic a.zoom { width: 100% !important; } }
+  figure.pic figcaption, figure.dia figcaption {
+    font-family: var(--body); font-size: 15px; line-height: 1.5;
+    letter-spacing: 0; color: var(--ink-soft); max-width: 74ch;
+  }
+  figure.pic figcaption b, figure.dia figcaption b { color: var(--ink); font-weight: 600; }
+  figure.pic .cred, figure.dia .cred {
+    display: block; margin-top: 6px;
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: .05em;
+    line-height: 1.5; color: var(--muted);
+  }
+
+  /* drawings made for this guide, framed the way the photographs are */
+  figure.dia { margin: 24px 0; gap: 11px; max-width: var(--figw); }
+  figure.dia .draw { max-width: 100%; overflow-x: auto; }
+  /* A drawing that illustrates a point in the flow is capped the way a picture is, so the
+     paragraph under it stays in view. A drawing that is a reference grid, like the nine authors
+     against three questions, is a thing to study and keeps its size. */
+  figure.dia svg[aria-labelledby="dg-matt"] { max-width: 470px; }
+  figure.dia svg[aria-labelledby="dg-seven"] { max-width: 560px; }
+  figure.dia svg {
+    display: block; width: 100%; height: auto;
+    border: 1px solid var(--rule); border-radius: 6px; background: var(--surface);
+  }
+  @media (max-width: 700px) {
+    /* On a phone the wider drawings would shrink their labels to about 5px, so each one keeps a
+       floor and its frame scrolls sideways, the way the table of nine texts already does. The
+       caption stays outside the frame and wraps to the screen. */
+    figure.dia svg[aria-labelledby="cvg-ttl"] { min-width: 660px; }
+    figure.dia svg[aria-labelledby="dg-comte-3s"] { min-width: 560px; }
+    figure.dia svg#dia-spine { min-width: 380px; }
+    figure.dia svg[aria-labelledby="dg-matt"] { min-width: 520px; }
+    figure.dia svg[aria-labelledby="dg-seven"] { min-width: 560px; }
+    figure.dia svg[aria-labelledby="dg-three7"] { min-width: 700px; }
+  figure.dia svg[aria-labelledby="dg-five7"] { min-width: 660px; }
+  }
+
+  /* inside the boxes, which already space their children */
+  .bq > figure.pic, .exm > figure.pic, .rd .body > figure.pic,
+  .bq > figure.dia, .exm > figure.dia, .rd .body > figure.dia { margin: 6px 0; }
+
+  .dg-box { fill: var(--surface); stroke: currentColor; stroke-opacity: .22; }
+  .dg-hi { fill: var(--close-wash); stroke: var(--close); stroke-opacity: 1; }
+  .dg-t { fill: currentColor; font-family: "Source Sans 3", -apple-system, sans-serif; }
+  .dg-m { fill: currentColor; font-family: "IBM Plex Mono", monospace; letter-spacing: .08em; }
+  .dg-dim { opacity: .62; }
+  .dg-ln { stroke: currentColor; fill: none; }
+
+
+  /* site header */
+  .site { position: sticky; top: 0; z-index: 70; background: var(--paper);
+          border-bottom: 1px solid var(--rule); }
+  .site .in { max-width: 900px; margin: 0 auto; padding: 0 26px; height: 52px;
+              display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+  .site a { text-decoration: none; }
+  /* The mark goes to the true left edge of the window. The bar already spans the window; only
+     its contents were penned into the 900px column, which left the mark floating in from the
+     edge with empty bar beside it. Everything else stays aligned with the body text.
+     Below the width where the column meets the edges there is no room, so it rejoins the row. */
+  /* display:block with no leading makes the anchor box exactly the size of the mark.
+     As an inline anchor its box carries line-height leading, so centring the anchor
+     left the mark itself 4.25px high. */
+  .site .hubmark { margin-right: 13px; display: block; line-height: 0; }
+  .site .hubmark svg { width: 28px; height: 28px; border-radius: 7px; }
+  @media (min-width: 1020px) {
+    .site .hubmark { position: absolute; left: 22px; top: 50%; transform: translateY(-50%);
+                     margin-right: 0; }
+  }
+  .site .hubmark:hover { opacity: .78; }
+  .site .hubmark:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px;
+                                 border-radius: 6px; }
+
+  .site .home { display: flex; align-items: center; gap: 9px; font-family: var(--mono);
+                font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); }
+  .site .home:hover { color: var(--ink); }
+  .site .home svg { width: 13px; height: 13px; flex: none; }
+  .site nav { display: flex; align-items: center; gap: 16px; }
+  .site nav .cur { font-family: var(--mono); font-size: 11px; letter-spacing: .08em;
+                   text-transform: uppercase; color: var(--muted); }
+  .site nav a { font-family: var(--mono); font-size: 11px; letter-spacing: .08em;
+                text-transform: uppercase; color: var(--accent); border-bottom: 1px solid transparent; }
+  .site nav a:hover { border-bottom-color: var(--accent); }
+  .site .disc { font-family: var(--body); font-size: 12px; font-weight: 400; color: var(--muted);
+                opacity: .8; letter-spacing: 0; text-decoration: none; white-space: nowrap;
+                border-bottom: 1px solid transparent; }
+  .site .disc:hover { opacity: 1; border-bottom-color: var(--rule); }
+  .site .disc i { font-style: normal; opacity: .5; padding: 0 6px; }
+  /* Four things share this row, so it tightens the spacing and holds each one on one line. */
+  .site .in { gap: 14px; }
+  .site .home, .site nav .cur, .site nav a { white-space: nowrap; }
+  /* The header is sticky, so a jump target has to reserve its height or it lands underneath it. */
+  [id] { scroll-margin-top: 74px; }
+  @media (max-width: 560px) { [id] { scroll-margin-top: 66px; } }
+
+  /* the bookmark: one per guide, the place reading stopped */
+  mark.hl.hl-b { background: none; padding: 0; box-shadow: inset 0 -2px 0 var(--accent); border-radius: 0; }
+  /* an inline ribbon after the words, so it cannot land on the line above it */
+  mark.hl.hl-b::after { content: ''; display: inline-block; width: 7px; height: 9px; margin-left: 4px;
+                        vertical-align: 0; background: var(--accent);
+                        clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 72%, 0 100%); }
+  @media (max-width: 1120px) { .site .disc { display: none; } }
+  @media (max-width: 560px) { .site .in { padding: 0 16px; height: 48px; gap: 12px; } .site nav .cur { display: none; } }
+  @media (max-width: 400px) { .site .in { gap: 10px; } }
+
+  /* vertical nav */
+  .wrap { position: relative; }
+  #nav { position: fixed; top: calc(50% + 26px); transform: translateY(-50%); left: max(10px, calc(50vw - 598px));
+         width: 132px; display: none; flex-direction: column; gap: 1px; z-index: 40; }
+  #nav a { display: block; font-family: var(--mono); font-size: 10.5px; letter-spacing: .03em;
+           color: var(--muted); line-height: 1.3; text-decoration: none; padding: 3px 0 3px 11px; border-left: 2px solid var(--rule-soft);
+           white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  /* The year each text was written, so the rail is also a timeline. The gaps are the point:
+     Plato to Bacon is two thousand years and Rousseau to Comte is eighty. */
+  #nav a i { font-style: normal; font-size: 9px; letter-spacing: .05em; opacity: .62; margin-left: 6px; }
+  #nav a:hover { color: var(--ink); border-left-color: var(--muted); }
+  #nav a.on { color: var(--accent); border-left-color: var(--accent); }
+  #nav a.grp { margin-top: 13px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .1em; border-left-color: transparent; padding-left: 0; }
+  #nav a.grp:first-child { margin-top: 0; }
+  #nav a.grp.day { margin-top: 15px; padding-top: 11px; border-top: 1px solid var(--rule);
+                   color: var(--accent); }
+  #nav a.grp.day:first-child { margin-top: 0; }
+  #nav a.grp.on { color: var(--accent); border-left-color: transparent; }
+  #nav a.core { color: var(--ink-soft); border-left-color: var(--rule); }
+  /* the contents list used to need a 1180px window. It takes its own column now, so it
+     appears from 1000px up, and only goes back to floating beside a centred page when
+     there is room for that. */
+  @media (min-width: 1000px) { :root { --navpad: 182px; } #nav { display: flex; left: 16px; width: 150px; } }
+  @media (min-width: 1320px) { :root { --navpad: 0px; } #nav { left: max(16px, calc(50vw - 640px)); } }
+  body { margin: 0; padding-left: var(--navpad); }
+  /* a full-bleed band that keeps its contents on the page column: the negative margin
+     widens the box to the window edge, the padding puts the content back where it was */
+  .site, .sitefoot { margin-left: calc(0px - var(--navpad)); padding-left: var(--navpad); }
+  /* the buttons move onto the page column. The progress line is taken out of the flow so it
+     keeps measuring the whole window, since the column starts a long way in */
+  .dock { padding-left: var(--navpad); padding-top: 2px; }
+  .dock .prog { position: absolute; top: 0; left: 0; }
+  #nav { top: 78px; transform: none; max-height: calc(100vh - 126px);
+         overflow-y: auto; scrollbar-width: none; }
+  #nav::-webkit-scrollbar { display: none; }
+  #nav > * { flex: 0 0 auto; }
+  #nav a.grp, #nav a.core { white-space: normal; overflow: visible; text-overflow: clip; }
+  #nav a.sb { display: none; font-family: var(--body); font-size: 11.5px; letter-spacing: 0;
+              line-height: 1.3; padding: 2.5px 0 2.5px 11px; margin-left: 9px;
+              white-space: normal; overflow: visible; text-overflow: clip; }
+  #nav a.sb.show { display: block; }
+  #nav a.sb b { font-family: var(--mono); font-size: 9.5px; font-weight: 500;
+                font-style: normal; color: var(--muted); margin-right: 5px; }
+  #nav a.sb:hover b, #nav a.sb.on b { color: var(--accent); }
+
+  /* glossary. Closed by default: it is a reference list and not something to read through,
+     and left open it makes the page look twice as long as it is. */
+  .glbox { border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); margin: 22px 0 0; }
+  .glbox > summary { list-style: none; cursor: pointer; padding: 15px 0; display: flex; align-items: baseline; gap: 12px;
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); }
+  .glbox > summary::-webkit-details-marker { display: none; }
+  .glbox > summary::after { content: 'show'; margin-left: auto; font-size: 11px; color: var(--muted); }
+  .glbox[open] > summary::after { content: 'hide'; }
+  .glbox > summary:hover { color: var(--ink); }
+  .glbox > summary b { font-family: var(--display); font-size: 16px; letter-spacing: 0; text-transform: none; font-weight: 600; color: var(--ink); }
+  .glbox > .gl { padding: 4px 0 26px; }
+  .gl { display: flex; flex-direction: column; gap: 26px; }
+  .gl-grp { display: flex; flex-direction: column; gap: 10px; }
+  .gl-grp > h3 { margin: 0; font-family: var(--display); font-size: 19px; font-weight: 600; }
+  .gl-grp > h3 span { font-family: var(--mono); font-size: 11px; color: var(--muted); font-weight: 400; letter-spacing: .05em; margin-left: 9px; }
+  .gl dl { margin: 0; display: grid; grid-template-columns: 186px 1fr; gap: 10px 18px; font-size: 16px; }
+  .gl dt { font-family: var(--display); font-style: italic; font-size: 16.5px; color: var(--ink); }
+  .gl dd { margin: 0; color: var(--ink-soft); }
+  @media (max-width: 680px) { .gl dl { grid-template-columns: 1fr; gap: 3px 0; } .gl dt { padding-top: 9px; } }
+
+  /* notes you write.
+     .nbpad is the well. It is recessed, because a recessed surface reads as somewhere to put
+     something in and a raised one reads as something to read, and a long note in a raised card
+     was reading as more of the guide's own prose. The label is drawn directly above the well,
+     close to it and aligned with its left edge, so a page of blocks stays scannable.
+     The left edge holds --rule while a block is empty and --accent once it holds something, from
+     the `has` class the editor already sets on .nbwrap.
+     Nothing in here touches .nb: the note text keeps the face, size, colour, line height and
+     spacing it has always had. */
+  .nbgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(298px, 1fr)); gap: 18px; }
+  .nbwrap { display: flex; flex-direction: column; gap: 6px; }
+  .nbwrap.wide { grid-column: 1 / -1; }
+  .nbhead { display: flex; align-items: baseline; justify-content: space-between; gap: 10px;
+            padding: 0 2px 0 3px; }
+  .nbhead b { font-family: var(--display); font-size: 16.5px; font-weight: 600; color: var(--ink); }
+  .nbhead span { font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .nbpad { position: relative; padding: 14px 16px 16px; background: var(--sunk);
+           border: 1px solid var(--rule); border-left: 3px solid var(--rule); border-radius: 8px;
+           box-shadow: inset 0 1px 0 rgba(0,0,0,.06);
+           transition: border-color .15s, box-shadow .15s; }
+  .nbwrap.has .nbpad { border-left-color: var(--accent); }
+  .nbwrap:focus-within .nbpad { border-color: var(--accent);
+           box-shadow: inset 0 1px 0 rgba(0,0,0,.06), 0 0 0 3px var(--close-wash); }
+  .nb { position: relative; font-size: 15.5px; line-height: 1.6; color: var(--ink); min-height: 46px; outline: none; }
+  .nb.is-empty::before, .cbody.is-empty::before {
+    content: attr(data-ph); position: absolute; left: 0; top: 0; color: var(--muted);
+    font-style: italic; pointer-events: none; }
+  .nb p { margin: 0 0 8px; max-width: none; }
+  .nb p:last-child { margin-bottom: 0; }
+  .nb ul, .nb ol { margin: 5px 0 8px; padding-left: 27px; }
+  .nb li { margin-bottom: 4px; }
+  .nb b, .nb strong { font-weight: 600; }
+  .nb h3, .nb h4, .nb h5 { margin: 12px 0 5px; font-family: var(--display); font-weight: 600; line-height: 1.25; color: var(--ink); }
+  .nb h3 { font-size: 19px; } .nb h4 { font-size: 17px; } .nb h5 { font-size: 15.5px; }
+  .nb > :first-child { margin-top: 0; }
+  .nb hr { border: 0; border-top: 1px solid var(--rule); margin: 12px 0; }
+  .nb blockquote { margin: 8px 0; padding-left: 12px; border-left: 2px solid var(--rule); color: var(--ink-soft); }
+  .c-y { color: var(--c-y); }
+  .c-p { color: var(--c-p); }
+  .c-m { color: var(--muted); }
+  .c-g { color: var(--accent); }
+  /* normal text, spelled out. Needed where a colour is inherited from an enclosing span
+     and stripping that span would recolour words the writer meant to keep. */
+  .c-n { color: var(--ink); }
+  #nb-bar { position: absolute; z-index: 50; display: flex; gap: 2px; padding: 3px; background: var(--surface); border: 1px solid var(--rule); border-radius: 5px; box-shadow: 0 2px 8px rgba(0,0,0,.12); }
+  #nb-bar[hidden] { display: none !important; }
+  #nb-bar button { min-width: 24px; height: 22px; border: 0; border-radius: 3px; background: none; cursor: pointer; color: var(--ink-soft); font-family: var(--display); font-size: 14px; padding: 0 5px; }
+  #nb-bar button:hover { background: var(--sunk); color: var(--ink); }
+  #nb-bar button.i { font-style: italic; }
+  #nb-bar button.l { font-family: var(--mono); font-size: 11px; }
+  #nb-bar .sep { width: 1px; background: var(--rule); margin: 3px 2px; }
+  #nb-bar button.sw { width: 18px; min-width: 18px; height: 18px; border-radius: 3px; align-self: center;
+                      border: 1px solid var(--rule); font-size: 0; }
+  #nb-bar button.sw.y { background: var(--c-y); }
+  #nb-bar button.sw.p { background: var(--c-p); }
+  #nb-bar button.sw.g { background: var(--accent); }
+  #nb-bar button.sw.m { background: var(--muted); }
+  #nb-bar button.sw.x { background: none; font-size: 12px; color: var(--muted); border-color: transparent; }
+  .nbhint { font-family: var(--mono); font-size: 10.5px; color: var(--muted); letter-spacing: .03em; }
+  /* The standing explanation, closed and below the blocks, drawn the same way as the one on
+     the lecture notes page. */
+  details.about { margin-top: 6px; border-top: 1px solid var(--rule); padding-top: 12px; }
+  details.about summary { cursor: pointer; font-family: var(--mono); font-size: 11px;
+    letter-spacing: .1em; text-transform: uppercase; color: var(--muted); list-style: none;
+    display: flex; align-items: center; gap: 8px; }
+  details.about summary::-webkit-details-marker { display: none; }
+  details.about summary::before { content: ""; width: 0; height: 0; border-left: 5px solid currentColor;
+    border-top: 4px solid transparent; border-bottom: 4px solid transparent; transition: transform .15s; }
+  details.about[open] summary::before { transform: rotate(90deg); }
+  details.about summary:hover { color: var(--accent); }
+  details.about summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  details.about .aboutin { display: flex; flex-direction: column; gap: 11px; padding: 14px 0 4px; }
+  /* The pinned bar is z-index 75 and its top edge reaches 635, so an undo offered at the
+     foot of the window sat under it and could not be clicked. The pill clears the bar and
+     stacks above it, because it holds a control with a few seconds to live. */
+  #save { position: fixed; right: 16px; bottom: 64px; z-index: 80; font-family: var(--mono); font-size: 10.5px;
+          letter-spacing: .04em; padding: 6px 10px; border-radius: 4px; background: var(--surface);
+          border: 1px solid var(--rule); color: var(--muted); opacity: 0; transition: opacity .25s; pointer-events: none; }
+  #save.on { opacity: 1; }
+  #save.bad { color: #9B2C2C; border-color: #9B2C2C; opacity: 1; pointer-events: auto; }
+  #save.act { opacity: 1; pointer-events: auto; display: flex; align-items: center; gap: 10px; }
+  #save button { font-family: var(--mono); font-size: 10.5px; letter-spacing: .07em; text-transform: uppercase;
+                 color: var(--accent); background: none; border: 0; border-bottom: 1px solid var(--accent);
+                 padding: 0 0 1px; cursor: pointer; }
+  #save button:hover { color: var(--ink); border-bottom-color: var(--ink); }
+  :root[data-theme="dark"] #save.bad, :root:not([data-theme="light"]) #save.bad { color: #F09B9B; border-color: #F09B9B; }
+    .sidenote { font-size: 13.5px; line-height: 1.45; color: var(--muted); max-width: 64ch;
+      padding-left: 12px; border-left: 1px solid var(--rule); margin: -2px 0 4px; }
+    .sidenote b { color: var(--ink-soft); font-weight: 600; }
+
+  /* highlights list */
+  .bm { display: flex; flex-direction: column; gap: 22px; }
+  .bmg { display: flex; flex-direction: column; gap: 2px; }
+  .bmg > h3 { margin: 0 0 6px; font-family: var(--display); font-size: 18px; font-weight: 600; }
+  .bmg > h3 span { font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-left: 9px; }
+  .bmi { display: grid; grid-template-columns: 12px 1fr; gap: 0 11px; align-items: start;
+         padding: 8px 10px 8px 0; border-top: 1px solid var(--rule-soft); text-align: left;
+         background: none; border-left: 0; border-right: 0; border-bottom: 0; cursor: pointer; width: 100%; font: inherit; color: inherit; }
+  .bmi:hover { background: var(--surface); }
+  .bmi:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+  .bmi .dots { display: flex; flex-direction: column; gap: 4px; padding-top: 7px; }
+  .bmi .dot { width: 9px; height: 9px; border-radius: 2px; flex: none; }
+  .bmi .dot.y { background: rgba(255,206,0,.85); }
+  .bmi .dot.p { background: rgba(255,92,168,.7); }
+  .bmi .dot.uy { background: none; box-shadow: inset 0 -3px 0 var(--ul-y); }
+  .bmi .dot.up { background: none; box-shadow: inset 0 -3px 0 var(--ul-p); }
+  .bmi .dot.ug { background: none; box-shadow: inset 0 -3px 0 var(--ul-g); }
+  .bmi .dot.n { background: none; border: 1px dashed var(--accent); }
+  .bmi .dot.b { background: var(--accent); clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 70%, 0 100%); border-radius: 0; height: 11px; width: 8px; }
+  .bmi .bt { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+  .bmi .where { font-family: var(--mono); font-size: 10px; letter-spacing: .07em; text-transform: uppercase;
+                color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .bmi .q { font-size: 15px; line-height: 1.5; color: var(--ink); }
+  .bmi .q .dim { color: var(--muted); }
+  /* the list reuses the page's own highlight colours, so a row looks like what it points at */
+  .bmi .q mark.hl { cursor: inherit; }
+  .bmi .cm { display: block; font-size: 13.5px; color: var(--muted); margin-top: 2px;
+             border-left: 2px solid var(--rule); padding-left: 9px; }
+  .bmg-b { padding: 14px 16px 12px; background: var(--surface); border-left: 2px solid var(--accent); margin-bottom: 10px; }
+  .bmg-b > h3 { color: var(--accent); }
+  .bmg-b .bmi { border-top: 0; padding-top: 0; }
+  .bmg-b .bmi:hover { background: none; text-decoration: underline; text-decoration-color: var(--rule); }
+  .bmclear { align-self: flex-start; margin-top: 6px; background: none; border: 0; padding: 2px 0; cursor: pointer;
+             font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase;
+             color: var(--muted); border-bottom: 1px solid var(--rule); }
+  .bmclear:hover { color: var(--ink); }
+  .bmempty { font-size: 16px; color: var(--muted); }
+  mark.hl.flash { animation: fl 1.4s ease-out; }
+  @keyframes fl { 0%,55% { box-shadow: 0 0 0 4px var(--close-wash); } 100% { box-shadow: 0 0 0 0 transparent; } }
+
+  /* comment rail */
+  #cmts { position: absolute; top: 0; left: 100%; margin-left: 18px; width: 202px; display: none; }
+  #cmts.on { display: block; }
+  .cmt { position: absolute; width: 202px; background: transparent; border-left: 2px solid var(--rule); padding: 2px 0 2px 9px; display: flex; flex-direction: column; gap: 3px; }
+  .cmt.inline { position: static; width: auto; max-width: 420px; margin: 10px 0 10px 16px; }
+  .cmt .q { font-family: var(--mono); font-size: 9px; letter-spacing: .02em; color: var(--muted); line-height: 1.4; opacity: .8; overflow: hidden; }
+  .cmt .cbody { position: relative; font-family: var(--body); font-size: 12.5px; line-height: 1.45; color: var(--ink-soft); outline: none; min-height: 17px; }
+  .cmt .cbody p { margin: 0 0 5px; max-width: none; }
+  .cmt .cbody p:last-child { margin-bottom: 0; }
+  .cmt .cbody ul, .cmt .cbody ol { margin: 4px 0 5px; padding-left: 17px; }
+  .cmt .cbody li { margin-bottom: 2px; }
+  .cmt .cbody hr { border: 0; border-top: 1px solid var(--rule); margin: 7px 0; }
+  .cmt .row { display: none; justify-content: flex-end; }
+  .cmt:hover .row, .cmt:focus-within .row { display: flex; }
+  .cmt button { font-family: var(--mono); font-size: 9px; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); background: none; border: 0; cursor: pointer; padding: 1px 0; }
+  .cmt button:hover { color: var(--ink); }
+  .cmt:hover, .cmt:focus-within { border-left-color: var(--muted); }
+  .cmt.act { border-left-color: var(--ink-soft); }
+
+  mark.hl { background: transparent; color: inherit; padding: .1em 0; border-radius: 2px; cursor: pointer; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+  mark.hl-y { background: var(--hl-y); }
+  mark.hl-p { background: var(--hl-p); }
+  mark.hl-n { background: var(--hl-n); border-bottom: 1px dashed var(--accent); }
+  mark.hl-uy { background: none; border-radius: 0; box-shadow: inset 0 -2px 0 var(--ul-y); }
+  mark.hl-up { background: none; border-radius: 0; box-shadow: inset 0 -2px 0 var(--ul-p); }
+  mark.hl-ug { background: none; border-radius: 0; box-shadow: inset 0 -2px 0 var(--ul-g); }
+  mark.hl-n.act { background: var(--hl-n-act); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) mark.hl-y { background: rgba(255,206,0,.30); } :root:not([data-theme="light"]) mark.hl-p { background: rgba(255,92,168,.30); } :root:not([data-theme="light"]) mark.hl-n { background: rgba(100,191,161,.12); } }
+  #hl-bar[hidden] { display: none !important; }
+  #hl-bar { position: absolute; z-index: 50; display: flex; gap: 3px; padding: 3px; background: var(--surface); border: 1px solid var(--rule); border-radius: 5px; box-shadow: 0 2px 8px rgba(0,0,0,.12); }
+  #hl-bar button { width: 17px; height: 17px; border: 1px solid var(--rule); border-radius: 3px; cursor: pointer; padding: 0; }
+  #hl-bar button[data-c="y"] { background: var(--hl-y); }
+  #hl-bar button[data-c="p"] { background: var(--hl-p); }
+  #hl-bar button[data-c="uy"] { background: var(--paper); box-shadow: inset 0 -4px 0 var(--ul-y); }
+  #hl-bar button[data-c="ug"] { background: var(--paper); box-shadow: inset 0 -4px 0 var(--ul-g); }
+  #hl-bar button[data-c="up"] { background: var(--paper); box-shadow: inset 0 -4px 0 var(--ul-p); }
+  #hl-bar button[data-c="n"] { background: var(--paper); display: flex; align-items: center; justify-content: center; color: var(--ink-soft); }
+  #hl-bar button[data-c="n"] svg { width: 11px; height: 11px; display: block; }
+  #hl-bar button[data-c="b"] { background: var(--paper); display: flex; align-items: center; justify-content: center; color: var(--accent); }
+  #hl-bar button[data-c="b"] svg { width: 11px; height: 11px; display: block; }
+  #hl-bar button:hover { border-color: var(--muted); }
+  #hl-bar button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .hl-hint { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: .03em; margin-top: 12px; }
+
+  @media (max-width: 680px) {
+    .wrap { padding: 34px 16px 60px; gap: 38px; }
+    .facts, footer .weeks, .links { grid-template-columns: 1fr; gap: 3px 0; }
+    .facts dt, footer .weeks dt, .links dt { padding-top: 9px; }
+    .ses, .turn { grid-template-columns: 1fr; gap: 8px; }
+    .turn .who { flex-direction: row; align-items: baseline; gap: 9px; }
+    .rd { gap: 0 16px; }
+    .nine { min-width: 620px; }
+  }
+  /* A word defined in any week's glossary. The line is meant to be ignorable until wanted. */
+  .gl-w { border-bottom: 1px dashed var(--gl-line); cursor: pointer; }
+  .gl-w:hover { border-bottom-color: var(--accent); }
+  #gl-pop[hidden] { display: none !important; }
+  #gl-pop { position: absolute; z-index: 80; width: 330px; max-width: calc(100vw - 24px);
+            background: var(--surface); border: 1px solid var(--rule); border-radius: 6px;
+            box-shadow: 0 6px 22px rgba(0,0,0,.28); padding: 13px 15px 14px; }
+  #gl-pop .t { font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em;
+               text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+  #gl-pop .d { font-family: var(--body); font-size: 14.5px; line-height: 1.5; color: var(--ink-soft); }
+  #gl-pop .d b { color: var(--ink); font-weight: 600; }
+  #gl-pop .w { margin-top: 9px; font-family: var(--mono); font-size: 10px; color: var(--muted); }
+  @media print { .gl-w { border-bottom: 0; } #gl-pop { display: none !important; } }
+  @media print {
+    .site, #nav, #hl-bar, #nb-bar, #save, #cmts, .drawer, .sitefoot, .dock { display: none !important; }
+    body { padding-bottom: 0; }
+    body { background: #fff; font-size: 11.5px; }
+    .wrap { max-width: none; padding: 0; gap: 26px; }
+    .rd, section, figure, .exm, .ctx, .quo { break-inside: avoid; }
+    mark.hl { background: none; border-bottom: 1.5px solid #888; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+<header class="site"><div class="in"><a class="hubmark" href="https://myermcat.github.io/course-hub/" title="Course hub" aria-label="Course hub, the front page"><svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#22282E"/><rect x="13" y="13" width="16" height="16" rx="4" fill="#7C5CB8"/><rect x="35" y="13" width="16" height="16" rx="4" fill="#3E9E82"/><rect x="13" y="35" width="16" height="16" rx="4" fill="#4E90C8"/><rect x="35" y="35" width="16" height="16" rx="4" fill="#C08A3E"/></svg></a><a class="home" href="../"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 8H2M7 3 2 8l5 5"/></svg>PHI2394</a><a class="disc" href="../#about" title="How these guides were written">Written with Claude<i>|</i>AI can make mistakes</a><nav aria-label="This week"><span class="cur">Week 10</span><a href="notes.html">Lecture notes</a></nav></div></header>
+
+<nav id="nav" aria-label="Contents">
+  <a class="grp" href="#s-arg">What the week argues</a>
+  <a class="grp day" href="#s-days">Wednesday 18 Nov</a>
+  <a class="core" href="#intro" title="Strings, Introduction &middot; read properly">The Original Epidemic<i>intro</i></a>
+  <a class="sb" data-of="intro" href="#intro-1"><b>I.1</b>The 1894 panic about thinness</a>
+  <a class="sb" data-of="intro" href="#intro-2"><b>I.2</b>Rich women slimmed anyway</a>
+  <a class="sb" data-of="intro" href="#intro-3"><b>I.3</b>Slavery, Protestantism, and doctors last</a>
+  <a class="sb" data-of="intro" href="#intro-4"><b>I.4</b>Race degrades and disciplines at once</a>
+  <a class="core" href="#ch3" title="Strings ch. 3 &middot; read properly">The Rise of the Big Black Woman<i>ch 3</i></a>
+  <a class="sb" data-of="ch3" href="#ch3-1"><b>3.1</b>Bernier invents race in 1684</a>
+  <a class="sb" data-of="ch3" href="#ch3-2"><b>3.2</b>Buffon adds body size</a>
+  <a class="sb" data-of="ch3" href="#ch3-3"><b>3.3</b>Both of them called black women beautiful</a>
+  <a class="sb" data-of="ch3" href="#ch3-4"><b>3.4</b>The Encyclop&eacute;die turns eating into sin</a>
+  <a class="sb" data-of="ch3" href="#ch3-5"><b>3.5</b>Virey puts it in the body</a>
+  <a class="sb" data-of="ch3" href="#ch3-6"><b>3.6</b>Sara Baartman</a>
+  <a class="sb" data-of="ch3" href="#ch3-7"><b>3.7</b>Cuvier makes fatness a deformity</a>
+  <a class="sb" data-of="ch3" href="#ch3-8"><b>3.8</b>What the chain of five men did</a>
+  <a class="grp" href="#s-gloss">Glossary</a>
+</nav>
+
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">PHI 2394 B00 &middot; reading for Wednesday 18 November &middot; the first class back</div>
+    <h1>Who Decided That Thin Was Better?</h1>
+    <p class="standfirst">In 1894 American newspapers ran a panic about an epidemic of thinness, and doctors wrote books warning that slender women were a threat to the nation. A century later the same country is running a panic about an epidemic of fatness, and poor black women are the ones blamed for it. Strings argues that the verdict flipped because it was never about health. It was built out of two things: race science made during the slave trade, which tied fatness to Africans, and Protestant preaching, which made eating a sin. Doctors arrived afterwards and ratified what was already there.</p>
+  </header>
+
+  <div class="strip-block">
+    <div class="tally">
+      <div><b>10</b><span>pages of the introduction, printed 1 to 10</span></div>
+      <div><b>30</b><span>pages of ch. 3, printed 54 to 83</span></div>
+      <div class="t-a"><b>2</b><span>texts, one book, one author</span></div>
+      <div class="t-b"><b>40</b><span>pages in all, for one class</span></div>
+    </div>
+  </div>
+
+  <section id="s-days">
+    <h2>One class this week</h2>
+    <p class="sidenote">The strike cost the week of 9 November and Monday 16 November, and the
+    class resumes on Wednesday 18 November. Tremain chapter 5, which the old reading guide set for
+    week 9, has been dropped from the course. Exam 2 moved to Monday 30 November and now covers
+    weeks 4 to 7.</p>
+    <div class="plan">
+      <div class="ses">
+        <div class="when"><b>Wednesday</b><span>18 November</span></div>
+        <div class="what">
+          <h3>Strings, the introduction and chapter 3</h3>
+          <p><b>Introduction</b>, printed pages 1 to 10, and <b>chapter 3</b>, printed pages 54 to
+          83. The introduction is the whole book's argument in ten pages and is the part an exam
+          question would use. Chapter 3 is a chain of five men between 1684 and 1815, each one
+          adding a piece, and it reads as history.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="s-arg">
+    <h2>The medical verdict on body weight reversed completely in about a century, so the body was never what was setting it</h2>
+
+    <div class="keep">
+      <b>The claim that does all the work</b>
+      Fat phobia was in place <b>before</b> medicine took a position on fat. It was assembled out
+      of race science and Protestant preaching between about 1680 and 1900, and doctors joined in
+      afterwards. So a health explanation of why thinness is admired has the order of events
+      backwards.
+    </div>
+
+    <div class="body">
+      <p><b>Start with the newspaper, because the newspaper is the surprising part.</b> On 16
+      February 1894 the <em>New York Times</em> ran the headline &#8220;Actually Starving! A
+      Prominent New York Man Dies in Sight of Food.&#8221; The article claimed that thousands of
+      New Yorkers were starving while having plenty of money for food, and quoted a physician
+      saying they were dying slowly and looked like consumptives, meaning like people with
+      tuberculosis. Doctors of the period wrote about the pale, thin and puny bodies they saw
+      everywhere, about narrow chests and flabby muscles. Thinness was the epidemic.</p>
+
+      <p><b>The worry was loudest about women, and it was patriotic.</b> Dr William Alcott, in
+      <em>The Young Woman's Book of Health</em> of 1855, warned that a whole generation of American
+      women was being trained to feebleness and want of appetite. Dr John Harvey Kellogg, the
+      Michigan sanitarium doctor who later sold breakfast cereal, wrote that American girls were
+      lacking in physical development and needed a nutritional revolution because their eating
+      produced scrawny bodies. In 1888 the <em>Washington Post</em> asked whether girls were
+      growing smaller and complained that English and German women weighed more, and that American
+      stock could not hold its own against the big-boned foreigner.</p>
+
+      <table class="rt">
+        <thead><tr><th>Year</th><th>The epidemic</th><th>Who is blamed</th></tr></thead>
+        <tbody>
+          <tr><td><b>1894</b></td><td>Thinness</td><td>Well-off white women, for starving themselves and weakening the national stock</td></tr>
+          <tr><td><b>2019</b></td><td>Fatness</td><td>Poor black women, for burdening the public health system</td></tr>
+        </tbody>
+      </table>
+      <p><b>Now the fact that makes it a philosophy problem.</b> Wealthy American women were trying
+      to be thin during the exact years doctors were attacking thinness as dangerous. The historian
+      Adele Clarke's phrase for it is that fashionable women were wasting in style. So the thin
+      ideal was running against the medical advice of its own moment, which means something other
+      than health was driving it.</p>
+    </div>
+
+    <div class="body">
+      <p><b>The 1896 magazine article that gives the answer away.</b> Harper's Bazaar ran a piece
+      called &#8220;Are Our Women Scrawny?&#8221;, defending American women against the charge of
+      being sallow and thin. Praising the new roundness of the modern girl, the anonymous author
+      still let slip where the limit was, calling the opposite extreme menacing, and then named the
+      comparison outright: stoutness and surplus flesh are never desirable except among African
+      savages.</p>
+      <div class="quo">
+        <blockquote>Stoutness, corpulence, and surplusage of flesh are never desirable except among African savages.</blockquote>
+        <div class="src">&#8220;Are Our Women Scrawny?&#8221;, Harper&#8217;s Bazaar, November 1896, quoted by Strings, printed p. 3</div>
+      </div>
+      <p><b>That sentence is the book in miniature.</b> A magazine giving beauty advice in 1896
+      reaches for Africa to explain why a reader should not get fat, and expects the reader to
+      understand. Strings's question is where that reflex came from.</p>
+    </div>
+
+    <div class="body">
+      <p><b>Her thesis in one sentence.</b> Two developments built the fear of fat: the
+      transatlantic slave trade, whose race science tied fatness to greedy Africans, and the spread
+      of Protestantism, whose preachers made overeating ungodly. The two circulated separately in
+      western Europe for two centuries and fused in the United States in the early nineteenth
+      century, in a country holding slaves, running religious revivals, and taking in immigrants
+      its elites classed as part African.</p>
+      <p><b>And the medical part came last.</b> Only after those associations were settled did the
+      medical establishment take up excess fat as a public health campaign. Which is why Strings
+      says the preference for thinness has not principally been about health, and has been one of
+      the ways a body gets used to hold race, sex and class rankings in place.</p>
+    </div>
+
+    <div class="body">
+      <p><b>What the two assigned texts each do.</b></p>
+      <table class="rt">
+        <thead><tr><th>The reading</th><th>What it contributes</th><th>The case it runs on</th></tr></thead>
+        <tbody>
+          <tr><td><b>Introduction</b><span>The Original Epidemic</span></td>
+              <td>The reversal of the medical verdict, the two-cause thesis, and the two theorists she borrows from, Bourdieu and Foucault.</td>
+              <td>The 1894 starvation panic and the 1896 Harper's Bazaar line</td></tr>
+          <tr><td><b>Chapter 3</b><span>The Rise of the Big Black Woman</span></td>
+              <td>The race science half of the thesis, traced through five named men between 1684 and 1815.</td>
+              <td>Bernier, Buffon, Diderot's Encyclop&eacute;die, Virey, and Cuvier's autopsy of Sara Baartman</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="body">
+      <p><b>How this follows from the weeks before the strike.</b></p>
+      <ol>
+        <li><b>Week 7 said science cannot be value free</b>, so somebody's values are always in it.
+        Chapter 3 is a case where you can watch which values got in, in which decade, and who put
+        them there.</li>
+        <li><b>Week 8 said the word <em>normal</em> came out of medicine in the 1820s</b> and works
+        by smuggling a judgment into a description. Strings is describing the manufacture of one
+        particular normal, the normal female body, and her last section on doctors is the same
+        machinery Tremain called biopower.</li>
+        <li><b>Week 8 also said philosophy treats a category as natural and then stops asking.</b>
+        Body weight is treated that way now. A doctor's weight chart looks like a measurement, and
+        chapter 3 is the history of how the thing being measured got its meaning.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section>
+      <article class="rd p-close" id="intro">
+        <div class="stripe"></div>
+        <div class="main">
+          <div class="head">
+            <h3><span class="ch">INTRO</span>The Original Epidemic</h3>
+            <div class="who">Sabrina Strings, <em>Fearing the Black Body: The Racial Origins of Fat Phobia</em>, New York University Press, 2019</div>
+            <div class="meta"><span class="tag">Read properly</span><span>10 pp, printed pages 1 to 10</span></div>
+          </div>
+
+          <div class="why"><b>What you get out of this chapter.</b> A documented case of a medical consensus reversing completely inside a hundred years, with the newspaper headlines on both ends of it. A two-cause thesis stated in one sentence, which is the most quotable thing on the reading list. The two theorists she borrows and what each one does for her, Bourdieu on how elites invent tastes to separate themselves from the poor and Foucault on how medicine tells people how to live. And the phrase <b>race as a double agent</b>, which is her own, and which an exam answer can be built around.</div>
+
+          <h4 id="intro-1" data-n="I.1">The 1894 panic was about thinness, and the doctors were leading it</h4>
+          <div class="qa">
+            <b>The question</b>
+            If fat is a health problem, why did American doctors spend the nineteenth century warning that women were dangerously thin?
+          </div>
+
+          <div class="body">
+            <p><b>The answer is that the medical position on body weight has reversed inside about a hundred years, which is too fast for it to be a discovery about bodies.</b> Strings opens with the 16 February 1894 <em>New York Times</em>: &#8220;Actually Starving! A Prominent New York Man Dies in Sight of Food.&#8221; The article claims thousands of New Yorkers are starving to death while able to buy the best food, and quotes a physician saying the sufferers are middle and upper class and look emaciated.</p>
+            <p><b>The doctors of the period wrote the same thing in books.</b> They described pale, thin and puny bodies proliferating, and narrow chests and lank limbs and flabby muscles at every corner. Thinness was described in the vocabulary now reserved for fat: an epidemic, a national failing, a thing a doctor must intervene in.</p>
+            <p><b>The women got the strongest version of it.</b> William Alcott, a New England physician and a distant relative of the novelist Louisa May Alcott, published <em>The Young Woman's Book of Health</em> in 1855 and warned about a generation of women trained to tenderness, delicacy, nervousness, feebleness of muscle and want of appetite. Being tall, slender and delicate, he said, does not prepare a young woman for what life will do to her. John Harvey Kellogg wrote in his <em>Ladies' Guide in Health and Disease</em> that American girls were decidedly lacking in physical development and needed a nutritional revolution, because their eating produced bodies he called scrawny and waspish.</p>
+          </div>
+
+          <div class="exm">
+            <b>Example &middot; thinness as a threat to the nation</b>
+            <p>The <em>Washington Post</em>, 1888, under the headline &#8220;Are Girls Growing Smaller?&#8221;: the girl of the period ranges from 140 pounds down to 80 pounds or less, and in England and Germany the figures are higher. Eighty pounds of femininity, the writer adds, is not much.</p>
+            <p>Then the step that makes it political. American women will go on getting thinner until they disappear, it has happened in Boston already, and American stock cannot hold its own against the big-boned strong-built foreigner: the Irish have crowded the Yankee out of New England.</p>
+            <p><b>What to notice.</b> Weight is already standing in for racial and national ranking in 1888, with the verdict pointing the opposite way from today. Thin means the native-born stock is losing. The same reasoning with the sign flipped is what a reader meets in 2026.</p>
+          </div>
+
+          <h4 id="intro-2" data-n="I.2">Rich women were slimming while doctors told them to stop, so health was not what was driving it</h4>
+          <div class="qa">
+            <b>The question</b>
+            Were nineteenth-century women thin because nobody had told them how to eat?
+          </div>
+
+          <div class="body">
+            <p><b>No. They were thin on purpose, against medical advice, which is the fact the whole book is built on.</b> If the thin women of the 1890s had simply been uninformed, then better information would have made them heavier, and the story would be about nutrition. The evidence says otherwise: well-off women were working at being slender in the very years doctors were publishing against slenderness. The historian Adele Clarke's phrase is that women of the fashionable classes were wasting in style.</p>
+            <p><b>So the thin ideal was already strong enough to beat a doctor.</b> Whatever it ran on, it was not the health advice of its own moment, because the health advice of its own moment said the opposite. Strings's word for what it ran on is a marker: for the women who adopted it, slenderness marked moral, racial and national superiority.</p>
+            <ul>
+              <li><b>What the ignorance explanation predicts.</b> Give a slender woman better information and she gains weight.</li>
+              <li><b>What happened.</b> Doctors published that information loudly for fifty years and fashionable women went on slimming, so something was outbidding it.</li>
+            </ul>
+            <p><b>And the 1896 magazine says so out loud.</b> Harper's Bazaar, in &#8220;Are Our Women Scrawny?&#8221;, defends American women, grants that the modern girl has a wholesome glow and some flesh on her, and then warns that the famous American litheness is on the wane and the opposite extreme is menacing. Its closing rule is that stoutness, corpulence and surplus flesh are never desirable except among African savages.</p>
+            <p><b>Read what that sentence takes for granted.</b> It assumes the reader already knows that fat belongs to Africans, that this is a bad thing to be, and that naming it will settle the question of whether to gain weight. Nobody explains any of it, which means by 1896 it had stopped needing explanation. Chapter 3 is the history of how it got that way.</p>
+          </div>
+
+          <h4 id="intro-3" data-n="I.3">Her thesis: the slave trade and Protestantism built it, and doctors arrived last</h4>
+          <div class="qa">
+            <b>The question</b>
+            Where did the fear of fat come from, if it did not come from medicine?
+          </div>
+
+          <div class="body">
+            <p><b>From two places, and Strings names them in one sentence.</b> Two historical developments produced a fetish for slimness and a phobia about fatness: the rise of the transatlantic slave trade, whose race science tied fatness to greedy Africans, and the spread of Protestantism, whose preachers held that overeating was ungodly.</p>
+            <p><b>The two ran separately for two centuries, and then fused in one country.</b> Both ideas were loose in western Europe from the seventeenth century. They came together as a single coherent position in the United States in the early nineteenth century, in the particular conditions there: a slave economy, a wave of religious revivals, and mass immigration of people whom American elites classed as part African, meaning the Irish first and southern and eastern Europeans later. In that setting fatness became stigmatised as black and as sinful at the same time, and by the early twentieth century popular magazines were promoting slenderness as the correct body for a white Anglo-Saxon Protestant woman.</p>
+            <p><b>Only then did the doctors mobilise.</b> The medical establishment began its campaign against excess fat after those associations were in place. Which gives Strings her conclusion: the phobia about fatness and the preference for thinness have not principally or historically been about health, and have been one of the ways a body is used to make race, sex and class hierarchies look natural.</p>
+          </div>
+
+          <figure class="dia">
+            <div class="draw">
+            <svg viewBox="0 -9 700 232" role="img" aria-labelledby="dg-order10" style="font-family:var(--body)">
+            <title id="dg-order10">Three stages in order, showing race science and Protestant preaching arriving first, fusing in the nineteenth-century United States, and the medical campaign against fat arriving last.</title>
+            <text class="dg-m dg-dim" x="12" y="14" font-size="11" style="font-family:var(--mono)">THE ORDER OF EVENTS, WHICH IS THE ARGUMENT</text>
+            <rect class="dg-box" x="8" y="30" width="200" height="92" rx="3"/>
+            <text class="dg-t" x="22" y="52" font-size="12.5" font-weight="600">1680s to 1800s</text>
+            <text class="dg-t" x="22" y="72" font-size="12.5">Race science ties fat</text>
+            <text class="dg-t" x="22" y="89" font-size="12.5">to Africans. Protestant</text>
+            <text class="dg-t" x="22" y="106" font-size="12.5">preaching ties it to sin.</text>
+            <rect class="dg-box dg-hi" x="250" y="30" width="200" height="92" rx="3"/>
+            <text class="dg-t" x="264" y="52" font-size="12.5" font-weight="600">1830 to 1920, USA</text>
+            <text class="dg-t" x="264" y="72" font-size="12.5">The two fuse. Thin</text>
+            <text class="dg-t" x="264" y="89" font-size="12.5">becomes the correct body</text>
+            <text class="dg-t" x="264" y="106" font-size="12.5">for a white Protestant woman.</text>
+            <rect class="dg-box" x="492" y="30" width="200" height="92" rx="3"/>
+            <text class="dg-t" x="506" y="52" font-size="12.5" font-weight="600">After 1900</text>
+            <text class="dg-t" x="506" y="72" font-size="12.5">Doctors take up obesity</text>
+            <text class="dg-t" x="506" y="89" font-size="12.5">as a public health</text>
+            <text class="dg-t" x="506" y="106" font-size="12.5">campaign.</text>
+            <path class="dg-ln" d="M212 76h26M232 71l6 5-6 5" stroke-width="1.4"/><path class="dg-ln" d="M454 76h26M474 71l6 5-6 5" stroke-width="1.4"/>
+            <text class="dg-t dg-dim" x="12" y="160" font-size="12.5">A health explanation of the thin ideal needs the third box to come first.</text>
+            <text class="dg-t dg-dim" x="12" y="182" font-size="12.5">It comes last, by about two hundred years, and that gap is the evidence.</text>
+            </svg>
+            </div>
+            <figcaption><b>The medical campaign against fat is the last thing to arrive, by roughly two centuries.</b> Strings's case against a health explanation rests on this order. A doctor in 1894 could say thinness was an epidemic because the medical profession had no settled position on weight yet, while the magazines and the race scientists already did.</figcaption>
+          </figure>
+
+          <h4 id="intro-4" data-n="I.4">Race degrades black women and disciplines white women in the same move</h4>
+          <div class="qa">
+            <b>The question</b>
+            Which group was being disciplined by all this?
+          </div>
+
+          <div class="body">
+            <p><b>Both groups at once, and Strings says most writing on race and beauty misses this because it picks one group and describes their experience.</b> Her phrase for it is that race works as a <b>double agent</b>. The same discourse that called fatness coarse, immoral and black degraded black women, and it was also what made slenderness the required body for elite white Christian women. One idea does the repressing and the disciplining together, which is why the thin ideal and fat phobia are one development and not two.</p>
+            <p><b>Say what that means concretely.</b> A white woman in 1890 refusing a second helping is doing something about black women even if there is none in the room, because the reason the second helping is shameful is a racial ranking she has absorbed. The discipline is applied to her, and the degradation is applied to somebody else, by the same sentence.</p>
+          </div>
+
+          <div class="body">
+            <p><b>Two theorists do the lifting, and she says which part each one carries.</b></p>
+            <ol>
+              <li><b>Pierre Bourdieu, for how a taste gets invented.</b> Bourdieu was a French sociologist whose claim is that elites work constantly to separate themselves from the people below them, and do it by cultivating tastes, diets and appearances opposed to those of the groups they want distance from. He called these <b>social distinctions</b>, and their work is to make a social ranking look like a natural difference in refinement. Strings uses him for the race part: elite Europeans and white Americans used racial talk to mark themselves off from supposedly greedy and fat others, meaning black people and also the whites they classed as degraded or hybrid, the Celtic Irish, southern Italians and Russians.</li>
+              <li><b>Michel Foucault, for how medicine finishes the job.</b> Week 8 had him. Medicine becomes the institution of the twentieth century that tells people how to live for health and long life, and the practices a person performs to count as healthy are what Foucault called the <b>biopolitics</b> of health management. Strings adds the part that matters here: that regime is not applied evenly. It is held out as an obligation to dominant groups and withheld from poor and racially othered ones, which keeps the existing ranking in place while looking like public health.</li>
+            </ol>
+            <p><b>And it was women on both counts.</b> Strings leans on gender scholarship for the step that since women have long been assessed largely on how they look, a racial and moral ranking attached to bodies falls hardest on the women of each group.</p>
+          </div>
+
+          <div class="body">
+            <p><b>What is new in her book, since an exam may ask.</b> Amy Farrell's <em>Fat Shame</em> of 2011 connected fat stigma and the thin ideal to race. R. Marie Griffith's <em>Born Again Bodies</em> of 2004 traced the Christian preaching against gluttony. What none of them did, on Strings's account, was a history: the named people who spread these ideas, in order, with the political conditions that made each step take.</p>
+          </div>
+
+          <div class="kone"><b>If you keep one thing.</b> The medical verdict on body weight reversed inside a century, from a panic about thin American women in the 1890s to a panic about fat black women now. A verdict that can flip that fast was not being set by the bodies, and Strings's answer for what was setting it is the slave trade and Protestantism, with medicine arriving last to confirm a ranking that was already in place.</div>
+
+          <div class="mynote"><b>My note</b><span>The introduction is the examinable half. The two-cause sentence, the slave trade and Protestantism, is the single most useful line in the week and takes ten words to write out. Have the <b>1894</b> starvation headline and the <b>1896</b> Harper's Bazaar line about African savages ready as the pair that shows the reversal, since one answer needs both ends of it. <b>Race as a double agent</b> is her own phrase and an examiner can ask for it by name. Know which theorist does which job: Bourdieu for how elites invent a taste to mark themselves off, Foucault for how medicine then issues it as health advice to some people and withholds it from others.</span></div>
+
+          <div class="quar">
+            <b>Where it belongs in the quarrel</b>
+            <ul>
+              <li><b>It answers week 7.</b> That week argued science cannot be value free and asked who chooses the values. Here the choosing is visible: the values were in place before the science, and the science arrived to agree with them.</li>
+              <li><b>It extends week 8.</b> Tremain argued that <em>normal</em> is a nineteenth-century medical word that hides a judgment inside a description. A weight chart is that word applied to bodies, and Strings dates where its content came from.</li>
+              <li><b>It is answered by anybody holding a health explanation</b>, who will say that fat really does carry medical risk, so the modern campaign has a reason the Victorian one lacked. Strings's reply is about order and about selectivity: the aversion predates the evidence by two centuries, and the campaign has never been applied evenly across groups.</li>
+            </ul>
+          </div>
+
+          <div class="curious">
+            <div class="label"><b>For the curious</b><span>none of this is on the exam</span></div>
+
+            <details class="bit"><summary>Kellogg, who wanted American women to gain weight, invented corn flakes</summary><div class="bq">
+              <p>John Harvey Kellogg ran the Battle Creek Sanitarium in Michigan, a health resort where the wealthy went for diet regimes, hydrotherapy and exercise. The breakfast cereal came out of the kitchen there, and his brother Will turned it into the company.</p>
+              <p>Strings profiles him in chapter 7, which is not assigned. His position in the 1890s was that elite American women were too thin and that this threatened the nation, which is the opposite of what the company carrying his name now sells cereal on.</p>
+            </div></details>
+
+            <details class="bit"><summary>The book won an award and the award names the field it belongs to</summary><div class="bq">
+              <p><em>Fearing the Black Body</em> took the 2020 Body and Embodiment Best Publication Award from the American Sociological Association, and an honourable mention in its sociology of sex and gender book award.</p>
+              <p>Strings is a sociologist, which is why the method section of her introduction reads differently from the philosophy on this course: she names her two comparative historical methods, <b>process tracing</b>, meaning following a specific chain of people and events, and <b>historical narrative</b>, meaning weaving them into one story.</p>
+            </div></details>
+          </div>
+        </div>
+      </article>
+  </section>
+
+  <section>
+      <article class="rd p-close" id="ch3">
+        <div class="stripe"></div>
+        <div class="main">
+          <div class="head">
+            <h3><span class="ch">CH 3</span>The Rise of the Big Black Woman</h3>
+            <div class="who">Sabrina Strings, <em>Fearing the Black Body</em>, part II, Race, Weight, God and Country</div>
+            <div class="meta"><span class="tag">Read properly</span><span>30 pp, printed pages 54 to 83</span></div>
+          </div>
+
+          <div class="why"><b>What you get out of this chapter.</b> A chain of five named men between 1684 and 1815, each adding one piece to an idea none of them held whole, which is the clearest worked example of a belief being assembled that the course has given. The fact that the first two race theorists called black women beautiful, which kills the assumption that racism starts at maximum strength and stays there. The life of Sara Baartman, with dates and names. And a demonstration that every one of these men was writing from a desk about people he had never met.</div>
+
+          <h4 id="ch3-1" data-n="3.1">Bernier invents race in 1684, and spends half the document rating women</h4>
+          <div class="qa">
+            <b>The question</b>
+            Who first sorted humanity into races by skin colour, and what else was in the document?
+          </div>
+
+          <div class="body">
+            <p><b>Fran&ccedil;ois Bernier, a French physician, in a three-page letter of 1684, and nearly half of it is about which women are good-looking.</b> That second fact is the one Strings is after. Earlier scholars treated the beauty section as padding. Her argument is that judging women's looks was part of race-making from the first document there ever was, because a beautiful woman was meant to be evidence that her race was superior.</p>
+            <p><b>Who he was.</b> Born in 1625 to farmers in Anjou, sent to Paris at fifteen, where he studied under Pierre Gassendi, a priest and philosopher known for opposing Descartes. He took a medical degree at Montpellier in three months, on condition that he never practise in France. In 1658 he went to India and stayed twelve years as private physician to Prince Dara Shikoh and then to Dara's brother and rival Aurangzeb, and wrote it up as <em>Travels in the Mogul Empire</em>.</p>
+            <div class="ctx">
+              <summary><i>Context</i> What the word <em>race</em> had meant before 1684</summary>
+              <p>The word was medieval and had been in use for centuries. It marked a lineage or a stock inside a society: a noble house, a breed of horse, the Jewish or Moorish subjects of a crown. It attached to some people and left others unmarked.</p>
+            </div>
+            <p><b>What he did that was new.</b> Travel writers before him described the people they met. Bernier sorted them, by skin colour, and used the word <b>race</b> for the groups he made. After him every person on earth has one, readable off where they live and what they look like.</p>
+            <p><b>The scheme itself, which is incoherent and was still used for centuries.</b> He could not settle how many races there were and wrote &#8220;four or five.&#8221;</p>
+            <ol>
+              <li><b>The first.</b> Europe, north Africa from Morocco to Tripoli, much of Asia, and, after some hesitation, the indigenous people of the Americas.</li>
+              <li><b>The second.</b> The rest of Africa.</li>
+              <li><b>The third.</b> China, Japan, much of east Asia, Uzbekistan and the Turkomans.</li>
+              <li><b>The fourth, alone.</b> The Lapps of Scandinavia.</li>
+            </ol>
+          </div>
+
+          <div class="body">
+            <p><b>The clause that mattered most was eight words long.</b> Bernier wrote that the black skin of Africans came from their <b>sperm and blood</b>. He said it almost in passing, and it is the sentence that puts the difference inside the body. Whatever else he was unsure about, he held that white people were physiologically distinct from black people and that this inner difference produced the outward one.</p>
+            <p><b>He never argued for slavery, and that is why the step is worth watching.</b> Bernier did not come out in favour of African slavery anywhere in the letter. But he was writing in Paris in the 1680s, in a salon full of the king's courtiers where one of the standing debates was whether some groups of people were a different species and therefore natural slaves. In that room, a scheme that puts white skin in a first race and black skin in a second carries a ladder with it, whether or not the man who drew it meant one. Later writers who did want the slave trade extended picked it up and used it.</p>
+          </div>
+
+          <div class="exm">
+            <b>Example &middot; the law that made the classification pay</b>
+            <p>France had kept a Freedom Principle since 1315: nobody could be held as a forced labourer on French soil. It said nothing about the colonies, so the king was freeing slaves at home while licensing slavery abroad. Africans who reached France petitioned for freedom and generally got it.</p>
+            <p>The Edict of October 1716 let slave holders bring slaves to France if they registered them at a courthouse. The Declaration of 1738 went further: an unregistered slave would be seized and shipped back to the colonies. Both laws were written to apply specifically to <em>n&egrave;gres</em>, African slaves.</p>
+            <p><b>What that did to a courtroom.</b> A person suing for freedom could win by proving they were not African. Proof meant physical traits, and the list of physical traits was the one Bernier and his successors had drawn up. A classification scheme written in a salon became the thing that decided whether a named person went back into slavery.</p>
+          </div>
+
+          <h4 id="ch3-2" data-n="3.2">Buffon adds body size in 1749, and invents the plump, stupid African</h4>
+          <div class="qa">
+            <b>The question</b>
+            When did body size become a racial marker, and what had it been before?
+          </div>
+
+          <div class="body">
+            <p><b>In 1749, with Buffon, and before him the European stereotype of Africans had been that they were small and thin.</b> Georges-Louis Leclerc, Comte de Buffon, published <em>Histoire naturelle</em> in that year, with a chapter called &#8220;Of the Varieties in the Human Species.&#8221; He agreed with Bernier that colour was the first difference between races, and named the second: the size and shape of the body.</p>
+            <p><b>What he was correcting, and what he put in its place.</b> He knew the English stereotype, which he credited to the seafarer Francis Drake, that Africans were black, meagre and very small. He called it inaccurate, and sorted it: the short, meagre people were Moors, and Moors belonged to the race of whites. Black Africans, he wrote, were tall, plump, and simple and stupid.</p>
+            <p><b>So a stereotype was not replaced, it was split.</b> Buffon kept the small-and-thin picture that was already in European heads and assigned it to a different group, which left him free to give black Africans a new physical identity made of dark skin and bulk. Barbara and Karen Fields have a word for this kind of manufacture, <b>racecraft</b>, and Strings uses it here.</p>
+          </div>
+
+          <figure class="pic">
+            <a class="zoom" style="width:202px" href="img/buffon.jpg" target="_blank" rel="noopener" title="Open this picture at full size">
+              <img src="img/buffon.jpg" width="765" height="1134" loading="lazy" alt="An eighteenth-century oil portrait of a man in a powdered white wig, wearing a scarlet velvet coat heavily embroidered in gold over an embroidered gold waistcoat, with lace at the throat and cuffs, turned slightly to his right against a dark background.">
+            </a>
+            <figcaption><b>Georges-Louis Leclerc, Comte de Buffon, 1707 to 1788, keeper of the royal botanical garden in Paris.</b> He never went to the parts of Africa he described. The chapter's recurring finding is that each of these men wrote from a desk, out of other Europeans' travel accounts, and that their readers took the result as observation. <span class="cred">Portrait by Fran&ccedil;ois-Hubert Drouais, public domain, via Wikimedia Commons.</span></figcaption>
+          </figure>
+
+          <div class="body">
+            <p><b>His explanation for the plumpness was laziness, and it had a climate theory attached.</b> The land of the Negroes, he wrote, was rich, full of pasture and millet and evergreen trees, so black Africans could stay well fed with no effort, which made them well fed and also simple and stupid. The chain runs: easy food, no work, no thought, fat body.</p>
+            <p><b>He did not invent the link between fat and dullness. He imported it.</b> Buffon was elected to the Royal Society on a visit to England, and the Society's journal had been carrying that idea for a century. One typical entry from 1733, by a Dr Alexander Stuart, answers a question about why people feel sleepy after eating. Stuart treats sleepiness as laziness, blames overeating and a lack of self-management, and says it is gross feeders, drunkards and the corpulent who feel it, while temperate persons never do. He adds that the problem is endemic in hot climates, which make their inhabitants lazy and inactive.</p>
+            <p><b>Put the two together and Buffon's sentence assembles itself.</b> English natural philosophy already held that fat means a dull mind and that heat makes people idle. Buffon applied both to a continent and produced a race that is fat because it is idle and idle because it is hot.</p>
+          </div>
+
+          <h4 id="ch3-3" data-n="3.3">Both of the first two race theorists called black women beautiful</h4>
+          <div class="qa">
+            <b>The question</b>
+            Did race science start out by calling black women ugly?
+          </div>
+
+          <div class="body">
+            <p><b>No, and this is the finding that makes the chapter worth reading, because it means the degradation was added later and can be dated.</b> Bernier, in the same letter that sorted humanity by colour, wrote that among the blacks of Africa he had seen women of such astonishing beauty that they put the Venus of the Palazzo Farnese in Rome in the shade. He listed the features: aquiline nose, small mouth, coral lips, ivory teeth, large bright eyes, gentle features.</p>
+            <div class="quo">
+              <blockquote>I have encountered seven or eight in various places who were of such an astonishing beauty that they put in the shade the Venus of the Palazzo Farnese in Rome.</blockquote>
+              <div class="src">Fran&ccedil;ois Bernier, &#8220;A New Division of the Earth&#8221;, 1684, quoted by Strings, printed p. 59</div>
+            </div>
+            <p><b>Read the list again, because the praise has a catch in it.</b> Every item is the existing European standard. The black women he calls beautiful qualify by resembling a Roman statue, and the ones he excludes are the ones with thick lips and a snub nose. So the compliment is paid in somebody else's currency, and the standard is never in question.</p>
+            <p><b>And the setting of that sentence should be said plainly.</b> Bernier wrote that at Mokha he saw several of these women completely naked, waiting to be sold, and that nothing in the world could be lovelier to see. He is admiring women at a slave market. The aesthetic judgment and the trade are in the same sentence.</p>
+            <p><b>Buffon does the same thing sixty-five years later.</b> He called the physique of black Africans well made, and wrote several pages on the beauty of black women of particular nations. Of the Senegalese, whom he thought the most attractive, he wrote that they were tall, very black, well proportioned, with features less harsh than other Africans, and that apart from colour they were as handsome as women anywhere in the world.</p>
+          </div>
+
+          <div class="body">
+            <p><b>So what were these men doing, if the project was supposed to rank people?</b> Strings's answer is that the early schemes were trying to make sense of the variety the travellers were reporting, and that they were hierarchical without being total. A woman could be racially inferior on the scheme and still count as desirable. Condemning black people in every category came later, and it came with a reason: as the French and British slave trades grew, claims about inborn differences in intelligence, industry and appetite became useful as evidence that the people being enslaved deserved it.</p>
+            <p><b>Which is why the beauty passages matter for an exam answer.</b> They are the dated proof that the content of a racial category changes to fit what the people using it need. Nothing in a body changed between 1684 and 1837. What changed was the size of the trade that the category was being asked to justify.</p>
+          </div>
+
+          <div class="quo">
+            <blockquote>[Those] given up to the pleasures of the table, those great eaters, intemperate epicures who seem to live only to eat, have a stupid look &hellip; always digesting, they become incapable of thinking.</blockquote>
+            <div class="src">Julien-Joseph Virey on black Africans, <em>Natural History of the Negro Race</em>, 1837, quoted by Strings, printed p. 74</div>
+          </div>
+
+          <div class="body">
+            <p><b>In plain words:</b> eating has filled the place where thinking would have gone. Three pieces of it:</p>
+            <ol>
+              <li><b>Given up to the pleasures of the table.</b> A surrender, which means somebody could have held out and this person did not. The moral charge Le Romain added is now being treated as observation.</li>
+              <li><b>Always digesting.</b> A physical process is doing the explaining, so the claim is about the body and no account of a person's life can touch it.</li>
+              <li><b>Incapable of thinking.</b> The conclusion is permanent and it is about the whole group. Nothing a member of the group does can count against it.</li>
+            </ol>
+            <p><b>He put the same claim into a skull.</b> Virey wrote, in words worth paraphrasing closely, that the white forehead juts forward and the white mouth draws back, as though whites were designed for thought, while in the negro the forehead retreats and the mouth projects, as though he were made for eating. A shape is being read as a purpose, which is the same move the Phineas Gage story made in week 8.</p>
+            <p><b>What it rules out.</b> On this picture a black person who thinks is an exception to their own anatomy. Evidence against the claim has been disqualified in advance, which is what makes it a scientific-looking statement that nothing could refute.</p>
+          </div>
+
+          <h4 id="ch3-4" data-n="3.4">The Encyclop&eacute;die turns idle eating into gluttony, which is a sin</h4>
+          <div class="qa">
+            <b>The question</b>
+            How did a claim about laziness become a claim about immorality?
+          </div>
+
+          <div class="body">
+            <p><b>By one word changing hands between two friends, and the word is gluttony.</b> Buffon's account of black bodies had no moral charge in it: the food was easy to get and the people lacked the mental capacity to do anything other than eat. That is a claim about circumstances and intelligence. It says nothing about guilt.</p>
+            <p><b>Denis Diderot was Buffon's friend and was building the <em>Encyclop&eacute;die</em>.</b> Diderot had published <em>Letters on the Blind</em> in 1749 and been imprisoned for it, and on release he lowered the volume of his attacks on the church and set about a compendium of everything rational inquiry had produced, which would undermine the church's authority without naming it. He took the entries on race from Buffon's <em>Natural History</em>.</p>
+            <p><b>For the longer entry on blacks he used a friend, Jean-Baptiste-Pierre Le Romain</b>, who had lived in the Caribbean and presented himself as an expert on French colonies and sugar plantations. Le Romain's text calls the Senegalese the most attractive in Africa, which he lifted straight from Buffon, and then turns: their penchant for pleasure makes them unfit for hard labour, they are lazy, cowardly and very fond of gluttony, and the least esteemed are the Bambaras, who are lazy, drunken, gluttonous and apt to steal.</p>
+            <ul>
+              <li><b>Buffon's version.</b> Food is abundant, the people lack the capacity for anything else, so they eat and grow large. The cause is outside the person.</li>
+              <li><b>Le Romain's version.</b> They are fond of gluttony. The cause is now a desire the person has and could have resisted.</li>
+            </ul>
+            <p><b>Gluttony is not a Buffon word, and it is not a neutral one.</b> It is one of the seven deadly sins. Where Buffon had described people eating because food was there, Le Romain describes people choosing to eat too much, which makes the fatness a fault and its owner blameworthy. Strings notes the irony, since Diderot was an atheist and the book was meant to displace the church, and a category straight out of Christian moral teaching went into it anyway.</p>
+          </div>
+
+          <div class="body">
+            <p><b>Reports of African overfeeding had existed for a century, and they had been travellers' tales.</b> In the 1580s the Italian botanist Prospero Alpini described an art of fattening in Egypt, where he claimed women took drugs and ate fat-laden food to become as round as possible, and called it a shameful vice of the flesh. In 1625 the Englishman Samuel Purchas published accounts of the inhabitants of Guinea as greedy eaters, no less drinkers, lecherous, thievish and without knowledge of God.</p>
+            <p><b>What the <em>Encyclop&eacute;die</em> changed was the status of such reports.</b> Before it, they were sensational stories about strange customs. After it, they were entries in the reference work that educated Europe used, read by intellectuals and by men with commercial interests in Africa until the Revolution. Strings's phrase is that these narratives were becoming a type of gospel.</p>
+            <p><b>And the British were writing the same thing.</b> Edward Long's <em>History of Jamaica</em> of 1774 said that people from Negro-land have no moral sensations and no taste except for women, gourmandising and drinking to excess, and wish to be idle. Long idolised Buffon and cited him throughout, and like Buffon he described many blacks as large, fat and well-proportioned, with the women worth praising. His one departure was that he was a <b>polygenist</b>, meaning he held that the human races have separate origins, and he used the idle appetite and the size as evidence for it.</p>
+          </div>
+
+          <h4 id="ch3-5" data-n="3.5">Virey puts it inside the body, with bile, and now it cannot be argued with</h4>
+          <div class="qa">
+            <b>The question</b>
+            What happens to the argument when the cause moves from the climate into the flesh?
+          </div>
+
+          <div class="body">
+            <p><b>It stops being answerable, because a person cannot leave their own bile.</b> Buffon's explanation had been environmental: hot country, easy food, idle people. On that account moving somebody would change them. Julien-Joseph Virey, a French naturalist and army pharmacist who republished Buffon's <em>Natural History</em> in 1799 and wrote his own <em>Histoire naturelle du genre humain</em> in 1801, kept Buffon's conclusions and changed the cause underneath them.</p>
+            <p><b>The theory he used was humoral and it was already old.</b> Humoral medicine, which goes back to the ancient Greeks, held that the body runs on four fluids and that illness is an imbalance of them. One of the four is <b>black bile</b>. The revived version said that black skin is caused by a surplus of black bile under it, and that the same surplus causes digestive disorders and weight gain. One fluid now explains colour and fatness together, which is exactly what a race theorist needed.</p>
+            <p><b>What he wrote with it.</b> Black people were given up to the pleasures of the table, great eaters, intemperate epicures who seem to live only to eat, always digesting and therefore incapable of thinking. He claimed a direct correlation: those who are darker than others of the same race are also more robust, active and stout, because the hot sun makes the body hold onto excess liquid fat, which gathers in the breast and belly.</p>
+          </div>
+
+          <div class="body">
+            <p><b>His example was the Khoikhoi, called Hottentot, and the choice is strange because it contradicts him.</b> The word <b>Hottentot</b> was a derogatory name invented by Dutch settlers for the Khoikhoi of the Cape, and used loosely for the Khoisan generally. Every European account of them for two hundred years had called them thin.</p>
+            <ul>
+              <li><b>Bernier, 1684.</b> Smaller and thinner than other Africans.</li>
+              <li><b>Anders Sparrman, the Swedish physician who went to the Cape.</b> As tall as most Europeans and generally more slender, because they were stinted and curtailed in their food.</li>
+              <li><b>John Hawkesworth, writing up Captain Cook's voyage, 1773.</b> Of a slim make, and rather lean than plump.</li>
+            </ul>
+            <p><b>Virey, who had never been there, described them as fat.</b> He wrote that Khoikhoi women develop big bottoms and bellies as they age, that the climate makes the body retain liquid fat and the women are often sedentary or pregnant, so the fat collects in the abdomen, the breasts and around the hips, and that their rear ends resembled those of four-legged animals and could grow large enough to need a small cart to support them.</p>
+            <p><b>Two things turned a slender people into a fat one between 1773 and 1810.</b> First, British writers began merging Hottentot with Negro, which handed the Khoikhoi the body already written for west Africans. Johann Caspar Lavater, the Swiss pastor who founded physiognomy, used the two words interchangeably and was widely read in Britain, and after the British took Cape Town in 1795 their reports described the Khoikhoi in the terms French and English authors had used for Negroes fifty years earlier. John Barrow's travel book of 1804 blamed the Dutch Boers' mistreatment for it and still produced the sentence: unwilling to work and unable to think, indulging every sensual appetite, the African peasant grows to an unwieldy size.</p>
+            <p><b>Second, and decisively, one woman was put on a stage in London.</b></p>
+          </div>
+
+          <h4 id="ch3-6" data-n="3.6">Sara Baartman, and what was done to her</h4>
+          <div class="qa">
+            <b>The question</b>
+            How did one person's body come to stand for a whole category?
+          </div>
+
+          <div class="body">
+            <p><b>Because she was exhibited as a specimen, and the billing said so in those words.</b> Saartjie &#8220;Sara&#8221; Baartman was born around 1789, by most accounts, and raised on the farm of a colonist named David Fourie, descended from Huguenots who had fled Louis XIV and settled at the Cape in the 1680s. Fourie had taken the land, the cattle and the people on it by force. After his death the Baartman family was broken up and sold, and Sara and her parents went to a man named Cornelius Muller.</p>
+            <p><b>How she came to be on a stage.</b> After a Khoikhoi rebellion in 1802 and the departure of many British, the Cape economy collapsed. A free black man named Hendrik, who had bought Sara after her parents died, was deeply in debt. He sold off a holding of some four hundred slaves, kept two, and decided to display Sara to British soldiers to pay down what he owed. From about 1806 she was shown at the Naval Hospital in Cape Town to soldiers and to dying men, who for a fee could touch her or have sex with her. The historians Clifton Crais and Pamela Scully call her an early nineteenth-century exotic dancer.</p>
+            <div class="ctx">
+              <summary><i>Context</i> Her name, and what the sources did to it</summary>
+              <p>Saartjie is a Dutch diminutive, the form a slaveholding household would use for a woman it owned. Sara is what she was called in Europe. Baartman was the family name, and the family had been broken up and sold after the colonist who held them died.</p>
+              <p>The handbills gave her none of these. They sold her as the Hottentot Venus, which is a slur joined to a Roman goddess, and that is the name under which she appears in the scientific literature for the next hundred and fifty years.</p>
+            </div>
+            <p><b>Then London.</b> A Scottish surgeon called Alexander Dunlop saw commercial possibilities and got the illiterate Hendrik to sign a contract to accompany Sara to England as her showman. Sara was Hendrik's property and was not consulted. The three sailed in 1810. Dunlop's posters billed her as the most correct and perfect specimen of that race of people, and advertised that she possessed the kind of shape most admired among her countrymen, which is the explanation offered for calling her a Venus.</p>
+          </div>
+
+          <div class="body">
+            <p><b>What the audiences came for.</b> Londoners had seen displays of oversized people before: in 1803 Daniel Lambert, said to weigh over seven hundred pounds, exhibited himself as the fattest man alive. Sara's exhibition worked differently because she was presented as grotesque and exotic at once, a sexual curiosity with a racial label, and visitors paid extra to touch her. Reviewers described her figure as very different from the feminine standards of London and its ladies' long, slender lines.</p>
+            <div class="quo">
+              <blockquote>The greatest curiousity in all the known world, the Wonderful and Surprising Hottentot Wenus is here, who measures three yards and three quarters round.</blockquote>
+              <div class="src">A ballad issued at the Bartholomew fair, London, 1812, quoted by Strings, printed p. 79</div>
+            </div>
+            <p><b>Some of them wanted a monster and complained when they did not get one.</b> The <em>Journal de Paris</em> warned showgoers that ideas of beauty vary with climate and that they should not expect to find the Venus de Medici. One Frenchman wrote that he had gone hoping to see the imposing Venus of the Cape of Storms and had found only a svelte Venus. Strings's point is that the reports contradict each other, so the famous body was partly a thing the audience brought with them.</p>
+            <p><b>She lost everybody.</b> Hendrik vanished a year into the stay in Europe. Dunlop died in 1812. In the summer of 1814 Sara went to France with a man named Henry Taylor, and nobody asked whether she was free, because French law by then banned the entry of all blacks, mulattoes and other people of colour under the Police des Noirs of 1777, and because Napoleon had reinstated slavery in 1802.</p>
+          </div>
+
+          <div class="ctx">
+            <summary><i>Context</i> The French Revolution did not free anybody for five years, and then Napoleon undid it</summary>
+            <p>France declared liberty and equality in 1789 and provisionally ended slavery in 1794, five years later. Strings gives the reason for the delay in one figure: by 1780 France's colonies were producing forty per cent of the Western world's sugar and coffee. The economy depended on it, so the question of black freedom was postponed.</p>
+            <p>Napoleon reinstated slavery in 1802. So Sara arrived in Paris in 1814 in a country that was legally a slave power and legally closed to black people, which is why her status was never in question there.</p>
+          </div>
+
+          <h4 id="ch3-7" data-n="3.7">Cuvier dissects her in 1815, and fatness becomes a deformity</h4>
+          <div class="qa">
+            <b>The question</b>
+            At what point does plumpness in a black woman stop being attractive and start being evidence of savagery?
+          </div>
+
+          <div class="body">
+            <p><b>With Georges Cuvier, in the autopsy report he wrote after Sara Baartman died in Paris in 1815.</b> Cuvier ran the Museum of Natural History and was a national figure, the first person to establish that species go extinct. He was born in W&uuml;rttemberg to a strict Lutheran father and was brought into the Paris museum in 1795 by the zoologist &Eacute;tienne Geoffroy Saint-Hilaire.</p>
+            <p><b>He turned down the first invitation and then saw her at a ball.</b> Taylor had written to him inviting him to a show, and Cuvier refused. Some time later he saw Sara at a ball given by the Countess Du Barrier, where she was dressed in nothing but feathers, made to look like a bird. He then invited her to the museum, where she spent three days with artists on hand to sketch her. The one thing he most wanted to examine she refused him.</p>
+            <p><b>He got it after she died.</b> Sara died in 1815, by Cuvier's account on 29 December. He obtained her body, recorded the cause of death as excessive drinking, and dissected her.</p>
+          </div>
+
+          <div class="body">
+            <p><b>What he wrote is where the aesthetic verdict turns over.</b> Buffon had called a large black female body well made. Cuvier, looking at one, wrote that her shape was all the more shocking because of the enormity of her hips, each measuring more than eighteen inches, and the projection of her buttocks, larger than half a foot. He called her hips and bottom her principal <b>deformities</b>. He noted that her knees were fat and a little knocked in, that her shoulders and back were graceful, that her arms were thin, and that her stomach did not protrude excessively.</p>
+            <p><b>Take the last one seriously, because it shows what the standard had become.</b> A scientist recording that an abdomen failed to stick out too far is a scientist who expected it to and was relieved. Fat on a black woman's body is now a defect by default, and the measurements are being taken to confirm it.</p>
+            <p><b>He also decided she was not what she had been sold as.</b> Cuvier concluded from the travel literature that Sara was a Bushman and no Khoikhoi at all, and then that she was an abnormal specimen even of that, since the accounts he had read described Bushmen as short, pockmarked and horribly thin. So he attributed her height and bulk to an abundance of food at the Cape, which is Buffon's explanation moved a hundred years and a continent.</p>
+          </div>
+
+          <div class="exm">
+            <b>Example &middot; Cuvier was himself enormously fat</b>
+            <p>Elizabeth Kolbert, in <em>The Sixth Extinction</em>, records that Cuvier was thin during the French Revolution, grew stouter through the years he lived on the museum grounds, and became enormously fat towards the end of his life.</p>
+            <p>Strings marks it as speculation: he may have disliked in her what he disliked in himself, or he may have been reporting the rising feeling in France and England that fatness was uncharacteristic of white people.</p>
+            <p><b>Why it earns a place.</b> It shows the standard already applying to the man applying it. The thin ideal is doing both of its jobs in one room: it condemns the woman on the dissecting table and it shames the scientist holding the knife.</p>
+          </div>
+
+          <figure class="pic">
+            <a class="zoom" style="width:285px" href="img/cuvier.jpg" target="_blank" rel="noopener" title="Open this picture at full size">
+              <img class="ink" src="img/cuvier.jpg" width="498" height="524" loading="lazy" alt="A nineteenth-century lithograph bust portrait of a man with thick wavy hair, wearing a high-collared dark double-breasted coat with a white stock at the throat and two star-shaped honours pinned to his chest.">
+            </a>
+            <figcaption><b>Georges Cuvier, 1769 to 1832, head of the Museum of Natural History in Paris.</b> His autopsy report on Sara Baartman is the document in which a large black female body is written down as deformed. Her remains were held by the Mus&eacute;e de l'Homme in Paris and displayed there into the 1970s. <span class="cred">Lithograph, public domain, via Wikimedia Commons.</span></figcaption>
+          </figure>
+
+          <figure class="pic">
+            <a class="zoom" style="width:400px" href="img/baartman-grave.jpg" target="_blank" rel="noopener" title="Open this picture at full size">
+              <img src="img/baartman-grave.jpg" width="800" height="600" loading="lazy" alt="A low cairn of pale river stones on a hilltop, enclosed by a tall dark green palisade fence, with a single tree behind it and farmland stretching away under a cloudy sky.">
+            </a>
+            <figcaption><b>Sara Baartman's grave on Vergaderingskop, above Hankey in the Eastern Cape.</b> France returned her remains to South Africa in 2002, after a request first made in 1994, and she was buried here on 9 August that year. The fence was put up after the grave was vandalised. Strings's chapter ends in 1815 with the autopsy; the hundred and eighty-seven years it took to get her back are the measure of how thoroughly she had been turned into a specimen. <span class="cred">Photograph by Dewet, CC BY-SA 3.0, via Wikimedia Commons.</span></figcaption>
+          </figure>
+
+          <h4 id="ch3-8" data-n="3.8">What the chain of five men actually did</h4>
+          <div class="qa">
+            <b>The question</b>
+            None of these men set out to make fat shameful, so how did they produce it?
+          </div>
+
+          <div class="body">
+            <p><b>Each one added a single piece, and no one of them held the finished idea.</b> That is the chapter's shape, and it is the thing to be able to reproduce. Bernier made race a bodily fact. Buffon attached size to it. Le Romain in the <em>Encyclop&eacute;die</em> attached sin. Virey moved the cause inside the body. Cuvier made the result a deformity and did it over a corpse with a measuring tape.</p>
+          </div>
+
+          <figure class="dia">
+            <div class="draw">
+            <svg viewBox="0 -9 700 290" role="img" aria-labelledby="dg-chain10" style="font-family:var(--body)">
+            <title id="dg-chain10">Five men in date order, each with the single addition he made to the idea that fatness is black and shameful.</title>
+            <text class="dg-m dg-dim" x="12" y="14" font-size="11" style="font-family:var(--mono)">ONE ADDITION EACH, 1684 TO 1815</text>
+            <text class="dg-m dg-dim" x="12" y="48" font-size="11" style="font-family:var(--mono)">1684</text>
+            <text class="dg-t" x="78" y="48" font-size="13" font-weight="600">Bernier</text>
+            <text class="dg-t" x="188" y="48" font-size="12.5">Sorts humanity by skin colour and puts the cause in the body.</text>
+            <line class="dg-ln" x1="12" y1="62" x2="688" y2="62"/>
+            <text class="dg-m dg-dim" x="12" y="92" font-size="11" style="font-family:var(--mono)">1749</text>
+            <text class="dg-t" x="78" y="92" font-size="13" font-weight="600">Buffon</text>
+            <text class="dg-t" x="188" y="92" font-size="12.5">Adds body size. Black Africans become tall, plump and stupid.</text>
+            <line class="dg-ln" x1="12" y1="106" x2="688" y2="106"/>
+            <text class="dg-m dg-dim" x="12" y="136" font-size="11" style="font-family:var(--mono)">1750s</text>
+            <text class="dg-t" x="78" y="136" font-size="13" font-weight="600">Le Romain</text>
+            <text class="dg-t" x="188" y="136" font-size="12.5">Calls the eating gluttony, which makes it a sin and a choice.</text>
+            <line class="dg-ln" x1="12" y1="150" x2="688" y2="150"/>
+            <text class="dg-m dg-dim" x="12" y="180" font-size="11" style="font-family:var(--mono)">1801</text>
+            <text class="dg-t" x="78" y="180" font-size="13" font-weight="600">Virey</text>
+            <text class="dg-t" x="188" y="180" font-size="12.5">Blames black bile, so colour and fatness have one inner cause.</text>
+            <line class="dg-ln" x1="12" y1="194" x2="688" y2="194"/>
+            <text class="dg-m dg-dim" x="12" y="224" font-size="11" style="font-family:var(--mono)">1815</text>
+            <text class="dg-t" x="78" y="224" font-size="13" font-weight="600">Cuvier</text>
+            <text class="dg-t" x="188" y="224" font-size="12.5">Measures Sara Baartman's corpse and records fat as deformity.</text>
+            <line class="dg-ln" x1="12" y1="238" x2="688" y2="238"/>
+            <text class="dg-t dg-dim" x="12" y="268" font-size="12.5">Bernier and Buffon both called black women beautiful. The contempt enters with Le Romain.</text>
+            </svg>
+            </div>
+            <figcaption><b>The idea was assembled, and the assembly took a hundred and thirty years.</b> Reading it as a list of five additions is also the fastest way to revise the chapter, because each man is one sentence and the dates are the order.</figcaption>
+          </figure>
+
+          <div class="body">
+            <p><b>Three features of the chain are worth having ready, because they are what an essay question can be answered with.</b></p>
+            <ol>
+              <li><b>Not one of them went and looked.</b> Buffon never travelled to the parts of Africa he wrote about. Virey probably never met any of the women he described so confidently. Cuvier decided what a Bushman was from contradictory travel books. The one man in the chapter who did go to the Cape, Sparrman, is the one who reported that the Khoikhoi were slender and said it was because they were short of food.</li>
+              <li><b>Each borrowed the last one's authority and changed the content.</b> Le Romain copied Buffon's line about the Senegalese being the most attractive and then added gluttony, which Buffon had never written. Long quoted Buffon and Shakespeare in the same paragraph to argue for separate origins, which Buffon rejected. Virey republished Buffon and then replaced his environmental explanation with bile. The citation keeps the credibility while the claim underneath it moves.</li>
+              <li><b>The claims track the slave trade.</b> The hundred and thirty years of this chain are the peak years of the French and British trades. Strings's summary is that eating turned from a personal matter into a political one: an indulgence that philosophers had called a lowbrow habit of slow-witted people became evidence of low breeding, of an inborn race-specific appetite for ease, which is precisely what the men at the top of the new racial ranking were claiming to be free of.</li>
+            </ol>
+          </div>
+
+          <div class="kone"><b>If you keep one thing.</b> The first two race theorists, Bernier in 1684 and Buffon in 1749, both called black women beautiful, and both praised plumpness in a woman. The contempt for fat black bodies was added afterwards, by men who had never left Europe, during the peak decades of the slave trade. So fat phobia has a start date and a reason, and a thing with a start date and a reason is not a fact about bodies.</div>
+
+          <div class="mynote"><b>My note</b><span>Revise this chapter as the five-name chain with one addition each, because the chapter is long and the chain is the whole of it: Bernier, Buffon, Le Romain, Virey, Cuvier, with 1684, 1749, 1750s, 1801, 1815. The two details that win marks on a question about whether racism is constant are the beauty passages in 3.3, since they are dated evidence that the category's content changed while nobody's body did. Sara Baartman is the case to use for any question about objectification or about scientific authority, and the name to spell right is Baartman. Virey's forehead and mouth quotation in 3.3 is the one line in the chapter worth memorising, because it shows a shape being read as a purpose. If a question asks how an idea spreads without anybody intending it, use the second point in 3.8: each writer cited the last one's authority and changed what was under it.</span></div>
+
+          <div class="quar">
+            <b>Where it belongs in the quarrel</b>
+            <ul>
+              <li><b>It answers week 4.</b> That week argued scientific facts get built through networks and citation. Here the network is visible and the citations are doing the building: Le Romain cites Buffon and adds a sin, Virey republishes Buffon and swaps out his cause.</li>
+              <li><b>It extends week 8.</b> Tremain described an apparatus that produces the category it claims to find. Fat is one, and Strings supplies the dates and the names that Tremain's account describes in the abstract.</li>
+              <li><b>It is answered by anybody who treats racism as a constant.</b> On that view the beauty passages are a puzzle or an exception. Strings treats them as the evidence, because they show the thing being built.</li>
+              <li><b>It is continued in chapters 4 to 8</b>, which are not assigned: Protestant self-denial, the American adoption of the slender ideal, and the doctors who turned it into medicine.</li>
+            </ul>
+          </div>
+
+          <div class="curious">
+            <div class="label"><b>For the curious</b><span>none of this is on the exam</span></div>
+
+            <details class="bit"><summary>Bernier got his medical degree in three months and was banned from practising</summary><div class="bq">
+              <p>He took the degree at the University of Montpellier in 1652 in about three months, on a condition attached to the fast-tracked qualification: he was not to practise medicine in the French commonwealth.</p>
+              <p>Which is part of why he went to India. He spent twelve years as a court physician in the Mughal empire, where the ban did not reach, and the travel writing he produced there is what made him an authority on foreign peoples when he came home.</p>
+            </div></details>
+
+            <details class="bit"><summary>The salon where race was invented was run by a woman arguing about embryology</summary><div class="bq">
+              <p>Bernier wrote his three-page classification as a letter to Madame de la Sabli&egrave;re, whose Paris salon he belonged to after returning from India. She was an active participant in the debates of the day about the respective roles of men's semen and women's eggs in forming a child.</p>
+              <p>Strings suggests this is why Bernier's one line about black skin coming from sperm and blood was phrased as it was. He was writing for a reader who cared about that question.</p>
+            </div></details>
+
+            <details class="bit"><summary>Cuvier established that species go extinct, which was a real achievement</summary><div class="bq">
+              <p>Comparing fossil elephant bones with living Indian and African elephants, Cuvier argued in 1796 that the fossils belonged to animals that no longer existed. Before him a missing species was assumed to be living somewhere unexplored.</p>
+              <p>Worth holding alongside the autopsy. The same man, the same method of careful comparative measurement, produced a lasting result in one case and a racist fabrication in the other, which is roughly the problem week 7 spent three chapters on.</p>
+            </div></details>
+
+            <details class="bit"><summary>Her remains were on display in Paris until 1974 and went home in 2002</summary><div class="bq">
+              <p>Cuvier kept Sara Baartman's skeleton, her brain and her preserved genitals. They were held by the Mus&eacute;e de l'Homme in Paris and exhibited publicly into the 1970s.</p>
+              <p>Nelson Mandela asked France to return her in 1994. A French law authorising it passed in 2002, and she was buried at Hankey in the Eastern Cape on 9 August that year, South Africa's National Women's Day.</p>
+            </div></details>
+          </div>
+        </div>
+      </article>
+  </section>
+
+  <section id="s-gloss">
+    <h2>Glossary</h2>
+    <dl class="gl">
+      <dt>fat phobia</dt><dd>Strings's subject: the fear of and aversion to fatness, which she argues is one development with the preference for thinness, and whose content is racial, religious, gendered and classed.</dd>
+      <dt>the thin ideal</dt><dd>The standard that a slender female body is the correct and admirable one. Strings dates its consolidation in the American mainstream to the early twentieth century and argues it was racialised from the start.</dd>
+      <dt>social distinctions</dt><dd>Pierre Bourdieu's term. Elites separate themselves from lower classes by cultivating tastes, diets and appearances opposed to theirs, which makes a social ranking look like a natural difference in refinement.</dd>
+      <dt>biopolitics</dt><dd>Foucault's term, used here for the way medicine tells people how to live for health and long life, and the practices a person must perform to count as a healthy citizen. Strings adds that the regime is applied to dominant groups and withheld from poor and racially othered ones.</dd>
+      <dt>race as a double agent</dt><dd>Strings's own phrase. One discourse does two jobs at once: it degrades black women by calling fatness coarse and immoral, and it disciplines white women by making slenderness the correct body for them.</dd>
+      <dt>process tracing</dt><dd>A comparative historical method. Follow a specific chain of named people and events through multiple sources to show how a result came about. Chapter 3 is one, running from 1684 to 1815.</dd>
+      <dt>race science</dt><dd>The field, taking off during the long eighteenth century, that classified humanity into physically distinct groups and ranked them. Strings's finding is that judging the beauty of each group's women was part of it from the first document.</dd>
+      <dt>racecraft</dt><dd>Barbara and Karen Fields's term for the work of manufacturing racial difference, as opposed to observing it. Buffon splitting the existing stereotype of small thin Africans off onto Moors, leaving black Africans with a new identity made of dark skin and bulk, is an instance.</dd>
+      <dt>polygenism</dt><dd>The position that the human races have separate origins and are effectively different species. Edward Long held it; Buffon rejected it; scholars disagree about Bernier.</dd>
+      <dt>humoral theory, black bile</dt><dd>Ancient Greek medicine, still in circulation in 1800, holding that the body runs on four fluids and that illness is an imbalance. The revived version Virey used claimed a surplus of black bile under the skin causes both dark colour and weight gain, which gave one inner cause for two things a race theorist wanted linked.</dd>
+      <dt>physiognomy</dt><dd>Reading character off facial and bodily form. Johann Caspar Lavater, a Swiss pastor, founded it in the 1770s and was widely read in Britain, and his interchangeable use of Hottentot and Negro helped merge the two categories.</dd>
+      <dt>Hottentot</dt><dd>A derogatory name invented by Dutch settlers for the Khoikhoi of the Cape, used loosely for the Khoisan generally. Used here because the sources use it, and worth knowing because the shift in how it was described, from slender to fat, is the chapter's turning point.</dd>
+      <dt>the Code Noir</dt><dd>The French royal decree of 1685 regulating slavery in the colonies, which condemned Africans there to lifelong servitude while France itself kept a principle that nobody could be held as a forced labourer on its soil.</dd>
+      <dt>Police des Noirs</dt><dd>Louis XVI's declaration of 1777, which banned the entry into France of all blacks, mulattoes and other people of colour, and so avoided the question of slavery on French soil by granting only white people the right to live there.</dd>
+    </dl>
+  </section>
+
+  <div class="endmatter">
+    <div><b>Where this goes.</b> Week 10 of thirteen, and the first class after the strike:</div>
+    <dl class="weeks">
+      <dt>Week 11</dt><dd>Nov 23 to 25. Animal minds. Andrews, <em>The Animal Mind</em>, ch. 1, Other Minds, with Aristotle's <em>Metaphysics</em> A1 and Descartes's <em>Meditations</em> &middot; <b>guest lecture by Dr Mark Migotti, University of Calgary, on 25 November</b></dd>
+      <dt>Week 12</dt><dd>Nov 30 to Dec 2. Andrews ch. 2 and 3 &middot; <b>Exam 2, Monday 30 November, covering weeks 4 to 7</b></dd>
+      <dt>Week 13</dt><dd>Dec 7 to 9. Andrews ch. 9, Moral Minds. Review and exam prep, held on Zoom</dd>
+    </dl>
+    <div><b>Source.</b> Both texts from Sabrina Strings, <em>Fearing the Black Body: The Racial Origins of Fat Phobia</em>, New York University Press, 2019, read through the uOttawa library's subscription. Page numbers are the printed ones. The reading guide of 16 November sets the introduction and chapter 3 for 18 November, and drops Tremain chapter 5 from the course.</div>
+  </div>
+
+<div class="dock">
+  <div class="prog" id="prog"></div>
+  <div class="in">
+    <button type="button" id="bmgo" data-set="0" title="Go to your bookmark">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 2.2h8.8v12.1L8 11.1l-4.4 3.2z"/></svg>
+      <span class="lab">Bookmark</span></button>
+    <button type="button" data-marks title="Everything you have marked">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M2.5 3.5h11M2.5 8h11M2.5 12.5h7"/></svg>
+      <span class="lab">Highlights</span><span class="n" id="mcount"></span></button>
+    <a href="notes.html" title="Your notes for each lecture">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.2 2.3 13.7 4.8 5.6 12.9 2.4 13.6l.7-3.2z"/></svg>
+      <span class="lab">Lecture notes</span></a>
+    <button type="button" id="totop" class="end" title="Back to the top">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 13V3M3.5 7.5 8 3l4.5 4.5"/></svg>
+      <span class="lab">Top</span></button>
+  </div>
+</div>
+
+<div id="marks" class="drawer" hidden>
+  <div class="dback" data-close></div>
+  <aside class="dpanel" role="dialog" aria-modal="true" aria-labelledby="marks-h">
+    <div class="dhead">
+      <h2 id="marks-h">My highlights</h2>
+      <button type="button" class="dclose" data-close aria-label="Close">&times;</button>
+    </div>
+    <p class="dsub">Grouped by the text it sits in. Click one to jump to it.</p>
+    <div class="bm" id="bmlist"><p class="bmempty">Nothing marked yet. Select any text in the guide, then pick yellow, pink, a comment or the ribbon that sets your bookmark.</p></div>
+  </aside>
+</div></div>
+
+<footer class="sitefoot">
+  <div class="in">
+    <div class="col brand">
+      <a href="../">PHI2394 Reading Hub</a>
+      <p>Reading guides for Scientific Thought and Social Values, University of Ottawa.</p>
+    </div>
+    <nav class="col" aria-label="This week">
+      <h2>Week 10</h2>
+      <a href="./">Reading guide</a>
+      <a href="notes.html">My notes</a>
+      <button type="button" data-marks>My highlights</button>
+    </nav>
+    <nav class="col" aria-label="The hub">
+      <h2>The hub</h2>
+      <a href="../">All weeks</a>
+      <a href="../#about">How these were written</a>
+      <a href="https://github.com/myermcat/phi-reading-hub">Source on GitHub</a>
+    </nav>
+  </div>
+  <div class="colophon">
+    <span>Written with Claude. AI can make mistakes, and compression is where it makes them.</span>
+    <span>Your notes, highlights and bookmark are kept in this browser only.</span>
+  </div>
+</footer>
+
+
+<script>
+/* One curious item open at a time. A dozen of them open at once turns the panel into a wall,
+   which is what collapsing them was for. Closing happens per panel, so a side note somewhere
+   else on the page is left alone. */
+(function () {
+  document.addEventListener('toggle', function (e) {
+    var d = e.target;
+    if (!d.open || !d.matches || !d.matches('.curious > details.bit')) return;
+    Array.prototype.forEach.call(d.parentElement.children, function (s) {
+      if (s !== d && s.tagName === 'DETAILS' && s.open) s.open = false;
+    });
+  }, true);
+})();
+</script>
+<script src="../shared/editor.js?v=686e7cd1"></script>
+<script>
+(function () {
+  // The callouts hold their text directly in the div, with no paragraph inside, so a block
+  // list of p and li had nothing to attach a mark to and highlighting them did nothing.
+  var SEL = 'p,li,h4,h5,blockquote,td,dd,figcaption,.keep,.qa,.why,.kone,.mynote span';
+  var LS = 'phi2394-week10-guide-v1', WIDE = 1400;
+  var root, bar, rail, items = [], notes = {}, ref = null, saveT = null;
+  var drawer = null;
+  function openMarks() {
+    if (!drawer) return;
+    drawer.hidden = false; document.body.style.overflow = 'hidden';
+    var c = drawer.querySelector('.dclose'); if (c) c.focus();
+  }
+  function closeMarks() {
+    if (!drawer || drawer.hidden) return;
+    drawer.hidden = true; document.body.style.overflow = '';
+  }
+
+  function blocks() {
+    return Array.prototype.filter.call(root.querySelectorAll(SEL), function (el) {
+      return !el.querySelector(SEL) && !el.closest('.cmt') && !el.closest('.nb') && el.textContent.trim().length > 0;
+    });
+  }
+  function textNodes(el) {
+    var w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null), a = [], n;
+    while ((n = w.nextNode())) a.push(n);
+    return a;
+  }
+  function offsetIn(el, node, off) {
+    var ns = textNodes(el), t = 0;
+    for (var i = 0; i < ns.length; i++) { if (ns[i] === node) return t + off; t += ns[i].nodeValue.length; }
+    return t;
+  }
+  function strip() {
+    Array.prototype.forEach.call(root.querySelectorAll('mark.hl'), function (m) {
+      var p = m.parentNode;
+      while (m.firstChild) p.insertBefore(m.firstChild, m);
+      p.removeChild(m); p.normalize();
+    });
+    Array.prototype.forEach.call(root.querySelectorAll('.cmt'), function (c) { c.remove(); });
+  }
+  function paint(el, start, end, cls, id) {
+    var ns = textNodes(el), pos = 0, jobs = [];
+    for (var i = 0; i < ns.length; i++) {
+      var len = ns[i].nodeValue.length, s = Math.max(start, pos), e = Math.min(end, pos + len);
+      if (e > s) jobs.push([ns[i], s - pos, e - pos]);
+      pos += len; if (pos >= end) break;
+    }
+    for (var j = jobs.length - 1; j >= 0; j--) {
+      var n = jobs[j][0], a = jobs[j][1], b = jobs[j][2];
+      if (b < n.nodeValue.length) n.splitText(b);
+      var target = a > 0 ? n.splitText(a) : n;
+      var m = document.createElement('mark');
+      m.className = 'hl ' + cls;
+      m.setAttribute('data-id', id);
+      target.parentNode.insertBefore(m, target);
+      m.appendChild(target);
+    }
+  }
+  function card(it) {
+    var c = document.createElement('div');
+    c.className = 'cmt'; c.setAttribute('data-id', it.id);
+    var q = document.createElement('div'); q.className = 'q';
+    q.textContent = '“' + (it.text.length > 70 ? it.text.slice(0, 70) + '…' : it.text) + '”';
+    var ta = document.createElement('div');
+    ta.className = 'cbody'; ta.contentEditable = 'true';
+    ta.setAttribute('data-ph', 'Comment…');
+    ta.innerHTML = Notes.clean(it.body || '');
+    Notes.rich(ta, function () { it.body = ta.innerHTML; save(); });
+    ta.addEventListener('input', function () { it.body = ta.innerHTML; save(); });
+    ta.addEventListener('blur', function () {
+      if (!ta.textContent.trim()) { remove(it.id); return; }
+      it.body = ta.innerHTML; save(); place_notes();
+    });
+    ta.addEventListener('keydown', function (e) { if (e.key === 'Escape') ta.blur(); });
+    var row = document.createElement('div'); row.className = 'row';
+    var del = document.createElement('button'); del.type = 'button'; del.textContent = 'Delete';
+    del.addEventListener('mousedown', function (e) { e.preventDefault(); remove(it.id); });
+    row.appendChild(del);
+    c.appendChild(q); c.appendChild(ta); c.appendChild(row);
+    return c;
+  }
+  function place_notes() {
+    var wide = window.innerWidth >= WIDE;
+    rail.classList.toggle('on', wide);
+    var last = -1e9;
+    items.forEach(function (it) {
+      if (it.kind !== 'note') return;
+      var c = root.querySelector('.cmt[data-id="' + it.id + '"]');
+      var m = root.querySelector('mark[data-id="' + it.id + '"]');
+      if (!c || !m) return;
+      if (!m.getClientRects().length) { c.style.display = 'none'; return; }
+      c.style.display = '';
+
+      if (wide) {
+        if (c.parentNode !== rail) rail.appendChild(c);
+        c.classList.remove('inline');
+        var top = m.getBoundingClientRect().top + window.scrollY - (root.getBoundingClientRect().top + window.scrollY);
+        if (top < last) top = last;
+        c.style.top = top + 'px';
+        last = top + c.offsetHeight + 14;
+      } else {
+        c.classList.add('inline'); c.style.top = '';
+        var host = m.closest(SEL);
+        if (host && c.previousSibling !== host) host.parentNode.insertBefore(c, host.nextSibling);
+      }
+    });
+  }
+  function render() {
+    strip();
+    var bs = blocks();
+    items.forEach(function (it) {
+      if (!it || !it.text) return;
+      var probe = (it.before || '') + it.text + (it.after || '');
+      var order = [], i;
+      // the block this mark was made in comes first, by its opening text, then by its index
+      if (it.head) for (i = 0; i < bs.length; i++) if (bs[i].textContent.slice(0, 90) === it.head) order.push(i);
+      if (typeof it.idx === 'number' && it.idx >= 0 && it.idx < bs.length && order.indexOf(it.idx) < 0) order.push(it.idx);
+      for (i = 0; i < bs.length; i++) if (order.indexOf(i) < 0) order.push(i);
+      for (var j = 0; j < order.length; j++) {
+        var el = bs[order[j]], t = el.textContent, k = -1, st;
+        if (probe !== it.text) k = t.indexOf(probe);
+        if (k >= 0) { st = k + (it.before || '').length; }
+        else if (j < 2 && typeof it.at === 'number' && t.substr(it.at, it.text.length) === it.text) { st = it.at; }
+        else if (j < 2) { k = t.indexOf(it.text); if (k < 0) continue; st = k; }
+        else { continue; }
+        paint(el, st, st + it.text.length,
+          it.kind === 'note' ? 'hl-n' : it.kind === 'bm' ? 'hl-b' : 'hl-' + it.color, it.id);
+        if (it.kind === 'note') rail.appendChild(card(it));
+        return;
+      }
+    });
+    place_notes();
+    listMarks();
+  }
+  // Opening a mark that sits inside a closed toggle has to open the toggle first,
+  // or the scroll lands on a collapsed summary and the mark is nowhere on screen.
+  function goTo(el) {
+    if (!el) return;
+    var d = el.closest('details');
+    while (d) { d.open = true; d = d.parentElement && d.parentElement.closest('details'); }
+    var se = document.scrollingElement || document.documentElement, was = se.scrollTop;
+    try { el.scrollIntoView({ block: 'center', behavior: 'smooth' }); }
+    catch (e) { el.scrollIntoView(true); }
+    // Smooth scrolling is refused in some contexts and silently does nothing, so check
+    // that it actually moved and jump outright when it did not.
+    setTimeout(function () {
+      if (Math.abs((document.scrollingElement || document.documentElement).scrollTop - was) < 4) {
+        el.scrollIntoView({ block: 'center' });
+      }
+    }, 380);
+    el.classList.add('flash');
+    setTimeout(function () { el.classList.remove('flash'); }, 1600);
+  }
+  function bookmark() { return items.filter(function (x) { return x.kind === 'bm'; })[0] || null; }
+  function bmState() {
+    var b = document.getElementById('bmgo');
+    if (!b) return;
+    var it = bookmark();
+    b.setAttribute('data-set', it ? '1' : '0');
+    b.title = it ? 'Go to your bookmark: “' + it.text.slice(0, 60) + '”'
+                 : 'No bookmark yet. Select a word and pick the ribbon.';
+  }
+  // The excerpt shown in the list: the marked words in their own colour with the words
+  // around them left in, because a bare quotation out of context says nothing.
+  function excerpt(el, ids) {
+    var w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null), n, pos = 0, full = '', runs = [];
+    while ((n = w.nextNode())) {
+      var mk = n.parentElement && n.parentElement.closest('mark.hl');
+      var len = n.nodeValue.length;
+      if (mk && ids.indexOf(mk.getAttribute('data-id')) >= 0) {
+        var last = runs[runs.length - 1];
+        if (last && last.e === pos && last.k === mk.className) last.e = pos + len;
+        else runs.push({ s: pos, e: pos + len, k: mk.className });
+      }
+      full += n.nodeValue; pos += len;
+    }
+    var out = document.createElement('span');
+    out.className = 'q';
+    if (!runs.length) { out.textContent = full.slice(0, 160); return out; }
+    var a = Math.max(0, runs[0].s - 75), b = Math.min(full.length, runs[runs.length - 1].e + 75);
+    if (a > 0) { var sp = full.indexOf(' ', a); if (sp > 0 && sp < runs[0].s) a = sp + 1; }
+    if (b < full.length) { var sp2 = full.lastIndexOf(' ', b); if (sp2 > runs[runs.length - 1].e) b = sp2; }
+    function txt(str, dim) {
+      if (!str) return;
+      var e = document.createElement('span');
+      if (dim) e.className = 'dim';
+      e.textContent = str; out.appendChild(e);
+    }
+    if (a > 0) txt('… ', 1);
+    var cur = a;
+    runs.forEach(function (r) {
+      txt(full.slice(cur, r.s), 1);
+      var m = document.createElement('mark');
+      m.className = r.k;
+      m.textContent = full.slice(r.s, r.e);
+      out.appendChild(m); cur = r.e;
+    });
+    txt(full.slice(cur, b), 1);
+    if (b < full.length) txt(' …', 1);
+    return out;
+  }
+  // The highlights list. One row per paragraph, so two marks in the same paragraph read as
+  // one entry, grouped by the text each paragraph sits in. Click a row and go there.
+  function listMarks() {
+    var box = document.getElementById('bmlist');
+    bmState();
+    var n = document.getElementById('mcount');
+    if (n) n.textContent = items.length ? String(items.length) : '';
+    if (!box) return;
+    box.innerHTML = '';
+
+    function where(el) {
+      var art = el.closest('article.rd'), name = 'The argument', ch = '';
+      if (art) {
+        var h = art.querySelector('h3'), chip = h && h.querySelector('.ch'), who = art.querySelector('.who');
+        ch = chip ? chip.textContent.trim().toLowerCase() : '';
+        name = who ? who.textContent.split(',')[0].trim() : (h ? h.textContent : name);
+      } else {
+        var sec = el.closest('section'), sh = sec && sec.querySelector('h2');
+        if (sh) name = sh.textContent.trim();
+      }
+      var node = el, sub = '';
+      while (node && node !== root && !sub) {
+        var sib = node.previousElementSibling;
+        while (sib && !sub) {
+          if (/^H[2-6]$/.test(sib.tagName)) sub = sib.textContent.trim();
+          else if (sib.tagName === 'SUMMARY') sub = sib.textContent.trim();
+          sib = sib.previousElementSibling;
+        }
+        if (!sub && node.parentElement && node.parentElement.tagName === 'DETAILS') {
+          var sm = node.parentElement.querySelector('summary');
+          if (sm) sub = sm.textContent.trim();
+        }
+        node = node.parentElement;
+      }
+      return { name: name, ch: ch, sub: sub };
+    }
+    function row(el, list, cls) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'bmi' + (cls ? ' ' + cls : '');
+      var dots = document.createElement('span'); dots.className = 'dots';
+      var seenC = {};
+      list.forEach(function (it) {
+        var k = it.kind === 'note' ? 'n' : (it.kind === 'bm' ? 'b' : it.color);
+        if (seenC[k]) return; seenC[k] = 1;
+        var d = document.createElement('span'); d.className = 'dot ' + k; dots.appendChild(d);
+      });
+      var txt = document.createElement('span'); txt.className = 'bt';
+      var w = where(el);
+      if (w.sub) {
+        var cap = document.createElement('span'); cap.className = 'where'; cap.textContent = w.sub;
+        txt.appendChild(cap);
+      }
+      txt.appendChild(excerpt(el, list.map(function (x) { return x.id; })));
+      list.forEach(function (it) {
+        if (it.kind !== 'note' || !it.body) return;
+        var cm = document.createElement('span'); cm.className = 'cm';
+        cm.textContent = it.body.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 180);
+        txt.appendChild(cm);
+      });
+      b.appendChild(dots); b.appendChild(txt);
+      b.addEventListener('click', function () {
+        closeMarks();
+        goTo(root.querySelector('mark[data-id="' + list[0].id + '"]'));
+      });
+      return b;
+    }
+
+    // the bookmark first, on its own, because there is only ever one
+    var bm = bookmark(), bmMark = bm && root.querySelector('mark[data-id="' + bm.id + '"]');
+    if (bm && bmMark) {
+      var wrapB = document.createElement('div'); wrapB.className = 'bmg bmg-b';
+      var h3b = document.createElement('h3');
+      h3b.textContent = 'Bookmark';
+      var spb = document.createElement('span'); spb.textContent = 'where you stopped';
+      h3b.appendChild(spb); wrapB.appendChild(h3b);
+      wrapB.appendChild(row(bmMark.closest(SEL) || bmMark.parentElement, [bm], 'isbm'));
+      var clr = document.createElement('button');
+      clr.type = 'button'; clr.className = 'bmclear'; clr.textContent = 'Clear bookmark';
+      clr.addEventListener('click', function () { remove(bm.id); });
+      wrapB.appendChild(clr);
+      box.appendChild(wrapB);
+    }
+
+    // then the highlights and comments, one row per paragraph
+    var groups = [], byName = {}, seen = {}, order = [], perBlock = {};
+    Array.prototype.forEach.call(root.querySelectorAll('mark.hl'), function (m) {
+      var id = m.getAttribute('data-id');
+      if (seen[id]) return;
+      var it = items.filter(function (x) { return x.id === id; })[0];
+      if (!it || it.kind === 'bm') return;
+      seen[id] = 1;
+      var host = m.closest(SEL) || m.parentElement;
+      var k = order.indexOf(host);
+      if (k < 0) { k = order.length; order.push(host); perBlock[k] = []; }
+      perBlock[k].push(it);
+    });
+    order.forEach(function (host, k) {
+      var w = where(host), g = byName[w.name];
+      if (!g) { g = { name: w.name, ch: w.ch, rows: [] }; byName[w.name] = g; groups.push(g); }
+      g.rows.push([host, perBlock[k]]);
+    });
+    if (!groups.length && !bm) {
+      var e = document.createElement('p');
+      e.className = 'bmempty';
+      e.textContent = 'Nothing marked yet. Select any text in the guide, then pick yellow, pink, a comment or the ribbon that sets your bookmark.';
+      box.appendChild(e);
+      return;
+    }
+    groups.forEach(function (g) {
+      var wrap = document.createElement('div'); wrap.className = 'bmg';
+      var h3 = document.createElement('h3');
+      h3.textContent = g.name;
+      if (g.ch) { var sp = document.createElement('span'); sp.textContent = g.ch; h3.appendChild(sp); }
+      wrap.appendChild(h3);
+      g.rows.forEach(function (r) { wrap.appendChild(row(r[0], r[1])); });
+      box.appendChild(wrap);
+    });
+  }
+  var pill = null, pillT = null;
+  function flag(txt, bad) {
+    if (!pill) {
+      pill = document.createElement('div'); pill.id = 'save';
+      pill.setAttribute('role', 'status'); document.body.appendChild(pill);
+    }
+    pill.textContent = txt;
+    pill.className = bad ? 'bad' : (txt ? 'on' : '');
+    if (pillT) clearTimeout(pillT);
+    if (!bad) pillT = setTimeout(function () { pill.className = ''; }, 1400);
+  }
+  // notes.html writes lec1, lec2 and their dates into this same stored object, under this same
+  // key. Both pages therefore read what is stored, change only the keys they own, and write the
+  // whole thing back. A page that writes an object built from its own memory erases whatever the
+  // other page saved since it loaded.
+  var OWN = null;
+  function owned() {
+    if (!OWN) {
+      OWN = {};
+      Array.prototype.forEach.call(document.querySelectorAll('.nb[data-k]'), function (el) {
+        OWN[el.getAttribute('data-k')] = 1;
+      });
+    }
+    return OWN;
+  }
+  function stored() {
+    var v = null;
+    try { v = JSON.parse(localStorage.getItem(LS) || 'null'); } catch (e) {}
+    if (Array.isArray(v)) v = { items: v, notes: {} };
+    if (!v || typeof v !== 'object') v = { items: [], notes: {} };
+    if (!Array.isArray(v.items)) v.items = [];
+    if (!v.notes || typeof v.notes !== 'object') v.notes = {};
+    return v;
+  }
+  function queueRef() {
+    if (saveT) clearTimeout(saveT);
+    saveT = setTimeout(function () {
+      if (ref) ref.set({ items: items, notes: notes }).catch(function () {});
+    }, 400);
+  }
+  // The one write into localStorage: read what is stored, overwrite only the keys named, and
+  // put the whole object back. `extra` carries keys that arrived from the shared database and
+  // belong to no page in particular.
+  function writeStore(extra) {
+    var keep = stored().notes, own = owned(), k;
+    for (k in own) if (Object.prototype.hasOwnProperty.call(own, k) && notes[k] !== undefined) keep[k] = notes[k];
+    if (extra) for (k in extra) if (Object.prototype.hasOwnProperty.call(extra, k)) keep[k] = extra[k];
+    localStorage.setItem(LS, JSON.stringify({ items: items, notes: keep }));
+  }
+  function save() {
+    try {
+      writeStore(null);
+      flag('Saved in this browser', false);
+    } catch (e) {
+      // A private window, or site data turned off. Saying nothing here is how somebody
+      // loses an evening of notes believing they were kept.
+      flag('This browser is not saving. Copy anything you need.', true);
+    }
+    queueRef();
+  }
+  function paintNotes() {
+    Array.prototype.forEach.call(document.querySelectorAll('.nb'), function (el) {
+      if (el !== document.activeElement) {
+        var v = notes[el.getAttribute('data-k')] || '';
+        if (el.innerHTML !== v) el.innerHTML = Notes.clean(v);
+      }
+      Notes.markEmpty(el);
+      var card = el.closest('.nbwrap');
+      if (card) card.classList.toggle('has', !!el.textContent.trim());
+    });
+  }
+
+  /* ---- the editor ---- */
+  /* The editor itself is shared/editor.js, one file for every note she writes in either
+     course. Two kinds of box on this page go through it: the note card under a reading, and
+     the body of a comment on a highlight. Both are named to Notes.bar(), which raises the
+     floating toolbar over a selection in either one. */
+
+  /* Where a change the toolbar or the colour key made belongs. A note card writes into
+     `notes` under its own key, and a comment body writes into the item its card stands for. */
+  function saveBox(el) {
+    if (el.classList.contains('nb')) notes[el.getAttribute('data-k')] = el.innerHTML;
+    else {
+      var c = el.closest('.cmt');
+      var it = c && items.filter(function (x) { return x.id === c.getAttribute('data-id'); })[0];
+      if (it) it.body = el.innerHTML;
+    }
+    save();
+  }
+  function wireNotes() {
+    Notes.bar({ sel: '.nb, .cbody', accent: 'Green text', save: saveBox });
+    Array.prototype.forEach.call(document.querySelectorAll('.nb'), function (el) {
+      el.addEventListener('input', function () {
+        // ahead of rich()'s own listener, so the arrow is in the DOM before it is stored
+        Notes.swapAsTyped();
+        notes[el.getAttribute('data-k')] = el.innerHTML;
+        var card = el.closest('.nbwrap');
+        if (card) card.classList.toggle('has', !!el.textContent.trim());
+        save();
+      });
+      el.addEventListener('blur', function () { Notes.hideBar(); notes[el.getAttribute('data-k')] = el.innerHTML; save(); });
+      Notes.rich(el, function () { notes[el.getAttribute('data-k')] = el.innerHTML; save(); });
+    });
+  }
+  function remove(id) {
+    var gone = items.filter(function (x) { return x.id === id; })[0];
+    items = items.filter(function (x) { return x.id !== id; });
+    save(); render();
+    if (gone) offerUndo(gone);
+  }
+  // One click removes a mark, so one click has to put it back. Without this, a misplaced
+  // click destroys a highlight with no way out of it.
+  function offerUndo(gone) {
+    if (!pill) flag('', false);
+    if (pillT) clearTimeout(pillT);
+    pill.textContent = gone.kind === 'note' ? 'Comment removed' : 'Highlight removed';
+    var b = document.createElement('button');
+    b.type = 'button'; b.textContent = 'Undo';
+    b.addEventListener('click', function () {
+      items.push(gone); save(); render();
+      pill.className = ''; pill.textContent = '';
+    });
+    pill.appendChild(b);
+    pill.className = 'act';
+    pillT = setTimeout(function () { pill.className = ''; pill.textContent = ''; }, 9000);
+  }
+  function capture(kind, color) {
+    var sel = window.getSelection();
+    if (!sel || sel.isCollapsed || sel.rangeCount === 0) return null;
+    var r = sel.getRangeAt(0), made = null, bs = blocks();
+    // There is only ever one bookmark, because there is only ever one place reading stopped.
+    if (kind === 'bm') items = items.filter(function (x) { return x.kind !== 'bm'; });
+    bs.forEach(function (el) {
+      if (!r.intersectsNode(el)) return;
+      var t = el.textContent;
+      var s = el.contains(r.startContainer) ? offsetIn(el, r.startContainer, r.startOffset) : 0;
+      var e = el.contains(r.endContainer) ? offsetIn(el, r.endContainer, r.endOffset) : t.length;
+      if (e <= s) return;
+      var text = t.slice(s, e);
+      if (!text.trim()) return;
+      if ((kind === 'note' || kind === 'bm') && made) return;
+      var it = {
+        id: String(Date.now()) + '-' + Math.random().toString(36).slice(2, 7),
+        text: text, before: t.slice(Math.max(0, s - 40), s), after: t.slice(e, e + 40),
+        head: t.slice(0, 90), idx: bs.indexOf(el), at: s,
+        kind: kind, color: color || 'y', body: ''
+      };
+      items.push(it); made = it;
+    });
+    if (made) { sel.removeAllRanges(); if (kind !== 'note') save(); render(); }
+    return made;
+  }
+  function hide() { bar.hidden = true; }
+  function show() {
+    var sel = window.getSelection();
+    if (!sel || sel.isCollapsed || sel.rangeCount === 0) return hide();
+    if (!sel.toString().trim()) return hide();
+    if (!root.contains(sel.anchorNode) || !root.contains(sel.focusNode)) return hide();
+    var a = document.activeElement;
+    if (a && (a.tagName === 'TEXTAREA' || a.isContentEditable)) return hide();
+    if (sel.anchorNode && sel.anchorNode.parentElement && sel.anchorNode.parentElement.closest('.cmt, .nb')) return hide();
+    var r = sel.getRangeAt(0).getBoundingClientRect();
+    if (!r.width && !r.height) return hide();
+    bar.hidden = false;
+    bar.style.top = (window.scrollY + r.top - bar.offsetHeight - 8) + 'px';
+    bar.style.left = (window.scrollX + r.left) + 'px';
+  }
+  function start() {
+    root = document.querySelector('.wrap');
+    if (!root) return;
+    rail = document.createElement('div'); rail.id = 'cmts';
+    root.appendChild(rail);
+    bar = document.createElement('div');
+    bar.id = 'hl-bar'; bar.hidden = true;
+    bar.innerHTML = '<button type="button" data-c="y" title="Highlight yellow" aria-label="Highlight yellow"></button>' +
+      '<button type="button" data-c="p" title="Highlight pink" aria-label="Highlight pink"></button>' +
+      '<button type="button" data-c="ug" title="Underline, the everyday one" aria-label="Underline, the everyday one"></button>' +
+      '<button type="button" data-c="uy" title="Underline yellow" aria-label="Underline yellow"></button>' +
+      '<button type="button" data-c="up" title="Underline pink" aria-label="Underline pink"></button>' +
+      '<button type="button" data-c="n" title="Add a comment" aria-label="Add a comment"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 9.5A1.5 1.5 0 0 1 12.5 11H6l-3 3V4.5A1.5 1.5 0 0 1 4.5 3h8A1.5 1.5 0 0 1 14 4.5z"/></svg></button>' +
+      '<button type="button" data-c="b" title="Set your bookmark here" aria-label="Set your bookmark here"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M4 2.6h8v11.2L8 10.9l-4 2.9z"/></svg></button>';
+    document.body.appendChild(bar);
+    bar.addEventListener('mousedown', function (e) { e.preventDefault(); });
+    bar.addEventListener('click', function (e) {
+      var b = e.target.closest('button');
+      if (!b) return;
+      var c = b.getAttribute('data-c');
+      bar.hidden = true;
+      if (c === 'n') {
+        var it = capture('note');
+        if (it) {
+          var ta = root.querySelector('.cmt[data-id="' + it.id + '"] .cbody');
+          if (ta) { ta.focus(); }
+        }
+      } else if (c === 'b') { capture('bm'); }
+      else { capture('hl', c); }
+    });
+    // A click on empty space does not clear the selection, so a bare mouseup must never
+    // re-show the bar: only a gesture that actually dragged, or actually changed the
+    // selection, counts as a new selection.
+    var downX = 0, downY = 0, downSel = '';
+    ['mousedown', 'pointerdown', 'touchstart'].forEach(function (ev) {
+      document.addEventListener(ev, function (e) {
+        if (bar.contains(e.target)) return;
+        hide();
+        downX = e.clientX || 0; downY = e.clientY || 0;
+        downSel = String(window.getSelection() || '');
+      }, true);
+    });
+    ['mouseup', 'touchend'].forEach(function (ev) {
+      document.addEventListener(ev, function (e) {
+        if (bar.contains(e.target)) return;
+        var moved = Math.abs((e.clientX || 0) - downX) > 3 || Math.abs((e.clientY || 0) - downY) > 3;
+        var was = downSel;
+        setTimeout(function () {
+          var now = String(window.getSelection() || '');
+          if (!now.trim()) return hide();
+          if (!moved && now === was) return hide();
+          show();
+        }, 0);
+      });
+    });
+    document.addEventListener('keyup', function (e) {
+      if (e.key !== 'Shift' && !(e.shiftKey && e.key.indexOf('Arrow') === 0)) return;
+      var a = document.activeElement;
+      if (a && (a.tagName === 'TEXTAREA' || a.isContentEditable)) return;
+      setTimeout(show, 0);
+    });
+    document.addEventListener('keydown', function (e) { if (e.key !== 'Shift') hide(); });
+    document.addEventListener('selectionchange', function () {
+      var sel = window.getSelection();
+      if (!sel || sel.isCollapsed || !String(sel).trim()) hide();
+    });
+    document.addEventListener('visibilitychange', hide);
+    window.addEventListener('scroll', hide, { passive: true });
+    window.addEventListener('wheel', hide, { passive: true });
+    window.addEventListener('blur', hide);
+    window.addEventListener('resize', function () { hide(); place_notes(); });
+    root.addEventListener('click', function (e) {
+      var m = e.target.closest && e.target.closest('mark.hl');
+      if (!m) return;
+      var id = m.getAttribute('data-id');
+      var it = items.filter(function (x) { return x.id === id; })[0];
+      if (!it) return;
+      if (it.kind === 'note') {
+        var c = root.querySelector('.cmt[data-id="' + id + '"]');
+        Array.prototype.forEach.call(root.querySelectorAll('.cmt.act'), function (x) { x.classList.remove('act'); });
+        Array.prototype.forEach.call(root.querySelectorAll('mark.hl-n.act'), function (x) { x.classList.remove('act'); });
+        if (c) { c.classList.add('act'); m.classList.add('act'); c.scrollIntoView({ block: 'nearest' }); c.querySelector('.cbody').focus(); }
+      } else if (it.kind === 'bm') {
+        goTo(m);
+      } else { remove(id); }
+    });
+    drawer = document.getElementById('marks');
+    Array.prototype.forEach.call(document.querySelectorAll('[data-marks]'), function (b) {
+      b.addEventListener('click', function (e) { e.preventDefault(); openMarks(); });
+    });
+    if (drawer) drawer.addEventListener('click', function (e) {
+      if (e.target.closest('[data-close]')) closeMarks();
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMarks(); });
+    var top = document.getElementById('totop');
+    if (top) top.addEventListener('click', function () {
+      try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch (e) { window.scrollTo(0, 0); }
+    });
+    var go = document.getElementById('bmgo');
+    if (go) go.addEventListener('click', function () {
+      var it = bookmark();
+      var m = it && root.querySelector('mark[data-id="' + it.id + '"]');
+      if (m) { goTo(m); return; }
+      flag('No bookmark yet. Select a word, then pick the ribbon.', true);
+      setTimeout(function () { flag(''); }, 3200);
+    });
+    // A closed toggle prints as a heading with nothing under it, so open everything to print
+    // and put it back afterwards.
+    var reopen = [];
+    window.addEventListener('beforeprint', function () {
+      reopen = [];
+      Array.prototype.forEach.call(document.querySelectorAll('details:not([open])'), function (d) {
+        reopen.push(d); d.open = true;
+      });
+    });
+    window.addEventListener('afterprint', function () {
+      reopen.forEach(function (d) { d.open = false; });
+      reopen = [];
+    });
+    document.addEventListener('toggle', function () { place_notes(); }, true);
+    try {
+      var v = JSON.parse(localStorage.getItem(LS) || 'null');
+      if (Array.isArray(v)) { items = v; }
+      else if (v && typeof v === 'object') { items = v.items || []; notes = v.notes || {}; }
+    } catch (e) {}
+    items.forEach(function (x) { if (!x.kind) x.kind = 'hl'; });
+    wireNotes();
+    paintNotes();
+    render();
+    // A second copy of this page, open in another tab, writes the same key. Pick up what it
+    // saved, so the next save here is built on what is stored. A stale list of highlights in
+    // memory erases the highlight made over there as soon as a note is typed here. Whatever
+    // is being edited here at the moment is left alone.
+    window.addEventListener('storage', function (e) {
+      if (e.key && e.key !== LS) return;
+      var a = document.activeElement;
+      if (a && a.classList && a.classList.contains('cbody')) return;
+      var boxes = {}, fresh = stored(), k;
+      Array.prototype.forEach.call(document.querySelectorAll('.nb[data-k]'), function (el) {
+        boxes[el.getAttribute('data-k')] = el;
+      });
+      for (k in fresh.notes) {
+        if (!Object.prototype.hasOwnProperty.call(fresh.notes, k)) continue;
+        if (boxes[k] && boxes[k] === a) continue;
+        notes[k] = fresh.notes[k];
+      }
+      items = fresh.items;
+      items.forEach(function (x) { if (!x.kind) x.kind = 'hl'; });
+      paintNotes();
+      render();
+    });
+    if (window.claude && typeof claude.use === 'function') {
+      claude.use('db').then(function (db) {
+        if (!db) return;
+        ref = db.doc('highlights/v1');
+        ref.onSnapshot(function (snap) {
+          var d = snap.exists ? snap.data() : null;
+          if (!d) return;
+          if (root.querySelector('.cmt .cbody:focus')) return;
+          // Merged, so a snapshot taken before the lecture notes existed cannot drop them.
+          if (d.notes && typeof d.notes === 'object') {
+            Object.keys(d.notes).forEach(function (k) { notes[k] = d.notes[k]; });
+            paintNotes();
+          }
+          if (Array.isArray(d.items)) {
+            items = d.items.slice();
+            items.forEach(function (x) { if (!x.kind) x.kind = 'hl'; });
+            render();
+          }
+          // Merged the same way a save is, so the lecture notes written on notes.html since
+          // this page loaded survive a snapshot that predates them.
+          try { writeStore(d.notes && typeof d.notes === 'object' ? d.notes : null); } catch (e) {}
+        }, function () {});
+      }).catch(function () {});
+    }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
+  else start();
+})();
+</script>
+
+<script>
+(function () {
+  var nav = document.getElementById('nav');
+  if (!nav) return;
+  var links = Array.prototype.slice.call(nav.querySelectorAll('a'));
+  var targets = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+  function mark() {
+    var best = -1, bestTop = -1e9;
+    for (var i = 0; i < targets.length; i++) {
+      if (!targets[i]) continue;
+      var t = targets[i].getBoundingClientRect().top - 120;
+      if (t <= 0 && t > bestTop) { bestTop = t; best = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle('on', i === best); });
+    // only the chapter you are inside opens its list of sections
+    var of = '';
+    if (best >= 0) {
+      var cur = links[best];
+      of = cur.classList.contains('sb') ? cur.getAttribute('data-of')
+                                        : cur.getAttribute('href').slice(1);
+    }
+    links.forEach(function (a) {
+      if (a.classList.contains('sb')) a.classList.toggle('show', a.getAttribute('data-of') === of);
+    });
+    if (best !== was && best >= 0 && nav.scrollHeight > nav.clientHeight) {
+      links[best].scrollIntoView({ block: 'nearest' });
+    }
+    was = best;
+  }
+  var was = -1;
+  // how far through the reading this is, drawn along the top edge of the dock
+  var prog = document.getElementById('prog');
+  function bar() {
+    if (!prog) return;
+    var se = document.scrollingElement || document.documentElement;
+    var run = se.scrollHeight - window.innerHeight;
+    prog.style.width = (run > 0 ? Math.min(100, Math.max(0, se.scrollTop / run * 100)) : 0) + '%';
+  }
+  window.addEventListener('scroll', function () { mark(); bar(); }, { passive: true });
+  window.addEventListener('resize', function () { mark(); bar(); });
+  mark(); bar();
+})();
+</script>
+<script src="../glossary.js?v=02c45554"></script>
+<script>
+/* Every term defined in any week's glossary gets a faint dashed underline here, and its
+   definition on click. This runs after the highlighter has restored, and skips anything inside
+   a mark, so the two never fight over the same text nodes. */
+(function () {
+  var G = window.PHI_GLOSSARY;
+  var root = document.querySelector('.wrap');
+  if (!G || !G.length || !root) return;
+
+  var SKIP = '.gl, .nb, .cmt, #nav, .site, .sitefoot, .dock, a, h1, h2, h3, h4, h5, summary, .cred, mark, code, .gl-w, .dg-t, .mynote, .nbhint';
+  var BLOCK = 'p, li, td, th, dd, figcaption, blockquote, .keep, .qa, .why, .kone, .bq';
+
+  var pairs = [];
+  G.forEach(function (e, i) { e.f.forEach(function (w) { pairs.push([w, i]); }); });
+  pairs.sort(function (a, b) { return b[0].length - a[0].length; });
+  var idx = {};
+  pairs.forEach(function (p) { if (!(p[0].toLowerCase() in idx)) idx[p[0].toLowerCase()] = p[1]; });
+  function esc(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+  var rx;
+  try {
+    rx = new RegExp('(?<![\\w-])(' + pairs.map(function (p) { return esc(p[0]); }).join('|') + ')(?![\\w-])', 'gi');
+  } catch (e) { return; }   // a browser without lookbehind simply gets no underlines
+
+  var nodes = [], w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null), n;
+  while ((n = w.nextNode())) {
+    if (!n.nodeValue || n.nodeValue.length < 4) continue;
+    var p = n.parentElement;
+    if (!p || p.closest(SKIP)) continue;
+    nodes.push(n);
+  }
+
+  var seen = new Map();          // one mark per term per block, so a page is not all dashes
+  nodes.forEach(function (node) {
+    var block = node.parentElement.closest(BLOCK) || node.parentElement;
+    var done = seen.get(block);
+    if (!done) { done = new Set(); seen.set(block, done); }
+    var text = node.nodeValue, m, hits = [];
+    rx.lastIndex = 0;
+    while ((m = rx.exec(text))) {
+      var i = idx[m[1].toLowerCase()];
+      if (i === undefined || done.has(i)) continue;
+      done.add(i);
+      hits.push([m.index, m.index + m[1].length, i]);
+    }
+    for (var k = hits.length - 1; k >= 0; k--) {
+      var a = hits[k][0], b = hits[k][1];
+      var tail = node.splitText(a);
+      if (b - a < tail.nodeValue.length) tail.splitText(b - a);
+      var s = document.createElement('span');
+      s.className = 'gl-w';
+      s.setAttribute('data-g', hits[k][2]);
+      tail.parentNode.insertBefore(s, tail);
+      s.appendChild(tail);
+    }
+  });
+
+  var pop = document.createElement('div');
+  pop.id = 'gl-pop'; pop.hidden = true;
+  document.body.appendChild(pop);
+
+  function hide() { pop.hidden = true; }
+  function show(el) {
+    var e = G[+el.getAttribute('data-g')];
+    if (!e) return;
+    pop.innerHTML = '';
+    var t = document.createElement('div'); t.className = 't'; t.textContent = e.t;
+    var d = document.createElement('div'); d.className = 'd'; d.innerHTML = e.d;
+    var k = document.createElement('div'); k.className = 'w'; k.textContent = 'Glossary, week ' + e.w;
+    pop.appendChild(t); pop.appendChild(d); pop.appendChild(k);
+    pop.hidden = false;
+    var r = el.getBoundingClientRect();
+    var left = Math.min(window.scrollX + r.left, window.scrollX + document.documentElement.clientWidth - pop.offsetWidth - 12);
+    var top = window.scrollY + r.bottom + 7;
+    if (r.bottom + pop.offsetHeight + 16 > window.innerHeight && r.top > pop.offsetHeight + 16) {
+      top = window.scrollY + r.top - pop.offsetHeight - 7;
+    }
+    pop.style.left = Math.max(window.scrollX + 10, left) + 'px';
+    pop.style.top = top + 'px';
+  }
+
+  document.addEventListener('click', function (ev) {
+    var hit = ev.target.closest && ev.target.closest('.gl-w');
+    if (hit) { ev.preventDefault(); ev.stopPropagation(); show(hit); return; }
+    if (!pop.contains(ev.target)) hide();
+  }, true);
+  document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape') hide(); });
+  window.addEventListener('scroll', hide, { passive: true });
+  window.addEventListener('resize', hide);
+})();
+</script>
+</html>

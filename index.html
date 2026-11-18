@@ -76,6 +76,14 @@
     :root:not([data-theme="light"]) .also a.prep:hover{color:#EFC579;border-color:#D9A957}}
   :root[data-theme="dark"] .also a.prep{color:#D9A957;border-color:#6B5520}
   :root[data-theme="dark"] .also a.prep:hover{color:#EFC579;border-color:#D9A957}
+  /* A week the course did not happen. A thin rule with a label on it, so the gap in the
+     numbering is visible without a card pretending there was a reading. */
+  .gap{display:flex;align-items:center;gap:14px;margin:4px 2px}
+  .gap::before,.gap::after{content:"";flex:1;height:1px;background:var(--rule)}
+  .gap b{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+         color:var(--muted);font-weight:500}
+  .gap span{font-family:var(--body);font-size:13px;color:var(--muted);flex:none}
+  @media (max-width:620px){.gap{flex-wrap:wrap}.gap::before,.gap::after{display:none}}
   .also a.prep.done{opacity:.62}
   .also a.prep.done:hover{opacity:1}
   /* The teaching page is not course material, so it carries its own accent and sits apart
@@ -163,6 +171,21 @@
     <h2>Weeks</h2>
     <div class="also"><a class="prep" href="exam-2/">Prep for midterm 2</a><a class="prep done" href="exam-1/">Midterm 1 practice</a></div>
     <div class="weeks">
+      <a class="wk" href="week-10/">
+        <div class="ghost" aria-hidden="true">10</div>
+        <div class="t">
+          <div class="n">Week 10<span class="dt">18 November</span></div>
+          <h3>Who decided that thin was better?</h3>
+          <p>In 1894 American doctors were warning that an epidemic of thinness was weakening the nation, and rich women were slimming anyway. Strings argues the fear of fat was built out of slave-trade race science and Protestant preaching, and that medicine arrived two centuries later to agree with it. Chapter 3 is five named men between 1684 and 1815, and the first two of them called black women beautiful.</p>
+        </div>
+        <div class="go">Read the guide
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"/></svg>
+        </div>
+      </a>
+      <div class="also"><a href="week-10/notes.html">Week 10 lecture notes</a></div>
+
+      <div class="gap"><b>Week 9</b><span>9 to 16 November, strike. No classes, and Tremain ch. 5 was dropped from the course.</span></div>
+
       <a class="wk" href="week-8/">
         <div class="ghost" aria-hidden="true">08</div>
         <div class="t">
@@ -295,6 +318,7 @@
     </div>
     <nav class="col" aria-label="Weeks">
       <h2>Weeks</h2>
+      <a href="week-10/">Week 10 &middot; reading guide</a>
       <a href="week-8/">Week 8 &middot; reading guide</a>
       <a href="week-7/">Week 7 &middot; reading guide</a>
       <a href="week-6/">Week 6 &middot; reading guide</a>
