@@ -1,0 +1,2295 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PHI2394 Week 11 Reading Guide</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='10'%20fill='%232E8E74'/%3E%3Cellipse%20cx='32'%20cy='33'%20rx='16'%20ry='19'%20fill='none'%20stroke='%23fff'%20stroke-width='11'/%3E%3Crect%20x='26.5'%20y='2'%20width='11'%20height='60'%20rx='5.5'%20fill='%23fff'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,600&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --paper:      #EDEFEC;
+    --surface:    #F6F7F4;
+    --sunk:       #E3E6E1;
+    --ink:        #191D1A;
+    --ink-soft:   #414944;
+    --muted:      #6E766F;
+    --rule:       #D2D8D1;
+    --rule-soft:  #E1E5DF;
+    --close:      #1F6B57;
+    --close-wash: #CFE3DA;
+    --skim:       #8E6318;
+    --skim-wash:  #ECDDC2;
+    --skip:       #7E867F;
+    --skip-wash:  #D9DDD8;
+    --accent:     #1F6B57;
+    --curious:    #6B4372;
+    --curious-bg: #F2EEF3;
+    --lead:       #2E574A;
+    --c-y:        #8A6A0B;
+    --c-p:        #AE2F73;
+    --ghost:      #DADFD9;
+
+    --hl-y:     rgba(255,206,0,.42);
+    --hl-p:     rgba(255,92,168,.34);
+    --hl-n:     rgba(31,107,87,.10);
+    --hl-n-act: rgba(31,107,87,.22);
+    --ul-y:     rgba(196,152,0,.55);
+    --ul-p:     rgba(208,62,130,.48);
+    --ul-g:     rgba(58,98,84,.46);
+    --gl-line:  rgba(110,118,111,.42);
+
+    --navpad: 0px;
+
+    --display: "Newsreader", Georgia, "Times New Roman", serif;
+    --body:    "Source Sans 3", -apple-system, "Segoe UI", sans-serif;
+    --lh: 1.6; --measure: 62ch; --figw: 82ch; --pgap: 20px;
+
+    --mono:    "IBM Plex Mono", "SF Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #191E1B; --surface: #232924; --sunk: #141916;
+      --ink: #D3DAD4; --ink-soft: #A9B2AB; --muted: #848D86;
+      --rule: #333A35; --rule-soft: #2A302C;
+      --close: #64BFA1; --close-wash: #24463A;
+      --skim: #D9A957; --skim-wash: #413725;
+      --skip: #79827B; --skip-wash: #2D332F;
+      --accent: #64BFA1;
+      --curious: #C4A0CB; --curious-bg: #272029;
+      --lead: #93C2B2;
+      --c-y: #E3BE57;
+      --c-p: #FF97C6;
+      --ghost: #2C332E;
+      --hl-y: rgba(255,206,0,.24); --hl-p: rgba(255,92,168,.24);
+      --hl-n: rgba(100,191,161,.12); --hl-n-act: rgba(100,191,161,.22);
+      --ul-y: rgba(217,169,87,.48); --ul-p: rgba(255,151,198,.38);
+      --ul-g: rgba(126,172,154,.42); --gl-line: rgba(132,141,134,.45); --lh: 1.76; --measure: 58ch; --figw: 80ch; --pgap: 25px;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #191E1B; --surface: #232924; --sunk: #141916;
+    --ink: #D3DAD4; --ink-soft: #A9B2AB; --muted: #848D86;
+    --rule: #333A35; --rule-soft: #2A302C;
+    --close: #64BFA1; --close-wash: #24463A;
+    --skim: #D9A957; --skim-wash: #413725;
+    --skip: #79827B; --skip-wash: #2D332F;
+    --accent: #64BFA1;
+    --curious: #C4A0CB; --curious-bg: #272029;
+    --lead: #93C2B2;
+    --c-y: #E3BE57;
+    --c-p: #FF97C6;
+    --ghost: #2C332E;
+      --hl-y: rgba(255,206,0,.24); --hl-p: rgba(255,92,168,.24);
+      --hl-n: rgba(100,191,161,.12); --hl-n-act: rgba(100,191,161,.22);
+      --ul-y: rgba(217,169,87,.48); --ul-p: rgba(255,151,198,.38);
+    --ul-g: rgba(126,172,154,.42); --gl-line: rgba(132,141,134,.45); --lh: 1.76; --measure: 58ch; --figw: 80ch; --pgap: 25px;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--paper); color: var(--ink); font-family: var(--body);
+    font-size: 17.5px; line-height: var(--lh); -webkit-font-smoothing: antialiased;
+    padding-bottom: 47px;
+  }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 40px 26px 90px; display: flex; flex-direction: column; gap: 48px; }
+  .eyebrow { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted); }
+  h1 {
+    font-family: var(--display); font-weight: 600; font-size: clamp(34px, 5.6vw, 50px);
+    line-height: 1.06; letter-spacing: -0.015em; margin: 10px 0 0; text-wrap: balance;
+  }
+  .standfirst {
+    font-family: var(--display); font-size: clamp(18px, 2.4vw, 21.5px); line-height: 1.5;
+    color: var(--ink-soft); max-width: 62ch; margin: 14px 0 0;
+  }
+  p { margin: 0; max-width: var(--measure); }
+  .lede { color: var(--ink-soft); }
+
+  .strip-block { display: flex; flex-direction: column; gap: 11px; }
+  .strip { display: flex; width: 100%; height: 52px; border: 1px solid var(--rule); overflow: hidden; }
+  .seg { display: flex; min-width: 0; }
+  .seg + .seg { border-left: 1px solid var(--paper); }
+  .seg .txt, .seg .nts {
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--mono); font-size: 11px; color: #fff; min-width: 0; overflow: hidden;
+  }
+  .seg .nts { background: var(--skip-wash); }
+  .p-close .txt { background: var(--close); }
+  .p-skim  .txt { background: var(--skim); }
+  .p-skip  .txt { background: var(--skip); }
+  .strip-key { display: flex; flex-wrap: wrap; gap: 6px 18px; font-family: var(--mono); font-size: 11px; color: var(--muted); }
+  .strip-key i { font-style: normal; display: inline-flex; align-items: center; gap: 7px; }
+  .strip-key i::before { content: ""; width: 13px; height: 13px; display: inline-block; border: 1px solid var(--rule); }
+  .k-close::before { background: var(--close); }
+  .k-skim::before  { background: var(--skim); }
+  .k-skip::before  { background: var(--skip); }
+  .k-notes::before { background: var(--skip-wash); }
+
+  .tally { display: flex; flex-wrap: wrap; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  .tally > div { flex: 1 1 140px; padding: 14px 18px 14px 0; display: flex; flex-direction: column; gap: 2px; }
+  .tally > div + div { padding-left: 18px; border-left: 1px solid var(--rule-soft); }
+  .tally b { font-family: var(--mono); font-weight: 500; font-size: 24px; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+  .tally span { font-size: 13px; color: var(--muted); line-height: 1.35; }
+  .t-a b { color: var(--close); }
+  .t-b b { color: var(--skim); }
+
+  section { display: flex; flex-direction: column; gap: 20px; }
+  h2 { font-family: var(--display); font-weight: 600; font-size: 28px; letter-spacing: -0.01em; margin: 0; text-wrap: balance; }
+  h2 + p { margin-top: -8px; }
+  section > .ctx, section > .exm, section > .scroller, section > figure { margin: 26px 0; }
+  h3.sub { font-family: var(--display); font-weight: 600; font-size: 21px; margin: 14px 0 -8px; letter-spacing: -0.005em; }
+  .minihead { margin: 10px 0 -10px; font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+
+  .facts {
+    background: var(--surface); border-left: 3px solid var(--close);
+    padding: 20px 24px; display: grid; grid-template-columns: 150px 1fr; gap: 10px 18px; font-size: 16px;
+  }
+  .facts dt { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); padding-top: 4px; }
+  .facts dd { margin: 0; color: var(--ink-soft); }
+  .facts dd b { color: var(--ink); font-weight: 600; }
+
+  ul.plain { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 10px; max-width: var(--measure); color: var(--ink-soft); }
+  ul.plain b { color: var(--ink); }
+
+  .nine { width: 100%; border-collapse: collapse; font-size: 15.5px; }
+  .nine th {
+    text-align: left; font-family: var(--mono); font-size: 10px; letter-spacing: 0.09em;
+    text-transform: uppercase; color: var(--muted); font-weight: 500;
+    padding: 0 14px 9px 0; border-bottom: 1px solid var(--rule); vertical-align: bottom;
+  }
+  .nine td { padding: 12px 14px 12px 0; border-bottom: 1px solid var(--rule-soft); vertical-align: top; color: var(--ink-soft); }
+  .nine td:first-child { color: var(--ink); font-weight: 600; white-space: nowrap; padding-right: 18px; }
+  .nine td:first-child span { display: block; font-family: var(--mono); font-size: 10px; font-weight: 400; color: var(--muted); letter-spacing: 0.04em; }
+  .scroller { overflow-x: auto; margin: 30px 0; }
+
+  .convo { display: flex; flex-direction: column; }
+  .turn { display: grid; grid-template-columns: 128px 1fr; gap: 0 22px; padding: 16px 0; border-top: 1px solid var(--rule-soft); }
+  .turn:first-child { border-top: 1px solid var(--rule); }
+  .turn .who { display: flex; flex-direction: column; gap: 1px; padding-top: 2px; }
+  .turn .who b { font-family: var(--body); font-size: 15px; font-weight: 600; }
+  .turn .who span { font-family: var(--mono); font-size: 10.5px; color: var(--muted); }
+  .turn p { font-size: 16.5px; }
+
+  .readings { display: flex; flex-direction: column; }
+  .rd { display: grid; grid-template-columns: 4px 1fr; gap: 0 22px; padding: 36px 0; border-top: 1px solid var(--rule); }
+  .rd .stripe { background: var(--skip); }
+  .rd.p-close .stripe { background: var(--close); }
+  .rd.p-skim  .stripe { background: var(--skim); }
+  .rd .main { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
+
+  .rd .head { display: flex; flex-direction: column; gap: 7px; }
+  .rd h3 { margin: 0; font-family: var(--display); font-size: 25px; font-weight: 600; line-height: 1.16; text-wrap: balance; }
+  .rd h3 .ch { font-family: var(--mono); font-size: 14px; font-weight: 500; color: var(--muted); letter-spacing: 0.02em; margin-right: 10px; vertical-align: 3px; }
+  .rd .who { font-family: var(--display); font-style: italic; font-size: 18px; color: var(--ink-soft); }
+  .rd .meta { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.03em; }
+  .tag { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.09em; text-transform: uppercase; padding: 2.5px 8px; }
+  .p-close .tag { background: var(--close-wash); color: var(--close); }
+  .p-skim  .tag { background: var(--skim-wash);  color: var(--skim); }
+  .p-skip  .tag { background: var(--skip-wash);  color: var(--skip); }
+
+  .span { display: flex; flex-direction: column; gap: 5px; }
+  .span .bar { display: flex; height: 14px; width: 100%; border: 1px solid var(--rule); overflow: hidden; }
+  .span .bar i { display: block; background: var(--ghost); }
+  .span .bar i.here-txt { background: var(--close); }
+  .p-skim .span .bar i.here-txt { background: var(--skim); }
+  .p-skip .span .bar i.here-txt { background: var(--skip); }
+  .span .bar i.here-nts { background: var(--skip-wash); }
+  .span .cap { font-family: var(--mono); font-size: 10.5px; color: var(--muted); letter-spacing: 0.03em; }
+
+  .qline { font-family: var(--display); font-size: 19.5px; line-height: 1.42; padding: 12px 0 12px 16px; border-left: 2px solid var(--accent); color: var(--ink); }
+
+  .rd h4 { margin: 16px 0 -13px; font-family: var(--display); font-weight: 600;
+           font-size: 20px; line-height: 1.22; letter-spacing: -0.005em; color: var(--ink);
+           text-wrap: balance; scroll-margin-top: 78px; }
+  .rd h4::before { content: attr(data-n); display: block; margin-bottom: 6px;
+           font-family: var(--mono); font-size: 10.5px; font-weight: 500;
+           letter-spacing: 0.12em; color: var(--accent); }
+  .rd ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 9px; max-width: var(--measure); }
+  .rd li { padding-left: 2px; }
+  .rd .body { display: flex; flex-direction: column; gap: 14px; }
+  .rd .body > .scroller, .rd .body > figure, .rd .body > .quo,
+  .rd .body > .ctx, .rd .body > .exm { margin: 16px 0; }
+  .rd .body > ul, .rd .body > ol { margin: 4px 0 6px; }
+  .rd .body > p > b:first-child, .rd .body > ul > li > b:first-child,
+  .rd .body > ol > li > b:first-child { color: var(--lead); }
+  .body > p > b:first-child { color: var(--lead); }
+  .qa { border-left: 2px solid var(--accent); padding: 4px 0 4px 18px; max-width: var(--measure);
+        font-family: var(--display); font-size: 19px; line-height: 1.38; color: var(--ink); }
+  .qa b { display: block; margin-bottom: 6px; font-family: var(--mono); font-size: 10.5px;
+          font-weight: 500; letter-spacing: 0.11em; text-transform: uppercase; color: var(--accent); }
+  .body > * + * { margin-top: var(--pgap); }
+  .rd .body > * + * { margin-top: 0; }
+  .body > .keep { margin-top: calc(var(--pgap) + 8px); }
+  .body > .keep + * { margin-top: calc(var(--pgap) + 12px); }
+  .rd h5 {
+    margin: 12px 0 -4px; font-family: var(--display); font-weight: 600;
+    font-size: 18.5px; line-height: 1.25; color: var(--ink); letter-spacing: -.005em;
+  }
+
+  .links { display: grid; grid-template-columns: 84px 1fr; gap: 8px 14px; font-size: 16px; border-top: 1px solid var(--rule-soft); border-bottom: 1px solid var(--rule-soft); padding: 13px 0; }
+  .links dt { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); padding-top: 4px; }
+  .links dd { margin: 0; color: var(--ink-soft); }
+
+  .mynote { background: var(--sunk); padding: 16px 20px; font-size: 16.5px; color: var(--ink-soft); display: flex; flex-direction: column; gap: 6px; }
+  .mynote b { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+
+  .keep { font-family: var(--display); font-size: 18.5px; line-height: 1.45; font-style: italic; color: var(--ink); border-left: 2px solid var(--muted); padding: 4px 0 4px 18px; }
+  .keep b { font-family: var(--mono); font-style: normal; font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 5px; font-weight: 500; }
+
+  .curious { background: var(--curious-bg); padding: 22px 24px 24px; display: flex; flex-direction: column; gap: 16px; margin-top: 6px; }
+  .curious > .label { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .curious > .label b { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--curious); font-weight: 500; }
+  .curious > .label span { font-family: var(--mono); font-size: 10.5px; color: var(--muted); }
+  /* Every curious item and every side note is a toggle, closed until it is asked for,
+     and its summary says what is inside, so the line alone is enough to decide on. */
+  details.bit > summary, details.ctx > summary {
+    display: flex; align-items: baseline; gap: 10px; cursor: pointer; list-style: none;
+    padding: 4px 0; margin: 0; border-radius: 3px;
+  }
+  details.bit > summary::-webkit-details-marker,
+  details.ctx > summary::-webkit-details-marker { display: none; }
+  details.bit > summary::after, details.ctx > summary::after {
+    content: ''; width: 6px; height: 6px; flex: none; margin-left: auto; align-self: center;
+    border-right: 1.6px solid currentColor; border-bottom: 1.6px solid currentColor;
+    transform: translateY(-2px) rotate(45deg); opacity: .45; transition: transform .18s ease, opacity .18s ease;
+  }
+  details[open].bit > summary::after, details[open].ctx > summary::after {
+    transform: translateY(1px) rotate(225deg); opacity: .75;
+  }
+  details.bit > summary:hover::after, details.ctx > summary:hover::after { opacity: .9; }
+  details.bit > summary:focus-visible, details.ctx > summary:focus-visible {
+    outline: 2px solid var(--accent); outline-offset: 3px;
+  }
+  .bq { display: flex; flex-direction: column; gap: 9px; padding-top: 9px; }
+  .curious > details.bit + details.bit { border-top: 1px solid var(--rule); padding-top: 16px; }
+
+  .bit { display: block; }
+  .bit > summary {
+    font-family: var(--display); font-weight: 600; font-size: 20.5px;
+    line-height: 1.2; color: var(--curious); letter-spacing: -0.005em; text-wrap: balance;
+  }
+  .bit p { font-size: 16.5px; color: var(--ink-soft); }
+  .bit p b { color: var(--ink); font-weight: 600; }
+
+  .plan { display: flex; flex-direction: column; }
+  .ses { display: grid; grid-template-columns: 118px 1fr; gap: 0 24px; padding: 22px 0; border-top: 1px solid var(--rule); }
+  .ses .when { display: flex; flex-direction: column; gap: 3px; padding-top: 3px; }
+  .ses .when b { font-family: var(--mono); font-size: 11px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--accent); font-weight: 500; }
+  .ses .when span { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+  .ses .what { display: flex; flex-direction: column; gap: 8px; }
+  .ses h3 { margin: 0; font-family: var(--display); font-size: 21px; font-weight: 600; line-height: 1.2; }
+  .ses p { font-size: 16.5px; color: var(--ink-soft); }
+
+  .endmatter { border-top: 1px solid var(--rule); padding-top: 24px; font-size: 14.5px; color: var(--muted); display: flex; flex-direction: column; gap: 12px; }
+  .endmatter b { color: var(--ink-soft); font-weight: 600; }
+  .endmatter .weeks { display: grid; grid-template-columns: 96px 1fr; gap: 6px 16px; }
+  .endmatter .weeks dt { font-family: var(--mono); font-size: 11px; color: var(--muted); padding-top: 3px; }
+  .endmatter .weeks dd { margin: 0; color: var(--ink-soft); }
+
+  /* site footer */
+  .sitefoot { border-top: 1px solid var(--rule); background: var(--surface); margin-top: 20px; }
+  .sitefoot .in { max-width: 900px; margin: 0 auto; padding: 40px 26px 30px;
+                  display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 32px; }
+  .sitefoot .col { display: flex; flex-direction: column; gap: 9px; align-items: flex-start; }
+  .sitefoot h2 { margin: 0 0 2px; font-family: var(--mono); font-size: 10.5px; letter-spacing: .13em;
+                 text-transform: uppercase; color: var(--muted); font-weight: 500; }
+  .sitefoot a, .sitefoot button { font-family: var(--body); font-size: 14.5px; color: var(--ink-soft);
+                                  text-decoration: none; background: none; border: 0; padding: 0;
+                                  cursor: pointer; text-align: left; border-bottom: 1px solid transparent; }
+  .sitefoot a:hover, .sitefoot button:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .sitefoot .brand a { font-family: var(--mono); font-size: 11.5px; letter-spacing: .08em;
+                       text-transform: uppercase; color: var(--ink); }
+  .sitefoot .brand p { margin: 0; font-size: 14px; color: var(--muted); max-width: 30ch; }
+  .sitefoot .colophon { max-width: 900px; margin: 0 auto; padding: 16px 26px 34px;
+                        border-top: 1px solid var(--rule); display: flex; flex-wrap: wrap; gap: 6px 28px;
+                        font-size: 12.5px; color: var(--muted); }
+  @media (max-width: 700px) { .sitefoot .in { grid-template-columns: 1fr; gap: 26px; padding: 30px 16px 22px; }
+                              .sitefoot .colophon { padding: 14px 16px 26px; flex-direction: column; } }
+
+  /* the dock: pinned to the bottom, carrying the things used while reading */
+  .dock { position: fixed; left: 0; right: 0; bottom: 0; z-index: 75; background: var(--paper);
+          border-top: 1px solid var(--rule); }
+  .dock .prog { height: 2px; width: 0; background: var(--accent); transition: width .1s linear; }
+  .dock .in { max-width: 900px; margin: 0 auto; padding: 0 20px; height: 45px;
+              display: flex; align-items: center; gap: 2px; }
+  .dock button, .dock a { display: flex; align-items: center; gap: 7px; background: none; border: 0;
+              padding: 8px 10px; border-radius: 5px; cursor: pointer; text-decoration: none;
+              font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+              color: var(--muted); }
+  .dock button:hover, .dock a:hover { color: var(--ink); background: var(--surface); }
+  .dock button:focus-visible, .dock a:focus-visible { outline: 2px solid var(--accent); outline-offset: -1px; }
+  .dock svg { width: 13px; height: 14px; flex: none; }
+  .dock .end { margin-left: auto; }
+  .dock .n { font-family: var(--mono); font-size: 10px; line-height: 1.6; background: var(--sunk);
+             color: var(--ink-soft); border-radius: 9px; padding: 0 6px; min-width: 18px; text-align: center; }
+  .dock .n:empty { display: none; }
+  .dock #bmgo[data-set="1"] { color: var(--accent); }
+  .dock #bmgo[data-set="1"] svg { fill: currentColor; }
+  @media (max-width: 620px) { .dock .in { padding: 0 8px; } .dock .lab { display: none; } }
+
+  /* the highlights drawer, kept out of the reading */
+  .drawer[hidden] { display: none !important; }
+  .drawer { position: fixed; inset: 0; z-index: 90; }
+  .drawer .dback { position: absolute; inset: 0; background: rgba(0,0,0,.34); }
+  .dpanel { position: absolute; top: 0; right: 0; bottom: 0; width: min(460px, 100%);
+            background: var(--paper); border-left: 1px solid var(--rule); box-shadow: -8px 0 28px rgba(0,0,0,.16);
+            display: flex; flex-direction: column; gap: 4px; padding: 22px 26px 30px; overflow-y: auto; }
+  .dhead { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .dhead h2 { margin: 0; font-family: var(--display); font-size: 25px; font-weight: 600; }
+  .dclose { background: none; border: 0; font-size: 26px; line-height: 1; color: var(--muted);
+            cursor: pointer; padding: 0 4px; }
+  .dclose:hover { color: var(--ink); }
+  .dsub { margin: 0 0 14px; font-size: 14px; color: var(--muted); }
+
+
+
+  .ctx { border-left: 2px solid var(--rule); padding: 2px 0 2px 18px; display: block; margin: 26px 0; }
+  .ctx > summary { font-family: var(--display); font-size: 17.5px; font-weight: 600; color: var(--ink-soft); line-height: 1.25; }
+  .ctx > summary i { font-family: var(--mono); font-style: normal; font-size: 10.5px; letter-spacing: .1em;
+                     text-transform: uppercase; color: var(--muted); font-weight: 500; flex: none; padding-top: 3px; }
+  .ctx[open] > summary { color: var(--ink); }
+  .ctx p { font-size: 16.5px; color: var(--ink-soft); }
+  .seven { margin: 28px 0; display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--rule); }
+  .seven > div { border-bottom: 1px solid var(--rule); padding: 14px 0; display: grid; grid-template-columns: 30px 1fr; gap: 0 14px; }
+  .seven .n { font-family: var(--mono); font-size: 12px; color: var(--skim); padding-top: 3px; }
+  .seven .w { font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); }
+  .seven .cl { font-size: 16.5px; color: var(--ink); margin: 5px 0 0; }
+  .seven .rp { font-size: 15px; color: var(--ink-soft); margin: 6px 0 0; }
+  .seven .rp b { font-family: var(--mono); font-size: 10.5px; letter-spacing: .09em; text-transform: uppercase; color: var(--ink-soft); font-weight: 500; }
+  @media (max-width: 420px) { .seven > div { grid-template-columns: 1fr; gap: 0; } .seven .n { padding: 0 0 2px; } }
+  .exm { background: var(--skim-wash); border-left: 3px solid var(--skim); padding: 16px 20px; display: flex; flex-direction: column; gap: 10px; margin: 28px 0; }
+  .exm > b { font-family: var(--mono); font-size: 10.5px; letter-spacing: .11em; text-transform: uppercase; color: var(--skim); font-weight: 500; }
+  .exm p { font-size: 16.5px; color: var(--ink); }
+  .exm p b { color: var(--ink); }
+  .quo { border-left: 3px solid var(--accent); background: var(--surface); padding: 16px 20px; display: flex; flex-direction: column; gap: 10px; margin: 26px 0; }
+  .quo blockquote { margin: 0; font-family: var(--display); font-size: 18.5px; line-height: 1.5; color: var(--ink); }
+  .quo .src { font-family: var(--mono); font-size: 10.5px; letter-spacing: .07em; color: var(--muted); }
+  figure { margin: 28px 0; display: flex; flex-direction: column; gap: 9px; }
+  figure svg { max-width: 100%; height: auto; display: block; }
+  figcaption { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: .03em; line-height: 1.55; max-width: var(--figw); }
+
+  /* photographs, plates and maps */
+  figure.pic { margin: 24px 0; gap: 11px; max-width: var(--figw); }
+  /* A picture sits inside the reading, so it is capped at a height that leaves the paragraphs
+     on either side of it in view. At most of the window it filled the screen, the argument
+     disappeared behind it, and scrolling past a figure took as long as reading a section.
+     Detail is not lost: the image is a link to the file at full size. */
+  /* The box is sized on the link, in pixels worked out from the picture's own proportions for a
+     300px tall picture, and the image fills it. Sizing the image instead does not work: an image
+     that has not loaded yet has no size of its own, so with both axes auto it collapses to
+     nothing and the page jumps as it scrolls past, and clamping only the height leaves the width
+     where it was and squashes the picture. */
+  figure.pic a.zoom { display: block; align-self: flex-start; max-width: 100%; cursor: zoom-in; }
+  figure.pic img {
+    display: block; width: 100%; height: auto;
+    /* figure.pic is a column flexbox, whose align-items defaults to stretch. That stretched the
+       image to the full width of the measure and max-height then squashed it, so every portrait
+       picture came out distorted. align-self keeps the image at its own width. */
+    align-self: flex-start;
+    border: 1px solid var(--rule); border-radius: 6px; background: var(--surface);
+    transition: border-color .15s;
+  }
+  figure.pic a.zoom:hover img { border-color: var(--accent); }
+  figure.pic a.zoom:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  /* A line drawing with a transparent background is black ink on nothing, which in the dark
+     theme is black ink on a dark page and reads as an empty box. Give that kind of picture the
+     paper it was printed on. */
+  figure.pic img.ink { background: #fff; padding: 14px; }
+  @media (max-width: 700px) { figure.pic a.zoom { width: 100% !important; } }
+  figure.pic figcaption, figure.dia figcaption {
+    font-family: var(--body); font-size: 15px; line-height: 1.5;
+    letter-spacing: 0; color: var(--ink-soft); max-width: 74ch;
+  }
+  figure.pic figcaption b, figure.dia figcaption b { color: var(--ink); font-weight: 600; }
+  figure.pic .cred, figure.dia .cred {
+    display: block; margin-top: 6px;
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: .05em;
+    line-height: 1.5; color: var(--muted);
+  }
+
+  /* drawings made for this guide, framed the way the photographs are */
+  figure.dia { margin: 24px 0; gap: 11px; max-width: var(--figw); }
+  figure.dia .draw { max-width: 100%; overflow-x: auto; }
+  /* A drawing that illustrates a point in the flow is capped the way a picture is, so the
+     paragraph under it stays in view. A drawing that is a reference grid, like the nine authors
+     against three questions, is a thing to study and keeps its size. */
+  figure.dia svg[aria-labelledby="dg-matt"] { max-width: 470px; }
+  figure.dia svg[aria-labelledby="dg-seven"] { max-width: 560px; }
+  figure.dia svg {
+    display: block; width: 100%; height: auto;
+    border: 1px solid var(--rule); border-radius: 6px; background: var(--surface);
+  }
+  @media (max-width: 700px) {
+    /* On a phone the wider drawings would shrink their labels to about 5px, so each one keeps a
+       floor and its frame scrolls sideways, the way the table of nine texts already does. The
+       caption stays outside the frame and wraps to the screen. */
+    figure.dia svg[aria-labelledby="cvg-ttl"] { min-width: 660px; }
+    figure.dia svg[aria-labelledby="dg-comte-3s"] { min-width: 560px; }
+    figure.dia svg#dia-spine { min-width: 380px; }
+    figure.dia svg[aria-labelledby="dg-matt"] { min-width: 520px; }
+    figure.dia svg[aria-labelledby="dg-seven"] { min-width: 560px; }
+    figure.dia svg[aria-labelledby="dg-three7"] { min-width: 700px; }
+  figure.dia svg[aria-labelledby="dg-five7"] { min-width: 660px; }
+    figure.dia svg[aria-labelledby="dg-args11"] { min-width: 700px; }
+    figure.dia svg[aria-labelledby="dg-ladder11"] { min-width: 640px; }
+  }
+
+  /* inside the boxes, which already space their children */
+  .bq > figure.pic, .exm > figure.pic, .rd .body > figure.pic,
+  .bq > figure.dia, .exm > figure.dia, .rd .body > figure.dia { margin: 6px 0; }
+
+  .dg-box { fill: var(--surface); stroke: currentColor; stroke-opacity: .22; }
+  .dg-hi { fill: var(--close-wash); stroke: var(--close); stroke-opacity: 1; }
+  .dg-t { fill: currentColor; font-family: "Source Sans 3", -apple-system, sans-serif; }
+  .dg-m { fill: currentColor; font-family: "IBM Plex Mono", monospace; letter-spacing: .08em; }
+  .dg-dim { opacity: .62; }
+  .dg-ln { stroke: currentColor; fill: none; }
+
+
+  /* site header */
+  .site { position: sticky; top: 0; z-index: 70; background: var(--paper);
+          border-bottom: 1px solid var(--rule); }
+  .site .in { max-width: 900px; margin: 0 auto; padding: 0 26px; height: 52px;
+              display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+  .site a { text-decoration: none; }
+  /* The mark goes to the true left edge of the window. The bar already spans the window; only
+     its contents were penned into the 900px column, which left the mark floating in from the
+     edge with empty bar beside it. Everything else stays aligned with the body text.
+     Below the width where the column meets the edges there is no room, so it rejoins the row. */
+  /* display:block with no leading makes the anchor box exactly the size of the mark.
+     As an inline anchor its box carries line-height leading, so centring the anchor
+     left the mark itself 4.25px high. */
+  .site .hubmark { margin-right: 13px; display: block; line-height: 0; }
+  .site .hubmark svg { width: 28px; height: 28px; border-radius: 7px; }
+  @media (min-width: 1020px) {
+    .site .hubmark { position: absolute; left: 22px; top: 50%; transform: translateY(-50%);
+                     margin-right: 0; }
+  }
+  .site .hubmark:hover { opacity: .78; }
+  .site .hubmark:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px;
+                                 border-radius: 6px; }
+
+  .site .home { display: flex; align-items: center; gap: 9px; font-family: var(--mono);
+                font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); }
+  .site .home:hover { color: var(--ink); }
+  .site .home svg { width: 13px; height: 13px; flex: none; }
+  .site nav { display: flex; align-items: center; gap: 16px; }
+  .site nav .cur { font-family: var(--mono); font-size: 11px; letter-spacing: .08em;
+                   text-transform: uppercase; color: var(--muted); }
+  .site nav a { font-family: var(--mono); font-size: 11px; letter-spacing: .08em;
+                text-transform: uppercase; color: var(--accent); border-bottom: 1px solid transparent; }
+  .site nav a:hover { border-bottom-color: var(--accent); }
+  .site .disc { font-family: var(--body); font-size: 12px; font-weight: 400; color: var(--muted);
+                opacity: .8; letter-spacing: 0; text-decoration: none; white-space: nowrap;
+                border-bottom: 1px solid transparent; }
+  .site .disc:hover { opacity: 1; border-bottom-color: var(--rule); }
+  .site .disc i { font-style: normal; opacity: .5; padding: 0 6px; }
+  /* Four things share this row, so it tightens the spacing and holds each one on one line. */
+  .site .in { gap: 14px; }
+  .site .home, .site nav .cur, .site nav a { white-space: nowrap; }
+  /* The header is sticky, so a jump target has to reserve its height or it lands underneath it. */
+  [id] { scroll-margin-top: 74px; }
+  @media (max-width: 560px) { [id] { scroll-margin-top: 66px; } }
+
+  /* the bookmark: one per guide, the place reading stopped */
+  mark.hl.hl-b { background: none; padding: 0; box-shadow: inset 0 -2px 0 var(--accent); border-radius: 0; }
+  /* an inline ribbon after the words, so it cannot land on the line above it */
+  mark.hl.hl-b::after { content: ''; display: inline-block; width: 7px; height: 9px; margin-left: 4px;
+                        vertical-align: 0; background: var(--accent);
+                        clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 72%, 0 100%); }
+  @media (max-width: 1120px) { .site .disc { display: none; } }
+  @media (max-width: 560px) { .site .in { padding: 0 16px; height: 48px; gap: 12px; } .site nav .cur { display: none; } }
+  @media (max-width: 400px) { .site .in { gap: 10px; } }
+
+  /* vertical nav */
+  .wrap { position: relative; }
+  #nav { position: fixed; top: calc(50% + 26px); transform: translateY(-50%); left: max(10px, calc(50vw - 598px));
+         width: 132px; display: none; flex-direction: column; gap: 1px; z-index: 40; }
+  #nav a { display: block; font-family: var(--mono); font-size: 10.5px; letter-spacing: .03em;
+           color: var(--muted); line-height: 1.3; text-decoration: none; padding: 3px 0 3px 11px; border-left: 2px solid var(--rule-soft);
+           white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  /* The year each text was written, so the rail is also a timeline. The gaps are the point:
+     Plato to Bacon is two thousand years and Rousseau to Comte is eighty. */
+  #nav a i { font-style: normal; font-size: 9px; letter-spacing: .05em; opacity: .62; margin-left: 6px; }
+  #nav a:hover { color: var(--ink); border-left-color: var(--muted); }
+  #nav a.on { color: var(--accent); border-left-color: var(--accent); }
+  #nav a.grp { margin-top: 13px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .1em; border-left-color: transparent; padding-left: 0; }
+  #nav a.grp:first-child { margin-top: 0; }
+  #nav a.grp.day { margin-top: 15px; padding-top: 11px; border-top: 1px solid var(--rule);
+                   color: var(--accent); }
+  #nav a.grp.day:first-child { margin-top: 0; }
+  #nav a.grp.on { color: var(--accent); border-left-color: transparent; }
+  #nav a.core { color: var(--ink-soft); border-left-color: var(--rule); }
+  /* the contents list used to need a 1180px window. It takes its own column now, so it
+     appears from 1000px up, and only goes back to floating beside a centred page when
+     there is room for that. */
+  @media (min-width: 1000px) { :root { --navpad: 182px; } #nav { display: flex; left: 16px; width: 150px; } }
+  @media (min-width: 1320px) { :root { --navpad: 0px; } #nav { left: max(16px, calc(50vw - 640px)); } }
+  body { margin: 0; padding-left: var(--navpad); }
+  /* a full-bleed band that keeps its contents on the page column: the negative margin
+     widens the box to the window edge, the padding puts the content back where it was */
+  .site, .sitefoot { margin-left: calc(0px - var(--navpad)); padding-left: var(--navpad); }
+  /* the buttons move onto the page column. The progress line is taken out of the flow so it
+     keeps measuring the whole window, since the column starts a long way in */
+  .dock { padding-left: var(--navpad); padding-top: 2px; }
+  .dock .prog { position: absolute; top: 0; left: 0; }
+  #nav { top: 78px; transform: none; max-height: calc(100vh - 126px);
+         overflow-y: auto; scrollbar-width: none; }
+  #nav::-webkit-scrollbar { display: none; }
+  #nav > * { flex: 0 0 auto; }
+  #nav a.grp, #nav a.core { white-space: normal; overflow: visible; text-overflow: clip; }
+  #nav a.sb { display: none; font-family: var(--body); font-size: 11.5px; letter-spacing: 0;
+              line-height: 1.3; padding: 2.5px 0 2.5px 11px; margin-left: 9px;
+              white-space: normal; overflow: visible; text-overflow: clip; }
+  #nav a.sb.show { display: block; }
+  #nav a.sb b { font-family: var(--mono); font-size: 9.5px; font-weight: 500;
+                font-style: normal; color: var(--muted); margin-right: 5px; }
+  #nav a.sb:hover b, #nav a.sb.on b { color: var(--accent); }
+
+  /* glossary. Closed by default: it is a reference list and not something to read through,
+     and left open it makes the page look twice as long as it is. */
+  .glbox { border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); margin: 22px 0 0; }
+  .glbox > summary { list-style: none; cursor: pointer; padding: 15px 0; display: flex; align-items: baseline; gap: 12px;
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); }
+  .glbox > summary::-webkit-details-marker { display: none; }
+  .glbox > summary::after { content: 'show'; margin-left: auto; font-size: 11px; color: var(--muted); }
+  .glbox[open] > summary::after { content: 'hide'; }
+  .glbox > summary:hover { color: var(--ink); }
+  .glbox > summary b { font-family: var(--display); font-size: 16px; letter-spacing: 0; text-transform: none; font-weight: 600; color: var(--ink); }
+  .glbox > .gl { padding: 4px 0 26px; }
+  .gl { display: flex; flex-direction: column; gap: 26px; }
+  .gl-grp { display: flex; flex-direction: column; gap: 10px; }
+  .gl-grp > h3 { margin: 0; font-family: var(--display); font-size: 19px; font-weight: 600; }
+  .gl-grp > h3 span { font-family: var(--mono); font-size: 11px; color: var(--muted); font-weight: 400; letter-spacing: .05em; margin-left: 9px; }
+  .gl dl { margin: 0; display: grid; grid-template-columns: 186px 1fr; gap: 10px 18px; font-size: 16px; }
+  .gl dt { font-family: var(--display); font-style: italic; font-size: 16.5px; color: var(--ink); }
+  .gl dd { margin: 0; color: var(--ink-soft); }
+  @media (max-width: 680px) { .gl dl { grid-template-columns: 1fr; gap: 3px 0; } .gl dt { padding-top: 9px; } }
+
+  /* notes you write.
+     .nbpad is the well. It is recessed, because a recessed surface reads as somewhere to put
+     something in and a raised one reads as something to read, and a long note in a raised card
+     was reading as more of the guide's own prose. The label is drawn directly above the well,
+     close to it and aligned with its left edge, so a page of blocks stays scannable.
+     The left edge holds --rule while a block is empty and --accent once it holds something, from
+     the `has` class the editor already sets on .nbwrap.
+     Nothing in here touches .nb: the note text keeps the face, size, colour, line height and
+     spacing it has always had. */
+  .nbgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(298px, 1fr)); gap: 18px; }
+  .nbwrap { display: flex; flex-direction: column; gap: 6px; }
+  .nbwrap.wide { grid-column: 1 / -1; }
+  .nbhead { display: flex; align-items: baseline; justify-content: space-between; gap: 10px;
+            padding: 0 2px 0 3px; }
+  .nbhead b { font-family: var(--display); font-size: 16.5px; font-weight: 600; color: var(--ink); }
+  .nbhead span { font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .nbpad { position: relative; padding: 14px 16px 16px; background: var(--sunk);
+           border: 1px solid var(--rule); border-left: 3px solid var(--rule); border-radius: 8px;
+           box-shadow: inset 0 1px 0 rgba(0,0,0,.06);
+           transition: border-color .15s, box-shadow .15s; }
+  .nbwrap.has .nbpad { border-left-color: var(--accent); }
+  .nbwrap:focus-within .nbpad { border-color: var(--accent);
+           box-shadow: inset 0 1px 0 rgba(0,0,0,.06), 0 0 0 3px var(--close-wash); }
+  .nb { position: relative; font-size: 15.5px; line-height: 1.6; color: var(--ink); min-height: 46px; outline: none; }
+  .nb.is-empty::before, .cbody.is-empty::before {
+    content: attr(data-ph); position: absolute; left: 0; top: 0; color: var(--muted);
+    font-style: italic; pointer-events: none; }
+  .nb p { margin: 0 0 8px; max-width: none; }
+  .nb p:last-child { margin-bottom: 0; }
+  .nb ul, .nb ol { margin: 5px 0 8px; padding-left: 27px; }
+  .nb li { margin-bottom: 4px; }
+  .nb b, .nb strong { font-weight: 600; }
+  .nb h3, .nb h4, .nb h5 { margin: 12px 0 5px; font-family: var(--display); font-weight: 600; line-height: 1.25; color: var(--ink); }
+  .nb h3 { font-size: 19px; } .nb h4 { font-size: 17px; } .nb h5 { font-size: 15.5px; }
+  .nb > :first-child { margin-top: 0; }
+  .nb hr { border: 0; border-top: 1px solid var(--rule); margin: 12px 0; }
+  .nb blockquote { margin: 8px 0; padding-left: 12px; border-left: 2px solid var(--rule); color: var(--ink-soft); }
+  .c-y { color: var(--c-y); }
+  .c-p { color: var(--c-p); }
+  .c-m { color: var(--muted); }
+  .c-g { color: var(--accent); }
+  /* normal text, spelled out. Needed where a colour is inherited from an enclosing span
+     and stripping that span would recolour words the writer meant to keep. */
+  .c-n { color: var(--ink); }
+  #nb-bar { position: absolute; z-index: 50; display: flex; gap: 2px; padding: 3px; background: var(--surface); border: 1px solid var(--rule); border-radius: 5px; box-shadow: 0 2px 8px rgba(0,0,0,.12); }
+  #nb-bar[hidden] { display: none !important; }
+  #nb-bar button { min-width: 24px; height: 22px; border: 0; border-radius: 3px; background: none; cursor: pointer; color: var(--ink-soft); font-family: var(--display); font-size: 14px; padding: 0 5px; }
+  #nb-bar button:hover { background: var(--sunk); color: var(--ink); }
+  #nb-bar button.i { font-style: italic; }
+  #nb-bar button.l { font-family: var(--mono); font-size: 11px; }
+  #nb-bar .sep { width: 1px; background: var(--rule); margin: 3px 2px; }
+  #nb-bar button.sw { width: 18px; min-width: 18px; height: 18px; border-radius: 3px; align-self: center;
+                      border: 1px solid var(--rule); font-size: 0; }
+  #nb-bar button.sw.y { background: var(--c-y); }
+  #nb-bar button.sw.p { background: var(--c-p); }
+  #nb-bar button.sw.g { background: var(--accent); }
+  #nb-bar button.sw.m { background: var(--muted); }
+  #nb-bar button.sw.x { background: none; font-size: 12px; color: var(--muted); border-color: transparent; }
+  .nbhint { font-family: var(--mono); font-size: 10.5px; color: var(--muted); letter-spacing: .03em; }
+  /* The standing explanation, closed and below the blocks, drawn the same way as the one on
+     the lecture notes page. */
+  details.about { margin-top: 6px; border-top: 1px solid var(--rule); padding-top: 12px; }
+  details.about summary { cursor: pointer; font-family: var(--mono); font-size: 11px;
+    letter-spacing: .1em; text-transform: uppercase; color: var(--muted); list-style: none;
+    display: flex; align-items: center; gap: 8px; }
+  details.about summary::-webkit-details-marker { display: none; }
+  details.about summary::before { content: ""; width: 0; height: 0; border-left: 5px solid currentColor;
+    border-top: 4px solid transparent; border-bottom: 4px solid transparent; transition: transform .15s; }
+  details.about[open] summary::before { transform: rotate(90deg); }
+  details.about summary:hover { color: var(--accent); }
+  details.about summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  details.about .aboutin { display: flex; flex-direction: column; gap: 11px; padding: 14px 0 4px; }
+  /* The pinned bar is z-index 75 and its top edge reaches 635, so an undo offered at the
+     foot of the window sat under it and could not be clicked. The pill clears the bar and
+     stacks above it, because it holds a control with a few seconds to live. */
+  #save { position: fixed; right: 16px; bottom: 64px; z-index: 80; font-family: var(--mono); font-size: 10.5px;
+          letter-spacing: .04em; padding: 6px 10px; border-radius: 4px; background: var(--surface);
+          border: 1px solid var(--rule); color: var(--muted); opacity: 0; transition: opacity .25s; pointer-events: none; }
+  #save.on { opacity: 1; }
+  #save.bad { color: #9B2C2C; border-color: #9B2C2C; opacity: 1; pointer-events: auto; }
+  #save.act { opacity: 1; pointer-events: auto; display: flex; align-items: center; gap: 10px; }
+  #save button { font-family: var(--mono); font-size: 10.5px; letter-spacing: .07em; text-transform: uppercase;
+                 color: var(--accent); background: none; border: 0; border-bottom: 1px solid var(--accent);
+                 padding: 0 0 1px; cursor: pointer; }
+  #save button:hover { color: var(--ink); border-bottom-color: var(--ink); }
+  :root[data-theme="dark"] #save.bad, :root:not([data-theme="light"]) #save.bad { color: #F09B9B; border-color: #F09B9B; }
+    .sidenote { font-size: 13.5px; line-height: 1.45; color: var(--muted); max-width: 64ch;
+      padding-left: 12px; border-left: 1px solid var(--rule); margin: -2px 0 4px; }
+    .sidenote b { color: var(--ink-soft); font-weight: 600; }
+
+  /* highlights list */
+  .bm { display: flex; flex-direction: column; gap: 22px; }
+  .bmg { display: flex; flex-direction: column; gap: 2px; }
+  .bmg > h3 { margin: 0 0 6px; font-family: var(--display); font-size: 18px; font-weight: 600; }
+  .bmg > h3 span { font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-left: 9px; }
+  .bmi { display: grid; grid-template-columns: 12px 1fr; gap: 0 11px; align-items: start;
+         padding: 8px 10px 8px 0; border-top: 1px solid var(--rule-soft); text-align: left;
+         background: none; border-left: 0; border-right: 0; border-bottom: 0; cursor: pointer; width: 100%; font: inherit; color: inherit; }
+  .bmi:hover { background: var(--surface); }
+  .bmi:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+  .bmi .dots { display: flex; flex-direction: column; gap: 4px; padding-top: 7px; }
+  .bmi .dot { width: 9px; height: 9px; border-radius: 2px; flex: none; }
+  .bmi .dot.y { background: rgba(255,206,0,.85); }
+  .bmi .dot.p { background: rgba(255,92,168,.7); }
+  .bmi .dot.uy { background: none; box-shadow: inset 0 -3px 0 var(--ul-y); }
+  .bmi .dot.up { background: none; box-shadow: inset 0 -3px 0 var(--ul-p); }
+  .bmi .dot.ug { background: none; box-shadow: inset 0 -3px 0 var(--ul-g); }
+  .bmi .dot.n { background: none; border: 1px dashed var(--accent); }
+  .bmi .dot.b { background: var(--accent); clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 70%, 0 100%); border-radius: 0; height: 11px; width: 8px; }
+  .bmi .bt { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+  .bmi .where { font-family: var(--mono); font-size: 10px; letter-spacing: .07em; text-transform: uppercase;
+                color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .bmi .q { font-size: 15px; line-height: 1.5; color: var(--ink); }
+  .bmi .q .dim { color: var(--muted); }
+  /* the list reuses the page's own highlight colours, so a row looks like what it points at */
+  .bmi .q mark.hl { cursor: inherit; }
+  .bmi .cm { display: block; font-size: 13.5px; color: var(--muted); margin-top: 2px;
+             border-left: 2px solid var(--rule); padding-left: 9px; }
+  .bmg-b { padding: 14px 16px 12px; background: var(--surface); border-left: 2px solid var(--accent); margin-bottom: 10px; }
+  .bmg-b > h3 { color: var(--accent); }
+  .bmg-b .bmi { border-top: 0; padding-top: 0; }
+  .bmg-b .bmi:hover { background: none; text-decoration: underline; text-decoration-color: var(--rule); }
+  .bmclear { align-self: flex-start; margin-top: 6px; background: none; border: 0; padding: 2px 0; cursor: pointer;
+             font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase;
+             color: var(--muted); border-bottom: 1px solid var(--rule); }
+  .bmclear:hover { color: var(--ink); }
+  .bmempty { font-size: 16px; color: var(--muted); }
+  mark.hl.flash { animation: fl 1.4s ease-out; }
+  @keyframes fl { 0%,55% { box-shadow: 0 0 0 4px var(--close-wash); } 100% { box-shadow: 0 0 0 0 transparent; } }
+
+  /* comment rail */
+  #cmts { position: absolute; top: 0; left: 100%; margin-left: 18px; width: 202px; display: none; }
+  #cmts.on { display: block; }
+  .cmt { position: absolute; width: 202px; background: transparent; border-left: 2px solid var(--rule); padding: 2px 0 2px 9px; display: flex; flex-direction: column; gap: 3px; }
+  .cmt.inline { position: static; width: auto; max-width: 420px; margin: 10px 0 10px 16px; }
+  .cmt .q { font-family: var(--mono); font-size: 9px; letter-spacing: .02em; color: var(--muted); line-height: 1.4; opacity: .8; overflow: hidden; }
+  .cmt .cbody { position: relative; font-family: var(--body); font-size: 12.5px; line-height: 1.45; color: var(--ink-soft); outline: none; min-height: 17px; }
+  .cmt .cbody p { margin: 0 0 5px; max-width: none; }
+  .cmt .cbody p:last-child { margin-bottom: 0; }
+  .cmt .cbody ul, .cmt .cbody ol { margin: 4px 0 5px; padding-left: 17px; }
+  .cmt .cbody li { margin-bottom: 2px; }
+  .cmt .cbody hr { border: 0; border-top: 1px solid var(--rule); margin: 7px 0; }
+  .cmt .row { display: none; justify-content: flex-end; }
+  .cmt:hover .row, .cmt:focus-within .row { display: flex; }
+  .cmt button { font-family: var(--mono); font-size: 9px; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); background: none; border: 0; cursor: pointer; padding: 1px 0; }
+  .cmt button:hover { color: var(--ink); }
+  .cmt:hover, .cmt:focus-within { border-left-color: var(--muted); }
+  .cmt.act { border-left-color: var(--ink-soft); }
+
+  mark.hl { background: transparent; color: inherit; padding: .1em 0; border-radius: 2px; cursor: pointer; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+  mark.hl-y { background: var(--hl-y); }
+  mark.hl-p { background: var(--hl-p); }
+  mark.hl-n { background: var(--hl-n); border-bottom: 1px dashed var(--accent); }
+  mark.hl-uy { background: none; border-radius: 0; box-shadow: inset 0 -2px 0 var(--ul-y); }
+  mark.hl-up { background: none; border-radius: 0; box-shadow: inset 0 -2px 0 var(--ul-p); }
+  mark.hl-ug { background: none; border-radius: 0; box-shadow: inset 0 -2px 0 var(--ul-g); }
+  mark.hl-n.act { background: var(--hl-n-act); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) mark.hl-y { background: rgba(255,206,0,.30); } :root:not([data-theme="light"]) mark.hl-p { background: rgba(255,92,168,.30); } :root:not([data-theme="light"]) mark.hl-n { background: rgba(100,191,161,.12); } }
+  #hl-bar[hidden] { display: none !important; }
+  #hl-bar { position: absolute; z-index: 50; display: flex; gap: 3px; padding: 3px; background: var(--surface); border: 1px solid var(--rule); border-radius: 5px; box-shadow: 0 2px 8px rgba(0,0,0,.12); }
+  #hl-bar button { width: 17px; height: 17px; border: 1px solid var(--rule); border-radius: 3px; cursor: pointer; padding: 0; }
+  #hl-bar button[data-c="y"] { background: var(--hl-y); }
+  #hl-bar button[data-c="p"] { background: var(--hl-p); }
+  #hl-bar button[data-c="uy"] { background: var(--paper); box-shadow: inset 0 -4px 0 var(--ul-y); }
+  #hl-bar button[data-c="ug"] { background: var(--paper); box-shadow: inset 0 -4px 0 var(--ul-g); }
+  #hl-bar button[data-c="up"] { background: var(--paper); box-shadow: inset 0 -4px 0 var(--ul-p); }
+  #hl-bar button[data-c="n"] { background: var(--paper); display: flex; align-items: center; justify-content: center; color: var(--ink-soft); }
+  #hl-bar button[data-c="n"] svg { width: 11px; height: 11px; display: block; }
+  #hl-bar button[data-c="b"] { background: var(--paper); display: flex; align-items: center; justify-content: center; color: var(--accent); }
+  #hl-bar button[data-c="b"] svg { width: 11px; height: 11px; display: block; }
+  #hl-bar button:hover { border-color: var(--muted); }
+  #hl-bar button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .hl-hint { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: .03em; margin-top: 12px; }
+
+  @media (max-width: 680px) {
+    .wrap { padding: 34px 16px 60px; gap: 38px; }
+    .facts, footer .weeks, .links { grid-template-columns: 1fr; gap: 3px 0; }
+    .facts dt, footer .weeks dt, .links dt { padding-top: 9px; }
+    .ses, .turn { grid-template-columns: 1fr; gap: 8px; }
+    .turn .who { flex-direction: row; align-items: baseline; gap: 9px; }
+    .rd { gap: 0 16px; }
+    .nine { min-width: 620px; }
+  }
+  /* A word defined in any week's glossary. The line is meant to be ignorable until wanted. */
+  .gl-w { border-bottom: 1px dashed var(--gl-line); cursor: pointer; }
+  .gl-w:hover { border-bottom-color: var(--accent); }
+  #gl-pop[hidden] { display: none !important; }
+  #gl-pop { position: absolute; z-index: 80; width: 330px; max-width: calc(100vw - 24px);
+            background: var(--surface); border: 1px solid var(--rule); border-radius: 6px;
+            box-shadow: 0 6px 22px rgba(0,0,0,.28); padding: 13px 15px 14px; }
+  #gl-pop .t { font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em;
+               text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+  #gl-pop .d { font-family: var(--body); font-size: 14.5px; line-height: 1.5; color: var(--ink-soft); }
+  #gl-pop .d b { color: var(--ink); font-weight: 600; }
+  #gl-pop .w { margin-top: 9px; font-family: var(--mono); font-size: 10px; color: var(--muted); }
+  @media print { .gl-w { border-bottom: 0; } #gl-pop { display: none !important; } }
+  @media print {
+    .site, #nav, #hl-bar, #nb-bar, #save, #cmts, .drawer, .sitefoot, .dock { display: none !important; }
+    body { padding-bottom: 0; }
+    body { background: #fff; font-size: 11.5px; }
+    .wrap { max-width: none; padding: 0; gap: 26px; }
+    .rd, section, figure, .exm, .ctx, .quo { break-inside: avoid; }
+    mark.hl { background: none; border-bottom: 1.5px solid #888; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+<header class="site"><div class="in"><a class="hubmark" href="https://myermcat.github.io/course-hub/" title="Course hub" aria-label="Course hub, the front page"><svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#22282E"/><rect x="13" y="13" width="16" height="16" rx="4" fill="#7C5CB8"/><rect x="35" y="13" width="16" height="16" rx="4" fill="#3E9E82"/><rect x="13" y="35" width="16" height="16" rx="4" fill="#4E90C8"/><rect x="35" y="35" width="16" height="16" rx="4" fill="#C08A3E"/></svg></a><a class="home" href="../"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 8H2M7 3 2 8l5 5"/></svg>PHI2394</a><a class="disc" href="../#about" title="How these guides were written">Written with Claude<i>|</i>AI can make mistakes</a><nav aria-label="This week"><span class="cur">Week 11</span><a href="notes.html">Lecture notes</a></nav></div></header>
+
+<nav id="nav" aria-label="Contents">
+  <a class="grp" href="#s-arg">What the week argues</a>
+  <a class="grp day" href="#s-days">Mon 23 and Wed 25 Nov</a>
+  <a class="core" href="#andrews" title="Andrews ch. 1 &middot; read properly">Other Minds<i>ch 1</i></a>
+  <a class="sb" data-of="andrews" href="#a-1"><b>1.1</b>The problem is over-attribution</a>
+  <a class="sb" data-of="andrews" href="#a-2"><b>1.2</b>Four theories of what a mind is</a>
+  <a class="sb" data-of="andrews" href="#a-3"><b>1.3</b>Flexibility is the working test</a>
+  <a class="sb" data-of="andrews" href="#a-4"><b>1.4</b>Who denied animals minds, and why</a>
+  <a class="sb" data-of="andrews" href="#a-5"><b>1.5</b>Analogy, and why it is weak</a>
+  <a class="sb" data-of="andrews" href="#a-6"><b>1.6</b>Evolutionary parsimony</a>
+  <a class="sb" data-of="andrews" href="#a-7"><b>1.7</b>Inference to the best explanation</a>
+  <a class="sb" data-of="andrews" href="#a-8"><b>1.8</b>Direct perception</a>
+  <a class="core" href="#descartes" title="Descartes, Meditation One &middot; read properly">Meditation One<i>1641</i></a>
+  <a class="sb" data-of="descartes" href="#d-1"><b>D.1</b>Why one false belief condemns the rest</a>
+  <a class="sb" data-of="descartes" href="#d-2"><b>D.2</b>The dream and the deceiver</a>
+  <a class="sb" data-of="descartes" href="#d-3"><b>D.3</b>What this did to animals</a>
+  <a class="core" href="#aristotle" title="Aristotle, Metaphysics A1 &middot; read properly">Metaphysics A1<i>350 BCE</i></a>
+  <a class="sb" data-of="aristotle" href="#r-1"><b>A.1</b>The ladder from sensation to wisdom</a>
+  <a class="sb" data-of="aristotle" href="#r-2"><b>A.2</b>Where animals stop, and why it matters</a>
+  <a class="grp" href="#s-gloss">Glossary</a>
+</nav>
+
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">PHI 2394 B00 &middot; Monday 23 and Wednesday 25 November &middot; guest lecture on the Wednesday</div>
+    <h1>How Would You Know an Animal Has a Mind?</h1>
+    <p class="standfirst">You have never seen anyone's mind. You see faces, movements and noises, and conclude there is someone behind them. For other humans nobody worries about this, and for a dog, an octopus or an ant, everybody does. Andrews asks what justifies the difference. Her answer is four arguments, each broken on its own and together strong enough to carry the familiar animals. Descartes supplies the view she is arguing against, that a creature without language is a machine. Aristotle supplies the older one, that the difference between us and the other animals is a matter of degree.</p>
+  </header>
+
+  <div class="strip-block">
+    <div class="tally">
+      <div><b>22</b><span>pages of Andrews, printed 9 to 30</span></div>
+      <div><b>12</b><span>pages of Descartes, printed 88 to 99</span></div>
+      <div class="t-a"><b>3</b><span>texts, across two classes</span></div>
+      <div class="t-b"><b>36</b><span>pages in all</span></div>
+    </div>
+  </div>
+
+  <section id="s-days">
+    <h2>Two classes, and the second one is a visitor</h2>
+    <div class="plan">
+      <div class="ses">
+        <div class="when"><b>Monday</b><span>23 November</span></div>
+        <div class="what">
+          <h3>Andrews, chapter 1, Other Minds</h3>
+          <p><b>Printed pages 9 to 30.</b> This is the one that is examinable in detail. It sets out what philosophers mean by a mind, runs through who in the history of philosophy denied animals one, and then gives the four arguments for animal minds with the objection to each. The posted lecture notes for this class follow its headings in order.</p>
+        </div>
+      </div>
+      <div class="ses">
+        <div class="when"><b>Wednesday</b><span>25 November</span></div>
+        <div class="what">
+          <h3>Guest lecture, with Aristotle and Descartes behind it</h3>
+          <p><b>Dr Mark Migotti, University of Calgary.</b> The two short historical texts belong here. Descartes's <em>Meditations</em>, the excerpt on Brightspace, is the editor's introduction, the synopsis and Meditation One, printed pages 88 to 99. Aristotle's <em>Metaphysics</em> A1 is about three pages in any translation and is the opening of the book, the passage beginning &#8220;all men by nature desire to know.&#8221;</p>
+        </div>
+      </div>
+    </div>
+    <p class="sidenote">Exam 2 is Monday 30 November and covers weeks 4 to 7, so none of this week is on it. Week 11 is examinable on the final.</p>
+  </section>
+
+  <section id="s-arg">
+    <h2>Nobody can see a mind, so every belief that something has one is an inference, and the question is which inferences are any good</h2>
+
+    <div class="keep">
+      <b>The claim that holds the week together</b>
+      The problem of other minds applies to your flatmate exactly as much as to a dog. The reason
+      it feels urgent about the dog and silly about the flatmate is a theory about what minds are,
+      and Descartes supplied that theory. Andrews takes the four available arguments, shows that
+      each one fails alone, and argues that they converge.
+    </div>
+
+    <div class="body">
+      <p><b>Start with the thing that cannot be done.</b> You cannot check whether another person is conscious. Watch a face, listen to a report, run a brain scan, and each gives you a body doing something. The feeling of the itch is available to one observer. So the belief that anybody other than you has a mind is reached by inference, and an inference can be challenged.</p>
+      <p><b>The challenge has a name.</b> The <b>problem of other minds</b>: what justifies the step from behaviour to mind? For other humans most philosophers wave it away, and for other species the same philosophers treat the inference as unsafe. Andrews asks whether that difference is defensible.</p>
+    </div>
+
+    <div class="body">
+      <p><b>Her first move turns the problem upside down, and it is the most surprising thing in the chapter.</b> The classical worry is solipsism, the fear that you are the only mind there is, and the psychology says humans are nothing like that. We see minds in shapes on a screen, in a cartoon desk lamp, in a robot seal. If we over-attribute by default, the real task is cutting the class of minded things down to size.</p>
+      <div class="kone"><b>If you keep one thing from the week.</b> The problem of other minds is
+      usually posed as combating solipsism, and Andrews says the evidence makes it a problem of
+      combating animism. Humans see minds everywhere, so the work is subtraction. That reframing
+      is hers and an examiner can ask for it.</div>
+    </div>
+
+    <div class="body">
+      <p><b>What each of the three texts is doing on the list.</b></p>
+      <table class="rt">
+        <thead><tr><th>The reading</th><th>What it contributes</th><th>The case it runs on</th></tr></thead>
+        <tbody>
+          <tr><td><b>Andrews ch. 1</b><span>Other Minds</span></td>
+              <td>The vocabulary for the whole course unit, the history in brief, and the four arguments with their objections.</td>
+              <td>Chaser the border collie, who learned names for a thousand objects</td></tr>
+          <tr><td><b>Descartes</b><span>Meditation One</span></td>
+              <td>The method of doubt, which creates the private mind that makes other minds a problem at all.</td>
+              <td>His own hands by the fire, which he cannot prove he has</td></tr>
+          <tr><td><b>Aristotle</b><span>Metaphysics A1</span></td>
+              <td>The older picture, where sensation, memory and experience are rungs and animals are on the lower ones.</td>
+              <td>The bee, which cannot hear and so cannot be taught</td></tr>
+        </tbody>
+      </table>
+      <p><b>Read them in that order, although the course lists them the other way round.</b> Andrews quotes both of the others, so the two short texts go quickly once her chapter is done.</p>
+    </div>
+
+    <div class="body">
+      <p><b>How this follows from the term so far.</b></p>
+      <ol>
+        <li><b>Week 7 argued science cannot be value free.</b> Here the values are visible in the
+        method: a researcher who decides in advance that language is required for thought will
+        read every animal result as a trick.</li>
+        <li><b>Week 8 was about who counts as a full subject.</b> That chapter drew the line
+        through disabled humans. This one draws it through species, and the arguments used to draw
+        it are the same ones.</li>
+        <li><b>Week 10 showed a category being built by men who never looked.</b> Buffon wrote about Africa without going, and Descartes declared animals to be machines from a room in Holland. The same question applies: who checked?</li>
+      </ol>
+    </div>
+  </section>
+  <section>
+      <article class="rd p-close" id="andrews">
+        <div class="stripe"></div>
+        <div class="main">
+          <div class="head">
+            <h3><span class="ch">CH 1</span>Other Minds</h3>
+            <div class="who">Kristin Andrews, <em>The Animal Mind: An Introduction to the Philosophy of Animal Cognition</em>, second edition, Routledge, 2020</div>
+            <div class="meta"><span class="tag">Read properly</span><span>22 pp, printed pages 9 to 30</span></div>
+          </div>
+
+          <div class="why"><b>What you get out of this chapter.</b> The four positions on what a mind is, which the rest of the course assumes you know. A short history of who denied animals minds and on what grounds, with the quotations. Four named arguments for animal minds, each one set out as numbered premises, each with the objection that sinks it on its own. And one example worked all the way through, a border collie called Chaser, which is what an exam question about scientific method in animal research would use.</div>
+
+          <h4 id="a-1" data-n="1.1">The problem is not that we see too few minds, it is that we see too many</h4>
+          <div class="qa">
+            <b>The question</b>
+            If minds cannot be observed, what entitles anybody to believe that anything other than themselves has one?
+          </div>
+
+          <div class="body">
+            <p><b>The standard setup.</b> My mind is private. I have direct access to it and to nothing else. Everything I know about you comes through your body: your words, your face, where you look. So my belief that you are conscious is the conclusion of an argument, and a sceptic is entitled to ask to see the argument.</p>
+            <p><b>Andrews grants the setup and denies what people draw from it.</b> If the inference were shaky we would expect infants to be born solipsists who reason their way to other people. Babies do the opposite. They arrive treating others as agents, distinguishing a thing that moves itself from a thing that is pushed. Human and chimpanzee infants both copy an adult who sticks out her tongue.</p>
+            <p><b>And adults over-attribute, demonstrably.</b> In 1944 Fritz Heider and Marianne Simmel showed people an animation of two triangles and a circle moving around a screen. Viewers described a plot, and some told a story about two males fighting over a female. Nothing was there except shapes with no faces and no bodies.</p>
+          </div>
+
+          <div class="exm">
+            <b>Example &middot; the animacy detector firing on nothing</b>
+            <p>The same mechanism is now used deliberately. Animators give a desk lamp a hop and viewers read it as eager. A robot seal called Paro is stroked in care homes and treated as a creature that likes the residents. Hiroshi Ishiguro's robot Erica looks and behaves like a woman in her twenties and has been lined up to read the news in Japan.</p>
+            <p>None has a mind. All switch on the detector, which is the evidence that it is loose.</p>
+          </div>
+
+          <div class="body">
+            <p><b>So the problem changes shape.</b> If the default is to see agency everywhere, the risk is over-ascription, and the job of the arguments is to say which of the things we already treat as minded really are. Andrews calls it combating animism in place of combating solipsism.</p>
+            <p><b>Which is why she still needs the arguments.</b> A tendency to believe something is no reason to think it true, and plenty of clever philosophers have denied animals minds.</p>
+          </div>
+
+          <h4 id="a-2" data-n="1.2">Four theories of what a mind is, and why functionalism is the one that lets an octopus in</h4>
+          <div class="qa">
+            <b>The question</b>
+            Before asking whether an animal has a mind, what is the thing being asked about?
+          </div>
+
+          <div class="body">
+            <p><b>Andrews refuses to give a definition and gives a map instead.</b> The split at the top is between dualists and monists.</p>
+            <table class="rt">
+              <thead><tr><th>Position</th><th>What it says</th><th>What it means for animals</th></tr></thead>
+              <tbody>
+                <tr><td><b>Substance dualism</b><span>Descartes</span></td><td>Mind is a thing made of mental stuff; the body and brain are things made of physical stuff. Two separate substances.</td><td>An animal either has the extra substance or does not, with nothing in between. Descartes said it does not.</td></tr>
+                <tr><td><b>Property dualism</b></td><td>Only physical stuff exists, and it can carry two kinds of attribute: physical ones such as shape, mental ones such as consciousness.</td><td>Leaves room for degrees, since an organism might carry some mental properties and lack others.</td></tr>
+                <tr><td><b>Identity theory</b><span>a monism</span></td><td>The mind is the brain. Mental states are brain states.</td><td>Ties mind to one kind of organ, so a creature built differently is in trouble.</td></tr>
+                <tr><td><b>Functionalism</b><span>a monism, and the majority view</span></td><td>A mental state is defined by what it does, by its role in the system. It can be <b>multiply realised</b>, run on different hardware.</td><td>The friendliest to animals. A fish with no neocortex can be in pain if the state plays the pain role.</td></tr>
+                <tr><td><b>Enactivism</b><span>a monism</span></td><td>Mind depends on the whole living body and its environment, and is part of an ongoing interaction with the world.</td><td>Mind goes wherever life and an environment interact, which is generous and hard to test.</td></tr>
+              </tbody>
+            </table>
+            <p><b>Why substance dualism is treated as dead here.</b> It violates the causal closure of the physical world, the principle that every physical event has a physical cause. If a non-physical mind moves an arm, something physical happened with no physical cause.</p>
+            <p><b>Functionalism is the live one, and the reason is the fish.</b> Human pain runs through the neocortex and fish have no neocortex. On identity theory that settles it. On functionalism the question is whether some state in the fish does the job pain does, which can be investigated.</p>
+          </div>
+
+          <div class="ctx">
+            <summary><i>Context</i> What multiply realised means, in one line</summary>
+            <p>The same program runs on a laptop and on a phone, and nothing about the program is made of the metal. If a mental state is like that, then asking what an animal's brain is made of is the wrong question, and asking what its states do is the right one.</p>
+          </div>
+
+          <h4 id="a-3" data-n="1.3">Flexible behaviour is the test actually used, and two famous animals fail it</h4>
+          <div class="qa">
+            <b>The question</b>
+            Since nobody can agree what a mind is, what do researchers look for in practice?
+          </div>
+
+          <div class="body">
+            <p><b>They narrow it to cognition.</b> Cognition is the processing between what comes in through the senses and what the animal does: memory, navigation, problem solving, reasoning, language. It is what lets you recognise a friend's face or ski down a hill.</p>
+            <p><b>And the marker of cognition is flexibility:</b> doing different things in similar situations, and changing after experience. Two standard cases show the opposite.</p>
+            <ol>
+              <li><b>The greylag goose and the golf ball.</b> An egg displaced from the nest is rolled back with the underside of the beak. Put a golf ball, a doorknob or an egg four times the right size at the edge of her nest and she rolls that in too. Tinbergen and Lorenz called this a <b>fixed action pattern</b>: a motor program triggered by anything close enough to the right shape. She needs no concept of egg, and she cannot help it.</li>
+              <li><b>Pavlov's dogs.</b> A dog trained with a bell before food will salivate at the bell. That is genuine learning, because the behaviour changed with experience. It is still inflexible, because once learned the dog cannot decide to withhold it.</li>
+            </ol>
+            <p><b>Set against a human case.</b> Suchi usually takes the subway and on a warm spring day takes her bike, and can say why. Andrews locks herself out, climbs onto the porch roof and pushes in a window screen. Different action, same goal, no training for it.</p>
+            <div class="kone"><b>If you keep one thing.</b> The working criterion is not consciousness, which cannot be checked, but flexibility: doing something different in a similar situation, and changing after experience. The golf ball in the goose's nest is the counter-case to have ready, because it is learning-free behaviour that looks purposive.</div>
+          </div>
+
+          <figure class="pic">
+            <a class="zoom" style="width:360px" href="img/goose-egg.png" target="_blank" rel="noopener" title="Open this picture at full size">
+              <img src="img/goose-egg.png" width="800" height="600" loading="lazy" alt="Four pencil sketches of a goose. In the first she stands beside a small egg on the ground. In the second she reaches over a clutch in the nest. In the third she stretches her neck forward and down along the ground. In the fourth she is drawing a large round object back towards herself with the underside of her bill.">
+            </a>
+            <figcaption><b>The egg-rolling movement, which runs to the end whatever is under the beak.</b> Tinbergen and Lorenz found that the goose will perform it on a golf ball, a doorknob or an egg several times too big, and that if the object is removed mid-movement she finishes the empty gesture anyway. <span class="cred">Drawing by Profprestos, CC BY-SA 4.0, via Wikimedia Commons.</span></figcaption>
+          </figure>
+
+          <h4 id="a-4" data-n="1.4">Three philosophers said no and three said yes, and the disagreement is about two different things</h4>
+          <div class="qa">
+            <b>The question</b>
+            Why has this been argued about for eight hundred years without moving?
+          </div>
+
+          <div class="body">
+            <p><b>The denials, in order.</b></p>
+            <ol>
+              <li><b>Aquinas, thirteenth century.</b> In the <em>Summa Theologica</em> he asks whether killing animals is wrong and answers no: they are devoid of the life of reason and are moved by natural impulse, as if by another. The tell is his example. Killing another man's ox is a sin of theft, and the wrong is done to the owner.</li>
+              <li><b>Kant, eighteenth century.</b> Animals have desires, which is a mental property, and are driven by them with no ability to ask whether a desire should be followed. Having no way to reason about their own reasons, they are not persons and have no value as ends. Kant still says to treat them well, because a man cruel to animals becomes hard in his dealings with men.</li>
+              <li><b>Descartes, seventeenth century.</b> The strongest version. Only language users think.</li>
+            </ol>
+            <div class="quo">
+              <blockquote>There is no other animal at all, however perfect and pedigreed it may be, that does the like. This does not happen because they lack the organs, for one sees that magpies and parrots can utter words just as we can, and yet they cannot speak as we do, that is to say, by testifying to the fact that they are thinking about what they are saying.</blockquote>
+              <div class="src">Descartes, <em>Discourse on Method</em>, 1637, quoted by Andrews, printed p. 15</div>
+            </div>
+            <p><b>Read what he does with the counterexamples.</b> Parrots have the organs and still do not speak, so the problem is inside. Deaf people without speech invent signs, so they do think. His conclusion is that animals have no reason at all, and that an animal is an automaton.</p>
+          </div>
+
+          <div class="body">
+            <p><b>The replies.</b> Voltaire went at the facts. The bird builds a semicircular nest against a wall, a quarter circle in a corner and a full circle in a tree. The hunting dog knows more after three months of training than before. The canary makes a mistake and corrects itself.</p>
+            <p><b>Hume refused to argue.</b> No truth, he wrote, appears more evident than that beasts are endowed with thought and reason as well as man, and the arguments are so obvious that they never escape the most stupid and ignorant.</p>
+            <p><b>Now the move that makes this section philosophy and not a list.</b> Voltaire and Descartes are disagreeing about two separate things at once, and the two are tangled.</p>
+            <table class="rt">
+              <thead><tr><th>Kind of claim</th><th>Descartes</th><th>Voltaire</th></tr></thead>
+              <tbody>
+                <tr><td><b>Theoretical</b><span>what mind requires</span></td><td>Language</td><td>Accepts that rational behaviour is what matters</td></tr>
+                <tr><td><b>Empirical</b><span>what animals do</span></td><td>Repeat fixed behaviour</td><td>Learn, solve problems, correct themselves</td></tr>
+              </tbody>
+            </table>
+            <p><b>And the theory decides what counts as evidence.</b> Given Descartes's commitment, it would not matter if the canary composed flute tunes or the bird built a house of bricks. No talk, no mind. This is the trap the rest of the course keeps returning to: a prior commitment that disqualifies the data in advance cannot be refuted by data.</p>
+            <div class="mynote"><b>My note</b><span>Learn this as three against three with the grounds attached: <b>Aquinas</b> no reason, <b>Kant</b> no reasoning about reasons, <b>Descartes</b> no language, against <b>Aristotle</b> degrees, <b>Voltaire</b> look at the behaviour, <b>Hume</b> it is obvious. The structural point underneath is the one worth marks: theoretical commitments and empirical findings are woven together, and a theory can make counter-evidence unusable before it is gathered.</span></div>
+          </div>
+
+          <h4 id="a-5" data-n="1.5">The argument from analogy, which has a reference class of one</h4>
+          <div class="qa">
+            <b>The question</b>
+            Can I reason from my own case to yours?
+          </div>
+
+          <div class="body">
+            <p><b>The schema.</b></p>
+            <ol>
+              <li>I have property M and I have a mind.</li>
+              <li>Other humans have property M.</li>
+              <li>So other humans probably have minds.</li>
+            </ol>
+            <p><b>It is an inductive argument, and a terrible one.</b> Its strength depends on the sample, and this sample has one member: me. Generalising to seven billion people from one observed case is an inference nobody accepts anywhere else.</p>
+            <div class="ctx">
+              <summary><i>Context</i> Deductive and inductive, since both words are used throughout the course</summary>
+              <p>In a <b>deductive</b> argument, true premises guarantee a true conclusion. Such an argument is called <b>valid</b>.</p>
+              <p>An <b>inductive</b> argument offers evidence and stops short of a guarantee, so its conclusion can be false with every premise true. No such argument is valid. It counts as <b>strong</b> or <b>weak</b> according to how much support it supplies.</p>
+            </div>
+            <p><b>There is a second hole, and it is the interesting one.</b> Which property counts as M? One of Andrews's properties is being a woman, and gender has nothing to do with having a mind. So the analogy needs a separate argument saying why the chosen property is relevant, and that separate argument is a theory of mind. John Stuart Mill's version picks the causal link between behaviour and mind as the reference property, which pushes the work back onto the theory.</p>
+            <p><b>Applied to animals it gets better and worse at the same time.</b> The animal version runs: all humans with minds have M, members of species A have M, so members of species A probably have minds. The sample is now seven billion, which is a real improvement. The analogy itself is now worse, because for most species you can list more differences than similarities. Something that lives underwater, perceives by echolocation, lives three weeks or is eusocial with sterile worker castes is far enough from a human that the comparison carries almost nothing.</p>
+            <div class="kone"><b>If you keep one thing.</b> The argument from analogy for other humans has a sample size of one. The animal version fixes the sample and breaks the analogy. On its own it settles nothing either way, and Andrews keeps it only as support for the others.</div>
+          </div>
+
+          <h4 id="a-6" data-n="1.6">Evolutionary parsimony, which works for chimpanzees and fails for octopuses</h4>
+          <div class="qa">
+            <b>The question</b>
+            Does being closely related to us count as evidence of a mind?
+          </div>
+
+          <div class="body">
+            <p><b>The idea.</b> Treat mentality as an evolved trait, like eye colour or stripes. The closer a species is to us on the family tree, the likelier it is that a behaviour we share has the same cause in both.</p>
+            <p><b>Frans de Waal's version is methodological.</b> In biology, assume that similar behaviour in closely related organisms has similar causes. Deny that and you are claiming that evolution built separate machinery to produce the same result, which is extra entities for no reason. The exception is <b>convergent evolution</b>, where a trait arises twice in distant lineages, like the wing of a bat and the wing of a bee. Where two species are close and share the behaviour, the first hypothesis is the shared cause. If the human cause is mental, the chimpanzee cause is mental.</p>
+            <p><b>Elliott Sober builds it on the common ancestor.</b></p>
+            <ol>
+              <li>Humans and chimpanzees both perform behaviour B.</li>
+              <li>In humans, B is caused by mental states.</li>
+              <li>B could be caused by mental states M or by some non-mental process N.</li>
+              <li>The most recent common ancestor performed B.</li>
+              <li>The more parsimonious explanation requires the fewest changes between ancestors and descendants.</li>
+              <li>So it is more parsimonious that the ancestor did B using M.</li>
+              <li>So it is more parsimonious that chimpanzees do B using M.</li>
+            </ol>
+            <p><b>What parsimony means here is specific:</b> the explanation requiring the fewest changes along the branches of the tree. The alternative, that mental states cause the behaviour in us while a different mechanism causes it in them, needs a change in the lineage that nothing else calls for.</p>
+            <p><b>Sober's own limit.</b> This raises the likelihood and does not give a probability. The chance that chimpanzees have M goes up because humans have M, and it can still be low.</p>
+          </div>
+
+          <div class="body">
+            <p><b>Now the version of simplicity that Andrews rejects.</b> It is tempting to think that the simple explanation is the one with less mental machinery in it, which gives this argument:</p>
+            <ol>
+              <li>Complex biological systems evolve by adding new systems on top of simpler old ones.</li>
+              <li>Complex cognition is a complex biological system.</li>
+              <li>So complex cognition is built out of older, simpler capacities.</li>
+            </ol>
+            <p><b>Two things are wrong with it.</b> Irina Mikhalevich attacks the first premise: ape brains and corvid brains are built very differently and manage the same tasks, which is convergent evolution again. And the argument smuggles in a ranking. It pictures evolution as a ladder with humans on top, which is the <b>scala naturae</b>, the great chain of being, a medieval scheme with God at the top and Man ruling the creatures below. Darwin's point was that species differ because natural selection fitted them to changing environments, with no direction and no summit. Saying one animal is more evolved than another has no biological meaning.</p>
+            <div class="kone"><b>If you keep one thing.</b> Parsimony in biology means fewest changes on the evolutionary tree, which is why it supports minds in chimpanzees and says nothing about an octopus. Cognitive simplicity, meaning assume as little mind as possible, is a different idea wearing the same word, and it rests on a ladder of nature that Darwin removed.</div>
+          </div>
+
+          <h4 id="a-7" data-n="1.7">Inference to the best explanation, worked through on a dog who knew a thousand words</h4>
+          <div class="qa">
+            <b>The question</b>
+            Is there an argument that works for an animal unrelated to us?
+          </div>
+
+          <div class="body">
+            <p><b>This one is ordinary scientific method.</b> Identify something to be explained, generate candidate explanations, test them, and keep whichever explains best. The schema:</p>
+            <ol>
+              <li>Members of species A do behaviour B.</li>
+              <li>The best scientific explanation of an individual doing B is that it has a mind.</li>
+              <li>So members of species A probably have minds.</li>
+            </ol>
+            <p><b>Premise 2 carries everything.</b> Best means it predicts more future behaviour and fits better with what else is known, and best is relative to the competitors. If the two candidates are that the animal has a mind or that it is a robot controlled by aliens, knocking out the second does nothing for the first.</p>
+            <p><b>It also works one species and one behaviour at a time.</b> Dolphins carrying sponges on their beaks to forage on the sea floor is evidence about dolphins and says nothing about ants. The absence of that behaviour in ants is no evidence against ant minds either, since no single behaviour is required for having one.</p>
+          </div>
+
+          <div class="exm">
+            <b>Example &middot; the ants that fail the test and then pass it</b>
+            <p>E. O. Wilson found that harvester ants identify a corpse by the oleic acid it gives off. He daubed oleic acid on live ants and watched them carried to the refuse pile alive and kicking. That is inflexibility of the plainest kind.</p>
+            <p>A different ant, <em>Ectatomma ruidum</em>, grooms its nestmates and feeds them mouth to mouth, with the solicitor touching the donor's mouthparts with its antennae and resting a front leg on its head. It also adjusts its policing: when stored food is low, guards attack neighbouring ants at the entrance, and when food is plentiful the same guards let them in and let them eat.</p>
+            <p>The second set of behaviours is a candidate for an inference to the best explanation, provided nobody can produce a simple rule that generates it without mentality.</p>
+          </div>
+
+          <div class="body">
+            <p><b>The worked case is a border collie.</b> Rico knew the proper names of 200 objects and would fetch any of them on command. Two explanations compete:</p>
+            <ol>
+              <li>He understands that words refer to objects.</li>
+              <li>He has been reinforced to fetch a particular thing on a particular sound, and picks up new ones by elimination.</li>
+            </ol>
+            <p><b>The psychologist Paul Bloom proposed the test that separates them.</b> Can the dog learn a word for something unfetchable, like a fire hydrant? Can he obey &#8220;get anything but the sock&#8221;? The researchers had anecdotes about Rico putting a named object in a box, and critics answered that anecdotes are not experiments. Rico died before the tests were run.</p>
+            <p><b>Chaser was the replacement, and the tests were done.</b> She was taught the proper names of over a thousand objects, plus verbs and common nouns. In formal testing she handled novel combinations she had never heard paired, such as &#8220;nose the ABC&#8221; and &#8220;take the lips.&#8221; She learned three higher categories, toy, ball and Frisbee, and sorted objects into them. And she learned new names by exclusion, also called <b>fast mapping</b>: asked to fetch the dax with one unfamiliar object in view, she brought the unfamiliar one.</p>
+            <p><b>The result.</b> Bloom's alternative, that the noun is a command to fetch, stopped being the best explanation, because a command cannot be nosed, categorised or combined with a new verb. The explanation left standing is that she learns words and knows they refer.</p>
+          </div>
+
+          <div class="body">
+            <p><b>Analogy and inference to the best explanation combine, and this is the form Andrews prefers.</b></p>
+            <ol>
+              <li>Humans have minds and property B.</li>
+              <li>The best explanation of humans having B is that they have minds.</li>
+              <li>Members of species A have property B.</li>
+              <li>So members of species A probably have minds.</li>
+            </ol>
+            <p><b>Why this is better than either part.</b> The analogy needed somebody to justify the choice of reference property, and the inference to the best explanation supplies the justification: B is the right property because mentality is what best explains B in us.</p>
+          </div>
+
+          <h4 id="a-8" data-n="1.8">Direct perception, which says the question was a mistake</h4>
+          <div class="qa">
+            <b>The question</b>
+            What if minds are seen and not inferred?
+          </div>
+
+          <div class="body">
+            <p><b>The position.</b> When you interact with a minded creature you see that it is minded, the way you see a colour. No inference, so nothing to justify. These are also called non-inferential arguments, and they take Hume's line.</p>
+            <p><b>Dale Jamieson's diagnosis.</b> The problem of other minds is left over from Cartesian dualism. Drop the idea that the mind is a hidden object behind the body and the problem dissolves. The argument:</p>
+            <ol>
+              <li>We reasonably think some other animals are minded.</li>
+              <li>If so, we think it either because we infer it or because we perceive it.</li>
+              <li>We do not infer it.</li>
+              <li>So we think it because we perceive their minds.</li>
+              <li>If we perceive animal minds, we know animals have minds.</li>
+              <li>So we know animals have minds.</li>
+            </ol>
+            <p><b>Premise 3 is the battleground.</b> The inferential camp rejects it: what you see is a behaving body and the mind is added by reasoning. Jamieson calls the behaving body a philosophical monster conjured up by contrary philosophers. His test case is a newborn. Nobody meets a baby and wonders whether it is a mental being; they stroke it, coo, and coordinate gaze and sound with it. Describing that as an inference misdescribes what happened.</p>
+          </div>
+
+          <div class="body">
+            <p><b>The first objection attacks premise 5, and it is the stronger one.</b> Perceiving does not guarantee existing. A thirsty traveller sees water in the desert. A straight stick in a glass of water looks bent. And the human animacy detector has known systematic faults: googly eyes on a geometric shape are enough to set it off. Erica the robot would get the same response from a viewer as a human newsreader, and Erica has no mind.</p>
+            <p><b>Jamieson's reply, and its limit.</b> On a screen the detector fires; in a room the robot's limits would show. Andrews adds that anything holding the response over time, as a baby does, would end up treated as minded whatever argument was made against it.</p>
+            <table class="rt">
+              <thead><tr><th>Where it goes wrong</th><th>The case</th></tr></thead>
+              <tbody>
+                <tr><td><b>Sees a mind that is absent</b></td><td>Erica the robot, googly eyes on a moving shape, faces in clouds</td></tr>
+                <tr><td><b>Misses a mind that is present</b></td><td>The tardigrade, too small to see at all, and the pelican eel, too strange to want to know</td></tr>
+              </tbody>
+            </table>
+            <p><b>The second objection is the mirror image.</b> Direct perception also misses minds that exist. A tardigrade is microscopic, so nothing about it can be perceived directly at all. The pelican eel is a deep sea fish with an enormous mouth and a body like a snake, and Andrews says plainly that looking at pictures of it produces no warmth and no wish to spend time with it. Revulsion is a bad instrument for metaphysics.</p>
+            <p><b>What survives.</b> As an evolved method for spotting the minds our ancestors actually met, it probably tracks something real: creatures who are potential partners, predators or competitors. It works on dogs, dolphins and chimpanzees, and is close to useless on anything strange.</p>
+          </div>
+
+          <div class="body">
+            <p><b>Her conclusion is about the four together.</b> No single argument is conclusive and she says so about each. Three sources converge for familiar animals: we see them as having desires, goals, fears and pains; we know they are close to us in biology, ecology and evolutionary history; and the non-mental explanations keep coming up short. She calls that all but conclusive for familiar animals, with bacteria, sponges, fungi, insects, trees and robots still needing work.</p>
+            <p><b>The closing move is a warning about where justification ends.</b> She cites Lewis Carroll's dialogue &#8220;What the Tortoise Said to Achilles,&#8221; in which the tortoise accepts the premises of an argument and refuses the conclusion, then accepts the rule connecting them as a further premise, and refuses again, forever. The lesson is that demands for justification have to stop somewhere, and a sceptic who never stops is not being rigorous.</p>
+            <div class="kone"><b>If you keep one thing.</b> Andrews's position is convergence. Analogy has a broken sample, parsimony reaches only our close relatives, inference to the best explanation works one behaviour at a time, and direct perception misfires on robots and misses tardigrades. Each fails alone and they fail in different places, so together they cover the familiar animals.</div>
+          </div>
+
+          <figure class="dia">
+            <div class="draw">
+            <svg viewBox="0 -9 700 310" role="img" aria-labelledby="dg-args11" style="font-family:var(--body)">
+            <title id="dg-args11">Four arguments for animal minds, each with how far it reaches and the objection that stops it going further.</title>
+            <text class="dg-m dg-dim" x="12" y="14" font-size="11" style="font-family:var(--mono)">FOUR ARGUMENTS, FOUR DIFFERENT FAILURES</text>
+            <rect class="dg-box" x="8" y="30" width="336" height="112" rx="3"/>
+            <text class="dg-t" x="22" y="52" font-size="12.5" font-weight="600">Analogy</text>
+            <text class="dg-t" x="22" y="72" font-size="12.5">Reaches: other humans, and any species</text>
+            <text class="dg-t" x="22" y="89" font-size="12.5">that shares a relevant property.</text>
+            <text class="dg-t dg-dim" x="22" y="112" font-size="12.5">Breaks on: a sample of one, and no account</text>
+            <text class="dg-t dg-dim" x="22" y="129" font-size="12.5">of which property counts.</text>
+            <rect class="dg-box" x="356" y="30" width="336" height="112" rx="3"/>
+            <text class="dg-t" x="370" y="52" font-size="12.5" font-weight="600">Evolutionary parsimony</text>
+            <text class="dg-t" x="370" y="72" font-size="12.5">Reaches: chimpanzees, bonobos, gorillas,</text>
+            <text class="dg-t" x="370" y="89" font-size="12.5">anything near us on the tree.</text>
+            <text class="dg-t dg-dim" x="370" y="112" font-size="12.5">Breaks on: distance. Says nothing about an</text>
+            <text class="dg-t dg-dim" x="370" y="129" font-size="12.5">octopus, an eel or a bearded dragon.</text>
+            <rect class="dg-box dg-hi" x="8" y="158" width="336" height="112" rx="3"/>
+            <text class="dg-t" x="22" y="180" font-size="12.5" font-weight="600">Inference to the best explanation</text>
+            <text class="dg-t" x="22" y="200" font-size="12.5">Reaches: any species at all, one behaviour</text>
+            <text class="dg-t" x="22" y="217" font-size="12.5">at a time. Chaser the border collie.</text>
+            <text class="dg-t dg-dim" x="22" y="240" font-size="12.5">Breaks on: the rivals. It is only as good as</text>
+            <text class="dg-t dg-dim" x="22" y="257" font-size="12.5">the hypotheses somebody thought to test.</text>
+            <rect class="dg-box" x="356" y="158" width="336" height="112" rx="3"/>
+            <text class="dg-t" x="370" y="180" font-size="12.5" font-weight="600">Direct perception</text>
+            <text class="dg-t" x="370" y="200" font-size="12.5">Reaches: dogs, dolphins, chimpanzees,</text>
+            <text class="dg-t" x="370" y="217" font-size="12.5">anything we interact with easily.</text>
+            <text class="dg-t dg-dim" x="370" y="240" font-size="12.5">Breaks on: robots, which it over-counts, and</text>
+            <text class="dg-t dg-dim" x="370" y="257" font-size="12.5">tardigrades, which it cannot see at all.</text>
+            </svg>
+            </div>
+            <figcaption><b>Each argument fails somewhere different, which is the reason Andrews keeps all four.</b> Parsimony covers the close relatives that analogy strains to reach, inference to the best explanation covers the distant species parsimony abandons, and direct perception explains why none of this feels necessary with a dog.</figcaption>
+          </figure>
+
+          <div class="mynote"><b>My note</b><span>Four arguments, four names, four objections, and the objections are what an exam wants. Analogy: sample of one, and no account of which property matters. Parsimony: only works near us on the tree, and gets confused with cognitive simplicity, which assumes a ladder Darwin removed. Inference to the best explanation: only as good as the rival hypotheses, one behaviour at a time, and <b>Chaser</b> is the worked case to name. Direct perception: hallucinations and robots on one side, tardigrades and pelican eels on the other. Have <b>flexibility</b> ready as the practical criterion and the <b>greylag goose</b> as the thing that fails it.</span></div>
+
+          <div class="quar">
+            <b>Where it belongs in the quarrel</b>
+            <ul>
+              <li><b>It answers Descartes</b>, and the reply is empirical. Chaser does with words what he said no animal could, which attacks his factual claim and leaves his theory about language untouched.</li>
+              <li><b>It continues week 7 on values in science.</b> A rule saying always prefer the less mental explanation looks like rigour and is a value choice resting on a discredited picture of evolution.</li>
+              <li><b>It is answered by anybody who puts the burden of proof on animal minds</b>, who will say converging weak arguments are still weak. Her reply is the Carroll point, plus the observation that nobody applies this standard to other humans.</li>
+              <li><b>It sets up weeks 12 and 13</b>, which take chapters 2, 3 and 9: how to study animal behaviour, and whether animals have moral minds.</li>
+            </ul>
+          </div>
+
+          <div class="curious">
+            <div class="label"><b>For the curious</b><span>none of this is on the exam</span></div>
+
+            <details class="bit"><summary>There is no such thing as the animal mind, says the book called The Animal Mind</summary><div class="bq">
+              <p>Andrews opens by disowning her own title. There is no such thing as the animal mind, she writes, and there is not even such a thing as the human mind, given neurodiversity and brain plasticity. Neurodiversity is the position that differences in neural function between humans are natural variation in the species, so being autistic is one natural way of being a minded human. Plasticity is the fact that the brain changes through development and after injury, and that what a region does can change.</p>
+              <p>The conclusion she draws is that there is no one right way of being minded, which is why the chapter asks about similarities and differences between species in place of asking what the animal mind is.</p>
+            </div></details>
+
+            <details class="bit"><summary>Dolphins recognise by sound what they have never touched</summary><div class="bq">
+              <p>Cross-modal perception is matching something known through one sense with the same thing in another. A human infant of one month, having sucked a particular pacifier blindfolded, will look longer at a picture of that one. Chimpanzees match objects they have handled to objects they see.</p>
+              <p>Dolphins do not use touch to recognise objects, so the standard test makes them look as if they lack the ability. They echolocate instead. Shown a strange shape only by echolocation behind a screen underwater, a dolphin will then pick that object out of a line-up held in the air where only vision works. Same ability, different senses, and a test built for primates would have scored it as absent.</p>
+            </div></details>
+
+            <details class="bit"><summary>Whether a group can be minded</summary><div class="bq">
+              <p>Andrews raises the possibility that mind need not be bounded by one skin. A colony, a hive or a pod might be the minded unit, and an octopus might be multiply minded, with arms that are to some extent separate processors. She leaves it open.</p>
+              <p>Thomas Nagel's essay &#8220;What Is It Like to Be a Bat?&#8221; of 1974 is the standard reference for the limit on all of this: we can imagine what it would be like for us to behave like a bat, and that is not the same as knowing what it is like for the bat.</p>
+            </div></details>
+          </div>
+
+        </div>
+      </article>
+  </section>
+  <section>
+      <article class="rd p-close" id="descartes">
+        <div class="stripe"></div>
+        <div class="main">
+          <div class="head">
+            <h3><span class="ch">1641</span>Meditation One</h3>
+            <div class="who">Ren&eacute; Descartes, <em>Meditations on First Philosophy</em>, in a <em>Theory of Knowledge</em> anthology, with the editor's introduction and the author's synopsis</div>
+            <div class="meta"><span class="tag">Read properly</span><span>12 pp, printed pages 88 to 99</span></div>
+          </div>
+
+          <div class="why"><b>What you get out of this text.</b> The manufacture of the private mind. Andrews says the problem of other minds is a leftover from Cartesian dualism, and this is where the dualism is built. Six pages of it are the editor's introduction, which is useful and skimmable. The Descartes to read closely is Meditation One, which is short, written in the first person and genuinely gripping.</div>
+
+          <h4 id="d-1" data-n="D.1">One rotten belief condemns everything resting on it, so he demolishes the foundations and lets the rest fall</h4>
+          <div class="qa">
+            <b>The question</b>
+            Why throw out beliefs that are merely doubtful, when doubtful is not the same as false?
+          </div>
+
+          <div class="body">
+            <p><b>His opening complaint.</b> He noticed years ago that he had accepted many false claims in his youth, so everything built on top of them was doubtful. He waited until he was old enough and had a free afternoon, and now intends a general demolition.</p>
+            <p><b>The rule he adopts.</b> He will withhold assent from anything not entirely certain exactly as he would from something plainly false. It is deliberately too strict for ordinary life, and he says so elsewhere: this method is for the study, and decisions get made another way.</p>
+            <p><b>And the labour-saving device.</b> He will not examine his beliefs one at a time, which would take forever. He goes after the foundations, because once those are destroyed whatever stands on them collapses on its own. The foundation of nearly everything he believes is the senses.</p>
+          </div>
+
+          <figure class="pic">
+            <a class="zoom" style="width:230px" href="img/descartes.jpg" target="_blank" rel="noopener" title="Open this picture at full size">
+              <img src="img/descartes.jpg" width="817" height="1000" loading="lazy" alt="A seventeenth-century oil portrait of a man with dark shoulder-length hair, a thin moustache and a small pointed beard, wearing a black cloak over a wide white collar, turned to his left against a dark olive background, with one hand just visible at the lower edge.">
+            </a>
+            <figcaption><b>Ren&eacute; Descartes, 1596 to 1650.</b> The hand at the bottom edge is the one he cannot prove he has. Meditation One works through the things he is most certain of, the fire, the robe, the paper, and withdraws assent from every one of them. <span class="cred">Portrait after Frans Hals, public domain, via Wikimedia Commons.</span></figcaption>
+          </figure>
+
+          <h4 id="d-2" data-n="D.2">The dream argument, and then an all-powerful deceiver</h4>
+          <div class="qa">
+            <b>The question</b>
+            How far down does doubt go?
+          </div>
+
+          <div class="body">
+            <p><b>First step, the small deceptions.</b> The senses mislead about small or distant things, and it is prudent never to trust completely what has deceived you once. This is weak on its own, and he says so: it would be mad to doubt that he is sitting by the fire in a winter robe with paper in his hands. Only people whose brains are disturbed by black bile believe they are kings when they are paupers, or that they are made of glass.</p>
+            <p><b>Second step, the one that does the damage.</b> He sleeps, and in dreams he has experienced all of this, sitting by the fire dressed, while lying undressed in bed. There are no certain marks that distinguish being awake from being asleep. So the fire, the robe, the hands and the whole body may be absent.</p>
+            <p><b>What survives the dream.</b> Dreamed things are assembled from real parts, as a painter inventing a siren mixes limbs of real animals, and even an invented picture uses real colours. So the simplest things hold: extension, shape, quantity, place, time. Physics, astronomy and medicine go, since they deal with composite objects. Arithmetic and geometry stay, because two and three make five awake or asleep.</p>
+            <div class="ctx">
+              <summary><i>Context</i> Why arithmetic is the last thing standing</summary>
+              <p>Everything learned by looking has gone with the dream. What is left is what does not depend on anything existing: a square has four sides whether or not squares exist. That is why the deceiver has to be introduced, since nothing weaker will touch it.</p>
+            </div>
+            <p><b>Third step, the deceiver.</b> An all-powerful God could make him go wrong even about the square and the sum. If instead there is no God and he is the product of fate or chance, then he was made by something less perfect, which makes constant error more likely. Either way the arithmetic goes too.</p>
+            <div class="quo">
+              <blockquote>I am like a prisoner who in his sleep may happen to enjoy an imaginary liberty and who, when he later begins to suspect that he is asleep, fears to wake up and willingly cooperates with the pleasing illusions in order to prolong them.</blockquote>
+              <div class="src">Descartes, Meditation One, the closing lines, printed p. 99</div>
+            </div>
+            <p><b>Read the quotation for what it admits.</b> Habitual opinions keep coming back, have acquired the right to seize his belief against his wishes, and laziness pulls him back to ordinary life. The doubt takes effort to hold.</p>
+          </div>
+
+          <h4 id="d-3" data-n="D.3">What all of this did to animals</h4>
+          <div class="qa">
+            <b>The question</b>
+            Meditation One never mentions an animal, so why is it on a reading list about animal minds?
+          </div>
+
+          <div class="body">
+            <p><b>Because of what it leaves standing.</b> By the end the only thing not in doubt is the doubter. Meditation Two draws the conclusion that he is a thinking thing, and the mind becomes the one item known from the inside. Everything else is known through the senses he has just discredited.</p>
+            <p><b>That is the architecture Andrews calls Cartesian dualism.</b> Mind is one kind of substance and body is another. A mind is private and certain to its owner and invisible to everyone else. The moment you accept that, other minds become a problem, because every other mind is now behind a body you can only look at.</p>
+            <p><b>And it is why his animals are machines.</b> If having a mind is having the extra substance, there are no degrees: a creature either has it or is a mechanism, and his test for which is language. His century built clockwork figures that played instruments and drew pictures, so a machine that moves purposefully was a familiar object.</p>
+            <div class="kone"><b>If you keep one thing.</b> Meditation One is where the mind becomes private. Descartes demolishes everything knowable through the senses and leaves the thinking self as the one certainty, which puts every other mind on the far side of a body. The problem of other minds is a consequence of that move, which is why Jamieson thinks dropping the dualism dissolves the problem.</div>
+          </div>
+
+          <div class="mynote"><b>My note</b><span>Three steps and the name of each: <b>sensory error</b>, the <b>dream argument</b>, the <b>deceiver</b>. Know what each one kills: small sensory claims, then the external world and the composite sciences, then arithmetic and geometry. Know what the editor's introduction warns: Descartes is not recommending the doubt as a way of life, he is clearing ground, and he said in a letter that he set out these reasons in order to refute them. For this course the examinable link is that the private mind of Meditation One creates the other minds problem that Andrews spends her chapter on.</span></div>
+        </div>
+      </article>
+  </section>
+
+  <section>
+      <article class="rd p-close" id="aristotle">
+        <div class="stripe"></div>
+        <div class="main">
+          <div class="head">
+            <h3><span class="ch">A1</span>Metaphysics, Book I, chapter 1</h3>
+            <div class="who">Aristotle, c. 350 BCE, in the W. D. Ross translation</div>
+            <div class="meta"><span class="tag">Read properly</span><span>about 3 pp, the opening of the book</span></div>
+          </div>
+
+          <div class="why"><b>What you get out of this text.</b> The position Andrews lists Aristotle under, which is that animals have minds. It takes fifteen minutes to read and gives you a five-rung ladder from sensation up to wisdom, with animals placed on the lower rungs and humans continuing up. It is the alternative to Descartes's single line with machines on one side.</div>
+
+          <figure class="pic">
+            <a class="zoom" style="width:215px" href="img/aristotle.jpg" target="_blank" rel="noopener" title="Open this picture at full size">
+              <img src="img/aristotle.jpg" width="960" height="1285" loading="lazy" alt="A marble portrait bust of a bearded man with short curling hair and blank carved eyes, the head in white marble set on shoulders carved from streaked honey-coloured stone draped as a cloak.">
+            </a>
+            <figcaption><b>Aristotle, 384 to 322 BCE, in a Roman copy of a Greek original.</b> He spent years dissecting and describing animals, and the <em>Metaphysics</em> opens by placing them on the same scale of knowing as us, several rungs down. <span class="cred">Roman copy after Lysippos, photograph by Jastrow, public domain, via Wikimedia Commons.</span></figcaption>
+          </figure>
+
+          <h4 id="r-1" data-n="A.1">Sensation, memory, experience, art, wisdom</h4>
+          <div class="qa">
+            <b>The question</b>
+            What is between bare perception and understanding?
+          </div>
+
+          <div class="body">
+            <p><b>The first line is the famous one.</b> All men by nature desire to know, and the proof offered is that we love our senses for themselves, sight above all, even with nothing to do with what we see.</p>
+            <p><b>Then the ladder, which is the part this week needs.</b></p>
+            <table class="rt">
+              <thead><tr><th>Rung</th><th>What it is</th><th>Who has it</th></tr></thead>
+              <tbody>
+                <tr><td><b>Sensation</b></td><td>Perceiving what is in front of you</td><td>All animals, by birth</td></tr>
+                <tr><td><b>Memory</b></td><td>Retaining what was perceived</td><td>Some animals, and not others</td></tr>
+                <tr><td><b>Learning by hearing</b></td><td>Being taught by another</td><td>Animals with memory and hearing. The bee has memory and no hearing, so it is intelligent and cannot be taught</td></tr>
+                <tr><td><b>Experience</b></td><td>Many memories of the same thing fusing into one capacity. Knowing that this cured Callias</td><td>Humans, with animals having only a little</td></tr>
+                <tr><td><b>Art and science</b></td><td>One universal judgement over a whole class. Knowing why, and so being able to teach</td><td>Humans</td></tr>
+              </tbody>
+            </table>
+            <p><b>His test for the top rung is teaching.</b> The man of experience knows that the thing is so and the man of art knows why, and the sign of real knowledge is being able to teach it. Which is why he ranks the master builder above the labourer, who acts by habit, like fire burning.</p>
+          </div>
+
+          <figure class="dia">
+            <div class="draw">
+            <svg viewBox="0 -9 700 252" role="img" aria-labelledby="dg-ladder11" style="font-family:var(--body)">
+            <title id="dg-ladder11">Aristotle's five rungs from sensation up to art and science, marked with where animals stop and where humans continue.</title>
+            <text class="dg-m dg-dim" x="12" y="14" font-size="11" style="font-family:var(--mono)">ONE SCALE, AND EVERYTHING IS A MATTER OF HOW FAR UP</text>
+            <rect class="dg-box" x="8" y="196" width="470" height="34" rx="3"/>
+            <text class="dg-t" x="22" y="218" font-size="12.5"><tspan font-weight="600">Sensation</tspan> &#183; every animal has it from birth</text>
+            <rect class="dg-box" x="8" y="156" width="470" height="34" rx="3"/>
+            <text class="dg-t" x="22" y="178" font-size="12.5"><tspan font-weight="600">Memory</tspan> &#183; some animals, and not others</text>
+            <rect class="dg-box" x="8" y="116" width="470" height="34" rx="3"/>
+            <text class="dg-t" x="22" y="138" font-size="12.5"><tspan font-weight="600">Being taught</tspan> &#183; needs memory and hearing. The bee has no hearing</text>
+            <rect class="dg-box dg-hi" x="8" y="76" width="470" height="34" rx="3"/>
+            <text class="dg-t" x="22" y="98" font-size="12.5"><tspan font-weight="600">Experience</tspan> &#183; many memories fuse. Animals have a little of it</text>
+            <rect class="dg-box" x="8" y="36" width="470" height="34" rx="3"/>
+            <text class="dg-t" x="22" y="58" font-size="12.5"><tspan font-weight="600">Art and science</tspan> &#183; the universal, the cause, and so teaching</text>
+            <path class="dg-ln" d="M496 220V40M496 46l-5 8 10 0z" stroke-width="1.4"/>
+            <text class="dg-t dg-dim" x="516" y="104" font-size="12.5">Animals run out</text>
+            <text class="dg-t dg-dim" x="516" y="121" font-size="12.5">around here, and the</text>
+            <text class="dg-t dg-dim" x="516" y="138" font-size="12.5">scale keeps going.</text>
+            </svg>
+            </div>
+            <figcaption><b>Aristotle's answer is a scale with animals low on it.</b> The bee is his awkward case: it has memory, which makes it intelligent, and no hearing, which makes it unteachable, so two of his rungs come apart. Descartes replaces the whole scale with a single line and puts animals on the far side of it.</figcaption>
+          </figure>
+
+          <h4 id="r-2" data-n="A.2">Why a ladder is a different kind of answer from a wall</h4>
+          <div class="qa">
+            <b>The question</b>
+            What does Aristotle's picture settle that Descartes's does not?
+          </div>
+
+          <div class="body">
+            <p><b>Every difference here is a difference of degree.</b> Animals other than man live by appearances and memories and have little of connected experience, and the human race lives also by art and reasoning. Little is a quantity. An animal is further down a shared scale, so asking how much experience a species has is a question with an answer.</p>
+            <p><b>Compare the Cartesian version.</b> There the difference is one of kind, and no amount of clever behaviour moves a creature across it.</p>
+            <p><b>Which is why Andrews puts Aristotle with Hume and Voltaire.</b> His ranking is unflattering and it keeps animals on the same ladder, so evidence about what a species can do bears on where it stands.</p>
+            <div class="kone"><b>If you keep one thing.</b> Aristotle grades: sensation, memory, learning from others, experience, art. Animals occupy the lower rungs and the bee is his example of an animal with memory and no hearing, intelligent and unteachable. Degree lets evidence settle things; Descartes's difference in kind does not.</div>
+          </div>
+
+          <div class="curious">
+            <div class="label"><b>For the curious</b><span>none of this is on the exam</span></div>
+            <details class="bit"><summary>Why the mathematical arts were founded in Egypt, according to A1</summary><div class="bq">
+              <p>Aristotle says the sciences that aim at neither pleasure nor necessity appeared first where people had leisure, and that this is why mathematics began in Egypt, where the priestly caste was free from work. The claim that free time is a precondition of theoretical knowledge turns up again in week 4, in the argument that scientific knowledge is shaped by the social arrangements that pay for it.</p>
+            </div></details>
+          </div>
+        </div>
+      </article>
+  </section>
+
+  <section id="s-gloss">
+    <h2>Glossary</h2>
+    <dl class="gl">
+      <dt>the problem of other minds</dt><dd>The question of what justifies the inference from someone's behaviour to the conclusion that they have a mind, given that minds cannot be observed. The animal version is sometimes called the other species of mind problem.</dd>
+      <dt>solipsism</dt><dd>The position that only one's own mind exists or can be known to exist. The classical statement of the other minds problem treats solipsism as the danger to be argued away.</dd>
+      <dt>animism</dt><dd>Attributing agency and mind to things that have none. Andrews argues that the psychological evidence makes over-attribution the human default, so the real task is subtraction.</dd>
+      <dt>substance dualism</dt><dd>Descartes's position: mind is a thing made of mental stuff and the body is a thing made of physical stuff. It conflicts with the causal closure of the physical world.</dd>
+      <dt>property dualism</dt><dd>Only physical stuff exists, and it can bear two kinds of property, physical ones such as shape and mental ones such as consciousness.</dd>
+      <dt>identity theory</dt><dd>The mind is the brain, and mental states are brain states or brain processes.</dd>
+      <dt>functionalism</dt><dd>A mental state is defined by the role it plays, with its material left open, so it is multiply realisable. The majority view, and the one most hospitable to minds in animals built differently from us.</dd>
+      <dt>multiply realisable</dt><dd>Able to be implemented in different physical materials, the way one program runs on different machines.</dd>
+      <dt>enactivism</dt><dd>Mind depends on the whole living body and its environment and is part of a continuing interaction with the world, so it is no property of a brain alone.</dd>
+      <dt>cognition</dt><dd>The processing between sensory input and behaviour: memory, problem solving, navigation, reasoning, language. Often defined as information processing.</dd>
+      <dt>fixed action pattern</dt><dd>A motor program released by a trigger that is close enough to the right stimulus, running to completion whatever happens. Tinbergen and Lorenz's greylag goose rolling a golf ball into her nest.</dd>
+      <dt>classical conditioning</dt><dd>Associative learning in which a neutral stimulus comes to produce a response because it has preceded an important one, as with Pavlov's bell. Learning that is nonetheless inflexible.</dd>
+      <dt>deductive and inductive</dt><dd>In a deductive argument true premises guarantee the conclusion, and such an argument is valid. In an inductive argument they support it without guaranteeing it, and the argument is strong or weak.</dd>
+      <dt>argument from analogy</dt><dd>Inferring that another being has a mind because it shares some property with a minded being. Weak for humans because the sample is oneself, and weak for distant species because the similarities run out.</dd>
+      <dt>evolutionary parsimony</dt><dd>The methodological rule that similar behaviour in closely related species should first be assumed to have the same cause, because the alternative posits extra evolutionary changes.</dd>
+      <dt>convergent evolution</dt><dd>The same trait arising independently in separate lineages, as with the wing of a bat and the wing of a bee.</dd>
+      <dt>scala naturae</dt><dd>The great chain of being, a hierarchy with God at the top and animals ranked below humans. Andrews argues that cognitive simplicity arguments smuggle it in, and that Darwin left no room for it.</dd>
+      <dt>inference to the best explanation</dt><dd>Generating candidate explanations of a phenomenon and keeping the one with the most predictive and explanatory power. Only as strong as the rivals considered.</dd>
+      <dt>fast mapping</dt><dd>Learning a new word by exclusion: given an unfamiliar name and one unfamiliar object, pairing the two. Chaser the border collie did this.</dd>
+      <dt>direct perception argument</dt><dd>Also called non-inferential. The claim that mindedness is perceived in interaction, so no inference needs justifying. Jamieson's version treats the problem of other minds as a leftover of dualism.</dd>
+      <dt>causal closure</dt><dd>The principle that every physical event has a physical cause. Substance dualism breaks it, which is Andrews's reason for setting it aside.</dd>
+      <dt>neurodiversity</dt><dd>The position that differences in neural function between humans are natural variation in the species, so that there is no one correct way of being a minded human.</dd>
+      <dt>cross-modal perception</dt><dd>Recognising through one sense something known through another, such as identifying by sight an object you have only touched.</dd>
+    </dl>
+  </section>
+
+  <div class="endmatter">
+    <div><b>Where this goes.</b> Week 11 of thirteen, and the start of the animal minds unit:</div>
+    <dl class="weeks">
+      <dt>Week 12</dt><dd>Nov 30 to Dec 2. Andrews ch. 2, Understanding Animal Behavior, and ch. 3 &middot; <b>Exam 2, Monday 30 November, covering weeks 4 to 7</b></dd>
+      <dt>Week 13</dt><dd>Dec 7 to 9. Andrews ch. 9, Moral Minds. Review and exam prep, held on Zoom</dd>
+    </dl>
+    <div><b>Source.</b> Andrews from the second edition of <em>The Animal Mind</em>, Routledge, 2020, read through the uOttawa library's subscription; page numbers are the printed ones. Descartes from the excerpt posted on Brightspace under Readings PDFs. Aristotle in the W. D. Ross translation. The reading guide of 16 November sets all three for this week and names the guest lecture on 25 November.</div>
+  </div>
+
+<div class="dock">
+  <div class="prog" id="prog"></div>
+  <div class="in">
+    <button type="button" id="bmgo" data-set="0" title="Go to your bookmark">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 2.2h8.8v12.1L8 11.1l-4.4 3.2z"/></svg>
+      <span class="lab">Bookmark</span></button>
+    <button type="button" data-marks title="Everything you have marked">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M2.5 3.5h11M2.5 8h11M2.5 12.5h7"/></svg>
+      <span class="lab">Highlights</span><span class="n" id="mcount"></span></button>
+    <a href="notes.html" title="Your notes for each lecture">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.2 2.3 13.7 4.8 5.6 12.9 2.4 13.6l.7-3.2z"/></svg>
+      <span class="lab">Lecture notes</span></a>
+    <button type="button" id="totop" class="end" title="Back to the top">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 13V3M3.5 7.5 8 3l4.5 4.5"/></svg>
+      <span class="lab">Top</span></button>
+  </div>
+</div>
+
+<div id="marks" class="drawer" hidden>
+  <div class="dback" data-close></div>
+  <aside class="dpanel" role="dialog" aria-modal="true" aria-labelledby="marks-h">
+    <div class="dhead">
+      <h2 id="marks-h">My highlights</h2>
+      <button type="button" class="dclose" data-close aria-label="Close">&times;</button>
+    </div>
+    <p class="dsub">Grouped by the text it sits in. Click one to jump to it.</p>
+    <div class="bm" id="bmlist"><p class="bmempty">Nothing marked yet. Select any text in the guide, then pick yellow, pink, a comment or the ribbon that sets your bookmark.</p></div>
+  </aside>
+</div></div>
+
+<footer class="sitefoot">
+  <div class="in">
+    <div class="col brand">
+      <a href="../">PHI2394 Reading Hub</a>
+      <p>Reading guides for Scientific Thought and Social Values, University of Ottawa.</p>
+    </div>
+    <nav class="col" aria-label="This week">
+      <h2>Week 11</h2>
+      <a href="./">Reading guide</a>
+      <a href="notes.html">My notes</a>
+      <button type="button" data-marks>My highlights</button>
+    </nav>
+    <nav class="col" aria-label="The hub">
+      <h2>The hub</h2>
+      <a href="../">All weeks</a>
+      <a href="../#about">How these were written</a>
+      <a href="https://github.com/myermcat/phi-reading-hub">Source on GitHub</a>
+    </nav>
+  </div>
+  <div class="colophon">
+    <span>Written with Claude. AI can make mistakes, and compression is where it makes them.</span>
+    <span>Your notes, highlights and bookmark are kept in this browser only.</span>
+  </div>
+</footer>
+
+
+<script>
+/* One curious item open at a time. A dozen of them open at once turns the panel into a wall,
+   which is what collapsing them was for. Closing happens per panel, so a side note somewhere
+   else on the page is left alone. */
+(function () {
+  document.addEventListener('toggle', function (e) {
+    var d = e.target;
+    if (!d.open || !d.matches || !d.matches('.curious > details.bit')) return;
+    Array.prototype.forEach.call(d.parentElement.children, function (s) {
+      if (s !== d && s.tagName === 'DETAILS' && s.open) s.open = false;
+    });
+  }, true);
+})();
+</script>
+<script src="../shared/editor.js?v=686e7cd1"></script>
+<script>
+(function () {
+  // The callouts hold their text directly in the div, with no paragraph inside, so a block
+  // list of p and li had nothing to attach a mark to and highlighting them did nothing.
+  var SEL = 'p,li,h4,h5,blockquote,td,dd,figcaption,.keep,.qa,.why,.kone,.mynote span';
+  var LS = 'phi2394-week11-guide-v1', WIDE = 1400;
+  var root, bar, rail, items = [], notes = {}, ref = null, saveT = null;
+  var drawer = null;
+  function openMarks() {
+    if (!drawer) return;
+    drawer.hidden = false; document.body.style.overflow = 'hidden';
+    var c = drawer.querySelector('.dclose'); if (c) c.focus();
+  }
+  function closeMarks() {
+    if (!drawer || drawer.hidden) return;
+    drawer.hidden = true; document.body.style.overflow = '';
+  }
+
+  function blocks() {
+    return Array.prototype.filter.call(root.querySelectorAll(SEL), function (el) {
+      return !el.querySelector(SEL) && !el.closest('.cmt') && !el.closest('.nb') && el.textContent.trim().length > 0;
+    });
+  }
+  function textNodes(el) {
+    var w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null), a = [], n;
+    while ((n = w.nextNode())) a.push(n);
+    return a;
+  }
+  function offsetIn(el, node, off) {
+    var ns = textNodes(el), t = 0;
+    for (var i = 0; i < ns.length; i++) { if (ns[i] === node) return t + off; t += ns[i].nodeValue.length; }
+    return t;
+  }
+  function strip() {
+    Array.prototype.forEach.call(root.querySelectorAll('mark.hl'), function (m) {
+      var p = m.parentNode;
+      while (m.firstChild) p.insertBefore(m.firstChild, m);
+      p.removeChild(m); p.normalize();
+    });
+    Array.prototype.forEach.call(root.querySelectorAll('.cmt'), function (c) { c.remove(); });
+  }
+  function paint(el, start, end, cls, id) {
+    var ns = textNodes(el), pos = 0, jobs = [];
+    for (var i = 0; i < ns.length; i++) {
+      var len = ns[i].nodeValue.length, s = Math.max(start, pos), e = Math.min(end, pos + len);
+      if (e > s) jobs.push([ns[i], s - pos, e - pos]);
+      pos += len; if (pos >= end) break;
+    }
+    for (var j = jobs.length - 1; j >= 0; j--) {
+      var n = jobs[j][0], a = jobs[j][1], b = jobs[j][2];
+      if (b < n.nodeValue.length) n.splitText(b);
+      var target = a > 0 ? n.splitText(a) : n;
+      var m = document.createElement('mark');
+      m.className = 'hl ' + cls;
+      m.setAttribute('data-id', id);
+      target.parentNode.insertBefore(m, target);
+      m.appendChild(target);
+    }
+  }
+  function card(it) {
+    var c = document.createElement('div');
+    c.className = 'cmt'; c.setAttribute('data-id', it.id);
+    var q = document.createElement('div'); q.className = 'q';
+    q.textContent = '“' + (it.text.length > 70 ? it.text.slice(0, 70) + '…' : it.text) + '”';
+    var ta = document.createElement('div');
+    ta.className = 'cbody'; ta.contentEditable = 'true';
+    ta.setAttribute('data-ph', 'Comment…');
+    ta.innerHTML = Notes.clean(it.body || '');
+    Notes.rich(ta, function () { it.body = ta.innerHTML; save(); });
+    ta.addEventListener('input', function () { it.body = ta.innerHTML; save(); });
+    ta.addEventListener('blur', function () {
+      if (!ta.textContent.trim()) { remove(it.id); return; }
+      it.body = ta.innerHTML; save(); place_notes();
+    });
+    ta.addEventListener('keydown', function (e) { if (e.key === 'Escape') ta.blur(); });
+    var row = document.createElement('div'); row.className = 'row';
+    var del = document.createElement('button'); del.type = 'button'; del.textContent = 'Delete';
+    del.addEventListener('mousedown', function (e) { e.preventDefault(); remove(it.id); });
+    row.appendChild(del);
+    c.appendChild(q); c.appendChild(ta); c.appendChild(row);
+    return c;
+  }
+  function place_notes() {
+    var wide = window.innerWidth >= WIDE;
+    rail.classList.toggle('on', wide);
+    var last = -1e9;
+    items.forEach(function (it) {
+      if (it.kind !== 'note') return;
+      var c = root.querySelector('.cmt[data-id="' + it.id + '"]');
+      var m = root.querySelector('mark[data-id="' + it.id + '"]');
+      if (!c || !m) return;
+      if (!m.getClientRects().length) { c.style.display = 'none'; return; }
+      c.style.display = '';
+
+      if (wide) {
+        if (c.parentNode !== rail) rail.appendChild(c);
+        c.classList.remove('inline');
+        var top = m.getBoundingClientRect().top + window.scrollY - (root.getBoundingClientRect().top + window.scrollY);
+        if (top < last) top = last;
+        c.style.top = top + 'px';
+        last = top + c.offsetHeight + 14;
+      } else {
+        c.classList.add('inline'); c.style.top = '';
+        var host = m.closest(SEL);
+        if (host && c.previousSibling !== host) host.parentNode.insertBefore(c, host.nextSibling);
+      }
+    });
+  }
+  function render() {
+    strip();
+    var bs = blocks();
+    items.forEach(function (it) {
+      if (!it || !it.text) return;
+      var probe = (it.before || '') + it.text + (it.after || '');
+      var order = [], i;
+      // the block this mark was made in comes first, by its opening text, then by its index
+      if (it.head) for (i = 0; i < bs.length; i++) if (bs[i].textContent.slice(0, 90) === it.head) order.push(i);
+      if (typeof it.idx === 'number' && it.idx >= 0 && it.idx < bs.length && order.indexOf(it.idx) < 0) order.push(it.idx);
+      for (i = 0; i < bs.length; i++) if (order.indexOf(i) < 0) order.push(i);
+      for (var j = 0; j < order.length; j++) {
+        var el = bs[order[j]], t = el.textContent, k = -1, st;
+        if (probe !== it.text) k = t.indexOf(probe);
+        if (k >= 0) { st = k + (it.before || '').length; }
+        else if (j < 2 && typeof it.at === 'number' && t.substr(it.at, it.text.length) === it.text) { st = it.at; }
+        else if (j < 2) { k = t.indexOf(it.text); if (k < 0) continue; st = k; }
+        else { continue; }
+        paint(el, st, st + it.text.length,
+          it.kind === 'note' ? 'hl-n' : it.kind === 'bm' ? 'hl-b' : 'hl-' + it.color, it.id);
+        if (it.kind === 'note') rail.appendChild(card(it));
+        return;
+      }
+    });
+    place_notes();
+    listMarks();
+  }
+  // Opening a mark that sits inside a closed toggle has to open the toggle first,
+  // or the scroll lands on a collapsed summary and the mark is nowhere on screen.
+  function goTo(el) {
+    if (!el) return;
+    var d = el.closest('details');
+    while (d) { d.open = true; d = d.parentElement && d.parentElement.closest('details'); }
+    var se = document.scrollingElement || document.documentElement, was = se.scrollTop;
+    try { el.scrollIntoView({ block: 'center', behavior: 'smooth' }); }
+    catch (e) { el.scrollIntoView(true); }
+    // Smooth scrolling is refused in some contexts and silently does nothing, so check
+    // that it actually moved and jump outright when it did not.
+    setTimeout(function () {
+      if (Math.abs((document.scrollingElement || document.documentElement).scrollTop - was) < 4) {
+        el.scrollIntoView({ block: 'center' });
+      }
+    }, 380);
+    el.classList.add('flash');
+    setTimeout(function () { el.classList.remove('flash'); }, 1600);
+  }
+  function bookmark() { return items.filter(function (x) { return x.kind === 'bm'; })[0] || null; }
+  function bmState() {
+    var b = document.getElementById('bmgo');
+    if (!b) return;
+    var it = bookmark();
+    b.setAttribute('data-set', it ? '1' : '0');
+    b.title = it ? 'Go to your bookmark: “' + it.text.slice(0, 60) + '”'
+                 : 'No bookmark yet. Select a word and pick the ribbon.';
+  }
+  // The excerpt shown in the list: the marked words in their own colour with the words
+  // around them left in, because a bare quotation out of context says nothing.
+  function excerpt(el, ids) {
+    var w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null), n, pos = 0, full = '', runs = [];
+    while ((n = w.nextNode())) {
+      var mk = n.parentElement && n.parentElement.closest('mark.hl');
+      var len = n.nodeValue.length;
+      if (mk && ids.indexOf(mk.getAttribute('data-id')) >= 0) {
+        var last = runs[runs.length - 1];
+        if (last && last.e === pos && last.k === mk.className) last.e = pos + len;
+        else runs.push({ s: pos, e: pos + len, k: mk.className });
+      }
+      full += n.nodeValue; pos += len;
+    }
+    var out = document.createElement('span');
+    out.className = 'q';
+    if (!runs.length) { out.textContent = full.slice(0, 160); return out; }
+    var a = Math.max(0, runs[0].s - 75), b = Math.min(full.length, runs[runs.length - 1].e + 75);
+    if (a > 0) { var sp = full.indexOf(' ', a); if (sp > 0 && sp < runs[0].s) a = sp + 1; }
+    if (b < full.length) { var sp2 = full.lastIndexOf(' ', b); if (sp2 > runs[runs.length - 1].e) b = sp2; }
+    function txt(str, dim) {
+      if (!str) return;
+      var e = document.createElement('span');
+      if (dim) e.className = 'dim';
+      e.textContent = str; out.appendChild(e);
+    }
+    if (a > 0) txt('… ', 1);
+    var cur = a;
+    runs.forEach(function (r) {
+      txt(full.slice(cur, r.s), 1);
+      var m = document.createElement('mark');
+      m.className = r.k;
+      m.textContent = full.slice(r.s, r.e);
+      out.appendChild(m); cur = r.e;
+    });
+    txt(full.slice(cur, b), 1);
+    if (b < full.length) txt(' …', 1);
+    return out;
+  }
+  // The highlights list. One row per paragraph, so two marks in the same paragraph read as
+  // one entry, grouped by the text each paragraph sits in. Click a row and go there.
+  function listMarks() {
+    var box = document.getElementById('bmlist');
+    bmState();
+    var n = document.getElementById('mcount');
+    if (n) n.textContent = items.length ? String(items.length) : '';
+    if (!box) return;
+    box.innerHTML = '';
+
+    function where(el) {
+      var art = el.closest('article.rd'), name = 'The argument', ch = '';
+      if (art) {
+        var h = art.querySelector('h3'), chip = h && h.querySelector('.ch'), who = art.querySelector('.who');
+        ch = chip ? chip.textContent.trim().toLowerCase() : '';
+        name = who ? who.textContent.split(',')[0].trim() : (h ? h.textContent : name);
+      } else {
+        var sec = el.closest('section'), sh = sec && sec.querySelector('h2');
+        if (sh) name = sh.textContent.trim();
+      }
+      var node = el, sub = '';
+      while (node && node !== root && !sub) {
+        var sib = node.previousElementSibling;
+        while (sib && !sub) {
+          if (/^H[2-6]$/.test(sib.tagName)) sub = sib.textContent.trim();
+          else if (sib.tagName === 'SUMMARY') sub = sib.textContent.trim();
+          sib = sib.previousElementSibling;
+        }
+        if (!sub && node.parentElement && node.parentElement.tagName === 'DETAILS') {
+          var sm = node.parentElement.querySelector('summary');
+          if (sm) sub = sm.textContent.trim();
+        }
+        node = node.parentElement;
+      }
+      return { name: name, ch: ch, sub: sub };
+    }
+    function row(el, list, cls) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'bmi' + (cls ? ' ' + cls : '');
+      var dots = document.createElement('span'); dots.className = 'dots';
+      var seenC = {};
+      list.forEach(function (it) {
+        var k = it.kind === 'note' ? 'n' : (it.kind === 'bm' ? 'b' : it.color);
+        if (seenC[k]) return; seenC[k] = 1;
+        var d = document.createElement('span'); d.className = 'dot ' + k; dots.appendChild(d);
+      });
+      var txt = document.createElement('span'); txt.className = 'bt';
+      var w = where(el);
+      if (w.sub) {
+        var cap = document.createElement('span'); cap.className = 'where'; cap.textContent = w.sub;
+        txt.appendChild(cap);
+      }
+      txt.appendChild(excerpt(el, list.map(function (x) { return x.id; })));
+      list.forEach(function (it) {
+        if (it.kind !== 'note' || !it.body) return;
+        var cm = document.createElement('span'); cm.className = 'cm';
+        cm.textContent = it.body.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 180);
+        txt.appendChild(cm);
+      });
+      b.appendChild(dots); b.appendChild(txt);
+      b.addEventListener('click', function () {
+        closeMarks();
+        goTo(root.querySelector('mark[data-id="' + list[0].id + '"]'));
+      });
+      return b;
+    }
+
+    // the bookmark first, on its own, because there is only ever one
+    var bm = bookmark(), bmMark = bm && root.querySelector('mark[data-id="' + bm.id + '"]');
+    if (bm && bmMark) {
+      var wrapB = document.createElement('div'); wrapB.className = 'bmg bmg-b';
+      var h3b = document.createElement('h3');
+      h3b.textContent = 'Bookmark';
+      var spb = document.createElement('span'); spb.textContent = 'where you stopped';
+      h3b.appendChild(spb); wrapB.appendChild(h3b);
+      wrapB.appendChild(row(bmMark.closest(SEL) || bmMark.parentElement, [bm], 'isbm'));
+      var clr = document.createElement('button');
+      clr.type = 'button'; clr.className = 'bmclear'; clr.textContent = 'Clear bookmark';
+      clr.addEventListener('click', function () { remove(bm.id); });
+      wrapB.appendChild(clr);
+      box.appendChild(wrapB);
+    }
+
+    // then the highlights and comments, one row per paragraph
+    var groups = [], byName = {}, seen = {}, order = [], perBlock = {};
+    Array.prototype.forEach.call(root.querySelectorAll('mark.hl'), function (m) {
+      var id = m.getAttribute('data-id');
+      if (seen[id]) return;
+      var it = items.filter(function (x) { return x.id === id; })[0];
+      if (!it || it.kind === 'bm') return;
+      seen[id] = 1;
+      var host = m.closest(SEL) || m.parentElement;
+      var k = order.indexOf(host);
+      if (k < 0) { k = order.length; order.push(host); perBlock[k] = []; }
+      perBlock[k].push(it);
+    });
+    order.forEach(function (host, k) {
+      var w = where(host), g = byName[w.name];
+      if (!g) { g = { name: w.name, ch: w.ch, rows: [] }; byName[w.name] = g; groups.push(g); }
+      g.rows.push([host, perBlock[k]]);
+    });
+    if (!groups.length && !bm) {
+      var e = document.createElement('p');
+      e.className = 'bmempty';
+      e.textContent = 'Nothing marked yet. Select any text in the guide, then pick yellow, pink, a comment or the ribbon that sets your bookmark.';
+      box.appendChild(e);
+      return;
+    }
+    groups.forEach(function (g) {
+      var wrap = document.createElement('div'); wrap.className = 'bmg';
+      var h3 = document.createElement('h3');
+      h3.textContent = g.name;
+      if (g.ch) { var sp = document.createElement('span'); sp.textContent = g.ch; h3.appendChild(sp); }
+      wrap.appendChild(h3);
+      g.rows.forEach(function (r) { wrap.appendChild(row(r[0], r[1])); });
+      box.appendChild(wrap);
+    });
+  }
+  var pill = null, pillT = null;
+  function flag(txt, bad) {
+    if (!pill) {
+      pill = document.createElement('div'); pill.id = 'save';
+      pill.setAttribute('role', 'status'); document.body.appendChild(pill);
+    }
+    pill.textContent = txt;
+    pill.className = bad ? 'bad' : (txt ? 'on' : '');
+    if (pillT) clearTimeout(pillT);
+    if (!bad) pillT = setTimeout(function () { pill.className = ''; }, 1400);
+  }
+  // notes.html writes lec1, lec2 and their dates into this same stored object, under this same
+  // key. Both pages therefore read what is stored, change only the keys they own, and write the
+  // whole thing back. A page that writes an object built from its own memory erases whatever the
+  // other page saved since it loaded.
+  var OWN = null;
+  function owned() {
+    if (!OWN) {
+      OWN = {};
+      Array.prototype.forEach.call(document.querySelectorAll('.nb[data-k]'), function (el) {
+        OWN[el.getAttribute('data-k')] = 1;
+      });
+    }
+    return OWN;
+  }
+  function stored() {
+    var v = null;
+    try { v = JSON.parse(localStorage.getItem(LS) || 'null'); } catch (e) {}
+    if (Array.isArray(v)) v = { items: v, notes: {} };
+    if (!v || typeof v !== 'object') v = { items: [], notes: {} };
+    if (!Array.isArray(v.items)) v.items = [];
+    if (!v.notes || typeof v.notes !== 'object') v.notes = {};
+    return v;
+  }
+  function queueRef() {
+    if (saveT) clearTimeout(saveT);
+    saveT = setTimeout(function () {
+      if (ref) ref.set({ items: items, notes: notes }).catch(function () {});
+    }, 400);
+  }
+  // The one write into localStorage: read what is stored, overwrite only the keys named, and
+  // put the whole object back. `extra` carries keys that arrived from the shared database and
+  // belong to no page in particular.
+  function writeStore(extra) {
+    var keep = stored().notes, own = owned(), k;
+    for (k in own) if (Object.prototype.hasOwnProperty.call(own, k) && notes[k] !== undefined) keep[k] = notes[k];
+    if (extra) for (k in extra) if (Object.prototype.hasOwnProperty.call(extra, k)) keep[k] = extra[k];
+    localStorage.setItem(LS, JSON.stringify({ items: items, notes: keep }));
+  }
+  function save() {
+    try {
+      writeStore(null);
+      flag('Saved in this browser', false);
+    } catch (e) {
+      // A private window, or site data turned off. Saying nothing here is how somebody
+      // loses an evening of notes believing they were kept.
+      flag('This browser is not saving. Copy anything you need.', true);
+    }
+    queueRef();
+  }
+  function paintNotes() {
+    Array.prototype.forEach.call(document.querySelectorAll('.nb'), function (el) {
+      if (el !== document.activeElement) {
+        var v = notes[el.getAttribute('data-k')] || '';
+        if (el.innerHTML !== v) el.innerHTML = Notes.clean(v);
+      }
+      Notes.markEmpty(el);
+      var card = el.closest('.nbwrap');
+      if (card) card.classList.toggle('has', !!el.textContent.trim());
+    });
+  }
+
+  /* ---- the editor ---- */
+  /* The editor itself is shared/editor.js, one file for every note she writes in either
+     course. Two kinds of box on this page go through it: the note card under a reading, and
+     the body of a comment on a highlight. Both are named to Notes.bar(), which raises the
+     floating toolbar over a selection in either one. */
+
+  /* Where a change the toolbar or the colour key made belongs. A note card writes into
+     `notes` under its own key, and a comment body writes into the item its card stands for. */
+  function saveBox(el) {
+    if (el.classList.contains('nb')) notes[el.getAttribute('data-k')] = el.innerHTML;
+    else {
+      var c = el.closest('.cmt');
+      var it = c && items.filter(function (x) { return x.id === c.getAttribute('data-id'); })[0];
+      if (it) it.body = el.innerHTML;
+    }
+    save();
+  }
+  function wireNotes() {
+    Notes.bar({ sel: '.nb, .cbody', accent: 'Green text', save: saveBox });
+    Array.prototype.forEach.call(document.querySelectorAll('.nb'), function (el) {
+      el.addEventListener('input', function () {
+        // ahead of rich()'s own listener, so the arrow is in the DOM before it is stored
+        Notes.swapAsTyped();
+        notes[el.getAttribute('data-k')] = el.innerHTML;
+        var card = el.closest('.nbwrap');
+        if (card) card.classList.toggle('has', !!el.textContent.trim());
+        save();
+      });
+      el.addEventListener('blur', function () { Notes.hideBar(); notes[el.getAttribute('data-k')] = el.innerHTML; save(); });
+      Notes.rich(el, function () { notes[el.getAttribute('data-k')] = el.innerHTML; save(); });
+    });
+  }
+  function remove(id) {
+    var gone = items.filter(function (x) { return x.id === id; })[0];
+    items = items.filter(function (x) { return x.id !== id; });
+    save(); render();
+    if (gone) offerUndo(gone);
+  }
+  // One click removes a mark, so one click has to put it back. Without this, a misplaced
+  // click destroys a highlight with no way out of it.
+  function offerUndo(gone) {
+    if (!pill) flag('', false);
+    if (pillT) clearTimeout(pillT);
+    pill.textContent = gone.kind === 'note' ? 'Comment removed' : 'Highlight removed';
+    var b = document.createElement('button');
+    b.type = 'button'; b.textContent = 'Undo';
+    b.addEventListener('click', function () {
+      items.push(gone); save(); render();
+      pill.className = ''; pill.textContent = '';
+    });
+    pill.appendChild(b);
+    pill.className = 'act';
+    pillT = setTimeout(function () { pill.className = ''; pill.textContent = ''; }, 9000);
+  }
+  function capture(kind, color) {
+    var sel = window.getSelection();
+    if (!sel || sel.isCollapsed || sel.rangeCount === 0) return null;
+    var r = sel.getRangeAt(0), made = null, bs = blocks();
+    // There is only ever one bookmark, because there is only ever one place reading stopped.
+    if (kind === 'bm') items = items.filter(function (x) { return x.kind !== 'bm'; });
+    bs.forEach(function (el) {
+      if (!r.intersectsNode(el)) return;
+      var t = el.textContent;
+      var s = el.contains(r.startContainer) ? offsetIn(el, r.startContainer, r.startOffset) : 0;
+      var e = el.contains(r.endContainer) ? offsetIn(el, r.endContainer, r.endOffset) : t.length;
+      if (e <= s) return;
+      var text = t.slice(s, e);
+      if (!text.trim()) return;
+      if ((kind === 'note' || kind === 'bm') && made) return;
+      var it = {
+        id: String(Date.now()) + '-' + Math.random().toString(36).slice(2, 7),
+        text: text, before: t.slice(Math.max(0, s - 40), s), after: t.slice(e, e + 40),
+        head: t.slice(0, 90), idx: bs.indexOf(el), at: s,
+        kind: kind, color: color || 'y', body: ''
+      };
+      items.push(it); made = it;
+    });
+    if (made) { sel.removeAllRanges(); if (kind !== 'note') save(); render(); }
+    return made;
+  }
+  function hide() { bar.hidden = true; }
+  function show() {
+    var sel = window.getSelection();
+    if (!sel || sel.isCollapsed || sel.rangeCount === 0) return hide();
+    if (!sel.toString().trim()) return hide();
+    if (!root.contains(sel.anchorNode) || !root.contains(sel.focusNode)) return hide();
+    var a = document.activeElement;
+    if (a && (a.tagName === 'TEXTAREA' || a.isContentEditable)) return hide();
+    if (sel.anchorNode && sel.anchorNode.parentElement && sel.anchorNode.parentElement.closest('.cmt, .nb')) return hide();
+    var r = sel.getRangeAt(0).getBoundingClientRect();
+    if (!r.width && !r.height) return hide();
+    bar.hidden = false;
+    bar.style.top = (window.scrollY + r.top - bar.offsetHeight - 8) + 'px';
+    bar.style.left = (window.scrollX + r.left) + 'px';
+  }
+  function start() {
+    root = document.querySelector('.wrap');
+    if (!root) return;
+    rail = document.createElement('div'); rail.id = 'cmts';
+    root.appendChild(rail);
+    bar = document.createElement('div');
+    bar.id = 'hl-bar'; bar.hidden = true;
+    bar.innerHTML = '<button type="button" data-c="y" title="Highlight yellow" aria-label="Highlight yellow"></button>' +
+      '<button type="button" data-c="p" title="Highlight pink" aria-label="Highlight pink"></button>' +
+      '<button type="button" data-c="ug" title="Underline, the everyday one" aria-label="Underline, the everyday one"></button>' +
+      '<button type="button" data-c="uy" title="Underline yellow" aria-label="Underline yellow"></button>' +
+      '<button type="button" data-c="up" title="Underline pink" aria-label="Underline pink"></button>' +
+      '<button type="button" data-c="n" title="Add a comment" aria-label="Add a comment"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 9.5A1.5 1.5 0 0 1 12.5 11H6l-3 3V4.5A1.5 1.5 0 0 1 4.5 3h8A1.5 1.5 0 0 1 14 4.5z"/></svg></button>' +
+      '<button type="button" data-c="b" title="Set your bookmark here" aria-label="Set your bookmark here"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M4 2.6h8v11.2L8 10.9l-4 2.9z"/></svg></button>';
+    document.body.appendChild(bar);
+    bar.addEventListener('mousedown', function (e) { e.preventDefault(); });
+    bar.addEventListener('click', function (e) {
+      var b = e.target.closest('button');
+      if (!b) return;
+      var c = b.getAttribute('data-c');
+      bar.hidden = true;
+      if (c === 'n') {
+        var it = capture('note');
+        if (it) {
+          var ta = root.querySelector('.cmt[data-id="' + it.id + '"] .cbody');
+          if (ta) { ta.focus(); }
+        }
+      } else if (c === 'b') { capture('bm'); }
+      else { capture('hl', c); }
+    });
+    // A click on empty space does not clear the selection, so a bare mouseup must never
+    // re-show the bar: only a gesture that actually dragged, or actually changed the
+    // selection, counts as a new selection.
+    var downX = 0, downY = 0, downSel = '';
+    ['mousedown', 'pointerdown', 'touchstart'].forEach(function (ev) {
+      document.addEventListener(ev, function (e) {
+        if (bar.contains(e.target)) return;
+        hide();
+        downX = e.clientX || 0; downY = e.clientY || 0;
+        downSel = String(window.getSelection() || '');
+      }, true);
+    });
+    ['mouseup', 'touchend'].forEach(function (ev) {
+      document.addEventListener(ev, function (e) {
+        if (bar.contains(e.target)) return;
+        var moved = Math.abs((e.clientX || 0) - downX) > 3 || Math.abs((e.clientY || 0) - downY) > 3;
+        var was = downSel;
+        setTimeout(function () {
+          var now = String(window.getSelection() || '');
+          if (!now.trim()) return hide();
+          if (!moved && now === was) return hide();
+          show();
+        }, 0);
+      });
+    });
+    document.addEventListener('keyup', function (e) {
+      if (e.key !== 'Shift' && !(e.shiftKey && e.key.indexOf('Arrow') === 0)) return;
+      var a = document.activeElement;
+      if (a && (a.tagName === 'TEXTAREA' || a.isContentEditable)) return;
+      setTimeout(show, 0);
+    });
+    document.addEventListener('keydown', function (e) { if (e.key !== 'Shift') hide(); });
+    document.addEventListener('selectionchange', function () {
+      var sel = window.getSelection();
+      if (!sel || sel.isCollapsed || !String(sel).trim()) hide();
+    });
+    document.addEventListener('visibilitychange', hide);
+    window.addEventListener('scroll', hide, { passive: true });
+    window.addEventListener('wheel', hide, { passive: true });
+    window.addEventListener('blur', hide);
+    window.addEventListener('resize', function () { hide(); place_notes(); });
+    root.addEventListener('click', function (e) {
+      var m = e.target.closest && e.target.closest('mark.hl');
+      if (!m) return;
+      var id = m.getAttribute('data-id');
+      var it = items.filter(function (x) { return x.id === id; })[0];
+      if (!it) return;
+      if (it.kind === 'note') {
+        var c = root.querySelector('.cmt[data-id="' + id + '"]');
+        Array.prototype.forEach.call(root.querySelectorAll('.cmt.act'), function (x) { x.classList.remove('act'); });
+        Array.prototype.forEach.call(root.querySelectorAll('mark.hl-n.act'), function (x) { x.classList.remove('act'); });
+        if (c) { c.classList.add('act'); m.classList.add('act'); c.scrollIntoView({ block: 'nearest' }); c.querySelector('.cbody').focus(); }
+      } else if (it.kind === 'bm') {
+        goTo(m);
+      } else { remove(id); }
+    });
+    drawer = document.getElementById('marks');
+    Array.prototype.forEach.call(document.querySelectorAll('[data-marks]'), function (b) {
+      b.addEventListener('click', function (e) { e.preventDefault(); openMarks(); });
+    });
+    if (drawer) drawer.addEventListener('click', function (e) {
+      if (e.target.closest('[data-close]')) closeMarks();
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMarks(); });
+    var top = document.getElementById('totop');
+    if (top) top.addEventListener('click', function () {
+      try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch (e) { window.scrollTo(0, 0); }
+    });
+    var go = document.getElementById('bmgo');
+    if (go) go.addEventListener('click', function () {
+      var it = bookmark();
+      var m = it && root.querySelector('mark[data-id="' + it.id + '"]');
+      if (m) { goTo(m); return; }
+      flag('No bookmark yet. Select a word, then pick the ribbon.', true);
+      setTimeout(function () { flag(''); }, 3200);
+    });
+    // A closed toggle prints as a heading with nothing under it, so open everything to print
+    // and put it back afterwards.
+    var reopen = [];
+    window.addEventListener('beforeprint', function () {
+      reopen = [];
+      Array.prototype.forEach.call(document.querySelectorAll('details:not([open])'), function (d) {
+        reopen.push(d); d.open = true;
+      });
+    });
+    window.addEventListener('afterprint', function () {
+      reopen.forEach(function (d) { d.open = false; });
+      reopen = [];
+    });
+    document.addEventListener('toggle', function () { place_notes(); }, true);
+    try {
+      var v = JSON.parse(localStorage.getItem(LS) || 'null');
+      if (Array.isArray(v)) { items = v; }
+      else if (v && typeof v === 'object') { items = v.items || []; notes = v.notes || {}; }
+    } catch (e) {}
+    items.forEach(function (x) { if (!x.kind) x.kind = 'hl'; });
+    wireNotes();
+    paintNotes();
+    render();
+    // A second copy of this page, open in another tab, writes the same key. Pick up what it
+    // saved, so the next save here is built on what is stored. A stale list of highlights in
+    // memory erases the highlight made over there as soon as a note is typed here. Whatever
+    // is being edited here at the moment is left alone.
+    window.addEventListener('storage', function (e) {
+      if (e.key && e.key !== LS) return;
+      var a = document.activeElement;
+      if (a && a.classList && a.classList.contains('cbody')) return;
+      var boxes = {}, fresh = stored(), k;
+      Array.prototype.forEach.call(document.querySelectorAll('.nb[data-k]'), function (el) {
+        boxes[el.getAttribute('data-k')] = el;
+      });
+      for (k in fresh.notes) {
+        if (!Object.prototype.hasOwnProperty.call(fresh.notes, k)) continue;
+        if (boxes[k] && boxes[k] === a) continue;
+        notes[k] = fresh.notes[k];
+      }
+      items = fresh.items;
+      items.forEach(function (x) { if (!x.kind) x.kind = 'hl'; });
+      paintNotes();
+      render();
+    });
+    if (window.claude && typeof claude.use === 'function') {
+      claude.use('db').then(function (db) {
+        if (!db) return;
+        ref = db.doc('highlights/v1');
+        ref.onSnapshot(function (snap) {
+          var d = snap.exists ? snap.data() : null;
+          if (!d) return;
+          if (root.querySelector('.cmt .cbody:focus')) return;
+          // Merged, so a snapshot taken before the lecture notes existed cannot drop them.
+          if (d.notes && typeof d.notes === 'object') {
+            Object.keys(d.notes).forEach(function (k) { notes[k] = d.notes[k]; });
+            paintNotes();
+          }
+          if (Array.isArray(d.items)) {
+            items = d.items.slice();
+            items.forEach(function (x) { if (!x.kind) x.kind = 'hl'; });
+            render();
+          }
+          // Merged the same way a save is, so the lecture notes written on notes.html since
+          // this page loaded survive a snapshot that predates them.
+          try { writeStore(d.notes && typeof d.notes === 'object' ? d.notes : null); } catch (e) {}
+        }, function () {});
+      }).catch(function () {});
+    }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
+  else start();
+})();
+</script>
+
+<script>
+(function () {
+  var nav = document.getElementById('nav');
+  if (!nav) return;
+  var links = Array.prototype.slice.call(nav.querySelectorAll('a'));
+  var targets = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+  function mark() {
+    var best = -1, bestTop = -1e9;
+    for (var i = 0; i < targets.length; i++) {
+      if (!targets[i]) continue;
+      var t = targets[i].getBoundingClientRect().top - 120;
+      if (t <= 0 && t > bestTop) { bestTop = t; best = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle('on', i === best); });
+    // only the chapter you are inside opens its list of sections
+    var of = '';
+    if (best >= 0) {
+      var cur = links[best];
+      of = cur.classList.contains('sb') ? cur.getAttribute('data-of')
+                                        : cur.getAttribute('href').slice(1);
+    }
+    links.forEach(function (a) {
+      if (a.classList.contains('sb')) a.classList.toggle('show', a.getAttribute('data-of') === of);
+    });
+    if (best !== was && best >= 0 && nav.scrollHeight > nav.clientHeight) {
+      links[best].scrollIntoView({ block: 'nearest' });
+    }
+    was = best;
+  }
+  var was = -1;
+  // how far through the reading this is, drawn along the top edge of the dock
+  var prog = document.getElementById('prog');
+  function bar() {
+    if (!prog) return;
+    var se = document.scrollingElement || document.documentElement;
+    var run = se.scrollHeight - window.innerHeight;
+    prog.style.width = (run > 0 ? Math.min(100, Math.max(0, se.scrollTop / run * 100)) : 0) + '%';
+  }
+  window.addEventListener('scroll', function () { mark(); bar(); }, { passive: true });
+  window.addEventListener('resize', function () { mark(); bar(); });
+  mark(); bar();
+})();
+</script>
+<script src="../glossary.js?v=8649b44e"></script>
+<script>
+/* Every term defined in any week's glossary gets a faint dashed underline here, and its
+   definition on click. This runs after the highlighter has restored, and skips anything inside
+   a mark, so the two never fight over the same text nodes. */
+(function () {
+  var G = window.PHI_GLOSSARY;
+  var root = document.querySelector('.wrap');
+  if (!G || !G.length || !root) return;
+
+  var SKIP = '.gl, .nb, .cmt, #nav, .site, .sitefoot, .dock, a, h1, h2, h3, h4, h5, summary, .cred, mark, code, .gl-w, .dg-t, .mynote, .nbhint';
+  var BLOCK = 'p, li, td, th, dd, figcaption, blockquote, .keep, .qa, .why, .kone, .bq';
+
+  var pairs = [];
+  G.forEach(function (e, i) { e.f.forEach(function (w) { pairs.push([w, i]); }); });
+  pairs.sort(function (a, b) { return b[0].length - a[0].length; });
+  var idx = {};
+  pairs.forEach(function (p) { if (!(p[0].toLowerCase() in idx)) idx[p[0].toLowerCase()] = p[1]; });
+  function esc(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+  var rx;
+  try {
+    rx = new RegExp('(?<![\\w-])(' + pairs.map(function (p) { return esc(p[0]); }).join('|') + ')(?![\\w-])', 'gi');
+  } catch (e) { return; }   // a browser without lookbehind simply gets no underlines
+
+  var nodes = [], w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null), n;
+  while ((n = w.nextNode())) {
+    if (!n.nodeValue || n.nodeValue.length < 4) continue;
+    var p = n.parentElement;
+    if (!p || p.closest(SKIP)) continue;
+    nodes.push(n);
+  }
+
+  var seen = new Map();          // one mark per term per block, so a page is not all dashes
+  nodes.forEach(function (node) {
+    var block = node.parentElement.closest(BLOCK) || node.parentElement;
+    var done = seen.get(block);
+    if (!done) { done = new Set(); seen.set(block, done); }
+    var text = node.nodeValue, m, hits = [];
+    rx.lastIndex = 0;
+    while ((m = rx.exec(text))) {
+      var i = idx[m[1].toLowerCase()];
+      if (i === undefined || done.has(i)) continue;
+      done.add(i);
+      hits.push([m.index, m.index + m[1].length, i]);
+    }
+    for (var k = hits.length - 1; k >= 0; k--) {
+      var a = hits[k][0], b = hits[k][1];
+      var tail = node.splitText(a);
+      if (b - a < tail.nodeValue.length) tail.splitText(b - a);
+      var s = document.createElement('span');
+      s.className = 'gl-w';
+      s.setAttribute('data-g', hits[k][2]);
+      tail.parentNode.insertBefore(s, tail);
+      s.appendChild(tail);
+    }
+  });
+
+  var pop = document.createElement('div');
+  pop.id = 'gl-pop'; pop.hidden = true;
+  document.body.appendChild(pop);
+
+  function hide() { pop.hidden = true; }
+  function show(el) {
+    var e = G[+el.getAttribute('data-g')];
+    if (!e) return;
+    pop.innerHTML = '';
+    var t = document.createElement('div'); t.className = 't'; t.textContent = e.t;
+    var d = document.createElement('div'); d.className = 'd'; d.innerHTML = e.d;
+    var k = document.createElement('div'); k.className = 'w'; k.textContent = 'Glossary, week ' + e.w;
+    pop.appendChild(t); pop.appendChild(d); pop.appendChild(k);
+    pop.hidden = false;
+    var r = el.getBoundingClientRect();
+    var left = Math.min(window.scrollX + r.left, window.scrollX + document.documentElement.clientWidth - pop.offsetWidth - 12);
+    var top = window.scrollY + r.bottom + 7;
+    if (r.bottom + pop.offsetHeight + 16 > window.innerHeight && r.top > pop.offsetHeight + 16) {
+      top = window.scrollY + r.top - pop.offsetHeight - 7;
+    }
+    pop.style.left = Math.max(window.scrollX + 10, left) + 'px';
+    pop.style.top = top + 'px';
+  }
+
+  document.addEventListener('click', function (ev) {
+    var hit = ev.target.closest && ev.target.closest('.gl-w');
+    if (hit) { ev.preventDefault(); ev.stopPropagation(); show(hit); return; }
+    if (!pop.contains(ev.target)) hide();
+  }, true);
+  document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape') hide(); });
+  window.addEventListener('scroll', hide, { passive: true });
+  window.addEventListener('resize', hide);
+})();
+</script>
+</html>
